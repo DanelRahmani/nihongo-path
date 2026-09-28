@@ -121,11 +121,9 @@ export function PathBrowser({ units }: { units: PathUnit[] }) {
                     <li key={lesson.key}>
                       <Link href={lesson.href} className="group flex items-center gap-3 py-3 sm:gap-4">
                         <span className="w-8 shrink-0 text-xs text-ink-2 tabular-nums">{lesson.number}</span>
-                        <Jp
-                          jp={lesson.mark}
-                          romaji={false}
-                          className="hidden w-20 shrink-0 font-serif text-lg font-bold group-hover:text-accent sm:inline-flex"
-                        />
+                        <span className="hidden w-20 shrink-0 sm:block">
+                          <Jp jp={lesson.mark} romaji={false} className="font-serif text-lg font-bold group-hover:text-accent" />
+                        </span>
                         <span className="min-w-0 flex-1">
                           <span className="block font-medium group-hover:text-accent">{lesson.title}</span>
                           <Rich text={lesson.summary} className="block text-sm text-ink-2" />

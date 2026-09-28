@@ -27,7 +27,7 @@ export function DisplaySettings() {
       <button
         type="button"
         popoverTarget="display-settings"
-        className="flex h-9 items-center gap-2 rounded-full border border-line px-3 text-sm text-ink-2 transition-colors hover:border-accent hover:text-accent"
+        className="flex h-9 items-center gap-2 rounded-full border border-line px-3 text-sm whitespace-nowrap text-ink-2 transition-colors hover:border-accent hover:text-accent"
       >
         <span lang="ja" className="font-serif text-base leading-none text-ink">
           表示

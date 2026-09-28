@@ -1,36 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nihongo Path 日本語の道
 
-## Getting Started
+A personal Japanese study app: hiragana and katakana with a spaced-repetition drill, plus 62 lessons on word order, particles, core grammar, verb conjugation, suffixes and conversation culture. Lessons are taught through contrasting example pairs, in the style of Cure Dolly (core sentence, zero が) and Jouzu Juls (natural, practical examples).
 
-First, run the development server:
+Static Next.js site — no backend, no accounts. Progress, drill state and display settings live in the browser's `localStorage`.
+
+## Scripts
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev        # local dev server on http://localhost:3000
+npm test           # unit + content-integrity tests (vitest)
+npm run typecheck  # route types + tsc
+npm run lint
+npm run build      # static export to out/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Where things live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `content/lessons/<unit>.ts` — lesson content, one file per unit; `content/units.ts` sets the order.
+- `content/STYLE.md` — teaching style and markup rules. Read before adding lessons.
+- `content/kana.ts` — kana data; katakana is derived from hiragana.
+- `lib/markup.ts`, `lib/romaji.ts` — the `[漢字|かな]` / `{highlight}` markup and generated romaji.
+- `lib/srs.ts` — Leitner-box scheduler for the kana drill.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+`tests/content.test.ts` fails if any lesson shows a bare kanji (Kana-only mode must always be readable), has a broken link, unbalanced markup, or Japanese that can't be turned into romaji.
 
-## Learn More
+## Building one for another language
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`docs/replicate-for-another-language.md` is a ready-to-paste prompt, including a setup questionnaire, that has a new AI session build this kind of app for another language (with worked notes for Persian).

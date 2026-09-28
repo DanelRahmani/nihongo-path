@@ -77,14 +77,12 @@ export function ContinueCard({ lessons }: { lessons: ContinueLesson[] }) {
       href={next.href}
       className="group flex items-center gap-5 rounded-2xl border border-line p-5 transition-colors hover:border-accent sm:p-6"
     >
-      <Jp
-        jp={next.mark}
-        romaji={false}
-        className="hidden shrink-0 font-serif text-4xl font-bold text-accent sm:inline-flex sm:text-5xl"
-      />
+      <span className="hidden shrink-0 sm:block">
+        <Jp jp={next.mark} romaji={false} className="font-serif text-5xl font-bold text-accent" />
+      </span>
       <span className="min-w-0 flex-1">
         <span className="block text-xs font-medium tracking-[0.18em] text-ink-2 uppercase">
-          {doneCount === 0 ? "Start here" : "Continue"} · Lesson {next.number} · {next.unitTitle}
+          {doneCount === 0 ? "First lesson" : "Up next"} · {next.number} · {next.unitTitle}
         </span>
         <span className="mt-1 block text-xl font-bold group-hover:text-accent">{next.title}</span>
         <Rich text={next.summary} className="mt-1 block text-sm text-ink-2" />

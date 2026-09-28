@@ -58,6 +58,11 @@ describe("markup", () => {
     expect(romajiOf(src)).toBe("watashi wa gakusei desu.");
   });
 
+  it("hyphenates name suffixes after a kanji name", () => {
+    expect(romajiOf("[田中|たなか]さん、おはよう。")).toBe("tanaka-san, ohayou.");
+    expect(romajiOf("お[客|きゃく][様|さま]")).toBe("okyakusama");
+  });
+
   it("finds kanji outside ruby markup", () => {
     expect(bareKanji(src, true)).toEqual([]);
     expect(bareKanji("猫 が [好|す]き", true)).toEqual(["猫"]);

@@ -1,5 +1,5 @@
 import { KANA } from "@/content/kana";
-import { readingOf } from "@/lib/markup";
+import { parse } from "@/lib/markup";
 
 /** Kana → Hepburn-style romaji (long vowels spelled out: ou, ei, ー repeats the vowel). */
 const MAP: Record<string, string> = Object.fromEntries(KANA.map((k) => [k.char, k.romaji[0]]));
@@ -82,7 +82,18 @@ export function kanaToRomaji(reading: string): string {
     .replace(/\s+([.,?!:])/g, "$1");
 }
 
-/** Romaji for a marked-up Jp string. */
+const NAME_SUFFIX = /^(さん|くん|ちゃん|さま)/;
+
+/** Romaji for a marked-up Jp string. A kanji name + さん etc. is hyphenated: tanaka-san. */
 export function romajiOf(jp: string): string {
-  return kanaToRomaji(readingOf(jp));
+  const tokens = parse(jp, true);
+  const reading = tokens
+    .map((t, i) => {
+      if (t.kind === "space") return " ";
+      if (t.kind === "text") return t.text;
+      const next = tokens[i + 1];
+      return t.reading + (next?.kind === "text" && NAME_SUFFIX.test(next.text) ? "-" : "");
+    })
+    .join("");
+  return kanaToRomaji(reading);
 }

@@ -36,15 +36,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${mincho.variable} ${gothic.variable} h-full`}>
       <body className="flex min-h-full flex-col">
         <header className="sticky top-0 z-20 border-b border-line bg-paper/90 backdrop-blur-md">
-          <div className="mx-auto flex h-16 max-w-5xl items-center gap-4 px-4 sm:px-6">
-            <Link href="/" className="group flex items-center gap-3" aria-label="Nihongo Path home">
+          <div className="mx-auto flex h-16 max-w-5xl items-center gap-2 px-4 sm:gap-4 sm:px-6">
+            <Link href="/" className="group flex shrink-0 items-center gap-2.5 sm:gap-3" aria-label="Nihongo Path home">
               <span className="size-3.5 rounded-full bg-accent transition-transform group-hover:scale-110" />
-              <span lang="ja" className="font-serif text-xl font-bold tracking-wider">
+              <span lang="ja" className="font-serif text-lg font-bold tracking-wider whitespace-nowrap sm:text-xl">
                 日本語の道
               </span>
             </Link>
             <NavLinks />
-            <div className="ml-auto">
+            <div className="ml-auto shrink-0">
               <DisplaySettings />
             </div>
           </div>

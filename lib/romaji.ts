@@ -74,6 +74,7 @@ function convertWord(word: string): string {
 /** Romaji for a kana reading with space-separated words. */
 export function kanaToRomaji(reading: string): string {
   return reading
+    .replace(/([、。！？])(?=\S)/g, "$1 ")
     .split(/\s+/)
     .filter(Boolean)
     .map(convertWord)

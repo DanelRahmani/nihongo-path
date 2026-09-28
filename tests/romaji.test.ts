@@ -34,6 +34,10 @@ describe("kanaToRomaji", () => {
     expect(kanaToRomaji("はな")).toBe("hana");
   });
 
+  it("spaces words after mid-sentence punctuation", () => {
+    expect(kanaToRomaji("たべる けど、さかな は たべない。")).toBe("taberu kedo, sakana wa tabenai.");
+  });
+
   it("attaches punctuation to the previous word", () => {
     expect(kanaToRomaji("はい 、 そう です ね ！")).toBe("hai, sou desu ne!");
   });

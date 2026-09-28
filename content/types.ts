@@ -37,6 +37,7 @@ export type Block =
 
 export interface Lesson {
   slug: string;
+  /** Plain-English title that says what the lesson teaches. */
   title: string;
   /** Short Japanese label shown as the lesson's mark, e.g. "は・が". */
   mark: Jp;
@@ -46,8 +47,23 @@ export interface Lesson {
   blocks: Block[];
 }
 
+/** Lesson type, used to filter the path. */
+export type LessonKind = "basics" | "kana" | "word-order" | "particles" | "grammar" | "verbs" | "suffixes" | "culture";
+
+export const KINDS: { kind: LessonKind; label: string; jp: string }[] = [
+  { kind: "basics", label: "Basics", jp: "[基本|きほん]" },
+  { kind: "kana", label: "Kana", jp: "かな" },
+  { kind: "word-order", label: "Word order", jp: "[語順|ごじゅん]" },
+  { kind: "particles", label: "Particles", jp: "[助詞|じょし]" },
+  { kind: "grammar", label: "Grammar", jp: "[文法|ぶんぽう]" },
+  { kind: "verbs", label: "Verbs", jp: "[動詞|どうし]" },
+  { kind: "suffixes", label: "Suffixes", jp: "[接尾辞|せつびじ]" },
+  { kind: "culture", label: "Culture", jp: "[文化|ぶんか]" },
+];
+
 export interface Unit {
   slug: string;
+  kind: LessonKind;
   title: string;
   /** Japanese unit name, e.g. "助詞". */
   titleJp: Jp;

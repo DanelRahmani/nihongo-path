@@ -68,8 +68,10 @@ export function Rich({ text, className }: { text: string; className?: string }) 
 /** Table cell: Japanese cells get a romaji line when romaji is on. */
 export function Cell({ text }: { text: string }) {
   const [settings] = useStore(settingsStore);
-  const tokens = parse(text, false);
-  const showRomaji = settings.romaji && hasJapanese(text) && !/[a-z]/i.test(text.replace(/\[[^\]]*\]/g, ""));
+  // Japanese-only cells use word spaces like examples; mixed cells are prose.
+  const jpOnly = hasJapanese(text) && !/[a-z]/i.test(text.replace(/\[[^\]]*\]/g, ""));
+  const tokens = parse(text, jpOnly);
+  const showRomaji = settings.romaji && jpOnly;
   return (
     <span className="inline-flex flex-col">
       <span>{renderTokens(tokens, settings.script)}</span>

@@ -77,7 +77,7 @@ export function ContinueCard() {
       </span>
       <span className="min-w-0 flex-1">
         <span className="block text-xs font-medium tracking-[0.18em] text-ink-2 uppercase">
-          {doneCount === 0 ? "Start here" : "Continue"} · {next.unit.title}
+          {doneCount === 0 ? "Start here" : "Continue"} · Lesson {next.number} · {next.unit.title}
         </span>
         <span className="mt-1 block text-xl font-bold group-hover:text-accent">{next.lesson.title}</span>
         <span className="mt-1 block text-sm text-ink-2">{next.lesson.summary}</span>

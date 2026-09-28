@@ -1,26 +1,124 @@
 @import "tailwindcss";
 
+/* Light: paper white + hinomaru red. Dark: charcoal + sakura pink. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --paper: #ffffff;
+  --paper-2: #f7f5f5;
+  --ink: #1a1a1a;
+  --ink-2: #5e5a5b;
+  --line: #ebe6e6;
+  --accent: #bc002d;
+  --accent-soft: #fbecef;
+  --on-accent: #ffffff;
+  color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --paper: #1c1c1e;
+    --paper-2: #252528;
+    --ink: #ece8e9;
+    --ink-2: #a39da0;
+    --line: #353337;
+    --accent: #f2a7bb;
+    --accent-soft: rgb(242 167 187 / 0.1);
+    --on-accent: #1c1c1e;
+    color-scheme: dark;
   }
 }
 
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-on-accent: var(--on-accent);
+  --font-sans: var(--font-gothic), "Hiragino Sans", "Yu Gothic", sans-serif;
+  --font-serif: var(--font-mincho), "Hiragino Mincho ProN", "Yu Mincho", serif;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "palt" 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Red-pen highlight: the part of an example the lesson is about. */
+.hl {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.28em;
+  text-decoration-skip-ink: none;
+}
+
+ruby rt {
+  font-size: 0.5em;
+  color: var(--ink-2);
+  font-weight: 400;
+}
+
+.tategaki {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+}
+
+/* Hanko seal: the lesson-complete stamp. */
+.hanko {
+  display: inline-grid;
+  place-items: center;
+  border: 2px solid var(--accent);
+  border-radius: 9999px;
+  color: var(--accent);
+  font-family: var(--font-serif);
+  font-weight: 800;
+  line-height: 1;
+  transform: rotate(-8deg);
+}
+
+@keyframes stamp {
+  0% { transform: rotate(-8deg) scale(1.6); opacity: 0; }
+  60% { transform: rotate(-8deg) scale(0.92); opacity: 1; }
+  100% { transform: rotate(-8deg) scale(1); opacity: 1; }
+}
+
+.hanko-stamp {
+  animation: stamp 320ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.rise {
+  animation: rise 240ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hanko-stamp,
+  .rise {
+    animation: none;
+  }
+}
+
+[popover] {
+  inset: unset;
+  margin: 0;
 }

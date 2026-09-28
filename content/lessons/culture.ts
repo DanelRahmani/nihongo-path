@@ -135,7 +135,7 @@ export const culture: Lesson[] = [
         lines: [
           { speaker: "A", jp: "[昨日|きのう]、[京都|きょうと] に [行|い]って…", en: "So yesterday I went to Kyoto…" },
           { speaker: "B", jp: "うん、うん。", en: "Mm-hm." },
-          { speaker: "A", jp: "お[寺|てら] を [見|み]て [来|き]た ん だ けど…", en: "I went to see some temples, and…" },
+          { speaker: "A", jp: "お[寺|てら] を [見|み]て きた ん だ けど…", en: "I went to see some temples, and…" },
           { speaker: "B", jp: "へえ、いい ね！", en: "Oh, nice!" },
         ],
         note: "B isn't interrupting — the aizuchi keep A talking.",

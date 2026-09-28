@@ -57,7 +57,7 @@ export const basics: Lesson[] = [
       {
         type: "pair",
         a: { jp: "[学生|がくせい] {です}。", en: "I'm a student.", note: "Polite." },
-        b: { jp: "[学生|がくせい] {だ}。", en: "I'm a student.", note: "Casual." },
+        b: { jp: "[学生|がくせい] {だ}。", en: "I'm a student.", note: "Casual. In conversation it's usually softened — [学生|がくせい]だよ — or just [学生|がくせい]; a bare だ can sound blunt." },
         diff: "Same meaning, different relationship. です/ます for strangers, teachers, shops and work; casual with friends and family.",
       },
       {

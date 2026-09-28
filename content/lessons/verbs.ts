@@ -38,7 +38,7 @@ export const verbs: Lesson[] = [
       },
       {
         type: "text",
-        text: "These end in -iru or -eru but conjugate like う-verbs: [帰|かえ]ります, not ✗ [帰|かえ]ます. Any verb ending in -aru, -uru or -oru is always a う-verb.",
+        text: "These end in -iru or -eru but conjugate like う-verbs: [帰|かえ]ります, not ✗ [帰|かえ]ます. Any verb ending in -aru, -uru or -oru is a う-verb — except the two irregulars する and [来|く]る.",
       },
       {
         type: "callout",
@@ -316,7 +316,7 @@ export const verbs: Lesson[] = [
     title: "Suggesting “let's”: 〜ましょう and the casual 〜よう",
     mark: "よう",
     summary: "Polite and casual ways to suggest doing something together.",
-    source: "Genki I ch. 6 (ましょう); Genki II ch. 15 (volitional); Tae Kim's Guide — “Volitional form”",
+    source: "Genki I ch. 5 (ましょう); Genki II ch. 15 (volitional); Tae Kim's Guide — “Volitional form”",
     blocks: [
       {
         type: "idea",
@@ -365,7 +365,7 @@ export const verbs: Lesson[] = [
         headers: ["Dictionary", "Can do", "Meaning"],
         rows: [
           ["[食|た]べる", "[食|た]べられる", "can eat"],
-          ["[見|み]る", "[見|み]られる", "can see"],
+          ["[見|み]る", "[見|み]られる", "can watch, get to see"],
           ["[飲|の]む", "[飲|の]める", "can drink"],
           ["[話|はな]す", "[話|はな]せる", "can speak"],
           ["[行|い]く", "[行|い]ける", "can go"],

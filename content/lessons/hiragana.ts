@@ -96,7 +96,7 @@ export const hiragana: Lesson[] = [
     slug: "hiragana-dakuten",
     title: "Hiragana 3: two dots and a circle make new sounds (が, ぱ…)",
     mark: "が",
-    summary: "Dakuten ゛ and handakuten ゜ turn 20 kana into 25 new sounds.",
+    summary: "Dakuten ゛ and handakuten ゜ turn 20 kana into 25 new kana.",
     source: "Genki I — Hiragana (diacritics)",
     blocks: [
       {
@@ -173,7 +173,7 @@ export const hiragana: Lesson[] = [
         items: [
           { jp: "きょう", en: "today" },
           { jp: "しゃしん", en: "photo" },
-          { jp: "おちゃ", en: "green tea" },
+          { jp: "おちゃ", en: "tea (usually green tea)" },
           { jp: "じゅぎょう", en: "class, lesson" },
         ],
       },

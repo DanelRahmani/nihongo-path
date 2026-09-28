@@ -102,7 +102,7 @@ export const suffixes: Lesson[] = [
           { jp: "[私|わたし]たち", en: "we, us" },
           { jp: "[子供|こども]たち", en: "the children" },
           { jp: "[田中|たなか]さんたち", en: "Tanaka and the others", note: "Not several Tanakas — Tanaka and the group they're with." },
-          { jp: "[彼|かれ]ら", en: "they", note: "〜ら is a blunter, more casual version, mostly in set words like [彼|かれ]ら." },
+          { jp: "[彼|かれ]ら", en: "they", note: "〜ら is less respectful than たち (don't use it for people you look up to), but [彼|かれ]ら itself is the normal, neutral word for “they”." },
         ],
       },
       {
@@ -267,7 +267,7 @@ export const suffixes: Lesson[] = [
     blocks: [
       {
         type: "idea",
-        text: "**お〜** and **ご〜** in front of a noun make it polite or refined. お usually goes on native Japanese words, ご on words borrowed from Chinese.",
+        text: "**お〜** and **ご〜** in front of a noun make it polite or refined. お usually goes on native Japanese words, ご on words borrowed from Chinese — but many everyday Chinese-origin words take お: お[茶|ちゃ], お[電話|でんわ], お[時間|じかん].",
       },
       {
         type: "examples",

@@ -190,7 +190,7 @@ export const particles: Lesson[] = [
     summary: "The direct object: the thing you eat, read, buy or watch.",
     source: "Tae Kim's Guide — “The object particle を”; Genki I ch. 3",
     blocks: [
-      { type: "idea", text: "を marks the **object**: the thing an action is done *to*. It's written wo but pronounced **o**." },
+      { type: "idea", text: "を marks the **object**: the thing an action is done *to*. It's often romanised wo, but pronounced **o**." },
       {
         type: "examples",
         items: [
@@ -351,7 +351,7 @@ export const particles: Lesson[] = [
       {
         type: "callout",
         kind: "mistake",
-        text: "✗ [部屋|へや]で[猫|ねこ]がいる → ✓ [部屋|へや]に[猫|ねこ]がいる. ある and いる always take に for their location.",
+        text: "✗ [部屋|へや]で[猫|ねこ]がいる → ✓ [部屋|へや]に[猫|ねこ]がいる. When ある and いる mean something *is* somewhere, the place takes に. (Exception: when ある means an event takes place, it's で — [東京|とうきょう]でコンサートがある.)",
       },
     ],
   },
@@ -444,7 +444,7 @@ export const particles: Lesson[] = [
       {
         type: "examples",
         items: [
-          { jp: "パン {も} [食|た]べる。", en: "I'll eat bread too.", note: "も takes the place of を — never ✗ パンをも." },
+          { jp: "パン {も} [食|た]べる。", en: "I'll eat bread too.", note: "も takes the place of を — not ✗ パンをも (をも only appears in formal writing)." },
           { jp: "[猫|ねこ] {も} [犬|いぬ] {も} [好|す]き です。", en: "I like both cats and dogs.", note: "A も B も = both A and B." },
           { jp: "[何|なに] {も} [食|た]べなかった。", en: "I didn't eat anything.", note: "Question word + も + negative = not any." },
         ],

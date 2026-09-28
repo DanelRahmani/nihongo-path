@@ -68,7 +68,7 @@ export const katakana: Lesson[] = [
         rows: [
           ["シ shi · ツ tsu", "シ: dots on the left, long stroke sweeps **up**. ツ: dots on top, long stroke falls **down**."],
           ["ソ so · ン n", "ソ: short stroke on top, long stroke falls **down**. ン: dot on the left, long stroke sweeps **up**."],
-          ["ク ku · タ ta · ケ ke", "タ is ク with an extra stroke inside. ケ's crossbar sticks out to the left."],
+          ["ク ku · タ ta · ケ ke", "タ is ク with an extra stroke inside. ケ has a straight crossbar that runs on past its third stroke to the right; ク's top turns down into a hook."],
           ["ヌ nu · ス su", "ヌ has an extra short stroke crossing it; ス doesn't."],
           ["ワ wa · ウ u · フ fu", "ウ is ワ with a dot on top. フ has no left-hand stroke at all."],
           ["ノ no · メ me", "メ is ノ with a second stroke crossing it."],
@@ -151,7 +151,7 @@ export const katakana: Lesson[] = [
           ["v usually becomes b", "video, vest", "ビデオ, ベスト"],
           ["-er / -or / -ar become a long a", "computer, doctor", "コンピューター, ドクター"],
           ["th becomes s or z", "three, thrill", "スリー, スリル"],
-          ["ti / di use the new combos", "party, city", "パーティー, シティー"],
+          ["ti / di: newer words use ティ / ディ, older ones チ / ジ", "party, ticket, radio", "パーティー, チケット, ラジオ"],
         ],
       },
       { type: "heading", text: "Then they get shortened" },

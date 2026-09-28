@@ -123,7 +123,7 @@ export const grammar: Lesson[] = [
         type: "examples",
         items: [
           { jp: "[好|す]き な [食|た]べ[物|もの] は [何|なん] です か？", en: "What's your favourite food?", note: "[好|す]き (liked) is a な-adjective." },
-          { jp: "[元気|げんき] です か？", en: "How are you?", note: "Literally: are you well?" },
+          { jp: "[元気|げんき] です か？", en: "Have you been well?", note: "Literally: are you well? Used when you haven't seen someone for a while — not a daily “how are you?”." },
           { jp: "[有名|ゆうめい] な [人|ひと]", en: "a famous person" },
         ],
       },
@@ -249,7 +249,7 @@ export const grammar: Lesson[] = [
       {
         type: "callout",
         kind: "tip",
-        text: "[何|なに] or [何|なん]? It's なん before です and before sounds starting with d, t or n: [何|なん]ですか, [何|なん]の[本|ほん]. Otherwise it's なに: [何|なに]を, [何|なに]が.",
+        text: "[何|なに] or [何|なん]? It's なん before です, before sounds starting with d, t or n, and before counters: [何|なん]ですか, [何|なん]の[本|ほん], [何時|なんじ], [何歳|なんさい]. Otherwise it's なに: [何|なに]を, [何|なに]が.",
       },
       { type: "callout", kind: "mistake", text: "Question words take が, not は: ✗ [誰|だれ]は[来|き]た？ → ✓ [誰|だれ]が[来|き]た？" },
     ],
@@ -278,14 +278,14 @@ export const grammar: Lesson[] = [
       },
       {
         type: "text",
-        text: "Bigger numbers are built like a calculator: [十一|じゅういち] is 10 + 1 = 11, [二十|にじゅう] is 2 × 10 = 20, [三十五|さんじゅうご] is 35. Note that 10,000 is one unit, [一万|いちまん], so 50,000 is [五万|ごまん].",
+        text: "Bigger numbers are built like a calculator: [十一|じゅういち] is 10 + 1 = 11, [二十|にじゅう] is 2 × 10 = 20, [三十五|さんじゅうご] is 35. Note that 10,000 is one unit, [一万|いちまん], so 50,000 is [五万|ごまん]. Watch the sound changes with 100 and 1,000: [三百|さんびゃく], [六百|ろっぴゃく], [八百|はっぴゃく], [三千|さんぜん], [八千|はっせん].",
       },
       { type: "heading", text: "Counters" },
       {
         type: "table",
         headers: ["Counter", "Used for", "Example"],
         rows: [
-          ["〜つ", "general things, up to 9", "ひとつ, ふたつ, みっつ"],
+          ["〜つ", "general things, 1–9 (10 is とお)", "ひとつ, ふたつ, みっつ"],
           ["〜[人|にん]", "people", "[一人|ひとり], [二人|ふたり], [三人|さんにん]"],
           ["〜[枚|まい]", "flat things: paper, tickets, shirts", "[二枚|にまい]"],
           ["〜[本|ほん]", "long thin things: bottles, pens", "[一本|いっぽん], [二本|にほん], [三本|さんぼん]"],
@@ -302,7 +302,7 @@ export const grammar: Lesson[] = [
       {
         type: "callout",
         kind: "mistake",
-        text: "4 and 7 have two readings. よん and なな are safest for counting, but some fixed words use the other: [四月|しがつ] (April), [七時|しちじ] (seven o'clock).",
+        text: "4, 7 and 9 have two readings. よん, なな and きゅう are safest for counting, but some fixed words use the other: [四月|しがつ] (April), [七時|しちじ] (seven o'clock), [九時|くじ] (nine o'clock).",
       },
       { type: "callout", kind: "tip", text: "Forgot the counter? ひとつ, ふたつ, みっつ… works for most objects up to ten." },
     ],

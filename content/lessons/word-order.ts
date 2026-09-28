@@ -10,7 +10,7 @@ export const wordOrder: Lesson[] = [
     blocks: [
       {
         type: "idea",
-        text: "English goes subject – verb – object. Japanese goes **subject – object – verb**: the verb (or adjective, or です) always comes **last**.",
+        text: "English goes subject – verb – object. Japanese goes **subject – object – verb**: the verb (or adjective, or です) always comes **last** — only little sentence-enders like か, よ and ね can follow it.",
       },
       {
         type: "examples",
@@ -87,7 +87,7 @@ export const wordOrder: Lesson[] = [
       {
         type: "pair",
         a: { jp: "[田中|たなか]さん が [花|はな] を [買|か]った。", en: "Tanaka bought flowers." },
-        b: { jp: "[花|はな] を [田中|たなか]さん が [買|か]った。", en: "Tanaka bought the flowers.", note: "A little more weight on the flowers." },
+        b: { jp: "[花|はな] を [田中|たなか]さん が [買|か]った。", en: "Tanaka bought the flowers.", note: "The flowers are now the known thing; the focus shifts to [田中|たなか]さん, right before the verb — like answering “who bought the flowers?”" },
         diff: "Same meaning: が still marks the buyer, を the thing bought. In English, swapping the words would flip the meaning.",
       },
       {
@@ -103,7 +103,7 @@ export const wordOrder: Lesson[] = [
       },
       {
         type: "text",
-        text: "The usual default is roughly **topic (は) → time → place → object (を) → verb**. You can move pieces out of that order; whatever comes first gets a little extra weight.",
+        text: "The usual default is roughly **topic (は) → time → place → object (を) → verb**. You can move pieces out of that order: whatever sits just before the verb tends to carry the new or important information, and things moved to the front feel like background.",
       },
       {
         type: "callout",

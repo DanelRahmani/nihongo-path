@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Jp } from "@/components/Jp";
+import { Jp, Rich } from "@/components/Jp";
 import { LessonRenderer } from "@/components/lesson/LessonRenderer";
 import { CompleteButton } from "@/components/Progress";
 import { ALL_LESSONS, findLesson, KANJI_NUMERALS, UNITS } from "@/content/units";
+import { plainOf } from "@/lib/markup";
 
 export const dynamicParams = false;
 
@@ -15,7 +16,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/learn/[unit]/[lesson]">): Promise<Metadata> {
   const { unit, lesson } = await params;
   const found = findLesson(unit, lesson);
-  return { title: found?.lesson.title, description: found?.lesson.summary };
+  return { title: found?.lesson.title, description: found ? plainOf(found.lesson.summary, false) : undefined };
 }
 
 export default async function LessonPage({ params }: PageProps<"/learn/[unit]/[lesson]">) {
@@ -28,7 +29,6 @@ export default async function LessonPage({ params }: PageProps<"/learn/[unit]/[l
   const pos = ALL_LESSONS.findIndex((l) => l.key === key);
   const prev = ALL_LESSONS[pos - 1];
   const next = ALL_LESSONS[pos + 1];
-  const lessonNo = unit.lessons.indexOf(lesson) + 1;
 
   return (
     <article className="mx-auto max-w-2xl px-4 pt-8 pb-20 sm:px-6 sm:pt-12">
@@ -40,9 +40,7 @@ export default async function LessonPage({ params }: PageProps<"/learn/[unit]/[l
           · {unit.title}
         </Link>
         <span className="mx-2 text-line">/</span>
-        <span className="tabular-nums">
-          Lesson {lessonNo} of {unit.lessons.length}
-        </span>
+        <span className="tabular-nums">Lesson {ALL_LESSONS[pos].number}</span>
       </nav>
 
       <header className="mt-6 flex items-start gap-5 sm:gap-8">
@@ -53,7 +51,7 @@ export default async function LessonPage({ params }: PageProps<"/learn/[unit]/[l
         />
         <div className="min-w-0 pt-1">
           <h1 className="text-3xl leading-tight font-bold sm:text-4xl">{lesson.title}</h1>
-          <p className="mt-3 text-lg leading-relaxed text-ink-2">{lesson.summary}</p>
+          <Rich text={lesson.summary} className="mt-3 block text-lg leading-relaxed text-ink-2" />
         </div>
       </header>
 
@@ -66,7 +64,7 @@ export default async function LessonPage({ params }: PageProps<"/learn/[unit]/[l
         <div className="mt-8 grid grid-cols-2 gap-3 text-sm">
           {prev ? (
             <Link href={prev.href} className="group rounded-xl border border-line p-4 hover:border-accent">
-              <span className="text-ink-2">← Previous</span>
+              <span className="text-ink-2">← {prev.number}</span>
               <span className="mt-1 block font-medium group-hover:text-accent">{prev.lesson.title}</span>
             </Link>
           ) : (
@@ -74,7 +72,7 @@ export default async function LessonPage({ params }: PageProps<"/learn/[unit]/[l
           )}
           {next && (
             <Link href={next.href} className="group rounded-xl border border-line p-4 text-right hover:border-accent">
-              <span className="text-ink-2">Next →</span>
+              <span className="text-ink-2">{next.number} →</span>
               <span className="mt-1 block font-medium group-hover:text-accent">{next.lesson.title}</span>
             </Link>
           )}

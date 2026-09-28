@@ -1,10 +1,29 @@
-import Link from "next/link";
-import { Jp } from "@/components/Jp";
-import { ContinueCard, LessonDoneMark, UnitProgress } from "@/components/Progress";
 import { KanaDueBadge } from "@/components/kana/KanaDueBadge";
-import { KANJI_NUMERALS, UNITS } from "@/content/units";
+import { PathBrowser, type PathUnit } from "@/components/PathBrowser";
+import { ContinueCard } from "@/components/Progress";
+import { ALL_LESSONS, KANJI_NUMERALS, UNITS } from "@/content/units";
 
 export default function Home() {
+  // Only what the path needs is sent to the browser, not full lesson content.
+  const units: PathUnit[] = UNITS.map((unit, i) => ({
+    slug: unit.slug,
+    kind: unit.kind,
+    numeral: KANJI_NUMERALS[i],
+    title: unit.title,
+    titleJp: unit.titleJp,
+    description: unit.description,
+    lessons: ALL_LESSONS.filter((l) => l.unit.slug === unit.slug).map((l) => ({
+      key: l.key,
+      href: l.href,
+      number: l.number,
+      title: l.lesson.title,
+      mark: l.lesson.mark,
+      summary: l.lesson.summary,
+    })),
+  }));
+
+  const continueLessons = units.flatMap((u) => u.lessons.map((l) => ({ ...l, unitTitle: u.title })));
+
   return (
     <div className="mx-auto max-w-3xl px-4 pt-10 pb-20 sm:px-6 sm:pt-16">
       <section className="flex items-start gap-6 sm:gap-10">
@@ -27,55 +46,11 @@ export default function Home() {
       </section>
 
       <section className="mt-12" aria-label="Next lesson">
-        <ContinueCard />
+        <ContinueCard lessons={continueLessons} />
       </section>
 
       <section className="mt-16" aria-labelledby="path-heading">
-        <h2 id="path-heading" className="text-xs font-medium tracking-[0.2em] text-ink-2 uppercase">
-          The path
-        </h2>
-        <ol className="mt-4">
-          {UNITS.map((unit, i) => (
-            <li key={unit.slug} id={unit.slug} className="scroll-mt-20 border-t border-line py-8">
-              <div className="flex items-baseline gap-4">
-                <span lang="ja" aria-hidden className="w-10 shrink-0 font-serif text-4xl font-bold text-accent">
-                  {KANJI_NUMERALS[i]}
-                </span>
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-baseline justify-between gap-3">
-                    <h3 className="text-xl font-bold">
-                      {unit.title}{" "}
-                      <Jp jp={unit.titleJp} romaji={false} className="ml-1 font-serif text-base font-medium text-ink-2" />
-                    </h3>
-                    <UnitProgress keys={unit.lessons.map((l) => `${unit.slug}/${l.slug}`)} />
-                  </div>
-                  <p className="mt-1 text-sm text-ink-2">{unit.description}</p>
-                  <ul className="mt-4 divide-y divide-line">
-                    {unit.lessons.map((lesson) => (
-                      <li key={lesson.slug}>
-                        <Link
-                          href={`/learn/${unit.slug}/${lesson.slug}`}
-                          className="group flex items-center gap-4 py-3"
-                        >
-                          <Jp
-                            jp={lesson.mark}
-                            romaji={false}
-                            className="w-20 shrink-0 font-serif text-lg font-bold text-ink group-hover:text-accent"
-                          />
-                          <span className="min-w-0 flex-1">
-                            <span className="block font-medium group-hover:text-accent">{lesson.title}</span>
-                            <span className="block truncate text-sm text-ink-2">{lesson.summary}</span>
-                          </span>
-                          <LessonDoneMark lessonKey={`${unit.slug}/${lesson.slug}`} />
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ol>
+        <PathBrowser units={units} />
       </section>
     </div>
   );

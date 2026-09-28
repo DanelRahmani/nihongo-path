@@ -2,23 +2,18 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ALL_LESSONS } from "@/content/units";
+import { Jp, Rich } from "@/components/Jp";
 import { progressStore } from "@/lib/stores";
 import { useStore } from "@/lib/storage";
 
 /** The red seal for a finished lesson: 済 means "done". */
 export function Hanko({ size = "md", animate = false }: { size?: "sm" | "md" | "lg"; animate?: boolean }) {
-  const cls = { sm: "size-7 text-sm", md: "size-10 text-lg", lg: "size-16 text-3xl" }[size];
+  const cls = { sm: "size-7 shrink-0 text-sm", md: "size-10 text-lg", lg: "size-16 text-3xl" }[size];
   return (
-    <span lang="ja" aria-label="Done" className={`hanko ${cls} ${animate ? "hanko-stamp" : ""}`}>
+    <span lang="ja" role="img" aria-label="Done" className={`hanko ${cls} ${animate ? "hanko-stamp" : ""}`}>
       済
     </span>
   );
-}
-
-export function LessonDoneMark({ lessonKey }: { lessonKey: string }) {
-  const [progress] = useStore(progressStore);
-  return progress[lessonKey] ? <Hanko size="sm" /> : <span className="size-7 rounded-full border border-dashed border-line" />;
 }
 
 export function CompleteButton({ lessonKey }: { lessonKey: string }) {
@@ -52,11 +47,21 @@ export function CompleteButton({ lessonKey }: { lessonKey: string }) {
   );
 }
 
+export interface ContinueLesson {
+  key: string;
+  href: string;
+  number: string;
+  title: string;
+  mark: string;
+  summary: string;
+  unitTitle: string;
+}
+
 /** Dashboard hero: the first lesson not yet done. */
-export function ContinueCard() {
+export function ContinueCard({ lessons }: { lessons: ContinueLesson[] }) {
   const [progress] = useStore(progressStore);
-  const next = ALL_LESSONS.find((l) => !progress[l.key]);
-  const doneCount = ALL_LESSONS.filter((l) => progress[l.key]).length;
+  const next = lessons.find((l) => !progress[l.key]);
+  const doneCount = lessons.filter((l) => progress[l.key]).length;
 
   if (!next) {
     return (
@@ -72,29 +77,21 @@ export function ContinueCard() {
       href={next.href}
       className="group flex items-center gap-5 rounded-2xl border border-line p-5 transition-colors hover:border-accent sm:p-6"
     >
-      <span lang="ja" className="font-serif text-4xl font-bold text-accent sm:text-5xl">
-        {next.lesson.mark.replace(/\[([^|]+)\|[^\]]+\]/g, "$1")}
-      </span>
+      <Jp
+        jp={next.mark}
+        romaji={false}
+        className="hidden shrink-0 font-serif text-4xl font-bold text-accent sm:inline-flex sm:text-5xl"
+      />
       <span className="min-w-0 flex-1">
         <span className="block text-xs font-medium tracking-[0.18em] text-ink-2 uppercase">
-          {doneCount === 0 ? "Start here" : "Continue"} · Lesson {next.number} · {next.unit.title}
+          {doneCount === 0 ? "Start here" : "Continue"} · Lesson {next.number} · {next.unitTitle}
         </span>
-        <span className="mt-1 block text-xl font-bold group-hover:text-accent">{next.lesson.title}</span>
-        <span className="mt-1 block text-sm text-ink-2">{next.lesson.summary}</span>
+        <span className="mt-1 block text-xl font-bold group-hover:text-accent">{next.title}</span>
+        <Rich text={next.summary} className="mt-1 block text-sm text-ink-2" />
       </span>
       <span aria-hidden className="text-2xl text-accent transition-transform group-hover:translate-x-1">
         →
       </span>
     </Link>
-  );
-}
-
-export function UnitProgress({ keys }: { keys: string[] }) {
-  const [progress] = useStore(progressStore);
-  const done = keys.filter((k) => progress[k]).length;
-  return (
-    <span className="text-xs text-ink-2 tabular-nums">
-      {done}/{keys.length}
-    </span>
   );
 }

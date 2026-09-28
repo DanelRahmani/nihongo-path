@@ -1,7 +1,12 @@
 import { basics } from "@/content/lessons/basics";
 import { hiragana } from "@/content/lessons/hiragana";
 import { katakana } from "@/content/lessons/katakana";
+import { culture } from "@/content/lessons/culture";
+import { grammar } from "@/content/lessons/grammar";
 import { particles } from "@/content/lessons/particles";
+import { suffixes } from "@/content/lessons/suffixes";
+import { verbs } from "@/content/lessons/verbs";
+import { wordOrder } from "@/content/lessons/word-order";
 import type { Lesson, Unit } from "@/content/types";
 
 /** The curriculum, in learning order. */
@@ -31,12 +36,52 @@ export const UNITS: Unit[] = [
     lessons: katakana,
   },
   {
+    slug: "word-order",
+    kind: "word-order",
+    title: "Word order",
+    titleJp: "[語順|ごじゅん]",
+    description: "Verb last, topic first, and why the middle can move.",
+    lessons: wordOrder,
+  },
+  {
     slug: "particles",
     kind: "particles",
     title: "Particles",
     titleJp: "[助詞|じょし]",
     description: "The little words that give every other word its job.",
     lessons: particles,
+  },
+  {
+    slug: "grammar",
+    kind: "grammar",
+    title: "Core grammar",
+    titleJp: "[文法|ぶんぽう]",
+    description: "です, adjectives, existence, pointing words, questions and numbers.",
+    lessons: grammar,
+  },
+  {
+    slug: "verbs",
+    kind: "verbs",
+    title: "Verb conjugation",
+    titleJp: "[動詞|どうし]",
+    description: "Every everyday verb form, from ます to たら.",
+    lessons: verbs,
+  },
+  {
+    slug: "suffixes",
+    kind: "suffixes",
+    title: "Suffixes and prefixes",
+    titleJp: "[接尾辞|せつびじ]",
+    description: "Name suffixes, titles, and the little add-ons that build new words.",
+    lessons: suffixes,
+  },
+  {
+    slug: "culture",
+    kind: "culture",
+    title: "Culture in conversation",
+    titleJp: "[文化|ぶんか]",
+    description: "Politeness, avoiding “you”, soft refusals and the phrases people actually use.",
+    lessons: culture,
   },
 ];
 

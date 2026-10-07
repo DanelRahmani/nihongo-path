@@ -80,6 +80,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Dialogue uses a single … for trailing off.
   - Examples write numbers as kanji with ruby.
   - Names join their suffix with `-`.
+- 2026-10-08: the owner asked to push to main. main was fast-forwarded to B1 (6a21af1), with no merge commit; `features` stays the working branch.
 - The path is unit tabs, not kind filters (owner request). Lesson `kinds` tags (B1) will feed search and the grammar overview instead.
   - Stacked particles are written separately (で は).
 
@@ -125,4 +126,5 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 ### Waiting on the owner
 - Pitch accent: blocked on audio from a native speaker. No speech synthesis.
 - start/polite-and-casual cites "Genki I ch. 3, 8 and 9". The reviewer and I both place plain past forms in ch. 9, but please confirm against your edition of Genki.
+- Deploys: on 2026-10-08 the Vercel connector couldn't see project nihongo-path (403 listing deployments, 404 for the project), so the live site's state is unconfirmed. Earlier notes say the project isn't linked to GitHub, which would mean pushing main doesn't deploy. Say if you want a deploy; it may need the Vercel connection re-authorised.
 - JLPT N5/N4 lists: Jonathan Waller's site (tanos.co.uk) was unreachable on 2026-10-07. Its licence (reportedly CC BY) is to be confirmed before the download in D1.

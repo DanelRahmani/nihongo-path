@@ -69,7 +69,7 @@ export const particles: Lesson[] = [
           { jp: "[雨|あめ] {が} [降|ふ]って いる。", en: "It's raining.", note: "Literally: rain is falling. The subject is the rain." },
           { jp: "[電車|でんしゃ] {が} [来|き]た。", en: "The train's here.", note: "Literally: the train came." },
           {
-            jp: "お[腹|なか] {が} すいた。",
+            jp: "おなか {が} すいた。",
             en: "I'm hungry.",
             note: "Literally: (my) stomach has become empty. The subject is your stomach, not you.",
           },
@@ -122,7 +122,7 @@ export const particles: Lesson[] = [
         type: "examples",
         items: [
           { jp: "[誰|だれ] {が} [来|き]ました か？", en: "Who came?" },
-          { jp: "[田中|たなか]さん {が} [来|き]ました。", en: "Tanaka came. (It was Tanaka.)" },
+          { jp: "[田中|たなか]-さん {が} [来|き]ました。", en: "Tanaka came. (It was Tanaka.)" },
           { jp: "[何|なに] {が} [一番|いちばん] [好|す]き です か？", en: "What do you like best?" },
         ],
       },

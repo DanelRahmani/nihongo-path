@@ -25,8 +25,8 @@ export const suffixes: Lesson[] = [
       {
         type: "examples",
         items: [
-          { jp: "[田中|たなか]さん、おはよう ございます。", en: "Good morning, Mr/Ms Tanaka." },
-          { jp: "[健太|けんた]くん、[元気|げんき]？", en: "Kenta, how's it going?" },
+          { jp: "[田中|たなか]-さん、おはよう ございます。", en: "Good morning, Mr/Ms Tanaka." },
+          { jp: "[健太|けんた]-くん、[元気|げんき]？", en: "Kenta, how's it going?" },
           { jp: "お[客|きゃく][様|さま]", en: "customer (honoured guest)", note: "Staff call customers this — you'll hear it in every shop." },
         ],
       },
@@ -57,9 +57,9 @@ export const suffixes: Lesson[] = [
         type: "table",
         headers: ["Title", "Used for", "Example"],
         rows: [
-          ["〜[先生|せんせい]", "teachers, doctors, lawyers, authors", "[山田|やまだ][先生|せんせい]"],
-          ["〜[先輩|せんぱい]", "someone senior to you at school, in a club or at work", "[佐藤|さとう][先輩|せんぱい]"],
-          ["〜[部長|ぶちょう] · 〜[社長|しゃちょう]", "department head · company president", "[鈴木|すずき][部長|ぶちょう]"],
+          ["〜[先生|せんせい]", "teachers, doctors, lawyers, authors", "[山田|やまだ]-[先生|せんせい]"],
+          ["〜[先輩|せんぱい]", "someone senior to you at school, in a club or at work", "[佐藤|さとう]-[先輩|せんぱい]"],
+          ["〜[部長|ぶちょう] · 〜[社長|しゃちょう]", "department head · company president", "[鈴木|すずき]-[部長|ぶちょう]"],
         ],
       },
       {
@@ -101,7 +101,7 @@ export const suffixes: Lesson[] = [
         items: [
           { jp: "[私|わたし]たち", en: "we, us" },
           { jp: "[子供|こども]たち", en: "the children" },
-          { jp: "[田中|たなか]さんたち", en: "Tanaka and the others", note: "Not several Tanakas — Tanaka and the group they're with." },
+          { jp: "[田中|たなか]-さん-たち", en: "Tanaka and the others", note: "Not several Tanakas — Tanaka and the group they're with." },
           { jp: "[彼|かれ]ら", en: "they", note: "〜ら is less respectful than たち (don't use it for people you look up to), but [彼|かれ]ら itself is the normal, neutral word for “they”." },
         ],
       },

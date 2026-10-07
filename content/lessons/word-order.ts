@@ -86,8 +86,8 @@ export const wordOrder: Lesson[] = [
       },
       {
         type: "pair",
-        a: { jp: "[田中|たなか]さん が [花|はな] を [買|か]った。", en: "Tanaka bought flowers." },
-        b: { jp: "[花|はな] を [田中|たなか]さん が [買|か]った。", en: "Tanaka bought the flowers.", note: "The flowers are now the known thing; the focus shifts to [田中|たなか]さん, right before the verb — like answering “who bought the flowers?”" },
+        a: { jp: "[田中|たなか]-さん が [花|はな] を [買|か]った。", en: "Tanaka bought flowers." },
+        b: { jp: "[花|はな] を [田中|たなか]-さん が [買|か]った。", en: "Tanaka bought the flowers.", note: "The flowers are now the known thing; the focus shifts to [田中|たなか]さん, right before the verb — like answering “who bought the flowers?”" },
         diff: "Same meaning: が still marks the buyer, を the thing bought. In English, swapping the words would flip the meaning.",
       },
       {

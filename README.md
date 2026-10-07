@@ -9,6 +9,7 @@ Static Next.js site — no backend, no accounts. Progress, drill state and displ
 ```bash
 npm run dev        # local dev server on http://localhost:3000
 npm test           # unit + content-integrity tests (vitest)
+npm run dump       # every Japanese line with reading, romaji and English (for review)
 npm run typecheck  # route types + tsc
 npm run lint
 npm run build      # static export to out/
@@ -21,6 +22,9 @@ npm run build      # static export to out/
 - `content/kana.ts` — kana data; katakana is derived from hiragana.
 - `lib/markup.ts`, `lib/romaji.ts` — the `[漢字|かな]` / `{highlight}` markup and generated romaji.
 - `lib/srs.ts` — Leitner-box scheduler for the kana drill.
+- `lib/corpus.ts` — walks every Japanese line in the curriculum; feeds `npm run dump` and the reading snapshot.
+
+`tests/golden-readings.test.ts` pins the romaji scheme word by word, and `tests/__snapshots__/corpus.txt` pins every line's reading and romaji, so any change to the reading engine shows up as a diff (accept a reviewed diff with `npm test -- -u`).
 
 `tests/content.test.ts` fails if any lesson shows a bare kanji (Kana-only mode must always be readable), has a broken link, unbalanced markup, or Japanese that can't be turned into romaji.
 

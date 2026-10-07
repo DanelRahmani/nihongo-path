@@ -53,7 +53,7 @@ export const culture: Lesson[] = [
       {
         type: "pair",
         a: { jp: "あなた は [学生|がくせい] です か？", en: "Are you a student?", note: "Grammatical, but feels cold or confrontational." },
-        b: { jp: "[田中|たなか]さん は [学生|がくせい] です か？", en: "Are you a student?", note: "Natural: use their name." },
+        b: { jp: "[田中|たなか]-さん は [学生|がくせい] です か？", en: "Are you a student?", note: "Natural: use their name." },
         diff: "Japanese avoids pointing at people with “you”. The name — or the invisible subject — does the job.",
       },
       {
@@ -110,7 +110,7 @@ export const culture: Lesson[] = [
   {
     slug: "aizuchi",
     title: "Aizuchi: little words that show you're listening",
-    mark: "[相槌|あいづち]",
+    mark: "あいづち",
     summary: "うん, そうですね, なるほど — and why silence can feel rude.",
     source: "Tofugu — “Aizuchi”; Genki I ch. 2",
     blocks: [
@@ -126,7 +126,7 @@ export const culture: Lesson[] = [
           ["そう です ね", "that's right, I see"],
           ["なるほど", "I see, that makes sense"],
           ["へえ", "oh, really? (interested)"],
-          ["そう なんだ", "oh, is that so (casual)"],
+          ["そう なん だ", "oh, is that so (casual)"],
           ["[本当|ほんとう]？", "really?"],
         ],
       },
@@ -240,10 +240,10 @@ export const culture: Lesson[] = [
         rows: [
           ["いただきます", "before eating", "I humbly receive (this food)"],
           ["ごちそうさま でした", "after eating", "Thank you for the meal"],
-          ["いって きます", "leaving home", "I'm off (and will be back)"],
-          ["いって らっしゃい", "to someone leaving", "See you later, take care"],
+          ["いってきます", "leaving home", "I'm off (and will be back)"],
+          ["いってらっしゃい", "to someone leaving", "See you later, take care"],
           ["ただいま", "arriving home", "I'm home"],
-          ["おかえり なさい", "to someone arriving home", "Welcome back"],
+          ["おかえりなさい", "to someone arriving home", "Welcome back"],
           ["お[疲|つか]れ[様|さま] です", "to colleagues and classmates", "Thanks for your hard work"],
           ["よろしく お[願|ねが]い します", "meeting someone, asking a favour", "I'm counting on you / please treat me well"],
         ],

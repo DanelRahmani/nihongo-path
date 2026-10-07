@@ -16,7 +16,7 @@ Object.assign(MAP, {
 
 const PUNCT: Record<string, string> = {
   "。": ".", "、": ",", "？": "?", "！": "!", "「": "\"", "」": "\"",
-  "…": "...", "〜": "~", "～": "~", "・": " ", "（": "(", "）": ")", "：": ":",
+  "…": "...", "〜": "~", "～": "~", "・": " ", "（": "(", "）": ")", "：": ":", "『": "\"", "』": "\"",
 };
 
 /** Particles read differently from their kana, and set words containing them. */
@@ -26,16 +26,23 @@ const WORDS: Record<string, string> = {
   こんにちは: "konnichiwa", こんばんは: "konbanwa",
 };
 
-const TRAILING_PUNCT = /[。、？！…」）〜～：]+$/;
-const LEADING_PUNCT = /^[「（]+/;
+const TRAILING_PUNCT = /[。、？！…」』）〜～：]+$/;
+const LEADING_PUNCT = /^[「『（]+/;
+
+/**
+ * Written by romajiOf after each kanji word's reading. A word whose last kana come from a kanji
+ * (歯 は, 葉 は) is never read as a particle; [今晩|こんばん]は still ends in the particle は.
+ */
+const RUBY_END = "\uE000";
 
 function convertWord(word: string): string {
   const lead = word.match(LEADING_PUNCT)?.[0] ?? "";
   const trail = word.slice(lead.length).match(TRAILING_PUNCT)?.[0] ?? "";
-  const core = word.slice(lead.length, word.length - trail.length);
+  const marked = word.slice(lead.length, word.length - trail.length);
+  const core = marked.replaceAll(RUBY_END, "");
   const punct = (s: string) => [...s].map((c) => PUNCT[c] ?? c).join("");
 
-  if (core in WORDS) return punct(lead) + WORDS[core] + punct(trail);
+  if (core in WORDS && !marked.endsWith(RUBY_END)) return punct(lead) + WORDS[core] + punct(trail);
 
   let out = "";
   let sokuon = false;
@@ -71,9 +78,10 @@ function convertWord(word: string): string {
   return punct(lead) + out + punct(trail);
 }
 
-/** Romaji for a kana reading with space-separated words. */
+/** Romaji for a kana reading with space-separated words. ・ separates words too (は・が is wa ga). */
 export function kanaToRomaji(reading: string): string {
   return reading
+    .replace(/・/g, " ")
     .replace(/([、。！？])(?=\S)/g, "$1 ")
     .split(/\s+/)
     .filter(Boolean)
@@ -82,18 +90,13 @@ export function kanaToRomaji(reading: string): string {
     .replace(/\s+([.,?!:])/g, "$1");
 }
 
-const NAME_SUFFIX = /^(さん|くん|ちゃん|さま)/;
-
-/** Romaji for a marked-up Jp string. A kanji name + さん etc. is hyphenated: tanaka-san. */
+/**
+ * Romaji for a marked-up Jp string. A "-" in the markup joins a name to its suffix or title:
+ * [田中|たなか]-さん → tanaka-san, [山田|やまだ]-[先生|せんせい] → yamada-sensei.
+ */
 export function romajiOf(jp: string): string {
-  const tokens = parse(jp, true);
-  const reading = tokens
-    .map((t, i) => {
-      if (t.kind === "space") return " ";
-      if (t.kind === "text") return t.text;
-      const next = tokens[i + 1];
-      return t.reading + (next?.kind === "text" && NAME_SUFFIX.test(next.text) ? "-" : "");
-    })
+  const reading = parse(jp, true)
+    .map((t) => (t.kind === "space" ? " " : t.kind === "join" ? "-" : t.kind === "text" ? t.text : t.reading + RUBY_END))
     .join("");
   return kanaToRomaji(reading);
 }

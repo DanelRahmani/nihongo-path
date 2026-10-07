@@ -1,6 +1,6 @@
 # Nihongo Path: feature plan (Phase 0)
 
-> Status: waiting on the owner's answers to the open questions in section 7 (or "take your recommendations") and a go. Nothing is built yet.
+> Status: the owner answered the questions in section 7 on 2026-10-07 and said go. Progress is tracked in `CLAUDE.md`.
 
 ## Context
 
@@ -96,7 +96,7 @@ Rules for every sub-phase: one commit and push to `features`; checks pass before
 
 | Sub-phase | What ships | Tests added |
 |---|---|---|
-| **D1 Lesson dictionary + kanji data** | `content/words/*.ts`: every word used in the lessons, with written form, reading, meaning, part of speech and verb class, topic and the lessons it appears in. `content/kanji.ts`: the 249 lesson kanji with on/kun readings and meanings, taken from KANJIDIC2 if you approve it (Q4). I choose the meanings; a Sonnet agent formats batches from my spec; a fresh reviewer checks every batch | Coverage: every word token in the lessons resolves to an entry, an engine form, or the function-word list. Every (form, reading) pair in a lesson matches an entry. Every kanji in the lessons has data. Readings are kana only |
+| **D1 Lesson dictionary + kanji data** | `content/words/*.ts`: every word used in the lessons, with written form, reading, meaning, part of speech and verb class, topic and the lessons it appears in. `content/kanji.ts`: the lesson kanji plus the N5 and N4 kanji (Q3), with on/kun readings, meanings, 常用 status from KANJIDIC2, and one or two example words per kanji for the trainer (lesson words first, otherwise common JMdict words I choose). I choose the meanings; a Sonnet agent formats batches from my spec; a fresh reviewer checks every batch | Coverage: every word token in the lessons resolves to an entry, an engine form, or the function-word list. Every (form, reading) pair in a lesson matches an entry. Every kanji in the lessons has data and is 常用. **Every ruby reading is checked against the 常用漢字表:** it splits into 常用 readings of its kanji (allowing rendaku and っ), or it is a 付表 word, or it is on the STYLE.md exception list (明日 あした). Readings are kana only |
 | **D2 Word inspector + kanji pages** | A popover on a word in a lesson or the dictionary: reading, meaning, kanji breakdown (each kanji's readings and meaning, linked). The match is exact on (written form, authored reading); inflected forms match through an engine-generated reverse index (Q5). For keyboard users, each Japanese line is one Tab stop and the arrow keys move between words, so hundreds of extra Tab stops are avoided. `/kanji/[char]` is static. The dictionary JSON is fetched on the first tap | Pure `lookup()`: exact hits, inflected hits ("polite past of 食べる"), no fuzzy hits, and 今日 resolves by reading |
 | **D3 Dictionary page** | `/dictionary`: search by kanji, by kana (hiragana and katakana treated alike), by lenient romaji (kyo/kyou/kyō, si/shi, nn/n) or by English; filters for topic, source (lesson or expansion) and starting kana row; ★ "My words" with CSV export (UTF-8 BOM). **Feature 21:** the data is a static JSON file from a `force-static` route handler, fetched when the browser is idle, and the list grows in batches inside `startTransition` | Romaji normaliser, search ranking, filters, CSV escaping, the batch-growth reducer |
 
@@ -105,7 +105,7 @@ Rules for every sub-phase: one commit and push to `features`; checks pass before
 | Sub-phase | What ships | Tests added |
 |---|---|---|
 | **E1 SRS generalised + mistake notebook** | A deck registry: each deck has `cards`, a prompt, `check → {correct, canonical, note}` and its own Leitner state. The kana state is migrated with its schedule unchanged (an A2 migration). Notebook store: every trainer and quiz reports misses, and an item leaves after two right answers in a row | Migration preserves every kana card's box and due date; deck-agnostic `nextCard`; notebook enter/leave rules |
-| **E2 Kanji trainer** | Groups of 10 kanji in path order (Q3), each group opening when the earlier ones are learned (box ≥ 3). Card: a kanji inside a lesson word (学 in 学生); type the word's reading in kana. That's exact and never fuzzy, and the meaning is shown afterwards. **"Furigana on new kanji only" goes live**, driven by the learned set | Group unlock, checker, and learned set → CSS rules |
+| **E2 Kanji trainer** | The N5 kanji, then the N4 kanji, from Jonathan Waller's lists (Q3), in groups of 10, each group opening when the earlier ones are learned (box ≥ 3). Card: a kanji inside an example word (学 in 学生); type the word's reading in kana. That's exact and never fuzzy, and the meaning is shown afterwards. **"Furigana on new kanji only" goes live**, driven by the learned set | Group unlock, checker, and learned set → CSS rules |
 | **E3 Stroke order and tracing** | KanjiVG paths for kana and the lesson kanji (kana coverage verified on download) turned into small per-character JSON files. Stroke-order animation (reduced motion shows numbered strokes instead), a free tracing canvas, printable A4 sheets via print CSS. KanjiVG credited on these pages | Extraction script output (stroke counts against KANJIDIC2), the print-layout builder |
 | **E4 Conjugation trainer** | Asks one random form of a learned verb or adjective. Each form type links to its lesson. A wrong answer that is another form gets named ("That's the plain past") | Pure `identifyForm()`; question generator never asks a form the word lacks |
 | **E5 Vocabulary deck** | English → typed Japanese. Accepts the kanji form or the kana reading, ignores half-width/full-width, and tells the learner which form they typed. A card joins when its lesson is marked done | Checker (kanji, kana, width, katakana-vs-hiragana note, multi-reading words); joining on lesson completion |
@@ -161,28 +161,17 @@ That makes 32 sub-phases, with G2 repeating once per word batch. The order follo
 
 Our lessons stay yours. The dictionary and kanji data files carry a CC BY-SA notice, and a `/credits` page lists every source.
 
-## 7. Open questions
+## 7. Decisions (answered 2026-10-07)
 
-**Q1. Furigana modes.** Your spec has three (all / unlearned only / none). Should I keep today's **kana-only** mode as a fourth and leave it as the default?
-*Recommend: yes.* Four modes: Kana only (default) · Furigana · Furigana on new kanji · No furigana. Without kana-only, a beginner sees kanji everywhere from lesson 1.
-
-**Q2. Romaji scheme.** Keep today's modified Hepburn with long vowels spelled out (kyou, gakkou, koohii; n' before a vowel or y; shinbun, not shimbun), or switch to macrons (kyō, kōhī)?
-*Recommend: keep.* No reading changes. It matches what you type on an IME. Macrons would need word-boundary knowledge (思う is *omou*, not *omō*), and that's guesswork.
-
-**Q3. Which kanji the trainer teaches, in what order.**
-*Recommend:* the 249 kanji already in the lessons, in order of first appearance on the path, in groups of 10. Later dictionary words add kanji, but only 常用.
-
-**Q4. Data sources and dictionary size.**
-*Recommend:* JMdict (via jmdict-simplified) + KANJIDIC2 + KanjiVG + wordfreq, skip Tatoeba, target about **2,000** extra common words, meanings written fresh and checked against JMdict. Accepting this means the CC BY-SA terms and the refresh script in §6.
-
-**Q5. Inflected words in the inspector.** Tapping 食べました: should it resolve through the conjugation engine's generated forms? That is an exact string match against the forms the engine produces, never fuzzy matching.
-*Recommend: yes.* It shows "食べる · polite past". The alternative is that most verbs in the lessons resolve to nothing.
-
-**Q6. Deploys.**
-*Recommend:* production stays exactly as it is (it deploys from `main`, which I don't touch); a preview deploy of `features` through the Vercel MCP only when you ask.
-
-**Q7. Reviewer model.**
-*Recommend:* Fable 5.1, the top of the current lineup, with Opus 5.5 as the fallback. Tell me if you'd rather use Opus 5.5.
+| # | Question | Answer |
+|---|---|---|
+| Q1 | Furigana modes | **Four modes, kana only by default:** Kana only · Furigana · Furigana on new kanji · No furigana |
+| Q2 | Romaji scheme | **Keep long vowels spelled out** (kyou, koohii). No reading changes |
+| Q3 | Kanji trainer set | **JLPT N5, then N4**, from Jonathan Waller's lists (tanos.co.uk), the de facto standard; the JLPT has published no official lists since 2010. The licence (reportedly CC BY) is confirmed and credited before the download. The trainer needs an example word for every kanji, which D1 provides. Lesson kanji outside N5/N4 keep their furigana in "new kanji" mode |
+| Q4 | Data sources | **JMdict (jmdict-simplified) + KANJIDIC2 + KanjiVG + wordfreq, skip Tatoeba, about 2,000 extra words.** CC BY-SA terms and the refresh script as in §6 |
+| Q5 | Inflected words in the inspector | **Yes:** exact match against the engine's generated forms |
+| Q6 | Deploys | **None.** A preview deploy of `features` only when asked; production untouched |
+| Q7 | Reviewer model | **Opus 5.5** |
 
 Decisions I've taken that you can overrule: retrofit all 62 lessons to the template (placement needs their quizzes); one branch, `features`; the kanji card is "reading of this kanji in a lesson word"; the streak counts days the goal was met; katakana words typed in hiragana count as a miss with the reason named; no stroke grading.
 

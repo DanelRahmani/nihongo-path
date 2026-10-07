@@ -77,7 +77,7 @@ export const verbs: Lesson[] = [
           ["present / future", "〜ます", "[飲|の]みます — I drink / will drink"],
           ["negative", "〜ません", "[飲|の]みません — I don't drink"],
           ["past", "〜ました", "[飲|の]みました — I drank"],
-          ["past negative", "〜ませんでした", "[飲|の]みませんでした — I didn't drink"],
+          ["past negative", "〜ません でした", "[飲|の]みませんでした — I didn't drink"],
         ],
       },
       {
@@ -89,7 +89,7 @@ export const verbs: Lesson[] = [
             en: "I'll go to Tokyo tomorrow.",
             note: "No separate future tense: the present form covers it.",
           },
-          { jp: "[昨日|きのう] は [勉強|べんきょう] しませんでした。", en: "I didn't study yesterday." },
+          { jp: "[昨日|きのう] は [勉強|べんきょう] しません でした。", en: "I didn't study yesterday." },
         ],
       },
       {
@@ -337,7 +337,7 @@ export const verbs: Lesson[] = [
       {
         type: "examples",
         items: [
-          { jp: "[一緒|いっしょ]に [帰|かえ]ろう。", en: "Let's go home together." },
+          { jp: "[一緒|いっしょ] に [帰|かえ]ろう。", en: "Let's go home together." },
           { jp: "そろそろ [行|い]きましょう か。", en: "Shall we get going?", note: "ましょうか = shall we…? — a softer suggestion." },
           { jp: "[手伝|てつだ]いましょう か？", en: "Shall I help you?", note: "ましょうか also offers help." },
         ],

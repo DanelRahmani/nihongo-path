@@ -1,66 +1,11 @@
 import { describe, expect, it } from "vitest";
-import type { Block, Lesson } from "@/content/types";
 import { ALL_LESSONS, UNITS } from "@/content/units";
-import { bareKanji, parse } from "@/lib/markup";
+import { corpusFields } from "@/lib/corpus";
+import { bareKanji, parse, plainOf, readingOf } from "@/lib/markup";
 import { romajiOf } from "@/lib/romaji";
 
-type Field = { where: string; text: string; jp: boolean };
-
-/** Every piece of text in a lesson, tagged with whether it's a Jp (word-spaced) string. */
-function fields(lesson: Lesson, where: string): Field[] {
-  const out: Field[] = [
-    { where: `${where} mark`, text: lesson.mark, jp: true },
-    { where: `${where} summary`, text: lesson.summary, jp: false },
-  ];
-  const add = (text: string | undefined, jp: boolean, what: string) => {
-    if (text !== undefined) out.push({ where: `${where} ${what}`, text, jp });
-  };
-  lesson.blocks.forEach((b: Block, i) => {
-    const at = `block ${i} (${b.type})`;
-    switch (b.type) {
-      case "idea":
-      case "heading":
-      case "text":
-      case "callout":
-        add(b.text, false, at);
-        break;
-      case "examples":
-        b.items.forEach((ex, j) => {
-          add(ex.jp, true, `${at} #${j} jp`);
-          add(ex.en, false, `${at} #${j} en`);
-          add(ex.note, false, `${at} #${j} note`);
-        });
-        break;
-      case "pair":
-        add(b.title, false, `${at} title`);
-        [b.a, b.b].forEach((ex, j) => {
-          add(ex.jp, true, `${at} ${j ? "B" : "A"} jp`);
-          add(ex.en, false, `${at} ${j ? "B" : "A"} en`);
-          add(ex.note, false, `${at} ${j ? "B" : "A"} note`);
-        });
-        add(b.diff, false, `${at} diff`);
-        break;
-      case "table":
-        add(b.caption, false, `${at} caption`);
-        b.headers.forEach((h) => add(h, false, `${at} header`));
-        b.rows.forEach((r) => r.forEach((c) => add(c, false, `${at} cell`)));
-        break;
-      case "dialogue":
-        b.lines.forEach((l, j) => {
-          add(l.jp, true, `${at} line ${j} jp`);
-          add(l.en, false, `${at} line ${j} en`);
-        });
-        add(b.note, false, `${at} note`);
-        break;
-      case "link":
-        add(b.text, false, `${at} text`);
-        break;
-    }
-  });
-  return out;
-}
-
-const ALL_FIELDS = ALL_LESSONS.flatMap((l) => fields(l.lesson, l.key));
+const ALL_FIELDS = corpusFields().map((f) => ({ ...f, where: `${f.lesson} ${f.where}` }));
+const JP_FIELDS = ALL_FIELDS.filter((f) => f.jp);
 const KANA_ONLY = /^[぀-ヿー]+$/;
 
 describe("curriculum structure", () => {
@@ -126,10 +71,73 @@ describe("japanese markup", () => {
   });
 
   it("turns every Japanese line into romaji with no kana left over", () => {
-    const bad = ALL_FIELDS.filter((f) => f.jp)
+    const bad = JP_FIELDS.filter((f) => !f.label)
       .map((f) => ({ f, r: romajiOf(f.text) }))
       .filter(({ r }) => /[぀-ヿ]/.test(r))
       .map(({ f, r }) => `${f.where}: ${r}`);
+    expect(bad).toEqual([]);
+  });
+});
+
+describe("style (content/STYLE.md)", () => {
+  const offenders = (fields: typeof ALL_FIELDS, test: (plain: string) => boolean) =>
+    fields.map((f) => ({ f, plain: plainOf(f.text, f.jp) })).filter(({ plain }) => test(plain)).map(({ f, plain }) => `${f.where}: ${plain}`);
+  /** Example, pair and dialogue lines: full sentences with an English translation. */
+  const SENTENCES = JP_FIELDS.filter((f) => f.en !== undefined);
+
+  it("writes ruby readings in hiragana", () => {
+    const bad = ALL_FIELDS.flatMap((f) =>
+      parse(f.text, f.jp).flatMap((t) => (t.kind === "ruby" && !/^[ぁ-ゖ]+$/.test(t.reading) ? [`${f.where}: ${t.base}|${t.reading}`] : [])),
+    );
+    expect(bad).toEqual([]);
+  });
+
+  it("uses Japanese punctuation in Japanese sentences", () => {
+    expect(offenders(SENTENCES, (p) => /[,.?!:;()"~]/.test(p))).toEqual([]);
+  });
+
+  it("writes the wave dash as 〜 (U+301C), never ～ (U+FF5E)", () => {
+    expect(offenders(ALL_FIELDS, (p) => p.includes("～"))).toEqual([]);
+  });
+
+  it("writes the katakana long vowel as ー, never a dash or 一", () => {
+    expect(offenders(ALL_FIELDS, (p) => /[ァ-ヺ][‐‑‒–—―−－一]|[‐‑‒–—―−－一][ァ-ヺ]/.test(p))).toEqual([]);
+  });
+
+  it("has no half-width katakana, full-width digits or letters, or ideographic spaces", () => {
+    expect(offenders(ALL_FIELDS, (p) => /[ｦ-ﾟ０-９Ａ-Ｚａ-ｚ　]/.test(p))).toEqual([]);
+  });
+
+  it("writes stacked particles as separate words (では only as the conjunction)", () => {
+    const bad = JP_FIELDS.flatMap((f) =>
+      readingOf(f.text)
+        .split(" ")
+        .flatMap((w, i, words) => {
+          const word = w.replace(/[。、？！…」』）]+$/, "");
+          const conjunction = word === "では" && i === 0 && w.endsWith("、");
+          return /^(には|では|とは|からは|までは|へは)$/.test(word) && !conjunction ? [`${f.where}: ${words.join(" ")}`] : [];
+        }),
+    );
+    expect(bad).toEqual([]);
+  });
+
+  it("joins a name to its suffix or title with '-' (so the romaji reads tanaka-san)", () => {
+    const SUFFIX = /^(さん|くん|ちゃん|さま)/;
+    const TITLES = new Set(["先生", "先輩", "部長", "社長", "様"]);
+    const bad = JP_FIELDS.flatMap((f) => {
+      const tokens = parse(f.text, true);
+      return tokens.flatMap((t, i) => {
+        const prev = tokens[i - 1];
+        const next = tokens[i + 1];
+        // お[母|かあ]さん, お[客|きゃく][様|さま]: a prefixed word, not a name.
+        const prefixed = prev?.kind === "text" && /[おご]$/.test(prev.text);
+        const kanjiName =
+          t.kind === "ruby" && !prefixed &&
+          ((next?.kind === "text" && SUFFIX.test(next.text)) || (next?.kind === "ruby" && TITLES.has(next.base)));
+        const kanaName = t.kind === "text" && /[ァ-ヺ]ー?(さん|くん|ちゃん|さま)/.test(t.text);
+        return kanjiName || kanaName ? [`${f.where}: ${f.text}`] : [];
+      });
+    });
     expect(bad).toEqual([]);
   });
 });

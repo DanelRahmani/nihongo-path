@@ -2,7 +2,7 @@
 
 import { Fragment } from "react";
 import type { ScriptMode } from "@/content/types";
-import { hasJapanese, parse, type Token } from "@/lib/markup";
+import { isJpOnly, parse, type Token } from "@/lib/markup";
 import { romajiOf } from "@/lib/romaji";
 import { settingsStore } from "@/lib/stores";
 import { useStore } from "@/lib/storage";
@@ -11,6 +11,7 @@ function renderTokens(tokens: Token[], mode: ScriptMode) {
   return tokens.map((t, i) => {
     // Kana-only text is spaced between words (as in children's books), or はは and は run together.
     if (t.kind === "space") return mode === "kana" ? <Fragment key={i}> </Fragment> : null;
+    if (t.kind === "join") return null;
     let node: React.ReactNode;
     if (t.kind === "text") {
       node = t.text;
@@ -69,7 +70,7 @@ export function Rich({ text, className }: { text: string; className?: string }) 
 export function Cell({ text }: { text: string }) {
   const [settings] = useStore(settingsStore);
   // Japanese-only cells use word spaces like examples; mixed cells are prose.
-  const jpOnly = hasJapanese(text) && !/[a-z]/i.test(text.replace(/\[[^\]]*\]/g, ""));
+  const jpOnly = isJpOnly(text);
   const tokens = parse(text, jpOnly);
   const showRomaji = settings.romaji && jpOnly;
   return (

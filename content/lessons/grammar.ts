@@ -16,14 +16,14 @@ export const grammar: Lesson[] = [
           ["is", "[学生|がくせい] です", "[学生|がくせい] だ"],
           ["isn't", "[学生|がくせい] じゃ ありません", "[学生|がくせい] じゃ ない"],
           ["was", "[学生|がくせい] でした", "[学生|がくせい] だった"],
-          ["wasn't", "[学生|がくせい] じゃ ありませんでした", "[学生|がくせい] じゃ なかった"],
+          ["wasn't", "[学生|がくせい] じゃ ありません でした", "[学生|がくせい] じゃ なかった"],
         ],
         caption: "では ありません is a more formal version of じゃ ありません — common in writing.",
       },
       {
         type: "examples",
         items: [
-          { jp: "[田中|たなか]さん は [先生|せんせい] です。", en: "Tanaka is a teacher." },
+          { jp: "[田中|たなか]-さん は [先生|せんせい] です。", en: "Tanaka is a teacher." },
           { jp: "[明日|あした] は [休|やす]み じゃ ない。", en: "Tomorrow isn't a day off." },
           { jp: "[昨日|きのう] は [雨|あめ] でした。", en: "It rained yesterday.", note: "Literally: yesterday was rain." },
         ],
@@ -72,7 +72,7 @@ export const grammar: Lesson[] = [
         type: "examples",
         items: [
           { jp: "いい です ね。", en: "That's nice." },
-          { jp: "よく ない。", en: "It's not good.", note: "いい conjugates from its older form よい: よくない, よかった." },
+          { jp: "よくない。", en: "It's not good.", note: "いい conjugates from よい, which is still the usual form in writing: よくない, よかった." },
           { jp: "[天気|てんき] が よかった。", en: "The weather was good." },
         ],
       },
@@ -105,7 +105,7 @@ export const grammar: Lesson[] = [
       {
         type: "pair",
         a: { jp: "この [町|まち] は {[静|しず]か} です。", en: "This town is quiet." },
-        b: { jp: "{[静|しず]かな} [町|まち]", en: "a quiet town" },
+        b: { jp: "{[静|しず]か な} [町|まち]", en: "a quiet town" },
         diff: "At the end of a sentence: + です/だ. Before a noun: + な. That な is where the name comes from.",
       },
       {
@@ -115,7 +115,7 @@ export const grammar: Lesson[] = [
           ["is", "[静|しず]か だ", "[静|しず]か です"],
           ["isn't", "[静|しず]か じゃ ない", "[静|しず]か じゃ ありません"],
           ["was", "[静|しず]か だった", "[静|しず]か でした"],
-          ["wasn't", "[静|しず]か じゃ なかった", "[静|しず]か じゃ ありませんでした"],
+          ["wasn't", "[静|しず]か じゃ なかった", "[静|しず]か じゃ ありません でした"],
         ],
         caption: "Exactly the same pattern as a noun with です and だ.",
       },
@@ -228,7 +228,7 @@ export const grammar: Lesson[] = [
       },
       {
         type: "pair",
-        a: { jp: "[昨日|きのう] [寿司|すし] を [食|た]べた。", en: "I ate sushi yesterday." },
+        a: { jp: "[昨日|きのう] すし を [食|た]べた。", en: "I ate sushi yesterday." },
         b: { jp: "[昨日|きのう] {[何|なに]} を [食|た]べた？", en: "What did you eat yesterday?" },
         diff: "Swap the answer for the question word; everything else stays put.",
       },

@@ -1,0 +1,742 @@
+## units
+入門 | にゅうもん | (label: no romaji)
+ひらがな | ひらがな | (label: no romaji)
+カタカナ | カタカナ | (label: no romaji)
+語順 | ごじゅん | (label: no romaji)
+助詞 | じょし | (label: no romaji)
+文法 | ぶんぽう | (label: no romaji)
+動詞 | どうし | (label: no romaji)
+接尾辞 | せつびじ | (label: no romaji)
+文化 | ぶんか | (label: no romaji)
+
+## kinds
+基本 | きほん | (label: no romaji)
+かな | かな | (label: no romaji)
+語順 | ごじゅん | (label: no romaji)
+助詞 | じょし | (label: no romaji)
+文法 | ぶんぽう | (label: no romaji)
+動詞 | どうし | (label: no romaji)
+接尾辞 | せつびじ | (label: no romaji)
+文化 | ぶんか | (label: no romaji)
+
+## start/three-scripts
+あ・ア | あ・ア | (label: no romaji)
+私はコーヒーが好きです。 | わたし は コーヒー が すき です。 | watashi wa koohii ga suki desu.
+ひらがな | ひらがな | hiragana
+カタカナ | カタカナ | katakana
+漢字 | かんじ | kanji
+
+## start/polite-and-casual
+です | です | (label: no romaji)
+学生です。 | がくせい です。 | gakusei desu.
+学生だ。 | がくせい だ。 | gakusei da.
+毎日走ります。 | まいにち はしります。 | mainichi hashirimasu.
+毎日走る。 | まいにち はしる。 | mainichi hashiru.
+
+## hiragana/hiragana-vowels-kstn
+あ | あ | (label: no romaji)
+あい | あい | ai
+いえ | いえ | ie
+かさ | かさ | kasa
+すし | すし | sushi
+ねこ | ねこ | neko
+ちかてつ | ちかてつ | chikatetsu
+
+## hiragana/hiragana-hmyrw
+は | は | (label: no romaji)
+はな | はな | hana
+ふね | ふね | fune
+やま | やま | yama
+よる | よる | yoru
+みかん | みかん | mikan
+わたし | わたし | watashi
+
+## hiragana/hiragana-dakuten
+が | が | (label: no romaji)
+ふた | ふた | futa
+ぶた | ぶた | buta
+かき | かき | kaki
+かぎ | かぎ | kagi
+
+## hiragana/hiragana-combos
+きゃ | きゃ | (label: no romaji)
+びょういん | びょういん | byouin
+びよういん | びよういん | biyouin
+きょう | きょう | kyou
+しゃしん | しゃしん | shashin
+おちゃ | おちゃ | ocha
+じゅぎょう | じゅぎょう | jugyou
+
+## hiragana/hiragana-small-tsu-long-vowels
+っ | っ | (label: no romaji)
+きて | きて | kite
+きって | きって | kitte
+おばさん | おばさん | obasan
+おばあさん | おばあさん | obaasan
+ああ·いい·うう | ああ · いい · うう | aa · ii · uu
+えい·ええ | えい · ええ | ei · ee
+おう·おお | おう · おお | ou · oo
+
+## katakana/katakana-basics
+カ | カ | (label: no romaji)
+テレビ | テレビ | terebi
+ホテル | ホテル | hoteru
+カメラ | カメラ | kamera
+アメリカ | アメリカ | amerika
+
+## katakana/katakana-look-alikes
+シ・ツ | シ・ツ | (label: no romaji)
+シャツ | シャツ | shatsu
+ソース | ソース | soosu
+パン | パン | pan
+
+## katakana/katakana-long-vowels-combos
+ー | ー | (label: no romaji)
+コーヒー | コーヒー | koohii
+ケーキ | ケーキ | keeki
+スーパー | スーパー | suupaa
+ベッド | ベッド | beddo
+ティ | ティ | ti
+ディ | ディ | di
+ファ | ファ | fa
+フィ·フェ·フォ | フィ · フェ · フォ | fi · fe · fo
+ウィ·ウェ | ウィ · ウェ | wi · we
+チェ·ジェ·シェ | チェ · ジェ · シェ | che · je · she
+ヴ | ヴ | vu
+
+## katakana/english-to-katakana
+ホテル | ホテル | (label: no romaji)
+デスク,ベッド | デスク, ベッド | desuku, beddo
+レモン,ライス | レモン, ライス | remon, raisu
+ビデオ,ベスト | ビデオ, ベスト | bideo, besuto
+コンピューター,ドクター | コンピューター, ドクター | konpyuutaa, dokutaa
+スリー,スリル | スリー, スリル | surii, suriru
+パーティー,チケット,ラジオ | パーティー, チケット, ラジオ | paatii, chiketto, rajio
+パソコン | パソコン | pasokon
+コンビニ | コンビニ | konbini
+スマホ | スマホ | sumaho
+エアコン | エアコン | eakon
+
+## word-order/verb-last
+最後 | さいご | (label: no romaji)
+私はパンを食べます。 | わたし は パン を たべます。 | watashi wa pan o tabemasu.
+毎朝駅でコーヒーを買う。 | まいあさ えき で コーヒー を かう。 | maiasa eki de koohii o kau.
+この部屋は広い。 | この へや は ひろい。 | kono heya wa hiroi.
+肉を食べます。 | にく を たべます。 | niku o tabemasu.
+肉を食べません。 | にく を たべません。 | niku o tabemasen.
+
+## word-order/topic-comment
+話題 | わだい | (label: no romaji)
+象は鼻が長い。 | ぞう は はな が ながい。 | zou wa hana ga nagai.
+今日は天気がいい。 | きょう は てんき が いい。 | kyou wa tenki ga ii.
+日本は電車が便利です。 | にほん は でんしゃ が べんり です。 | nihon wa densha ga benri desu.
+昨日本を読んだ。 | きのう ほん を よんだ。 | kinou hon o yonda.
+その本は昨日読んだ。 | その ほん は きのう よんだ。 | sono hon wa kinou yonda.
+
+## word-order/particles-move
+順番 | じゅんばん | (label: no romaji)
+田中さんが花を買った。 | たなかさん が はな を かった。 | tanaka-san ga hana o katta.
+花を田中さんが買った。 | はな を たなかさん が かった。 | hana o tanaka-san ga katta.
+昨日友達と公園で遊んだ。 | きのう ともだち と こうえん で あそんだ。 | kinou tomodachi to kouen de asonda.
+友達と昨日公園で遊んだ。 | ともだち と きのう こうえん で あそんだ。 | tomodachi to kinou kouen de asonda.
+
+## word-order/dropping-words
+省略 | しょうりゃく | (label: no romaji)
+私は昨日映画を見ました。 | わたし は きのう えいが を みました。 | watashi wa kinou eiga o mimashita.
+昨日映画を見ました。 | きのう えいが を みました。 | kinou eiga o mimashita.
+昨日何をしましたか？ | きのう なに を しました か？ | kinou nani o shimashita ka?
+映画を見ました。 | えいが を みました。 | eiga o mimashita.
+面白かったですか？ | おもしろかった です か？ | omoshirokatta desu ka?
+はい、とても。 | はい、とても。 | hai, totemo.
+
+## word-order/modifiers-first
+修飾 | しゅうしょく | (label: no romaji)
+赤い車 | あかい くるま | akai kuruma
+日本の車 | にほん の くるま | nihon no kuruma
+昨日買った車 | きのう かった くるま | kinou katta kuruma
+母が作ったケーキ | はは が つくった ケーキ | haha ga tsukutta keeki
+車は赤い。 | くるま は あかい。 | kuruma wa akai.
+赤い車 | あかい くるま | akai kuruma
+
+## particles/wa-topic
+は | は | (label: no romaji)
+私は学生です。 | わたし は がくせい です。 | watashi wa gakusei desu.
+今日は暑いですね。 | きょう は あつい です ね。 | kyou wa atsui desu ne.
+この本は面白い。 | この ほん は おもしろい。 | kono hon wa omoshiroi.
+日曜日は休みです。 | にちようび は やすみ です。 | nichiyoubi wa yasumi desu.
+東京は大きいです。 | とうきょう は おおきい です。 | toukyou wa ookii desu.
+東京は人が多いです。 | とうきょう は ひと が おおい です。 | toukyou wa hito ga ooi desu.
+趣味は何ですか？ | しゅみ は なん です か？ | shumi wa nan desu ka?
+料理です。 | りょうり です。 | ryouri desu.
+
+## particles/ga-subject
+が | が | (label: no romaji)
+雨が降っている。 | あめ が ふって いる。 | ame ga futte iru.
+電車が来た。 | でんしゃ が きた。 | densha ga kita.
+おなかがすいた。 | おなか が すいた。 | onaka ga suita.
+頭が痛い。 | あたま が いたい。 | atama ga itai.
+私が食べる。 | わたし が たべる。 | watashi ga taberu.
+食べる。 | たべる。 | taberu.
+
+## particles/wa-vs-ga
+は・が | は・が | (label: no romaji)
+私は学生です。 | わたし は がくせい です。 | watashi wa gakusei desu.
+私が学生です。 | わたし が がくせい です。 | watashi ga gakusei desu.
+誰が来ましたか？ | だれ が きました か？ | dare ga kimashita ka?
+田中さんが来ました。 | たなかさん が きました。 | tanaka-san ga kimashita.
+何が一番好きですか？ | なに が いちばん すき です か？ | nani ga ichiban suki desu ka?
+あ、猫がいる！ | あ、ねこ が いる！ | a, neko ga iru!
+猫は庭にいるよ。 | ねこ は にわ に いる よ。 | neko wa niwa ni iru yo.
+肉は食べるけど、魚は食べない。 | にく は たべる けど、さかな は たべない。 | niku wa taberu kedo, sakana wa tabenai.
+ビールは飲みます。 | ビール は のみます。 | biiru wa nomimasu.
+私は猫が好きです。 | わたし は ねこ が すき です。 | watashi wa neko ga suki desu.
+母が作ったケーキ | はは が つくった ケーキ | haha ga tsukutta keeki
+これ、誰が作ったの？ | これ、だれ が つくった の？ | kore, dare ga tsukutta no?
+私が作ったよ。 | わたし が つくった よ。 | watashi ga tsukutta yo.
+すごい！私は料理が苦手で… | すごい！ わたし は りょうり が にがて で… | sugoi! watashi wa ryouri ga nigate de...
+
+## particles/wo-object
+を | を | (label: no romaji)
+パンを食べる。 | パン を たべる。 | pan o taberu.
+本を読みます。 | ほん を よみます。 | hon o yomimasu.
+映画を見ました。 | えいが を みました。 | eiga o mimashita.
+コーヒーをください。 | コーヒー を ください。 | koohii o kudasai.
+猫が見ている。 | ねこ が みて いる。 | neko ga mite iru.
+猫を見ている。 | ねこ を みて いる。 | neko o mite iru.
+公園を歩く。 | こうえん を あるく。 | kouen o aruku.
+道を渡る。 | みち を わたる。 | michi o wataru.
+家を出る。 | いえ を でる。 | ie o deru.
+
+## particles/ni-target
+に | に | (label: no romaji)
+学校に行く。 | がっこう に いく。 | gakkou ni iku.
+日本に来ました。 | にほん に きました。 | nihon ni kimashita.
+七時に起きます。 | しちじ に おきます。 | shichiji ni okimasu.
+日曜日に東京に行く。 | にちようび に とうきょう に いく。 | nichiyoubi ni toukyou ni iku.
+猫は部屋にいる。 | ねこ は へや に いる。 | neko wa heya ni iru.
+駅の前にコンビニがある。 | えき の まえ に コンビニ が ある。 | eki no mae ni konbini ga aru.
+公園に遊びに行く。 | こうえん に あそび に いく。 | kouen ni asobi ni iku.
+水が氷になった。 | みず が こおり に なった。 | mizu ga koori ni natta.
+友達にプレゼントをあげた。 | ともだち に プレゼント を あげた。 | tomodachi ni purezento o ageta.
+
+## particles/de-place-means
+で | で | (label: no romaji)
+公園で遊ぶ。 | こうえん で あそぶ。 | kouen de asobu.
+喫茶店でコーヒーを飲む。 | きっさてん で コーヒー を のむ。 | kissaten de koohii o nomu.
+図書館で勉強します。 | としょかん で べんきょう します。 | toshokan de benkyou shimasu.
+電車で東京に行く。 | でんしゃ で とうきょう に いく。 | densha de toukyou ni iku.
+日本語で話しましょう。 | にほんご で はなしましょう。 | nihongo de hanashimashou.
+箸で食べる。 | はし で たべる。 | hashi de taberu.
+世界で一番おいしいラーメン | せかい で いちばん おいしい ラーメン | sekai de ichiban oishii raamen
+クラスで一番背が高い。 | クラス で いちばん せ が たかい。 | kurasu de ichiban se ga takai.
+
+## particles/ni-vs-de
+に・で | に・で | (label: no romaji)
+図書館にいる。 | としょかん に いる。 | toshokan ni iru.
+図書館で勉強する。 | としょかん で べんきょう する。 | toshokan de benkyou suru.
+東京に住んでいる。 | とうきょう に すんで いる。 | toukyou ni sunde iru.
+東京で働いている。 | とうきょう で はたらいて いる。 | toukyou de hataraite iru.
+ここに名前を書いてください。 | ここ に なまえ を かいて ください。 | koko ni namae o kaite kudasai.
+ここで名前を書いてください。 | ここ で なまえ を かいて ください。 | koko de namae o kaite kudasai.
+
+## particles/e-vs-ni
+へ | へ | (label: no romaji)
+東京へ行く。 | とうきょう へ いく。 | toukyou e iku.
+東京に行く。 | とうきょう に いく。 | toukyou ni iku.
+北へ向かう。 | きた へ むかう。 | kita e mukau.
+母への手紙 | はは へ の てがみ | haha e no tegami
+
+## particles/to-ya
+と・や | と・や | (label: no romaji)
+パンと卵を買った。 | パン と たまご を かった。 | pan to tamago o katta.
+パンや卵を買った。 | パン や たまご を かった。 | pan ya tamago o katta.
+友達と映画を見た。 | ともだち と えいが を みた。 | tomodachi to eiga o mita.
+先生と話しました。 | せんせい と はなしました。 | sensei to hanashimashita.
+
+## particles/mo-also
+も | も | (label: no romaji)
+私は学生です。 | わたし は がくせい です。 | watashi wa gakusei desu.
+私も学生です。 | わたし も がくせい です。 | watashi mo gakusei desu.
+パンも食べる。 | パン も たべる。 | pan mo taberu.
+猫も犬も好きです。 | ねこ も いぬ も すき です。 | neko mo inu mo suki desu.
+何も食べなかった。 | なに も たべなかった。 | nani mo tabenakatta.
+日本の映画が好きです。 | にほん の えいが が すき です。 | nihon no eiga ga suki desu.
+私も！ | わたし も！ | watashi mo!
+
+## particles/no-linking
+の | の | (label: no romaji)
+私の本 | わたし の ほん | watashi no hon
+日本の車 | にほん の くるま | nihon no kuruma
+友達のお母さん | ともだち の おかあさん | tomodachi no okaasan
+日本語の先生 | にほんご の せんせい | nihongo no sensei
+先生の日本語 | せんせい の にほんご | sensei no nihongo
+この傘は誰のですか？ | この かさ は だれ の です か？ | kono kasa wa dare no desu ka?
+赤いのがいい。 | あかい の が いい。 | akai no ga ii.
+
+## particles/kara-made
+から | から | (label: no romaji)
+九時から五時まで働きます。 | くじ から ごじ まで はたらきます。 | kuji kara goji made hatarakimasu.
+家から駅まで歩いた。 | いえ から えき まで あるいた。 | ie kara eki made aruita.
+イギリスから来ました。 | イギリス から きました。 | igirisu kara kimashita.
+暑いから、窓を開けて。 | あつい から、まど を あけて。 | atsui kara, mado o akete.
+
+## particles/ka-question
+か | か | (label: no romaji)
+学生です。 | がくせい です。 | gakusei desu.
+学生ですか？ | がくせい です か？ | gakusei desu ka?
+コーヒーを飲みますか？ | コーヒー を のみます か？ | koohii o nomimasu ka?
+何を食べますか？ | なに を たべます か？ | nani o tabemasu ka?
+紅茶かコーヒー | こうちゃ か コーヒー | koucha ka koohii
+
+## particles/yo-ne
+よ・ね | よ・ね | (label: no romaji)
+おいしいよ。 | おいしい よ。 | oishii yo.
+おいしいね。 | おいしい ね。 | oishii ne.
+明日は休みですよ。 | あした は やすみ です よ。 | ashita wa yasumi desu yo.
+今日は寒いですね。 | きょう は さむい です ね。 | kyou wa samui desu ne.
+明日来るよね？ | あした くる よね？ | ashita kuru yone?
+
+## grammar/desu-da
+です | です | (label: no romaji)
+学生です | がくせい です | gakusei desu
+学生だ | がくせい だ | gakusei da
+学生じゃありません | がくせい じゃ ありません | gakusei ja arimasen
+学生じゃない | がくせい じゃ ない | gakusei ja nai
+学生でした | がくせい でした | gakusei deshita
+学生だった | がくせい だった | gakusei datta
+学生じゃありませんでした | がくせい じゃ ありません でした | gakusei ja arimasen deshita
+学生じゃなかった | がくせい じゃ なかった | gakusei ja nakatta
+田中さんは先生です。 | たなかさん は せんせい です。 | tanaka-san wa sensei desu.
+明日は休みじゃない。 | あした は やすみ じゃ ない。 | ashita wa yasumi ja nai.
+昨日は雨でした。 | きのう は あめ でした。 | kinou wa ame deshita.
+
+## grammar/i-adjectives
+〜い | 〜い | (label: no romaji)
+高い | たかい | takai
+高いです | たかい です | takai desu
+高くない | たかくない | takakunai
+高くないです | たかくない です | takakunai desu
+高かった | たかかった | takakatta
+高かったです | たかかった です | takakatta desu
+高くなかった | たかくなかった | takakunakatta
+高くなかったです | たかくなかった です | takakunakatta desu
+いいですね。 | いい です ね。 | ii desu ne.
+よくない。 | よくない。 | yokunai.
+天気がよかった。 | てんき が よかった。 | tenki ga yokatta.
+高い時計 | たかい とけい | takai tokei
+新しい靴 | あたらしい くつ | atarashii kutsu
+
+## grammar/na-adjectives
+〜な | 〜な | (label: no romaji)
+この町は静かです。 | この まち は しずか です。 | kono machi wa shizuka desu.
+静かな町 | しずか な まち | shizuka na machi
+静かだ | しずか だ | shizuka da
+静かです | しずか です | shizuka desu
+静かじゃない | しずか じゃ ない | shizuka ja nai
+静かじゃありません | しずか じゃ ありません | shizuka ja arimasen
+静かだった | しずか だった | shizuka datta
+静かでした | しずか でした | shizuka deshita
+静かじゃなかった | しずか じゃ なかった | shizuka ja nakatta
+静かじゃありませんでした | しずか じゃ ありません でした | shizuka ja arimasen deshita
+好きな食べ物は何ですか？ | すき な たべもの は なん です か？ | suki na tabemono wa nan desu ka?
+元気ですか？ | げんき です か？ | genki desu ka?
+有名な人 | ゆうめい な ひと | yuumei na hito
+
+## grammar/aru-iru
+ある | ある | (label: no romaji)
+公園に子供がいる。 | こうえん に こども が いる。 | kouen ni kodomo ga iru.
+公園にベンチがある。 | こうえん に ベンチ が ある。 | kouen ni benchi ga aru.
+猫がいます。 | ねこ が います。 | neko ga imasu.
+お金がありません。 | おかね が ありません。 | okane ga arimasen.
+兄弟がいる？ | きょうだい が いる？ | kyoudai ga iru?
+あります | あります | arimasu
+います | います | imasu
+ない | ない | nai
+いない | いない | inai
+ありません | ありません | arimasen
+いません | いません | imasen
+あった | あった | atta
+いた | いた | ita
+
+## grammar/kosoado
+こそあど | こそあど | (label: no romaji)
+これ | これ | kore
+それ | それ | sore
+あれ | あれ | are
+どれ | どれ | dore
+この本 | この ほん | kono hon
+その本 | その ほん | sono hon
+あの本 | あの ほん | ano hon
+どの本 | どの ほん | dono hon
+ここ | ここ | koko
+そこ | そこ | soko
+あそこ | あそこ | asoko
+どこ | どこ | doko
+こう | こう | kou
+そう | そう | sou
+ああ | ああ | aa
+どう | どう | dou
+これは何ですか？ | これ は なん です か？ | kore wa nan desu ka?
+それは何ですか？ | それ は なん です か？ | sore wa nan desu ka?
+この本は面白い。 | この ほん は おもしろい。 | kono hon wa omoshiroi.
+トイレはどこですか？ | トイレ は どこ です か？ | toire wa doko desu ka?
+そうですね。 | そう です ね。 | sou desu ne.
+
+## grammar/question-words
+何 | なに | (label: no romaji)
+昨日すしを食べた。 | きのう すし を たべた。 | kinou sushi o tabeta.
+昨日何を食べた？ | きのう なに を たべた？ | kinou nani o tabeta?
+何·何 | なに · なん | nani · nan
+何を食べる？ | なに を たべる？ | nani o taberu?
+誰 | だれ | dare
+誰が来た？ | だれ が きた？ | dare ga kita?
+どこ | どこ | doko
+どこに行く？ | どこ に いく？ | doko ni iku?
+いつ | いつ | itsu
+いつ来る？ | いつ くる？ | itsu kuru?
+どうして·なんで | どうして · なんで | doushite · nande
+どうして遅れたの？ | どうして おくれた の？ | doushite okureta no?
+どう | どう | dou
+どう思う？ | どう おもう？ | dou omou?
+いくら | いくら | ikura
+これはいくらですか？ | これ は いくら です か？ | kore wa ikura desu ka?
+どれ·どの | どれ · どの | dore · dono
+どれがいい？ | どれ が いい？ | dore ga ii?
+
+## grammar/numbers-counting
+数 | かず | (label: no romaji)
+一·二·三 | いち · に · さん | ichi · ni · san
+四(し)·五·六 | よん (し) · ご · ろく | yon (shi) · go · roku
+七(しち)·八·九(く) | なな (しち) · はち · きゅう (く) | nana (shichi) · hachi · kyuu (ku)
+十·百 | じゅう · ひゃく | juu · hyaku
+千·万 | せん · まん | sen · man
+〜つ | 〜つ | ~tsu
+ひとつ,ふたつ,みっつ | ひとつ, ふたつ, みっつ | hitotsu, futatsu, mittsu
+〜人 | 〜にん | ~nin
+一人,二人,三人 | ひとり, ふたり, さんにん | hitori, futari, sannin
+〜枚 | 〜まい | ~mai
+二枚 | にまい | nimai
+〜本 | 〜ほん | ~hon
+一本,二本,三本 | いっぽん, にほん, さんぼん | ippon, nihon, sanbon
+〜円 | 〜えん | ~en
+百円 | ひゃくえん | hyakuen
+りんごをみっつください。 | りんご を みっつ ください。 | ringo o mittsu kudasai.
+二人です。 | ふたり です。 | futari desu.
+
+## verbs/verb-groups
+動詞 | どうし | (label: no romaji)
+食べる,見る,起きる,寝る | たべる, みる, おきる, ねる | taberu, miru, okiru, neru
+飲む,書く,話す,待つ,買う | のむ, かく, はなす, まつ, かう | nomu, kaku, hanasu, matsu, kau
+帰る | かえる | kaeru
+入る | はいる | hairu
+走る | はしる | hashiru
+知る | しる | shiru
+切る | きる | kiru
+
+## verbs/masu-form
+ます | ます | (label: no romaji)
+食べる | たべる | taberu
+食べ | たべ | tabe
+食べます | たべます | tabemasu
+飲む | のむ | nomu
+飲み | のみ | nomi
+飲みます | のみます | nomimasu
+書く | かく | kaku
+書き | かき | kaki
+書きます | かきます | kakimasu
+する | する | suru
+し | し | shi
+します | します | shimasu
+来る | くる | kuru
+来 | き | ki
+来ます | きます | kimasu
+〜ます | 〜ます | ~masu
+〜ません | 〜ません | ~masen
+〜ました | 〜ました | ~mashita
+〜ませんでした | 〜ません でした | ~masen deshita
+毎朝コーヒーを飲みます。 | まいあさ コーヒー を のみます。 | maiasa koohii o nomimasu.
+明日東京に行きます。 | あした とうきょう に いきます。 | ashita toukyou ni ikimasu.
+昨日は勉強しませんでした。 | きのう は べんきょう しません でした。 | kinou wa benkyou shimasen deshita.
+
+## verbs/nai-form
+ない | ない | (label: no romaji)
+食べる→食べない | たべる → たべない | taberu → tabenai
+飲む→飲まない | のむ → のまない | nomu → nomanai
+買う→買わない | かう → かわない | kau → kawanai
+する→しない,来る→来ない | する → しない, くる → こない | suru → shinai, kuru → konai
+ある | ある | aru
+ある→ない | ある → ない | aru → nai
+肉は食べない。 | にく は たべない。 | niku wa tabenai.
+今日は行かない。 | きょう は いかない。 | kyou wa ikanai.
+バスがまだ来ない。 | バス が まだ こない。 | basu ga mada konai.
+
+## verbs/te-form
+て | て | (label: no romaji)
+う·つ·る | う · つ · る | u · tsu · ru
+って | って | tte
+買う→買って,待つ→待って,帰る→帰って | かう → かって, まつ → まって, かえる → かえって | kau → katte, matsu → matte, kaeru → kaette
+む·ぶ·ぬ | む · ぶ · ぬ | mu · bu · nu
+んで | んで | nde
+飲む→飲んで,遊ぶ→遊んで,死ぬ→死んで | のむ → のんで, あそぶ → あそんで, しぬ → しんで | nomu → nonde, asobu → asonde, shinu → shinde
+く | く | ku
+いて | いて | ite
+書く→書いて | かく → かいて | kaku → kaite
+ぐ | ぐ | gu
+いで | いで | ide
+泳ぐ→泳いで | およぐ → およいで | oyogu → oyoide
+す | す | su
+して | して | shite
+話す→話して | はなす → はなして | hanasu → hanashite
+食べる→食べて,見る→見て | たべる → たべて, みる → みて | taberu → tabete, miru → mite
+行く→行って,する→して,来る→来て | いく → いって, する → して, くる → きて | iku → itte, suru → shite, kuru → kite
+朝起きて、シャワーを浴びて、学校に行く。 | あさ おきて、シャワー を あびて、がっこう に いく。 | asa okite, shawaa o abite, gakkou ni iku.
+安くておいしい。 | やすくて おいしい。 | yasukute oishii.
+
+## verbs/ta-form
+た | た | (label: no romaji)
+食べる | たべる | taberu
+食べた | たべた | tabeta
+買う | かう | kau
+買った | かった | katta
+待つ | まつ | matsu
+待った | まった | matta
+帰る | かえる | kaeru
+帰った | かえった | kaetta
+飲む | のむ | nomu
+飲んだ | のんだ | nonda
+遊ぶ | あそぶ | asobu
+遊んだ | あそんだ | asonda
+書く | かく | kaku
+書いた | かいた | kaita
+泳ぐ | およぐ | oyogu
+泳いだ | およいだ | oyoida
+話す | はなす | hanasu
+話した | はなした | hanashita
+行く | いく | iku
+行った | いった | itta
+する | する | suru
+した | した | shita
+来る | くる | kuru
+来た | きた | kita
+朝ご飯を食べた。 | あさごはん を たべた。 | asagohan o tabeta.
+朝ご飯を食べなかった。 | あさごはん を たべなかった。 | asagohan o tabenakatta.
+
+## verbs/te-iru-te-kudasai
+ている | ている | (label: no romaji)
+今、本を読んでいる。 | いま、ほん を よんで いる。 | ima, hon o yonde iru.
+雨が降っています。 | あめ が ふって います。 | ame ga futte imasu.
+結婚しています。 | けっこん して います。 | kekkon shite imasu.
+東京に住んでいる。 | とうきょう に すんで いる。 | toukyou ni sunde iru.
+窓が開いた。 | まど が あいた。 | mado ga aita.
+窓が開いている。 | まど が あいて いる。 | mado ga aite iru.
+ちょっと待ってください。 | ちょっと まって ください。 | chotto matte kudasai.
+もう一度言ってください。 | もう いちど いって ください。 | mou ichido itte kudasai.
+ここに名前を書いてください。 | ここ に なまえ を かいて ください。 | koko ni namae o kaite kudasai.
+
+## verbs/tai-form
+たい | たい | (label: no romaji)
+食べたい | たべたい | tabetai
+食べたくない | たべたくない | tabetakunai
+食べたかった | たべたかった | tabetakatta
+食べたいです | たべたい です | tabetai desu
+日本に行きたい。 | にほん に いきたい。 | nihon ni ikitai.
+何が飲みたい？ | なに が のみたい？ | nani ga nomitai?
+今日は何もしたくない。 | きょう は なに も したくない。 | kyou wa nani mo shitakunai.
+
+## verbs/volitional
+よう | よう | (label: no romaji)
+食べる | たべる | taberu
+食べましょう | たべましょう | tabemashou
+食べよう | たべよう | tabeyou
+行く | いく | iku
+行きましょう | いきましょう | ikimashou
+行こう | いこう | ikou
+飲む | のむ | nomu
+飲みましょう | のみましょう | nomimashou
+飲もう | のもう | nomou
+する | する | suru
+しましょう | しましょう | shimashou
+しよう | しよう | shiyou
+来る | くる | kuru
+来ましょう | きましょう | kimashou
+来よう | こよう | koyou
+一緒に帰ろう。 | いっしょ に かえろう。 | issho ni kaerou.
+そろそろ行きましょうか。 | そろそろ いきましょう か。 | sorosoro ikimashou ka.
+手伝いましょうか？ | てつだいましょう か？ | tetsudaimashou ka?
+
+## verbs/potential
+れる | れる | (label: no romaji)
+食べる | たべる | taberu
+食べられる | たべられる | taberareru
+見る | みる | miru
+見られる | みられる | mirareru
+飲む | のむ | nomu
+飲める | のめる | nomeru
+話す | はなす | hanasu
+話せる | はなせる | hanaseru
+行く | いく | iku
+行ける | いける | ikeru
+買う | かう | kau
+買える | かえる | kaeru
+する | する | suru
+できる | できる | dekiru
+来る | くる | kuru
+来られる | こられる | korareru
+日本語が話せます。 | にほんご が はなせます。 | nihongo ga hanasemasu.
+納豆が食べられない。 | なっとう が たべられない。 | nattou ga taberarenai.
+明日来られる？ | あした こられる？ | ashita korareru?
+
+## verbs/tara-conditional
+たら | たら | (label: no romaji)
+雨が降ったら、行かない。 | あめ が ふったら、いかない。 | ame ga futtara, ikanai.
+駅に着いたら、電話して。 | えき に ついたら、でんわ して。 | eki ni tsuitara, denwa shite.
+安かったら買う。 | やすかったら かう。 | yasukattara kau.
+暇だったら、遊ぼう。 | ひま だったら、あそぼう。 | hima dattara, asobou.
+
+## suffixes/name-suffixes
+さん | さん | (label: no romaji)
+〜さん | 〜さん | ~san
+〜くん | 〜くん | ~kun
+〜ちゃん | 〜ちゃん | ~chan
+〜様 | 〜さま | ~sama
+田中さん、おはようございます。 | たなかさん、おはよう ございます。 | tanaka-san, ohayou gozaimasu.
+健太くん、元気？ | けんたくん、げんき？ | kenta-kun, genki?
+お客様 | おきゃくさま | okyakusama
+
+## suffixes/titles
+先生 | せんせい | (label: no romaji)
+〜先生 | 〜せんせい | ~sensei
+山田先生 | やまだせんせい | yamada-sensei
+〜先輩 | 〜せんぱい | ~senpai
+佐藤先輩 | さとうせんぱい | satou-senpai
+〜部長·〜社長 | 〜ぶちょう · 〜しゃちょう | ~buchou · ~shachou
+鈴木部長 | すずきぶちょう | suzuki-buchou
+先生、質問があります。 | せんせい、しつもん が あります。 | sensei, shitsumon ga arimasu.
+先輩、お疲れ様です。 | せんぱい、おつかれさま です。 | senpai, otsukaresama desu.
+
+## suffixes/tachi-plural
+たち | たち | (label: no romaji)
+私たち | わたしたち | watashitachi
+子供たち | こどもたち | kodomotachi
+田中さんたち | たなかさんたち | tanaka-san-tachi
+彼ら | かれら | karera
+猫がいる。 | ねこ が いる。 | neko ga iru.
+猫が三匹いる。 | ねこ が さんびき いる。 | neko ga sanbiki iru.
+
+## suffixes/jin-go
+語 | ご | (label: no romaji)
+日本人 | にほんじん | nihonjin
+日本語 | にほんご | nihongo
+オランダ人 | オランダじん | orandajin
+オランダ語 | オランダご | orandago
+イギリス人 | イギリスじん | igirisujin
+英語 | えいご | eigo
+アメリカ人 | アメリカじん | amerikajin
+英語 | えいご | eigo
+中国人 | ちゅうごくじん | chuugokujin
+中国語 | ちゅうごくご | chuugokugo
+フランス人 | フランスじん | furansujin
+フランス語 | フランスご | furansugo
+私はオランダ人です。 | わたし は オランダじん です。 | watashi wa orandajin desu.
+日本語が少し話せます。 | にほんご が すこし はなせます。 | nihongo ga sukoshi hanasemasu.
+
+## suffixes/chuu-juu
+中 | ちゅう | (label: no romaji)
+会議中 | かいぎちゅう | kaigichuu
+一日中 | いちにちじゅう | ichinichijuu
+電話中です。 | でんわちゅう です。 | denwachuu desu.
+世界中で人気がある。 | せかいじゅう で にんき が ある。 | sekaijuu de ninki ga aru.
+夏休み中に旅行した。 | なつやすみちゅう に りょこう した。 | natsuyasumichuu ni ryokou shita.
+勉強中,工事中,営業中 | べんきょうちゅう, こうじちゅう, えいぎょうちゅう | benkyouchuu, koujichuu, eigyouchuu
+一年中,日本中,一晩中 | いちねんじゅう, にほんじゅう, ひとばんじゅう | ichinenjuu, nihonjuu, hitobanjuu
+
+## suffixes/ya-shops
+屋 | や | (label: no romaji)
+本屋 | ほんや | hon'ya
+パン屋 | パンや | pan'ya
+花屋 | はなや | hanaya
+居酒屋 | いざかや | izakaya
+八百屋 | やおや | yaoya
+
+## suffixes/sa-nouns
+さ | さ | (label: no romaji)
+この山の高さは何メートルですか？ | この やま の たかさ は なんメートル です か？ | kono yama no takasa wa nanmeetoru desu ka?
+彼女の優しさに感動した。 | かのじょ の やさしさ に かんどう した。 | kanojo no yasashisa ni kandou shita.
+
+## suffixes/o-go-prefixes
+お・ご | お・ご | (label: no romaji)
+お茶 | おちゃ | ocha
+お水 | おみず | omizu
+ご飯 | ごはん | gohan
+ご家族 | ごかぞく | gokazoku
+お名前は？ | おなまえ は？ | onamae wa?
+
+## culture/polite-or-casual
+敬語 | けいご | (label: no romaji)
+明日来ますか？ | あした きます か？ | ashita kimasu ka?
+明日来る？ | あした くる？ | ashita kuru?
+
+## culture/avoid-anata
+あなた | あなた | (label: no romaji)
+あなたは学生ですか？ | あなた は がくせい です か？ | anata wa gakusei desu ka?
+田中さんは学生ですか？ | たなかさん は がくせい です か？ | tanaka-san wa gakusei desu ka?
+学生ですか？ | がくせい です か？ | gakusei desu ka?
+先生はどう思いますか？ | せんせい は どう おもいます か？ | sensei wa dou omoimasu ka?
+
+## culture/sumimasen
+すみません | すみません | (label: no romaji)
+あ、すみません！ | あ、すみません！ | a, sumimasen!
+すみません、注文いいですか？ | すみません、ちゅうもん いい です か？ | sumimasen, chuumon ii desu ka?
+わざわざすみません。 | わざわざ すみません。 | wazawaza sumimasen.
+ありがとうございます。 | ありがとう ございます。 | arigatou gozaimasu.
+すみません。 | すみません。 | sumimasen.
+
+## culture/aizuchi
+あいづち | あいづち | (label: no romaji)
+うん·はい | うん · はい | un · hai
+そうですね | そう です ね | sou desu ne
+なるほど | なるほど | naruhodo
+へえ | へえ | hee
+そうなんだ | そう なん だ | sou nan da
+本当？ | ほんとう？ | hontou?
+昨日、京都に行って… | きのう、きょうと に いって… | kinou, kyouto ni itte...
+うん、うん。 | うん、うん。 | un, un.
+お寺を見てきたんだけど… | おてら を みて きた ん だ けど… | otera o mite kita n da kedo...
+へえ、いいね！ | へえ、いい ね！ | hee, ii ne!
+
+## culture/soft-refusals
+ちょっと | ちょっと | (label: no romaji)
+今晩、飲みに行きませんか？ | こんばん、のみ に いきません か？ | konban, nomi ni ikimasen ka?
+今晩はちょっと… | こんばん は ちょっと… | konban wa chotto...
+ちょっと難しいですね。 | ちょっと むずかしい です ね。 | chotto muzukashii desu ne.
+考えておきます。 | かんがえて おきます。 | kangaete okimasu.
+また今度。 | また こんど。 | mata kondo.
+
+## culture/uchi-soto
+内・外 | うち・そと | (label: no romaji)
+母は元気です。 | はは は げんき です。 | haha wa genki desu.
+お母さんは元気ですか？ | おかあさん は げんき です か？ | okaasan wa genki desu ka?
+母 | はは | haha
+お母さん | おかあさん | okaasan
+父 | ちち | chichi
+お父さん | おとうさん | otousan
+兄 | あに | ani
+お兄さん | おにいさん | oniisan
+姉 | あね | ane
+お姉さん | おねえさん | oneesan
+家族 | かぞく | kazoku
+ご家族 | ごかぞく | gokazoku
+
+## culture/set-phrases
+挨拶 | あいさつ | (label: no romaji)
+いただきます | いただきます | itadakimasu
+ごちそうさまでした | ごちそうさま でした | gochisousama deshita
+いってきます | いってきます | ittekimasu
+いってらっしゃい | いってらっしゃい | itterasshai
+ただいま | ただいま | tadaima
+おかえりなさい | おかえりなさい | okaerinasai
+お疲れ様です | おつかれさま です | otsukaresama desu
+よろしくお願いします | よろしく おねがい します | yoroshiku onegai shimasu
+初めまして。スミスです。よろしくお願いします。 | はじめまして。 スミス です。 よろしく おねがい します。 | hajimemashite. sumisu desu. yoroshiku onegai shimasu.
+ただいま！ | ただいま！ | tadaima!
+おかえり！ | おかえり！ | okaeri!

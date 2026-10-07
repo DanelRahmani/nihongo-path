@@ -3,7 +3,9 @@
 export type Token =
   | { kind: "text"; text: string; hl: boolean; bold: boolean; it: boolean }
   | { kind: "ruby"; base: string; reading: string; hl: boolean; bold: boolean; it: boolean }
-  | { kind: "space" };
+  | { kind: "space" }
+  /** "-" in a Jp string: joins a name to its suffix. Never shown; a hyphen in romaji (tanaka-san). */
+  | { kind: "join" };
 
 /**
  * @param wordSpaces true for Jp strings (spaces are word boundaries, hidden in
@@ -39,6 +41,9 @@ export function parse(src: string, wordSpaces: boolean): Token[] {
       flush();
       out.push({ kind: "ruby", base: src.slice(i + 1, bar), reading: src.slice(bar + 1, end), hl, bold, it });
       i = end;
+    } else if (c === "-" && wordSpaces) {
+      flush();
+      out.push({ kind: "join" });
     } else if (c === " " && wordSpaces) {
       flush();
       if (out.at(-1)?.kind !== "space") out.push({ kind: "space" });
@@ -51,9 +56,9 @@ export function parse(src: string, wordSpaces: boolean): Token[] {
 }
 
 /** Plain kana reading of a Jp string, keeping word spaces. */
-export function readingOf(src: string): string {
-  return parse(src, true)
-    .map((t) => (t.kind === "space" ? " " : t.kind === "ruby" ? t.reading : t.text))
+export function readingOf(src: string, wordSpaces = true): string {
+  return parse(src, wordSpaces)
+    .map((t) => (t.kind === "space" ? " " : t.kind === "join" ? "" : t.kind === "ruby" ? t.reading : t.text))
     .join("")
     .trim();
 }
@@ -61,7 +66,7 @@ export function readingOf(src: string): string {
 /** Visible text with markup stripped (kanji kept, spaces removed). */
 export function plainOf(src: string, wordSpaces = true): string {
   return parse(src, wordSpaces)
-    .map((t) => (t.kind === "space" ? "" : t.kind === "ruby" ? t.base : t.text))
+    .map((t) => (t.kind === "space" || t.kind === "join" ? "" : t.kind === "ruby" ? t.base : t.text))
     .join("");
 }
 
@@ -76,4 +81,9 @@ export function bareKanji(src: string, wordSpaces: boolean): string[] {
 
 export function hasJapanese(src: string): boolean {
   return /[぀-ヿ\p{Script=Han}]/u.test(src);
+}
+
+/** A table cell written entirely in Japanese: it uses word spaces and gets a romaji line, like an example. */
+export function isJpOnly(src: string): boolean {
+  return hasJapanese(src) && !/[a-z]/i.test(src.replace(/\[[^\]]*\]/g, ""));
 }

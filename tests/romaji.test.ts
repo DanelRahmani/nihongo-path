@@ -58,8 +58,8 @@ describe("markup", () => {
     expect(romajiOf(src)).toBe("watashi wa gakusei desu.");
   });
 
-  it("hyphenates name suffixes after a kanji name", () => {
-    expect(romajiOf("[田中|たなか]さん、おはよう。")).toBe("tanaka-san, ohayou.");
+  it("hyphenates a name and its suffix where the markup joins them", () => {
+    expect(romajiOf("[田中|たなか]-さん、おはよう。")).toBe("tanaka-san, ohayou.");
     expect(romajiOf("お[客|きゃく][様|さま]")).toBe("okyakusama");
   });
 

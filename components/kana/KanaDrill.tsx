@@ -53,7 +53,7 @@ function DeckPicker({ onStart }: { onStart: (deck: Deck) => void }) {
             )}
           >
             <div className="flex items-start justify-between gap-3">
-              <span lang="ja" className="font-serif text-3xl font-bold group-hover:text-accent">
+              <span lang="ja" className="font-jp text-3xl font-bold group-hover:text-accent">
                 {sample}
               </span>
               {s.due > 0 && (
@@ -166,7 +166,7 @@ function Session({ deck, onExit }: { deck: Deck; onExit: () => void }) {
             }`}
           >
             <div className="text-center">
-              <span key={current.id} lang="ja" className="rise block font-serif text-8xl font-medium sm:text-9xl">
+              <span key={current.id} lang="ja" className="rise block font-jp text-8xl font-medium sm:text-9xl">
                 {current.char}
               </span>
               {phase === "wrong" && (

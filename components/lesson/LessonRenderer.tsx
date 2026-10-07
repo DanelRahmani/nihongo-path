@@ -7,7 +7,7 @@ import type { Block, Example } from "@/content/types";
 function ExampleRow({ ex }: { ex: Example }) {
   return (
     <div className="px-5 py-5 sm:px-6">
-      <Jp jp={ex.jp} className="font-serif text-2xl leading-relaxed font-medium sm:text-[1.7rem]" />
+      <Jp jp={ex.jp} className="font-jp text-2xl leading-relaxed font-medium sm:text-[1.7rem]" />
       <Rich text={ex.en} className="mt-1.5 block text-[0.95rem] text-ink" />
       {ex.note && <Rich text={ex.note} className="mt-1 block text-sm leading-6 text-ink-2" />}
     </div>
@@ -70,7 +70,7 @@ function BlockView({ block }: { block: Block }) {
                 >
                   {i === 0 ? "A" : "B"}
                 </span>
-                <Jp jp={ex.jp} className="font-serif text-2xl leading-relaxed font-medium" />
+                <Jp jp={ex.jp} className="font-jp text-2xl leading-relaxed font-medium" />
                 <Rich text={ex.en} className="mt-2 block text-[0.95rem]" />
                 {ex.note && <Rich text={ex.note} className="mt-1 block text-sm leading-6 text-ink-2" />}
               </div>
@@ -152,7 +152,7 @@ function BlockView({ block }: { block: Block }) {
                       right ? "rounded-br-md bg-accent-soft" : "rounded-bl-md bg-surface"
                     }`}
                   >
-                    <Jp jp={line.jp} className="font-serif text-xl leading-relaxed font-medium" />
+                    <Jp jp={line.jp} className="font-jp text-xl leading-relaxed font-medium" />
                     <Rich text={line.en} className="mt-0.5 block text-sm text-ink-2" />
                   </div>
                 </li>

@@ -2,29 +2,51 @@
  * The shape, version and migrations of every localStorage store. Pure, so the migrations are unit
  * tested and backup/restore can decode any store without React.
  */
-import type { ScriptMode } from "@/content/types";
 import { isPlainObject, type StoreSchema, wrapUnchanged } from "@/lib/envelope";
 import { type CardState, EMPTY_SRS, MAX_BOX, type SrsState } from "@/lib/srs";
 
+/**
+ * How kanji are shown. kana: kanji replaced by their reading · all: furigana over every kanji ·
+ * new: furigana only over kanji not yet learned (E2) · none: kanji alone.
+ */
+export const FURIGANA_MODES = ["kana", "all", "new", "none"] as const;
+export const TEXT_SIZES = ["s", "m", "l"] as const;
+export const FONTS = ["mincho", "gothic"] as const;
+export const THEMES = ["system", "light", "dark"] as const;
+
 export interface Settings {
-  script: ScriptMode;
+  furigana: (typeof FURIGANA_MODES)[number];
   romaji: boolean;
+  size: (typeof TEXT_SIZES)[number];
+  /** The typeface for Japanese lines. */
+  font: (typeof FONTS)[number];
+  theme: (typeof THEMES)[number];
 }
 
-export const DEFAULT_SETTINGS: Settings = { script: "kana", romaji: false };
+export const DEFAULT_SETTINGS: Settings = { furigana: "kana", romaji: false, size: "m", font: "mincho", theme: "system" };
 
-const SCRIPT_MODES: ScriptMode[] = ["kana", "furigana", "kanji"];
+/** Version 1's three script modes, as version 2 furigana modes. */
+export const SCRIPT_TO_FURIGANA: Record<string, Settings["furigana"]> = { kana: "kana", furigana: "all", kanji: "none" };
+
+const oneOf = <T extends string>(options: readonly T[], value: unknown, fallback: T): T =>
+  options.includes(value as T) ? (value as T) : fallback;
 
 /** Keeps every valid field and fills the rest from the defaults, so one bad field doesn't reset the others. */
 export const settingsSchema: StoreSchema<Settings> = {
-  version: 1,
+  version: 2,
   fallback: DEFAULT_SETTINGS,
-  migrations: [wrapUnchanged],
+  migrations: [
+    wrapUnchanged,
+    (data) => (isPlainObject(data) ? { furigana: SCRIPT_TO_FURIGANA[data.script as string], romaji: data.romaji } : data),
+  ],
   validate(data) {
     if (!isPlainObject(data)) return null;
     return {
-      script: SCRIPT_MODES.includes(data.script as ScriptMode) ? (data.script as ScriptMode) : DEFAULT_SETTINGS.script,
+      furigana: oneOf(FURIGANA_MODES, data.furigana, DEFAULT_SETTINGS.furigana),
       romaji: typeof data.romaji === "boolean" ? data.romaji : DEFAULT_SETTINGS.romaji,
+      size: oneOf(TEXT_SIZES, data.size, DEFAULT_SETTINGS.size),
+      font: oneOf(FONTS, data.font, DEFAULT_SETTINGS.font),
+      theme: oneOf(THEMES, data.theme, DEFAULT_SETTINGS.theme),
     };
   },
 };

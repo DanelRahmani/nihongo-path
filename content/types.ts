@@ -10,7 +10,6 @@
 export type Jp = string;
 export type Rich = string;
 
-export type ScriptMode = "kana" | "furigana" | "kanji";
 
 export interface Example {
   jp: Jp;

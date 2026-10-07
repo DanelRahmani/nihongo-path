@@ -21,7 +21,10 @@ const SRS = {
 
 /** What each store held in localStorage before envelopes (version 0), and what it becomes now. */
 const LEGACY: Record<StoreKey, { before: unknown; after: unknown }> = {
-  "np:settings": { before: { script: "furigana", romaji: true }, after: { script: "furigana", romaji: true } },
+  "np:settings": {
+    before: { script: "furigana", romaji: true },
+    after: { furigana: "all", romaji: true, size: "m", font: "mincho", theme: "system" },
+  },
   "np:progress": { before: { "start/three-scripts": true }, after: { "start/three-scripts": true } },
   "np:srs": { before: SRS, after: SRS },
   "np:path-filter": { before: { kind: "particles", hideDone: true }, after: { unit: "particles", hideDone: true } },
@@ -88,8 +91,15 @@ describe("envelopes", () => {
 
 describe("store schemas repair what they can", () => {
   it("keeps valid settings fields and defaults the rest", () => {
-    const raw = JSON.stringify({ v: 1, data: { script: "hieroglyphs", romaji: true } });
-    expect(decode(raw, settingsSchema).value).toEqual({ script: "kana", romaji: true });
+    const raw = JSON.stringify({ v: 2, data: { furigana: "hieroglyphs", romaji: true, size: "l", font: "comic" } });
+    expect(decode(raw, settingsSchema).value).toEqual({ ...DEFAULT_SETTINGS, romaji: true, size: "l" });
+  });
+
+  it("turns version-1 script modes into furigana modes", () => {
+    const v1 = (script: string) => JSON.stringify({ v: 1, data: { script, romaji: false } });
+    expect(decode(v1("kana"), settingsSchema).value.furigana).toBe("kana");
+    expect(decode(v1("furigana"), settingsSchema).value.furigana).toBe("all");
+    expect(decode(v1("kanji"), settingsSchema).value.furigana).toBe("none");
   });
 
   it("drops progress entries that aren't true", () => {

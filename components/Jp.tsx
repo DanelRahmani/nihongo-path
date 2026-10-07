@@ -1,11 +1,13 @@
-"use client";
-
 import { Fragment } from "react";
-import type { ScriptMode } from "@/content/types";
 import { isJpOnly, langRuns, parse, type Token } from "@/lib/markup";
 import { romajiOf } from "@/lib/romaji";
-import { settingsStore } from "@/lib/stores";
-import { useStore } from "@/lib/storage";
+
+/*
+ * Japanese is rendered once with every display variant in the HTML: each kanji word carries its ruby
+ * and its kana reading, word spaces are present, and the romaji line is there. CSS keyed on the <html>
+ * attributes from lib/display.ts shows the right one, so nothing here depends on the reader's settings
+ * and nothing flashes when they load.
+ */
 
 type Styled = { hl: boolean; bold: boolean; it: boolean };
 
@@ -16,26 +18,28 @@ function styled(t: Styled, node: React.ReactNode): React.ReactNode {
   return node;
 }
 
-function kanjiWord(t: Extract<Token, { kind: "ruby" }>, mode: ScriptMode): React.ReactNode {
-  if (mode === "kana") return t.reading;
-  if (mode === "kanji") return t.base;
+/** A kanji word: ruby for the furigana modes, the bare reading for kana-only. data-k lists its kanji. */
+function KanjiWord({ t }: { t: Extract<Token, { kind: "ruby" }> }) {
   return (
-    <ruby>
-      {t.base}
-      <rp>(</rp>
-      <rt>{t.reading}</rt>
-      <rp>)</rp>
-    </ruby>
+    <span className="w" data-k={t.base}>
+      <ruby>
+        {t.base}
+        <rp>(</rp>
+        <rt>{t.reading}</rt>
+        <rp>)</rp>
+      </ruby>
+      <span className="yomi">{t.reading}</span>
+    </span>
   );
 }
 
 /** A Japanese line: the caller puts lang="ja" on the whole line. */
-function renderLine(tokens: Token[], mode: ScriptMode) {
+function renderLine(tokens: Token[]) {
   return tokens.map((t, i) => {
-    // Kana-only text is spaced between words (as in children's books), or はは and は run together.
-    if (t.kind === "space") return mode === "kana" ? <Fragment key={i}> </Fragment> : null;
+    // Word spaces show only in kana-only mode (as in children's books), or はは and は run together.
+    if (t.kind === "space") return <span key={i} className="ws"> </span>;
     if (t.kind === "join") return null;
-    return <Fragment key={i}>{styled(t, t.kind === "text" ? t.text : kanjiWord(t, mode))}</Fragment>;
+    return <Fragment key={i}>{styled(t, t.kind === "text" ? t.text : <KanjiWord t={t} />)}</Fragment>;
   });
 }
 
@@ -43,11 +47,11 @@ function renderLine(tokens: Token[], mode: ScriptMode) {
  * English prose with Japanese inside: each stretch of Japanese gets one lang="ja" span, so it is set
  * in a Japanese font with Japanese line breaking.
  */
-function renderProse(tokens: Token[], mode: ScriptMode) {
+function renderProse(tokens: Token[]) {
   const pieces: { ja: boolean; node: React.ReactNode }[] = [];
   for (const t of tokens) {
     if (t.kind === "text") for (const run of langRuns(t.text)) pieces.push({ ja: run.ja, node: styled(t, run.text) });
-    else if (t.kind === "ruby") pieces.push({ ja: true, node: styled(t, kanjiWord(t, mode)) });
+    else if (t.kind === "ruby") pieces.push({ ja: true, node: styled(t, <KanjiWord t={t} />) });
   }
   const out: React.ReactNode[] = [];
   let group: React.ReactNode[] = [];
@@ -67,7 +71,7 @@ function renderProse(tokens: Token[], mode: ScriptMode) {
   return out;
 }
 
-/** A Japanese phrase or sentence, shown per the reader's script mode, with an optional romaji line. */
+/** A Japanese phrase or sentence, with a romaji line that shows when the reader turns romaji on. */
 export function Jp({
   jp,
   className = "",
@@ -75,15 +79,14 @@ export function Jp({
 }: {
   jp: string;
   className?: string;
-  /** Allow the romaji line (still only shown when the reader has romaji on). */
+  /** Include the romaji line (still only shown when the reader has romaji on). */
   romaji?: boolean;
 }) {
-  const [settings] = useStore(settingsStore);
   return (
     <span className={`inline-flex flex-col ${className}`}>
-      <span lang="ja">{renderLine(parse(jp, true), settings.script)}</span>
-      {romaji && settings.romaji && (
-        <span className="mt-1 font-sans text-[0.55em] leading-snug font-normal tracking-wide text-ink-2 [font-size:max(0.55em,0.8rem)]">
+      <span lang="ja">{renderLine(parse(jp, true))}</span>
+      {romaji && (
+        <span className="romaji mt-1 font-sans text-[0.55em] leading-snug font-normal tracking-wide text-ink-2 [font-size:max(0.55em,0.8rem)]">
           {romajiOf(jp)}
         </span>
       )}
@@ -93,21 +96,17 @@ export function Jp({
 
 /** Prose with inline Japanese, **bold** and {highlights}. */
 export function Rich({ text, className }: { text: string; className?: string }) {
-  const [settings] = useStore(settingsStore);
-  return <span className={className}>{renderProse(parse(text, false), settings.script)}</span>;
+  return <span className={className}>{renderProse(parse(text, false))}</span>;
 }
 
-/** Table cell: Japanese cells get a romaji line when romaji is on. */
+/** Table cell: Japanese-only cells read like an example line and get a romaji line; mixed cells are prose. */
 export function Cell({ text }: { text: string }) {
-  const [settings] = useStore(settingsStore);
-  // Japanese-only cells use word spaces like examples; mixed cells are prose.
   const jpOnly = isJpOnly(text);
   const tokens = parse(text, jpOnly);
-  const showRomaji = settings.romaji && jpOnly;
   return (
     <span className="inline-flex flex-col">
-      {jpOnly ? <span lang="ja">{renderLine(tokens, settings.script)}</span> : <span>{renderProse(tokens, settings.script)}</span>}
-      {showRomaji && <span className="text-xs text-ink-2">{romajiOf(text)}</span>}
+      {jpOnly ? <span lang="ja">{renderLine(tokens)}</span> : <span>{renderProse(tokens)}</span>}
+      {jpOnly && <span className="romaji text-xs text-ink-2">{romajiOf(text)}</span>}
     </span>
   );
 }

@@ -86,6 +86,7 @@
   --color-good-soft: var(--good-soft);
   --font-sans: var(--font-gothic), "Hiragino Sans", "Yu Gothic", sans-serif;
   --font-serif: var(--font-mincho), "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --font-jp: var(--jp-face);
   --radius-card: 1.25rem;
   --radius-panel: 1.75rem;
   --shadow-card:
@@ -100,6 +101,42 @@
 
 html {
   -webkit-text-size-adjust: 100%;
+  /* The typeface for Japanese lines (Display → Typeface). */
+  --jp-face: var(--font-mincho), "Hiragino Mincho ProN", "Yu Mincho", serif;
+}
+
+/*
+ * Display settings (lib/display.ts). Every Japanese line carries all its variants; these rules show
+ * the one the <html> attributes ask for. The head script sets the attributes before the first paint.
+ */
+html[data-font="gothic"] {
+  --jp-face: var(--font-gothic), "Hiragino Sans", "Yu Gothic", sans-serif;
+}
+/* Text size scales the page content; the header keeps its size so it always fits a phone. */
+html[data-size="s"] main {
+  zoom: 0.9375;
+}
+html[data-size="l"] main {
+  zoom: 1.125;
+}
+.w .yomi,
+.ws,
+.romaji {
+  display: none;
+}
+[data-furigana="kana"] .w ruby {
+  display: none;
+}
+[data-furigana="kana"] .w .yomi,
+[data-furigana="kana"] .ws {
+  display: inline;
+}
+[data-furigana="none"] .w rt,
+[data-furigana="new"] .w rt {
+  display: none;
+}
+[data-romaji="on"] .romaji {
+  display: block;
 }
 
 body {
@@ -213,7 +250,10 @@ body {
   }
 }
 
-[popover] {
-  inset: unset;
-  margin: 0;
+/* Undo the UA centring of popovers; in the base layer so position utilities (top-*, right-*) win. */
+@layer base {
+  [popover] {
+    inset: unset;
+    margin: 0;
+  }
 }

@@ -19,7 +19,7 @@ function KanaCell({ k, hideRomaji, learned }: { k: Kana; hideRomaji: boolean; le
       tabIndex={hideRomaji ? 0 : undefined}
       className="group relative flex aspect-square flex-col items-center justify-center rounded-2xl border border-line bg-surface transition-[border-color,box-shadow] duration-150 hover:border-accent hover:shadow-card"
     >
-      <span lang="ja" className="font-serif text-[1.65rem] leading-none font-medium sm:text-3xl">
+      <span lang="ja" className="font-jp text-[1.65rem] leading-none font-medium sm:text-3xl">
         {k.char}
       </span>
       <span

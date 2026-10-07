@@ -2,7 +2,9 @@ import type { Metadata, Viewport } from "next";
 import { Shippori_Mincho, Zen_Kaku_Gothic_New } from "next/font/google";
 import Link from "next/link";
 import { DisplaySettings } from "@/components/DisplaySettings";
+import { InlineScript } from "@/components/InlineScript";
 import { NavLinks } from "@/components/NavLinks";
+import { DEFAULT_ATTRIBUTES, HEAD_SCRIPT } from "@/lib/display";
 import "./globals.css";
 
 const mincho = Shippori_Mincho({
@@ -33,7 +35,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${mincho.variable} ${gothic.variable} h-full`}>
+    // The head script swaps the default display attributes for the reader's before the first paint,
+    // so React must accept <html> as it finds it.
+    <html lang="en" {...DEFAULT_ATTRIBUTES} suppressHydrationWarning className={`${mincho.variable} ${gothic.variable} h-full`}>
+      <head>
+        <InlineScript html={HEAD_SCRIPT} />
+      </head>
       <body className="flex min-h-full flex-col">
         <header className="sticky top-0 z-20 border-b border-line/80 bg-paper/80 backdrop-blur-xl backdrop-saturate-150">
           <div className="mx-auto flex h-16 max-w-5xl items-center gap-2 px-4 sm:gap-4 sm:px-6">

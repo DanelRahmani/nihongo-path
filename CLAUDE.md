@@ -40,6 +40,13 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
     - dialogues as chat bubbles;
     - kana chips and a refreshed drill.
   - Japanese inside English prose and table cells now carries `lang="ja"`: `langRuns()` groups each Japanese stretch into one span. `:lang(ja)` gets `line-break: strict`. Reduced motion also turns off transitions.
+- **A4 Display settings before paint (2026-10-08):**
+  - Settings v2: furigana kana/all/new/none, romaji, size S/M/L, Japanese typeface mincho/gothic, theme system/light/dark. Migrated from v1's script mode (furigana → all, kanji → none).
+  - `lib/display.ts`: `HEAD_SCRIPT` is plain ES5 inlined in `<head>` through `components/InlineScript.tsx`, the Next guide's helper. It sets five `data-*` attributes on `<html>` before the first paint. The server sends the defaults, and `suppressHydrationWarning` lets the script change them.
+  - `Jp`/`Rich`/`Cell` no longer read settings. Every Japanese line carries all its variants: ruby, the bare kana reading, word spaces and the romaji line. CSS picks one.
+  - Each kanji word carries `data-k` for E2's "new kanji only" mode, and `furiganaCss()` writes that mode's rules. The mode itself stays hidden in the menu until E2.
+  - Text size zooms `main`, so the header always fits a phone. The typeface is a CSS variable used by Japanese lines; titles and decorative marks stay mincho.
+  - The display panel is rebuilt on a shared `Segmented` radio-group component. A layout effect re-applies the attributes after React's development-mode remount.
 
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
@@ -62,7 +69,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 
 ### Numbers
 - 9 units, 62 lessons, 536 Japanese lines (287 example, pair and dialogue sentences, 136 with a highlight), 897 ruby tokens, 244 distinct kanji, 208 kana cards, 0 quizzes.
-- Tests: 155 in 8 files.
+- Tests: 184 in 9 files.
 
 ### How it was checked
 - `npm test`, `npm run typecheck`, `npm run lint`, `npm run build`.
@@ -74,6 +81,12 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - the breadcrumb to /#verbs opens Verbs, and a reload keeps the tab;
   - console clean.
 - A3 in the browser at 375 px, light and dark: home, path tabs, a lesson with a dialogue and callouts, the kana chart and the drill (wrong-answer state). No horizontal scroll; a fresh tab's console is clean.
+- A4 in the browser:
+  - Server HTML carries the defaults, and the head script sits before `<body>`.
+  - Old v1 settings (furigana + romaji) apply on load, and CSS shows the right variant.
+  - Changing theme, size and typeface applies at once, persists as v2 and survives a reload, including dark over a light OS.
+  - No header overflow or page scroll at any size at 375 px. The panel sits below the header.
+  - A fresh tab's console has no errors or hydration warnings.
 - Browser: name lines in kana, furigana and kanji modes show no hyphen in the Japanese and tanaka-san / yamada-sensei in the romaji. Console clean.
 - Review: a fresh Opus 5.5 reviewer checked STYLE.md, the changed lines and the golden values. All findings were applied:
   - 3 errors, including the は and は・が marks, which romanised wrongly (marks are now labels without romaji);

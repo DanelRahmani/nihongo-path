@@ -1,6 +1,7 @@
 import { KanaDueBadge } from "@/components/kana/KanaDueBadge";
 import { PathBrowser, type PathUnit } from "@/components/PathBrowser";
 import { ContinueCard } from "@/components/Progress";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ALL_LESSONS, KANJI_NUMERALS, UNITS } from "@/content/units";
 
 export default function Home() {
@@ -24,31 +25,32 @@ export default function Home() {
   const continueLessons = units.flatMap((u) => u.lessons.map((l) => ({ ...l, unitTitle: u.title })));
 
   return (
-    <div className="mx-auto max-w-3xl px-4 pt-10 pb-20 sm:px-6 sm:pt-16">
-      <section className="flex items-start gap-6 sm:gap-10">
+    <div className="mx-auto max-w-3xl px-4 pt-10 pb-24 sm:px-6 sm:pt-16">
+      <section className="relative flex items-start gap-6 sm:gap-12">
+        <span aria-hidden className="sun -top-16 -left-24 size-80 sm:-left-32 sm:size-[28rem]" />
         <h1
           lang="ja"
-          className="tategaki shrink-0 font-serif text-5xl leading-[1.05] font-extrabold tracking-[0.12em] sm:text-7xl"
+          className="tategaki relative shrink-0 font-serif text-5xl leading-[1.05] font-extrabold tracking-[0.12em] sm:text-7xl"
         >
           日本語<span className="text-accent">の</span>道
         </h1>
-        <div className="min-w-0 pt-2">
-          <p className="text-xs font-medium tracking-[0.2em] text-ink-2 uppercase">Nihongo Path</p>
-          <p className="mt-3 max-w-md text-lg leading-relaxed sm:text-xl">
-            Kana first, then the grammar that makes sentences work — each idea shown with example pairs you can
-            compare side by side.
+        <div className="relative min-w-0 pt-2">
+          <Eyebrow>Nihongo Path</Eyebrow>
+          <p className="mt-4 max-w-md text-lg leading-relaxed text-pretty sm:text-2xl sm:leading-snug">
+            Kana first, then the grammar that makes sentences work, each idea shown with example pairs you can compare
+            side by side.
           </p>
-          <div className="mt-5">
+          <div className="mt-6">
             <KanaDueBadge />
           </div>
         </div>
       </section>
 
-      <section className="mt-12" aria-label="Next lesson">
+      <section className="mt-14" aria-label="Next lesson">
         <ContinueCard lessons={continueLessons} />
       </section>
 
-      <section className="mt-16" aria-labelledby="path-heading">
+      <section className="mt-20" aria-labelledby="path-heading">
         <PathBrowser units={units} />
       </section>
     </div>

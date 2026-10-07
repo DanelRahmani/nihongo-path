@@ -83,6 +83,21 @@ export function hasJapanese(src: string): boolean {
   return /[぀-ヿ\p{Script=Han}]/u.test(src);
 }
 
+/** CJK punctuation, kana, kanji and full-width forms. */
+const JA_CHAR = /[　-ヿ㐀-䶿一-鿿！-｠]/u;
+
+/** Splits English prose into runs of Japanese and other text, so each Japanese run can carry lang="ja". */
+export function langRuns(text: string): { text: string; ja: boolean }[] {
+  const runs: { text: string; ja: boolean }[] = [];
+  for (const c of text) {
+    const ja = JA_CHAR.test(c);
+    const last = runs.at(-1);
+    if (last && last.ja === ja) last.text += c;
+    else runs.push({ text: c, ja });
+  }
+  return runs;
+}
+
 /** A table cell written entirely in Japanese: it uses word spaces and gets a romaji line, like an example. */
 export function isJpOnly(src: string): boolean {
   return hasJapanese(src) && !/[a-z]/i.test(src.replace(/\[[^\]]*\]/g, ""));

@@ -3,6 +3,10 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Jp, Rich } from "@/components/Jp";
+import { Button } from "@/components/ui/Button";
+import { Eyebrow } from "@/components/ui/Eyebrow";
+import { panelClass } from "@/components/ui/Panel";
+import { ProgressBar } from "@/components/ui/ProgressBar";
 import { progressStore } from "@/lib/stores";
 import { useStore } from "@/lib/storage";
 
@@ -32,16 +36,10 @@ export function CompleteButton({ lessonKey }: { lessonKey: string }) {
   };
 
   return (
-    <div className="flex items-center gap-4">
-      <button
-        type="button"
-        onClick={toggle}
-        className={`rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
-          done ? "border border-line text-ink-2 hover:border-ink-2" : "bg-accent text-on-accent hover:opacity-90"
-        }`}
-      >
+    <div className="flex min-h-16 items-center gap-5">
+      <Button variant={done ? "secondary" : "primary"} size="lg" onClick={toggle}>
         {done ? "Mark as not done" : "Mark lesson as done"}
-      </button>
+      </Button>
       {done && <Hanko size="lg" animate={justStamped} />}
     </div>
   );
@@ -57,7 +55,7 @@ export interface ContinueLesson {
   unitTitle: string;
 }
 
-/** Dashboard hero: the first lesson not yet done. */
+/** Dashboard hero: the first lesson not yet done, and how far along the path the reader is. */
 export function ContinueCard({ lessons }: { lessons: ContinueLesson[] }) {
   const [progress] = useStore(progressStore);
   const next = lessons.find((l) => !progress[l.key]);
@@ -65,7 +63,7 @@ export function ContinueCard({ lessons }: { lessons: ContinueLesson[] }) {
 
   if (!next) {
     return (
-      <div className="flex items-center gap-4">
+      <div className={panelClass("tint", "flex items-center gap-5 p-6")}>
         <Hanko size="lg" />
         <p className="text-lg">Every lesson is stamped. Keep your kana sharp in the drill.</p>
       </div>
@@ -75,21 +73,37 @@ export function ContinueCard({ lessons }: { lessons: ContinueLesson[] }) {
   return (
     <Link
       href={next.href}
-      className="group flex items-center gap-5 rounded-2xl border border-line p-5 transition-colors hover:border-accent sm:p-6"
+      className={panelClass(
+        "surface",
+        "group block p-5 transition-[box-shadow,transform,border-color] duration-200 ease-soft hover:-translate-y-0.5 hover:border-line-strong hover:shadow-lift sm:p-6",
+      )}
     >
-      <span className="hidden shrink-0 sm:block">
-        <Jp jp={next.mark} romaji={false} className="font-serif text-5xl font-bold text-accent" />
-      </span>
-      <span className="min-w-0 flex-1">
-        <span className="block text-xs font-medium tracking-[0.18em] text-ink-2 uppercase">
-          {doneCount === 0 ? "First lesson" : "Up next"} · {next.number} · {next.unitTitle}
+      <div className="flex items-center gap-4 sm:gap-6">
+        <span className="grid size-16 shrink-0 place-items-center rounded-2xl bg-accent-soft sm:size-24">
+          <Jp jp={next.mark} romaji={false} className="font-serif text-2xl font-bold text-accent sm:text-4xl" />
         </span>
-        <span className="mt-1 block text-xl font-bold group-hover:text-accent">{next.title}</span>
-        <Rich text={next.summary} className="mt-1 block text-sm text-ink-2" />
-      </span>
-      <span aria-hidden className="text-2xl text-accent transition-transform group-hover:translate-x-1">
-        →
-      </span>
+        <div className="min-w-0 flex-1">
+          <Eyebrow>
+            {doneCount === 0 ? "First lesson" : "Up next"} · {next.number} · {next.unitTitle}
+          </Eyebrow>
+          <span className="mt-1.5 block text-lg leading-snug font-bold text-balance group-hover:text-accent sm:text-xl">
+            {next.title}
+          </span>
+          <Rich text={next.summary} className="mt-1 hidden text-sm text-ink-2 sm:block" />
+        </div>
+        <span
+          aria-hidden
+          className="grid size-10 shrink-0 place-items-center rounded-full bg-accent text-lg text-on-accent transition-transform duration-200 ease-soft group-hover:translate-x-1"
+        >
+          →
+        </span>
+      </div>
+      <div className="mt-5 flex items-center gap-3 border-t border-line pt-4">
+        <ProgressBar value={doneCount} max={lessons.length} className="flex-1" />
+        <span className="shrink-0 text-xs text-ink-2 tabular-nums">
+          {doneCount} of {lessons.length} lessons
+        </span>
+      </div>
     </Link>
   );
 }

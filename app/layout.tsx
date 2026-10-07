@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#1c1c1e" },
+    { media: "(prefers-color-scheme: dark)", color: "#1b1b1e" },
   ],
 };
 
@@ -35,10 +35,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${mincho.variable} ${gothic.variable} h-full`}>
       <body className="flex min-h-full flex-col">
-        <header className="sticky top-0 z-20 border-b border-line bg-paper/90 backdrop-blur-md">
+        <header className="sticky top-0 z-20 border-b border-line/80 bg-paper/80 backdrop-blur-xl backdrop-saturate-150">
           <div className="mx-auto flex h-16 max-w-5xl items-center gap-2 px-4 sm:gap-4 sm:px-6">
             <Link href="/" className="group flex shrink-0 items-center gap-2.5 sm:gap-3" aria-label="Nihongo Path home">
-              <span className="size-3.5 rounded-full bg-accent transition-transform group-hover:scale-110" />
+              <span className="size-3.5 rounded-full bg-accent shadow-[0_0_0_4px_var(--accent-soft)] transition-transform duration-300 ease-soft group-hover:scale-110" />
               <span lang="ja" className="font-serif text-lg font-bold tracking-wider whitespace-nowrap sm:text-xl">
                 日本語の道
               </span>
@@ -49,12 +49,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </div>
           </div>
         </header>
-        <main className="flex-1">{children}</main>
-        <footer className="border-t border-line">
-          <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-6 text-xs text-ink-2 sm:px-6">
-            <span>Nihongo Path — a personal study app</span>
-            <span lang="ja" className="font-serif">
-              一歩ずつ
+        <main className="flex-1 overflow-x-clip">{children}</main>
+        <footer className="border-t border-line bg-paper-2">
+          <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-8 text-xs text-ink-2 sm:px-6">
+            <span>Nihongo Path · a personal study app</span>
+            <span className="flex items-center gap-2">
+              <span lang="ja" className="font-serif text-sm text-ink">
+                一歩ずつ
+              </span>
+              <span className="hidden sm:inline">one step at a time</span>
             </span>
           </div>
         </footer>

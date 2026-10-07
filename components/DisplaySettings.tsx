@@ -27,7 +27,7 @@ export function DisplaySettings() {
       <button
         type="button"
         popoverTarget="display-settings"
-        className="flex h-9 items-center gap-2 rounded-full border border-line px-3 text-sm whitespace-nowrap text-ink-2 transition-colors hover:border-accent hover:text-accent"
+        className="flex h-9 items-center gap-2 rounded-full border border-line-strong bg-surface px-3.5 text-sm whitespace-nowrap text-ink-2 transition-colors duration-150 hover:border-accent hover:text-accent"
       >
         <span lang="ja" className="font-serif text-base leading-none text-ink">
           表示
@@ -38,7 +38,7 @@ export function DisplaySettings() {
       <div
         id="display-settings"
         popover="auto"
-        className="fixed top-16 right-4 w-[min(22rem,calc(100vw-2rem))] rounded-2xl border border-line bg-paper p-5 text-ink shadow-[0_20px_60px_-20px_rgb(0_0_0/0.35)]"
+        className="fixed top-[4.5rem] right-4 w-[min(22rem,calc(100vw-2rem))] rounded-panel border border-line bg-surface p-5 text-ink shadow-pop"
       >
         <fieldset>
           <legend className="text-xs font-medium tracking-[0.18em] text-ink-2 uppercase">Script</legend>
@@ -48,8 +48,8 @@ export function DisplaySettings() {
               return (
                 <label
                   key={m.value}
-                  className={`flex cursor-pointer flex-col items-center gap-1 rounded-xl border px-2 pt-3 pb-2 text-center transition-colors has-focus-visible:outline-2 has-focus-visible:outline-accent ${
-                    active ? "border-accent bg-accent-soft" : "border-line hover:border-ink-2"
+                  className={`flex cursor-pointer flex-col items-center gap-1 rounded-2xl border px-2 pt-3 pb-2 text-center transition-colors duration-150 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-accent ${
+                    active ? "border-accent bg-accent-soft" : "border-line hover:border-line-strong hover:bg-paper-2"
                   }`}
                 >
                   <input
@@ -82,10 +82,10 @@ export function DisplaySettings() {
             aria-checked={settings.romaji}
             aria-label="Show romaji"
             onClick={() => setSettings((s) => ({ ...s, romaji: !s.romaji }))}
-            className={`relative h-7 w-12 rounded-full transition-colors ${settings.romaji ? "bg-accent" : "bg-line"}`}
+            className={`relative h-7 w-12 shrink-0 rounded-full transition-colors duration-200 ${settings.romaji ? "bg-accent" : "bg-line-strong"}`}
           >
             <span
-              className={`absolute top-1 left-1 size-5 rounded-full bg-paper shadow transition-transform ${
+              className={`absolute top-1 left-1 size-5 rounded-full bg-surface shadow-card transition-transform duration-200 ease-soft ${
                 settings.romaji ? "translate-x-5" : ""
               }`}
             />

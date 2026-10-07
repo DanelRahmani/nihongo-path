@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Chip } from "@/components/ui/Chip";
 import { chartRows, isN, KANA, type Kana, type KanaGroup, type Script } from "@/content/kana";
 import { UNLOCK_BOX } from "@/lib/srs";
 import { srsStore } from "@/lib/stores";
@@ -16,7 +17,7 @@ function KanaCell({ k, hideRomaji, learned }: { k: Kana; hideRomaji: boolean; le
   return (
     <div
       tabIndex={hideRomaji ? 0 : undefined}
-      className="group relative flex aspect-square flex-col items-center justify-center rounded-xl border border-line bg-paper transition-colors hover:border-accent"
+      className="group relative flex aspect-square flex-col items-center justify-center rounded-2xl border border-line bg-surface transition-[border-color,box-shadow] duration-150 hover:border-accent hover:shadow-card"
     >
       <span lang="ja" className="font-serif text-[1.65rem] leading-none font-medium sm:text-3xl">
         {k.char}
@@ -43,22 +44,14 @@ export function KanaChart() {
   return (
     <div>
       <div className="flex flex-wrap items-center justify-between gap-4">
-        <div role="tablist" aria-label="Script" className="inline-flex rounded-full border border-line p-1">
+        <div role="group" aria-label="Script" className="flex gap-2">
           {(["hiragana", "katakana"] as const).map((s) => (
-            <button
-              key={s}
-              role="tab"
-              aria-selected={script === s}
-              onClick={() => setScript(s)}
-              className={`rounded-full px-4 py-1.5 text-sm transition-colors ${
-                script === s ? "bg-accent text-on-accent" : "text-ink-2 hover:text-ink"
-              }`}
-            >
-              <span lang="ja" className="mr-1.5 font-serif">
+            <Chip key={s} active={script === s} onClick={() => setScript(s)}>
+              <span lang="ja" className="font-serif">
                 {s === "hiragana" ? "ひらがな" : "カタカナ"}
               </span>
               <span className="hidden sm:inline">{s === "hiragana" ? "Hiragana" : "Katakana"}</span>
-            </button>
+            </Chip>
           ))}
         </div>
         <label className="flex cursor-pointer items-center gap-2 text-sm text-ink-2">

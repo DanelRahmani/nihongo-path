@@ -1,6 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import { Button } from "@/components/ui/Button";
+import { panelClass } from "@/components/ui/Panel";
+import { ProgressBar } from "@/components/ui/ProgressBar";
 import { type Deck, DECKS, deckCards, type Kana } from "@/content/kana";
 import {
   deckStats,
@@ -38,14 +41,16 @@ function DeckPicker({ onStart }: { onStart: (deck: Deck) => void }) {
     <div className="grid gap-3 sm:grid-cols-2">
       {DECKS.map((deck) => {
         const s = deckStats(deck, srs, now);
-        const pct = Math.round((s.learned / s.total) * 100);
         const sample = deckCards(deck).slice(0, 3).map((k) => k.char).join("");
         return (
           <button
             key={deck.id}
             type="button"
             onClick={() => onStart(deck)}
-            className="group rounded-2xl border border-line p-5 text-left transition-colors hover:border-accent"
+            className={panelClass(
+              "surface",
+              "group p-5 text-left transition-[box-shadow,transform,border-color] duration-200 ease-soft hover:-translate-y-0.5 hover:border-line-strong hover:shadow-lift",
+            )}
           >
             <div className="flex items-start justify-between gap-3">
               <span lang="ja" className="font-serif text-3xl font-bold group-hover:text-accent">
@@ -58,9 +63,7 @@ function DeckPicker({ onStart }: { onStart: (deck: Deck) => void }) {
               )}
             </div>
             <p className="mt-3 font-medium">{deck.title}</p>
-            <div className="mt-3 h-1 overflow-hidden rounded-full bg-paper-2">
-              <div className="h-full bg-accent transition-[width]" style={{ width: `${pct}%` }} />
-            </div>
+            <ProgressBar value={s.learned} max={s.total} className="mt-3" />
             <p className="mt-2 text-xs text-ink-2 tabular-nums">
               {s.learned}/{s.total} learned · {s.fresh} new ready
             </p>
@@ -125,12 +128,13 @@ function Session({ deck, onExit }: { deck: Deck; onExit: () => void }) {
   return (
     <div>
       <div className="flex items-center justify-between gap-4 text-sm">
-        <button type="button" onClick={onExit} className="text-ink-2 hover:text-accent">
+        <Button variant="ghost" size="sm" onClick={onExit} className="-ml-3">
           ← All decks
-        </button>
-        <span className="text-ink-2 tabular-nums">
-          <span className="text-accent">○ {score.right}</span> · ✕ {score.wrong}
-          {practice && <span className="ml-2 rounded-full border border-line px-2 py-0.5 text-xs">Practice</span>}
+        </Button>
+        <span className="flex items-center gap-3 text-ink-2 tabular-nums">
+          <span className="text-good">○ {score.right}</span>
+          <span className="text-accent">✕ {score.wrong}</span>
+          {practice && <span className="rounded-full bg-paper-3 px-2.5 py-0.5 text-xs text-ink">Practice</span>}
         </span>
       </div>
       <h2 className="mt-4 font-medium">{deck.title}</h2>
@@ -139,7 +143,7 @@ function Session({ deck, onExit }: { deck: Deck; onExit: () => void }) {
       </p>
 
       {unlocked && (
-        <p role="status" className="rise mt-4 rounded-xl bg-accent-soft px-4 py-3 text-sm">
+        <p role="status" className="rise mt-4 rounded-2xl bg-good-soft px-4 py-3 text-sm">
           New row unlocked:{" "}
           <span lang="ja" className="font-serif text-base text-accent">
             {unlocked}
@@ -157,8 +161,8 @@ function Session({ deck, onExit }: { deck: Deck; onExit: () => void }) {
           className="mt-6"
         >
           <div
-            className={`grid aspect-[4/3] place-items-center rounded-3xl border-2 transition-colors sm:aspect-[16/9] ${
-              phase === "wrong" ? "border-accent bg-accent-soft" : "border-line bg-paper-2"
+            className={`grid aspect-[4/3] place-items-center rounded-panel border-2 transition-colors duration-200 sm:aspect-[16/9] ${
+              phase === "wrong" ? "border-accent bg-accent-soft" : "border-line bg-surface shadow-card"
             }`}
           >
             <div className="text-center">
@@ -191,26 +195,22 @@ function Session({ deck, onExit }: { deck: Deck; onExit: () => void }) {
                   autoCapitalize="none"
                   autoCorrect="off"
                   spellCheck={false}
-                  className="h-14 min-w-0 flex-1 rounded-2xl border border-line bg-paper px-5 text-xl placeholder:text-ink-2/60 focus:border-accent focus:outline-none"
+                  className="h-14 min-w-0 flex-1 rounded-full border border-line-strong bg-surface px-6 text-xl placeholder:text-ink-2/70 focus:border-accent focus:ring-4 focus:ring-accent/20 focus:outline-none"
                 />
-                <button type="submit" className="h-14 rounded-2xl bg-accent px-6 font-medium text-on-accent hover:opacity-90">
+                <Button type="submit" size="lg">
                   Check
-                </button>
+                </Button>
               </>
             ) : (
-              <button
-                type="submit"
-                autoFocus
-                className="h-14 flex-1 rounded-2xl bg-accent font-medium text-on-accent hover:opacity-90"
-              >
+              <Button type="submit" size="lg" autoFocus className="flex-1">
                 Next card
-              </button>
+              </Button>
             )}
           </div>
           <p className="mt-3 h-5 text-sm text-ink-2" aria-live="polite">
             {last?.correct && phase === "ask" && (
               <>
-                <span className="text-accent">○</span>{" "}
+                <span className="text-good">○</span>{" "}
                 <span lang="ja" className="font-serif">
                   {last.kana.char}
                 </span>{" "}
@@ -220,7 +220,7 @@ function Session({ deck, onExit }: { deck: Deck; onExit: () => void }) {
           </p>
         </form>
       ) : (
-        <div className="rise mt-6 rounded-3xl border border-line p-8 text-center">
+        <div className={panelClass("surface", "rise mt-6 p-8 text-center")}>
           <p lang="ja" className="font-serif text-5xl text-accent">
             お見事
           </p>
@@ -231,25 +231,16 @@ function Session({ deck, onExit }: { deck: Deck; onExit: () => void }) {
               : "Nothing is scheduled yet."}
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-2">
-            <button
-              type="button"
+            <Button
+              variant="secondary"
               onClick={() => {
                 setPractice(true);
                 advance(srsStore.get(), undefined, true);
               }}
-              className="rounded-full border border-line px-5 py-2.5 text-sm hover:border-accent"
             >
               Practise anyway
-            </button>
-            {rowsOpen < deck.rows.length && (
-              <button
-                type="button"
-                onClick={unlockNextRow}
-                className="rounded-full bg-accent px-5 py-2.5 text-sm font-medium text-on-accent hover:opacity-90"
-              >
-                I know these — unlock the next row
-              </button>
-            )}
+            </Button>
+            {rowsOpen < deck.rows.length && <Button onClick={unlockNextRow}>I know these: unlock the next row</Button>}
           </div>
           <p className="mt-4 text-xs text-ink-2">Practice doesn&apos;t change your review schedule.</p>
         </div>

@@ -12,7 +12,7 @@ const LINKS = [
 export function NavLinks() {
   const pathname = usePathname();
   return (
-    <nav aria-label="Main" className="flex items-center sm:ml-6 sm:gap-1">
+    <nav aria-label="Main" className="flex items-center gap-0.5 sm:ml-4 sm:gap-1">
       {LINKS.map((l) => {
         const active = l.match(pathname);
         return (
@@ -20,15 +20,14 @@ export function NavLinks() {
             key={l.href}
             href={l.href}
             aria-current={active ? "page" : undefined}
-            className={`relative flex items-baseline gap-1.5 px-2 py-2 text-sm whitespace-nowrap transition-colors sm:px-2.5 ${
-              active ? "text-accent" : "text-ink-2 hover:text-ink"
+            className={`flex h-9 items-center gap-1.5 rounded-full px-2.5 text-sm whitespace-nowrap transition-colors duration-150 sm:px-3.5 ${
+              active ? "bg-accent-soft text-accent" : "text-ink-2 hover:bg-paper-2 hover:text-ink"
             }`}
           >
             <span lang="ja" className="font-serif text-base">
               {l.jp}
             </span>
             <span className="hidden sm:inline">{l.label}</span>
-            {active && <span className="absolute inset-x-2 -bottom-[13px] h-0.5 bg-accent sm:inset-x-2.5" />}
           </Link>
         );
       })}

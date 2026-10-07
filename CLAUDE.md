@@ -23,6 +23,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
     - Set greetings written as one word: いってきます, いってらっしゃい, おかえりなさい.
     - Names joined with `-` in 9 lines; one grammar note corrected (よい is still the usual written form).
 
+- **A2 Versioned stores (2026-10-07):** every localStorage store is saved as `{"v": n, "data": …}`. `lib/envelope.ts` decodes with a migration chain. Raw values from before envelopes are read as version 0. Data written by a newer build is used as the fallback and never overwritten. Corrupt data falls back safely. `lib/schemas.ts` holds each store's version, migrations and validation; the validation repairs what it can, such as dropping one bad kana card instead of the whole schedule. The keys are unchanged (`np:settings`, `np:progress`, `np:srs`, `np:path-filter`), and the path filter store moved into `lib/stores.ts`.
+
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
   - Q1: four furigana modes, kana-only by default.
@@ -43,11 +45,12 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 
 ### Numbers
 - 9 units, 62 lessons, 536 Japanese lines (287 example, pair and dialogue sentences, 136 with a highlight), 897 ruby tokens, 244 distinct kanji, 208 kana cards, 0 quizzes.
-- Tests: 120 in 5 files.
+- Tests: 138 in 6 files.
 
 ### How it was checked
 - `npm test`, `npm run typecheck`, `npm run lint`, `npm run build`.
 - The は/へ/を fix was run against the corpus snapshot taken before it: no line changed. Every later snapshot change was read line by line; Japanese text is unchanged except for the content fixes above.
+- A2 in the browser: settings, progress and the path filter written in the old raw format load unchanged. A setting change writes a v1 envelope. Data marked v7 (a newer build) is kept as is while the page falls back to defaults.
 - Browser: name lines in kana, furigana and kanji modes show no hyphen in the Japanese and tanaka-san / yamada-sensei in the romaji. Console clean.
 - Review: a fresh Opus 5.5 reviewer checked STYLE.md, the changed lines and the golden values. All findings were applied:
   - 3 errors, including the は and は・が marks, which romanised wrongly (marks are now labels without romaji);

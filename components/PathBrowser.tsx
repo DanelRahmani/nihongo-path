@@ -4,8 +4,8 @@ import Link from "next/link";
 import { Jp, Rich } from "@/components/Jp";
 import { Hanko } from "@/components/Progress";
 import { KINDS, type LessonKind } from "@/content/types";
-import { createPersistentStore, useStore } from "@/lib/storage";
-import { progressStore } from "@/lib/stores";
+import { useStore } from "@/lib/storage";
+import { pathFilterStore, progressStore } from "@/lib/stores";
 
 export interface PathLesson {
   key: string;
@@ -26,13 +26,6 @@ export interface PathUnit {
   lessons: PathLesson[];
 }
 
-interface PathFilter {
-  kind: LessonKind | "all";
-  hideDone: boolean;
-}
-
-const filterStore = createPersistentStore<PathFilter>("np:path-filter", { kind: "all", hideDone: false });
-
 function Chip({ active, onClick, children }: { active: boolean; onClick: () => void; children: React.ReactNode }) {
   return (
     <button
@@ -49,7 +42,7 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
 }
 
 export function PathBrowser({ units }: { units: PathUnit[] }) {
-  const [filter, setFilter] = useStore(filterStore);
+  const [filter, setFilter] = useStore(pathFilterStore);
   const [progress] = useStore(progressStore);
   const kinds = KINDS.filter((k) => units.some((u) => u.kind === k.kind));
   const total = units.reduce((n, u) => n + u.lessons.length, 0);

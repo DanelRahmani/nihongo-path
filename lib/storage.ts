@@ -1,25 +1,20 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { decode, encode, type StoreSchema } from "@/lib/envelope";
 
 /** localStorage can be missing or throw (private mode, blocked storage) — never let that break the page. */
-function load<T>(key: string, fallback: T): T {
+function readRaw(key: string): string | null {
   try {
-    const raw = window.localStorage.getItem(key);
-    if (raw === null) return fallback;
-    const parsed = JSON.parse(raw);
-    if (fallback && typeof fallback === "object" && !Array.isArray(fallback)) {
-      return { ...fallback, ...parsed };
-    }
-    return parsed as T;
+    return window.localStorage.getItem(key);
   } catch {
-    return fallback;
+    return null;
   }
 }
 
-function save<T>(key: string, value: T) {
+function writeRaw(key: string, raw: string) {
   try {
-    window.localStorage.setItem(key, JSON.stringify(value));
+    window.localStorage.setItem(key, raw);
   } catch {
     // Storage unavailable: progress lives only for this page view.
   }
@@ -32,17 +27,26 @@ export interface PersistentStore<T> {
   subscribe: (listener: () => void) => () => void;
 }
 
-export function createPersistentStore<T>(key: string, fallback: T): PersistentStore<T> {
+export function createPersistentStore<T>(key: string, schema: StoreSchema<T>): PersistentStore<T> {
   let cache: T | undefined;
+  /** False when a newer build wrote this key: keep its data rather than overwrite it with ours. */
+  let writable = true;
   const listeners = new Set<() => void>();
-  const read = () => (cache ??= load(key, fallback));
+  const read = () => {
+    if (cache === undefined) {
+      const { value, status } = decode(readRaw(key), schema);
+      writable = status !== "future";
+      cache = value;
+    }
+    return cache;
+  };
 
   return {
     get: read,
-    getServer: () => fallback,
+    getServer: () => schema.fallback,
     set(next) {
       cache = typeof next === "function" ? (next as (prev: T) => T)(read()) : next;
-      save(key, cache);
+      if (writable) writeRaw(key, encode(cache, schema));
       listeners.forEach((l) => l());
     },
     subscribe(listener) {

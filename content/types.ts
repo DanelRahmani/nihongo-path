@@ -1,26 +1,38 @@
 /**
- * Content model for lessons.
+ * Content model for lessons. The rules for writing it are in content/STYLE.md.
  *
  * Japanese markup used in every `Jp` / `Rich` string:
- *   [漢字|かんじ]  kanji with its reading — rendered per the reader's script mode
+ *   [漢字|かんじ]  kanji with its reading — rendered per the reader's furigana mode
  *   {text}        highlighted ("red pen") span; may contain ruby markup
  *   **text**      bold, *text* italic
- *   spaces        word boundaries: hidden in Japanese, used to space romaji
+ *   spaces        word boundaries in Jp strings: shown in kana-only mode, used to space romaji
+ *   -             in Jp strings, joins a name to its suffix: [田中|たなか]-さん (tanaka-san)
  */
 export type Jp = string;
 export type Rich = string;
-
 
 export interface Example {
   jp: Jp;
   en: string;
   note?: Rich;
+  /** The same line in the other register (polite ↔ plain), shown beneath it. */
+  alt?: Jp;
 }
 
 export interface DialogueLine {
   speaker: string;
   jp: Jp;
   en: string;
+  /** The same line in the other register, shown beneath it. */
+  alt?: Jp;
+}
+
+/** A typed quiz question. Answers are Jp markup; the kanji form and the kana reading of each are accepted. */
+export interface QuizQuestion {
+  prompt: Rich;
+  answers: Jp[];
+  /** Shown after the reader checks their answer, right or wrong. */
+  explanation: Rich;
 }
 
 export type Block =
@@ -32,7 +44,14 @@ export type Block =
   | { type: "table"; caption?: Rich; headers: Rich[]; rows: Rich[][] }
   | { type: "callout"; kind: "mistake" | "culture" | "tip"; title?: string; text: Rich }
   | { type: "dialogue"; lines: DialogueLine[]; note?: Rich }
-  | { type: "link"; href: string; label: string; text?: Rich };
+  | { type: "link"; href: string; label: string; text?: Rich }
+  | { type: "quiz"; questions: QuizQuestion[] };
+
+/** Which register a lesson's Japanese is in (content/STYLE.md §9). */
+export type Register = "polite" | "plain" | "both";
+
+/** Parts of the lesson template (content/STYLE.md §10) a lesson may skip, with the reason. */
+export type TemplatePart = "examples" | "pair" | "mistake" | "conversation" | "quiz";
 
 export interface Lesson {
   slug: string;
@@ -43,10 +62,16 @@ export interface Lesson {
   summary: string;
   /** Reference the rules were checked against. */
   source: string;
+  /** Required once a lesson follows the template (tests/template.test.ts). */
+  register?: Register;
+  /** What the lesson is about, for search and the grammar overview. Required with the template. */
+  kinds?: LessonKind[];
+  /** Template parts this lesson leaves out, each with the reason. */
+  exempt?: Partial<Record<TemplatePart, string>>;
   blocks: Block[];
 }
 
-/** Lesson type, used to filter the path. */
+/** Lesson type: each unit has one, and each lesson lists its own in `kinds`. */
 export type LessonKind = "basics" | "kana" | "word-order" | "particles" | "grammar" | "verbs" | "suffixes" | "culture";
 
 export const KINDS: { kind: LessonKind; label: string; jp: string }[] = [

@@ -47,7 +47,7 @@ export function DisplaySettings() {
         <span lang="ja" className="font-serif text-base leading-none text-ink">
           表示
         </span>
-        <span className="hidden sm:inline">Display</span>
+        <span className="sr-only sm:not-sr-only">Display</span>
       </button>
 
       <div

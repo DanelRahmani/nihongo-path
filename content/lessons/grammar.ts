@@ -18,7 +18,7 @@ export const grammar: Lesson[] = [
           ["was", "[学生|がくせい] でした", "[学生|がくせい] だった"],
           ["wasn't", "[学生|がくせい] じゃ ありません でした", "[学生|がくせい] じゃ なかった"],
         ],
-        caption: "では ありません is a more formal version of じゃ ありません — common in writing.",
+        caption: "ではありません is a more formal version of じゃありません — common in writing.",
       },
       {
         type: "examples",

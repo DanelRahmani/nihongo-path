@@ -64,7 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               <span lang="ja" className="font-serif text-sm text-ink">
                 一歩ずつ
               </span>
-              <span className="hidden sm:inline">one step at a time</span>
+              <span className="sr-only sm:not-sr-only">one step at a time</span>
             </span>
           </div>
         </footer>

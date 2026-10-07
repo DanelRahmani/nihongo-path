@@ -6,6 +6,12 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
+### Next
+- **B2:** convert start/three-scripts, the 5 hiragana, 4 katakana and 5 word-order lessons to the template, remove them from `content/retrofit-pending.ts`, and send each unit to a fresh reviewer.
+  - Kana lessons need a quiz question type that asks for the romaji reading. Add `answerIn: "romaji"` to `QuizQuestion` and check it with `lib/romaji-input.ts`, since typing kana through a Japanese keyboard tests nothing.
+  - Their highlights mark the new kana inside each word, and their pairs are minimal pairs (おばさん/おばあさん).
+- Then C1 (conjugation engine) and B3–B5, as in the plan.
+
 ### Built
 - **Phase 0 (2026-10-07):** repository audit and feature plan. No code changes.
 - **A1 Style guide and reading safety net (2026-10-07):**
@@ -47,6 +53,16 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Each kanji word carries `data-k` for E2's "new kanji only" mode, and `furiganaCss()` writes that mode's rules. The mode itself stays hidden in the menu until E2.
   - Text size zooms `main`, so the header always fits a phone. The typeface is a CSS variable used by Japanese lines; titles and decorative marks stay mincho.
   - The display panel is rebuilt on a shared `Segmented` radio-group component. A layout effect re-applies the attributes after React's development-mode remount.
+- **B1 Lesson template (2026-10-08):**
+  - Lessons gain `register` (polite/plain/both), `kinds`, `exempt` (template parts left out, each with a reason), and `alt` on examples and dialogue lines for the other register, shown beneath with a Casual/Polite label.
+  - A `quiz` block of typed questions, `components/lesson/Quiz.tsx`. Enter that confirms a Japanese keyboard's conversion doesn't submit.
+  - `lib/quiz.ts` checks answers exactly: each kanji word is accepted in kanji or kana, width is folded, and spaces and final punctuation are ignored. Near misses are named: romaji typed, a katakana word typed in hiragana, or は typed as わ.
+  - `lib/template.ts` and `tests/template.test.ts` enforce the template on every lesson not listed in `content/retrofit-pending.ts`, and fail if a listed lesson already passes, so the list can only shrink.
+  - `lib/register.ts`: a heuristic register classifier. Tests check that no line mixes registers, that every alt is the other register, and that polite and plain lessons stay so.
+  - `lib/romaji-input.ts`: a lenient romaji matcher (si/shi, tu/tsu, kyō/kyoo/kyou) for B2's kana quizzes and D3's search.
+  - Dialogue sides now follow the speaker, not the line number.
+  - Content: start/polite-and-casual follows the full template (4 core examples with alts, 2 pairs, a mistake callout, a dialogue, a culture note and a 4-question quiz). A new check stops word spaces inside Japanese in English prose, and one grammar caption was fixed by it.
+  - Phones: the nav links, the Display button and the chart chips keep their English names for screen readers.
 
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
@@ -69,7 +85,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 
 ### Numbers
 - 9 units, 62 lessons, 536 Japanese lines (287 example, pair and dialogue sentences, 136 with a highlight), 897 ruby tokens, 244 distinct kanji, 208 kana cards, 0 quizzes.
-- Tests: 184 in 9 files.
+- Tests: 246 in 13 files.
+- Template: 1 of 62 lessons converted (61 pending); 4 quiz questions so far.
 
 ### How it was checked
 - `npm test`, `npm run typecheck`, `npm run lint`, `npm run build`.
@@ -87,6 +104,18 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Changing theme, size and typeface applies at once, persists as v2 and survives a reload, including dark over a light OS.
   - No header overflow or page scroll at any size at 375 px. The panel sits below the header.
   - A fresh tab's console has no errors or hydration warnings.
+- B1 in the browser at 375 px:
+  - The quiz marks はしる right.
+  - "ikimasu" is marked wrong with the romaji note and the kana answer.
+  - Labels sit under the right lines.
+  - No overflow and no console errors.
+- B1 review: a fresh Opus 5.5 reviewer found no errors, 6 should-fix and 11 polish items, all applied:
+  - the quiz now uses verbs and adjectives that test transfer;
+  - more accepted answers (学生だよ, 暑いよ, 暑いね);
+  - softer, accurate rules ("doesn't end a sentence with だ");
+  - highlights on the changing part;
+  - a varied example and a varied culture note;
+  - the idea limited to speech.
 - Browser: name lines in kana, furigana and kanji modes show no hyphen in the Japanese and tanaka-san / yamada-sensei in the romaji. Console clean.
 - Review: a fresh Opus 5.5 reviewer checked STYLE.md, the changed lines and the golden values. All findings were applied:
   - 3 errors, including the は and は・が marks, which romanised wrongly (marks are now labels without romaji);
@@ -95,4 +124,5 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 
 ### Waiting on the owner
 - Pitch accent: blocked on audio from a native speaker. No speech synthesis.
+- start/polite-and-casual cites "Genki I ch. 3, 8 and 9". The reviewer and I both place plain past forms in ch. 9, but please confirm against your edition of Genki.
 - JLPT N5/N4 lists: Jonathan Waller's site (tanos.co.uk) was unreachable on 2026-10-07. Its licence (reportedly CC BY) is to be confirmed before the download in D1.

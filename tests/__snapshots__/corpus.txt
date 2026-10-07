@@ -28,10 +28,32 @@
 
 ## start/polite-and-casual
 です | です | (label: no romaji)
+毎朝コーヒーを飲みます。 | まいあさ コーヒー を のみます。 | maiasa koohii o nomimasu.
+毎朝コーヒーを飲む。 | まいあさ コーヒー を のむ。 | maiasa koohii o nomu.
+今日は寒いですね。 | きょう は さむい です ね。 | kyou wa samui desu ne.
+今日は寒いね。 | きょう は さむい ね。 | kyou wa samui ne.
+昨日映画を見ました。 | きのう えいが を みました。 | kinou eiga o mimashita.
+昨日映画を見た。 | きのう えいが を みた。 | kinou eiga o mita.
+一緒に行きますか？ | いっしょ に いきます か？ | issho ni ikimasu ka?
+一緒に行く？ | いっしょ に いく？ | issho ni iku?
 学生です。 | がくせい です。 | gakusei desu.
 学生だ。 | がくせい だ。 | gakusei da.
 毎日走ります。 | まいにち はしります。 | mainichi hashirimasu.
 毎日走る。 | まいにち はしる。 | mainichi hashiru.
+何飲む？ | なに のむ？ | nani nomu?
+何を飲みますか？ | なに を のみます か？ | nani o nomimasu ka?
+コーヒーにする。 | コーヒー に する。 | koohii ni suru.
+コーヒーにします。 | コーヒー に します。 | koohii ni shimasu.
+すみません、コーヒーを一つください。 | すみません、 コーヒー を ひとつ ください。 | sumimasen, koohii o hitotsu kudasai.
+はい、かしこまりました。 | はい、 かしこまりました。 | hai, kashikomarimashita.
+読む | よむ | yomu
+飲みます | のみます | nomimasu
+学生だよ | がくせい だ よ | gakusei da yo
+学生 | がくせい | gakusei
+学生だ | がくせい だ | gakusei da
+暑い | あつい | atsui
+暑いよ | あつい よ | atsui yo
+暑いね | あつい ね | atsui ne
 
 ## hiragana/hiragana-vowels-kstn
 あ | あ | (label: no romaji)

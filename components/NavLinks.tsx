@@ -27,7 +27,7 @@ export function NavLinks() {
             <span lang="ja" className="font-serif text-base">
               {l.jp}
             </span>
-            <span className="hidden sm:inline">{l.label}</span>
+            <span className="sr-only sm:not-sr-only">{l.label}</span>
           </Link>
         );
       })}

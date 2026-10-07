@@ -48,11 +48,40 @@ export const basics: Lesson[] = [
     title: "Polite and casual: two ways to end a sentence",
     mark: "です",
     summary: "Why some sentences end in です/ます and others don't.",
-    source: "Genki I ch. 3 and 8; Tae Kim's Guide — “Polite form and verb stems”",
+    source: "Genki I ch. 3, 8 and 9; Tae Kim's Guide — “Polite form and verb stems”",
+    register: "both",
+    kinds: ["basics"],
     blocks: [
       {
         type: "idea",
-        text: "Every Japanese sentence ends either **polite** (です / ます) or **casual** (the plain form). You'll see both throughout these lessons.",
+        text: "In speech, a Japanese sentence ends either **polite** (です/ます) or **casual** (the plain form), depending on who you're talking to.",
+      },
+      {
+        type: "examples",
+        items: [
+          {
+            jp: "[毎朝|まいあさ] コーヒー を [飲|の]{みます}。",
+            en: "I drink coffee every morning.",
+            alt: "[毎朝|まいあさ] コーヒー を [飲|の]{む}。",
+          },
+          {
+            jp: "[今日|きょう] は [寒|さむ]い {です} ね。",
+            en: "It's cold today, isn't it?",
+            alt: "[今日|きょう] は [寒|さむ]い ね。",
+            note: "Casual simply drops です: an i-adjective can end a sentence on its own.",
+          },
+          {
+            jp: "[昨日|きのう] [映画|えいが] を [見|み]{ました}。",
+            en: "I watched a film yesterday.",
+            alt: "[昨日|きのう] [映画|えいが] を [見|み]{た}。",
+          },
+          {
+            jp: "[一緒|いっしょ] に [行|い]{きます} か？",
+            en: "Are you coming with us?",
+            alt: "[一緒|いっしょ] に [行|い]{く}？",
+            note: "Casual questions usually drop か and just rise in tone; a bare か after a casual verb can sound rough.",
+          },
+        ],
       },
       {
         type: "pair",
@@ -62,14 +91,55 @@ export const basics: Lesson[] = [
       },
       {
         type: "pair",
-        a: { jp: "[毎日|まいにち] [走|はし]り{ます}。", en: "I run every day.", note: "Polite ます form." },
+        a: { jp: "[毎日|まいにち] [走|はし]{ります}。", en: "I run every day.", note: "Polite ます form." },
         b: { jp: "[毎日|まいにち] [走|はし]{る}。", en: "I run every day.", note: "Casual dictionary form." },
-        diff: "Verbs switch between the ます form and the dictionary form. The Verbs unit shows how.",
+        diff: "Same meaning: the polite form keeps a respectful distance, the casual one sounds close and relaxed. Verbs switch between the ます form and the dictionary form; the Verbs unit shows how.",
+      },
+      {
+        type: "callout",
+        kind: "mistake",
+        title: "Don't add だ to an i-adjective",
+        text: "✗ [寒|さむ]いだ。 ✓ [寒|さむ]い。 An i-adjective takes です when you're polite ([寒|さむ]いです), but stands alone when you're casual. As a sentence ending, だ follows nouns and na-adjectives, not i-adjectives.",
+      },
+      {
+        type: "dialogue",
+        lines: [
+          { speaker: "A", jp: "[何|なに] [飲|の]む？", en: "What are you having?", alt: "[何|なに] を [飲|の]みます か？" },
+          { speaker: "B", jp: "コーヒー に する。", en: "I'll get a coffee.", alt: "コーヒー に します。" },
+          { speaker: "B", jp: "すみません、 コーヒー を [一|ひと]つ ください。", en: "Excuse me, one coffee, please." },
+          { speaker: "C", jp: "はい、 かしこまりました。", en: "Certainly." },
+        ],
+        note: "B answers a friend (A) casually, then turns to the café staff (C) and switches to polite: switching mid-scene like this is completely normal. Casual speech often drops を ([何|なに][飲|の]む？); the polite version puts it back. かしこまりました is staff's very polite “certainly”: you'll hear it, but won't need to say it.",
       },
       {
         type: "callout",
         kind: "culture",
-        text: "When in doubt, be polite. Speaking casually too early can come across as rude; being a little too polite is rarely a problem.",
+        text: "When in doubt, be polite: speaking casually too early can come across as rude, and a little too polite is rarely a problem. Once a friend or peer switches to casual with you, following their lead is friendly; staying polite can feel distant.",
+      },
+      {
+        type: "quiz",
+        questions: [
+          {
+            prompt: "Make it casual: [本|ほん]を[読|よ]みます。 → [本|ほん]を＿＿",
+            answers: ["[読|よ]む"],
+            explanation: "The casual form of 〜ます is the dictionary form: [読|よ]みます → [読|よ]む, just like [飲|の]みます → [飲|の]む. (〜ました becomes the た form: [見|み]ました → [見|み]た.)",
+          },
+          {
+            prompt: "Make it polite: [水|みず]を[飲|の]む。 → [水|みず]を＿＿",
+            answers: ["[飲|の]みます"],
+            explanation: "As in the examples, [飲|の]む → [飲|の]みます: for verbs like this, the final u sound becomes i, then ます. The Verbs unit covers every verb group.",
+          },
+          {
+            prompt: "Make it casual: [学生|がくせい]です。",
+            answers: ["[学生|がくせい] だ よ", "[学生|がくせい]", "[学生|がくせい] だ"],
+            explanation: "です becomes だ, which usually softens to だよ in conversation, or drops away entirely.",
+          },
+          {
+            prompt: "Fix the mistake in this casual sentence: [暑|あつ]いだ。",
+            answers: ["[暑|あつ]い", "[暑|あつ]い よ", "[暑|あつ]い ね"],
+            explanation: "An i-adjective doesn't end a sentence with だ. Polite adds です ([暑|あつ]いです); casual leaves the adjective on its own.",
+          },
+        ],
       },
       { type: "link", href: "/learn/culture/polite-or-casual", label: "More on choosing polite or casual" },
     ],

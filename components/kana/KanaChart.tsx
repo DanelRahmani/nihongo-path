@@ -50,7 +50,7 @@ export function KanaChart() {
               <span lang="ja" className="font-serif">
                 {s === "hiragana" ? "ひらがな" : "カタカナ"}
               </span>
-              <span className="hidden sm:inline">{s === "hiragana" ? "Hiragana" : "Katakana"}</span>
+              <span className="sr-only sm:not-sr-only">{s === "hiragana" ? "Hiragana" : "Katakana"}</span>
             </Chip>
           ))}
         </div>

@@ -1,13 +1,29 @@
 import Link from "next/link";
 import { Cell, Jp, Rich } from "@/components/Jp";
+import { Quiz } from "@/components/lesson/Quiz";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { panelClass } from "@/components/ui/Panel";
 import type { Block, Example } from "@/content/types";
+import { lineRegister } from "@/lib/register";
+
+/** The same line in the other register, beneath the original (content/STYLE.md §9). */
+function AltLine({ jp, alt }: { jp: string; alt?: string }) {
+  if (!alt) return null;
+  return (
+    <div className="mt-2 flex items-baseline gap-2.5">
+      <span className="shrink-0 rounded-full bg-paper-3 px-2 py-0.5 text-[0.65rem] font-medium tracking-wider text-ink-2 uppercase">
+        {lineRegister(jp) === "polite" ? "Casual" : "Polite"}
+      </span>
+      <Jp jp={alt} className="font-jp text-lg leading-relaxed text-ink-2" />
+    </div>
+  );
+}
 
 function ExampleRow({ ex }: { ex: Example }) {
   return (
     <div className="px-5 py-5 sm:px-6">
       <Jp jp={ex.jp} className="font-jp text-2xl leading-relaxed font-medium sm:text-[1.7rem]" />
+      <AltLine jp={ex.jp} alt={ex.alt} />
       <Rich text={ex.en} className="mt-1.5 block text-[0.95rem] text-ink" />
       {ex.note && <Rich text={ex.note} className="mt-1 block text-sm leading-6 text-ink-2" />}
     </div>
@@ -71,6 +87,7 @@ function BlockView({ block }: { block: Block }) {
                   {i === 0 ? "A" : "B"}
                 </span>
                 <Jp jp={ex.jp} className="font-jp text-2xl leading-relaxed font-medium" />
+                <AltLine jp={ex.jp} alt={ex.alt} />
                 <Rich text={ex.en} className="mt-2 block text-[0.95rem]" />
                 {ex.note && <Rich text={ex.note} className="mt-1 block text-sm leading-6 text-ink-2" />}
               </div>
@@ -131,13 +148,14 @@ function BlockView({ block }: { block: Block }) {
       );
     }
 
-    case "dialogue":
-      // A chat: the first speaker on the left, the second on the right.
+    case "dialogue": {
+      // A chat: speakers alternate sides in the order they first speak.
+      const speakers = [...new Set(block.lines.map((l) => l.speaker))];
       return (
         <figure className={panelClass("well", "my-7 p-4 sm:p-6")}>
           <ol className="space-y-3">
             {block.lines.map((line, i) => {
-              const right = i % 2 === 1;
+              const right = speakers.indexOf(line.speaker) % 2 === 1;
               return (
                 <li key={i} className={`flex items-end gap-2.5 ${right ? "flex-row-reverse" : ""}`}>
                   <span
@@ -153,6 +171,7 @@ function BlockView({ block }: { block: Block }) {
                     }`}
                   >
                     <Jp jp={line.jp} className="font-jp text-xl leading-relaxed font-medium" />
+                    <AltLine jp={line.jp} alt={line.alt} />
                     <Rich text={line.en} className="mt-0.5 block text-sm text-ink-2" />
                   </div>
                 </li>
@@ -162,6 +181,10 @@ function BlockView({ block }: { block: Block }) {
           {block.note && <Rich text={block.note} className="mt-5 block border-t border-line-strong pt-4 text-sm leading-6 text-ink-2" />}
         </figure>
       );
+    }
+
+    case "quiz":
+      return <Quiz questions={block.questions} />;
 
     case "link":
       return (

@@ -108,6 +108,13 @@ describe("style (content/STYLE.md)", () => {
     expect(offenders(ALL_FIELDS, (p) => /[ｦ-ﾟ０-９Ａ-Ｚａ-ｚ　]/.test(p))).toEqual([]);
   });
 
+  it("writes Japanese inside English prose without word spaces (they would show)", () => {
+    // Two Japanese words of two or more characters with a space between; lists of single kana are fine.
+    const J = "[\\u3040-\\u30ff\\u3400-\\u9fff々〜]";
+    const spaced = new RegExp(`${J}{2,} +${J}{2,}`, "u");
+    expect(offenders(ALL_FIELDS.filter((f) => !f.jp), (p) => spaced.test(p))).toEqual([]);
+  });
+
   it("writes stacked particles as separate words (では only as the conjunction)", () => {
     const bad = JP_FIELDS.flatMap((f) =>
       readingOf(f.text)

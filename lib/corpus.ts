@@ -39,6 +39,7 @@ export function lessonFields(lesson: Lesson, key: string): Field[] {
       case "examples":
         b.items.forEach((ex, j) => {
           add(ex.jp, true, `${at} #${j} jp`, ex.en);
+          add(ex.alt, true, `${at} #${j} alt`, ex.en);
           add(ex.en, false, `${at} #${j} en`);
           add(ex.note, false, `${at} #${j} note`);
         });
@@ -48,6 +49,7 @@ export function lessonFields(lesson: Lesson, key: string): Field[] {
         [b.a, b.b].forEach((ex, j) => {
           const side = j ? "B" : "A";
           add(ex.jp, true, `${at} ${side} jp`, ex.en);
+          add(ex.alt, true, `${at} ${side} alt`, ex.en);
           add(ex.en, false, `${at} ${side} en`);
           add(ex.note, false, `${at} ${side} note`);
         });
@@ -61,12 +63,20 @@ export function lessonFields(lesson: Lesson, key: string): Field[] {
       case "dialogue":
         b.lines.forEach((l, j) => {
           add(l.jp, true, `${at} line ${j} jp`, l.en);
+          add(l.alt, true, `${at} line ${j} alt`, l.en);
           add(l.en, false, `${at} line ${j} en`);
         });
         add(b.note, false, `${at} note`);
         break;
       case "link":
         add(b.text, false, `${at} text`);
+        break;
+      case "quiz":
+        b.questions.forEach((q, j) => {
+          add(q.prompt, false, `${at} q${j + 1} prompt`);
+          q.answers.forEach((a, k) => add(a, true, `${at} q${j + 1} answer ${k + 1}`));
+          add(q.explanation, false, `${at} q${j + 1} explanation`);
+        });
         break;
     }
   });

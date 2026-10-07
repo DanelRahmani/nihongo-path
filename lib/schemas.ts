@@ -2,7 +2,7 @@
  * The shape, version and migrations of every localStorage store. Pure, so the migrations are unit
  * tested and backup/restore can decode any store without React.
  */
-import { KINDS, type LessonKind, type ScriptMode } from "@/content/types";
+import type { ScriptMode } from "@/content/types";
 import { isPlainObject, type StoreSchema, wrapUnchanged } from "@/lib/envelope";
 import { type CardState, EMPTY_SRS, MAX_BOX, type SrsState } from "@/lib/srs";
 
@@ -69,22 +69,37 @@ export const srsSchema: StoreSchema<SrsState> = {
   },
 };
 
+/** The path page's unit tab and "hide finished" toggle. */
 export interface PathFilter {
-  kind: LessonKind | "all";
+  /** The unit tab the reader chose; null follows their progress. */
+  unit: string | null;
   hideDone: boolean;
 }
 
-export const DEFAULT_PATH_FILTER: PathFilter = { kind: "all", hideDone: false };
+export const DEFAULT_PATH_FILTER: PathFilter = { unit: null, hideDone: false };
+
+/**
+ * Version 1 filtered the whole path by lesson kind. Version 2 shows one unit per tab, so a kind
+ * filter opens that kind's first unit, and "all" follows progress. Unit slugs equal kind names
+ * except for these two.
+ */
+const KIND_TO_UNIT: Record<string, string | null> = { all: null, basics: "start", kana: "hiragana" };
 
 export const pathFilterSchema: StoreSchema<PathFilter> = {
-  version: 1,
+  version: 2,
   fallback: DEFAULT_PATH_FILTER,
-  migrations: [wrapUnchanged],
+  migrations: [
+    wrapUnchanged,
+    (data) => {
+      if (!isPlainObject(data)) return data;
+      const kind = typeof data.kind === "string" ? data.kind : "all";
+      return { unit: kind in KIND_TO_UNIT ? KIND_TO_UNIT[kind] : kind, hideDone: data.hideDone };
+    },
+  ],
   validate(data) {
     if (!isPlainObject(data)) return null;
-    const kinds: string[] = ["all", ...KINDS.map((k) => k.kind)];
     return {
-      kind: kinds.includes(data.kind as string) ? (data.kind as PathFilter["kind"]) : DEFAULT_PATH_FILTER.kind,
+      unit: typeof data.unit === "string" && /^[a-z0-9-]+$/.test(data.unit) ? data.unit : null,
       hideDone: typeof data.hideDone === "boolean" ? data.hideDone : DEFAULT_PATH_FILTER.hideDone,
     };
   },

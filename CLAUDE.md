@@ -24,6 +24,10 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
     - Names joined with `-` in 9 lines; one grammar note corrected (よい is still the usual written form).
 
 - **A2 Versioned stores (2026-10-07):** every localStorage store is saved as `{"v": n, "data": …}`. `lib/envelope.ts` decodes with a migration chain. Raw values from before envelopes are read as version 0. Data written by a newer build is used as the fallback and never overwritten. Corrupt data falls back safely. `lib/schemas.ts` holds each store's version, migrations and validation; the validation repairs what it can, such as dropping one bad kana card instead of the whole schedule. The keys are unchanged (`np:settings`, `np:progress`, `np:srs`, `np:path-filter`), and the path filter store moved into `lib/stores.ts`.
+- **A2b Path tabs (owner request, 2026-10-07):** the path shows one unit per tab instead of one long list. The tabs follow the WAI-ARIA tab pattern: arrows, Home and End move between tabs, and only the open tab is a Tab stop.
+  - The first tab shown is the unit of the next unfinished lesson, and the reader's last choice is remembered. The path-filter store is now v2 `{unit, hideDone}`, migrated from v1's kind filter.
+  - `/#unit` links (the lesson breadcrumb) open their tab, and choosing a tab updates the address.
+  - The kind chips and the "All" list are gone. "Hide finished lessons" works per tab.
 
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
@@ -41,16 +45,22 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Dialogue uses a single … for trailing off.
   - Examples write numbers as kanji with ruby.
   - Names join their suffix with `-`.
+- The path is unit tabs, not kind filters (owner request). Lesson `kinds` tags (B1) will feed search and the grammar overview instead.
   - Stacked particles are written separately (で は).
 
 ### Numbers
 - 9 units, 62 lessons, 536 Japanese lines (287 example, pair and dialogue sentences, 136 with a highlight), 897 ruby tokens, 244 distinct kanji, 208 kana cards, 0 quizzes.
-- Tests: 138 in 6 files.
+- Tests: 149 in 7 files.
 
 ### How it was checked
 - `npm test`, `npm run typecheck`, `npm run lint`, `npm run build`.
 - The は/へ/を fix was run against the corpus snapshot taken before it: no line changed. Every later snapshot change was read line by line; Japanese text is unchanged except for the content fixes above.
 - A2 in the browser: settings, progress and the path filter written in the old raw format load unchanged. A setting change writes a v1 envelope. Data marked v7 (a newer build) is kept as is while the page falls back to defaults.
+- Tabs in the browser at 375 px, light and dark:
+  - no horizontal page scroll, and a visible focus ring drawn inside the tab;
+  - arrows and End move and select, and the strip scrolls to the open tab;
+  - the breadcrumb to /#verbs opens Verbs, and a reload keeps the tab;
+  - console clean.
 - Browser: name lines in kana, furigana and kanji modes show no hyphen in the Japanese and tanaka-san / yamada-sensei in the romaji. Console clean.
 - Review: a fresh Opus 5.5 reviewer checked STYLE.md, the changed lines and the golden values. All findings were applied:
   - 3 errors, including the は and は・が marks, which romanised wrongly (marks are now labels without romaji);

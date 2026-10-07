@@ -7,7 +7,6 @@ export default function Home() {
   // Only what the path needs is sent to the browser, not full lesson content.
   const units: PathUnit[] = UNITS.map((unit, i) => ({
     slug: unit.slug,
-    kind: unit.kind,
     numeral: KANJI_NUMERALS[i],
     title: unit.title,
     titleJp: unit.titleJp,

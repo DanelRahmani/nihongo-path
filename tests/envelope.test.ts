@@ -8,21 +8,24 @@ import {
   SCHEMAS,
   settingsSchema,
   srsSchema,
+  type StoreKey,
 } from "@/lib/schemas";
 
-/** What each store held in localStorage before envelopes (version 0), and what it should become. */
-const LEGACY = {
-  "np:settings": { script: "furigana", romaji: true },
-  "np:progress": { "start/three-scripts": true, "particles/wa-topic": true },
-  "np:srs": {
-    cards: {
-      "hiragana:あ": { box: 4, due: 1_790_000_000_000, reps: 6, lapses: 1 },
-      "katakana:ア": { box: 1, due: 0, reps: 1, lapses: 1 },
-    },
-    extraRows: { hiragana: 2 },
+const SRS = {
+  cards: {
+    "hiragana:あ": { box: 4, due: 1_790_000_000_000, reps: 6, lapses: 1 },
+    "katakana:ア": { box: 1, due: 0, reps: 1, lapses: 1 },
   },
-  "np:path-filter": { kind: "particles", hideDone: true },
-} as const;
+  extraRows: { hiragana: 2 },
+};
+
+/** What each store held in localStorage before envelopes (version 0), and what it becomes now. */
+const LEGACY: Record<StoreKey, { before: unknown; after: unknown }> = {
+  "np:settings": { before: { script: "furigana", romaji: true }, after: { script: "furigana", romaji: true } },
+  "np:progress": { before: { "start/three-scripts": true }, after: { "start/three-scripts": true } },
+  "np:srs": { before: SRS, after: SRS },
+  "np:path-filter": { before: { kind: "particles", hideDone: true }, after: { unit: "particles", hideDone: true } },
+};
 
 describe("envelopes", () => {
   it("tells an envelope from a legacy value", () => {
@@ -30,18 +33,18 @@ describe("envelopes", () => {
     expect(isEnvelope({ v: 0, data: {} })).toBe(false);
     expect(isEnvelope({ v: 1, data: {}, extra: 1 })).toBe(false);
     expect(isEnvelope({ script: "kana", romaji: false })).toBe(false);
-    expect(isEnvelope(LEGACY["np:progress"])).toBe(false);
+    expect(isEnvelope(LEGACY["np:progress"].before)).toBe(false);
   });
 
-  it.each(Object.entries(LEGACY))("migrates the legacy %s value to version 1 unchanged", (key, legacy) => {
-    const schema = SCHEMAS[key as keyof typeof SCHEMAS] as StoreSchema<unknown>;
-    expect(decode(JSON.stringify(legacy), schema)).toEqual({ value: legacy, status: "migrated" });
+  it.each(Object.entries(LEGACY))("migrates the legacy %s value to the current version", (key, { before, after }) => {
+    const schema = SCHEMAS[key as StoreKey] as StoreSchema<unknown>;
+    expect(decode(JSON.stringify(before), schema)).toEqual({ value: after, status: "migrated" });
   });
 
-  it.each(Object.entries(LEGACY))("round-trips %s through encode and decode", (key, value) => {
-    const schema = SCHEMAS[key as keyof typeof SCHEMAS] as StoreSchema<unknown>;
+  it.each(Object.entries(LEGACY))("round-trips %s through encode and decode", (key, { after: value }) => {
+    const schema = SCHEMAS[key as StoreKey] as StoreSchema<unknown>;
     const raw = encode(value, schema);
-    expect(JSON.parse(raw)).toEqual({ v: 1, data: value });
+    expect(JSON.parse(raw)).toEqual({ v: schema.version, data: value });
     expect(decode(raw, schema)).toEqual({ value, status: "current" });
   });
 
@@ -105,8 +108,16 @@ describe("store schemas repair what they can", () => {
     });
   });
 
-  it("resets an unknown path filter kind", () => {
-    const raw = JSON.stringify({ kind: "astrology", hideDone: true });
+  it("turns a version-1 kind filter into the matching unit tab", () => {
+    const v1 = (kind: string) => JSON.stringify({ v: 1, data: { kind, hideDone: false } });
+    expect(decode(v1("particles"), pathFilterSchema).value).toEqual({ unit: "particles", hideDone: false });
+    expect(decode(v1("basics"), pathFilterSchema).value).toEqual({ unit: "start", hideDone: false });
+    expect(decode(v1("kana"), pathFilterSchema).value).toEqual({ unit: "hiragana", hideDone: false });
+    expect(decode(v1("all"), pathFilterSchema).value).toEqual(DEFAULT_PATH_FILTER);
+  });
+
+  it("drops an unreadable unit tab and keeps the toggle", () => {
+    const raw = JSON.stringify({ v: 2, data: { unit: 42, hideDone: true } });
     expect(decode(raw, pathFilterSchema).value).toEqual({ ...DEFAULT_PATH_FILTER, hideDone: true });
   });
 });

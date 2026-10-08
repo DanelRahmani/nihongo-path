@@ -140,8 +140,10 @@ describe("style (content/STYLE.md)", () => {
         const next = tokens[i + 1];
         // お[母|かあ]さん, お[客|きゃく][様|さま]: a prefixed word, not a name.
         const prefixed = prev?.kind === "text" && /[おご]$/.test(prev.text);
+        // [本屋|ほんや]さん: a shop, not a name.
+        const shop = t.kind === "ruby" && /屋$/.test(t.base);
         const kanjiName =
-          t.kind === "ruby" && !prefixed && !NOT_NAMES.has(t.base) &&
+          t.kind === "ruby" && !prefixed && !shop && !NOT_NAMES.has(t.base) &&
           ((next?.kind === "text" && SUFFIX.test(next.text)) || (next?.kind === "ruby" && TITLES.has(next.base)));
         const kanaName = t.kind === "text" && /[ァ-ヺ]ー?(さん|くん|ちゃん|さま)/.test(t.text);
         return kanjiName || kanaName ? [`${f.where}: ${f.text}`] : [];

@@ -25,6 +25,13 @@ const KANA_WORDS: [string, string][] = [
   ["林檎", "りんご"],
   ["蜘蛛", "くも"],
   ["下さい", "ください"],
+  // Set phrases (culture/set-phrases), written in kana by the lessons.
+  ["行ってきます", "いってきます"],
+  ["行ってらっしゃい", "いってらっしゃい"],
+  ["お帰り", "おかえり"],
+  ["ご馳走様", "ごちそうさま"],
+  ["御馳走様", "ごちそうさま"],
+  ["頂きます", "いただきます"],
 ];
 
 /** Full- and half-width folded (NFKC); spaces and punctuation ignored (はい、[食|た]べました = はい [食|た]べました). */

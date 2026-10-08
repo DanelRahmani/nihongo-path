@@ -91,7 +91,7 @@ Rules for every sub-phase: one commit and push to `features`; checks pass before
 | **B3 Retrofit:** Particles (14; done 2026-10-08) | Same | Same |
 | **C1 Conjugation engine** (done 2026-10-08) | `lib/conjugate.ts` (pure). Input: dictionary form and class (godan, ichidan, する, くる, plus する-compounds). Exceptions: 行く→行って/行った, ある→ない, 問う→問うて, いらっしゃる/くださる/なさる/おっしゃる/ござる → 〜います. Adjectives: i-adjectives (いい→よく…) and na-adjectives. Forms: polite/plain × affirmative/negative × non-past/past, て, potential, volitional, passive, causative, ば, たら, the commands in common use (〜なさい, 〜て/〜てください, plain imperative and the な prohibitive, each marked with its register). Forms a word lacks are marked with a reason (e.g. no potential of ある, できる or わかる; no volitional or plain imperative of わかる). Results come as kana + kanji pairs, so furigana is preserved | `tests/conjugate.test.ts`: golden tables **I type by hand**, about 15 verbs and 6 adjectives covering every class and exception. `lesson-tables.test.ts` checks that every conjugation table cell in the verbs and grammar lessons matches the engine |
 | **B4 Retrofit:** Core grammar + Verbs (17; done 2026-10-08) | Same; the verb tables are now cross-checked by the engine | Same |
-| **B5 Retrofit:** Suffixes + Culture (15) | Same. The pending list is now empty | Same |
+| **B5 Retrofit:** Suffixes + Culture (15; done 2026-10-08) | Same. The pending list is now empty | Same |
 
 ### D. Words and kanji
 

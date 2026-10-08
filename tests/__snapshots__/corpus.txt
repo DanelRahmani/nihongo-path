@@ -1082,9 +1082,19 @@
 〜くん | 〜くん | ~kun
 〜ちゃん | 〜ちゃん | ~chan
 〜様 | 〜さま | ~sama
-田中さん、おはようございます。 | たなかさん、おはよう ございます。 | tanaka-san, ohayou gozaimasu.
-健太くん、元気？ | けんたくん、げんき？ | kenta-kun, genki?
-お客様 | おきゃくさま | okyakusama
+田中さん、今少しいいですか？ | たなかさん、 いま すこし いい です か？ | tanaka-san, ima sukoshi ii desu ka?
+健太くん、元気？ | けんたくん、 げんき？ | kenta-kun, genki?
+あやちゃん、一緒に帰ろう。 | あやちゃん、 いっしょ に かえろう。 | aya-chan, issho ni kaerou.
+お客様、こちらへどうぞ。 | おきゃくさま、 こちら へ どうぞ。 | okyakusama, kochira e douzo.
+山田さんは来ますか？ | やまださん は きます か？ | yamada-san wa kimasu ka?
+山田くんは来ますか？ | やまだくん は きます か？ | yamada-kun wa kimasu ka?
+さん | さん | san
+ちゃん | ちゃん | chan
+ブラウンです。 | ブラウン です。 | buraun desu.
+私はブラウンです。 | わたし は ブラウン です。 | watashi wa buraun desu.
+僕はブラウンです。 | ぼく は ブラウン です。 | boku wa buraun desu.
+はじめまして、ブラウンです。 | はじめまして、 ブラウン です。 | hajimemashite, buraun desu.
+様 | さま | sama
 
 ## suffixes/titles
 先生 | せんせい | (label: no romaji)
@@ -1094,8 +1104,16 @@
 佐藤先輩 | さとうせんぱい | satou-senpai
 〜部長·〜社長 | 〜ぶちょう · 〜しゃちょう | ~buchou · ~shachou
 鈴木部長 | すずきぶちょう | suzuki-buchou
-先生、質問があります。 | せんせい、しつもん が あります。 | sensei, shitsumon ga arimasu.
-先輩、お疲れ様です。 | せんぱい、おつかれさま です。 | senpai, otsukaresama desu.
+山田先生、おはようございます。 | やまだせんせい、 おはよう ございます。 | yamada-sensei, ohayou gozaimasu.
+先生、質問があります。 | せんせい、 しつもん が あります。 | sensei, shitsumon ga arimasu.
+先輩、お疲れ様です。 | せんぱい、 おつかれさま です。 | senpai, otsukaresama desu.
+鈴木部長は今日休みです。 | すずきぶちょう は きょう やすみ です。 | suzuki-buchou wa kyou yasumi desu.
+佐藤さん、これを見てください。 | さとうさん、 これ を みて ください。 | satou-san, kore o mite kudasai.
+佐藤先輩、これを見てください。 | さとうせんぱい、 これ を みて ください。 | satou-senpai, kore o mite kudasai.
+先生 | せんせい | sensei
+先輩 | せんぱい | senpai
+社長 | しゃちょう | shachou
+中村先生 | なかむらせんせい | nakamura-sensei
 
 ## suffixes/tachi-plural
 たち | たち | (label: no romaji)
@@ -1103,8 +1121,19 @@
 子供たち | こどもたち | kodomotachi
 田中さんたち | たなかさんたち | tanaka-san-tachi
 彼ら | かれら | karera
+先生方 | せんせいがた | senseigata
 猫がいる。 | ねこ が いる。 | neko ga iru.
 猫が三匹いる。 | ねこ が さんびき いる。 | neko ga sanbiki iru.
+連休、どこか行く？ | れんきゅう、 どこか いく？ | renkyuu, dokoka iku?
+会社の人たちとキャンプに行く。 | かいしゃ の ひとたち と キャンプ に いく。 | kaisha no hitotachi to kyanpu ni iku.
+いいね。何人で？ | いい ね。 なんにん で？ | ii ne. nannin de?
+五人。 | ごにん。 | gonin.
+たち | たち | tachi
+方 | がた | gata
+たち | たち | tachi
+車が多い。 | くるま が おおい。 | kuruma ga ooi.
+ら | ら | ra
+たち | たち | tachi
 
 ## suffixes/jin-go
 語 | ご | (label: no romaji)
@@ -1122,57 +1151,148 @@
 フランス語 | フランスご | furansugo
 私はオランダ人です。 | わたし は オランダじん です。 | watashi wa orandajin desu.
 日本語が少し話せます。 | にほんご が すこし はなせます。 | nihongo ga sukoshi hanasemasu.
+妻は中国人です。 | つま は ちゅうごくじん です。 | tsuma wa chuugokujin desu.
+フランス語を勉強しています。 | フランスご を べんきょう して います。 | furansugo o benkyou shite imasu.
+スペイン人です。 | スペインじん です。 | supeinjin desu.
+スペイン語です。 | スペインご です。 | supeingo desu.
+人 | じん | jin
+カナダ人 | カナダじん | kanadajin
+語 | ご | go
+韓国語 | かんこくご | kankokugo
+英語 | えいご | eigo
+語 | ご | go
+ドイツ語 | ドイツご | doitsugo
 
 ## suffixes/chuu-juu
 中 | ちゅう | (label: no romaji)
-会議中 | かいぎちゅう | kaigichuu
-一日中 | いちにちじゅう | ichinichijuu
 電話中です。 | でんわちゅう です。 | denwachuu desu.
+午前中は家にいます。 | ごぜんちゅう は いえ に います。 | gozenchuu wa ie ni imasu.
 世界中で人気がある。 | せかいじゅう で にんき が ある。 | sekaijuu de ninki ga aru.
-夏休み中に旅行した。 | なつやすみちゅう に りょこう した。 | natsuyasumichuu ni ryokou shita.
+一晩中雨が降っていた。 | ひとばんじゅう あめ が ふって いた。 | hitobanjuu ame ga futte ita.
+夏休み中に京都へ行った。 | なつやすみちゅう に きょうと へ いった。 | natsuyasumichuu ni kyouto e itta.
+夏休み中雨だった。 | なつやすみじゅう あめ だった。 | natsuyasumijuu ame datta.
 勉強中,工事中,営業中 | べんきょうちゅう, こうじちゅう, えいぎょうちゅう | benkyouchuu, koujichuu, eigyouchuu
-一年中,日本中,一晩中 | いちねんじゅう, にほんじゅう, ひとばんじゅう | ichinenjuu, nihonjuu, hitobanjuu
+午前中,今週中,授業中 | ごぜんちゅう, こんしゅうちゅう, じゅぎょうちゅう | gozenchuu, konshuuchuu, jugyouchuu
+一年中,日本中,学校中 | いちねんじゅう, にほんじゅう, がっこうじゅう | ichinenjuu, nihonjuu, gakkoujuu
+ちゅう | ちゅう | chuu
+じゅう | じゅう | juu
+ちゅう | ちゅう | chuu
+じゅう | じゅう | juu
 
 ## suffixes/ya-shops
 屋 | や | (label: no romaji)
+駅の前に本屋がある。 | えき の まえ に ほんや が ある。 | eki no mae ni hon'ya ga aru.
+毎朝パン屋に寄ります。 | まいあさ パンや に よります。 | maiasa pan'ya ni yorimasu.
+花屋でバラを買った。 | はなや で バラ を かった。 | hanaya de bara o katta.
+今夜、居酒屋に行かない？ | こんや、 いざかや に いかない？ | kon'ya, izakaya ni ikanai?
+八百屋は野菜の店です。 | やおや は やさい の みせ です。 | yaoya wa yasai no mise desu.
 本屋 | ほんや | hon'ya
-パン屋 | パンや | pan'ya
-花屋 | はなや | hanaya
-居酒屋 | いざかや | izakaya
-八百屋 | やおや | yaoya
+本屋さん | ほんやさん | hon'yasan
+屋 | や | ya
+屋さん | やさん | yasan
+屋 | や | ya
+屋さん | やさん | yasan
+屋さん | やさん | yasan
+スーパーに行く。 | スーパー に いく。 | suupaa ni iku.
+スーパーへ行く。 | スーパー へ いく。 | suupaa e iku.
 
 ## suffixes/sa-nouns
 さ | さ | (label: no romaji)
 この山の高さは何メートルですか？ | この やま の たかさ は なんメートル です か？ | kono yama no takasa wa nanmeetoru desu ka?
 彼女の優しさに感動した。 | かのじょ の やさしさ に かんどう した。 | kanojo no yasashisa ni kandou shita.
+部屋の広さを測りました。 | へや の ひろさ を はかりました。 | heya no hirosa o hakarimashita.
+東京の夏の暑さにびっくりした。 | とうきょう の なつ の あつさ に びっくり した。 | toukyou no natsu no atsusa ni bikkuri shita.
+重い荷物 | おもい にもつ | omoi nimotsu
+荷物の重さ | にもつ の おもさ | nimotsu no omosa
+どっちのカバンにする？ | どっち の カバン に する？ | dotchi no kaban ni suru?
+大きさはこっちがいいけど、重さがちょっと… | おおきさ は こっち が いい けど、 おもさ が ちょっと… | ookisa wa kotchi ga ii kedo, omosa ga chotto...
+じゃあ、あっちは？ | じゃあ、 あっち は？ | jaa, atchi wa?
+深さ | ふかさ | fukasa
+強さ | つよさ | tsuyosa
+よさ | よさ | yosa
+良さ | よさ | yosa
+便利さ | べんりさ | benrisa
 
 ## suffixes/o-go-prefixes
 お・ご | お・ご | (label: no romaji)
-お茶 | おちゃ | ocha
-お水 | おみず | omizu
-ご飯 | ごはん | gohan
-ご家族 | ごかぞく | gokazoku
+お茶をどうぞ。 | おちゃ を どうぞ。 | ocha o douzo.
+ご家族はお元気ですか？ | ごかぞく は おげんき です か？ | gokazoku wa ogenki desu ka?
 お名前は？ | おなまえ は？ | onamae wa?
+ご飯、食べた？ | ごはん、 たべた？ | gohan, tabeta?
+仕事は楽しいですか？ | しごと は たのしい です か？ | shigoto wa tanoshii desu ka?
+お仕事は楽しいですか？ | おしごと は たのしい です か？ | oshigoto wa tanoshii desu ka?
+お | お | o
+ご | ご | go
+お | お | o
+私の家族は四人です。 | わたし の かぞく は よにん です。 | watashi no kazoku wa yonin desu.
+私の家族は4人です。 | わたし の かぞく は 4にん です。 | watashi no kazoku wa 4nin desu.
+家族は四人です。 | かぞく は よにん です。 | kazoku wa yonin desu.
+家族は4人です。 | かぞく は 4にん です。 | kazoku wa 4nin desu.
 
 ## culture/polite-or-casual
 敬語 | けいご | (label: no romaji)
-明日来ますか？ | あした きます か？ | ashita kimasu ka?
-明日来る？ | あした くる？ | ashita kuru?
+今、忙しいですか？ | いま、 いそがしい です か？ | ima, isogashii desu ka?
+今、忙しい？ | いま、 いそがしい？ | ima, isogashii?
+この本、もう読みましたか？ | この ほん、 もう よみました か？ | kono hon, mou yomimashita ka?
+この本、もう読んだ？ | この ほん、 もう よんだ？ | kono hon, mou yonda?
+一緒に行きませんか？ | いっしょ に いきません か？ | issho ni ikimasen ka?
+一緒に行かない？ | いっしょ に いかない？ | issho ni ikanai?
+今夜電話します。 | こんや でんわ します。 | kon'ya denwa shimasu.
+今夜電話する。 | こんや でんわ する。 | kon'ya denwa suru.
+駅はどこですか？ | えき は どこ です か？ | eki wa doko desu ka?
+すみません、駅はどこですか？ | すみません、 えき は どこ です か？ | sumimasen, eki wa doko desu ka?
+駅はどちらですか？ | えき は どちら です か？ | eki wa dochira desu ka?
+すみません、駅はどちらですか？ | すみません、 えき は どちら です か？ | sumimasen, eki wa dochira desu ka?
+週末は何をする？ | しゅうまつ は なに を する？ | shuumatsu wa nani o suru?
+週末は何する？ | しゅうまつ は なに する？ | shuumatsu wa nani suru?
+週末何をする？ | しゅうまつ なに を する？ | shuumatsu nani o suru?
+週末何する？ | しゅうまつ なに する？ | shuumatsu nani suru?
+週末は何をするの？ | しゅうまつ は なに を する の？ | shuumatsu wa nani o suru no?
+週末は何するの？ | しゅうまつ は なに する の？ | shuumatsu wa nani suru no?
+週末何するの？ | しゅうまつ なに する の？ | shuumatsu nani suru no?
+寒いね。 | さむい ね。 | samui ne.
+週末、海に行きました。 | しゅうまつ、 うみ に いきました。 | shuumatsu, umi ni ikimashita.
+週末は海に行きました。 | しゅうまつ は うみ に いきました。 | shuumatsu wa umi ni ikimashita.
 
 ## culture/avoid-anata
 あなた | あなた | (label: no romaji)
-あなたは学生ですか？ | あなた は がくせい です か？ | anata wa gakusei desu ka?
 田中さんは学生ですか？ | たなかさん は がくせい です か？ | tanaka-san wa gakusei desu ka?
-学生ですか？ | がくせい です か？ | gakusei desu ka?
 先生はどう思いますか？ | せんせい は どう おもいます か？ | sensei wa dou omoimasu ka?
+部長も行きますか？ | ぶちょう も いきます か？ | buchou mo ikimasu ka?
+あなたは学生ですか？ | あなた は がくせい です か？ | anata wa gakusei desu ka?
+学生ですか？ | がくせい です か？ | gakusei desu ka?
+森さん | もりさん | mori-san
+先生 | せんせい | sensei
+伊藤部長 | いとうぶちょう | itou-buchou
+部長 | ぶちょう | buchou
 
 ## culture/sumimasen
 すみません | すみません | (label: no romaji)
-あ、すみません！ | あ、すみません！ | a, sumimasen!
-すみません、注文いいですか？ | すみません、ちゅうもん いい です か？ | sumimasen, chuumon ii desu ka?
+あ、すみません！ | あ、 すみません！ | a, sumimasen!
+すみません、駅はどこですか？ | すみません、 えき は どこ です か？ | sumimasen, eki wa doko desu ka?
+すみません、注文いいですか？ | すみません、 ちゅうもん いい です か？ | sumimasen, chuumon ii desu ka?
 わざわざすみません。 | わざわざ すみません。 | wazawaza sumimasen.
 ありがとうございます。 | ありがとう ございます。 | arigatou gozaimasu.
 すみません。 | すみません。 | sumimasen.
+すみません、これ、落としましたよ。 | すみません、 これ、 おとしました よ。 | sumimasen, kore, otoshimashita yo.
+あ、すみません！ありがとうございます。 | あ、 すみません！ ありがとう ございます。 | a, sumimasen! arigatou gozaimasu.
+すみません！ | すみません！ | sumimasen!
+すいません！ | すいません！ | suimasen!
+あの、すみません！ | あの、 すみません！ | ano, sumimasen!
+すみません。 | すみません。 | sumimasen.
+すいません。 | すいません。 | suimasen.
+どうもすみません。 | どうも すみません。 | doumo sumimasen.
+どうもすいません。 | どうも すいません。 | doumo suimasen.
+あ、すみません。 | あ、 すみません。 | a, sumimasen.
+ごめん！ | ごめん！ | gomen!
+ごめんなさい！ | ごめんなさい！ | gomennasai!
+ごめんね。 | ごめん ね。 | gomen ne.
+申し訳ありません。 | もうしわけ ありません。 | moushiwake arimasen.
+申し訳ございません。 | もうしわけ ございません。 | moushiwake gozaimasen.
+大変申し訳ありません。 | たいへん もうしわけ ありません。 | taihen moushiwake arimasen.
+大変申し訳ございません。 | たいへん もうしわけ ございません。 | taihen moushiwake gozaimasen.
+申し訳ありませんでした。 | もうしわけ ありません でした。 | moushiwake arimasen deshita.
+申し訳ございませんでした。 | もうしわけ ございません でした。 | moushiwake gozaimasen deshita.
 
 ## culture/aizuchi
 あいづち | あいづち | (label: no romaji)
@@ -1182,23 +1302,57 @@
 へえ | へえ | hee
 そうなんだ | そう なん だ | sou nan da
 本当？ | ほんとう？ | hontou?
-昨日、京都に行って… | きのう、きょうと に いって… | kinou, kyouto ni itte...
-うん、うん。 | うん、うん。 | un, un.
+へえ、そうなんですか。 | へえ、 そう なん です か。 | hee, sou nan desu ka.
+なるほど。 | なるほど。 | naruhodo.
+うん、うん。 | うん、 うん。 | un, un.
+本当？すごいね！ | ほんとう？ すごい ね！ | hontou? sugoi ne!
+はい。 | はい。 | hai.
+はい、そうです。 | はい、 そう です。 | hai, sou desu.
+昨日、京都に行って… | きのう、 きょうと に いって… | kinou, kyouto ni itte...
+うん、うん。 | うん、 うん。 | un, un.
 お寺を見てきたんだけど… | おてら を みて きた ん だ けど… | otera o mite kita n da kedo...
-へえ、いいね！ | へえ、いい ね！ | hee, ii ne!
+へえ、いいね！ | へえ、 いい ね！ | hee, ii ne!
+本当？ | ほんとう？ | hontou?
+ほんと？ | ほんと？ | honto?
+本当に？ | ほんとう に？ | hontou ni?
+ほんとに？ | ほんと に？ | honto ni?
+え、本当？ | え、 ほんとう？ | e, hontou?
+え、ほんと？ | え、 ほんと？ | e, honto?
+なるほど。 | なるほど。 | naruhodo.
+なるほどね。 | なるほど ね。 | naruhodo ne.
+あ、なるほど。 | あ、 なるほど。 | a, naruhodo.
+そうなんだ。 | そう なん だ。 | sou nan da.
+そうなの？ | そう なの？ | sou nano?
+そうか。 | そう か。 | sou ka.
+そっか。 | そっか。 | sokka.
+へえ、そうなんだ。 | へえ、 そう なん だ。 | hee, sou nan da.
+へえ、そうなの？ | へえ、 そう なの？ | hee, sou nano?
+へえ、そっか。 | へえ、 そっか。 | hee, sokka.
 
 ## culture/soft-refusals
 ちょっと | ちょっと | (label: no romaji)
-今晩、飲みに行きませんか？ | こんばん、のみ に いきません か？ | konban, nomi ni ikimasen ka?
-今晩はちょっと… | こんばん は ちょっと… | konban wa chotto...
 ちょっと難しいですね。 | ちょっと むずかしい です ね。 | chotto muzukashii desu ne.
 考えておきます。 | かんがえて おきます。 | kangaete okimasu.
 また今度。 | また こんど。 | mata kondo.
+今日は行けません。 | きょう は いけません。 | kyou wa ikemasen.
+今日はちょっと… | きょう は ちょっと… | kyou wa chotto...
+今晩、飲みに行きませんか？ | こんばん、 のみ に いきません か？ | konban, nomi ni ikimasen ka?
+今晩はちょっと… | こんばん は ちょっと… | konban wa chotto...
+そうですか。じゃあ、また今度。 | そう です か。 じゃあ、 また こんど。 | sou desu ka. jaa, mata kondo.
+ちょっと | ちょっと | chotto
+いいえ | いいえ | iie
+いえ | いえ | ie
+いや | いや | iya
+今度 | こんど | kondo
 
 ## culture/uchi-soto
 内・外 | うち・そと | (label: no romaji)
-母は元気です。 | はは は げんき です。 | haha wa genki desu.
-お母さんは元気ですか？ | おかあさん は げんき です か？ | okaasan wa genki desu ka?
+父は病院で働いています。 | ちち は びょういん で はたらいて います。 | chichi wa byouin de hataraite imasu.
+お父さんはお元気ですか？ | おとうさん は おげんき です か？ | otousan wa ogenki desu ka?
+姉は大学生です。 | あね は だいがくせい です。 | ane wa daigakusei desu.
+ご家族は何人ですか？ | ごかぞく は なんにん です か？ | gokazoku wa nannin desu ka?
+母は料理が上手です。 | はは は りょうり が じょうず です。 | haha wa ryouri ga jouzu desu.
+お母さんは料理が上手ですね。 | おかあさん は りょうり が じょうず です ね。 | okaasan wa ryouri ga jouzu desu ne.
 母 | はは | haha
 お母さん | おかあさん | okaasan
 父 | ちち | chichi
@@ -1209,6 +1363,12 @@
 お姉さん | おねえさん | oneesan
 家族 | かぞく | kazoku
 ご家族 | ごかぞく | gokazoku
+兄 | あに | ani
+うちの兄 | うち の あに | uchi no ani
+お母さん | おかあさん | okaasan
+佐藤 | さとう | satou
+部長の佐藤 | ぶちょう の さとう | buchou no satou
+家族 | かぞく | kazoku
 
 ## culture/set-phrases
 挨拶 | あいさつ | (label: no romaji)
@@ -1221,5 +1381,18 @@
 お疲れ様です | おつかれさま です | otsukaresama desu
 よろしくお願いします | よろしく おねがい します | yoroshiku onegai shimasu
 初めまして。スミスです。よろしくお願いします。 | はじめまして。 スミス です。 よろしく おねがい します。 | hajimemashite. sumisu desu. yoroshiku onegai shimasu.
+いただきます。 | いただきます。 | itadakimasu.
+ごちそうさまでした。 | ごちそうさま でした。 | gochisousama deshita.
+いってきます。 | いってきます。 | ittekimasu.
+いってらっしゃい。 | いってらっしゃい。 | itterasshai.
 ただいま！ | ただいま！ | tadaima!
-おかえり！ | おかえり！ | okaeri!
+おかえり！ご飯、できてるよ。 | おかえり！ ごはん、 できてる よ。 | okaeri! gohan, dekiteru yo.
+いただきます！ | いただきます！ | itadakimasu!
+いってきます | いってきます | ittekimasu
+行ってくるね | いって くる ね | itte kuru ne
+おかえりなさい | おかえりなさい | okaerinasai
+おかえり | おかえり | okaeri
+ごちそうさまでした | ごちそうさま でした | gochisousama deshita
+ごちそうさま | ごちそうさま | gochisousama
+失礼します | しつれい します | shitsurei shimasu
+失礼いたします | しつれい いたします | shitsurei itashimasu

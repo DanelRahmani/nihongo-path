@@ -7,10 +7,12 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **B5** (Suffixes + Culture, 15 lessons), the last of the template retrofit. Then **D1** (dictionary data; ask before each download).
-  - Every typed answer needs all its correct alternatives listed. The checker ignores spaces and punctuation and folds a few keyboard kanji spellings (美味しい); nothing else. Digit forms (3本) are listed by hand where a number is typed.
-  - Reviewers in B2, B3 and B4 all flagged quiz questions that copy a lesson's own lines, or lines from other units. Use fresh words in quizzes, and grep the other units before writing an example.
-  - Quiz prompts must name the register when both are possible ("Casual negative"), or list both.
+- **D1** (dictionary data: JMdict, KANJIDIC2, KanjiVG, wordfreq, the JLPT lists). Ask the owner before each download, and confirm the JLPT lists' licence first (see Waiting on the owner). The template retrofit (B1–B5) is complete.
+  - Lessons written later still follow these rules:
+    - Every typed answer needs all its correct alternatives listed. The checker ignores spaces and punctuation and folds a few keyboard kanji spellings (美味しい); nothing else. Digit forms (3本) are listed by hand where a number is typed.
+    - Reviewers in B2–B5 all flagged quiz questions that copy a lesson's own lines, or lines from other units. Use fresh words in quizzes, and grep the other units before writing an example.
+    - Quiz prompts must name the register when both are possible ("Casual negative"), or list both.
+    - A quiz that tests a reading must ask for kana and list only kana answers: a ruby answer also accepts the kanji, which gives the reading away.
 
 ### Built
 - **Phase 0 (2026-10-07):** repository audit and feature plan. No code changes.
@@ -109,6 +111,13 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Every conjugation table is checked against the C1 engine. The masu-form example cells now read "飲みます: I drink".
   - Renderer: callout titles render markup (a ruby title showed raw brackets). The corpus walks callout titles too.
   - Content tests: the stacked-particle check covers more pairs, and 何名 is exempt from the name-join check.
+- **B5 Suffixes and Culture on the template (2026-10-08):** the last 15 lessons converted. All 62 lessons now follow the template, and `content/retrofit-pending.ts` is empty.
+  - Suffixes: さん/くん/ちゃん/様, titles (先生, 先輩, 部長, 社長), たち/ら/方, 人/語, 中, 屋, さ and お/ご.
+    - 中 teaches three uses: ちゅう for in the middle of (電話中) and for during or within (午前中, 夏休み中に), and じゅう for all through or all over (一日中, 世界中), with time words learned one by one. Its quiz asks for the reading in hiragana, so typing 中 doesn't count.
+    - 先輩 as a suffix is for school and clubs; at work seniors are usually さん. くん covers male friends and juniors, and at work any junior.
+  - Culture: polite or casual, avoiding あなた, すみません, aizuchi, soft refusals, uchi/soto and set phrases. Each now has core examples, a pair, a mistake, and a quiz with the openers and variants learners actually type (あの、すみません, え、ほんと？, 部長の佐藤, 大変申し訳ございません).
+  - Checker: a Japanese keyboard's kanji for set phrases (行ってきます, 行ってらっしゃい, お帰り, ご馳走様, 頂きます) are folded to kana.
+  - Content test: shop words ending in 屋 (本屋さん) aren't names, so they don't need the name hyphen.
 
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
@@ -137,11 +146,11 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 
 ### Numbers
 - 9 units, 62 lessons, 208 kana cards.
-- 1,019 Japanese lines (not counting labels), including quiz answers: 497 example, pair, dialogue and alt sentences, of which 351 have a highlight.
-- 2,183 ruby tokens and 355 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 373 in 15 files.
-- Template: 47 of 62 lessons converted (15 pending).
-- Quiz questions: 193, of which 37 are typed in romaji and 3 ask for a name.
+- 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
+- 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
+- Tests: 388 in 15 files.
+- Template: all 62 lessons converted.
+- Quiz questions: 250, of which 37 are typed in romaji and 3 ask for a name.
 
 ### How it was checked
 - `npm test`, `npm run typecheck`, `npm run lint`, `npm run build`.
@@ -252,12 +261,31 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
     - よい is "the more formal form", not "the usual written form".
   - Polish applied: a dialogue for です/だ instead of a culture note that wasn't culture; one column order (Casual, Polite) for the three adjective/noun tables; casual alts in na-adjectives and aru-iru; なぜ; 100 and 1,000 without いち; ななじ "also heard"; the passive look-alike noted under the potential table; a たら quiz on nouns (休みだったら).
   - Not applied: whether 見なかった or 見てない should be taught first for "I didn't watch it". Both are grammatical, and a native speaker's judgement would settle it.
+- B5 in the browser at 375 px, light and dark:
+  - chuu-juu: 中 typed in kanji is marked wrong with the hiragana answer shown, and じゅう is accepted.
+  - set-phrases: お帰りなさい (the keyboard's kanji) is accepted.
+  - No horizontal scroll, and a clean console.
+- B5 review: two fresh Opus 5.5 reviewers (Suffixes, Culture) and a Haiku pass on the romaji typed in prose. No wrong reading, kanji, word space or generated romaji. All findings were applied:
+  - Errors fixed, all in chuu-juu:
+    - "time spans take じゅう, except 午前中" was false (夏休み中に, 今週中, 授業中 take ちゅう);
+    - the quiz accepted the kanji 中, so it never tested the reading;
+    - the pair changed both the word and the reading.
+  - Should-fix items applied, among others:
+    - many missing accepted answers (僕は…, 屋さん, 彼女ら/彼女たち, すみません openers, 大変申し訳ございません, のquestions, いえ, お先に失礼いたします, 部長の佐藤);
+    - quizzes and lines copied from other units now use fresh situations;
+    - pairs that changed more than one thing (お仕事, soft refusals, uchi/soto) now change one;
+    - 静かさ became 大切さ (静けさ is the usual word), and 彼ら is "common in writing and among friends";
+    - an unnatural ✗ line (じゃあ、だめってことですか？), できてる written as one word, and the 敬語 terms explained.
+  - Polish applied, among others: ご苦労様 next to お疲れ様, さようなら at school, あなた between spouses as old-fashioned, 君 said downwards, 〜店 on signs, おビール.
 
 ### Waiting on the owner
 - B4 sources to confirm. The reviewers recalled these differently:
   - Genki: plain past of nouns in Genki I ch. 9 (desu-da now cites ch. 1, 4, 8–9); counters in Genki II ch. 14; たがっている in Genki I ch. 11; volitional in Genki II ch. 15; potential in Genki II ch. 13; たら in Genki II ch. 17; ている in ch. 7 and てください in ch. 6.
   - Tae Kim section titles cited in B4 that may not exist as written: "Existence: ある and いる", "Question words", "The te-form" (possibly "Compound sentences"), "Using the te-form", "Desire: たい" (possibly "Desire and suggestions"), "Numbers and counting". kosoado cites the guide with no section.
   - Cure Dolly video titles: "です and だ" and "adjectives as verbs".
+- B5 to confirm:
+  - Sources: Genki I ch. 1 for くん, ちゃん, 様, たち and 人/語; Genki II ch. 20 for 〜中; Genki II ch. 16 for 〜さ; Genki I ch. 4 for 〜屋; Genki I ch. 3–4 for お/ご; Genki I ch. 7 and 8 for family terms and casual speech; the Tofugu titles ("Japanese honorifics", "Aizuchi", "How to say no in Japanese"); Tae Kim's "Honorifics" and "Honorific and humble forms"; IMABI pages for 〜中 and 〜屋.
+  - The first kanji a Japanese keyboard offers for いってきます, おかえり and ごちそうさま; the checker now folds the usual ones.
 - C1 forms the reviewer and I couldn't settle, both refused by the engine for now:
   - the て and た forms of ゆく (written ゆって? いって?); a dictionary such as 明鏡 or 大辞林 would settle it;
   - the potentials いらっしゃれる and おっしゃれる (文化庁「敬語の指針」, 2007).

@@ -12,6 +12,9 @@ describe("normalizeAnswer", () => {
     expect(normalizeAnswer("美味しい")).toBe("おいしい");
     expect(checkAnswer(["[安|やす]くて おいしい"], "安くて美味しい").correct).toBe(true);
     expect(checkAnswer(["あ、 くも が いる！"], "あ、蜘蛛がいる！").correct).toBe(true);
+    expect(checkAnswer(["いってきます"], "行ってきます").correct).toBe(true);
+    expect(checkAnswer(["おかえりなさい"], "お帰りなさい").correct).toBe(true);
+    expect(checkAnswer(["ごちそうさま でした"], "ご馳走様でした").correct).toBe(true);
   });
 
   it("ignores punctuation inside the answer too", () => {

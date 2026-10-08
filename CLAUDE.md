@@ -127,6 +127,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Examples write numbers as kanji with ruby.
   - Names join their suffix with `-`.
 - 2026-10-08: the owner asked to push to main. main was fast-forwarded to B1 (6a21af1), with no merge commit; `features` stays the working branch.
+- 2026-10-08: the owner asked again to push to main. main was fast-forwarded to B4 (51b591f), bringing B2, B3, C1 and B4; no merge commit.
 - The path is unit tabs, not kind filters (owner request). Lesson `kinds` tags (B1) will feed search and the grammar overview instead.
   - Stacked particles are written separately (で は).
 - B2 (2026-10-08):

@@ -63,6 +63,12 @@ describe("markup", () => {
     expect(romajiOf("お[客|きゃく][様|さま]")).toBe("okyakusama");
   });
 
+  it("marks a kanji to show in every mode with [!…], without changing its reading", () => {
+    expect(parse("[!箸|はし]", true)[0]).toEqual({ kind: "ruby", base: "箸", reading: "はし", hl: false, bold: false, it: false, show: true });
+    expect(plainOf("[!漢字|かんじ] です")).toBe("漢字です");
+    expect(romajiOf("[!漢字|かんじ] です")).toBe("kanji desu");
+  });
+
   it("finds kanji outside ruby markup", () => {
     expect(bareKanji(src, true)).toEqual([]);
     expect(bareKanji("猫 が [好|す]き", true)).toEqual(["猫"]);

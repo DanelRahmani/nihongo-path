@@ -18,10 +18,13 @@ function styled(t: Styled, node: React.ReactNode): React.ReactNode {
   return node;
 }
 
-/** A kanji word: ruby for the furigana modes, the bare reading for kana-only. data-k lists its kanji. */
+/**
+ * A kanji word: ruby for the furigana modes, the bare reading for kana-only. data-k lists its kanji.
+ * A word marked to show ([!漢字|かんじ]) keeps its ruby in kana-only mode too.
+ */
 function KanjiWord({ t }: { t: Extract<Token, { kind: "ruby" }> }) {
   return (
-    <span className="w" data-k={t.base}>
+    <span className={t.show ? "w show" : "w"} data-k={t.base}>
       <ruby>
         {t.base}
         <rp>(</rp>

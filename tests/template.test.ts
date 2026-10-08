@@ -63,7 +63,7 @@ describe("templateProblems", () => {
   it("names each missing part", () => {
     const bare: Lesson = { ...GOOD, register: undefined, kinds: [], blocks: [{ type: "idea", text: "x" }] };
     expect(templateProblems(bare)).toEqual([
-      "no register (polite, plain or both)",
+      "no register (polite, plain, both or neutral)",
       "no kinds tags",
       "no examples",
       "no pair",

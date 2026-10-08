@@ -7,7 +7,13 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Feedback } from "@/components/ui/Feedback";
 import { panelClass } from "@/components/ui/Panel";
 import type { QuizQuestion } from "@/content/types";
-import { checkAnswer, type QuizCheck } from "@/lib/quiz";
+import { checkQuestion, type QuizCheck } from "@/lib/quiz";
+
+const PLACEHOLDER = {
+  japanese: "Type in kana or kanji",
+  romaji: "Type the reading in romaji",
+  name: "Type the name in English letters",
+} as const;
 
 function Question({ q, n, onResult }: { q: QuizQuestion; n: number; onResult: (correct: boolean) => void }) {
   const id = useId();
@@ -15,6 +21,8 @@ function Question({ q, n, onResult }: { q: QuizQuestion; n: number; onResult: (c
   const [result, setResult] = useState<QuizCheck | null>(null);
   // Enter also confirms a Japanese keyboard's conversion; that Enter must not submit the answer.
   const composing = useRef(false);
+  // Romaji readings and names are typed in English letters, and the answer shown is the romaji.
+  const romaji = q.answerIn !== undefined;
 
   return (
     <li className="py-5 first:pt-0 last:pb-0">
@@ -22,7 +30,7 @@ function Question({ q, n, onResult }: { q: QuizQuestion; n: number; onResult: (c
         onSubmit={(e) => {
           e.preventDefault();
           if (composing.current || !input.trim()) return;
-          const r = checkAnswer(q.answers, input);
+          const r = checkQuestion(q, input);
           setResult(r);
           onResult(r.correct);
         }}
@@ -36,17 +44,17 @@ function Question({ q, n, onResult }: { q: QuizQuestion; n: number; onResult: (c
         <div className="mt-3 flex gap-2 sm:pl-10">
           <input
             id={id}
-            lang="ja"
+            lang={romaji ? "en" : "ja"}
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onCompositionStart={() => (composing.current = true)}
             onCompositionEnd={() => (composing.current = false)}
-            placeholder="Type in kana or kanji"
+            placeholder={PLACEHOLDER[q.answerIn ?? "japanese"]}
             autoComplete="off"
             autoCapitalize="none"
             autoCorrect="off"
             spellCheck={false}
-            className="h-11 min-w-0 flex-1 rounded-full border border-line-strong bg-surface px-5 font-jp text-lg placeholder:font-sans placeholder:text-sm placeholder:text-ink-2/70 focus:border-accent focus:ring-4 focus:ring-accent/20 focus:outline-none"
+            className={`h-11 min-w-0 flex-1 rounded-full border border-line-strong bg-surface px-5 text-lg ${romaji ? "" : "font-jp"} placeholder:font-sans placeholder:text-sm placeholder:text-ink-2/70 focus:border-accent focus:ring-4 focus:ring-accent/20 focus:outline-none`}
           />
           <Button type="submit" variant="secondary">
             Check
@@ -61,7 +69,11 @@ function Question({ q, n, onResult }: { q: QuizQuestion; n: number; onResult: (c
             ) : (
               <p>
                 <span className="font-medium">The answer: </span>
-                <Jp jp={q.answers[0]} romaji={false} className="font-jp text-lg" />
+                {romaji ? (
+                  <span className="text-lg font-medium">{result.answer}</span>
+                ) : (
+                  <Jp jp={q.answers[0]} romaji={false} className="font-jp text-lg" />
+                )}
               </p>
             )}
             {result.note && <p className="text-sm">{result.note}</p>}

@@ -3,21 +3,6 @@
  * tests/template.test.ts fails if a listed lesson already passes, or an unlisted one fails.
  */
 export const RETROFIT_PENDING: string[] = [
-  "start/three-scripts",
-  "hiragana/hiragana-vowels-kstn",
-  "hiragana/hiragana-hmyrw",
-  "hiragana/hiragana-dakuten",
-  "hiragana/hiragana-combos",
-  "hiragana/hiragana-small-tsu-long-vowels",
-  "katakana/katakana-basics",
-  "katakana/katakana-look-alikes",
-  "katakana/katakana-long-vowels-combos",
-  "katakana/english-to-katakana",
-  "word-order/verb-last",
-  "word-order/topic-comment",
-  "word-order/particles-move",
-  "word-order/dropping-words",
-  "word-order/modifiers-first",
   "particles/wa-topic",
   "particles/ga-subject",
   "particles/wa-vs-ga",

@@ -39,7 +39,7 @@ describe("lineRegister", () => {
 /** Every Japanese line with its optional other-register version, from every lesson. */
 const LINES = ALL_LESSONS.flatMap(({ key, lesson }) =>
   lesson.blocks.flatMap((b: Block) => {
-    const items =
+    const items: { jp: string; alt?: string }[] =
       b.type === "examples" ? b.items : b.type === "pair" ? [b.a, b.b] : b.type === "dialogue" ? b.lines : [];
     return items.map((it) => ({ key, register: lesson.register, jp: it.jp, alt: it.alt }));
   }),
@@ -62,6 +62,13 @@ describe("registers in the lessons (content/STYLE.md §9)", () => {
     const bad = LINES.filter(
       (l) => (l.register === "polite" && lineRegister(l.jp) === "plain") || (l.register === "plain" && lineRegister(l.jp) === "polite"),
     ).map((l) => `${l.key} (${l.register}): ${plainOf(l.jp)}`);
+    expect(bad).toEqual([]);
+  });
+
+  it("keeps neutral lessons to single words: no word spaces, no sentence punctuation, no alt", () => {
+    const bad = LINES.filter((l) => l.register === "neutral" && (/[ 。？！]/u.test(l.jp) || l.alt !== undefined)).map(
+      (l) => `${l.key}: ${plainOf(l.jp)}`,
+    );
     expect(bad).toEqual([]);
   });
 });

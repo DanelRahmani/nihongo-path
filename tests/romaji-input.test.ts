@@ -21,12 +21,19 @@ describe("romajiMatches", () => {
     ["honya", "hon'ya"],
     ["Koohii", "koohii"],
     ["wo", "o"],
+    ["shimbun", "shinbun"],
+    ["sampo", "sanpo"],
+    ["ammari", "anmari"],
+    ["mikann", "mikan"],
+    ["konnnichiwa", "konnichiwa"],
+    ["mikadzuki", "mikazuki"],
   ])("accepts %s for %s", (typed, expected) => expect(romajiMatches(typed, expected)).toBe(true));
 
   it.each([
     ["shu", "shi"],
     ["kyo", "kyou"],
     ["gakko", "gakkou"],
+    ["mina", "minna"],
     ["", "a"],
   ])("rejects %s for %s", (typed, expected) => expect(romajiMatches(typed, expected)).toBe(false));
 

@@ -6,19 +6,32 @@ export const basics: Lesson[] = [
     title: "Three scripts in one sentence: hiragana, katakana, kanji",
     mark: "あ・ア",
     summary: "What each writing system is for, and how this app shows them.",
-    source: "Genki I — Introduction: the Japanese writing system; Tae Kim's Guide — “The writing system”",
+    source:
+      "Genki I — Introduction: the Japanese writing system; Tae Kim's Guide — “The writing system”; MEXT's grade-by-grade kanji list (in force from 2020); the Jōyō kanji table (2010)",
+    register: "polite",
+    kinds: ["basics", "kana"],
     blocks: [
       {
         type: "idea",
-        text: "Japanese is written with three scripts at once: **hiragana** for grammar and native words, **katakana** for foreign words, and **kanji** for meaning.",
+        text: "Japanese is written with three scripts at once: **hiragana** for grammar and for words without everyday kanji, **katakana** for modern loanwords, and **kanji** for meaning.",
       },
       {
         type: "examples",
         items: [
           {
-            jp: "[私|わたし] は コーヒー が [好|す]き です。",
+            jp: "[!私|わたし] は {コーヒー} が [!好|す]き です。",
             en: "I like coffee.",
-            note: "Katakana: コーヒー. Hiragana: は, が, です and the word endings. The rest are kanji — switch Display to Furigana or Kanji to see them.",
+            note: "All three in one sentence: kanji in [!私|わたし] and [!好|す]き, hiragana in は, が, き and です, and katakana in コーヒー, a word borrowed from another language.",
+          },
+          {
+            jp: "パン {を} [!食|た]べ{ます}。",
+            en: "I eat bread.",
+            note: "Hiragana: the particle を and the ending ます carry the grammar.",
+          },
+          {
+            jp: "{[!日本語|にほんご]} を [!勉強|べんきょう] して います。",
+            en: "I'm studying Japanese.",
+            note: "Kanji: [!日本語|にほんご] is “Japan” ([!日本|にほん]) plus “language” ([!語|ご]). The small kana above the kanji are furigana: they show how to read them.",
           },
         ],
       },
@@ -26,19 +39,59 @@ export const basics: Lesson[] = [
         type: "table",
         headers: ["Script", "Looks like", "Used for"],
         rows: [
-          ["Hiragana", "ひらがな", "Particles, word endings, native words"],
-          ["Katakana", "カタカナ", "Foreign words and names, sound effects, emphasis"],
-          ["Kanji", "[漢字|かんじ]", "The core of most nouns, verbs and adjectives"],
+          ["Hiragana", "ひらがな", "Particles, word endings, words without everyday kanji"],
+          ["Katakana", "カタカナ", "Modern loanwords, foreign names, sound effects, emphasis"],
+          ["Kanji", "[!漢字|かんじ]", "The core of most nouns, verbs and adjectives"],
         ],
       },
       {
         type: "text",
-        text: "This app teaches hiragana and katakana. Kanji are shown according to your **Display** setting: written in kana, with furigana (small kana above), or as plain kanji.",
+        text: "The Hiragana and Katakana units teach the kana. Everywhere else, kanji follow your Display setting (the [!表示|ひょうじ] button at the top right): written in kana (Kana only, the default), with furigana, or as plain kanji. This lesson always shows them, so you can see what they look like.",
+      },
+      {
+        type: "pair",
+        a: { jp: "[!紙|かみ]", en: "paper" },
+        b: { jp: "[!髪|かみ]", en: "hair" },
+        diff: "In kana both are かみ; the kanji tell them apart. Japanese has many words that share a kana spelling, which is one reason kanji stay in use.",
+      },
+      {
+        type: "callout",
+        kind: "mistake",
+        title: "Modern loanwords go in katakana",
+        text: "✗ こーひー ✓ コーヒー. A word borrowed from a Western language is written in katakana, long-vowel bar ー and all. On a Japanese keyboard you'll see こーひー as you type: convert it (usually with the space bar) to get コーヒー.",
       },
       {
         type: "callout",
         kind: "tip",
-        text: "Learn hiragana first — every sentence needs it. Katakana second. Kanji can wait: everything in these lessons can be read in kana.",
+        text: "Learn hiragana first: every sentence needs it. Katakana second. Kanji can wait, since everything in these lessons can be read in kana.",
+      },
+      {
+        type: "callout",
+        kind: "culture",
+        text: "Japanese children learn in this order too: they meet hiragana and katakana in their first school year, along with their first 80 kanji. By the end of primary school they have been taught 1,026 kanji; the rest of the 2,136 on the official list for everyday writing, the [!常用漢字|じょうようかんじ], come in secondary school.",
+      },
+      {
+        type: "quiz",
+        questions: [
+          {
+            prompt: "Which script is テレビ (TV) written in? Type its name in English letters.",
+            answers: ["カタカナ"],
+            answerIn: "name",
+            explanation: "Katakana: テレビ is short for テレビジョン, from English “television”. Words borrowed from Western languages are written in katakana.",
+          },
+          {
+            prompt: "Which script writes particles like を and endings like ます? Type its name in English letters.",
+            answers: ["ひらがな"],
+            answerIn: "name",
+            explanation: "Hiragana writes the grammar: particles, and the endings of verbs and adjectives.",
+          },
+          {
+            prompt: "On the page, what tells かみ “paper” apart from かみ “hair”? Type the script's name in English letters.",
+            answers: ["[!漢字|かんじ]"],
+            answerIn: "name",
+            explanation: "Kanji: [!紙|かみ] is paper and [!髪|かみ] is hair. Many words share a kana spelling, and kanji keep them apart in writing.",
+          },
+        ],
       },
       { type: "link", href: "/learn/hiragana/hiragana-vowels-kstn", label: "Start hiragana", text: "The vowels and the first four rows." },
     ],

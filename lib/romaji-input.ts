@@ -17,6 +17,12 @@ const ALTERNATIVES: [RegExp, string][] = [
   [/zi|di/g, "ji"],
   [/du/g, "zu"],
   [/wo/g, "o"],
+  // Traditional Hepburn writes ん as m before b, m and p (shimbun); the app writes n.
+  [/m(?=[bmp])/g, "n"],
+  // Japanese keyboards type ん as nn; it's one n at the end of a word or before a consonant
+  // (mikann, ennpitsu), but nn before a vowel or y is real (minna, konnichiwa).
+  [/nn(?=$|[^aiueoy])/g, "n"],
+  [/dzu/g, "zu"],
 ];
 
 export function normalizeRomaji(s: string): string {

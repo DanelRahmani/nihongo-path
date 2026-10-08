@@ -3,6 +3,7 @@
  *
  * Japanese markup used in every `Jp` / `Rich` string:
  *   [漢字|かんじ]  kanji with its reading — rendered per the reader's furigana mode
+ *   [!漢字|かんじ] the same, but shown with furigana even in Kana only mode (where seeing the kanji is the point)
  *   {text}        highlighted ("red pen") span; may contain ruby markup
  *   **text**      bold, *text* italic
  *   spaces        word boundaries in Jp strings: shown in kana-only mode, used to space romaji
@@ -31,6 +32,13 @@ export interface DialogueLine {
 export interface QuizQuestion {
   prompt: Rich;
   answers: Jp[];
+  /**
+   * "romaji": the reader types how the answer is read, in romaji (kana lessons). A Japanese
+   * keyboard would turn romaji into the kana being tested, so kana answers would test nothing.
+   * "name": the answer is a name (a script, say) typed in English letters before the reader has a
+   * Japanese keyboard; the Japanese form is accepted too.
+   */
+  answerIn?: "romaji" | "name";
   /** Shown after the reader checks their answer, right or wrong. */
   explanation: Rich;
 }
@@ -47,8 +55,8 @@ export type Block =
   | { type: "link"; href: string; label: string; text?: Rich }
   | { type: "quiz"; questions: QuizQuestion[] };
 
-/** Which register a lesson's Japanese is in (content/STYLE.md §9). */
-export type Register = "polite" | "plain" | "both";
+/** Which register a lesson's Japanese is in (content/STYLE.md §9). "neutral": single words only (kana lessons). */
+export type Register = "polite" | "plain" | "both" | "neutral";
 
 /** Parts of the lesson template (content/STYLE.md §10) a lesson may skip, with the reason. */
 export type TemplatePart = "examples" | "pair" | "mistake" | "conversation" | "quiz";

@@ -36,6 +36,11 @@ describe("lang attributes in rendered prose", () => {
     expect(html).toBe(`<span>say <span lang="ja">${WORD("食", "た")}べます</span></span>`);
   });
 
+  it("gives a kanji marked to show the class that keeps its ruby in kana-only mode", () => {
+    const html = renderToStaticMarkup(createElement(Cell, { text: "[!漢字|かんじ]" }));
+    expect(html).toContain(`<span class="w show" data-k="漢字">`);
+  });
+
   it("marks a Japanese-only table cell as a whole", () => {
     const html = renderToStaticMarkup(createElement(Cell, { text: "[食|た]べます" }));
     expect(html).toContain(`<span lang="ja">${WORD("食", "た")}べます</span>`);

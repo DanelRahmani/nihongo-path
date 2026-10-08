@@ -1,11 +1,16 @@
 import { describe, expect, it } from "vitest";
-import { acceptedForms, checkAnswer, normalizeAnswer } from "@/lib/quiz";
+import { acceptedForms, checkAnswer, checkName, checkQuestion, checkRomaji, normalizeAnswer } from "@/lib/quiz";
 
 describe("normalizeAnswer", () => {
   it("folds width, drops spaces and trailing punctuation", () => {
     expect(normalizeAnswer(" がくせい です。 ")).toBe("がくせいです");
     expect(normalizeAnswer("ｶﾞｸｾｲ")).toBe("ガクセイ");
     expect(normalizeAnswer("いく？")).toBe("いく");
+  });
+
+  it("ignores punctuation inside the answer too", () => {
+    expect(normalizeAnswer("はい、たべました。")).toBe("はいたべました");
+    expect(normalizeAnswer("は・が")).toBe("はが");
   });
 });
 
@@ -38,5 +43,66 @@ describe("checkAnswer", () => {
   it("explains a particle spelled by its sound", () => {
     expect(checkAnswer(["は"], "わ").note).toBe("Same sound, different spelling: it's written は.");
     expect(checkAnswer(["を"], "お").note).toBe("Same sound, different spelling: it's written を.");
+  });
+});
+
+describe("checkRomaji (kana lessons: type the reading)", () => {
+  it("accepts the app's romaji and the usual other spellings", () => {
+    for (const typed of ["kitte", "Kitte", " kitte "]) expect(checkRomaji(["きって"], typed).correct).toBe(true);
+    for (const typed of ["shashin", "syasin"]) expect(checkRomaji(["しゃしん"], typed).correct).toBe(true);
+    for (const typed of ["gakkou", "gakkoo", "gakkō"]) expect(checkRomaji(["がっこう"], typed).correct).toBe(true);
+    for (const typed of ["hon'ya", "honya"]) expect(checkRomaji(["ほんや"], typed).correct).toBe(true);
+    for (const typed of ["sanpo", "sampo"]) expect(checkRomaji(["さんぽ"], typed).correct).toBe(true);
+    expect(checkRomaji(["カタカナ"], "katakana").correct).toBe(true);
+  });
+
+  it("shows the app's romaji as the answer", () => {
+    expect(checkRomaji(["コーヒー"], "kohi")).toMatchObject({ correct: false, answer: "koohii" });
+  });
+
+  it("names a missing small っ, and one that isn't there", () => {
+    expect(checkRomaji(["きって"], "kite").note).toMatch(/Check for a small っ/);
+    expect(checkRomaji(["まっちゃ"], "macha").note).toMatch(/Check for a small っ/);
+    expect(checkRomaji(["きて"], "kitte").note).toMatch(/no small っ/);
+    expect(checkRomaji(["ねこ"], "nekko").note).toMatch(/no small っ/);
+  });
+
+  it("names a long vowel said short, a short one said long, and ー spelled ei", () => {
+    expect(checkRomaji(["おばあさん"], "obasan").note).toMatch(/long vowel/);
+    expect(checkRomaji(["がっこう"], "gakko").note).toMatch(/long vowel/);
+    expect(checkRomaji(["せんせい"], "sense").note).toMatch(/long vowel/);
+    expect(checkRomaji(["じしょ"], "jishoo").note).toMatch(/short here/);
+    expect(checkRomaji(["メール"], "meiru").note).toMatch(/ー repeats/);
+  });
+
+  it("accepts ん typed as nn, as on a Japanese keyboard", () => {
+    for (const [kana, typed] of [["みかん", "mikann"], ["えんぴつ", "ennpitsu"], ["みかづき", "mikadzuki"]]) {
+      expect(checkRomaji([kana], typed).correct).toBe(true);
+    }
+  });
+
+  it("asks for romaji when kana is typed, and gives no note for other misses", () => {
+    expect(checkRomaji(["ねこ"], "ねこ").note).toMatch(/romaji/);
+    expect(checkRomaji(["つき"], "suki")).toEqual({ correct: false, answer: "tsuki" });
+    expect(checkRomaji(["こんにちは"], "konichiwa").note).toBeUndefined();
+  });
+});
+
+describe("checkName (a script's name, before the learner has a Japanese keyboard)", () => {
+  it("accepts the name in English letters or in Japanese", () => {
+    for (const typed of ["katakana", "Katakana", "カタカナ", "かたかな"]) expect(checkName(["カタカナ"], typed).correct).toBe(true);
+    for (const typed of ["kanji", "漢字", "かんじ"]) expect(checkName(["[!漢字|かんじ]"], typed).correct).toBe(true);
+  });
+
+  it("gives no reading notes for a wrong name", () => {
+    expect(checkName(["カタカナ"], "terebi")).toEqual({ correct: false, answer: "katakana" });
+  });
+});
+
+describe("checkQuestion", () => {
+  it("checks a romaji question as romaji and any other as Japanese", () => {
+    expect(checkQuestion({ prompt: "", answers: ["ねこ"], answerIn: "romaji", explanation: "" }, "neko").correct).toBe(true);
+    expect(checkQuestion({ prompt: "", answers: ["ねこ"], explanation: "" }, "neko").correct).toBe(false);
+    expect(checkQuestion({ prompt: "", answers: ["ねこ"], explanation: "" }, "ねこ").correct).toBe(true);
   });
 });

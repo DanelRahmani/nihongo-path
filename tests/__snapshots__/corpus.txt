@@ -22,8 +22,15 @@
 ## start/three-scripts
 あ・ア | あ・ア | (label: no romaji)
 私はコーヒーが好きです。 | わたし は コーヒー が すき です。 | watashi wa koohii ga suki desu.
+パンを食べます。 | パン を たべます。 | pan o tabemasu.
+日本語を勉強しています。 | にほんご を べんきょう して います。 | nihongo o benkyou shite imasu.
 ひらがな | ひらがな | hiragana
 カタカナ | カタカナ | katakana
+漢字 | かんじ | kanji
+紙 | かみ | kami
+髪 | かみ | kami
+カタカナ | カタカナ | katakana
+ひらがな | ひらがな | hiragana
 漢字 | かんじ | kanji
 
 ## start/polite-and-casual
@@ -57,67 +64,114 @@
 
 ## hiragana/hiragana-vowels-kstn
 あ | あ | (label: no romaji)
-あい | あい | ai
-いえ | いえ | ie
-かさ | かさ | kasa
 すし | すし | sushi
-ねこ | ねこ | neko
+くち | くち | kuchi
+つくえ | つくえ | tsukue
 ちかてつ | ちかてつ | chikatetsu
+つき | つき | tsuki
+すき | すき | suki
+ねこ | ねこ | neko
+あし | あし | ashi
+なつ | なつ | natsu
+ちかい | ちかい | chikai
 
 ## hiragana/hiragana-hmyrw
 は | は | (label: no romaji)
-はな | はな | hana
-ふね | ふね | fune
-やま | やま | yama
-よる | よる | yoru
-みかん | みかん | mikan
+さいふ | さいふ | saifu
+さる | さる | saru
+てんき | てんき | tenki
+ゆき | ゆき | yuki
 わたし | わたし | watashi
+ふね | ふね | fune
+ほね | ほね | hone
+ふゆ | ふゆ | fuyu
+みかん | みかん | mikan
+よる | よる | yoru
+ほんや | ほんや | hon'ya
 
 ## hiragana/hiragana-dakuten
 が | が | (label: no romaji)
+ごはん | ごはん | gohan
+かぜ | かぜ | kaze
+でんわ | でんわ | denwa
+てぶくろ | てぶくろ | tebukuro
+さんぽ | さんぽ | sanpo
 ふた | ふた | futa
 ぶた | ぶた | buta
 かき | かき | kaki
 かぎ | かぎ | kagi
+かばん | かばん | kaban
+たまご | たまご | tamago
+えんぴつ | えんぴつ | enpitsu
+みかづき | みかづき | mikazuki
 
 ## hiragana/hiragana-combos
 きゃ | きゃ | (label: no romaji)
-びょういん | びょういん | byouin
-びよういん | びよういん | biyouin
 きょう | きょう | kyou
 しゃしん | しゃしん | shashin
 おちゃ | おちゃ | ocha
 じゅぎょう | じゅぎょう | jugyou
+びょういん | びょういん | byouin
+びよういん | びよういん | biyouin
+ちゃわん | ちゃわん | chawan
+じしょ | じしょ | jisho
+ひゃく | ひゃく | hyaku
+しゅみ | しゅみ | shumi
 
 ## hiragana/hiragana-small-tsu-long-vowels
 っ | っ | (label: no romaji)
-きて | きて | kite
-きって | きって | kitte
+きっぷ | きっぷ | kippu
+ざっし | ざっし | zasshi
+おかあさん | おかあさん | okaasan
+ひこうき | ひこうき | hikouki
+えいが | えいが | eiga
+おと | おと | oto
+おっと | おっと | otto
 おばさん | おばさん | obasan
 おばあさん | おばあさん | obaasan
 ああ·いい·うう | ああ · いい · うう | aa · ii · uu
 えい·ええ | えい · ええ | ei · ee
 おう·おお | おう · おお | ou · oo
+がっこう | がっこう | gakkou
+いっぱい | いっぱい | ippai
+おにいさん | おにいさん | oniisan
+とおい | とおい | tooi
 
 ## katakana/katakana-basics
 カ | カ | (label: no romaji)
-テレビ | テレビ | terebi
-ホテル | ホテル | hoteru
 カメラ | カメラ | kamera
 アメリカ | アメリカ | amerika
+メモ | メモ | memo
+ヘルメット | ヘルメット | herumetto
+パン | パン | pan
+ペン | ペン | pen
+テレビ | テレビ | terebi
+ホテル | ホテル | hoteru
+ナイフ | ナイフ | naifu
+メロン | メロン | meron
 
 ## katakana/katakana-look-alikes
 シ・ツ | シ・ツ | (label: no romaji)
 シャツ | シャツ | shatsu
-ソース | ソース | soosu
-パン | パン | pan
+ツナ | ツナ | tsuna
+ソックス | ソックス | sokkusu
+ロンドン | ロンドン | rondon
+シール | シール | shiiru
+ツール | ツール | tsuuru
+タオル | タオル | taoru
+ミシン | ミシン | mishin
+ノック | ノック | nokku
+ナッツ | ナッツ | nattsu
+ケチャップ | ケチャップ | kechappu
 
 ## katakana/katakana-long-vowels-combos
 ー | ー | (label: no romaji)
 コーヒー | コーヒー | koohii
 ケーキ | ケーキ | keeki
 スーパー | スーパー | suupaa
-ベッド | ベッド | beddo
+ティッシュ | ティッシュ | tisshu
+ビル | ビル | biru
+ビール | ビール | biiru
 ティ | ティ | ti
 ディ | ディ | di
 ファ | ファ | fa
@@ -125,60 +179,129 @@
 ウィ·ウェ | ウィ · ウェ | wi · we
 チェ·ジェ·シェ | チェ · ジェ · シェ | che · je · she
 ヴ | ヴ | vu
+ノート | ノート | nooto
+ソファー | ソファー | sofaa
+メール | メール | meeru
+シェフ | シェフ | shefu
 
 ## katakana/english-to-katakana
 ホテル | ホテル | (label: no romaji)
-デスク,ベッド | デスク, ベッド | desuku, beddo
+ミルク | ミルク | miruku
+ベッド | ベッド | beddo
+ゴルフ | ゴルフ | gorufu
+テキスト | テキスト | tekisuto
+デスク,ベッド,マッチ | デスク, ベッド, マッチ | desuku, beddo, matchi
+カップ,ホット,チェック | カップ, ホット, チェック | kappu, hotto, chekku
 レモン,ライス | レモン, ライス | remon, raisu
 ビデオ,ベスト | ビデオ, ベスト | bideo, besuto
 コンピューター,ドクター | コンピューター, ドクター | konpyuutaa, dokutaa
-スリー,スリル | スリー, スリル | surii, suriru
+スリー,マザー | スリー, マザー | surii, mazaa
 パーティー,チケット,ラジオ | パーティー, チケット, ラジオ | paatii, chiketto, rajio
+バッグ | バッグ | baggu
+バック | バック | bakku
 パソコン | パソコン | pasokon
 コンビニ | コンビニ | konbini
 スマホ | スマホ | sumaho
 エアコン | エアコン | eakon
+タクシー | タクシー | takushii
+テスト | テスト | tesuto
+ハンバーガー | ハンバーガー | hanbaagaa
+プリン | プリン | purin
 
 ## word-order/verb-last
 最後 | さいご | (label: no romaji)
 私はパンを食べます。 | わたし は パン を たべます。 | watashi wa pan o tabemasu.
+私はパンを食べる。 | わたし は パン を たべる。 | watashi wa pan o taberu.
 毎朝駅でコーヒーを買う。 | まいあさ えき で コーヒー を かう。 | maiasa eki de koohii o kau.
+毎朝駅でコーヒーを買います。 | まいあさ えき で コーヒー を かいます。 | maiasa eki de koohii o kaimasu.
 この部屋は広い。 | この へや は ひろい。 | kono heya wa hiroi.
+この部屋は広いです。 | この へや は ひろい です。 | kono heya wa hiroi desu.
+週末は何をしますか？ | しゅうまつ は なに を します か？ | shuumatsu wa nani o shimasu ka?
+週末は何する？ | しゅうまつ は なに する？ | shuumatsu wa nani suru?
 肉を食べます。 | にく を たべます。 | niku o tabemasu.
 肉を食べません。 | にく を たべません。 | niku o tabemasen.
+肉を食べますか？ | にく を たべます か？ | niku o tabemasu ka?
+肉は食べません。魚は食べます。 | にく は たべません。 さかな は たべます。 | niku wa tabemasen. sakana wa tabemasu.
+じゃあ、すしはどうですか？ | じゃあ、 すし は どう です か？ | jaa, sushi wa dou desu ka?
+いいですね！ | いい です ね！ | ii desu ne!
+お茶を飲みます | おちゃ を のみます | ocha o nomimasu
+肉を食べません | にく を たべません | niku o tabemasen
+肉は食べません | にく は たべません | niku wa tabemasen
+明日来ますか | あした きます か | ashita kimasu ka
+毎日テレビを見ます | まいにち テレビ を みます | mainichi terebi o mimasu
+テレビを毎日見ます | テレビ を まいにち みます | terebi o mainichi mimasu
 
 ## word-order/topic-comment
-話題 | わだい | (label: no romaji)
+主題 | しゅだい | (label: no romaji)
 象は鼻が長い。 | ぞう は はな が ながい。 | zou wa hana ga nagai.
+象は鼻が長いです。 | ぞう は はな が ながい です。 | zou wa hana ga nagai desu.
 今日は天気がいい。 | きょう は てんき が いい。 | kyou wa tenki ga ii.
+今日は天気がいいです。 | きょう は てんき が いい です。 | kyou wa tenki ga ii desu.
 日本は電車が便利です。 | にほん は でんしゃ が べんり です。 | nihon wa densha ga benri desu.
-昨日本を読んだ。 | きのう ほん を よんだ。 | kinou hon o yonda.
+日本は電車が便利だよ。 | にほん は でんしゃ が べんり だ よ。 | nihon wa densha ga benri da yo.
+昨日その本を読んだ。 | きのう その ほん を よんだ。 | kinou sono hon o yonda.
 その本は昨日読んだ。 | その ほん は きのう よんだ。 | sono hon wa kinou yonda.
+何にする？ | なに に する？ | nani ni suru?
+私はラーメン。 | わたし は ラーメン。 | watashi wa raamen.
+僕はカレー。 | ぼく は カレー。 | boku wa karee.
+は | は | wa
+はが | は が | wa ga
+東京は人が多い | とうきょう は ひと が おおい | toukyou wa hito ga ooi
+東京は人が多いです | とうきょう は ひと が おおい です | toukyou wa hito ga ooi desu
+私はカレー | わたし は カレー | watashi wa karee
 
 ## word-order/particles-move
 順番 | じゅんばん | (label: no romaji)
+昨日友達と公園で遊んだ。 | きのう ともだち と こうえん で あそんだ。 | kinou tomodachi to kouen de asonda.
+昨日公園で友達と遊んだ。 | きのう こうえん で ともだち と あそんだ。 | kinou kouen de tomodachi to asonda.
+友達と昨日公園で遊んだ。 | ともだち と きのう こうえん で あそんだ。 | tomodachi to kinou kouen de asonda.
 田中さんが花を買った。 | たなかさん が はな を かった。 | tanaka-san ga hana o katta.
 花を田中さんが買った。 | はな を たなかさん が かった。 | hana o tanaka-san ga katta.
-昨日友達と公園で遊んだ。 | きのう ともだち と こうえん で あそんだ。 | kinou tomodachi to kouen de asonda.
-友達と昨日公園で遊んだ。 | ともだち と きのう こうえん で あそんだ。 | tomodachi to kinou kouen de asonda.
+この写真、誰が撮ったの？ | この しゃしん、 だれ が とった の？ | kono shashin, dare ga totta no?
+姉が撮ったよ。 | あね が とった よ。 | ane ga totta yo.
+え、すごい！上手だね。 | え、 すごい！ じょうず だ ね。 | e, sugoi! jouzu da ne.
+母が花を買った | はは が はな を かった | haha ga hana o katta
+花を母が買った | はな を はは が かった | hana o haha ga katta
+兄 | あに | ani
+兄が | あに が | ani ga
+弟がケーキを食べた | おとうと が ケーキ を たべた | otouto ga keeki o tabeta
+ケーキを弟が食べた | ケーキ を おとうと が たべた | keeki o otouto ga tabeta
+公園で昨日遊んだ | こうえん で きのう あそんだ | kouen de kinou asonda
 
 ## word-order/dropping-words
 省略 | しょうりゃく | (label: no romaji)
+昨日映画を見ました。 | きのう えいが を みました。 | kinou eiga o mimashita.
+明日来ますか？ | あした きます か？ | ashita kimasu ka?
+おいしいですね。 | おいしい です ね。 | oishii desu ne.
 私は昨日映画を見ました。 | わたし は きのう えいが を みました。 | watashi wa kinou eiga o mimashita.
 昨日映画を見ました。 | きのう えいが を みました。 | kinou eiga o mimashita.
 昨日何をしましたか？ | きのう なに を しました か？ | kinou nani o shimashita ka?
 映画を見ました。 | えいが を みました。 | eiga o mimashita.
 面白かったですか？ | おもしろかった です か？ | omoshirokatta desu ka?
-はい、とても。 | はい、とても。 | hai, totemo.
+はい、とても。 | はい、 とても。 | hai, totemo.
+毎朝コーヒーを飲みます | まいあさ コーヒー を のみます | maiasa koohii o nomimasu
+明日来ますか | あした きます か | ashita kimasu ka
+食べました | たべました | tabemashita
+はい食べました | はい たべました | hai tabemashita
+面白かったです | おもしろかった です | omoshirokatta desu
+はい面白かったです | はい おもしろかった です | hai omoshirokatta desu
 
 ## word-order/modifiers-first
 修飾 | しゅうしょく | (label: no romaji)
 赤い車 | あかい くるま | akai kuruma
 日本の車 | にほん の くるま | nihon no kuruma
 昨日買った車 | きのう かった くるま | kinou katta kuruma
-母が作ったケーキ | はは が つくった ケーキ | haha ga tsukutta keeki
+父が焼いたパン | ちち が やいた パン | chichi ga yaita pan
 車は赤い。 | くるま は あかい。 | kuruma wa akai.
 赤い車 | あかい くるま | akai kuruma
+どの人が田中さん？ | どの ひと が たなかさん？ | dono hito ga tanaka-san?
+あそこでコーヒーを飲んでいる人だよ。 | あそこ で コーヒー を のんで いる ひと だ よ。 | asoko de koohii o nonde iru hito da yo.
+あの背の高い人？ | あの せ の たかい ひと？ | ano se no takai hito?
+うん、その人。 | うん、 その ひと。 | un, sono hito.
+冷たい飲み物 | つめたい のみもの | tsumetai nomimono
+友達のかばん | ともだち の かばん | tomodachi no kaban
+昨日読んだ本 | きのう よんだ ほん | kinou yonda hon
+高い山 | たかい やま | takai yama
 
 ## particles/wa-topic
 は | は | (label: no romaji)

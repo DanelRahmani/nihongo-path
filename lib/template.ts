@@ -29,7 +29,7 @@ export function templateProblems(lesson: Lesson): string[] {
   const has = present(blocks);
 
   if (!lesson.source.trim()) out.push("no source");
-  if (!lesson.register) out.push("no register (polite, plain or both)");
+  if (!lesson.register) out.push("no register (polite, plain, both or neutral)");
   if (!lesson.kinds?.length) out.push("no kinds tags");
 
   const first = blocks[0];

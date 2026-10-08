@@ -21,7 +21,7 @@ English translations show nuance ("It's *Japan* that is beautiful"), not just a 
 
 ## 2. Accuracy and sources
 
-- **Original examples only.** Never copy example sentences from textbooks, videos, apps or sentence databases (Tatoeba included).
+- **Original examples only.** Never copy example sentences from textbooks, videos, apps or sentence databases (Tatoeba included). One named exception: 象は鼻が長い, the classic example sentence of Japanese linguistics and the title of Mikami Akira's 1960 book, used in word-order/topic-comment as “the famous example” and credited in its `source`. Any further exception is listed here first.
 - Each lesson's `source` names the reference its rule was checked against (Genki, Tae Kim, IMABI, Cure Dolly…). The source backs the rule; the sentences are ours.
 - Quoted texts (the reading view) are public domain only, such as Bashō or Issa, and their `source` names the edition the text and its reading were checked against.
 - Readings, kanji choice, okurigana and politeness level are checked, not guessed. Anything that can't be checked goes to "Waiting on the owner" in `CLAUDE.md`, not into a lesson.
@@ -34,6 +34,7 @@ Used in every Japanese string (see `content/types.ts`):
 | Markup | Meaning |
 |---|---|
 | `[漢字|かんじ]` | Kanji with its reading, shown per the reader's furigana mode |
+| `[!漢字|かんじ]` | The same, but the kanji and its furigana show in every mode, Kana only included. Only where seeing the kanji is the point: start/three-scripts, katakana look-alikes, and later the kanji pages |
 | `{text}` | The highlighted ("red pen") part; may contain ruby |
 | `**bold**`, `*italic*` | Emphasis |
 | spaces | In Japanese lines (`jp` fields, Japanese-only table cells): word boundaries. Shown in kana-only mode, hidden otherwise, and used to space the romaji. In English prose: ordinary spaces, and Japanese inside prose has no word spaces. |
@@ -83,6 +84,7 @@ Where they leave a choice, follow modern everyday usage (newspapers, NHK, curren
 - **Content nouns keep their kanji; formal nouns don't:** `[時間|じかん]`, `[七時|しちじ]`, `[食|た]べ[物|もの]`, but とき, ところ, もの in their grammatical use. The set compounds `[申|もう]し[訳|わけ]` and `[言|い]い[訳|わけ]` keep 訳.
 - **Okurigana follow the main rule:** `[行|い]く` / `[行|おこな]う`, `[少|すこ]し`, `[新|あたら]しい`, `[終|お]わる`, `[分|わ]かる`, `[生|う]まれる`, `[話|はな]す` (verb) / `[話|はなし]` (noun). Nouns that custom writes without okurigana stay that way (`[切手|きって]`).
 - **Katakana** for loanwords (コーヒー, パン), foreign names (スミス), and sound effects or emphasis only where a lesson teaches them.
+- **Kana lessons** (Hiragana, Katakana) write every word in kana, including words normally written in kanji (やま, ねこ): reading the kana is the point, and a kanji with furigana would let the reader skip it.
 
 ## 6. Romaji
 
@@ -107,7 +109,7 @@ The scheme is modified Hepburn with long vowels spelled as the kana are written 
 | ・ | separates words: a space | は・が wa ga |
 | Case and punctuation | all lower case; 。→ . 、→ , 「」 and 『』→ " ！→ ! ？→ ? 〜 → ~ … → ... | |
 
-Romaji is a reading aid only. Typed answers are always kana or kanji, entered through a Japanese keyboard (IME).
+Romaji is a reading aid only. Typed answers are kana or kanji, entered through a Japanese keyboard (IME), with one exception: reading questions in the kana lessons (`answerIn: "romaji"`) ask how a word is read and take romaji, since a Japanese keyboard would write the kana for the learner. They accept the common other spellings (si/shi, tu/tsu, ō/ou/oo, n/n', m/n before b, m, p, and ん typed as nn: `lib/romaji-input.ts`), and name a small っ or a long vowel that is missing or added. Before the kana lessons, a question can ask for a name (`answerIn: "name"`, such as the name of a script), typed in English letters or in Japanese.
 
 ## 7. Word spaces in Japanese lines
 
@@ -145,7 +147,7 @@ The two registers are 丁寧体 (です・ます体, polite) and 普通体 (plai
 - **Sentence-final particles:** よ, ね and よね follow either register. の (as a question) and かな are plain only; their polite equivalents are 〜ん です か and 〜でしょう か.
 - **A line's register is set by the last predicate of each sentence.** Clauses before it may be plain or polite, and either way they don't set the register: たら clauses and relative clauses are plain by grammar (`[雨|あめ] が [降|ふ]ったら、[行|い]きません。` is polite), けど and から clauses often keep です/ます in polite speech (`[高|たか]い です けど`), and a direct quote keeps its own register.
 - **One line, one register.** Don't end one sentence polite and the next plain in the same line, unless switching is the point of the lesson; such a line says so in its note.
-- Every lesson declares `register`: `polite`, `plain` or `both` (from B1).
+- Every lesson declares `register`: `polite`, `plain` or `both` (from B1), or `neutral` for a lesson of single words with no sentences (the kana lessons; tested).
 - **The other-register line** (`alt`, from B1) keeps the meaning and changes as little as possible, choosing the natural form over the literal one: `[行|い]きます か？` → `[行|い]く？` (plain questions usually drop か); `[学生|がくせい] です。` → `[学生|がくせい] だ よ。` or just `[学生|がくせい]。` (a bare だ can sound blunt). The drill also accepts the engine's variants (ません / ない です).
 - Honorific and humble language (尊敬語, 謙譲語) only in lessons that teach it. Set phrases that contain it are fine anywhere: いただきます, いってらっしゃい, おはよう ございます, お[客|きゃく][様|さま], 〜て おります in the business example of the suffixes unit.
 - Gendered sentence endings (わ, ぜ, ぞ, かしら) only in lessons that discuss them.
@@ -160,7 +162,13 @@ Every lesson has, in this order:
 5. **In real conversation**: a short dialogue or a culture note.
 6. **Quiz**: 3–5 typed questions, each with its accepted answers and an explanation.
 
-It also has the fields `source`, `register` and `kinds`. A lesson that can't follow a step (a kana lesson has no dialogue yet) says why in the lesson, and the template test reads that reason.
+It also has the fields `source`, `register` and `kinds`. A lesson that can't follow a step says why in its `exempt` field, and the template test reads that reason.
+
+In the kana lessons:
+- the core examples are words, and each highlight marks the kana the lesson teaches (`さい{ふ}`, `き{っ}ぷ`);
+- the contrast pairs are minimal pairs, two words that differ in one kana or one beat (つき/すき, おばさん/おばあさん);
+- "in real conversation" is a culture note;
+- the quiz asks for readings in romaji (§6), using words that are not in the lesson's examples.
 
 ## 11. Review
 

@@ -131,6 +131,13 @@ html[data-size="l"] main {
 [data-furigana="kana"] .ws {
   display: inline;
 }
+/* [!漢字|かんじ]: a kanji the lesson is showing off keeps its furigana even in kana-only mode. */
+[data-furigana="kana"] .w.show ruby {
+  display: ruby;
+}
+[data-furigana="kana"] .w.show .yomi {
+  display: none;
+}
 [data-furigana="none"] .w rt,
 [data-furigana="new"] .w rt {
   display: none;

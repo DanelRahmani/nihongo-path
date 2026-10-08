@@ -74,7 +74,7 @@ export function lessonFields(lesson: Lesson, key: string): Field[] {
       case "quiz":
         b.questions.forEach((q, j) => {
           add(q.prompt, false, `${at} q${j + 1} prompt`);
-          q.answers.forEach((a, k) => add(a, true, `${at} q${j + 1} answer ${k + 1}`));
+          q.answers.forEach((a, k) => add(a, true, `${at} q${j + 1} answer ${k + 1}${q.answerIn ? " (typed in romaji)" : ""}`));
           add(q.explanation, false, `${at} q${j + 1} explanation`);
         });
         break;

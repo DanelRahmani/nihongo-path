@@ -7,10 +7,10 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **B2:** convert start/three-scripts, the 5 hiragana, 4 katakana and 5 word-order lessons to the template, remove them from `content/retrofit-pending.ts`, and send each unit to a fresh reviewer.
-  - Kana lessons need a quiz question type that asks for the romaji reading. Add `answerIn: "romaji"` to `QuizQuestion` and check it with `lib/romaji-input.ts`, since typing kana through a Japanese keyboard tests nothing.
-  - Their highlights mark the new kana inside each word, and their pairs are minimal pairs (おばさん/おばあさん).
-- Then C1 (conjugation engine) and B3–B5, as in the plan.
+- **B3:** convert the 14 Particles lessons to the template, remove them from `content/retrofit-pending.ts`, and send the unit to a fresh reviewer (Opus 5.5), plus a Haiku pass for hand-typed romaji in prose.
+  - The Word order reviewer found near-duplicates in particles/wa-vs-ga: これ、誰が作ったの？／私が作ったよ, 母が作ったケーキ, and 肉は食べるけど、魚は食べない (close to verb-last's dialogue). Vary them while converting.
+  - Every particle answer typed in a quiz needs all its correct alternatives listed. The checker ignores spaces and punctuation, nothing else.
+- Then C1 (conjugation engine), B4 and B5, as in the plan.
 
 ### Built
 - **Phase 0 (2026-10-07):** repository audit and feature plan. No code changes.
@@ -63,6 +63,28 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Dialogue sides now follow the speaker, not the line number.
   - Content: start/polite-and-casual follows the full template (4 core examples with alts, 2 pairs, a mistake callout, a dialogue, a culture note and a 4-question quiz). A new check stops word spaces inside Japanese in English prose, and one grammar caption was fixed by it.
   - Phones: the nav links, the Display button and the chart chips keep their English names for screen readers.
+- **B2 Start, kana and word order on the template (2026-10-08):** 15 lessons converted: three-scripts, Hiragana 1–5, Katakana 1–4 and the 5 Word order lessons. 46 lessons remain.
+  - Quiz answer types:
+    - `answerIn: "romaji"`: kana lessons ask how a word is read, and the learner types romaji, since a Japanese keyboard would write the kana for them.
+      - `checkRomaji` matches leniently through `lib/romaji-input.ts`: si/shi, kyō/kyou, m/n before b, m, p, ん typed as nn, and dzu.
+      - It names a small っ or a long vowel that is missing or added, and ー typed as ei.
+    - `answerIn: "name"`: three-scripts asks for a script's name in English letters; the Japanese, in either kana, counts too.
+    - Typed Japanese answers now ignore punctuation inside the answer as well (はい、食べました).
+  - Markup `[!漢字|かんじ]` keeps a kanji and its furigana visible even in Kana only mode. three-scripts uses it so the learner can see what kanji look like, and Katakana 2 uses it for katakana that look like kanji (カ/力).
+  - Register `neutral` for lessons of single words (the kana lessons). It is tested: no word spaces, no sentence punctuation, no alt lines.
+  - Kana lessons:
+    - the highlights mark the kana being taught, and the pairs are minimal pairs (つき/すき, ふね/ほね, おと/おっと, シール/ツール, ビル/ビール, バッグ/バック);
+    - "in real conversation" is a culture note;
+    - quiz words never appear in the lesson's examples;
+    - beat splits show the sound (ko-o) and romaji the spelling (kou).
+  - Word order: dialogues in four lessons, alt lines in verb-last and topic-comment, and quizzes on reordering, dropping words and describing nouns.
+  - STYLE.md:
+    - kana lessons write every word in kana;
+    - the romaji and name answer types;
+    - the neutral register;
+    - the `[!…]` markup;
+    - the kana-lesson template notes;
+    - a named exception for 象は鼻が長い, credited to Mikami Akira.
 
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
@@ -83,11 +105,18 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 2026-10-08: the owner asked to push to main. main was fast-forwarded to B1 (6a21af1), with no merge commit; `features` stays the working branch.
 - The path is unit tabs, not kind filters (owner request). Lesson `kinds` tags (B1) will feed search and the grammar overview instead.
   - Stacked particles are written separately (で は).
+- B2 (2026-10-08):
+  - Kana quizzes are typed in romaji, the only exception to "answers in kana or kanji".
+  - Three-scripts shows its kanji in every display mode.
+  - The 箸/橋 pair became 紙/髪, because 箸 and 橋 differ in pitch. Pairs never claim two words sound the same; they "share a kana spelling".
 
 ### Numbers
-- 9 units, 62 lessons, 536 Japanese lines (287 example, pair and dialogue sentences, 136 with a highlight), 897 ruby tokens, 244 distinct kanji, 208 kana cards, 0 quizzes.
-- Tests: 246 in 13 files.
-- Template: 1 of 62 lessons converted (61 pending); 4 quiz questions so far.
+- 9 units, 62 lessons, 208 kana cards.
+- 681 Japanese lines (not counting labels), including quiz answers: 355 example, pair, dialogue and alt sentences, of which 223 have a highlight.
+- 1,230 ruby tokens and 271 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
+- Tests: 281 in 13 files.
+- Template: 16 of 62 lessons converted (46 pending).
+- Quiz questions: 64, of which 37 are typed in romaji and 3 ask for a name.
 
 ### How it was checked
 - `npm test`, `npm run typecheck`, `npm run lint`, `npm run build`.
@@ -123,8 +152,52 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - 10 should-fix items;
   - every polish item. The single … was kept as a stated house choice.
 
+- B2 in the browser, at 375 px in light and dark:
+  - "gakko" gets the long-vowel note, "ipai" the small っ note, and "Oniisan" is accepted.
+  - Kana typed into a romaji question gets the "type it in romaji" note.
+  - The name quiz accepts "Katakana" and かんじ.
+  - In Kana only mode, three-scripts shows its kanji with furigana (ruby shown, reading hidden), and so does the Katakana 2 tip.
+  - No horizontal scroll, and the console is clean.
+- B2 review: four fresh Opus 5.5 reviewers, one per unit, plus a Haiku pass on the romaji typed by hand in prose. They found no wrong reading, kanji or generated romaji. All findings were applied, except the two listed under "B2 findings not applied" below.
+  - Errors fixed:
+    - "no の after an adjective" now says i-adjective (na-adjectives take な);
+    - ス does have a second stroke;
+    - the おう caption now covers いこう/ましょう;
+    - "kyoo-to" read like English "cue";
+    - five beat splits and romaji in prose;
+    - in three-scripts, kanji were invisible in the default mode.
+  - Should-fix items applied, among others:
+    - directional near-miss notes;
+    - nn for ん;
+    - missing accepted answers (肉は食べません, はい、…, 猫が);
+    - how to type ー in romaji;
+    - a minimal pair for Katakana 4;
+    - the ッ rule in the loanword table;
+    - "most foreign names" in katakana;
+    - バイオリン;
+    - ソファー;
+    - っ as a held hiss before s;
+    - を beyond objects;
+    - "o as in go";
+    - core sentence and zero が defined at first use;
+    - 昨日本 (it shows 日本) avoided.
+  - B2 findings not applied:
+    - No ティ or ディ quiz word, because the romaji matcher folds ti into chi, so such a question can't test ティ.
+    - Phone flick-keyboard positions for ー were not added, as they can't be checked here.
+
 ### Waiting on the owner
 - Pitch accent: blocked on audio from a native speaker. No speech synthesis.
-- start/polite-and-casual cites "Genki I ch. 3, 8 and 9". The reviewer and I both place plain past forms in ch. 9, but please confirm against your edition of Genki.
+- Genki citations to confirm against your edition:
+  - start/polite-and-casual cites "Genki I ch. 3, 8 and 9". The reviewer and I both place plain past forms in ch. 9.
+  - B2 cites the following, and the reviewers couldn't check the section names:
+    - three-scripts: "Introduction: the writing system";
+    - the kana lessons: Hiragana and Katakana, including "diacritics", "combinations", "stroke order" and "extended combinations";
+    - verb-last and particles-move: ch. 3;
+    - dropping-words: ch. 1;
+    - modifiers-first: Genki I ch. 9 and Genki II ch. 15. Per the reviewer, subjects inside describing clauses (父が焼いたパン) are in Genki II ch. 15.
+- B2 sources to confirm:
+  - The exact title of the Tofugu loanword article cited by Katakana 4.
+  - A source for particles-move's "what sits right before the verb carries the focus". The reviewer suggests IMABI's word-order page or Makino & Tsutsui.
+- B2 decision to confirm: 象は鼻が長い (topic-comment) is the one non-original example, a named exception in STYLE §2 credited to Mikami Akira (1960). Say if you'd rather replace it.
 - Deploys: on 2026-10-08 the Vercel connector couldn't see project nihongo-path (403 listing deployments, 404 for the project), so the live site's state is unconfirmed. Earlier notes say the project isn't linked to GitHub, which would mean pushing main doesn't deploy. Say if you want a deploy; it may need the Vercel connection re-authorised.
 - JLPT N5/N4 lists: Jonathan Waller's site (tanos.co.uk) was unreachable on 2026-10-07. Its licence (reportedly CC BY) is to be confirmed before the download in D1.

@@ -2,7 +2,8 @@
 
 export type Token =
   | { kind: "text"; text: string; hl: boolean; bold: boolean; it: boolean }
-  | { kind: "ruby"; base: string; reading: string; hl: boolean; bold: boolean; it: boolean }
+  /** show: written [!漢字|かんじ], the kanji stays visible with its furigana even in Kana only mode. */
+  | { kind: "ruby"; base: string; reading: string; hl: boolean; bold: boolean; it: boolean; show?: true }
   | { kind: "space" }
   /** "-" in a Jp string: joins a name to its suffix. Never shown; a hyphen in romaji (tanaka-san). */
   | { kind: "join" };
@@ -39,7 +40,13 @@ export function parse(src: string, wordSpaces: boolean): Token[] {
       const end = src.indexOf("]", i);
       if (bar === -1 || end === -1 || bar > end) throw new Error(`Bad ruby markup in: ${src}`);
       flush();
-      out.push({ kind: "ruby", base: src.slice(i + 1, bar), reading: src.slice(bar + 1, end), hl, bold, it });
+      const base = src.slice(i + 1, bar);
+      const reading = src.slice(bar + 1, end);
+      out.push(
+        base.startsWith("!")
+          ? { kind: "ruby", base: base.slice(1), reading, hl, bold, it, show: true }
+          : { kind: "ruby", base, reading, hl, bold, it },
+      );
       i = end;
     } else if (c === "-" && wordSpaces) {
       flush();

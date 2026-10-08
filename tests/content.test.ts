@@ -122,7 +122,7 @@ describe("style (content/STYLE.md)", () => {
         .flatMap((w, i, words) => {
           const word = w.replace(/[。、？！…」』）]+$/, "");
           const conjunction = word === "では" && i === 0 && w.endsWith("、");
-          return /^(には|では|とは|からは|までは|へは)$/.test(word) && !conjunction ? [`${f.where}: ${words.join(" ")}`] : [];
+          return /^(には|では|とは|からは|までは|へは|への|にも|へも|からも|までに)$/.test(word) && !conjunction ? [`${f.where}: ${words.join(" ")}`] : [];
         }),
     );
     expect(bad).toEqual([]);

@@ -7,10 +7,12 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **B3:** convert the 14 Particles lessons to the template, remove them from `content/retrofit-pending.ts`, and send the unit to a fresh reviewer (Opus 5.5), plus a Haiku pass for hand-typed romaji in prose.
-  - The Word order reviewer found near-duplicates in particles/wa-vs-ga: これ、誰が作ったの？／私が作ったよ, 母が作ったケーキ, and 肉は食べるけど、魚は食べない (close to verb-last's dialogue). Vary them while converting.
-  - Every particle answer typed in a quiz needs all its correct alternatives listed. The checker ignores spaces and punctuation, nothing else.
-- Then C1 (conjugation engine), B4 and B5, as in the plan.
+- **C1:** the conjugation engine (`lib/conjugate.ts`), with golden tables written by hand and `lesson-tables.test.ts` checking the verb and grammar tables against it. See the plan.
+- Then **B4** (Core grammar + Verbs, 17 lessons) and **B5** (Suffixes + Culture, 15).
+  - Before quizzing numbers (grammar/numbers-counting): a Japanese keyboard often turns しちじ into 7時. Typed answers need to accept Arabic digits for kanji numerals, or quizzes must avoid typed numbers.
+  - The i-adjective て form (安くて) is promised by particles/to-ya's mistake callout ("a later lesson shows it"). Make sure B4 teaches it.
+  - Every typed answer needs all its correct alternatives listed. The checker ignores spaces and punctuation and folds a few keyboard kanji spellings (美味しい); nothing else.
+  - Reviewers in B2 and B3 flagged quiz questions that copy a lesson's own lines. Use fresh words in quizzes.
 
 ### Built
 - **Phase 0 (2026-10-07):** repository audit and feature plan. No code changes.
@@ -85,6 +87,13 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
     - the `[!…]` markup;
     - the kana-lesson template notes;
     - a named exception for 象は鼻が長い, credited to Mikami Akira.
+- **B3 Particles on the template (2026-10-08):** all 14 Particles lessons converted; 32 lessons remain.
+  - Every lesson has highlighted core examples, a one-change pair, a ✗/✓ mistake, a dialogue (a culture note in e-vs-ni) and a 4–5 question typed quiz listing every particle that fits: に/へ, を/から, から/ので/ですから, や/とか, と/って, ね/よね, contrast は, には.
+  - Answers of two particles are written with ・ (は・が), so the answer shown after a wrong try doesn't read as one word (はは, "mother"). Stacked particles in one blank are written as separate words (へ の, まで に), and the stacked-particle content test now covers への, にも, へも, からも and までに.
+  - Repeats removed: dialogues and examples that copied the Word order unit or each other were replaced (the pudding thief in wa-vs-ga, the morning walk in wo-object, the lost umbrella in no-linking, the cake in yo-ne).
+  - Checker:
+    - "Same sound, different spelling" now also fires inside longer answers (わが for は・が, わたしわ…). It compares romaji with the answer's own word spaces.
+    - Kanji spellings a keyboard offers for words the lessons write in kana (美味しい, 綺麗, 可愛い, 寿司, お腹, 林檎, 蜘蛛, 下さい) are folded to kana.
 
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
@@ -112,11 +121,11 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 
 ### Numbers
 - 9 units, 62 lessons, 208 kana cards.
-- 681 Japanese lines (not counting labels), including quiz answers: 355 example, pair, dialogue and alt sentences, of which 223 have a highlight.
-- 1,230 ruby tokens and 271 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 281 in 13 files.
-- Template: 16 of 62 lessons converted (46 pending).
-- Quiz questions: 64, of which 37 are typed in romaji and 3 ask for a name.
+- 823 Japanese lines (not counting labels), including quiz answers: 403 example, pair, dialogue and alt sentences, of which 259 have a highlight.
+- 1,663 ruby tokens and 319 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
+- Tests: 296 in 13 files.
+- Template: 30 of 62 lessons converted (32 pending).
+- Quiz questions: 123, of which 37 are typed in romaji and 3 ask for a name.
 
 ### How it was checked
 - `npm test`, `npm run typecheck`, `npm run lint`, `npm run build`.
@@ -184,6 +193,25 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - B2 findings not applied:
     - No ティ or ディ quiz word, because the romaji matcher folds ti into chi, so such a question can't test ティ.
     - Phone flick-keyboard positions for ー were not added, as they can't be checked here.
+- B3 in the browser at 375 px, light and dark:
+  - wa-vs-ga: が is marked right, を、は is accepted (punctuation ignored), and わが gets the "written は" note. The note was missing at first, which led to the checker fix.
+  - ka-question: 行くの is accepted, and the casual alt line shows.
+  - No horizontal scroll, and the console is clean.
+- B3 review: two fresh Opus 5.5 reviewers, 7 lessons each. Both found no wrong reading, kanji, okurigana, word space or generated romaji. All findings were applied:
+  - Errors fixed:
+    - a hyphen showing in prose;
+    - "relative time words take no particle" (now "no に": 明日は and 明日から are fine);
+    - a blank that 誰と and 誰か also fit;
+    - Genki I has no ch. 14 (あげる is Genki II);
+    - そうですよね is now accepted, with the callout explaining when よ is right.
+  - Should-fix items applied, among others:
+    - は/が rules worded without overgeneralising (question-word *subjects*, は "can" contrast);
+    - the spotlight claim limited to subjects that context already supplies;
+    - broken dialogue logic in de-place-means;
+    - green tea with sugar became coffee;
+    - quiz questions needing forms not yet taught (安くて) or numbers a keyboard converts (七時) were replaced;
+    - many missing accepted answers;
+    - quiz questions that copied the lesson's lines now use fresh words.
 
 ### Waiting on the owner
 - Pitch accent: blocked on audio from a native speaker. No speech synthesis.
@@ -195,6 +223,19 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
     - verb-last and particles-move: ch. 3;
     - dropping-words: ch. 1;
     - modifiers-first: Genki I ch. 9 and Genki II ch. 15. Per the reviewer, subjects inside describing clauses (父が焼いたパン) are in Genki II ch. 15.
+- B3 sources to confirm. The reviewers recalled these differently:
+  - Genki chapters:
+    - が is cited as Genki I ch. 8;
+    - the reviewer places purpose 〜に行く in ch. 7 and 〜になる in ch. 10;
+    - や in ch. 11;
+    - 何も + negative and 誰か/何か in ch. 8;
+    - adjective + の "the one" in ch. 10;
+    - から "because" in ch. 6 and 9.
+  - Tae Kim section titles, possibly:
+    - "The direct object を particle", not "The object particle を";
+    - "The vague listing や and とか particles".
+    - Whether a section called "The は and が particles" exists is unclear.
+  - Cure Dolly video titles for "は and the core sentence" and "core sentence and zero が".
 - B2 sources to confirm:
   - The exact title of the Tofugu loanword article cited by Katakana 4.
   - A source for particles-move's "what sits right before the verb carries the focus". The reviewer suggests IMABI's word-order page or Makino & Tsutsui.

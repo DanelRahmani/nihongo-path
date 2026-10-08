@@ -3,20 +3,6 @@
  * tests/template.test.ts fails if a listed lesson already passes, or an unlisted one fails.
  */
 export const RETROFIT_PENDING: string[] = [
-  "particles/wa-topic",
-  "particles/ga-subject",
-  "particles/wa-vs-ga",
-  "particles/wo-object",
-  "particles/ni-target",
-  "particles/de-place-means",
-  "particles/ni-vs-de",
-  "particles/e-vs-ni",
-  "particles/to-ya",
-  "particles/mo-also",
-  "particles/no-linking",
-  "particles/kara-made",
-  "particles/ka-question",
-  "particles/yo-ne",
   "grammar/desu-da",
   "grammar/i-adjectives",
   "grammar/na-adjectives",

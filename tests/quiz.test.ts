@@ -8,6 +8,12 @@ describe("normalizeAnswer", () => {
     expect(normalizeAnswer("いく？")).toBe("いく");
   });
 
+  it("folds kanji spellings of words the lessons write in kana (a keyboard's first choice)", () => {
+    expect(normalizeAnswer("美味しい")).toBe("おいしい");
+    expect(checkAnswer(["[安|やす]くて おいしい"], "安くて美味しい").correct).toBe(true);
+    expect(checkAnswer(["あ、 くも が いる！"], "あ、蜘蛛がいる！").correct).toBe(true);
+  });
+
   it("ignores punctuation inside the answer too", () => {
     expect(normalizeAnswer("はい、たべました。")).toBe("はいたべました");
     expect(normalizeAnswer("は・が")).toBe("はが");
@@ -43,6 +49,8 @@ describe("checkAnswer", () => {
   it("explains a particle spelled by its sound", () => {
     expect(checkAnswer(["は"], "わ").note).toBe("Same sound, different spelling: it's written は.");
     expect(checkAnswer(["を"], "お").note).toBe("Same sound, different spelling: it's written を.");
+    expect(checkAnswer(["は が"], "わが").note).toMatch(/Same sound/);
+    expect(checkAnswer(["[私|わたし] は [学生|がくせい] です"], "わたしわがくせいです").note).toMatch(/Same sound/);
   });
 });
 

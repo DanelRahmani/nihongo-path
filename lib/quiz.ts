@@ -12,12 +12,29 @@ export interface QuizCheck {
   note?: string;
 }
 
+/**
+ * Words the lessons write in kana (content/STYLE.md §5) that a Japanese keyboard often converts to
+ * kanji. The kanji spelling is folded to kana on both sides, so it counts.
+ */
+const KANA_WORDS: [string, string][] = [
+  ["美味し", "おいし"],
+  ["綺麗", "きれい"],
+  ["可愛", "かわい"],
+  ["寿司", "すし"],
+  ["お腹", "おなか"],
+  ["林檎", "りんご"],
+  ["蜘蛛", "くも"],
+  ["下さい", "ください"],
+];
+
 /** Full- and half-width folded (NFKC); spaces and punctuation ignored (はい、[食|た]べました = はい [食|た]べました). */
 export function normalizeAnswer(s: string): string {
-  return s
+  let out = s
     .normalize("NFKC")
     .replace(/\s+/g, "")
     .replace(/[。、・.,!?！？…~〜]/gu, "");
+  for (const [kanji, kana] of KANA_WORDS) out = out.replaceAll(kanji, kana);
+  return out;
 }
 
 const toHiragana = (s: string) =>
@@ -50,7 +67,9 @@ export function checkAnswer(answers: string[], input: string): QuizCheck {
     const katakana = /[ァ-ヶ]/u.test(reading(sameKanaOtherScript));
     return { correct: false, answer: shown, note: `Same sound, but it's written in ${katakana ? "katakana" : "hiragana"}.` };
   }
-  if (answers.some((a) => kanaToRomaji(reading(a)) === kanaToRomaji(typed) && /^[぀-ヿ]+$/u.test(typed))) {
+  // Compared through romaji with the answer's word spaces, so a particle inside it reads as one (は wa, を o).
+  const sound = (a: string) => romajiOf(a).replace(/[\s.,!?]/g, "");
+  if (/^[぀-ヿ]+$/u.test(typed) && answers.some((a) => sound(a) === kanaToRomaji(typed))) {
     return { correct: false, answer: shown, note: `Same sound, different spelling: it's written ${shown}.` };
   }
   return { correct: false, answer: shown };

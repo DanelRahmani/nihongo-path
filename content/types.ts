@@ -102,3 +102,61 @@ export interface Unit {
   description: string;
   lessons: Lesson[];
 }
+
+/** Part of speech of a dictionary word (content/words). */
+export type WordPos =
+  | "noun"
+  | "pronoun"
+  | "verb"
+  | "i-adj"
+  | "na-adj"
+  | "adverb"
+  | "expression"
+  | "interjection"
+  | "conjunction"
+  | "question"
+  | "pre-noun"
+  | "counter"
+  | "prefix"
+  | "suffix";
+
+/** What a word is about, for the dictionary's topic filter. */
+export type WordTopic =
+  | "people"
+  | "food"
+  | "places"
+  | "time"
+  | "school-work"
+  | "home"
+  | "nature"
+  | "body"
+  | "travel"
+  | "shopping"
+  | "hobbies"
+  | "feelings"
+  | "language"
+  | "everyday"
+  | "greetings"
+  | "numbers";
+
+/** One word of the lesson dictionary. The lessons it appears in are found from the lessons, not stored. */
+export interface Word {
+  /** Written form in lesson markup, as the lessons write it: [食|た]べる, すし, コーヒー. */
+  jp: Jp;
+  /** Short English meaning, as a learner needs it at this level. */
+  meaning: string;
+  pos: WordPos;
+  /** How a verb conjugates (lib/conjugate.ts). */
+  verb?: "godan" | "ichidan" | "suru" | "kuru";
+  topic: WordTopic;
+}
+
+/** A kanji the lessons use (content/kanji.ts). Its readings come from the 常用漢字表 (lib/joyo.ts). */
+export interface Kanji {
+  char: string;
+  /** Short English meanings, the most useful first. */
+  meanings: string[];
+  strokes: number;
+  /** One or two example words, from content/words (lesson words first, then the extra words). */
+  examples: Jp[];
+}

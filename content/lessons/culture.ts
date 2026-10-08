@@ -145,8 +145,8 @@ export const culture: Lesson[] = [
             explanation: "The title replaces “you”: [先生|せんせい]、[忙|いそが]しいですか？",
           },
           {
-            prompt: "Ask your department head, Ms Ito, “Do you drink coffee?”, without あなた: ＿はコーヒーを[飲|の]みますか？",
-            answers: ["[伊藤|いとう]-[部長|ぶちょう]", "[部長|ぶちょう]"],
+            prompt: "Ask your department head, Ms Endo, “Do you drink coffee?”, without あなた: ＿はコーヒーを[飲|の]みますか？",
+            answers: ["[遠藤|えんどう]-[部長|ぶちょう]", "[部長|ぶちょう]"],
             explanation: "A boss's title stands in for “you”: [部長|ぶちょう]はコーヒーを[飲|の]みますか？",
           },
         ],

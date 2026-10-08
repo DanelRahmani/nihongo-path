@@ -1263,7 +1263,7 @@
 学生ですか？ | がくせい です か？ | gakusei desu ka?
 森さん | もりさん | mori-san
 先生 | せんせい | sensei
-伊藤部長 | いとうぶちょう | itou-buchou
+遠藤部長 | えんどうぶちょう | endou-buchou
 部長 | ぶちょう | buchou
 
 ## culture/sumimasen

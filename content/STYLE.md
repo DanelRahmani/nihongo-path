@@ -70,7 +70,11 @@ Where they leave a choice, follow modern everyday usage (newspapers, NHK, curren
 
 - **Only 常用 kanji, with 常用 readings.** A word whose kanji or reading is outside the table is written in kana: きれい (not 綺麗), おいしい (not 美味しい), かわいい (not 可愛い), すし (not 寿司), おなか (not お腹: 腹 is only フク and はら), すく (not 空く: 空 has no す reading), あいづち (槌 isn't 常用).
 - **Write the whole word in kana**, never half kanji and half kana for a missing character (あいづち, not 相づち).
-- The table doesn't list every sound change (it says so itself: 納得 なっとく), nor proper nouns. So voiced and doubled readings that follow from a listed reading (`[三匹|さんびき]`, `[喫茶店|きっさてん]`, `[一本|いっぽん]`) and names are fine. From D1 on, a test checks every kanji and reading in the lessons against the table, allowing for these.
+- The table doesn't list every sound change (it says so itself: 納得 なっとく), nor proper nouns. So voiced and doubled readings that follow from a listed reading (`[三匹|さんびき]`, `[喫茶店|きっさてん]`, `[一本|いっぽん]`) and names are fine. `tests/joyo.test.ts` checks every kanji and reading in the lessons against the table (`content/data/joyo.json`, built from the official text), through `lib/joyo.ts`. It allows:
+  - voicing after the first kanji, and a small っ for a final つ/ち/く/き before another kanji (`[三本|さんぼん]`, `[一本|いっぽん]`);
+  - a verb's noun form and stem + っ inside compounds (`[試合|しあい]`, `[切手|きって]`), and 来's conjugated stems き and こ;
+  - 付表 words as units, also inside longer words (`[今日中|きょうじゅう]`, お`[母|かあ]`さん);
+  - a short named list in `lib/joyo.ts` of sound changes the table leaves out (日本 にほん) and place names (大阪, 渋谷). Adding to it needs a reason, like the exception below.
 - **One exception:** 明日 read あした. The appendix lists only あす, but 明日 for あした is standard in everyday writing and in beginner textbooks. Any further exception is added here, with its reason, before it is used.
 - **No rare kanji in beginner content.** If everyday writing puts a word in kana, so do we.
 - **Always in kana:**

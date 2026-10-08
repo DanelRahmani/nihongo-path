@@ -73,9 +73,9 @@ export const suffixes: Lesson[] = [
             explanation: "No suffix on your own name: ブラウンです.",
           },
           {
-            prompt: "Addressing a letter to a customer, Ms Ito: [伊藤|いとう]＿",
+            prompt: "Addressing a letter to a customer, Ms Endo: [遠藤|えんどう]＿",
             answers: ["[様|さま]"],
-            explanation: "Letters and customers take the very formal [様|さま]: [伊藤|いとう][様|さま].",
+            explanation: "Letters and customers take the very formal [様|さま]: [遠藤|えんどう][様|さま].",
           },
         ],
       },

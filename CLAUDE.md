@@ -7,7 +7,10 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **D1** (dictionary data: JMdict, KANJIDIC2, KanjiVG, wordfreq, the JLPT lists). Ask the owner before each download, and confirm the JLPT lists' licence first (see Waiting on the owner). The template retrofit (B1–B5) is complete.
+- **D2** (word inspector and kanji pages), built on D1's `lib/words.ts` and `content/kanji.ts`. Then D3 (dictionary page).
+  - Keep `lib/joyo.ts` (and its 135 KB `content/data/joyo.json`) out of client code. The inspector needs a client-side index from `lib/words.ts` and the engine; `lib/words.ts` doesn't import joyo.json.
+  - The resolver tells the counter 本 from the noun 本 only by context. D2 should look words up by entry, not by written form alone.
+  - The N5/N4 kanji wait for Jonathan Waller's lists (see Waiting on the owner), and E2's trainer waits for them.
   - Lessons written later still follow these rules:
     - Every typed answer needs all its correct alternatives listed. The checker ignores spaces and punctuation and folds a few keyboard kanji spellings (美味しい); nothing else. Digit forms (3本) are listed by hand where a number is typed.
     - Reviewers in B2–B5 all flagged quiz questions that copy a lesson's own lines, or lines from other units. Use fresh words in quizzes, and grep the other units before writing an example.
@@ -118,6 +121,24 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Culture: polite or casual, avoiding あなた, すみません, aizuchi, soft refusals, uchi/soto and set phrases. Each now has core examples, a pair, a mistake, and a quiz with the openers and variants learners actually type (あの、すみません, え、ほんと？, 部長の佐藤, 大変申し訳ございません).
   - Checker: a Japanese keyboard's kanji for set phrases (行ってきます, 行ってらっしゃい, お帰り, ご馳走様, 頂きます) are folded to kana.
   - Content test: shop words ending in 屋 (本屋さん) aren't names, so they don't need the name hyphen.
+- **D1 Lesson dictionary and kanji data (2026-10-09):**
+  - `content/data/joyo.json`: the official 常用漢字表 (2010), parsed from the bunka.go.jp PDF by `scripts/data/parse-joyo.mjs`. It holds all 2,136 kanji and 4,388 readings (2,352 on, 2,036 kun, with the indented "special" ones marked), and the 付表's 116 entries (123 words). The script cross-checks every reading with KANJIDIC2, takes the okurigana split from it, and refuses to write unless the totals match the table's own.
+  - `lib/joyo.ts` checks a ruby reading against the table, kanji by kanji. It allows rendaku, small っ before the k/s/t/p rows (after く/き only before k/p), p sounds only after っ or ん, verb noun forms and stems (試合, 切手), 付表 words at the start of a word, 来's き/こ alone, and a short named list (日本 にほん, 大阪, 渋谷). STYLE.md §5 describes it.
+  - `tests/joyo.test.ts` runs it on every ruby in the lessons. Quiz answers may start voiced only when their prompt's blank follows a word.
+  - The lesson dictionary, `content/words/`: 537 words with written form, meaning, part of speech, verb class and topic, plus 94 extra words that serve only as kanji examples, and 14 names.
+    - `lib/words.ts` resolves every word of every lesson line. It accepts:
+      - an entry, or a form the C1 engine builds from one (forms of forms too: 食べたくない, 話せます, 来たがってる);
+      - an entry with a prefix or suffix (お客様, 会議中);
+      - a number and counter, where the reading must end in the counter's reading;
+      - a name with its suffix or title;
+      - a function word;
+      - a chart fragment, only in kana charts, tables and answers.
+    - Kana spellings resolve by reading. Homophones the lessons write in kana (つき, かき, よる, きた) are listed with the meaning the lessons intend.
+    - `tests/words.test.ts` checks full coverage, including the kanji words in English prose.
+    - `npm run check-words -- <jmdict.json>` checks every word against JMdict: all 631 agree on part of speech and verb class; 16 aren't in JMdict's common-words file (affixes, おばさん, ござる, 五段…).
+  - `content/kanji.ts`: all 404 kanji the lessons use, with meanings chosen for learners, KANJIDIC2 stroke counts, and one or two example words from the dictionary. Readings come from joyo.json. `tests/kanji.test.ts` checks coverage and examples.
+  - Licences: kanji.ts and joyo.json say they're CC BY-SA 4.0 (derived from KANJIDIC2 © EDRDG). The 常用漢字表 is a government notice, outside copyright.
+  - Content: 伊藤 became 遠藤, because 伊 isn't in the 常用漢字表. よい is written in kana, and the quiz answer 良かった is accepted as a keyboard's spelling.
 
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
@@ -137,6 +158,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Names join their suffix with `-`.
 - 2026-10-08: the owner asked to push to main. main was fast-forwarded to B1 (6a21af1), with no merge commit; `features` stays the working branch.
 - 2026-10-08: the owner asked again to push to main. main was fast-forwarded to B4 (51b591f), bringing B2, B3, C1 and B4; no merge commit.
+- 2026-10-08: the owner asked to push to main again. main was fast-forwarded to B5 (806413d).
+- D1 (2026-10-08): the owner approved three downloads: JMdict common words and KANJIDIC2 (jmdict-simplified 3.6.2) and the 常用漢字表 PDF. They stay outside the repo; only derived data is committed. The N5/N4 kanji wait for Waller's lists (owner's choice); D1 covers the lesson kanji.
 - The path is unit tabs, not kind filters (owner request). Lesson `kinds` tags (B1) will feed search and the grammar overview instead.
   - Stacked particles are written separately (で は).
 - B2 (2026-10-08):
@@ -148,7 +171,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 388 in 15 files.
+- Tests: 443 in 18 files.
+- Dictionary: 537 lesson words (74 verbs), 94 extra kanji-example words, 14 names; 404 kanji.
 - Template: all 62 lessons converted.
 - Quiz questions: 250, of which 37 are typed in romaji and 3 ask for a name.
 
@@ -277,6 +301,23 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
     - 静かさ became 大切さ (静けさ is the usual word), and 彼ら is "common in writing and among friends";
     - an unnatural ✗ line (じゃあ、だめってことですか？), できてる written as one word, and the 敬語 terms explained.
   - Polish applied, among others: ご苦労様 next to お疲れ様, さようなら at school, あなた between spouses as old-fashioned, 君 said downwards, 〜店 on signs, おビール.
+- D1 in the checks: 443 tests, typecheck, lint, build. No screen shows D1's data yet, so there was no browser check.
+- D1 review: three fresh Opus 5.5 reviewers (dictionary, kanji data, code) and a Haiku spot-check of joyo.json against the PDF text (200 kanji and the whole 付表: no mismatch). All findings were applied:
+  - Errors fixed:
+    - [良|よ]い broke STYLE §5; it is now よい;
+    - 金, 帰 and 彼 had wrong or missing meanings;
+    - the resolver let a kanji spelling match any kana entry ([三|さん] became the suffix さん), and picked an arbitrary homophone (きた became 北).
+  - Should-fix items applied, among others:
+    - the parser missed 亀 キ and 餅 もち (a lost old-form glyph), and now checks its own totals;
+    - the reading checker's っ, p-sound, 付表 and 来 rules were tightened, with regression tests;
+    - the resolver's counters, names, affixes and fragments were tightened, with regression tests;
+    - 106 kanji got clearer meanings or better examples (on and kun readings shown, no 付表-only examples);
+    - pre-noun words (この, その, あの) got their own part of speech;
+    - glosses, topics and する notes;
+    - licence notices.
+  - Not applied:
+    - the reviewer's claim that 伊 is 常用; the official table has no 伊;
+    - matching "special" readings only in the table's own example words (left for the kanji trainer, which will show them as special).
 
 ### Waiting on the owner
 - B4 sources to confirm. The reviewers recalled these differently:
@@ -316,4 +357,9 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - A source for particles-move's "what sits right before the verb carries the focus". The reviewer suggests IMABI's word-order page or Makino & Tsutsui.
 - B2 decision to confirm: 象は鼻が長い (topic-comment) is the one non-original example, a named exception in STYLE §2 credited to Mikami Akira (1960). Say if you'd rather replace it.
 - Deploys: on 2026-10-08 the Vercel connector couldn't see project nihongo-path (403 listing deployments, 404 for the project), so the live site's state is unconfirmed. Earlier notes say the project isn't linked to GitHub, which would mean pushing main doesn't deploy. Say if you want a deploy; it may need the Vercel connection re-authorised.
-- JLPT N5/N4 lists: Jonathan Waller's site (tanos.co.uk) was unreachable on 2026-10-07. Its licence (reportedly CC BY) is to be confirmed before the download in D1.
+- JLPT N5/N4 lists: Jonathan Waller's site (tanos.co.uk) was unreachable on 2026-10-07 and 2026-10-08. Its licence (reportedly CC BY) is to be confirmed before the download. D1 shipped the lesson kanji; the N5/N4 kanji and E2's trainer wait for this.
+- D1 to confirm:
+  - The kanji reviewer remembers these "special" marks differently from the parsed table: 何 なん, 上 うわ and 七 なの are marked special; 今 キン, 京 ケイ and 音 イン aren't. The parser reads the PDF's indentation, so it is probably right; a look at those pages of joyokanjihyo_20101130.pdf would settle it.
+  - KANJIDIC2's licence has extra conditions in its section 8 (believed to concern index codes D1 doesn't use). Reading the EDRDG licence page would settle it; I haven't fetched it.
+  - The repo is private, so the CC BY-SA credits aren't owed yet; a credits page is planned before any screen shows the data (plan §6).
+  - Your suggestion of the "2242 Kanji Frequency List" (ResearchGate) is noted for E2/G; its licence would need checking first.

@@ -159,6 +159,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 2026-10-08: the owner asked to push to main. main was fast-forwarded to B1 (6a21af1), with no merge commit; `features` stays the working branch.
 - 2026-10-08: the owner asked again to push to main. main was fast-forwarded to B4 (51b591f), bringing B2, B3, C1 and B4; no merge commit.
 - 2026-10-08: the owner asked to push to main again. main was fast-forwarded to B5 (806413d).
+- 2026-10-09: the owner asked to push to main. main was fast-forwarded to D1 (03970ad).
 - D1 (2026-10-08): the owner approved three downloads: JMdict common words and KANJIDIC2 (jmdict-simplified 3.6.2) and the 常用漢字表 PDF. They stay outside the repo; only derived data is committed. The N5/N4 kanji wait for Waller's lists (owner's choice); D1 covers the lesson kanji.
 - The path is unit tabs, not kind filters (owner request). Lesson `kinds` tags (B1) will feed search and the grammar overview instead.
   - Stacked particles are written separately (で は).

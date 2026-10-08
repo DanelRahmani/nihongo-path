@@ -7,8 +7,7 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **C1:** the conjugation engine (`lib/conjugate.ts`), with golden tables written by hand and `lesson-tables.test.ts` checking the verb and grammar tables against it. See the plan.
-- Then **B4** (Core grammar + Verbs, 17 lessons) and **B5** (Suffixes + Culture, 15).
+- **B4** (Core grammar + Verbs, 17 lessons): written and passing; reviews in progress. Then **B5** (Suffixes + Culture, 15).
   - Before quizzing numbers (grammar/numbers-counting): a Japanese keyboard often turns しちじ into 7時. Typed answers need to accept Arabic digits for kanji numerals, or quizzes must avoid typed numbers.
   - The i-adjective て form (安くて) is promised by particles/to-ya's mistake callout ("a later lesson shows it"). Make sure B4 teaches it.
   - Every typed answer needs all its correct alternatives listed. The checker ignores spaces and punctuation and folds a few keyboard kanji spellings (美味しい); nothing else.
@@ -94,6 +93,13 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Checker:
     - "Same sound, different spelling" now also fires inside longer answers (わが for は・が, わたしわ…). It compares romaji with the answer's own word spaces.
     - Kanji spellings a keyboard offers for words the lessons write in kana (美味しい, 綺麗, 可愛い, 寿司, お腹, 林檎, 蜘蛛, 下さい) are folded to kana.
+- **C1 Conjugation engine (2026-10-08):** `lib/conjugate.ts`, pure. Dictionary form and class in, lesson markup out, so furigana and STYLE §7 word spaces carry through.
+  - 22 verb forms (polite and plain × affirmative/negative × non-past/past, て, たい, stem, potential, volitional, passive, causative, ば, たら, 〜なさい, 〜てください, plain imperative, な prohibitive), each tagged with its register. 13 adjective forms for i-adjectives, na-adjectives and nouns.
+  - Results are `{ok, jp, variants, colloquial?, note?}` or `{ok:false, reason}`. Variants: ないです/じゃないです negatives, いい → よい, the ろ/よ imperative, いらした. Colloquial: ら抜き potentials (見れる, 来れる).
+  - Exceptions: 行く (って/った), 問う/請う (うて), ある (ない), the honorific verbs (います stem and imperative, with a note), 下さる, ござる, stative verbs (見える, 聞こえる, 要る), and the forms that 分かる, できる and くれる lack. Exception tables are keyed by the written form, so 分かる and わかる both match.
+  - Compounds keep their head: 勉強 する, 持って くる. One-kanji する verbs (愛する) are refused rather than guessed.
+  - `tests/conjugate.test.ts`: golden tables typed by hand for 15 verbs (every form) and 7 adjectives and nouns, plus partial checks for 13 more. `tests/lesson-tables.test.ts` checks every conjugation cell in the grammar and verbs tables against the engine.
+  - Notes for later phases: E4's form identifier must name ambiguous forms (食べられる potential or passive; くれ and いらっしゃい stem or imperative). D1 needs a stative flag and JMdict's adj-ix tag, and should normalise 下さる and 持って来る at import. D2's reverse index must match multi-word outputs.
 
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
@@ -123,7 +129,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 823 Japanese lines (not counting labels), including quiz answers: 403 example, pair, dialogue and alt sentences, of which 259 have a highlight.
 - 1,663 ruby tokens and 319 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 296 in 13 files.
+- Tests: 356 in 15 files.
 - Template: 30 of 62 lessons converted (32 pending).
 - Quiz questions: 123, of which 37 are typed in romaji and 3 ask for a name.
 
@@ -212,8 +218,12 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
     - quiz questions needing forms not yet taught (安くて) or numbers a keyboard converts (七時) were replaced;
     - many missing accepted answers;
     - quiz questions that copied the lesson's lines now use fresh words.
+- C1 review: a fresh Opus 5.5 reviewer confirmed every golden value. Its findings were applied and each has a regression test: honorific たい, the forms of できる and くれる, compound heads, written-form keys, stative verbs, the negative variants and colloquial potentials.
 
 ### Waiting on the owner
+- C1 forms the reviewer and I couldn't settle, both refused by the engine for now:
+  - the て and た forms of ゆく (written ゆって? いって?); a dictionary such as 明鏡 or 大辞林 would settle it;
+  - the potentials いらっしゃれる and おっしゃれる (文化庁「敬語の指針」, 2007).
 - Pitch accent: blocked on audio from a native speaker. No speech synthesis.
 - Genki citations to confirm against your edition:
   - start/polite-and-casual cites "Genki I ch. 3, 8 and 9". The reviewer and I both place plain past forms in ch. 9.

@@ -3,23 +3,6 @@
  * tests/template.test.ts fails if a listed lesson already passes, or an unlisted one fails.
  */
 export const RETROFIT_PENDING: string[] = [
-  "grammar/desu-da",
-  "grammar/i-adjectives",
-  "grammar/na-adjectives",
-  "grammar/aru-iru",
-  "grammar/kosoado",
-  "grammar/question-words",
-  "grammar/numbers-counting",
-  "verbs/verb-groups",
-  "verbs/masu-form",
-  "verbs/nai-form",
-  "verbs/te-form",
-  "verbs/ta-form",
-  "verbs/te-iru-te-kudasai",
-  "verbs/tai-form",
-  "verbs/volitional",
-  "verbs/potential",
-  "verbs/tara-conditional",
   "suffixes/name-suffixes",
   "suffixes/titles",
   "suffixes/tachi-plural",

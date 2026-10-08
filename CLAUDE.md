@@ -7,11 +7,10 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **B4** (Core grammar + Verbs, 17 lessons): written and passing; reviews in progress. Then **B5** (Suffixes + Culture, 15).
-  - Before quizzing numbers (grammar/numbers-counting): a Japanese keyboard often turns しちじ into 7時. Typed answers need to accept Arabic digits for kanji numerals, or quizzes must avoid typed numbers.
-  - The i-adjective て form (安くて) is promised by particles/to-ya's mistake callout ("a later lesson shows it"). Make sure B4 teaches it.
-  - Every typed answer needs all its correct alternatives listed. The checker ignores spaces and punctuation and folds a few keyboard kanji spellings (美味しい); nothing else.
-  - Reviewers in B2 and B3 flagged quiz questions that copy a lesson's own lines. Use fresh words in quizzes.
+- **B5** (Suffixes + Culture, 15 lessons), the last of the template retrofit. Then **D1** (dictionary data; ask before each download).
+  - Every typed answer needs all its correct alternatives listed. The checker ignores spaces and punctuation and folds a few keyboard kanji spellings (美味しい); nothing else. Digit forms (3本) are listed by hand where a number is typed.
+  - Reviewers in B2, B3 and B4 all flagged quiz questions that copy a lesson's own lines, or lines from other units. Use fresh words in quizzes, and grep the other units before writing an example.
+  - Quiz prompts must name the register when both are possible ("Casual negative"), or list both.
 
 ### Built
 - **Phase 0 (2026-10-07):** repository audit and feature plan. No code changes.
@@ -100,6 +99,16 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Compounds keep their head: 勉強 する, 持って くる. One-kanji する verbs (愛する) are refused rather than guessed.
   - `tests/conjugate.test.ts`: golden tables typed by hand for 15 verbs (every form) and 7 adjectives and nouns, plus partial checks for 13 more. `tests/lesson-tables.test.ts` checks every conjugation cell in the grammar and verbs tables against the engine.
   - Notes for later phases: E4's form identifier must name ambiguous forms (食べられる potential or passive; くれ and いらっしゃい stem or imperative). D1 needs a stative flag and JMdict's adj-ix tag, and should normalise 下さる and 持って来る at import. D2's reverse index must match multi-word outputs.
+- **B4 Core grammar and Verbs on the template (2026-10-08):** 17 lessons converted; 15 remain (Suffixes and Culture).
+  - Core grammar: です/だ, い- and な-adjectives, ある/いる, こそあど, question words, numbers and counters. Each has core examples with alts, a one-change pair, a ✗/✓ mistake, a dialogue, and a quiz.
+    - Numbers: quiz answers also accept digits (3本, 3人), because a Japanese keyboard often converts them. よじ, よにん and the いち of [一万|いちまん] are taught, and [何名|なんめい][様|さま] answers accept [三名|さんめい].
+    - The な-adjective traps きれい and 嫌い, なに/なん (the callout is written in kana so ✗ and ✓ differ in every display mode), and いい → よかった, with 良かった accepted.
+  - Verbs: groups (帰る/変える share a kana spelling), ます, ない, て, た, ている/てください, たい (and たがっている), volitional, potential and たら.
+    - The て lesson teaches the い-adjective くて (この店は安くておいしい), which particles/to-ya promised.
+    - Quizzes accept the contractions taught (食べてる, 食べてます, 来たがってる) and ら抜き where the lesson mentions it (起きれる).
+  - Every conjugation table is checked against the C1 engine. The masu-form example cells now read "飲みます: I drink".
+  - Renderer: callout titles render markup (a ruby title showed raw brackets). The corpus walks callout titles too.
+  - Content tests: the stacked-particle check covers more pairs, and 何名 is exempt from the name-join check.
 
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
@@ -127,11 +136,11 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 
 ### Numbers
 - 9 units, 62 lessons, 208 kana cards.
-- 823 Japanese lines (not counting labels), including quiz answers: 403 example, pair, dialogue and alt sentences, of which 259 have a highlight.
-- 1,663 ruby tokens and 319 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 356 in 15 files.
-- Template: 30 of 62 lessons converted (32 pending).
-- Quiz questions: 123, of which 37 are typed in romaji and 3 ask for a name.
+- 1,019 Japanese lines (not counting labels), including quiz answers: 497 example, pair, dialogue and alt sentences, of which 351 have a highlight.
+- 2,183 ruby tokens and 355 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
+- Tests: 373 in 15 files.
+- Template: 47 of 62 lessons converted (15 pending).
+- Quiz questions: 193, of which 37 are typed in romaji and 3 ask for a name.
 
 ### How it was checked
 - `npm test`, `npm run typecheck`, `npm run lint`, `npm run build`.
@@ -219,8 +228,35 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
     - many missing accepted answers;
     - quiz questions that copied the lesson's lines now use fresh words.
 - C1 review: a fresh Opus 5.5 reviewer confirmed every golden value. Its findings were applied and each has a regression test: honorific たい, the forms of できる and くれる, compound heads, written-form keys, stative verbs, the negative variants and colloquial potentials.
+- B4 in the browser at 375 px, light and dark:
+  - numbers-counting: 3本 and にまい are accepted; a wrong answer shows よっつ with its explanation.
+  - potential: 起きれる (ら抜き) is accepted, and 泳げません is marked wrong for a casual prompt.
+  - kosoado: それ is marked wrong for a tower far from both speakers, and the fixed あの人は誰ですか？ is accepted.
+  - tara-conditional: the whole word 高かったら is accepted as well as the ending.
+  - No horizontal scroll, a visible focus ring, and a clean console.
+- B4 review: two fresh Opus 5.5 reviewers (Core grammar, Verbs) and a Haiku pass on the romaji typed in prose. No wrong reading, kanji, word space or generated romaji, and no wrong conjugated form. All findings were applied:
+  - Errors fixed:
+    - Genki I has no ch. 14 (numbers now cite Genki II ch. 14);
+    - the なに/なん ✗ and ✓ looked identical in the kanji modes;
+    - [四時|よじ] was presented as the "other" reading of 4, but よじ is a third form;
+    - 帰る/変える were said to "sound like" each other (they differ in pitch);
+    - "one kana changes" in the potential pair (く → ける adds a kana).
+  - Should-fix items applied, among others:
+    - quizzes that copied the lesson's own lines or other units' lines now use fresh words (twelve questions, three examples and one dialogue line);
+    - missing accepted answers: ではないです, [三名|さんめい], 良かったです, 食べてます, 来たがってる, the whole word in たら blanks;
+    - prompts that allowed a polite answer now say "casual";
+    - kosoado's quiz tests あれ against それ;
+    - "る-verbs drop る and add られる/て", and the て chart labels its る row as う-verbs only;
+    - たがっている has a core example;
+    - よい is "the more formal form", not "the usual written form".
+  - Polish applied: a dialogue for です/だ instead of a culture note that wasn't culture; one column order (Casual, Polite) for the three adjective/noun tables; casual alts in na-adjectives and aru-iru; なぜ; 100 and 1,000 without いち; ななじ "also heard"; the passive look-alike noted under the potential table; a たら quiz on nouns (休みだったら).
+  - Not applied: whether 見なかった or 見てない should be taught first for "I didn't watch it". Both are grammatical, and a native speaker's judgement would settle it.
 
 ### Waiting on the owner
+- B4 sources to confirm. The reviewers recalled these differently:
+  - Genki: plain past of nouns in Genki I ch. 9 (desu-da now cites ch. 1, 4, 8–9); counters in Genki II ch. 14; たがっている in Genki I ch. 11; volitional in Genki II ch. 15; potential in Genki II ch. 13; たら in Genki II ch. 17; ている in ch. 7 and てください in ch. 6.
+  - Tae Kim section titles cited in B4 that may not exist as written: "Existence: ある and いる", "Question words", "The te-form" (possibly "Compound sentences"), "Using the te-form", "Desire: たい" (possibly "Desire and suggestions"), "Numbers and counting". kosoado cites the guide with no section.
+  - Cure Dolly video titles: "です and だ" and "adjectives as verbs".
 - C1 forms the reviewer and I couldn't settle, both refused by the engine for now:
   - the て and た forms of ゆく (written ゆって? いって?); a dictionary such as 明鏡 or 大辞林 would settle it;
   - the potentials いらっしゃれる and おっしゃれる (文化庁「敬語の指針」, 2007).

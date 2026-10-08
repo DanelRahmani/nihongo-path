@@ -131,6 +131,8 @@ describe("style (content/STYLE.md)", () => {
   it("joins a name to its suffix or title with '-' (so the romaji reads tanaka-san)", () => {
     const SUFFIX = /^(さん|くん|ちゃん|さま)/;
     const TITLES = new Set(["先生", "先輩", "部長", "社長", "様"]);
+    /** Words before a title that aren't names: [何名|なんめい][様|さま] (how many guests). */
+    const NOT_NAMES = new Set(["何名"]);
     const bad = JP_FIELDS.flatMap((f) => {
       const tokens = parse(f.text, true);
       return tokens.flatMap((t, i) => {
@@ -139,7 +141,7 @@ describe("style (content/STYLE.md)", () => {
         // お[母|かあ]さん, お[客|きゃく][様|さま]: a prefixed word, not a name.
         const prefixed = prev?.kind === "text" && /[おご]$/.test(prev.text);
         const kanjiName =
-          t.kind === "ruby" && !prefixed &&
+          t.kind === "ruby" && !prefixed && !NOT_NAMES.has(t.base) &&
           ((next?.kind === "text" && SUFFIX.test(next.text)) || (next?.kind === "ruby" && TITLES.has(next.base)));
         const kanaName = t.kind === "text" && /[ァ-ヺ]ー?(さん|くん|ちゃん|さま)/.test(t.text);
         return kanjiName || kanaName ? [`${f.where}: ${f.text}`] : [];

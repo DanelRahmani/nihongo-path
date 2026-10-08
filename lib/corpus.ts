@@ -33,7 +33,10 @@ export function lessonFields(lesson: Lesson, key: string): Field[] {
       case "idea":
       case "heading":
       case "text":
+        add(b.text, false, at);
+        break;
       case "callout":
+        add(b.title, false, `${at} title`);
         add(b.text, false, at);
         break;
       case "examples":

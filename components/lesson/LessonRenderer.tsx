@@ -141,7 +141,7 @@ function BlockView({ block }: { block: Block }) {
             <span lang="ja" className={`hanko size-8 text-[0.7rem] tracking-normal ${c.seal}`}>
               {c.jp}
             </span>
-            {block.title ?? c.label}
+            <Rich text={block.title ?? c.label} />
           </p>
           <Rich text={block.text} className="mt-3 block leading-7 text-pretty" />
         </aside>

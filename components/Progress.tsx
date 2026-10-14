@@ -80,7 +80,7 @@ export function ContinueCard({ lessons }: { lessons: ContinueLesson[] }) {
     >
       <div className="flex items-center gap-4 sm:gap-6">
         <span className="grid size-16 shrink-0 place-items-center rounded-2xl bg-accent-soft sm:size-24">
-          <Jp jp={next.mark} romaji={false} className="font-serif text-2xl font-bold text-accent sm:text-4xl" />
+          <Jp jp={next.mark} romaji={false} inspect={false} className="font-serif text-2xl font-bold text-accent sm:text-4xl" />
         </span>
         <div className="min-w-0 flex-1">
           <Eyebrow>

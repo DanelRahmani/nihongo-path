@@ -127,12 +127,27 @@ export const pathFilterSchema: StoreSchema<PathFilter> = {
   },
 };
 
+/** My words on the dictionary page: entry ids (lib/dictionary.ts), in the order they were saved. */
+export type MyWords = string[];
+
+/** Keeps each readable id once, so one bad item doesn't empty the list. */
+export const myWordsSchema: StoreSchema<MyWords> = {
+  version: 1,
+  fallback: [],
+  migrations: [wrapUnchanged],
+  validate(data) {
+    if (!Array.isArray(data)) return null;
+    return [...new Set(data.filter((id): id is string => typeof id === "string" && id.length > 0 && id.length <= 200))];
+  },
+};
+
 /** Every store by its localStorage key. Backup and restore (H3) go through this list. */
 export const SCHEMAS = {
   "np:settings": settingsSchema,
   "np:progress": progressSchema,
   "np:srs": srsSchema,
   "np:path-filter": pathFilterSchema,
+  "np:my-words": myWordsSchema,
 } as const;
 
 export type StoreKey = keyof typeof SCHEMAS;

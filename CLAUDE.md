@@ -7,9 +7,9 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **D2** (word inspector and kanji pages), built on D1's `lib/words.ts` and `content/kanji.ts`. Then D3 (dictionary page).
-  - Keep `lib/joyo.ts` (and its 135 KB `content/data/joyo.json`) out of client code. The inspector needs a client-side index from `lib/words.ts` and the engine; `lib/words.ts` doesn't import joyo.json.
-  - The resolver tells the counter 本 from the noun 本 only by context. D2 should look words up by entry, not by written form alone.
+- **F1** (grammar overview). Then F2–F4 (reading view, search, Today card), E1–E9 (practice), G and H.
+  - Keep `lib/joyo.ts` (and its 135 KB `content/data/joyo.json`) out of client code; `tests/lookup.test.ts` and `tests/dictionary.test.ts` check the client imports. The 常用 readings reach the client through `/dictionary-data.json`, loaded by `lib/load-dictionary.ts`.
+  - F3's search can reuse `lib/dictionary.ts` (`buildEntries`, `search`) for its word results, and could open `/dictionary` with a query.
   - The N5/N4 kanji wait for Jonathan Waller's lists (see Waiting on the owner), and E2's trainer waits for them.
   - Lessons written later still follow these rules:
     - Every typed answer needs all its correct alternatives listed. The checker ignores spaces and punctuation and folds a few keyboard kanji spellings (美味しい); nothing else. Digit forms (3本) are listed by hand where a number is typed.
@@ -103,7 +103,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Exceptions: 行く (って/った), 問う/請う (うて), ある (ない), the honorific verbs (います stem and imperative, with a note), 下さる, ござる, stative verbs (見える, 聞こえる, 要る), and the forms that 分かる, できる and くれる lack. Exception tables are keyed by the written form, so 分かる and わかる both match.
   - Compounds keep their head: 勉強 する, 持って くる. One-kanji する verbs (愛する) are refused rather than guessed.
   - `tests/conjugate.test.ts`: golden tables typed by hand for 15 verbs (every form) and 7 adjectives and nouns, plus partial checks for 13 more. `tests/lesson-tables.test.ts` checks every conjugation cell in the grammar and verbs tables against the engine.
-  - Notes for later phases: E4's form identifier must name ambiguous forms (食べられる potential or passive; くれ and いらっしゃい stem or imperative). D1 needs a stative flag and JMdict's adj-ix tag, and should normalise 下さる and 持って来る at import. D2's reverse index must match multi-word outputs.
+  - Notes for later phases: E3's form identifier must name ambiguous forms (食べられる potential or passive; くれ and いらっしゃい stem or imperative). D1 needs a stative flag and JMdict's adj-ix tag, and should normalise 下さる and 持って来る at import. D2's reverse index must match multi-word outputs.
 - **B4 Core grammar and Verbs on the template (2026-10-08):** 17 lessons converted; 15 remain (Suffixes and Culture).
   - Core grammar: です/だ, い- and な-adjectives, ある/いる, こそあど, question words, numbers and counters. Each has core examples with alts, a one-change pair, a ✗/✓ mistake, a dialogue, and a quiz.
     - Numbers: quiz answers also accept digits (3本, 3人), because a Japanese keyboard often converts them. よじ, よにん and the いち of [一万|いちまん] are taught, and [何名|なんめい][様|さま] answers accept [三名|さんめい].
@@ -139,13 +139,33 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - `content/kanji.ts`: all 404 kanji the lessons use, with meanings chosen for learners, KANJIDIC2 stroke counts, and one or two example words from the dictionary. Readings come from joyo.json. `tests/kanji.test.ts` checks coverage and examples.
   - Licences: kanji.ts and joyo.json say they're CC BY-SA 4.0 (derived from KANJIDIC2 © EDRDG). The 常用漢字表 is a government notice, outside copyright.
   - Content: 伊藤 became 遠藤, because 伊 isn't in the 常用漢字表. よい is written in kana, and the quiz answer 良かった is accepted as a keyboard's spelling.
+- **D2 Word inspector and kanji pages (2026-10-14):**
+  - Every Japanese line (examples, pairs, dialogue, alts, Japanese-only table cells) is a toolbar of words. The line is one Tab stop (a roving tab index); arrows, Home and End move between words, Enter or Space opens a card, and Escape closes it and returns focus to the word. Tapping a word opens it; tapping elsewhere closes it. The card is a bottom sheet, so narrow table cells and the romaji line don't move. A hidden status line announces the word and meaning.
+  - `Jp.tsx` groups the parsed tokens at word spaces, so a highlight across two words ({じゃ ありません}) stays whole, and rebuilds each word's markup for the lookup. Marks and titles inside links and headings, the vertical lesson mark and the quiz answer opt out (`inspect={false}`).
+  - `lib/lookup.ts`: exact on written form and reading, inflected forms through the resolver's engine index ("polite past of 食べる"), no fuzzy match. Counters, names, numbers, particles and table endings get their own labels. Lesson words win over the 94 extra words, which still beat a bare name or number ([森|もり] is "forest"). A word with no entry still shows its kanji.
+  - The card shows the dictionary form, its reading, the meaning, the form or affix, and each kanji with its meanings and 常用 readings (special ones dimmed), linked to its page.
+  - `/dictionary-data.json` is a `force-static` route (118 KB) fetched on the first tap; a failed fetch is retried on the next one.
+  - `/kanji/[char]`: 404 static pages with the table's on and kun readings (okurigana in brackets, special readings dashed), stroke count, and example words shown in kanji in every furigana mode, each inspectable.
+
+- **D3 Dictionary page (2026-10-14):** `/dictionary`, linked from the nav as 辞書.
+  - `lib/dictionary.ts`, pure: entries from the dictionary data (lesson words, then the 94 extra words as "Expansion"), each with its written form, kana reading, romaji, kana row and match keys.
+    - Search by kanji or kana (katakana folded to hiragana; ー, おう and えい folded, so こうひい finds コーヒー), by romaji through `lib/romaji-input.ts` (si/shi, nn, kyō; long vowels shortened as a whole-word fallback, so kyo and sensee work), or by English (a whole gloss, a gloss word that starts with the query, then a word start anywhere; "to", "a" and "the" ignored; accents folded).
+    - Ranking: exact, then prefix, then inside; ties put lesson words first, then shorter readings.
+    - Filters: topic, source, starting kana row (voiced kana count with their row), and My words.
+    - CSV: RFC 4180 quoting, a UTF-8 byte order mark and CRLF. Columns: Japanese, reading, romaji, meaning, part of speech, topic, source.
+    - The growth reducer shows 40 results per batch and starts again at one batch for each new search.
+  - My words: store `np:my-words` v1, a list of entry ids (`written markup#pos`, since 本 is a noun and a counter), validated to unique strings and listed in `SCHEMAS` for H3. Ids that no longer match an entry are kept but not counted.
+  - `components/dictionary/DictionaryBrowser.tsx`: the page's HTML holds no words. The data is fetched when the browser is idle, or at once when the search box gets focus. Results are built in a transition, the query is deferred, and the list grows in a transition when its end nears the screen (IntersectionObserver) or through a "Show more" button. Each row is the word with forced furigana (inspectable), its meaning, part of speech and topic, and a ☆ toggle. The kana beside the word shows only when furigana is hidden.
+  - `lib/load-dictionary.ts`: the shared fetch, moved out of InspectorLine.
+  - Header: four nav links fit 375 px (tighter phone padding); under 375 px the wordmark hides and the dot stays as the home link.
 
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
   - Q1: four furigana modes, kana-only by default.
   - Q2: long vowels spelled out (kyou).
   - Q3: kanji trainer on JLPT N5, then N4, from Jonathan Waller's lists.
-  - Q4: JMdict + KANJIDIC2 + KanjiVG + wordfreq; about 2,000 extra words; no Tatoeba.
+  - Q4: JMdict + KANJIDIC2 + wordfreq; about 2,000 extra words; no Tatoeba.
+  - 2026-10-09: remove all stroke-order animation, tracing and printable stroke sheets. Kanji practice uses Anki-style cards answered through the Japanese keyboard instead. Execute the remaining phases in this order: D2–D3, F1–F4, E1–E9, G, H.
   - Q5: the inspector resolves inflected forms through the engine.
   - Q6: no deploys.
   - Q7: reviewers on Opus 5.5.
@@ -172,8 +192,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 443 in 18 files.
-- Dictionary: 537 lesson words (74 verbs), 94 extra kanji-example words, 14 names; 404 kanji.
+- Tests: 499 in 20 files.
+- Dictionary: 537 lesson words (74 verbs), 94 extra kanji-example words, 14 names; 404 kanji. The dictionary page lists 631 entries.
 - Template: all 62 lessons converted.
 - Quiz questions: 250, of which 37 are typed in romaji and 3 ask for a name.
 
@@ -319,6 +339,30 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Not applied:
     - the reviewer's claim that 伊 is 常用; the official table has no 伊;
     - matching "special" readings only in the table's own example words (left for the kanji trainer, which will show them as special).
+- D2 in the checks: 455 tests, typecheck, lint, build (404 kanji pages, joyo.json absent from client chunks).
+- D2 in the browser at 375 px, light and dark: every word of the ます lesson resolves (する, 来ます, 書きます, particles, 〜ます in the table); one Tab stop per line; End, Enter, Escape (from a link inside the card) and an outside tap behave; the header mark isn't inspectable; no horizontal scroll with the card open over a table; the kanji pages for 来 and 上 show their readings and the dashed special うわ.
+- D2 review: a fresh Opus 5.5 reviewer, who also scanned all 3,313 lesson words through the lookup (30 misses, all marks, titles or explanation cells). Applied:
+  - Errors fixed: inspectable marks inside links (nested interactive content, a link name polluted by the toolbar label, the vertical mark setting the card sideways); screen readers couldn't tell which word was chosen (now roving focus on role=button words in a toolbar); a failed fetch was cached forever.
+  - Should-fix applied: Escape works from inside the card and returns focus; a late fetch can't reopen a closed card; outside taps close it; special readings are marked, not dropped; the route ends in .json; the live region is persistent and announces only the word; tests for the extra-word order, special readings and the client import guard.
+  - Polish applied: malformed % in a kanji URL, empty readings, kanji on a missed word, hover only on pointer devices, and the card no longer pushes the layout.
+  - Not applied: a component test for InspectorLine (there's no DOM test setup; the browser check above covers it), Japanese-only table cells each being a Tab stop (one per cell, as the plan asks per line), and stale state when a persistent instance's children change (no current caller does).
+
+- D3 in the checks: 499 tests, typecheck, lint, build (`/dictionary` static, no words in its HTML).
+- D3 in the browser at 375 px, light and dark (the browser pane wasn't drawing frames, so the scroll and screenshot checks ran in the Playwright plugin's browser):
+  - kyo finds 今日, 京都, 東京 and 勉強; book finds 本 first; こーひー finds コーヒー;
+  - ☆ writes a v1 envelope; My words lists the saved words; the CSV starts with EF BB BF and has CRLF rows;
+  - the か row filter gives 117 words; "Show more" and scrolling both grow the list 40 at a time;
+  - Tab reaches the source radios, the row radios (arrow keys move), the stars and the words; Enter opens the word card and Escape returns focus to the word; unstarring in My words moves focus to the next star;
+  - focus rings visible, including on the filled row chip; the header fits at 375 and 360 px; no horizontal scroll; console clean apart from Fast Refresh logs.
+- D3 review: a fresh Opus 5.5 reviewer probed about 90 learner queries. Applied:
+  - Errors fixed: English queries starting with "to", "a" or "the" ranked wrong or found nothing; glosses kept bracket gaps and example tails, and 15 entries (counters, お/ご, くん…) had none.
+  - Should-fix applied: English matches only at word starts ("eat" no longer finds meat, weather, heat); one RegExp per query, not per entry; My words counts only ids that still match an entry; focus kept after unstarring in My words; star labels name the word, reading and part of speech; a failed load is announced; the row chips are a radio group; a real test of the lesson-first tie-break; the byte order mark written as a code point.
+  - Polish applied: accents folded in English; ー and long kana folded; the doubled reading beside the ruby hidden; class order; the eyebrow text.
+  - Not applied:
+    - pruning saved ids that no longer match: a later build could bring the word back, and pruning can't be undone;
+    - guarding CSV fields that start with = + - @: the data is the app's own, and a guard would change the values;
+    - announcing the count only once typing settles: the query is already deferred;
+    - こんにちは and です have no entry (a greeting written as a phrase, and a function word); G's expansion can add them.
 
 ### Waiting on the owner
 - B4 sources to confirm. The reviewers recalled these differently:

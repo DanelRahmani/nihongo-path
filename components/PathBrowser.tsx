@@ -154,7 +154,7 @@ export function PathBrowser({ units }: { units: PathUnit[] }) {
           <div className="min-w-0 flex-1">
             <h3 className="text-xl font-bold sm:text-2xl">
               {unit.title}{" "}
-              <Jp jp={unit.titleJp} romaji={false} className="ml-1 font-serif text-base font-medium text-ink-2" />
+              <Jp jp={unit.titleJp} romaji={false} inspect={false} className="ml-1 font-serif text-base font-medium text-ink-2" />
             </h3>
             <p className="mt-1 text-sm text-ink-2">{unit.description}</p>
             <div className="mt-3 flex items-center gap-3">
@@ -180,7 +180,7 @@ export function PathBrowser({ units }: { units: PathUnit[] }) {
                 >
                   <span className="w-8 shrink-0 text-xs text-ink-2 tabular-nums">{lesson.number}</span>
                   <span className="hidden w-20 shrink-0 sm:block">
-                    <Jp jp={lesson.mark} romaji={false} className="font-serif text-lg font-bold group-hover:text-accent" />
+                    <Jp jp={lesson.mark} romaji={false} inspect={false} className="font-serif text-lg font-bold group-hover:text-accent" />
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="block font-medium text-balance group-hover:text-accent">{lesson.title}</span>

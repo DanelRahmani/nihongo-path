@@ -28,6 +28,8 @@ const LEGACY: Record<StoreKey, { before: unknown; after: unknown }> = {
   "np:progress": { before: { "start/three-scripts": true }, after: { "start/three-scripts": true } },
   "np:srs": { before: SRS, after: SRS },
   "np:path-filter": { before: { kind: "particles", hideDone: true }, after: { unit: "particles", hideDone: true } },
+  // Never stored raw; a bare array still reads as version 0.
+  "np:my-words": { before: ["[食|た]べる#verb", "[本|ほん]#counter"], after: ["[食|た]べる#verb", "[本|ほん]#counter"] },
 };
 
 describe("envelopes", () => {

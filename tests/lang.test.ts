@@ -43,7 +43,7 @@ describe("lang attributes in rendered prose", () => {
 
   it("marks a Japanese-only table cell as a whole", () => {
     const html = renderToStaticMarkup(createElement(Cell, { text: "[食|た]べます" }));
-    expect(html).toContain(`<span lang="ja">${WORD("食", "た")}べます</span>`);
+    expect(html).toContain(`<span lang="ja"><span data-inspect-word="true" data-jp="[食|た]べます" role="button" tabindex="-1" aria-label="食べます" class="inspect-word">${WORD("食", "た")}べます</span></span>`);
   });
 
   it("marks only the Japanese in a mixed table cell", () => {

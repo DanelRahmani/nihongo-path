@@ -1,5 +1,6 @@
 import { Fragment } from "react";
-import { isJpOnly, langRuns, parse, type Token } from "@/lib/markup";
+import { InspectorLine } from "@/components/InspectorLine";
+import { isJpOnly, langRuns, parse, plainOf, type Token } from "@/lib/markup";
 import { romajiOf } from "@/lib/romaji";
 
 /*
@@ -46,6 +47,33 @@ function renderLine(tokens: Token[]) {
   });
 }
 
+/** A word's markup again, for the inspector's lookup: [食|た]べる, [田中|たなか]-さん. Highlights don't matter there. */
+function markupOf(tokens: Token[]): string {
+  return tokens.map((t) => (t.kind === "ruby" ? `[${t.base}|${t.reading}]` : t.kind === "text" ? t.text : t.kind === "join" ? "-" : "")).join("");
+}
+
+/**
+ * A word-spaced lesson line, one inspector target per word (日本語, not each ruby run). The line is parsed
+ * once and grouped at its word spaces, so a highlight that spans two words ({じゃ ありません}) stays whole.
+ */
+function renderInspectableLine(jp: string) {
+  const words: Token[][] = [[]];
+  for (const t of parse(jp, true)) {
+    if (t.kind === "space") words.push([]);
+    else words.at(-1)!.push(t);
+  }
+  return words
+    .filter((w) => w.length)
+    .map((word, i) => (
+      <Fragment key={i}>
+        {i > 0 && <span className="ws"> </span>}
+        <span data-inspect-word data-jp={markupOf(word)} role="button" tabIndex={-1} aria-label={plainOf(markupOf(word), false)} className="inspect-word">
+          {renderLine(word)}
+        </span>
+      </Fragment>
+    ));
+}
+
 /**
  * English prose with Japanese inside: each stretch of Japanese gets one lang="ja" span, so it is set
  * in a Japanese font with Japanese line breaking.
@@ -79,15 +107,24 @@ export function Jp({
   jp,
   className = "",
   romaji = true,
+  inspect = true,
 }: {
   jp: string;
   className?: string;
   /** Include the romaji line (still only shown when the reader has romaji on). */
   romaji?: boolean;
+  /** Make each word open the word inspector. Off for marks and titles inside links, headings and live regions. */
+  inspect?: boolean;
 }) {
   return (
     <span className={`inline-flex flex-col ${className}`}>
-      <span lang="ja">{renderLine(parse(jp, true))}</span>
+      {inspect ? (
+        <InspectorLine>
+          <span lang="ja">{renderInspectableLine(jp)}</span>
+        </InspectorLine>
+      ) : (
+        <span lang="ja">{renderLine(parse(jp, true))}</span>
+      )}
       {romaji && (
         <span className="romaji mt-1 font-sans text-[0.55em] leading-snug font-normal tracking-wide text-ink-2 [font-size:max(0.55em,0.8rem)]">
           {romajiOf(jp)}
@@ -108,7 +145,11 @@ export function Cell({ text }: { text: string }) {
   const tokens = parse(text, jpOnly);
   return (
     <span className="inline-flex flex-col">
-      {jpOnly ? <span lang="ja">{renderLine(tokens)}</span> : <span>{renderProse(tokens)}</span>}
+      {jpOnly ? (
+        <InspectorLine>
+          <span lang="ja">{renderInspectableLine(text)}</span>
+        </InspectorLine>
+      ) : <span>{renderProse(tokens)}</span>}
       {jpOnly && <span className="romaji text-xs text-ink-2">{romajiOf(text)}</span>}
     </span>
   );

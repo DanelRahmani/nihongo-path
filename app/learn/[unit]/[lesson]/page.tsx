@@ -51,6 +51,7 @@ export default async function LessonPage({ params }: PageProps<"/learn/[unit]/[l
         <Jp
           jp={lesson.mark}
           romaji={false}
+          inspect={false}
           className="tategaki shrink-0 border-r-2 border-accent pr-3 font-serif text-5xl leading-none font-extrabold text-accent sm:pr-5 sm:text-6xl"
         />
         <div className="min-w-0 pt-1">

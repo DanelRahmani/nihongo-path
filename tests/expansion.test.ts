@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import type { WordTopic } from "@/content/types";
 import { NAMES, WORDS } from "@/content/words";
-import { EXPANSION_WORDS } from "@/content/words/expansion";
+import { BATCHES, EXPANSION_WORDS } from "@/content/words/expansion";
 import { EXTRA_WORDS } from "@/content/words/extra";
 import { conjugateAdjective, conjugateVerb } from "@/lib/conjugate";
 import { isJoyo, joyoReadingOk } from "@/lib/joyo";
@@ -15,8 +15,8 @@ const CANDIDATES = new Map(
 
 /** The checker every expansion batch passes (plan G2): each word as STYLE §5 writes it, once, with a usable entry. */
 describe("the dictionary expansion", () => {
-  it("writes each word from its candidate, kanji and readings 常用, readings in hiragana", () => {
-    for (const w of EXPANSION_WORDS) {
+  it.each(Object.keys(BATCHES))("batch %s: writes each word from its candidate, kanji and readings 常用, readings in hiragana", (n) => {
+    for (const w of BATCHES[n]) {
       const c = CANDIDATES.get(w.jmdict ?? "");
       expect(c, `${w.jp}: no candidate ${w.jmdict}`).toBeDefined();
       expect(w.jp, `${w.jp}: written as the candidate list gives it`).toBe(c?.jp);
@@ -42,8 +42,8 @@ describe("the dictionary expansion", () => {
     }
   });
 
-  it("gives each word a short English meaning, a topic from the list, and verbs a class the engine conjugates", () => {
-    for (const w of EXPANSION_WORDS) {
+  it.each(Object.keys(BATCHES))("batch %s: gives each word a short English meaning, a topic from the list, and verbs a class the engine conjugates", (n) => {
+    for (const w of BATCHES[n]) {
       expect(TOPICS, w.jp).toContain(w.topic);
       expect(w.meaning.trim(), w.jp).not.toBe("");
       expect(w.meaning.length, `${w.jp}: ${w.meaning}`).toBeLessThanOrEqual(60);

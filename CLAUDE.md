@@ -7,8 +7,8 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **E5** (cloze deck). Then E6–E9 (practice), G and H.
-  - A draft exists (uncommitted when E4 was committed): `lib/cloze-cards.ts`, `lib/cloze-deck.ts`, `content/cloze-exclusions.ts`, `components/cloze/ClozeDrill.tsx`, `app/cloze/page.tsx`, `tests/cloze.test.ts`, and `CLOZE_DECK_ID` in `lib/notebook.ts`. To do: wiring (nav, links, search, the Today card's lazy decks), the browser check, a content review of the 236 cards (hand exclusions go in `content/cloze-exclusions.ts` with a reason), CLAUDE.md.
+- **E6** (polite ↔ casual drill). Then E7–E9 (practice), G and H.
+  - A draft exists (uncommitted when E5 was committed): `lib/register-drill.ts` (`diffFirstWord`, `checkRegister`, `registerDeck`), `lib/register-cards.ts` (engine variants swapped by whole word runs, none before か), `components/register/RegisterDrill.tsx`, `app/register/page.tsx`, `tests/register-drill.test.ts`. To do: move the deck ids into `lib/notebook.ts` and reuse `lib/engine-forms.ts` in the builder; wiring (nav, links, search, the Today card's lazy decks); the browser check; the review; CLAUDE.md.
   - E2's kanji set is the interim lesson set; when Waller's lists arrive, build `kanji-n5`/`kanji-n4` decks with `kanjiDeck(cards, id)` (learned kanji count across every deck whose id starts with "kanji"). Keep a deck's same-word siblings in different groups, and say on the answer side which kanji a card is for (as now).
   - E7 asks items through `askItem(deckId, cardId)`, which knows only the kana decks. Kanji, quiz and conjugation items need their data on the review page: pass it as props, as the trainer pages do, or add lazy deck loaders. Count what resolves with `resolvableItems`. Quiz items (`QUIZ_DECK`) need a quiz index; consider a quiz pseudo-deck adapting `checkQuestion` (its field is `answer`, not `canonical`).
   - Deck and card builders (E) must never import `content/reading.ts` or `lib/corpus.ts`; `tests/reading.test.ts` checks this.
@@ -245,6 +245,15 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - A card joins when any lesson that uses its word is done (`SrsDeck.isOpen`); new cards come in path order and wait while 10 studied cards are still below box 3.
   - `components/drill/TypedDrill.tsx` is the shared drill for typed decks; the kanji cards now use it too, with no change in behaviour.
 
+- **E5 Fill the gap (2026-10-14):** `/cloze`, linked from the kana drill page, the Today card and search.
+  - 247 cards: every highlighted line of the lessons' examples, alt lines, pairs and dialogues becomes a line with ＿＿ for the highlight, with its English (italics rendered) as the hint. A card joins when its lesson is marked done.
+  - Left out by rule, each with its reason: pair lines whose two sides read the same apart from the highlight (the other side fits too; pairs with different frames, such as に/で with different verbs, are kept), lines with several highlights, highlights covering most of the line, and the kana lessons.
+  - Left out by hand in `content/cloze-exclusions.ts`, each with its line and reason (28): gaps another particle or word fits equally (へ, を, が, あれ/それ, names), the 中 cards (typing ちゅう gives the kanji), and gaps the English gives away (the る and ます endings).
+  - Alternatives come only from reviewed data: the engine's variants (じゃ ない takes で は ない, いい です takes よい です) and `CLOZE_ALSO` (へ for に where the lesson says both fit, とか, ので, ほんと, digits for the counting lines).
+  - A gap holding the line's final predicate names its register (polite or casual), so む and みます aren't both right; particle and noun gaps carry none. Typing the word part already shown (飲みます for 飲＿＿) is named.
+  - `lib/engine-forms.ts`: every engine form of a dictionary word (verbs, adjectives, nouns with the copula), shared by the decks.
+  - Kana only mode breaks drill lines and the Today card's date only between words (`.keep-words` in `app/globals.css`); the other modes wrap normally.
+
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
   - Q1: four furigana modes, kana-only by default.
@@ -282,7 +291,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 699 in 28 files.
+- Tests: 711 in 29 files.
+- Cloze deck: 247 cards; 189 lines left out (54 same-frame pair lines, 58 kana-lesson lines, 28 mostly highlighted, 21 with several highlights, 28 by hand).
 - Vocabulary deck: 378 cards.
 - Conjugation trainer: 93 words (60 verbs), 1,100 or so questions with every lesson done.
 - Decks: 6 kana decks (208 cards) and the kanji deck (404 cards in 41 groups; 49 share a word). Quiz questions in the notebook: 250 possible ids, all unique.
@@ -528,6 +538,15 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Should-fix applied: the empty state no longer hides studied cards; near-synonyms; prompts cut too far (好き, びっくり); spellings a learner types (digits, 子ども, set phrases, よい, 空く); the katakana note on kanji words; pre-noun words as cards; あ, え and the fillers dropped; the right-answer line shows the kanji.
   - Polish applied: the announcement text; the kanji drill's "New kanji open"; the Today card's wording and arrows; a test naming the dropped words.
   - Not applied: あす for 明日 (the house reading is あした); smaller card data (86 KB page); "Japanese for …" on romaji-like prompts (sushi, Tokyo).
+
+- E5 in the checks: 711 tests, typecheck, lint, build (`/cloze` static; the home page loads neither the deck nor the quiz checker). The card count and the reasons are pinned in an inline snapshot.
+- E5 in the browser (Playwright's Chromium) at 375 px and text size L, in Kana only (light), Kanji (dark) and Furigana modes: twelve cards each, answered wrong and moved on; no card or page overflows; "5 lessons with lines done"; console clean.
+- E5 review: a fresh Opus 5.5 reviewer read all 236 cards of the draft. Applied:
+  - Errors fixed: register labels missing on lines whose casual side reads as neutral, and on predicate gaps outside both-register lines (now on every gap holding the final predicate); lines overflowing at 375 px outside Kana only mode (keep-all is now limited to it).
+  - Should-fix applied: every listed exclusion, or an alternative where the lesson backs it (へ/に, とか, ので, ほんと); engine variants for answers of several words; digits on the counting lines; the stem hint; same-frame pairs left out instead of all pairs; the card count pinned, and hand exclusions must name a line that would otherwise be a card.
+  - Polish applied: "N lessons with lines done"; the Today card links the deck; "blank" for screen readers; the share computed the same way on both sides; line comments beside each exclusion.
+  - I reviewed the 43 pair lines and dialogue alt lines the new pair rule added: six more exclusions (を/が also fit, the あなた line, two more 中 lines, a bare ます ending) and 3匹 accepted.
+  - Not applied: the English of `particles/yo-ne` "It's good!" (lesson content; the card stays).
 
 ### Waiting on the owner
 - E2's kanji set: the cards use the 404 lesson kanji until Waller's N5/N4 lists can be downloaded and their licence confirmed. Say if you'd rather keep the lesson set, use another list, or add N5/N4 on top. Also unverified: the order in which real Japanese keyboards (iOS, Gboard, macOS, MS-IME) offer digits and variant spellings (5月, 子ども), which the checker names but rejects.

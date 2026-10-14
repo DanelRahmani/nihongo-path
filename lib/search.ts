@@ -40,6 +40,7 @@ export const SITE_PAGES: IndexSources["pages"] = [
   { title: "Kanji cards", detail: "Type words in kanji with a Japanese keyboard", href: "/kanji/drill", jp: "[漢字|かんじ]" },
   { title: "Conjugation", detail: "One verb or adjective, one form at a time", href: "/conjugation", jp: "[活用|かつよう]" },
   { title: "Vocabulary", detail: "English to Japanese cards for the lessons' words", href: "/vocabulary", jp: "[単語|たんご]" },
+  { title: "Fill the gap", detail: "The lessons' example lines with the highlighted part missing", href: "/cloze", jp: "[穴埋|あなう]め" },
   { title: "Grammar overview", detail: "Particles, grammar and verb forms on one page", href: "/grammar", jp: "[文法|ぶんぽう]" },
   { title: "Dictionary", detail: "Every word, by kanji, kana, romaji or English", href: "/dictionary", jp: "[辞書|じしょ]" },
   { title: "Reading", detail: "A sign, a menu, a chat, a story and haiku", href: "/read", jp: "[読|よ]む" },

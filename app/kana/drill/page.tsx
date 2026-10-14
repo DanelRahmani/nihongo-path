@@ -24,6 +24,10 @@ export default function DrillPage() {
         , the{" "}
         <Link href="/vocabulary" className="text-accent hover:underline">
           vocabulary deck
+        </Link>
+        , the{" "}
+        <Link href="/cloze" className="text-accent hover:underline">
+          fill-the-gap lines
         </Link>{" "}
         and the{" "}
         <Link href="/conjugation" className="text-accent hover:underline">

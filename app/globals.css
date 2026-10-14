@@ -197,6 +197,13 @@ body {
   word-break: normal;
 }
 
+/* Lines that must break between words, never inside one (the Today card's date, the drills' lines): only in Kana
+   only mode, which shows the word spaces. In the other modes the spaces are hidden, so keep-all would leave no
+   break at all. */
+[data-furigana="kana"] .keep-words :lang(ja) {
+  word-break: keep-all;
+}
+
 ::selection {
   background: var(--accent);
   color: var(--on-accent);

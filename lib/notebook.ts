@@ -12,6 +12,9 @@ export const CONJUGATION_DECK = "conjugation";
 /** The vocabulary deck's id (lib/vocab-deck.ts), here so the home page can name it without loading the deck. */
 export const VOCAB_DECK_ID = "vocab";
 
+/** The cloze deck's id (lib/cloze-deck.ts), for the same reason. */
+export const CLOZE_DECK_ID = "cloze";
+
 /** Right answers in a row that take an item out of the notebook. */
 export const LEAVE_AFTER = 2;
 

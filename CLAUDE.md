@@ -7,8 +7,8 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **E8** (placement check). Then E9, G and H.
-  - A draft exists (uncommitted when E7 was committed): `lib/placement.ts` (`placement()`, `lessonsBefore`), `lib/placement-bands.ts` (7 bands, two typed-in-Japanese lesson-quiz questions each, from lessons a third and two thirds through the unit), `components/placement/PlacementCheck.tsx`, `app/placement/page.tsx`, `tests/placement.test.ts`. To do: a link from the home page (near the next-lesson card) and search; the browser check; the review; CLAUDE.md.
+- **E9** ("Type it"). Then G and H.
+  - A draft exists (uncommitted when E8 was committed, in `git stash` if not in the tree): `lib/type-it.ts` (`compareTyped`, `describeSlip`), `lib/type-lines.ts`, `components/type-it/TypeIt.tsx`, `app/type/page.tsx`, `tests/type-it.test.ts`, the Drill tab match for `/type` and a link on the kana drill page. To do: a search entry; the browser check; the review; CLAUDE.md.
   - E2's kanji set is the interim lesson set; when Waller's lists arrive, build `kanji-n5`/`kanji-n4` decks with `kanjiDeck(cards, id)` (learned kanji count across every deck whose id starts with "kanji"). Keep a deck's same-word siblings in different groups, and say on the answer side which kanji a card is for (as now).
   - A new deck registers in three places: its card data in `lib/review-data.ts` (`reviewData` and `reviewIds`), its deck in `components/review/ReviewQueue.tsx` (`queueFrom`), and its id in `lib/notebook.ts` if the home page names it.
   - Deck and card builders (E) must never import `content/reading.ts` or `lib/corpus.ts`; `tests/reading.test.ts` checks this.
@@ -269,6 +269,12 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Notebook: a right answer now counts only 10 minutes after the last right answer as well as after the miss, so a reload can't clear an item in a minute.
   - Decks gained an optional `answerJp` and `answerNote`, and prompts an optional `hint` and `answerIn` (Japanese, romaji or a name). "New kanji" furigana now covers the search's page names too.
 
+- **E8 Placement check (2026-10-14):** `/placement`, linked from the home page under the next-lesson card (until 10 lessons are finished) and from search.
+  - Seven bands, one per unit except the kana, each two lesson-quiz questions picked by hand (`PICKS` in `lib/placement-bands.ts`, pinned by a test): the ます/casual switch and a noun's casual form, は/が and a describing clause, が for a question-word subject and で for where you work, な before a noun and あれ, the て and ない forms, ちゃん and 先生, うち の 兄 and a soft ちょっと.
+  - `lib/placement.ts`, pure: the first band with two misses is where to start; one miss is a slip, and the check stops as soon as a band places.
+  - An answer with no kana or kanji isn't counted: the reader is asked to switch to a Japanese keyboard. A miss shows the answer, what was typed, the checker's note and the lesson's explanation; a right answer moves on. Answers don't go to the notebook or the daily goal.
+  - The result names where to start ("Start at the beginning" for the first band, "No unit stopped you" when all pass), links the lessons of slipped questions, and offers to mark the earlier units' lessons finished, with the 9 kana lessons ticked by default (every question is in kana). Only unfinished lessons are counted and marked, Undo puts the progress back, and "Take it again" restarts. Focus moves to the result's heading, then to Undo.
+
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
   - Q1: four furigana modes, kana-only by default.
@@ -306,7 +312,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 743 in 32 files.
+- Tests: 752 in 33 files.
+- Placement check: 7 bands, 14 questions.
 - Polite and casual drill: 30 cards per direction; 13 reviewed alternatives.
 - Cloze deck: 247 cards; 189 lines left out (54 same-frame pair lines, 58 kana-lesson lines, 28 mostly highlighted, 21 with several highlights, 28 by hand).
 - Vocabulary deck: 378 cards.
@@ -579,6 +586,14 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Should-fix applied: notebook items missed a moment ago aren't asked; a reload can't clear an item (spaced right answers); quiz items show their explanation and link their lesson; screen readers hear the quiz prompt without markup; "name" questions get their own placeholder; `applyReview` as a tested pure function; tests for the askers and the data; no type cast; no data fetch when nothing is waiting.
   - Polish applied: the lesson lists the page doesn't need left out of the data; the right-answer line shows the answer with furigana; the kanji card says which kanji it is for; the cloze drill reads the deck's answer; the badge reads naturally ("Review 2 mistakes"); stale comments; the mount gate and a store subscription dropped; `isJapanese` shared; focus moves to "Review done"; the search page names' kanji in the furigana rules; test tidy-ups.
   - Not applied: a miss on a notebook item that isn't due doesn't reset its box (the owner may prefer otherwise; recorded below); spreading cards that share a prompt (冷 蔵 庫) apart in the queue.
+
+- E8 in the checks: 752 tests, typecheck, lint, build (`/placement` static; only the 14 questions reach the client).
+- E8 in the browser (Playwright's Chromium) at 375 px, light and dark: "yomu" isn't counted and asks for a Japanese keyboard; 読む and 学生だ are right and move on; two misses in Word order give "Start with Word order" with focus on the heading; the miss shows the answer, "You typed" and the explanation, with focus on Next; "Mark 11 lessons finished" (2 Start here lessons and 9 kana lessons) writes them and focuses Undo, and Undo empties the store again; no horizontal scroll; console clean.
+- E8 review: a fresh Opus 5.5 reviewer, who dumped the bands and probed the checker. Applied:
+  - Errors fixed: romaji answers counted as misses (now not counted, with a note); the result's "units before it" with no unit; the intro's "after the kana" (Start here comes first); "Start with Start here".
+  - Should-fix applied: the kana lessons offered too (the home card follows the first unfinished lesson, and the result says so); Undo, and only unfinished lessons counted; slipped questions' lessons linked; focus to the result and to Undo; the input described by its prompt and "of up to 14"; the miss shown with `Feedback` and no live region inserted with its content; questions picked by hand and pinned instead of by position; weak or give-away probes replaced (topic-comment's "make it the topic", the whole-sentence dropping-words question, ni-target and mo-also, the side topics in Suffixes, a すみません question that rejected すみませーん, tai-form, a second ます question).
+  - Polish applied: right answers move on; "You typed" and the explanation on a miss; "Take it again"; a link to the first lesson of the start unit; the home link only while few lessons are done; tests for the kana split, a short band and the lesson titles.
+  - Not applied: whether 実力 or レベルチェック suits the page's mark better (a native speaker's call); `progressStore.set` instead of the hook (the result needs the progress to count unfinished lessons).
 
 ### Waiting on the owner
 - E7: when a notebook item from a scheduled deck is answered in the review before it is due, the schedule is left alone (as practice). Say if a miss there should send the card back to box 1.

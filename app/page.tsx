@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PathBrowser, type PathUnit } from "@/components/PathBrowser";
+import { PlacementLink } from "@/components/placement/PlacementLink";
 import { ContinueCard } from "@/components/Progress";
 import { TodayCard } from "@/components/today/TodayCard";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -57,6 +58,7 @@ export default function Home() {
 
       <section className="mt-8" aria-label="Next lesson">
         <ContinueCard lessons={continueLessons} />
+        <PlacementLink />
       </section>
 
       <section className="mt-20" aria-labelledby="path-heading">

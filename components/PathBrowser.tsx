@@ -9,6 +9,7 @@ import { ProgressBar } from "@/components/ui/ProgressBar";
 import { selectedUnit, tabIndexAfterKey } from "@/lib/path";
 import { useStore } from "@/lib/storage";
 import { pathFilterStore, progressStore } from "@/lib/stores";
+import { ArrowStrip } from "@/components/ui/ArrowStrip";
 
 export interface PathLesson {
   key: string;
@@ -99,7 +100,7 @@ export function PathBrowser({ units }: { units: PathUnit[] }) {
         </label>
       </div>
 
-      <div
+      <ArrowStrip
         ref={stripRef}
         role="tablist"
         aria-labelledby="path-heading"
@@ -138,7 +139,7 @@ export function PathBrowser({ units }: { units: PathUnit[] }) {
             </button>
           );
         })}
-      </div>
+      </ArrowStrip>
 
       <section
         id={PANEL_ID}

@@ -25,7 +25,7 @@ export const RETIRE_WORKER = false;
 /** Fetched on install: the home page, the practice pages and the data they load. */
 export const PRECACHE = [
   "/",
-  "/kana/drill",
+  "/kana",
   "/kanji/drill",
   "/vocabulary",
   "/cloze",

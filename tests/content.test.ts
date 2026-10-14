@@ -28,7 +28,7 @@ describe("curriculum structure", () => {
   });
 
   it("only links to pages that exist", () => {
-    const routes = new Set(["/", "/kana", "/kana/drill", ...ALL_LESSONS.map((l) => l.href)]);
+    const routes = new Set(["/", "/kana", "/kana#drill", ...ALL_LESSONS.map((l) => l.href)]);
     for (const { key, lesson } of ALL_LESSONS) {
       for (const b of lesson.blocks) {
         if (b.type === "link") expect(routes.has(b.href), `${key} → ${b.href}`).toBe(true);

@@ -26,6 +26,7 @@ import { whenIdle } from "@/lib/idle";
 import { loadDictionary } from "@/lib/load-dictionary";
 import { useStore } from "@/lib/storage";
 import { myWordsStore } from "@/lib/stores";
+import { ArrowStrip } from "@/components/ui/ArrowStrip";
 
 type Load = { state: "waiting" } | { state: "error" } | { state: "done"; entries: Entry[] };
 
@@ -212,7 +213,7 @@ export function DictionaryBrowser() {
 
         <fieldset className="min-w-0">
           <legend className="text-xs font-medium tracking-[0.18em] text-ink-2 uppercase">Starts with</legend>
-          <div className="scroll-strip -mx-4 mt-2 flex gap-1.5 overflow-x-auto px-4 py-1.5">
+          <ArrowStrip className="scroll-strip -mx-4 mt-2 flex gap-1.5 overflow-x-auto px-4 py-1.5">
             {(["all", ...KANA_ROWS] as const).map((row) => {
               const active = filters.row === row;
               return (
@@ -238,7 +239,7 @@ export function DictionaryBrowser() {
                 </label>
               );
             })}
-          </div>
+          </ArrowStrip>
         </fieldset>
 
         <div className="flex flex-wrap items-center gap-2">

@@ -68,7 +68,7 @@ export function KanaChart() {
 
       {GROUPS.map(({ group, title, note }) => (
         <section key={group} className="mt-10">
-          <h2 className="font-serif text-xl font-bold">{title}</h2>
+          <h3 className="font-serif text-xl font-bold">{title}</h3>
           <p className="mt-1 text-sm text-ink-2">{note}</p>
           <div className={`mt-4 grid gap-1.5 sm:gap-2 ${group === "yoon" ? "grid-cols-3 sm:max-w-md" : "grid-cols-5"}`}>
             {chartRows(script, group).flatMap(({ row, cells }) =>

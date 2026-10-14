@@ -130,7 +130,7 @@ export function ReviewQueue() {
         <p className="mt-3 text-lg font-medium">Nothing to review</p>
         <p className="mt-1 text-sm text-ink-2">
           No cards are due and the mistake notebook is empty. Learn something new in a{" "}
-          <Link href="/kana/drill" className="link-inline">
+          <Link href="/kana#drill" className="link-inline">
             drill
           </Link>{" "}
           or on the{" "}

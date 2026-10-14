@@ -5,6 +5,7 @@ import { Eyebrow } from "@/components/ui/Eyebrow";
 import { panelClass } from "@/components/ui/Panel";
 import { GRAMMAR, GRAMMAR_TOPICS } from "@/content/grammar";
 import { ALL_LESSONS } from "@/content/units";
+import { ArrowStrip } from "@/components/ui/ArrowStrip";
 
 export const metadata: Metadata = { title: "Grammar overview" };
 
@@ -22,7 +23,7 @@ export default function GrammarPage() {
         word for its meaning, or follow the link to the lesson for the full story.
       </p>
 
-      <nav aria-label="Grammar groups" className="scroll-strip -mx-4 mt-8 flex gap-1.5 overflow-x-auto px-4 py-1.5">
+      <ArrowStrip as="nav" aria-label="Grammar groups" className="scroll-strip -mx-4 mt-8 flex gap-1.5 overflow-x-auto px-4 py-1.5">
         {GRAMMAR.map((g) => (
           <a
             key={g.slug}
@@ -32,7 +33,7 @@ export default function GrammarPage() {
             {g.title}
           </a>
         ))}
-      </nav>
+      </ArrowStrip>
 
       {GRAMMAR.map((group) => (
         <section key={group.slug} id={group.slug} aria-labelledby={`${group.slug}-heading`} className="mt-14 scroll-mt-4">

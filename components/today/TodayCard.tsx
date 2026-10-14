@@ -178,7 +178,7 @@ export function TodayCard() {
 
         <div className="flex flex-col gap-3">
           <Link
-            href="/kana/drill"
+            href="/kana#drill"
             className="group inline-flex h-11 items-center gap-3 self-start rounded-full border border-line-strong bg-surface pr-4 pl-1.5 text-sm shadow-card transition-colors duration-150 hover:border-accent"
           >
             <span className={`grid h-8 min-w-8 place-items-center rounded-full px-2 text-xs font-bold tabular-nums ${due > 0 ? "bg-accent text-on-accent" : "bg-paper-3 text-ink-2"}`}>

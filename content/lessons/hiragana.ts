@@ -2,7 +2,7 @@ import type { Lesson } from "@/content/types";
 
 const DRILL = {
   type: "link",
-  href: "/kana/drill",
+  href: "/kana#drill",
   label: "Drill hiragana",
   text: "Start with the first row — new rows open as you learn them.",
 } as const;

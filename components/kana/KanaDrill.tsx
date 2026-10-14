@@ -122,7 +122,7 @@ function Session({ deck, onExit }: { deck: KanaDeck; onExit: () => void }) {
           {practice && <span className="rounded-full bg-paper-3 px-2.5 py-0.5 text-xs text-ink">Practice</span>}
         </span>
       </div>
-      <h2 className="mt-4 font-medium">{deck.title}</h2>
+      <h3 className="mt-4 font-medium">{deck.title}</h3>
       <p className="text-xs text-ink-2">
         {rowsOpen} of {deck.groups.length} rows unlocked
       </p>

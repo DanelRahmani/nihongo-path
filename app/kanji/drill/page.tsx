@@ -20,7 +20,7 @@ export default function KanjiDrillPage() {
       <p className="mt-3 text-sm text-ink-2">
         With <strong className="font-medium text-ink">Furigana on new kanji</strong> (in <span lang="ja">表示</span> Display), readings
         disappear from the kanji you learn here. Kana practice is in the{" "}
-        <Link href="/kana/drill" className="link-inline">
+        <Link href="/kana#drill" className="link-inline">
           kana drill
         </Link>
         .

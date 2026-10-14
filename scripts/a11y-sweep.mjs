@@ -26,7 +26,7 @@
  * share one template, so only the first few are visited unless --all is given.
  * Uses the Playwright devDependency (pinned to the pre-installed browsers), axe-core and Lighthouse.
  */
-import { existsSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { createRequire } from "node:module";
 import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -41,7 +41,7 @@ const OUT = join(ROOT, "out");
 const MAX_STOPS = 400;
 const KANJI_SAMPLE = 5;
 const WORKERS = 4;
-const LIGHTHOUSE_ROUTES = ["/", "/learn/particles/wa-vs-ga", "/kana", "/kana/drill", "/dictionary", "/grammar", "/read", "/review", "/data", "/kanji/日"];
+const LIGHTHOUSE_ROUTES = ["/", "/learn/particles/wa-vs-ga", "/kana", "/vocabulary", "/dictionary", "/grammar", "/read", "/review", "/data", "/kanji/日"];
 
 const args = process.argv.slice(2);
 const all = args.includes("--all");
@@ -88,7 +88,8 @@ function routes() {
       const path = join(dir, name);
       if (statSync(path).isDirectory()) {
         if (name !== "_next") walk(path);
-      } else if (name.endsWith(".html") && name !== "404.html" && !name.startsWith("_")) {
+      } else if (name.endsWith(".html") && name !== "404.html" && !name.startsWith("_") && !/<meta name="robots" content="noindex/.test(readFileSync(path, "utf8"))) {
+        // (Pages marked noindex are moved pages that send the reader on; their target is swept instead.)
         const route = "/" + relative(OUT, path).replace(/\\/g, "/").replace(/\.html$/, "");
         found.push(route === "/index" ? "/" : route);
       }
@@ -429,6 +430,7 @@ const SCENARIOS = [
     },
   },
   ...[
+    ["Practice menu", "practice-menu"],
     ["Extras menu", "extras-menu"],
     ["Display popover", "display-settings"],
   ].map(([name, id]) => ({
@@ -455,11 +457,11 @@ const SCENARIOS = [
   },
   {
     name: "kana drill after a miss",
-    route: "/kana/drill",
+    route: "/kana",
     limit: 4,
     async setup(page) {
-      await page.locator("main button").first().click(); // The first deck.
-      const box = page.locator("main input").first();
+      await page.locator("#drill button").first().click(); // The first deck.
+      const box = page.locator("#drill input").first();
       await box.waitFor();
       await box.focus();
       // Typed, not filled, so the browser is in keyboard mode and the focused Next button shows its ring.

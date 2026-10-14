@@ -12,7 +12,7 @@ export const metadata: Metadata = { title: "Reading" };
 function Meaning({ line, center = false }: { line: ReadingLine; center?: boolean }) {
   return (
     <details className="mt-1 text-sm">
-      <summary className={`w-fit cursor-pointer rounded text-xs text-ink-2 hover:text-ink ${center ? "mx-auto" : ""}`}>
+      <summary className={`w-fit cursor-pointer rounded py-1 text-xs text-ink-2 hover:text-ink ${center ? "mx-auto" : ""}`}>
         Meaning
         <span className="sr-only">
           {" "}of <span lang="ja">{plainOf(line.jp)}</span>
@@ -140,7 +140,7 @@ export default function ReadPage() {
         readings; try each line first, then open its meaning, or tap a word.
       </p>
 
-      <label className="reading-toggle sticky z-10 mt-6 flex w-fit cursor-pointer items-center gap-2.5 rounded-full border border-line-strong bg-surface px-4 py-2 text-sm shadow-card has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-accent">
+      <label className="reading-toggle sticky z-10 mt-6 flex w-fit cursor-pointer items-center gap-2.5 rounded-full border border-line-strong bg-surface px-4 py-2 text-sm shadow-card ring-within">
         <input type="checkbox" className="show-readings size-4 accent-[var(--accent)]" />
         Show readings over the kanji
       </label>

@@ -16,6 +16,7 @@ import type { ReviewData } from "@/lib/review-data";
 import { applyReview, buildQueue, type QueueItem, reviewCount } from "@/lib/review-queue";
 import { notebookStore, recordActivity, srsStore } from "@/lib/stores";
 import { vocabDeck } from "@/lib/vocab-deck";
+import { fieldClass } from "@/components/ui/field";
 
 let dataPromise: Promise<ReviewData> | undefined;
 
@@ -129,11 +130,11 @@ export function ReviewQueue() {
         <p className="mt-3 text-lg font-medium">Nothing to review</p>
         <p className="mt-1 text-sm text-ink-2">
           No cards are due and the mistake notebook is empty. Learn something new in a{" "}
-          <Link href="/kana/drill" className="text-accent hover:underline">
+          <Link href="/kana/drill" className="link-inline">
             drill
           </Link>{" "}
           or on the{" "}
-          <Link href="/" className="text-accent hover:underline">
+          <Link href="/" className="link-inline">
             path
           </Link>
           .
@@ -155,7 +156,7 @@ export function ReviewQueue() {
           {score.right} right, {score.wrong} to see again.
         </p>
         <p className="mt-4 text-sm">
-          <Link href="/" className="text-accent hover:underline">
+          <Link href="/" className="link-inline">
             Back to the path
           </Link>
         </p>
@@ -265,7 +266,7 @@ export function ReviewQueue() {
               autoCapitalize="none"
               autoCorrect="off"
               spellCheck={false}
-              className="h-14 min-w-0 flex-1 rounded-full border border-line-strong bg-surface px-6 font-jp text-xl placeholder:font-sans placeholder:text-base placeholder:text-ink-2/70 focus:border-accent focus:ring-4 focus:ring-accent/20 focus:outline-none"
+              className={fieldClass()}
             />
             <Button type="submit" size="lg">
               Check

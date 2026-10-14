@@ -10,6 +10,7 @@ import type { QuizQuestion } from "@/content/types";
 import { checkQuestion, type QuizCheck } from "@/lib/quiz";
 import { QUIZ_DECK, quizCardId } from "@/lib/notebook";
 import { logAnswer } from "@/lib/stores";
+import { fieldClass } from "@/components/ui/field";
 
 const PLACEHOLDER = {
   japanese: "Type in kana or kanji",
@@ -65,7 +66,7 @@ function Question({ q, n, lessonKey, onResult }: { q: QuizQuestion; n: number; l
             autoCapitalize="none"
             autoCorrect="off"
             spellCheck={false}
-            className={`h-11 min-w-0 flex-1 rounded-full border border-line-strong bg-surface px-5 text-lg ${romaji ? "" : "font-jp"} placeholder:font-sans placeholder:text-sm placeholder:text-ink-2/70 focus:border-accent focus:ring-4 focus:ring-accent/20 focus:outline-none`}
+            className={fieldClass({ size: "md", jp: !romaji })}
           />
           <Button type="submit" variant="secondary">
             Check

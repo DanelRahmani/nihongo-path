@@ -190,16 +190,16 @@ export function TodayCard() {
             </span>
           </Link>
           <p className={`flex flex-wrap gap-x-4 text-sm ${hidden}`}>
-            <Link href="/kanji/drill" className="text-accent hover:underline">
+            <Link href="/kanji/drill" className="link-inline inline-flex min-h-6 items-center gap-1">
               {kanjiDue === 0 ? "Kanji cards" : `${kanjiDue} kanji card${kanjiDue === 1 ? "" : "s"} due`} <span aria-hidden>→</span>
             </Link>
-            <Link href="/vocabulary" className="text-accent hover:underline">
+            <Link href="/vocabulary" className="link-inline inline-flex min-h-6 items-center gap-1">
               {vocabDue === 0 ? "Vocabulary" : `${vocabDue} word${vocabDue === 1 ? "" : "s"} due`} <span aria-hidden>→</span>
             </Link>
-            <Link href="/cloze" className="text-accent hover:underline">
+            <Link href="/cloze" className="link-inline inline-flex min-h-6 items-center gap-1">
               {clozeDue === 0 ? "Fill the gap" : `${clozeDue} line${clozeDue === 1 ? "" : "s"} due`} <span aria-hidden>→</span>
             </Link>
-            <Link href="/register" className="text-accent hover:underline">
+            <Link href="/register" className="link-inline inline-flex min-h-6 items-center gap-1">
               {registerDue === 0 ? "Polite and casual" : `${registerDue} to convert`} <span aria-hidden>→</span>
             </Link>
           </p>

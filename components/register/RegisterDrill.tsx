@@ -51,7 +51,7 @@ export function RegisterDrill({ cards, lessons }: { cards: Record<Direction, Reg
               <p className="font-medium">No lines yet</p>
               <p className="mt-1 text-sm text-ink-2">
                 Lines join when you finish a lesson that shows them in both registers, starting with{" "}
-                <Link href="/learn/start/polite-and-casual" className="text-accent hover:underline">
+                <Link href="/learn/start/polite-and-casual" className="link-inline">
                   Polite and casual
                 </Link>
                 .

@@ -11,6 +11,7 @@ import { type Band, lessonsBefore, placement } from "@/lib/placement";
 import { checkQuestion, type QuizCheck } from "@/lib/quiz";
 import { useStore } from "@/lib/storage";
 import { progressStore } from "@/lib/stores";
+import { fieldClass } from "@/components/ui/field";
 
 /** Kana or kanji anywhere in the answer: without them it was typed without a Japanese keyboard. */
 const HAS_JAPANESE = /[぀-ヿ一-鿿]/;
@@ -112,7 +113,7 @@ export function PlacementCheck({ bands, kanaLessons, lessonTitles }: { bands: Ba
             {slips.map((l, i) => (
               <span key={l}>
                 {i > 0 && ", "}
-                <Link href={lessonHref(l)} className="text-accent hover:underline">
+                <Link href={lessonHref(l)} className="link-inline">
                   {lessonTitles[l] ?? l}
                 </Link>
               </span>
@@ -264,7 +265,7 @@ export function PlacementCheck({ bands, kanaLessons, lessonTitles }: { bands: Ba
               autoCapitalize="none"
               autoCorrect="off"
               spellCheck={false}
-              className="h-14 min-w-0 flex-1 rounded-full border border-line-strong bg-surface px-6 font-jp text-xl placeholder:font-sans placeholder:text-base placeholder:text-ink-2/70 focus:border-accent focus:ring-4 focus:ring-accent/20 focus:outline-none"
+              className={fieldClass()}
             />
             <Button type="submit" size="lg">
               Check

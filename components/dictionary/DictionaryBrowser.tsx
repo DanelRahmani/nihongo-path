@@ -209,13 +209,13 @@ export function DictionaryBrowser() {
 
         <fieldset className="min-w-0">
           <legend className="text-xs font-medium tracking-[0.18em] text-ink-2 uppercase">Starts with</legend>
-          <div className="scroll-strip -mx-4 mt-2 flex gap-1.5 overflow-x-auto px-4 py-1">
+          <div className="scroll-strip -mx-4 mt-2 flex gap-1.5 overflow-x-auto px-4 py-1.5">
             {(["all", ...KANA_ROWS] as const).map((row) => {
               const active = filters.row === row;
               return (
                 <label
                   key={row}
-                  className={`relative inline-flex h-9 shrink-0 cursor-pointer items-center rounded-full border text-sm transition-colors duration-150 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-accent ${
+                  className={`relative inline-flex h-9 shrink-0 cursor-pointer items-center rounded-full border text-sm transition-colors duration-150 ring-within ${
                     row === "all" ? "px-4" : "px-3.5"
                   } ${active ? "border-accent bg-accent text-on-accent" : "border-line-strong bg-surface text-ink-2 hover:border-ink-2 hover:text-ink"}`}
                 >

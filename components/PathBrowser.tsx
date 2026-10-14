@@ -104,7 +104,7 @@ export function PathBrowser({ units }: { units: PathUnit[] }) {
         role="tablist"
         aria-labelledby="path-heading"
         onKeyDown={onKeyDown}
-        className="scroll-strip -mx-4 mt-5 flex gap-1.5 overflow-x-auto px-4 py-1"
+        className="scroll-strip -mx-4 mt-5 flex gap-1.5 overflow-x-auto px-4 py-1.5"
       >
         {units.map((u) => {
           const active = u.slug === current;

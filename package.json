@@ -12,7 +12,8 @@
     "dump": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/ts-paths.mjs scripts/dump-corpus.ts",
     "check-words": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/ts-paths.mjs scripts/data/check-words-jmdict.ts",
     "expand-candidates": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/ts-paths.mjs scripts/expand/candidates.ts",
-    "expand-refresh": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/ts-paths.mjs scripts/expand/refresh.ts"
+    "expand-refresh": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/ts-paths.mjs scripts/expand/refresh.ts",
+    "a11y": "node scripts/a11y-sweep.mjs"
   },
   "dependencies": {
     "next": "16.3.6",
@@ -26,6 +27,8 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.3.6",
+    "lighthouse": "13.5.0",
+    "playwright": "1.56.1",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^5.0.2"

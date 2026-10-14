@@ -56,7 +56,7 @@ export default function CreditsPage() {
         {SOURCES.map((s) => (
           <li key={s.name} className="rounded-panel border border-line bg-surface p-5">
             <h2 className="font-medium">
-              <a href={s.href} className="text-accent hover:underline">
+              <a href={s.href} className="link-inline">
                 <Rich text={s.name} />
               </a>
             </h2>

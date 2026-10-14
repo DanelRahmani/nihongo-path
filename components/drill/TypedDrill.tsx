@@ -8,6 +8,7 @@ import type { Check, Deck } from "@/lib/decks";
 import { answerCard, deckState, deckStats, formatWait, nextCard, practiceCard, type SrsState, unlockedGroupCount, unlockGroup } from "@/lib/srs";
 import { useStore } from "@/lib/storage";
 import { logAnswer, srsStore } from "@/lib/stores";
+import { fieldClass } from "@/components/ui/field";
 
 type Phase = "ask" | "wrong";
 
@@ -206,7 +207,7 @@ export function TypedDrill<C extends { id: string }>({
                   autoCapitalize="none"
                   autoCorrect="off"
                   spellCheck={false}
-                  className="h-14 min-w-0 flex-1 rounded-full border border-line-strong bg-surface px-6 font-jp text-xl placeholder:font-sans placeholder:text-base placeholder:text-ink-2/70 focus:border-accent focus:ring-4 focus:ring-accent/20 focus:outline-none"
+                  className={fieldClass()}
                 />
                 <Button type="submit" size="lg">
                   Check

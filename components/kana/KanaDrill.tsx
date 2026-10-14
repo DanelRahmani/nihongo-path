@@ -9,6 +9,7 @@ import { type Check, KANA_DECKS, type KanaDeck } from "@/lib/decks";
 import { answerCard, deckState, deckStats, formatWait, nextCard, practiceCard, type SrsState, unlockedGroupCount, unlockGroup } from "@/lib/srs";
 import { logAnswer, srsStore } from "@/lib/stores";
 import { useStore } from "@/lib/storage";
+import { fieldClass } from "@/components/ui/field";
 
 function DeckPicker({ onStart }: { onStart: (deck: KanaDeck) => void }) {
   const [srs] = useStore(srsStore);
@@ -180,7 +181,7 @@ function Session({ deck, onExit }: { deck: KanaDeck; onExit: () => void }) {
                   autoCapitalize="none"
                   autoCorrect="off"
                   spellCheck={false}
-                  className="h-14 min-w-0 flex-1 rounded-full border border-line-strong bg-surface px-6 text-xl placeholder:text-ink-2/70 focus:border-accent focus:ring-4 focus:ring-accent/20 focus:outline-none"
+                  className={fieldClass({ jp: false })}
                 />
                 <Button type="submit" size="lg">
                   Check

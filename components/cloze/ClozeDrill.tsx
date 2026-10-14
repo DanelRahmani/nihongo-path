@@ -33,7 +33,7 @@ export function ClozeDrill({ cards, lessons }: { cards: ClozeCard[]; lessons: st
           <p className="font-medium">No lines yet</p>
           <p className="mt-1 text-sm text-ink-2">
             A lesson&apos;s example lines join this deck when you mark the lesson finished. Start with the{" "}
-            <Link href="/" className="text-accent hover:underline">
+            <Link href="/" className="link-inline">
               path
             </Link>
             .

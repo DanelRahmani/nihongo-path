@@ -12,6 +12,7 @@ import { useStore } from "@/lib/storage";
 import { progressStore, recordActivity } from "@/lib/stores";
 import type { TypeLine } from "@/lib/type-lines";
 import { type Comparison, compareLine, describeSlip, type Script } from "@/lib/type-it";
+import { fieldClass } from "@/components/ui/field";
 
 const noSubscribe = () => () => {};
 const useMounted = () => useSyncExternalStore(noSubscribe, () => true, () => false);
@@ -226,7 +227,7 @@ export function TypeIt({ lines }: { lines: TypeLine[] }) {
                 autoCapitalize="none"
                 autoCorrect="off"
                 spellCheck={false}
-                className="h-14 min-w-0 flex-1 rounded-full border border-line-strong bg-surface px-6 font-jp text-xl placeholder:font-sans placeholder:text-base placeholder:text-ink-2/70 focus:border-accent focus:ring-4 focus:ring-accent/20 focus:outline-none"
+                className={fieldClass()}
               />
               <Button type="submit" size="lg">
                 Check

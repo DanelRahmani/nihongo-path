@@ -30,7 +30,7 @@ export function VocabDrill({ cards, lessons }: { cards: VocabCard[]; lessons: st
           <p className="font-medium">No words yet</p>
           <p className="mt-1 text-sm text-ink-2">
             A lesson&apos;s words join this deck when you mark the lesson finished. Start with the{" "}
-            <Link href="/" className="text-accent hover:underline">
+            <Link href="/" className="link-inline">
               path
             </Link>
             .

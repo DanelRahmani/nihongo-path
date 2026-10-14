@@ -18,27 +18,27 @@ export default function DrillPage() {
       </p>
       <p className="mt-3 text-sm text-ink-2">
         Ready for more? The{" "}
-        <Link href="/kanji/drill" className="text-accent hover:underline">
+        <Link href="/kanji/drill" className="link-inline">
           kanji cards
         </Link>
         , the{" "}
-        <Link href="/vocabulary" className="text-accent hover:underline">
+        <Link href="/vocabulary" className="link-inline">
           vocabulary deck
         </Link>
         , the{" "}
-        <Link href="/cloze" className="text-accent hover:underline">
+        <Link href="/cloze" className="link-inline">
           fill-the-gap lines
         </Link>
         , the{" "}
-        <Link href="/register" className="text-accent hover:underline">
+        <Link href="/register" className="link-inline">
           polite and casual drill
         </Link>{" "}
         and the{" "}
-        <Link href="/conjugation" className="text-accent hover:underline">
+        <Link href="/conjugation" className="link-inline">
           conjugation trainer
         </Link>{" "}
         are answered with a Japanese keyboard. To get used to the keyboard itself,{" "}
-        <Link href="/type" className="text-accent hover:underline">
+        <Link href="/type" className="link-inline">
           type out lesson lines
         </Link>
         .

@@ -26,7 +26,7 @@ export function Segmented<T extends string>({
           return (
             <label
               key={o.value}
-              className={`flex cursor-pointer flex-col items-center justify-center gap-1 rounded-2xl border px-2 py-2 text-center transition-colors duration-150 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-accent ${
+              className={`flex cursor-pointer flex-col items-center justify-center gap-1 rounded-2xl border px-2 py-2 text-center transition-colors duration-150 ring-within ${
                 active ? "border-accent bg-accent-soft" : "border-line hover:border-line-strong hover:bg-paper-2"
               }`}
             >

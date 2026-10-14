@@ -22,7 +22,7 @@ export default function GrammarPage() {
         word for its meaning, or follow the link to the lesson for the full story.
       </p>
 
-      <nav aria-label="Grammar groups" className="scroll-strip -mx-4 mt-8 flex gap-1.5 overflow-x-auto px-4 py-1">
+      <nav aria-label="Grammar groups" className="scroll-strip -mx-4 mt-8 flex gap-1.5 overflow-x-auto px-4 py-1.5">
         {GRAMMAR.map((g) => (
           <a
             key={g.slug}

@@ -14,7 +14,7 @@ export function PlacementLink() {
   return (
     <p className="mt-3 text-sm text-ink-2">
       Know some Japanese already?{" "}
-      <Link href="/placement" className="text-accent hover:underline">
+      <Link href="/placement" className="link-inline">
         Take the placement check
       </Link>{" "}
       to find where to start.

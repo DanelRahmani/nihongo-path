@@ -6,6 +6,7 @@ import { applyAttributes } from "@/lib/display";
 import type { Settings } from "@/lib/schemas";
 import { useStore } from "@/lib/storage";
 import { settingsStore } from "@/lib/stores";
+import { closeWhenFocusLeaves } from "@/components/ui/popover";
 
 const FURIGANA: { value: Settings["furigana"]; label: string; sample: React.ReactNode; hint: string }[] = [
   { value: "kana", label: "Kana only", sample: "ねこ", hint: "Kanji written in kana, with spaces between words." },
@@ -65,6 +66,7 @@ export function DisplaySettings() {
       <div
         id="display-settings"
         popover="auto"
+        onBlur={closeWhenFocusLeaves}
         aria-label="Display settings"
         className="fixed top-[4.5rem] right-4 max-h-[calc(100dvh-6rem)] w-[min(22rem,calc(100vw-2rem))] space-y-5 overflow-y-auto rounded-panel border border-line bg-surface p-5 text-ink shadow-pop"
       >

@@ -6,6 +6,7 @@ import { InlineScript } from "@/components/InlineScript";
 import { NavLinks } from "@/components/NavLinks";
 import { SearchLauncher } from "@/components/search/SearchLauncher";
 import { ServiceWorker } from "@/components/ServiceWorker";
+import { FocusIntoView } from "@/components/FocusIntoView";
 import { FuriganaRules } from "@/components/FuriganaRules";
 import { DEFAULT_ATTRIBUTES, furiganaScript, HEAD_SCRIPT } from "@/lib/display";
 import { furiganaKanji } from "@/lib/kanji-cards";
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </header>
         <FuriganaRules kanji={FURIGANA_KANJI} />
         <ServiceWorker />
+        <FocusIntoView />
         <main className="flex-1 overflow-x-clip">{children}</main>
         <footer className="border-t border-line bg-paper-2">
           <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-8 text-xs text-ink-2 sm:px-6">

@@ -20,6 +20,7 @@ import {
 import type { Check } from "@/lib/decks";
 import { useStore } from "@/lib/storage";
 import { logAnswer, notebookStore, progressStore } from "@/lib/stores";
+import { fieldClass } from "@/components/ui/field";
 
 type Lessons = Record<string, { title: string; href: string }>;
 
@@ -100,7 +101,7 @@ export function ConjugationTrainer({ words, lessons }: { words: TrainerWord[]; l
         <p className="font-medium">No forms open yet</p>
         <p className="mt-1 text-sm text-ink-2">
           Forms open as you mark their lessons finished. The first ones come with{" "}
-          <Link href={first.href} className="text-accent hover:underline">
+          <Link href={first.href} className="link-inline">
             {first.title}
           </Link>
           .
@@ -145,7 +146,7 @@ export function ConjugationTrainer({ words, lessons }: { words: TrainerWord[]; l
             <button type="button" onClick={() => {
                 setEverything(false);
                 setCurrent(null);
-              }} className="text-accent hover:underline">
+              }} className="link-inline">
               Every form · back to my forms
             </button>
           ) : (
@@ -208,7 +209,7 @@ export function ConjugationTrainer({ words, lessons }: { words: TrainerWord[]; l
               autoCapitalize="none"
               autoCorrect="off"
               spellCheck={false}
-              className="h-14 min-w-0 flex-1 rounded-full border border-line-strong bg-surface px-6 font-jp text-xl placeholder:font-sans placeholder:text-base placeholder:text-ink-2/70 focus:border-accent focus:ring-4 focus:ring-accent/20 focus:outline-none"
+              className={fieldClass()}
             />
             <Button type="submit" size="lg">
               Check

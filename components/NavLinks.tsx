@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef } from "react";
+import { closeWhenFocusLeaves } from "@/components/ui/popover";
 
 const LINKS = [
   { href: "/", jp: "道", label: "Path", match: (p: string) => p === "/" || p.startsWith("/learn") },
@@ -65,6 +66,7 @@ export function NavLinks() {
         ref={menu}
         id="extras-menu"
         popover="auto"
+        onBlur={closeWhenFocusLeaves}
         aria-label="Extras"
         className="fixed top-[4.5rem] m-0 w-[min(18rem,calc(100vw-2rem))] rounded-panel border border-line bg-surface p-2 text-ink shadow-pop"
       >

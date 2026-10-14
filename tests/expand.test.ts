@@ -124,8 +124,9 @@ describe("markupOf and chooseForm", () => {
     expect(chooseForm(entry(["大人"], [["おとな", ["gikun"]]], ["n"]))).toMatchObject({ jp: "[大人|おとな]" });
     expect(chooseForm(entry(["人々"], ["ひとびと"], ["n"]))).toMatchObject({ jp: "[人々|ひとびと]" });
     expect(chooseForm(entry(["真っ赤"], ["まっか"], ["adj-na"]))).toMatchObject({ jp: "[真|ま]っ[赤|か]" });
-    // Readings the table can't confirm wait for the owner instead of being dropped or written in kana.
-    expect(chooseForm(entry(["文字"], ["もじ"], ["n"]))).toMatchObject({ check: true });
+    // The owner's exceptions (lib/joyo.ts): 文字 もじ and the 連声 words.
+    expect(chooseForm(entry(["文字"], ["もじ"], ["n"]))).toMatchObject({ jp: "[文字|もじ]" });
+    expect(chooseForm(entry(["反応"], ["はんのう"], ["n"]))).toMatchObject({ jp: "[反応|はんのう]" });
   });
 });
 

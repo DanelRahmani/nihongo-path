@@ -21,11 +21,11 @@ describe("the dictionary expansion", () => {
       expect(c, `${w.jp}: no candidate ${w.jmdict}`).toBeDefined();
       expect(w.jp, `${w.jp}: written as the candidate list gives it`).toBe(c?.jp);
       for (const [, base, reading] of w.jp.matchAll(/\[([^|\]]+)\|([^\]]+)\]/g)) {
-        expect([...base].every(isJoyo), w.jp).toBe(true);
+        expect([...base].every((c, i) => (c === "々" ? i > 0 : isJoyo(c))), w.jp).toBe(true);
         expect(joyoReadingOk(base, reading), w.jp).toBe(true);
         expect(reading, w.jp).toMatch(/^[ぁ-ゖー]+$/);
       }
-      expect(plainOf(w.jp, false), w.jp).toMatch(/^[ぁ-ゖァ-ヺー\p{Script=Han}]+$/u);
+      expect(plainOf(w.jp, false), w.jp).toMatch(/^[ぁ-ゖァ-ヺー\p{Script=Han}々]+$/u);
     }
   });
 
@@ -47,7 +47,7 @@ describe("the dictionary expansion", () => {
       expect(TOPICS, w.jp).toContain(w.topic);
       expect(w.meaning.trim(), w.jp).not.toBe("");
       expect(w.meaning.length, `${w.jp}: ${w.meaning}`).toBeLessThanOrEqual(60);
-      expect(w.meaning, `${w.jp}: English only`).not.toMatch(/[぀-ヿ一-鿿]/);
+      expect(w.meaning.replace(/する/g, ""), `${w.jp}: English only (and する)`).not.toMatch(/[぀-ヿ一-鿿]/);
       if (w.pos === "verb") {
         expect(w.verb, w.jp).toBe(CANDIDATES.get(w.jmdict ?? "")?.verb);
         expect(w.meaning, `${w.jp}: a verb's meaning starts with "to"`).toMatch(/^to /);

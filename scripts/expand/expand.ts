@@ -157,8 +157,11 @@ export function markupOf(written: string, reading: string): Jp | null {
   return runs.map((r) => (isHan(r[0]) ? `[${r}|${m[group++]}]` : r)).join("");
 }
 
-/** Readings the 常用 table can't confirm that are right all the same; each waits for the owner's word (CLAUDE.md). */
-export const CHECK_BY_HAND = new Set(["文字|もじ", "反応|はんのう", "天皇|てんのう"]);
+/**
+ * Readings the 常用 table can't confirm that may be right all the same: held for the owner's word (CLAUDE.md), then
+ * added to lib/joyo.ts's exceptions (文字 もじ, 反応 はんのう and 天皇 てんのう were, 2026-10-14). Empty for now.
+ */
+export const CHECK_BY_HAND = new Set<string>();
 
 export type Choice =
   | { jp: Jp; written: string; reading: string; kanaBecause?: "uk" | "kanji" | "reading" }

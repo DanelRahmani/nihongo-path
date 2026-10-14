@@ -12,7 +12,7 @@ type Entry = { on: string[]; kun: string[]; special: string[] };
 const KANJI = joyo.kanji as Record<string, Entry>;
 
 /** STYLE.md §5: readings outside the table that the house allows. */
-export const READING_EXCEPTIONS: Record<string, string> = { 明日: "あした" };
+export const READING_EXCEPTIONS: Record<string, string> = { 明日: "あした", 文字: "もじ", 反応: "はんのう", 天皇: "てんのう" };
 
 /**
  * Words read as one unit: proper nouns (STYLE.md §5 allows names; 大阪 is in the table's own 備考) and sound

@@ -298,6 +298,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - App side, ready for G2: `content/words/expansion/` (`EXPANSION_WORDS`, empty, and `NON_LESSON_WORDS`), wired into `/dictionary-data.json`, search and the "new kanji" furigana rules (not the kanji cards or decks); `Word.jmdict`; `/credits` (JMdict, KANJIDIC2, the 常用漢字表, wordfreq, the fonts, the quoted texts) linked from the footer and search; a footer credit line on every page; a licence field in `/dictionary-data.json`. `tests/expansion.test.ts` is the batch checker.
 
 ### Decisions
+- Owner, 2026-10-14 (later): 文字 もじ, 反応 はんのう and 天皇 てんのう are right (named exceptions in lib/joyo.ts and STYLE §5). The book citations (Genki chapters, Tae Kim, Cure Dolly, Tofugu, IMABI titles, the haiku editions) are left as they are, unverified; don't ask about them again.
 - Owner, 2026-10-14 (answers to the "Waiting on the owner" questions):
   - G: download both JMdict common words and the wordfreq Japanese list.
   - H1 and H2: Lighthouse and Playwright may be added as devDependencies.
@@ -648,50 +649,14 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Not applied: a reviewed must-include seed of N5/N4 words (no list without Waller's; the writer can pull basic words forward); a licence field in the other JSON files (the footer credit is on every page, and `/dictionary-data.json` has one); lib/joyo.ts's gaps for 決して (けっ before a kana) and 引っ張る, which leave those words in kana with `kana: "reading"` for the writer to list.
 
 ### Waiting on the owner
-- G: three readings the 常用 checker can't confirm are held out of the candidate list (`checkByHand`): 文字 もじ, 反応 はんのう (連声), 天皇 てんのう. Say if they may be added as named exceptions in lib/joyo.ts. The checker also rejects 決して and 引っ張る (a sound change before kana okurigana).
 - E2: unverified: the order in which real Japanese keyboards (iOS, Gboard, macOS, MS-IME) offer digits and variant spellings (5月, 子ども), which the checker names but rejects.
-- B4 sources to confirm. The reviewers recalled these differently:
-  - Genki: plain past of nouns in Genki I ch. 9 (desu-da now cites ch. 1, 4, 8–9); counters in Genki II ch. 14; たがっている in Genki I ch. 11; volitional in Genki II ch. 15; potential in Genki II ch. 13; たら in Genki II ch. 17; ている in ch. 7 and てください in ch. 6.
-  - Tae Kim section titles cited in B4 that may not exist as written: "Existence: ある and いる", "Question words", "The te-form" (possibly "Compound sentences"), "Using the te-form", "Desire: たい" (possibly "Desire and suggestions"), "Numbers and counting". kosoado cites the guide with no section.
-  - Cure Dolly video titles: "です and だ" and "adjectives as verbs".
-- B5 to confirm:
-  - Sources: Genki I ch. 1 for くん, ちゃん, 様, たち and 人/語; Genki II ch. 20 for 〜中; Genki II ch. 16 for 〜さ; Genki I ch. 4 for 〜屋; Genki I ch. 3–4 for お/ご; Genki I ch. 7 and 8 for family terms and casual speech; the Tofugu titles ("Japanese honorifics", "Aizuchi", "How to say no in Japanese"); Tae Kim's "Honorifics" and "Honorific and humble forms"; IMABI pages for 〜中 and 〜屋.
-  - The first kanji a Japanese keyboard offers for いってきます, おかえり and ごちそうさま; the checker now folds the usual ones.
 - C1 forms the reviewer and I couldn't settle, both refused by the engine for now:
   - the て and た forms of ゆく (written ゆって? いって?); a dictionary such as 明鏡 or 大辞林 would settle it;
   - the potentials いらっしゃれる and おっしゃれる (文化庁「敬語の指針」, 2007).
 - Pitch accent: blocked on audio from a native speaker. No speech synthesis.
-- Genki citations to confirm against your edition:
-  - start/polite-and-casual cites "Genki I ch. 3, 8 and 9". The reviewer and I both place plain past forms in ch. 9.
-  - B2 cites the following, and the reviewers couldn't check the section names:
-    - three-scripts: "Introduction: the writing system";
-    - the kana lessons: Hiragana and Katakana, including "diacritics", "combinations", "stroke order" and "extended combinations";
-    - verb-last and particles-move: ch. 3;
-    - dropping-words: ch. 1;
-    - modifiers-first: Genki I ch. 9 and Genki II ch. 15. Per the reviewer, subjects inside describing clauses (父が焼いたパン) are in Genki II ch. 15.
-- B3 sources to confirm. The reviewers recalled these differently:
-  - Genki chapters:
-    - が is cited as Genki I ch. 8;
-    - the reviewer places purpose 〜に行く in ch. 7 and 〜になる in ch. 10;
-    - や in ch. 11;
-    - 何も + negative and 誰か/何か in ch. 8;
-    - adjective + の "the one" in ch. 10;
-    - から "because" in ch. 6 and 9.
-  - Tae Kim section titles, possibly:
-    - "The direct object を particle", not "The object particle を";
-    - "The vague listing や and とか particles".
-    - Whether a section called "The は and が particles" exists is unclear.
-  - Cure Dolly video titles for "は and the core sentence" and "core sentence and zero が".
-- B2 sources to confirm:
-  - The exact title of the Tofugu loanword article cited by Katakana 4.
-  - A source for particles-move's "what sits right before the verb carries the focus". The reviewer suggests IMABI's word-order page or Makino & Tsutsui.
 - B2 decision to confirm: 象は鼻が長い (topic-comment) is the one non-original example, a named exception in STYLE §2 credited to Mikami Akira (1960). Say if you'd rather replace it.
-- F2 haiku, to check against the editions (cited only as "Bashō haikushū (Iwanami Bunko)" and "Issa haikushū (Iwanami Bunko)"):
-  - each text as printed: 飛び込む / 飛込む / 飛こむ and 水の音 / 水のおと; 閑かさ / 閑さ, しみ入る / しみ入, 蝉 / 蟬; the repeat mark in そこのけそこのけ; 御馬 read おうま or おんま; 取って / とつて and 泣く子かな / 泣子哉. The app shows the common modern spelling with modern kana readings.
-  - the editors, years and pages (the reviewer recalls 中村俊定 (1970) and 丸山一彦 (1990), unconfirmed), and each poem's source collection (春の日 or 蛙合; おくのほそ道; おらが春 or 八番日記).
 - JLPT N5/N4 lists: Jonathan Waller's site (tanos.co.uk) was unreachable on 2026-10-07 and 2026-10-08. Its licence (reportedly CC BY) is to be confirmed before the download. D1 shipped the lesson kanji; the N5/N4 kanji and E2's trainer wait for this.
 - D1 to confirm:
   - The kanji reviewer remembers these "special" marks differently from the parsed table: 何 なん, 上 うわ and 七 なの are marked special; 今 キン, 京 ケイ and 音 イン aren't. The parser reads the PDF's indentation, so it is probably right; a look at those pages of joyokanjihyo_20101130.pdf would settle it.
   - KANJIDIC2's licence has extra conditions in its section 8 (believed to concern index codes D1 doesn't use). Reading the EDRDG licence page would settle it; I haven't fetched it.
-  - The repo is private, so the CC BY-SA credits aren't owed yet; a credits page is planned before any screen shows the data (plan §6).
   - Your suggestion of the "2242 Kanji Frequency List" (ResearchGate) is noted for E2/G; its licence would need checking first.

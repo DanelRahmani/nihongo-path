@@ -15,6 +15,10 @@ export const VOCAB_DECK_ID = "vocab";
 /** The cloze deck's id (lib/cloze-deck.ts), for the same reason. */
 export const CLOZE_DECK_ID = "cloze";
 
+/** The polite ↔ casual drill's two decks (lib/register-drill.ts): into casual, into polite. */
+export const CASUAL_DECK_ID = "to-casual";
+export const POLITE_DECK_ID = "to-polite";
+
 /** Right answers in a row that take an item out of the notebook. */
 export const LEAVE_AFTER = 2;
 

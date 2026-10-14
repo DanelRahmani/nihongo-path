@@ -28,6 +28,10 @@ export default function DrillPage() {
         , the{" "}
         <Link href="/cloze" className="text-accent hover:underline">
           fill-the-gap lines
+        </Link>
+        , the{" "}
+        <Link href="/register" className="text-accent hover:underline">
+          polite and casual drill
         </Link>{" "}
         and the{" "}
         <Link href="/conjugation" className="text-accent hover:underline">

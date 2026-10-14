@@ -10,7 +10,7 @@ import { askItem, KANA_DECKS } from "@/lib/decks";
 import { whenIdle } from "@/lib/idle";
 import { KANJI_DECK_ID } from "@/lib/kanji-deck";
 import { plainOf } from "@/lib/markup";
-import { CLOZE_DECK_ID, CONJUGATION_DECK, QUIZ_DECK, resolvableItems, VOCAB_DECK_ID } from "@/lib/notebook";
+import { CASUAL_DECK_ID, CLOZE_DECK_ID, CONJUGATION_DECK, POLITE_DECK_ID, QUIZ_DECK, resolvableItems, VOCAB_DECK_ID } from "@/lib/notebook";
 import { deckState, deckStats } from "@/lib/srs";
 import { useStore } from "@/lib/storage";
 import { activityStore, notebookStore, srsStore } from "@/lib/stores";
@@ -18,7 +18,7 @@ import { dayKey, englishDate, GOALS, type Goal, japaneseDate, setGoal, streak, t
 import type { TodayWord } from "@/lib/today-words";
 
 /** Notebook decks whose cards load only on their own page. */
-const LAZY_DECKS = new Set([QUIZ_DECK, KANJI_DECK_ID, CONJUGATION_DECK, VOCAB_DECK_ID, CLOZE_DECK_ID]);
+const LAZY_DECKS = new Set([QUIZ_DECK, KANJI_DECK_ID, CONJUGATION_DECK, VOCAB_DECK_ID, CLOZE_DECK_ID, CASUAL_DECK_ID, POLITE_DECK_ID]);
 
 /**
  * The current minute, so due cards and midnight show up while the page is open, and at once when a sleeping tab
@@ -112,13 +112,14 @@ export function TodayCard() {
   const days = streak(activity, today);
   const due = KANA_DECKS.reduce((n, d) => n + deckStats(d, deckState(srs, d.id), now.getTime()).due, 0);
   const started = KANA_DECKS.some((d) => Object.keys(deckState(srs, d.id).cards).length > 0);
-  // Kanji, vocabulary and cloze cards due, from the schedule alone: the cards themselves load only on their pages.
+  // Kanji, vocabulary, cloze and register cards due, from the schedule alone: the cards themselves load only on their pages.
   const dueIn = (deckId: string) => Object.values(deckState(srs, deckId).cards).filter((c) => c.due <= now.getTime()).length;
   const kanjiDue = dueIn(KANJI_DECK_ID);
   const vocabDue = dueIn(VOCAB_DECK_ID);
   const clozeDue = dueIn(CLOZE_DECK_ID);
-  // Quiz, kanji, vocabulary, cloze and conjugation items can't be checked here (their data isn't on this page),
-  // so they count as they are; a kana card a later build removed doesn't.
+  const registerDue = dueIn(CASUAL_DECK_ID) + dueIn(POLITE_DECK_ID);
+  // Quiz and drill items (kanji, vocabulary, cloze, register, conjugation) can't be checked here (their data
+  // isn't on this page), so they count as they are; a kana card a later build removed doesn't.
   const mistakes = resolvableItems(notebook, (i) => LAZY_DECKS.has(i.deck) || askItem(i.deck, i.card) !== null).length;
   const word = words?.length ? words[wordOfTheDay(today, words.length)] : null;
   const date = japaneseDate(now);
@@ -174,6 +175,9 @@ export function TodayCard() {
             </Link>
             <Link href="/cloze" className="text-accent hover:underline">
               {clozeDue === 0 ? "Fill the gap" : `${clozeDue} line${clozeDue === 1 ? "" : "s"} due`} <span aria-hidden>→</span>
+            </Link>
+            <Link href="/register" className="text-accent hover:underline">
+              {registerDue === 0 ? "Polite and casual" : `${registerDue} to convert`} <span aria-hidden>→</span>
             </Link>
           </p>
           <p className={`text-sm text-ink-2 ${hidden}`} aria-hidden={minute === null || undefined}>

@@ -43,6 +43,11 @@ export interface TypedDrillProps<C extends { id: string }> {
   unlockLabel?: string;
   /** The deck may open groups by hand ("I know these"). */
   manualUnlock?: boolean;
+  /**
+   * Focus the answer box when the first card shows (default). Off when the drill remounts after a choice the
+   * reader is still making, such as the polite/casual switch.
+   */
+  focusFirst?: boolean;
 }
 
 /**
@@ -62,6 +67,7 @@ export function TypedDrill<C extends { id: string }>({
   openLabel,
   unlockLabel = "New cards open",
   manualUnlock = false,
+  focusFirst = true,
 }: TypedDrillProps<C>) {
   const mounted = useMounted();
   const [srs, setSrs] = useStore(srsStore);
@@ -185,7 +191,8 @@ export function TypedDrill<C extends { id: string }>({
               <>
                 <input
                   key={`${current.id}-${score.right + score.wrong}`}
-                  autoFocus
+                  // Every later card is focused; the first only when the page asked for it.
+                  autoFocus={focusFirst || score.right + score.wrong > 0}
                   lang="ja"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}

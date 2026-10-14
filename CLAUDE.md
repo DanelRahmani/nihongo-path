@@ -7,8 +7,8 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **E6** (polite ↔ casual drill). Then E7–E9 (practice), G and H.
-  - A draft exists (uncommitted when E5 was committed): `lib/register-drill.ts` (`diffFirstWord`, `checkRegister`, `registerDeck`), `lib/register-cards.ts` (engine variants swapped by whole word runs, none before か), `components/register/RegisterDrill.tsx`, `app/register/page.tsx`, `tests/register-drill.test.ts`. To do: move the deck ids into `lib/notebook.ts` and reuse `lib/engine-forms.ts` in the builder; wiring (nav, links, search, the Today card's lazy decks); the browser check; the review; CLAUDE.md.
+- **E7** (one review queue). Then E8–E9 (practice), G and H.
+  - A draft exists (uncommitted when E6 was committed): `lib/review-queue.ts` (`buildQueue`: due cards of every deck, most overdue first, then notebook items not already due, oldest miss first; `askFrom`; `reviewCount` from the stores alone, for the home badge) and `tests/review-queue.test.ts`. To do: a `/review` page that loads every deck's card data (a `force-static` JSON route, since it is large: kanji, vocabulary, cloze, register, conjugation words, and a quiz index for `QUIZ_DECK` items), askers for the quiz and conjugation items, a generic front for each deck (`Prompt` may need a `hint`), scheduling due cards in their own deck and logging every answer to the notebook, the home badge (the Today card), the browser check, the review, CLAUDE.md.
   - E2's kanji set is the interim lesson set; when Waller's lists arrive, build `kanji-n5`/`kanji-n4` decks with `kanjiDeck(cards, id)` (learned kanji count across every deck whose id starts with "kanji"). Keep a deck's same-word siblings in different groups, and say on the answer side which kanji a card is for (as now).
   - E7 asks items through `askItem(deckId, cardId)`, which knows only the kana decks. Kanji, quiz and conjugation items need their data on the review page: pass it as props, as the trainer pages do, or add lazy deck loaders. Count what resolves with `resolvableItems`. Quiz items (`QUIZ_DECK`) need a quiz index; consider a quiz pseudo-deck adapting `checkQuestion` (its field is `answer`, not `canonical`).
   - Deck and card builders (E) must never import `content/reading.ts` or `lib/corpus.ts`; `tests/reading.test.ts` checks this.
@@ -254,6 +254,13 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - `lib/engine-forms.ts`: every engine form of a dictionary word (verbs, adjectives, nouns with the copula), shared by the decks.
   - Kana only mode breaks drill lines and the Today card's date only between words (`.keep-words` in `app/globals.css`); the other modes wrap normally.
 
+- **E6 Polite and casual (2026-10-14):** `/register`, linked from the kana drill page, the Today card and search.
+  - Two decks, one per direction (into casual, into polite), from the 30 lesson lines that have their other-register version (`alt`): the polite side converts to the casual side and back. A switch picks the direction; each deck is scheduled on its own, and a card joins when its lesson is done.
+  - The learner types the whole line; spaces and punctuation are ignored. Accepted: the lesson's line, the engine's variants swapped in by whole word runs (じゃ ありません でした takes じゃ なかった です and で は ありません でした; none before an inviting か; no stiff よい on the casual side), and reviewed alternatives in `content/register-also.ts` (casual keeps or drops を; a noun or な-adjective ends bare or with だ, as STYLE §9 says; よ kept; お元気ですか).
+  - A wrong answer says where it parts from the accepted line it follows furthest: "Expected ありません; yours has ないでした", "じゃ is missing", "Every word is there, with よ extra at the end", or that it's the line as given.
+  - Engine: a noun's polite past negative also takes で は なかった です (checked by the lesson tables).
+  - The drill gained `focusFirst`, so switching direction keeps focus on the switch.
+
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
   - Q1: four furigana modes, kana-only by default.
@@ -291,7 +298,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 711 in 29 files.
+- Tests: 724 in 30 files.
+- Polite and casual drill: 30 cards per direction; 13 reviewed alternatives.
 - Cloze deck: 247 cards; 189 lines left out (54 same-frame pair lines, 58 kana-lesson lines, 28 mostly highlighted, 21 with several highlights, 28 by hand).
 - Vocabulary deck: 378 cards.
 - Conjugation trainer: 93 words (60 verbs), 1,100 or so questions with every lesson done.
@@ -547,6 +555,14 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Polish applied: "N lessons with lines done"; the Today card links the deck; "blank" for screen readers; the share computed the same way on both sides; line comments beside each exclusion.
   - I reviewed the 43 pair lines and dialogue alt lines the new pair rule added: six more exclusions (を/が also fit, the あなた line, two more 中 lines, a bare ます ending) and 3匹 accepted.
   - Not applied: the English of `particles/yo-ne` "It's good!" (lesson content; the card stays).
+
+- E6 in the checks: 724 tests, typecheck, lint, build (`/register` static; the home page loads only the deck-id constants).
+- E6 in the browser (Playwright's Chromium) at 375 px, light and dark: no lines before a lesson is done; with Polite and casual done, the first card asks to make 毎朝コーヒーを飲みます casual; a wrong answer gets "Expected 毎朝; yours has ぬ" and the answer side; switching direction with the arrow keys keeps focus on the switch and shows the other deck; no horizontal scroll; console clean.
+- E6 review: a fresh Opus 5.5 reviewer, who checked all 30 pairs and ran 32 typed answers. Applied:
+  - Errors fixed: casual questions keeping を, and noun lines with だ よ, rejected (reviewed alternatives); the engine lacking で は なかった です.
+  - Should-fix applied: feedback follows the accepted line the answer gets furthest along; the note names what was typed, a missing word or the extra text, without the line's punctuation; the unchanged line is named; switching direction no longer moves focus into the box; tests pin every alt pair, unique ids, the invitation card, and the 、, name and mixed-script cases.
+  - Polish applied: the か guard matches only か; `plainOf` instead of a copy; the English rendered with `Rich`; the keep-words class literal; arrows hidden from screen readers; the Today card links the drill.
+  - Not applied: remembering the direction between visits; ね/よね swaps (needs a native speaker's call); combining variants on lines with two predicates (no such line yet).
 
 ### Waiting on the owner
 - E2's kanji set: the cards use the 404 lesson kanji until Waller's N5/N4 lists can be downloaded and their licence confirmed. Say if you'd rather keep the lesson set, use another list, or add N5/N4 on top. Also unverified: the order in which real Japanese keyboards (iOS, Gboard, macOS, MS-IME) offer digits and variant spellings (5月, 子ども), which the checker names but rejects.

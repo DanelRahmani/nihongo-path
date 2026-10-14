@@ -436,7 +436,7 @@ export function conjugateAdjective(dict: Jp, cls: AdjectiveClass, form: Adjectiv
     case "polite": return ok(x + "です");
     case "politeNeg": return ok(x + "じゃ ありません", x + "で は ありません", x + "じゃ ない です", x + "で は ない です");
     case "politePast": return ok(x + "でした");
-    case "politePastNeg": return ok(x + "じゃ ありません でした", x + "で は ありません でした", x + "じゃ なかった です");
+    case "politePastNeg": return ok(x + "じゃ ありません でした", x + "で は ありません でした", x + "じゃ なかった です", x + "で は なかった です");
     case "te": return ok(x + "で");
     case "adverb": return cls === "na" ? ok(x + "に") : missing("A noun has no adverb form.");
     case "attributive": return ok(x + (cls === "na" ? "な" : "の"));

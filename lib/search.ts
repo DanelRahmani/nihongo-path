@@ -30,6 +30,8 @@ export interface SearchItem {
   names: string[];
   /** All the English to match at a word start, folded. */
   en: string;
+  /** A word outside the lessons (the kanji examples and the expansion): ranked after lesson words of equal score. */
+  extra?: true;
 }
 
 /** The app's top-level pages, so "dictionary" or 辞書 finds the page itself. */
@@ -163,6 +165,7 @@ export function buildSearchIndex(src: IndexSources): SearchItem[] {
       roma: [e.keys.roma],
       names: e.keys.glosses,
       en: e.keys.en,
+      ...(e.source === "extra" ? { extra: true as const } : {}),
     }),
   );
   return [...pages, ...lessons, ...grammar, ...kanji, ...words];
@@ -199,7 +202,7 @@ export function scoreItem(item: SearchItem, query: ReturnType<typeof parseQuery>
   return found.length ? Math.min(...found) : null;
 }
 
-/** The best matches, best first; ties list pages, lessons, grammar, kanji, then words, shorter labels first. */
+/** The best matches, best first; ties list pages, lessons, grammar, kanji, then words (lesson words first), shorter labels first. */
 export function searchIndex(items: SearchItem[], query: string, limit = 20): SearchItem[] {
   const q = parseQuery(query);
   if (q.kind === "empty") return [];
@@ -213,6 +216,7 @@ export function searchIndex(items: SearchItem[], query: string, limit = 20): Sea
       (a, b) =>
         a.score - b.score ||
         KIND_ORDER.indexOf(a.item.kind) - KIND_ORDER.indexOf(b.item.kind) ||
+        Number(!!a.item.extra) - Number(!!b.item.extra) ||
         a.item.label.length - b.item.label.length ||
         a.order - b.order,
     )

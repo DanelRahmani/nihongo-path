@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { DictionaryBrowser } from "@/components/dictionary/DictionaryBrowser";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 
@@ -7,7 +8,7 @@ export const metadata: Metadata = { title: "Dictionary" };
 export default function DictionaryPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 pt-10 pb-24 sm:px-6 sm:pt-14">
-      <Eyebrow>Lesson words and kanji examples</Eyebrow>
+      <Eyebrow>Lesson words and 2,000 more</Eyebrow>
       <h1 className="mt-2 font-serif text-4xl font-bold">
         <span lang="ja">辞書</span> <span className="text-2xl text-ink-2">Dictionary</span>
       </h1>
@@ -19,8 +20,9 @@ export default function DictionaryPage() {
         <DictionaryBrowser />
       </div>
       <p className="mt-12 text-xs leading-relaxed text-ink-2">
-        Expansion: words that appear only as kanji examples. Parts of speech checked against JMdict © EDRDG, licensed CC BY-SA
-        4.0.
+        Expansion: common words beyond the lessons, and words that appear only as kanji examples, ranked by how often they
+        are used (wordfreq). Forms and parts of speech from JMdict © EDRDG, licensed CC BY-SA 4.0; the meanings are ours.
+        See <Link href="/credits" className="underline underline-offset-2">Credits</Link>.
       </p>
     </div>
   );

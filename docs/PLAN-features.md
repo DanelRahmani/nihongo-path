@@ -129,7 +129,7 @@ Rules for every sub-phase: one commit and push to `features`; checks pass before
 | Sub-phase | What ships | Tests added |
 |---|---|---|
 | **G1 Source pipeline** (done 2026-10-14) | `scripts/expand/`: rank by wordfreq, keep words JMdict marks common, turn word forms into dictionary words, drop names, profanity, fragments and particles, and output a candidate list. A refresh script diffs our entries against the latest JMdict (EDRDG asks for regular updates). I ask before each download, with file name, source and size | Lemmatiser and filter fixtures |
-| **G2…Gn Batches** (about 250 words each, target in Q4) | A Sonnet agent writes entries (reading, meaning, topic) from my spec; the checker runs until it passes; a fresh reviewer reads each batch. Credits go on the dictionary page and in the footer of every screen that shows this data | Checker: reading in kana, written form in 常用 kanji, no duplicate (form, reading), topic from the allowed list |
+| **G2…Gn Batches** (about 250 words each, target in Q4; done 2026-10-14, nine batches, 2,052 words) | A Sonnet agent writes entries (reading, meaning, topic) from my spec; the checker runs until it passes; a fresh reviewer reads each batch. Credits go on the dictionary page and in the footer of every screen that shows this data | Checker: reading in kana, written form in 常用 kanji, no duplicate (form, reading), topic from the allowed list |
 
 ### H. Polish
 

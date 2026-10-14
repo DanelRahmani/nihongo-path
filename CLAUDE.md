@@ -7,11 +7,12 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **G2…** (expansion batches), then H1 (performance) and H2 (accessibility sweep).
-  - G2: batches of about 250 from the top of `content/data/expand-candidates.json` (5,000 ranked candidates), written into `content/words/expansion/batch-NN.ts` with `x(id, jp, pos, meaning, topic, verb?)` and added to `EXPANSION_WORDS`. A Sonnet writer follows the spec (kept in the session scratchpad as writer-spec.md; restate it in the agent prompt: keep id/jp/pos/verb as given, short English meanings of 60 characters at most, verbs start "to", a topic from the list, skip proper nouns other than countries and major cities, brands, slang, rare or formal readings of words the lessons teach, suffix-like or grammar items, and kana words over-counted from endings, each as a `// skipped: id jp (reason)` line; candidates flagged `homograph` need the more common reading only; `kana: "reading"` words are written in kana because lib/joyo.ts can't confirm the reading, so list them for the owner instead of keeping them). Then a fresh Opus reviewer per batch, `tests/expansion.test.ts` (the plan's checker), and one commit per batch. About 2,000 words in all; basic words ranked below 3,000 (涼しい, 親切, 眠い) can be pulled forward.
+- **H2** (accessibility sweep): its review found three checks that couldn't fail (focus rings read from static card shadows, the Tab walk stopping at the first repeated word, overflow hidden by `main`'s `overflow-x-clip`); the rewrite is under way in `scripts/a11y-sweep.mjs` (uncommitted, with the Playwright devDependency). Then H1 (performance): `scripts/perf-ab.mjs` and `scripts/serve-out.mjs` are drafted, waiting on `npx -y npm@11 i -D lighthouse`.
+  - H1: the search index grew to 777 KB (175 KB gzipped) with the expansion words; building the word results from `/dictionary-data.json` (F3 review) would remove most of that. Font requests per page today: 10 (a lesson) to 73 (`/read`).
+  - More expansion batches, if wanted: candidates 2251 on, written and reviewed as G2 was (writer spec in the session scratchpad; restate it in the agent prompt: keep id/jp/pos/verb as given, short English meanings of 60 characters at most in British spelling, verbs start "to", "(する: to …)" for suru nouns, a topic from the list, `// skipped: id jp (reason)` lines, `kana: "reading"` candidates skipped for the owner).
   - The credits page, the footer credit line and the dictionary JSON's licence field are already live for the existing JMdict/KANJIDIC2 data.
   - Before each later session's batches, `npm run expand-refresh -- <jmdict-eng.json>` (the full file) checks every word against the newest JMdict.
-  - H1: `npm i -D lighthouse` (use `npx -y npm@11 i -D …`: npm 10 strips the lockfile's `libc` fields). H2: Playwright 1.56.1 is already chosen (matches the pre-installed Chromium at /opt/pw-browsers; don't run `playwright install`); its draft (`scripts/a11y-sweep.mjs`, the devDependency and an `a11y` npm script still to add) is in `git stash` as "h2". The first full run was stopped by the owner: run it on a sample first (`--route`), then the whole site.
+  - Installing devDependencies: use `npx -y npm@11 i -D …` (npm 10 strips the lockfile's `libc` fields). Playwright stays pinned at 1.56.1, which matches the pre-installed Chromium at /opt/pw-browsers; don't run `playwright install`. Run the sweep on a sample first (`--route`), then the whole site.
   - The service worker is live on any build that reaches main: to remove it, set `RETIRE_WORKER` in `lib/service-worker.ts` and deploy (its header comment says why deleting the route isn't enough).
   - E2's kanji set is the interim lesson set; when Waller's lists arrive, build `kanji-n5`/`kanji-n4` decks with `kanjiDeck(cards, id)` (learned kanji count across every deck whose id starts with "kanji"). Keep a deck's same-word siblings in different groups, and say on the answer side which kanji a card is for (as now).
   - A new deck registers in three places: its card data in `lib/review-data.ts` (`reviewData` and `reviewIds`), its deck in `components/review/ReviewQueue.tsx` (`queueFrom`), and its id in `lib/notebook.ts` if the home page names it.
@@ -297,6 +298,13 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - `scripts/expand/refresh.ts` (`npm run expand-refresh -- <jmdict-eng.json>`): checks expansion words by JMdict id (gone, form or reading gone or now rare, uk added, part of speech changed, common lost, new vulgar or archaic notes), lesson words by (written, reading), and whether the candidate list is over 31 days older than the file; exits 1 on findings. First run on 3.6.2: nothing to look at.
   - App side, ready for G2: `content/words/expansion/` (`EXPANSION_WORDS`, empty, and `NON_LESSON_WORDS`), wired into `/dictionary-data.json`, search and the "new kanji" furigana rules (not the kanji cards or decks); `Word.jmdict`; `/credits` (JMdict, KANJIDIC2, the 常用漢字表, wordfreq, the fonts, the quoted texts) linked from the footer and search; a footer credit line on every page; a licence field in `/dictionary-data.json`. `tests/expansion.test.ts` is the batch checker.
 
+- **G2 Expansion batches (2026-10-14):** 2,052 words in nine batches (`content/words/expansion/batch-01.ts`…`batch-09.ts`), candidates 1–2250 of `content/data/expand-candidates.json`; 198 skipped, each with its reason on a `// skipped:` line. They appear in the dictionary (source "Expansion"), search and the word inspector, never in the decks, drills or kanji cards.
+  - Each batch was written by a Sonnet agent to one spec and read by a fresh Opus reviewer, who applied every finding: the useful sense first, British spelling, register notes ((casual), (formal), (written)), "(する: to …)" for suru nouns, pos corrections marked `// pos: was X`, topics.
+  - Skipped by rule: artefacts of endings and longer words (具体 from 具体的, 知れる from かもしれない, かっこ), suffix-like single kanji (術, 科, 野), clipped forms (スト), katakana words counted from names and teams (レッド, キング), words the resolver already builds (人たち, お客様, ついてる), proper nouns other than countries and major cities, slang (いけめん), weapons, and rare readings of lesson words (今日 こんにち, 博士 はくし).
+  - `tests/expansion.test.ts` checks each batch on its own (`it.each`): the candidate's form, 常用 kanji and readings, hiragana readings, English-only meanings of 60 characters at most, verbs that start "to" and conjugate, topics from the list, and no word twice or already in the lessons.
+  - Search: lesson words now rank before expansion words of equal score (あなた before 君 and 用 for "you").
+  - The dictionary page says what the expansion is and links Credits.
+
 ### Decisions
 - Owner, 2026-10-14 (later): 文字 もじ, 反応 はんのう and 天皇 てんのう are right (named exceptions in lib/joyo.ts and STYLE §5). The book citations (Genki chapters, Tae Kim, Cure Dolly, Tofugu, IMABI titles, the haiku editions) are left as they are, unverified; don't ask about them again.
 - Owner, 2026-10-14 (answers to the "Waiting on the owner" questions):
@@ -340,8 +348,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 806 in 38 files.
-- Expansion candidates: 5,000 (of 18,515 kept from 19,956 counted entries); 3 readings held for the owner.
+- Tests: 823 in 38 files.
+- Expansion candidates: 5,000 (of 18,515 kept from 19,956 counted entries). Expansion words: 2,052 from the first 2,250 (198 skipped).
 - Service worker: 17 pages and data files precached.
 - Type it: 373 lines.
 - Placement check: 7 bands, 14 questions.
@@ -350,8 +358,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - Vocabulary deck: 378 cards.
 - Conjugation trainer: 93 words (60 verbs), 1,100 or so questions with every lesson done.
 - Decks: 6 kana decks (208 cards) and the kanji deck (404 cards in 41 groups; 49 share a word). Quiz questions in the notebook: 250 possible ids, all unique.
-- Search index: 1,173 items (6 pages, 62 lessons, 61 grammar topics, 404 kanji, 640 words).
-- Dictionary: 547 lesson words (75 verbs), 93 extra kanji-example words, 14 names; 404 kanji. The dictionary page lists 640 entries.
+- Search index: 3,235 items (16 pages, 62 lessons, 61 grammar topics, 404 kanji, 2,692 words); 777 KB, 175 KB gzipped.
+- Dictionary: 547 lesson words (75 verbs), 93 extra kanji-example words, 2,052 expansion words, 14 names; 404 kanji. The dictionary page lists 2,692 entries; `/dictionary-data.json` is 360 KB (88 KB gzipped).
 - Template: all 62 lessons converted.
 - Grammar overview: 61 topics from 37 lessons, 96 examples.
 - Reading view: 5 original texts (23 lines and 3 prices) and 4 haiku. Dictionary: 547 lesson words, 93 extra words.
@@ -648,7 +656,12 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Should-fix applied: shared tokens weighted (grammar and affix readings, verb stems over nouns, the lessons' reading over others); kana grammar strings no longer promote content words (かも, ちゃう); okurigana with a sound change checked as a whole (真っ赤); unsuitable words matched by reading too (ばか); proper nouns flagged; 5,000 candidates; STYLE's grammar words left out; the crediting moved into tested pure functions; hiragana preferred for native kana words (めがね); the する flag; two senses of gloss; argument checks and a path independent of the working directory; the licence note; the refresh script; tests for each case and golden inclusion and exclusion sets.
   - Not applied: a reviewed must-include seed of N5/N4 words (no list without Waller's; the writer can pull basic words forward); a licence field in the other JSON files (the footer credit is on every page, and `/dictionary-data.json` has one); lib/joyo.ts's gaps for 決して (けっ before a kana) and 引っ張る, which leave those words in kana with `kana: "reading"` for the writer to list.
 
+- G2 in the checks: 823 tests (every batch passes the checker on its own), typecheck, lint, build. In the browser (Playwright's Chromium) at 375 px, light and dark: "emperor" finds 天皇 in the dictionary with the Expansion label, search finds 新幹線 by "shinkansen", no horizontal scroll, console clean.
+- G2 review: a fresh Opus 5.5 reviewer per batch (nine), each applying its own findings: wrong or misleading meanings fixed (博士 "professor", 市内 "downtown", 油 "oil, fat", 披露 "to show off", のり, ロック, 乳), missing main senses added (まずい "awkward", 吹く "to play", 渡す, 下ろす "to withdraw"), American spellings, topics and pos. Calls I made on open questions: 天皇 kept (the owner confirmed てんのう), 原発 kept, 面 めん and テロ kept, 独自 left a noun, ついてる dropped.
+
 ### Waiting on the owner
+- G2: four candidates written in kana because lib/joyo.ts can't confirm their kanji reading, skipped for now: できごと (出来事), はやる (流行る), けが (怪我: 怪 isn't 常用, so kana is right) and くい. Also from G1: 決して and 引っ張る (the checker's っ rules). Say which should be added, and in which form.
+- G2 calls to confirm: 是非 written in kana, めがね in hiragana (眼鏡 is a 付表 word, めがね is also common), 殺す left out, era names (明治) left out.
 - E2: unverified: the order in which real Japanese keyboards (iOS, Gboard, macOS, MS-IME) offer digits and variant spellings (5月, 子ども), which the checker names but rejects.
 - C1 forms the reviewer and I couldn't settle, both refused by the engine for now:
   - the て and た forms of ゆく (written ゆって? いって?); a dictionary such as 明鏡 or 大辞林 would settle it;

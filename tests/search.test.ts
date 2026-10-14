@@ -3,7 +3,8 @@ import { describe, expect, it } from "vitest";
 import { GRAMMAR_TOPICS } from "@/content/grammar";
 import { KANJI } from "@/content/kanji";
 import { ALL_LESSONS } from "@/content/units";
-import { buildSearchIndex, KIND_ORDER, type SearchItem, searchIndex, SITE_PAGES } from "@/lib/search";
+import { parseQuery } from "@/lib/dictionary";
+import { buildSearchIndex, KIND_ORDER, type SearchItem, scoreItem, searchIndex, SITE_PAGES } from "@/lib/search";
 import { isSearchShortcut, isTypingTarget, type ShortcutEvent } from "@/lib/search-shortcut";
 import { indexSources } from "@/lib/search-sources";
 
@@ -12,6 +13,7 @@ const find = (query: string, limit = 20) => searchIndex(INDEX, query, limit);
 const first = (query: string) => find(query)[0];
 const tag = (item: SearchItem | undefined) => (item ? `${item.kind}:${item.label}` : undefined);
 const tags = (query: string, limit = 20) => find(query, limit).map(tag);
+const scoreOf = (item: SearchItem, query: string) => scoreItem(item, parseQuery(query));
 
 describe("the index", () => {
   it("holds every page, lesson, grammar topic and kanji, then the words, in that order", () => {
@@ -111,6 +113,13 @@ describe("ranking", () => {
   it("finds a lesson by its title with the Japanese in romaji: te form", () => {
     expect(first("te form")?.href).toBe("/learn/verbs/te-form");
     expect(tags("you", 5)).toContain("word:あなた");
+  });
+
+  it("lists lesson words before expansion words of equal score", () => {
+    const words = find("you", 40).filter((i) => i.kind === "word");
+    const firstExtra = words.findIndex((i) => i.extra);
+    expect(firstExtra).toBeGreaterThan(0);
+    expect(words.slice(firstExtra).some((i) => !i.extra && scoreOf(i, "you") === scoreOf(words[firstExtra], "you"))).toBe(false);
   });
 
   it("lists equal scores by kind: pages, lessons, grammar, kanji, then words", () => {

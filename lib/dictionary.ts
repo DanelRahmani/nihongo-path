@@ -68,7 +68,7 @@ export interface Entry {
   keys: { written: string; kana: string; kanaLoose: string; roma: string; loose: string; glosses: string[]; en: string };
 }
 
-const toHiragana = (s: string) =>
+export const toHiragana = (s: string) =>
   [...s].map((c) => (c >= "ァ" && c <= "ヶ" ? String.fromCodePoint(c.codePointAt(0)! - 0x60) : c)).join("");
 
 /** The row of each plain kana; voiced and p sounds are found through their plain kana. */
@@ -94,10 +94,10 @@ export function looseRomaji(normalized: string): string {
 }
 
 /** English as typed and as matched: lower case, accents dropped (café, jōyō), single spaces. */
-const foldEnglish = (s: string) => s.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase().replace(/\s+/g, " ").trim();
+export const foldEnglish = (s: string) => s.normalize("NFD").replace(/\p{M}/gu, "").toLowerCase().replace(/\s+/g, " ").trim();
 
 /** Without a leading "to", "a", "an" or "the": "to eat" → "eat". */
-const withoutArticle = (s: string) => s.replace(/^(to|a|an|the) /, "");
+export const withoutArticle = (s: string) => s.replace(/^(to|a|an|the) /, "");
 
 /**
  * A word's meaning as separate glosses: lower case, without notes in brackets, examples after a colon or a
@@ -113,7 +113,7 @@ export function glossesOf(meaning: string): string[] {
     .filter(Boolean);
 }
 
-const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+export const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /** Vowel of each kana, to read ー as the vowel it lengthens. */
 const VOWEL: Record<string, string> = {};
@@ -186,7 +186,7 @@ export function parseQuery(query: string): Query {
 }
 
 /** How well a key matches: 0 exact, 1 prefix, 2 inside it; null for no match. */
-function closeness(key: string, q: string, inside = true): number | null {
+export function closeness(key: string, q: string, inside = true): number | null {
   if (!q || !key) return null;
   if (key === q) return 0;
   if (key.startsWith(q)) return 1;

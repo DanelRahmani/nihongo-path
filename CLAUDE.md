@@ -7,7 +7,10 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **F3** (search). Then F4 (Today card), E1–E9 (practice), G and H.
+- **F3** (search), in progress. Then F4 (Today card), E1–E9 (practice), G and H.
+  - Done so far (commit "F3 (in progress)"): `lib/search.ts` (pure: `buildSearchIndex` over pages, lessons, grammar topics, kanji and words; `scoreItem`/`searchIndex` ranking that reuses `lib/dictionary.ts`'s folds; `isSearchShortcut`/`isTypingTarget`; `SITE_PAGES`), the `force-static` route `app/search-index.json/route.ts`, and `lib/dictionary.ts` exporting `toHiragana`, `foldEnglish`, `withoutArticle`, `escapeRegExp` and `closeness`. No tests, UI or review yet.
+  - Still to do: `tests/search.test.ts` (index builder, ranking, the shortcut ignores keystrokes typed in inputs, IME composition, Ctrl/⌘K); a tiny client launcher in the header (a search button plus a global keydown listener) that lazy-loads the dialog with `next/dynamic` (`ssr: false`) only when opened and fetches `/search-index.json` then; the dialog as a native `<dialog>` with `showModal()`, a combobox input and a listbox of results (`aria-activedescendant`, arrows, Enter navigates, Escape closes, kind labels); `/dictionary` reading `?q=` on load, since word results link to `/dictionary?q=…`.
+  - Header room: the header is full at 375 px (wordmark, 道 かな 練習 参考, 表示). The plan was to hide the 日本語の道 wordmark below 420 px (keeping the red dot as the home link) to make room for a search icon button. Check with the owner if unsure.
   - F3 can index `content/grammar.ts` topics by anchor (`/grammar#wa-topic`), the dictionary through `lib/dictionary.ts`, and lessons and kanji.
   - Deck and card builders (E) must never import `content/reading.ts` or `lib/corpus.ts`; `tests/reading.test.ts` checks this.
   - E2's "new kanji only" furigana rules must stay less specific than the reading view's (`:root body .reading-view …` in `app/globals.css`), or the reading view would show readings for unlearned kanji.
@@ -198,6 +201,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 2026-10-08: the owner asked again to push to main. main was fast-forwarded to B4 (51b591f), bringing B2, B3, C1 and B4; no merge commit.
 - 2026-10-08: the owner asked to push to main again. main was fast-forwarded to B5 (806413d).
 - 2026-10-09: the owner asked to push to main. main was fast-forwarded to D1 (03970ad).
+- Hosting (owner, 2026-10-14): the Vercel project is linked to the GitHub repo, so a push to `main` deploys the live site. Earlier notes that said otherwise were wrong. Push to `main` only when the owner asks.
+- 2026-10-14: the owner asked to push the Extras menu to main. main got a merge commit (2d22c2f, tree equal to `features`), and `features` was fast-forwarded to it, so later pushes to main can fast-forward again.
 - D2 and D3 reached main through GitHub pull request #1 (merge 3fb22eb), merged outside this workflow.
 - 2026-10-14: the owner asked to push to main. A fast-forward was no longer possible because of that pull request's merge commit, so `features` (F2, dcd7f38) was merged into main with a merge commit (e6dbe58), whose tree matches `features`. Nothing was force-pushed.
 - D1 (2026-10-08): the owner approved three downloads: JMdict common words and KANJIDIC2 (jmdict-simplified 3.6.2) and the 常用漢字表 PDF. They stay outside the repo; only derived data is committed. The N5/N4 kanji wait for Waller's lists (owner's choice); D1 covers the lesson kanji.
@@ -443,7 +448,6 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - F2 haiku, to check against the editions (cited only as "Bashō haikushū (Iwanami Bunko)" and "Issa haikushū (Iwanami Bunko)"):
   - each text as printed: 飛び込む / 飛込む / 飛こむ and 水の音 / 水のおと; 閑かさ / 閑さ, しみ入る / しみ入, 蝉 / 蟬; the repeat mark in そこのけそこのけ; 御馬 read おうま or おんま; 取って / とつて and 泣く子かな / 泣子哉. The app shows the common modern spelling with modern kana readings.
   - the editors, years and pages (the reviewer recalls 中村俊定 (1970) and 丸山一彦 (1990), unconfirmed), and each poem's source collection (春の日 or 蛙合; おくのほそ道; おらが春 or 八番日記).
-- Deploys: on 2026-10-08 the Vercel connector couldn't see project nihongo-path (403 listing deployments, 404 for the project), so the live site's state is unconfirmed. Earlier notes say the project isn't linked to GitHub, which would mean pushing main doesn't deploy. Say if you want a deploy; it may need the Vercel connection re-authorised.
 - JLPT N5/N4 lists: Jonathan Waller's site (tanos.co.uk) was unreachable on 2026-10-07 and 2026-10-08. Its licence (reportedly CC BY) is to be confirmed before the download. D1 shipped the lesson kanji; the N5/N4 kanji and E2's trainer wait for this.
 - D1 to confirm:
   - The kanji reviewer remembers these "special" marks differently from the parsed table: 何 なん, 上 うわ and 七 なの are marked special; 今 キン, 京 ケイ and 音 イン aren't. The parser reads the PDF's indentation, so it is probably right; a look at those pages of joyokanjihyo_20101130.pdf would settle it.

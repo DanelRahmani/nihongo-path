@@ -9,6 +9,7 @@ import { ALL_LESSONS, KANJI_NUMERALS, UNITS } from "@/content/units";
 const REFERENCE = [
   { href: "/grammar", jp: "文法", title: "Grammar overview", text: "Particles, grammar and verb forms on one page." },
   { href: "/dictionary", jp: "辞書", title: "Dictionary", text: "Every word, by kanji, kana, romaji or English." },
+  { href: "/read", jp: "読む", title: "Reading", text: "A sign, a menu, a chat, a story and haiku." },
 ];
 
 export default function Home() {
@@ -65,7 +66,7 @@ export default function Home() {
         <Eyebrow as="h2" id="reference-heading">
           Reference
         </Eyebrow>
-        <div className="mt-4 grid gap-3 sm:grid-cols-2">
+        <div className="mt-4 grid gap-3 sm:grid-cols-3">
           {REFERENCE.map((r) => (
             <Link key={r.href} href={r.href} className={panelClass("surface", "flex items-center gap-4 p-5 transition-colors duration-150 hover:border-accent")}>
               <span lang="ja" aria-hidden className="font-serif text-3xl font-bold text-accent">

@@ -86,4 +86,6 @@ export const VERBS: Word[] = [
   // Weather
   verb("[降|ふ]る", "godan", "to fall (rain, snow)", "nature"),
   verb("[晴|は]れる", "ichidan", "to clear up, to be sunny", "nature"),
+  // The reading view (content/reading.ts)
+  verb("ぬれる", "ichidan", "to get wet", "nature"),
 ];

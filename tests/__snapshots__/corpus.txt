@@ -1396,3 +1396,51 @@
 ごちそうさま | ごちそうさま | gochisousama
 失礼します | しつれい します | shitsurei shimasu
 失礼いたします | しつれい いたします | shitsurei itashimasu
+
+## read/shop-sign
+本日休業 | ほんじつ きゅうぎょう | honjitsu kyuugyou
+明日は10時から営業します。 | あした は じゅうじ から えいぎょう します。 | ashita wa juuji kara eigyou shimasu.
+店長 | てんちょう | tenchou
+
+## read/cafe-menu
+コーヒー | コーヒー | koohii
+400円 | よんひゃくえん | yonhyakuen
+紅茶 | こうちゃ | koucha
+400円 | よんひゃくえん | yonhyakuen
+ケーキ | ケーキ | keeki
+500円 | ごひゃくえん | gohyakuen
+飲み物はアイスもあります。 | のみもの は アイス も あります。 | nomimono wa aisu mo arimasu.
+
+## read/chat
+明日、暇？ | あした、 ひま？ | ashita, hima?
+うん、午後なら暇だよ。 | うん、 ごご なら ひま だ よ。 | un, gogo nara hima da yo.
+映画見に行かない？ | えいが み に いかない？ | eiga mi ni ikanai?
+いいね！何時にする？ | いい ね！ なんじ に する？ | ii ne! nanji ni suru?
+2時に駅で。 | にじ に えき で。 | niji ni eki de.
+オッケー！じゃあ、また明日。 | オッケー！ じゃあ、 また あした。 | okkee! jaa, mata ashita.
+
+## read/news
+東京で初雪 | とうきょう で はつゆき | toukyou de hatsuyuki
+今朝、東京で雪が降りました。 | けさ、 とうきょう で ゆき が ふりました。 | kesa, toukyou de yuki ga furimashita.
+電車が少し遅れています。 | でんしゃ が すこし おくれて います。 | densha ga sukoshi okurete imasu.
+
+## read/story
+日曜日は雨でした。 | にちようび は あめ でした。 | nichiyoubi wa ame deshita.
+駅の前に小さい猫がいました。 | えき の まえ に ちいさい ねこ が いました。 | eki no mae ni chiisai neko ga imashita.
+猫はぬれていました。 | ねこ は ぬれて いました。 | neko wa nurete imashita.
+私は猫に傘をあげました。 | わたし は ねこ に かさ を あげました。 | watashi wa neko ni kasa o agemashita.
+月曜日、猫はいませんでした。 | げつようび、 ねこ は いません でした。 | getsuyoubi, neko wa imasen deshita.
+傘もありませんでした。 | かさ も ありません でした。 | kasa mo arimasen deshita.
+少しうれしかったです。 | すこし うれしかった です。 | sukoshi ureshikatta desu.
+
+## read/basho-furuike
+古池や蛙飛び込む水の音 | ふるいけ や かわず とびこむ みず の おと | furuike ya kawazu tobikomu mizu no oto
+
+## read/basho-shizukasa
+閑かさや岩にしみ入る蝉の声 | しずかさ や いわ に しみいる せみ の こえ | shizukasa ya iwa ni shimiiru semi no koe
+
+## read/issa-suzume
+雀の子そこのけそこのけ御馬が通る | すずめ の こ そこのけ そこのけ おうま が とおる | suzume no ko sokonoke sokonoke ouma ga tooru
+
+## read/issa-meigetsu
+名月を取ってくれろと泣く子かな | めいげつ を とって くれろ と なく こ かな | meigetsu o totte kurero to naku ko kana

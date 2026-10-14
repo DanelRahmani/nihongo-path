@@ -153,6 +153,35 @@ html[data-size="l"] main {
 [data-furigana="new"] .dictionary-reading {
   display: inline;
 }
+/* The reading view (app/read): kanji always, furigana only while "Show readings" is ticked. */
+:root body .reading-view .w ruby {
+  display: ruby;
+}
+/* Specific enough to win over the per-kanji furigana rules of the "new" mode (lib/display.ts). */
+:root body .reading-view .w .yomi,
+:root body .reading-view .ws,
+:root body .reading-view .w rt {
+  display: none;
+}
+:root body .reading-view:has(.show-readings:checked) .w rt {
+  display: revert;
+}
+/* The toggle sticks under the header; main's zoom scales its offset, so undo it. */
+.reading-toggle {
+  top: 4rem;
+}
+html[data-size="s"] .reading-toggle {
+  top: calc(4rem / 0.9375);
+}
+html[data-size="l"] .reading-toggle {
+  top: calc(4rem / 1.125);
+}
+/* Without :has() the toggle can't work, so it isn't offered. */
+@supports not selector(:has(*)) {
+  .reading-toggle {
+    display: none;
+  }
+}
 
 body {
   background: var(--paper);

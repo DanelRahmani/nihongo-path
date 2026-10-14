@@ -332,4 +332,12 @@ export const NOUNS: Word[] = [
   noun("[百|ひゃく]", "hundred", "numbers"),
   noun("[一人|ひとり]", "one person; alone", "numbers"),
   noun("[二人|ふたり]", "two people", "numbers"),
+  // The reading view (content/reading.ts)
+  noun("[本日|ほんじつ]", "today (formal: signs and announcements)", "time"),
+  noun("[今朝|けさ]", "this morning", "time"),
+  noun("[午後|ごご]", "afternoon; p.m.", "time"),
+  noun("[店長|てんちょう]", "shop or restaurant manager", "shopping"),
+  noun("[休業|きゅうぎょう]", "closed (for business)", "shopping"),
+  noun("アイス", "iced (drink); ice cream", "food"),
+  noun("[初雪|はつゆき]", "first snow of the season", "nature"),
 ];

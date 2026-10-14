@@ -3,8 +3,9 @@ import { NAMES, WORDS } from "@/content/words";
 import { NON_LESSON_WORDS } from "@/content/words/expansion";
 import type { DictionaryData } from "@/lib/lookup";
 import { tableReadings } from "@/lib/joyo";
+import { wordLessonLinks } from "@/lib/word-lessons";
 
-/** Static JSON, requested by the word inspector only after a learner opens it. The 常用 readings are added here, so joyo.json stays out of client code. */
+/** Static JSON, requested by the word inspector only after a learner opens it. The 常用 readings and the lessons each word is used in are added here, so joyo.json and the lessons stay out of client code. */
 export const dynamic = "force-static";
 
 export function GET() {
@@ -14,6 +15,7 @@ export function GET() {
     extra: NON_LESSON_WORDS,
     names: NAMES,
     kanji: KANJI.map((k) => ({ ...k, ...(tableReadings(k.char) ?? { on: [], kun: [], special: [] }) })),
+    lessons: wordLessonLinks(),
   };
   return Response.json(data);
 }

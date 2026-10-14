@@ -1,15 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
-import { formLabel, kanjiOf, kunLabel, lookupWord, type KanjiInfo, type WordLookup } from "@/lib/lookup";
+import { useEffect, useId, useRef, useState } from "react";
+import { formLabel, kanjiOf, kunLabel, lessonsOf, lookupWord, type KanjiInfo, type WordLookup } from "@/lib/lookup";
 import { loadDictionary } from "@/lib/load-dictionary";
 import { plainOf, readingOf } from "@/lib/markup";
+import { LangText } from "@/components/LangText";
+import { usePathname } from "next/navigation";
 
 type Shown =
   | { state: "loading" }
   | { state: "error" }
-  | { state: "done"; lookup: WordLookup | null; kanji: KanjiInfo[] };
+  | { state: "done"; lookup: WordLookup | null; kanji: KanjiInfo[]; lessons: { href: string; title: string }[] };
 
 /**
  * One Japanese line as a toolbar of words (Jp.tsx renders each word with role="button"). The line is one Tab
@@ -53,7 +55,7 @@ export function InspectorLine({ children }: { children: React.ReactNode }) {
       const data = await loadDictionary();
       if (id !== request.current) return; // closed, or another word chosen, while loading
       const lookup = lookupWord(jp, data);
-      setShown({ state: "done", lookup, kanji: lookup?.kanji ?? kanjiOf(jp, data) });
+      setShown({ state: "done", lookup, kanji: lookup?.kanji ?? kanjiOf(jp, data), lessons: lookup?.kind === "word" ? lessonsOf(lookup.word, data) : [] });
       setAnnounce(lookup?.kind === "word" ? `${plainOf(lookup.word.jp, false)}: ${lookup.word.meaning}` : "");
     } catch {
       if (id === request.current) setShown({ state: "error" });
@@ -127,7 +129,7 @@ export function InspectorLine({ children }: { children: React.ReactNode }) {
         <span className="inspector-popover rise fixed inset-x-4 bottom-4 z-50 mx-auto block max-w-sm rounded-panel border border-line-strong bg-surface p-4 text-left font-sans text-sm shadow-lift">
           {shown.state === "loading" && "Looking up…"}
           {shown.state === "error" && "The dictionary could not be loaded. Try again."}
-          {shown.state === "done" && <InspectorCard lookup={shown.lookup} kanji={shown.kanji} onClose={() => close(true)} />}
+          {shown.state === "done" && <InspectorCard lookup={shown.lookup} kanji={shown.kanji} lessons={shown.lessons} onClose={() => close(true)} />}
         </span>
       )}
     </span>
@@ -141,7 +143,13 @@ const KIND_TEXT = {
   fragment: "Part of a word, shown on its own.",
 } as const;
 
-function InspectorCard({ lookup, kanji, onClose }: { lookup: WordLookup | null; kanji: KanjiInfo[]; onClose: () => void }) {
+function InspectorCard({ lookup, kanji, lessons, onClose }: { lookup: WordLookup | null; kanji: KanjiInfo[]; lessons: { href: string; title: string }[]; onClose: () => void }) {
+  const headingId = useId();
+  // On a lesson page, that lesson is left out and the list starts with the lessons after it: the next steps.
+  const pathname = usePathname();
+  const at = lessons.findIndex((l) => l.href === pathname);
+  const here = at >= 0;
+  const shownLessons = here ? [...lessons.slice(at + 1), ...lessons.slice(0, at)] : lessons;
   const word = lookup?.kind === "word" ? lookup.word : undefined;
   const label = lookup?.kind === "word" ? formLabel(lookup.form) : undefined;
   return (
@@ -200,6 +208,30 @@ function InspectorCard({ lookup, kanji, onClose }: { lookup: WordLookup | null; 
           </span>
         </span>
       )}
+      {shownLessons.length > 0 && (
+        <span className="mt-3 block border-t border-line pt-3">
+          <span id={`${headingId}-lessons`} className="mb-2 block text-xs font-medium tracking-wider text-ink-2 uppercase">
+            {here ? "In other lessons" : "In the lessons"}
+          </span>
+          <span role="list" aria-labelledby={`${headingId}-lessons`} className="flex flex-col gap-1">
+            {shownLessons.slice(0, CARD_LESSONS).map((l) => (
+              <span role="listitem" key={l.href} className="block">
+                <Link href={l.href} className="block rounded-lg px-2.5 py-1 text-accent hover:bg-accent-soft">
+                  <LangText text={l.title} />
+                </Link>
+              </span>
+            ))}
+            {shownLessons.length > CARD_LESSONS && (
+              <span role="listitem" className="block px-2.5 text-ink-2">
+                Used in {shownLessons.length - CARD_LESSONS} more {shownLessons.length - CARD_LESSONS === 1 ? "lesson" : "lessons"}
+              </span>
+            )}
+          </span>
+        </span>
+      )}
     </span>
   );
 }
+
+/** The card is small: it links the first lessons that use the word, in path order (after the one open), and counts the rest. */
+const CARD_LESSONS = 4;

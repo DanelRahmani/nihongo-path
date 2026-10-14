@@ -17,7 +17,8 @@ const NOT_ASKED = new Set(["おく", "[結構|けっこう]"]);
 export function trainerWords(): TrainerWord[] {
   const used = wordLessons();
   return WORDS.flatMap((w): TrainerWord[] => {
-    const lessons = used.get(w.jp);
+    const found = used.get(w.jp);
+    const lessons = found && [...found];
     const meaning = plainOf(w.meaning, false);
     if (!lessons || FIXED_FORM.has(w.jp) || NOT_ASKED.has(w.jp)) return [];
     if (w.pos === "verb" && w.verb) return [{ kind: "verb", jp: w.jp, meaning, cls: w.verb, lessons }];

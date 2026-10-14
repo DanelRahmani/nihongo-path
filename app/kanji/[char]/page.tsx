@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { Jp } from "@/components/Jp";
+import { Jp, Rich } from "@/components/Jp";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { panelClass } from "@/components/ui/Panel";
 import { KANJI } from "@/content/kanji";
+import { ALL_LESSONS } from "@/content/units";
 import { tableReadings } from "@/lib/joyo";
 import { kunLabel } from "@/lib/lookup";
 import { readingOf } from "@/lib/markup";
+import { kanjiLessons } from "@/lib/word-lessons";
 
 const BY_CHAR = new Map(KANJI.map((kanji) => [kanji.char, kanji]));
 
@@ -51,6 +53,7 @@ export default async function KanjiPage({ params }: PageProps<"/kanji/[char]">) 
     { name: "On", hint: "from Chinese, in katakana", readings: table.on.map((r) => ({ text: r, special: table.special.includes(r) })) },
     { name: "Kun", hint: "Japanese, in hiragana; okurigana in brackets", readings: table.kun.map((r) => ({ text: kunLabel(r), special: table.special.includes(r.replace(".", "")) })) },
   ].filter((g) => g.readings.length);
+  const lessons = kanjiLessons(char).map((key) => ALL_LESSONS.find((l) => l.key === key)!);
   const anySpecial = groups.some((g) => g.readings.some((r) => r.special));
   return (
     <article className="mx-auto max-w-2xl px-4 pt-8 pb-24 sm:px-6 sm:pt-12">
@@ -101,6 +104,27 @@ export default async function KanjiPage({ params }: PageProps<"/kanji/[char]">) 
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="mt-12" aria-labelledby="lessons-heading">
+        <Eyebrow as="h2" id="lessons-heading">In the lessons</Eyebrow>
+        {lessons.length > 0 ? (
+          <ul className={panelClass("surface", "mt-4 divide-y divide-line")}>
+            {lessons.map((l) => (
+              <li key={l.key}>
+                <Link href={l.href} className="flex items-baseline gap-3 px-5 py-3.5 hover:text-accent sm:px-6">
+                  <span className="w-8 shrink-0 text-sm text-ink-2 tabular-nums">
+                    <span className="sr-only">Lesson </span>
+                    {l.number}
+                  </span>
+                  <Rich text={l.lesson.title} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="mt-4 text-ink-2">No lesson sentence uses this kanji yet.</p>
+        )}
       </section>
 
       <p className="mt-12 text-xs leading-relaxed text-ink-2">

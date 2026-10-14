@@ -262,9 +262,9 @@ describe("My words store", () => {
 });
 
 describe("client code", () => {
-  it("never imports the 常用 table", () => {
+  it("never imports the 常用 table or the lessons", () => {
     for (const file of ["lib/dictionary.ts", "lib/load-dictionary.ts", "components/dictionary/DictionaryBrowser.tsx"]) {
-      expect(readFileSync(file, "utf8"), file).not.toMatch(/from "@\/(lib\/joyo|content\/data\/joyo)/);
+      expect(readFileSync(file, "utf8"), file).not.toMatch(/from "@\/(lib\/joyo|content\/data\/joyo|lib\/word-lessons|content\/units)/);
     }
   });
 });

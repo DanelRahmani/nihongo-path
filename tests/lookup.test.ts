@@ -78,10 +78,10 @@ describe("lookupWord", () => {
 });
 
 describe("client code", () => {
-  it("never imports the 常用 table", () => {
+  it("never imports the 常用 table or the lessons", () => {
     // InspectorLine is a client component: it and what it imports must not pull in joyo.json (135 KB).
-    for (const file of ["components/InspectorLine.tsx", "lib/load-dictionary.ts", "lib/lookup.ts", "lib/words.ts", "lib/conjugate.ts", "lib/markup.ts"]) {
-      expect(readFileSync(file, "utf8"), file).not.toMatch(/from "@\/(lib\/joyo|content\/data\/joyo)/);
+    for (const file of ["components/InspectorLine.tsx", "components/LangText.tsx", "lib/load-dictionary.ts", "lib/lookup.ts", "lib/words.ts", "lib/conjugate.ts", "lib/markup.ts"]) {
+      expect(readFileSync(file, "utf8"), file).not.toMatch(/from "@\/(lib\/joyo|content\/data\/joyo|lib\/word-lessons|content\/units)/);
     }
   });
 });

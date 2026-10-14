@@ -112,7 +112,7 @@ export function vocabCards(path: string[]): VocabCard[] {
       same.also.push(w.jp);
       continue;
     }
-    const lessons = used.get(w.jp)!;
+    const lessons = [...used.get(w.jp)!];
     const meaning = englishOnly(w.meaning);
     if (!meaning) continue;
     cards.push({

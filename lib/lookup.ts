@@ -25,6 +25,20 @@ export interface DictionaryData {
   extra: Word[];
   names: Jp[];
   kanji: KanjiInfo[];
+  /**
+   * The lessons whose lines use each lesson word, keyed by entry id (`${jp}#${pos}`), as indices into `list`
+   * (lib/word-lessons.ts packs it): the word card's "In the lessons".
+   */
+  lessons?: { list: [key: string, title: string][]; words: Record<string, number[]> };
+}
+
+/** The lessons that use a dictionary entry, as links, in path order; none for a word outside the lessons. */
+export function lessonsOf(word: Word, data: DictionaryData): { href: string; title: string }[] {
+  const ids = data.lessons?.words[`${word.jp}#${word.pos}`] ?? [];
+  return ids.flatMap((i) => {
+    const lesson = data.lessons?.list[i];
+    return lesson ? [{ href: `/learn/${lesson[0]}`, title: lesson[1] }] : [];
+  });
 }
 
 export type WordLookup =

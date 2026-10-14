@@ -7,8 +7,8 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **E3** (conjugation trainer). Then E4–E9 (practice), G and H.
-  - A draft exists, uncommitted when E2 was committed: `lib/conjugation-trainer.ts`, `lib/conjugation-words.ts`, `components/conjugation/ConjugationTrainer.tsx`, `app/conjugation/page.tsx`, `tests/conjugation-trainer.test.ts`. Still to do: nav highlight and links (kana drill page, search pages), the Today card's `LAZY_DECKS` (add `CONJUGATION_DECK`), the browser check, the review, CLAUDE.md.
+- **E4** (vocabulary deck). Then E5–E9 (practice), G and H.
+  - A draft exists (uncommitted when E3 was committed): `lib/vocab-deck.ts`, `lib/vocab-cards.ts`, `components/vocab/VocabDrill.tsx`, `app/vocabulary/page.tsx`, `tests/vocab-deck.test.ts`, a shared `components/drill/TypedDrill.tsx` (KanjiDrill rebuilt on it), and an `isGroupOpen` hook in `lib/srs.ts`. To do: open a card when any lesson using its word is done (as E3 does), wiring (nav, links, search, Today card), the browser check, the review, CLAUDE.md.
   - E2's kanji set is the interim lesson set; when Waller's lists arrive, build `kanji-n5`/`kanji-n4` decks with `kanjiDeck(cards, id)` (learned kanji count across every deck whose id starts with "kanji"). Keep a deck's same-word siblings in different groups, and say on the answer side which kanji a card is for (as now).
   - E7 asks items through `askItem(deckId, cardId)`, which knows only the kana decks. Kanji, quiz and conjugation items need their data on the review page: pass it as props, as the trainer pages do, or add lazy deck loaders. Count what resolves with `resolvableItems`. Quiz items (`QUIZ_DECK`) need a quiz index; consider a quiz pseudo-deck adapting `checkQuestion` (its field is `answer`, not `canonical`).
   - E4's "cards join when the lesson is done" can't be expressed by box unlocking. Add an optional `isGroupOpen` to `SrsDeck` then.
@@ -223,6 +223,21 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Dictionary content: 町 is "town (smaller than a city)", 街 "streets, downtown", 測る "to measure (length, temperature)", so their cards can be told apart.
   - Also: both drills now move focus to "Next card" after a miss (Enter did nothing before), and announce the answer to screen readers; `Button` takes a ref; `formatWait` moved to `lib/srs.ts`.
 
+- **E3 Conjugation trainer (2026-10-14):** `/conjugation`, linked from the kana drill page and search; the Drill tab is highlighted there.
+  - One verb or adjective and a form name; the learner types the form with a Japanese keyboard, in kanji or kana. Questions are random among the open ones, with notebook misses coming back one pick in four.
+  - A form opens with the lesson that teaches it (15 verb forms, 9 adjective forms, each linked to its lesson). A word opens with any lesson whose examples, pairs or dialogue use it. `lib/word-lessons.ts` works this out at build time through `lib/words.ts`, skipping the kana lessons and words inside other words (お願い doesn't teach 願う).
+  - Not asked:
+    - おく (an auxiliary), 結構 (only in 結構です) and ござる;
+    - the will-based forms of 降る, 晴れる, すく and 開く (降りたい would be another verb's spelling, 開ける another verb);
+    - 知ります and "let's know", since the lessons teach 知っています;
+    - forms the engine refuses.
+  - The checker accepts the engine's form and its variants with the quiz rules, plus 出来 and 良 as a keyboard writes them (now folded for every quiz answer too). Notes name:
+    - another form of the word ("That's the casual past (た)"; 食べられる is "the potential (can) or the passive");
+    - a ら-less potential (counted, named as casual);
+    - a casual form made polite with です;
+    - romaji.
+  - Built on the drills' patterns: rendered after mounting, the answer announced on a miss, an always-mounted status line, a way back from "Practise every form anyway".
+
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
   - Q1: four furigana modes, kana-only by default.
@@ -260,7 +275,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 664 in 26 files.
+- Tests: 683 in 27 files.
+- Conjugation trainer: 93 words (60 verbs), 1,100 or so questions with every lesson done.
 - Decks: 6 kana decks (208 cards) and the kanji deck (404 cards in 41 groups; 49 share a word). Quiz questions in the notebook: 250 possible ids, all unique.
 - Search index: 1,173 items (6 pages, 62 lessons, 61 grammar topics, 404 kanji, 640 words).
 - Dictionary: 547 lesson words (75 verbs), 93 extra kanji-example words, 14 names; 404 kanji. The dictionary page lists 640 entries.
@@ -488,6 +504,14 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Should-fix applied: 本 asked the counter meaning; the date's kanji (令和, 火) missing from the rules; kanji notebook items not counted; fewer repeated words and the card's kanji named on the answer side; 町/街/測る meanings; digit and variant-spelling notes; the head script tied to the schema version and to readable cards; `FuriganaRules` reads the store itself and skips unchanged writes; screen-reader labels with the reading; the answer side's comment.
   - Polish applied: comment examples; full-width romaji; the dictionary's doubled reading in "new" mode; prompt size on phones; when the next card is due; a way back from practice; "the next group"; an always-mounted status line; `lang` only on Japanese input; the Today card's comments and a kanji link that doesn't shift the card; smaller card data.
   - Not applied: the head script and kanji list ship in every page's HTML and RSC payload (about 3 KB); the rules (≈410) exist outside "new" mode too. Both are small; H1 can trim them.
+
+- E3 in the checks: 683 tests, typecheck, lint, build (`/conjugation` static; the engine and quiz checker are in its chunk only).
+- E3 in the browser (Playwright's Chromium) at 375 px, light and dark: nothing open without progress, with the "every form" escape; with only the ます lesson done, 20 questions open; a romaji answer gets its note; Enter after a miss moves on, and the focused Next button is described by the answer; misses land in the notebook; no horizontal scroll; console clean.
+- E3 review: a fresh Opus 5.5 reviewer, who checked every form→lesson link against the lessons (all right). Applied:
+  - Errors fixed: a wrong answer crashed the trainer for ある, できる and 分かる (refused forms are skipped, and `checkAnswer` guards an empty list); a learner who skipped ahead got nothing (a word opens with any lesson that uses it); wrong first lessons (すく from a kana lesson, 願う from お願い, おく, 結構); nonsense or misleading forms (降る, 晴れる, すく, 開く, 知る); unnamed adjective plain forms.
+  - Should-fix applied: 出来る and 良かった accepted; a polite answer to a casual prompt named; the answer announced; the live region and mount logic as in the drills; misses come back; the て labels no longer give the answer; the shared word-lesson module.
+  - Polish applied: plurals; `lang` on the typed text; the quiz checker's romaji note kept; a way back from every form; meanings with Japanese get `lang="ja"`; the な-adjective casual form asked.
+  - Not applied: rebuilding the trainer on the shared typed drill (it isn't scheduled, so the drill's deck model doesn't fit); naming the lessons' own ✗ traps (きれくない, 高いでした); E7 resolving conjugation ids needs the trainer words on the review page (under Next).
 
 ### Waiting on the owner
 - E2's kanji set: the cards use the 404 lesson kanji until Waller's N5/N4 lists can be downloaded and their licence confirmed. Say if you'd rather keep the lesson set, use another list, or add N5/N4 on top. Also unverified: the order in which real Japanese keyboards (iOS, Gboard, macOS, MS-IME) offer digits and variant spellings (5月, 子ども), which the checker names but rejects.

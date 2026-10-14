@@ -25,6 +25,9 @@ const KANA_WORDS: [string, string][] = [
   ["林檎", "りんご"],
   ["蜘蛛", "くも"],
   ["下さい", "ください"],
+  // できる and いい: a keyboard offers 出来る and 良い (良かった, 良くない).
+  ["出来", "でき"],
+  ["良", "よ"],
   // Set phrases (culture/set-phrases), written in kana by the lessons.
   ["行ってきます", "いってきます"],
   ["行ってらっしゃい", "いってらっしゃい"],
@@ -60,6 +63,7 @@ export function acceptedForms(answer: string): string[] {
 
 export function checkAnswer(answers: string[], input: string): QuizCheck {
   const typed = normalizeAnswer(input);
+  if (!answers.length) return { correct: false, answer: "" };
   for (const a of answers) {
     if (acceptedForms(a).includes(typed)) return { correct: true, answer: typed };
   }

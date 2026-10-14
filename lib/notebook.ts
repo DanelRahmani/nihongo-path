@@ -6,6 +6,9 @@
 /** The notebook's deck name for lesson quiz questions, which aren't a scheduled deck. */
 export const QUIZ_DECK = "quiz";
 
+/** The notebook's deck name for the conjugation trainer's questions (card id: `${word.jp}#${form}`). */
+export const CONJUGATION_DECK = "conjugation";
+
 /** Right answers in a row that take an item out of the notebook. */
 export const LEAVE_AFTER = 2;
 

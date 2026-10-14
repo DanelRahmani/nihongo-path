@@ -17,9 +17,13 @@ export default function DrillPage() {
         ones.
       </p>
       <p className="mt-3 text-sm text-ink-2">
-        Ready for kanji? The{" "}
+        Ready for more? The{" "}
         <Link href="/kanji/drill" className="text-accent hover:underline">
           kanji cards
+        </Link>{" "}
+        and the{" "}
+        <Link href="/conjugation" className="text-accent hover:underline">
+          conjugation trainer
         </Link>{" "}
         are answered with a Japanese keyboard.
       </p>

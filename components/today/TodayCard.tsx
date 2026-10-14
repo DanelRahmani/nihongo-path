@@ -10,7 +10,7 @@ import { askItem, KANA_DECKS } from "@/lib/decks";
 import { whenIdle } from "@/lib/idle";
 import { KANJI_DECK_ID } from "@/lib/kanji-deck";
 import { plainOf } from "@/lib/markup";
-import { QUIZ_DECK, resolvableItems } from "@/lib/notebook";
+import { CONJUGATION_DECK, QUIZ_DECK, resolvableItems } from "@/lib/notebook";
 import { deckState, deckStats } from "@/lib/srs";
 import { useStore } from "@/lib/storage";
 import { activityStore, notebookStore, srsStore } from "@/lib/stores";
@@ -18,7 +18,7 @@ import { dayKey, englishDate, GOALS, type Goal, japaneseDate, setGoal, streak, t
 import type { TodayWord } from "@/lib/today-words";
 
 /** Notebook decks whose cards load only on their own page. */
-const LAZY_DECKS = new Set([QUIZ_DECK, KANJI_DECK_ID]);
+const LAZY_DECKS = new Set([QUIZ_DECK, KANJI_DECK_ID, CONJUGATION_DECK]);
 
 /**
  * The current minute, so due cards and midnight show up while the page is open, and at once when a sleeping tab
@@ -114,8 +114,8 @@ export function TodayCard() {
   const started = KANA_DECKS.some((d) => Object.keys(deckState(srs, d.id).cards).length > 0);
   // Kanji cards due, from the schedule alone: the cards themselves load only on their page.
   const kanjiDue = Object.values(deckState(srs, KANJI_DECK_ID).cards).filter((c) => c.due <= now.getTime()).length;
-  // Quiz and kanji items can't be checked here (their data isn't on this page), so they count as they are; a kana
-  // card a later build removed doesn't.
+  // Quiz, kanji and conjugation items can't be checked here (their data isn't on this page), so they count as
+  // they are; a kana card a later build removed doesn't.
   const mistakes = resolvableItems(notebook, (i) => LAZY_DECKS.has(i.deck) || askItem(i.deck, i.card) !== null).length;
   const word = words?.length ? words[wordOfTheDay(today, words.length)] : null;
   const date = japaneseDate(now);

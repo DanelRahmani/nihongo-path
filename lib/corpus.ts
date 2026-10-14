@@ -1,3 +1,5 @@
+import { GRAMMAR } from "@/content/grammar";
+import { READING } from "@/content/reading";
 import type { Block, Lesson } from "@/content/types";
 import { KINDS } from "@/content/types";
 import { ALL_LESSONS, UNITS } from "@/content/units";
@@ -17,6 +19,11 @@ export interface Field {
   en?: string;
   /** A label (lesson mark, unit or kind name): shown in Japanese but never with romaji. */
   label?: true;
+  /**
+   * A quoted text (the reading view's haiku): it keeps its edition's kanji, so the 常用, kanji-data and
+   * dictionary checks skip it (content/STYLE.md §5).
+   */
+  quoted?: true;
 }
 
 /** Every piece of text in a lesson, in reading order. */
@@ -92,7 +99,35 @@ export function corpusFields(): Field[] {
     ...UNITS.map((u): Field => ({ lesson: "units", where: u.slug, text: u.titleJp, jp: true, en: u.title, label: true })),
     ...KINDS.map((k): Field => ({ lesson: "kinds", where: k.kind, text: k.jp, jp: true, en: k.label, label: true })),
     ...ALL_LESSONS.flatMap((l) => lessonFields(l.lesson, l.key)),
+    ...grammarFields(),
+    ...readingFields(),
   ];
+}
+
+/** The reading view's texts (content/reading.ts): every line, and each menu price. */
+export function readingFields(): Field[] {
+  return READING.flatMap((text) =>
+    text.lines.flatMap((line, i): Field[] => {
+      const base = { lesson: `read/${text.slug}`, ...(text.kind === "haiku" ? { quoted: true as const } : {}) };
+      return [
+        { ...base, where: `line ${i + 1}`, text: line.jp, jp: true, en: line.en },
+        ...(line.price ? [{ ...base, where: `line ${i + 1} price`, text: line.price, jp: true }] : []),
+      ];
+    }),
+  );
+}
+
+/**
+ * The grammar overview's own prose: its patterns and meanings. Its examples are copies of lesson
+ * lines (tests/grammar.test.ts), so they are checked, and pinned in the snapshot, where they are taught.
+ */
+export function grammarFields(): Field[] {
+  return GRAMMAR.flatMap((g) =>
+    g.topics.flatMap((t): Field[] => [
+      { lesson: "grammar-overview", where: `${t.slug} pattern`, text: t.pattern, jp: false },
+      { lesson: "grammar-overview", where: `${t.slug} meaning`, text: t.meaning, jp: false },
+    ]),
+  );
 }
 
 /** The romaji the app shows for a Japanese line; labels show none. */

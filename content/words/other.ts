@@ -108,4 +108,6 @@ export const OTHER: Word[] = [
   w("suffix", "[中|じゅう]", "all through, all over", "time"),
   w("suffix", "[屋|や]", "shop (selling…): [本屋|ほんや]", "shopping"),
   w("suffix", "さ", "-ness (turns an adjective into a noun: [高|たか]さ)", "language"),
+  // The reading view (content/reading.ts)
+  w("interjection", "オッケー", "OK (casual)", "language"),
 ];

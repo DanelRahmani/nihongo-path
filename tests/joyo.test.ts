@@ -78,7 +78,8 @@ describe("joyoReadingOk", () => {
 });
 
 describe("the lessons (content/STYLE.md §5)", () => {
-  const FIELDS = corpusFields();
+  // Quoted texts keep their edition's kanji (STYLE.md §5).
+  const FIELDS = corpusFields().filter((f) => !f.quoted);
   // A quiz answer is joined when its prompt's blank follows a word: [先生|せんせい]＿ → [方|がた].
   const prompts = new Map(FIELDS.filter((f) => f.where.endsWith(" prompt")).map((f) => [`${f.lesson} ${f.where.replace(/ prompt$/, "")}`, f.text]));
   const blankAfterWord = (f: (typeof FIELDS)[number]) => {
@@ -104,7 +105,15 @@ describe("the lessons (content/STYLE.md §5)", () => {
   });
 
   it("read every kanji word with 常用 readings, a 付表 reading or a house exception", () => {
-    const bad = [...new Set(RUBY.filter((r) => !joyoReadingOk(r.base, r.reading, r.joined)).map((r) => `${r.base}|${r.reading}`))];
+    // A reading text's digits share a ruby group with their counter ([10時|じゅうじ]): the counter's kanji
+    // must end the reading, read as a joined 常用 reading.
+    const ok = (r: (typeof RUBY)[number]) => {
+      const digits = /^[0-9]+/.exec(r.base)?.[0];
+      if (!digits) return joyoReadingOk(r.base, r.reading, r.joined);
+      const kanji = r.base.slice(digits.length);
+      return [...r.reading].some((_, i) => i > 0 && joyoReadingOk(kanji, r.reading.slice(i), true));
+    };
+    const bad = [...new Set(RUBY.filter((r) => !ok(r)).map((r) => `${r.base}|${r.reading}`))];
     expect(bad).toEqual([]);
   });
 });

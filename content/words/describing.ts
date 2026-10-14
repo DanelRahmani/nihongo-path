@@ -71,4 +71,6 @@ export const DESCRIBING: Word[] = [
   w("adverb", "こう", "like this, this way", "language"),
   w("adverb", "そう", "like that, so", "language"),
   w("adverb", "ああ", "like that (something distant, or that you both know)", "language"),
+  // The reading view (content/reading.ts)
+  iAdj("うれしい", "happy, glad", "feelings"),
 ];

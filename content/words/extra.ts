@@ -42,7 +42,6 @@ export const EXTRA_WORDS: Word[] = [
   noun("[鈴|すず]", "small bell", "everyday"),
   w("adverb", "[直接|ちょくせつ]", "directly", "everyday"),
   noun("[後|あと]", "after, later", "time"),
-  noun("[午後|ごご]", "afternoon, p.m.", "time"),
   noun("[食堂|しょくどう]", "cafeteria, dining hall", "food"),
   verb("[払|はら]う", "godan", "to pay", "shopping"),
   noun("[誕生日|たんじょうび]", "birthday", "time"),

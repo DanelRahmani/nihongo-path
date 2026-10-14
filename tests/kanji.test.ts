@@ -13,7 +13,7 @@ const BY_CHAR = new Map(KANJI.map((k) => [k.char, k]));
 describe("the kanji data (content/kanji.ts)", () => {
   it("has every kanji the lessons and their words use, once", () => {
     const used = new Set<string>();
-    for (const f of corpusFields()) for (const c of plainOf(f.text, false)) if (HAN.test(c)) used.add(c);
+    for (const f of corpusFields()) if (!f.quoted) for (const c of plainOf(f.text, false)) if (HAN.test(c)) used.add(c);
     for (const jp of [...WORDS.map((w) => w.jp), ...NAMES]) for (const c of plainOf(jp, false)) if (HAN.test(c)) used.add(c);
     expect([...used].filter((c) => !BY_CHAR.has(c))).toEqual([]);
     expect(BY_CHAR.size).toBe(KANJI.length);

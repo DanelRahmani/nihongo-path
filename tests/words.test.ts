@@ -67,7 +67,7 @@ describe("the lesson dictionary (content/words)", () => {
   it("covers every word in the lessons", () => {
     const missing = new Set<string>();
     for (const f of corpusFields()) {
-      if (!f.jp || f.label) continue;
+      if (!f.jp || f.label || f.quoted) continue;
       // Sounds and endings on their own only in kana charts, conjugation tables and quiz answers.
       const fragments = /^(hiragana|katakana|verbs)\//.test(f.lesson) || f.where.includes("(table)") || f.where.includes(" answer ");
       for (const word of lineWords(f.text)) if (!resolveWord(word, IX, { fragments })) missing.add(`${word} (${f.lesson} ${f.where})`);

@@ -7,7 +7,10 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **F1** (grammar overview). Then F2–F4 (reading view, search, Today card), E1–E9 (practice), G and H.
+- **F3** (search). Then F4 (Today card), E1–E9 (practice), G and H.
+  - F3 can index `content/grammar.ts` topics by anchor (`/grammar#wa-topic`), the dictionary through `lib/dictionary.ts`, and lessons and kanji.
+  - Deck and card builders (E) must never import `content/reading.ts` or `lib/corpus.ts`; `tests/reading.test.ts` checks this.
+  - E2's "new kanji only" furigana rules must stay less specific than the reading view's (`:root body .reading-view …` in `app/globals.css`), or the reading view would show readings for unlearned kanji.
   - Keep `lib/joyo.ts` (and its 135 KB `content/data/joyo.json`) out of client code; `tests/lookup.test.ts` and `tests/dictionary.test.ts` check the client imports. The 常用 readings reach the client through `/dictionary-data.json`, loaded by `lib/load-dictionary.ts`.
   - F3's search can reuse `lib/dictionary.ts` (`buildEntries`, `search`) for its word results, and could open `/dictionary` with a query.
   - The N5/N4 kanji wait for Jonathan Waller's lists (see Waiting on the owner), and E2's trainer waits for them.
@@ -158,6 +161,20 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - `components/dictionary/DictionaryBrowser.tsx`: the page's HTML holds no words. The data is fetched when the browser is idle, or at once when the search box gets focus. Results are built in a transition, the query is deferred, and the list grows in a transition when its end nears the screen (IntersectionObserver) or through a "Show more" button. Each row is the word with forced furigana (inspectable), its meaning, part of speech and topic, and a ☆ toggle. The kana beside the word shows only when furigana is hidden.
   - `lib/load-dictionary.ts`: the shared fetch, moved out of InspectorLine.
   - Header: four nav links fit 375 px (tighter phone padding); under 375 px the wordmark hides and the dot stays as the home link.
+- **F1 Grammar overview (2026-10-14):** `/grammar`, linked from a new "Reference" section on the home page (with the dictionary).
+  - `content/grammar.ts`: 61 topics in five groups (how a sentence works, particles, nouns and adjectives, existence and questions, verb forms), from 37 lessons. Each has a pattern with English placeholders, a meaning, its lesson and one to three examples (96 in all), copied verbatim from the lesson's examples, pairs, dialogue or alt lines, with the lesson's English. Examples that differ only in register carry a Polite or Casual label.
+  - `tests/grammar.test.ts`: every example appears verbatim (Japanese and English) in its lesson; every particle, grammar and verb lesson has a topic; topics follow path order; examples are highlighted (two copied lines have no highlight in their lesson); register labels agree with `lib/register.ts`; no word space after a particle in the prose.
+  - `lib/corpus.ts` adds the patterns and meanings as prose fields, so the content, 常用, kanji and word-coverage tests check them. The examples aren't added again, so the corpus snapshot is unchanged.
+  - The page: a strip of group links, then one card per topic (pattern as its heading, meaning, inspectable examples, a link to the lesson). Each topic has an anchor.
+- **F2 Reading view (2026-10-14):** `/read`, linked from the home page's Reference section.
+  - `content/reading.ts`: original texts (a shop-door sign, a café menu with prices, a casual chat, a news headline and lead, a seven-line story) and four haiku (Bashō: 古池や, 閑かさや; Issa: 雀の子, 名月を), each with its poet and the edition to check it against. Translations are ours.
+  - Kanji show without furigana by default, whatever the global furigana mode. A "Show readings over the kanji" checkbox shows them with CSS alone (`:has()`); it sticks under the header and isn't offered where `:has()` is missing. Each line has a "Meaning" disclosure with its romaji and English. Words are inspectable, except in the haiku.
+  - Styling is CSS only: a double-bordered sign, a menu with dotted leaders, chat bubbles (an ordered list, with "You:" and the friend's name for screen readers), a ruled headline, a story card and a tinted haiku panel.
+  - Reading texts write numbers in digits with one ruby group over the number and counter (`[10時|じゅうじ]`, `[400円|よんひゃくえん]`), so the furigana and romaji give the spoken number; STYLE §8 says so, and `tests/joyo.test.ts` checks the counter's kanji against the end of the reading.
+  - Quoted texts: STYLE §5 now lets the haiku keep their edition's kanji (蛙, 蝉, 雀, 閑 しず). The corpus marks them `quoted`, and the 常用, kanji-data and dictionary tests skip them; the markup and content tests still cover them.
+  - Corpus: `readingFields()` adds every line and price, so the snapshot gained 48 lines (no existing line changed).
+  - Dictionary: 9 new lesson words for the texts (本日, 今朝, 店長, 休業, 初雪, アイス, うれしい, ぬれる, オッケー), and 午後 moved from the extra words.
+  - `tests/reading.test.ts`: only the page and the corpus import the texts, and only tests and scripts import the corpus (aliases, relative paths and dynamic imports); digits, not kanji numerals; every haiku names its poet and edition and is quoted; the chat stays casual, the story polite, signs and news polite or bare phrases.
 
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
@@ -192,9 +209,11 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 499 in 20 files.
-- Dictionary: 537 lesson words (74 verbs), 94 extra kanji-example words, 14 names; 404 kanji. The dictionary page lists 631 entries.
+- Tests: 513 in 22 files.
+- Dictionary: 547 lesson words (75 verbs), 93 extra kanji-example words, 14 names; 404 kanji. The dictionary page lists 640 entries.
 - Template: all 62 lessons converted.
+- Grammar overview: 61 topics from 37 lessons, 96 examples.
+- Reading view: 5 original texts (24 lines and 3 prices) and 4 haiku. Dictionary: 547 lesson words, 93 extra words.
 - Quiz questions: 250, of which 37 are typed in romaji and 3 ask for a name.
 
 ### How it was checked
@@ -363,6 +382,23 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
     - guarding CSV fields that start with = + - @: the data is the app's own, and a guard would change the values;
     - announcing the count only once typing settles: the query is already deferred;
     - こんにちは and です have no entry (a greeting written as a phrase, and a function word); G's expansion can add them.
+- F1 in the checks: 507 tests, typecheck, lint, build (`/grammar` static); the corpus snapshot is unchanged.
+- F1 in the browser (Playwright) at 375 px, light and dark: no horizontal scroll, the long noun-forms pattern wraps, the group strip scrolls, a group anchor lands on its section and Tab then reaches its first word with a visible ring; console clean.
+- F1 review: a fresh Opus 5.5 reviewer checked every topic against STYLE.md and its lesson. It found no wrong reading, kanji or example. Applied:
+  - Error fixed: word spaces after a particle in seven patterns (が[好|す]き, に[行|い]く, になる, で[一番|いちばん], がある, がいる). The content test only caught spaces between two longer words, so a grammar test now checks the overview's prose for a space after a particle.
+  - Should-fix applied: "in speech" for polite and casual; topic-comment now shows Topic は Subject が; contrast は as the lesson words it; question words without か in casual speech; counters with no particle; と and や join nouns; noun forms with their registers labelled; "every construction" narrowed to the particle, grammar and verb lessons; "because…so" reworded.
+  - Polish applied: new topics for casual questions without か, ませんか invitations and the bare て request; fuller patterns (くて and で, Noun の, への, the ない and volitional rules); an adjective example under modifiers-first; full stops; "Verb stem" throughout; へ "pronounced e"; the corpus comment; English placeholders no longer in the Japanese typeface; tests for highlights, register labels and prose spaces.
+  - Not applied:
+    - までに, quoting と, volitional + と思っている and question word + か (some-) have no topic: each lesson teaches them only in a callout, so there is no lesson line to copy as the example;
+    - the bare kanji in the 文法 heading and home card: marks and nav labels already show 辞書, 練習 and 道 this way;
+    - a nav link: the header is full at 375 px; the home page links it, and F3's search will index the topics;
+    - links from each lesson to its topics: left for F3, which builds the shared index.
+- F2 in the checks: 513 tests, typecheck, lint, build (`/read` static). The snapshot diff is 48 added lines, read line by line; no existing line changed.
+- F2 in the browser (Playwright) at 375 px, light and dark: furigana hidden in the default kana mode and shown when the box is ticked; the toggle sticks under the header; Meaning opens with romaji and English; chat bubbles sit left and right with the name above the friend's; no horizontal scroll; console clean.
+- F2 review: a fresh Opus 5.5 reviewer found no errors in readings, kanji, word spaces or registers, and checked the haiku texts, readings, attributions and that the translations are original. Applied:
+  - Should-fix: digits read aloud through one ruby group (10ji → juuji, 400en → yonhyakuen); the sign now reads 本日休業 and 10時から営業します; 紅茶 is "black tea"; 御馬 is "the honourable horse"; the haiku aren't inspectable (their words and most kanji have no entries); screen readers hear who sends each chat message; the import guard catches relative and dynamic imports and the route through the corpus; tests for digits and the registers of signs and news.
+  - Polish: アイス on the menu; story English ("It rained on Sunday", "It made me a little happy") and the second 私は dropped; glosses for 店長 and 初雪; reading-view CSS made more specific than E2's future furigana rules; the toggle's offset corrected for text size; the toggle hidden without `:has()`; each Meaning names its line for screen readers; the haiku figures named.
+  - Not applied: the more precise edition citations, since neither the reviewer nor I can check the books (below).
 
 ### Waiting on the owner
 - B4 sources to confirm. The reviewers recalled these differently:
@@ -401,6 +437,9 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - The exact title of the Tofugu loanword article cited by Katakana 4.
   - A source for particles-move's "what sits right before the verb carries the focus". The reviewer suggests IMABI's word-order page or Makino & Tsutsui.
 - B2 decision to confirm: 象は鼻が長い (topic-comment) is the one non-original example, a named exception in STYLE §2 credited to Mikami Akira (1960). Say if you'd rather replace it.
+- F2 haiku, to check against the editions (cited only as "Bashō haikushū (Iwanami Bunko)" and "Issa haikushū (Iwanami Bunko)"):
+  - each text as printed: 飛び込む / 飛込む / 飛こむ and 水の音 / 水のおと; 閑かさ / 閑さ, しみ入る / しみ入, 蝉 / 蟬; the repeat mark in そこのけそこのけ; 御馬 read おうま or おんま; 取って / とつて and 泣く子かな / 泣子哉. The app shows the common modern spelling with modern kana readings.
+  - the editors, years and pages (the reviewer recalls 中村俊定 (1970) and 丸山一彦 (1990), unconfirmed), and each poem's source collection (春の日 or 蛙合; おくのほそ道; おらが春 or 八番日記).
 - Deploys: on 2026-10-08 the Vercel connector couldn't see project nihongo-path (403 listing deployments, 404 for the project), so the live site's state is unconfirmed. Earlier notes say the project isn't linked to GitHub, which would mean pushing main doesn't deploy. Say if you want a deploy; it may need the Vercel connection re-authorised.
 - JLPT N5/N4 lists: Jonathan Waller's site (tanos.co.uk) was unreachable on 2026-10-07 and 2026-10-08. Its licence (reportedly CC BY) is to be confirmed before the download. D1 shipped the lesson kanji; the N5/N4 kanji and E2's trainer wait for this.
 - D1 to confirm:

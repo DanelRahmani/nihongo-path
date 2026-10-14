@@ -76,6 +76,7 @@ Where they leave a choice, follow modern everyday usage (newspapers, NHK, curren
   - 付表 words as units, also inside longer words (`[今日中|きょうじゅう]`, お`[母|かあ]`さん);
   - a short named list in `lib/joyo.ts` of sound changes the table leaves out (日本 にほん) and place names (大阪, 渋谷). Adding to it needs a reason, like the exception below.
 - **One exception:** 明日 read あした. The appendix lists only あす, but 明日 for あした is standard in everyday writing and in beginner textbooks. Any further exception is added here, with its reason, before it is used.
+- **Quoted texts keep their own kanji.** The reading view's haiku (`content/reading.ts`) are written as the edition named in their `source` prints them, with readings for every kanji, even where a kanji or reading is outside the table (蛙 かわず, 閑 しず). The corpus marks them `quoted`, and the 常用, kanji-data and dictionary tests skip them. Original reading texts follow every rule here.
 - **No rare kanji in beginner content.** If everyday writing puts a word in kana, so do we.
 - **Always in kana:**
   - formal nouns: こと, とき ("when…"), ところ (abstract), もの (abstract), わけ, はず, よう, ほか, とおり;
@@ -138,7 +139,7 @@ The romaji follows the word spaces, so they are written consistently:
 - **〜** is U+301C (wave dash), for "something goes here" (〜ます, 〜さん). Never U+FF5E ～ (tested) or ASCII ~.
 - **ー** (U+30FC) is the katakana long-vowel mark. Never 一 (the kanji for one), ‐, −, or － (tested).
 - **…**: a single … (U+2026) for trailing off in dialogue, as in chat and comics. This is a house choice; Japanese print typesetting uses a double …….
-- **Numbers:** in example sentences, kanji numerals with ruby (`[三人|さんにん]`, `[七時|しちじ]`). That is a teaching choice, because reading them is the point; everyday horizontal text writes 3人 and 7時, keeping kanji only in fixed words (一人, 一番, 一度). In reading texts (menus, signs, prices, times), half-width Arabic digits. Never full-width ０–９ (tested).
+- **Numbers:** in example sentences, kanji numerals with ruby (`[三人|さんにん]`, `[七時|しちじ]`). That is a teaching choice, because reading them is the point; everyday horizontal text writes 3人 and 7時, keeping kanji only in fixed words (一人, 一番, 一度). In reading texts (menus, signs, prices, times), half-width Arabic digits, with one ruby group over the number and its counter, so the furigana and romaji give the spoken number: `[10時|じゅうじ]`, `[400円|よんひゃくえん]`. Never full-width ０–９ (tested).
 - **Table cells that list forms** use English-style notation between Japanese items: ` · ` (U+00B7) or `, ` between alternatives, `→` for a change, and ASCII parentheses for an optional or alternative reading (`[七|なな] (しち)`). Lesson marks use ・ (U+30FB) between items.
 - No spaces in rendered Japanese: word spaces are markup only. Never the ideographic space U+3000 (tested). Never half-width katakana (tested).
 

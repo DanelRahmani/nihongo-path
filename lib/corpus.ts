@@ -1,3 +1,4 @@
+import { GRAMMAR } from "@/content/grammar";
 import type { Block, Lesson } from "@/content/types";
 import { KINDS } from "@/content/types";
 import { ALL_LESSONS, UNITS } from "@/content/units";
@@ -92,7 +93,21 @@ export function corpusFields(): Field[] {
     ...UNITS.map((u): Field => ({ lesson: "units", where: u.slug, text: u.titleJp, jp: true, en: u.title, label: true })),
     ...KINDS.map((k): Field => ({ lesson: "kinds", where: k.kind, text: k.jp, jp: true, en: k.label, label: true })),
     ...ALL_LESSONS.flatMap((l) => lessonFields(l.lesson, l.key)),
+    ...grammarFields(),
   ];
+}
+
+/**
+ * The grammar overview's own prose: its patterns and meanings. Its examples are copies of lesson
+ * lines (tests/grammar.test.ts), so they are checked, and pinned in the snapshot, where they are taught.
+ */
+export function grammarFields(): Field[] {
+  return GRAMMAR.flatMap((g) =>
+    g.topics.flatMap((t): Field[] => [
+      { lesson: "grammar-overview", where: `${t.slug} pattern`, text: t.pattern, jp: false },
+      { lesson: "grammar-overview", where: `${t.slug} meaning`, text: t.meaning, jp: false },
+    ]),
+  );
 }
 
 /** The romaji the app shows for a Japanese line; labels show none. */

@@ -7,7 +7,9 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **F1** (grammar overview). Then F2–F4 (reading view, search, Today card), E1–E9 (practice), G and H.
+- **F2** (reading view). Then F3–F4 (search, Today card), E1–E9 (practice), G and H.
+  - F2's haiku need a named edition the owner can verify; anything unverifiable goes to "Waiting on the owner".
+  - F3 can index `content/grammar.ts` topics by anchor (`/grammar#wa-topic`).
   - Keep `lib/joyo.ts` (and its 135 KB `content/data/joyo.json`) out of client code; `tests/lookup.test.ts` and `tests/dictionary.test.ts` check the client imports. The 常用 readings reach the client through `/dictionary-data.json`, loaded by `lib/load-dictionary.ts`.
   - F3's search can reuse `lib/dictionary.ts` (`buildEntries`, `search`) for its word results, and could open `/dictionary` with a query.
   - The N5/N4 kanji wait for Jonathan Waller's lists (see Waiting on the owner), and E2's trainer waits for them.
@@ -158,6 +160,11 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - `components/dictionary/DictionaryBrowser.tsx`: the page's HTML holds no words. The data is fetched when the browser is idle, or at once when the search box gets focus. Results are built in a transition, the query is deferred, and the list grows in a transition when its end nears the screen (IntersectionObserver) or through a "Show more" button. Each row is the word with forced furigana (inspectable), its meaning, part of speech and topic, and a ☆ toggle. The kana beside the word shows only when furigana is hidden.
   - `lib/load-dictionary.ts`: the shared fetch, moved out of InspectorLine.
   - Header: four nav links fit 375 px (tighter phone padding); under 375 px the wordmark hides and the dot stays as the home link.
+- **F1 Grammar overview (2026-10-14):** `/grammar`, linked from a new "Reference" section on the home page (with the dictionary).
+  - `content/grammar.ts`: 61 topics in five groups (how a sentence works, particles, nouns and adjectives, existence and questions, verb forms), from 37 lessons. Each has a pattern with English placeholders, a meaning, its lesson and one to three examples (96 in all), copied verbatim from the lesson's examples, pairs, dialogue or alt lines, with the lesson's English. Examples that differ only in register carry a Polite or Casual label.
+  - `tests/grammar.test.ts`: every example appears verbatim (Japanese and English) in its lesson; every particle, grammar and verb lesson has a topic; topics follow path order; examples are highlighted (two copied lines have no highlight in their lesson); register labels agree with `lib/register.ts`; no word space after a particle in the prose.
+  - `lib/corpus.ts` adds the patterns and meanings as prose fields, so the content, 常用, kanji and word-coverage tests check them. The examples aren't added again, so the corpus snapshot is unchanged.
+  - The page: a strip of group links, then one card per topic (pattern as its heading, meaning, inspectable examples, a link to the lesson). Each topic has an anchor.
 
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
@@ -192,9 +199,10 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 499 in 20 files.
+- Tests: 507 in 21 files.
 - Dictionary: 537 lesson words (74 verbs), 94 extra kanji-example words, 14 names; 404 kanji. The dictionary page lists 631 entries.
 - Template: all 62 lessons converted.
+- Grammar overview: 61 topics from 37 lessons, 96 examples.
 - Quiz questions: 250, of which 37 are typed in romaji and 3 ask for a name.
 
 ### How it was checked
@@ -363,6 +371,17 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
     - guarding CSV fields that start with = + - @: the data is the app's own, and a guard would change the values;
     - announcing the count only once typing settles: the query is already deferred;
     - こんにちは and です have no entry (a greeting written as a phrase, and a function word); G's expansion can add them.
+- F1 in the checks: 507 tests, typecheck, lint, build (`/grammar` static); the corpus snapshot is unchanged.
+- F1 in the browser (Playwright) at 375 px, light and dark: no horizontal scroll, the long noun-forms pattern wraps, the group strip scrolls, a group anchor lands on its section and Tab then reaches its first word with a visible ring; console clean.
+- F1 review: a fresh Opus 5.5 reviewer checked every topic against STYLE.md and its lesson. It found no wrong reading, kanji or example. Applied:
+  - Error fixed: word spaces after a particle in seven patterns (が[好|す]き, に[行|い]く, になる, で[一番|いちばん], がある, がいる). The content test only caught spaces between two longer words, so a grammar test now checks the overview's prose for a space after a particle.
+  - Should-fix applied: "in speech" for polite and casual; topic-comment now shows Topic は Subject が; contrast は as the lesson words it; question words without か in casual speech; counters with no particle; と and や join nouns; noun forms with their registers labelled; "every construction" narrowed to the particle, grammar and verb lessons; "because…so" reworded.
+  - Polish applied: new topics for casual questions without か, ませんか invitations and the bare て request; fuller patterns (くて and で, Noun の, への, the ない and volitional rules); an adjective example under modifiers-first; full stops; "Verb stem" throughout; へ "pronounced e"; the corpus comment; English placeholders no longer in the Japanese typeface; tests for highlights, register labels and prose spaces.
+  - Not applied:
+    - までに, quoting と, volitional + と思っている and question word + か (some-) have no topic: each lesson teaches them only in a callout, so there is no lesson line to copy as the example;
+    - the bare kanji in the 文法 heading and home card: marks and nav labels already show 辞書, 練習 and 道 this way;
+    - a nav link: the header is full at 375 px; the home page links it, and F3's search will index the topics;
+    - links from each lesson to its topics: left for F3, which builds the shared index.
 
 ### Waiting on the owner
 - B4 sources to confirm. The reviewers recalled these differently:

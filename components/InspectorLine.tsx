@@ -2,24 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { type DictionaryData, formLabel, kanjiOf, kunLabel, lookupWord, type KanjiInfo, type WordLookup } from "@/lib/lookup";
+import { formLabel, kanjiOf, kunLabel, lookupWord, type KanjiInfo, type WordLookup } from "@/lib/lookup";
+import { loadDictionary } from "@/lib/load-dictionary";
 import { plainOf, readingOf } from "@/lib/markup";
-
-let dataPromise: Promise<DictionaryData> | undefined;
-
-function loadData(): Promise<DictionaryData> {
-  dataPromise ??= fetch("/dictionary-data.json")
-    .then((response) => {
-      if (!response.ok) throw new Error("The dictionary data could not be loaded.");
-      return response.json() as Promise<DictionaryData>;
-    })
-    .catch((error: unknown) => {
-      // Forget the failure, so the next tap tries again.
-      dataPromise = undefined;
-      throw error;
-    });
-  return dataPromise;
-}
 
 type Shown =
   | { state: "loading" }
@@ -65,7 +50,7 @@ export function InspectorLine({ children }: { children: React.ReactNode }) {
     const id = ++request.current;
     setShown({ state: "loading" });
     try {
-      const data = await loadData();
+      const data = await loadDictionary();
       if (id !== request.current) return; // closed, or another word chosen, while loading
       const lookup = lookupWord(jp, data);
       setShown({ state: "done", lookup, kanji: lookup?.kanji ?? kanjiOf(jp, data) });

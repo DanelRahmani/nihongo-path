@@ -7,9 +7,9 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **D3** (dictionary page). Then F1–F4 (reading and reference), E1–E9 (practice), G and H.
-  - Keep `lib/joyo.ts` (and its 135 KB `content/data/joyo.json`) out of client code; `tests/lookup.test.ts` checks the inspector's imports. The 常用 readings reach the client through `/dictionary-data.json`, which D3 can reuse.
-  - D3 can reuse `lib/lookup.ts`'s index and `InspectorLine` on its result rows.
+- **F1** (grammar overview). Then F2–F4 (reading view, search, Today card), E1–E9 (practice), G and H.
+  - Keep `lib/joyo.ts` (and its 135 KB `content/data/joyo.json`) out of client code; `tests/lookup.test.ts` and `tests/dictionary.test.ts` check the client imports. The 常用 readings reach the client through `/dictionary-data.json`, loaded by `lib/load-dictionary.ts`.
+  - F3's search can reuse `lib/dictionary.ts` (`buildEntries`, `search`) for its word results, and could open `/dictionary` with a query.
   - The N5/N4 kanji wait for Jonathan Waller's lists (see Waiting on the owner), and E2's trainer waits for them.
   - Lessons written later still follow these rules:
     - Every typed answer needs all its correct alternatives listed. The checker ignores spaces and punctuation and folds a few keyboard kanji spellings (美味しい); nothing else. Digit forms (3本) are listed by hand where a number is typed.
@@ -147,6 +147,18 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - `/dictionary-data.json` is a `force-static` route (118 KB) fetched on the first tap; a failed fetch is retried on the next one.
   - `/kanji/[char]`: 404 static pages with the table's on and kun readings (okurigana in brackets, special readings dashed), stroke count, and example words shown in kanji in every furigana mode, each inspectable.
 
+- **D3 Dictionary page (2026-10-14):** `/dictionary`, linked from the nav as 辞書.
+  - `lib/dictionary.ts`, pure: entries from the dictionary data (lesson words, then the 94 extra words as "Expansion"), each with its written form, kana reading, romaji, kana row and match keys.
+    - Search by kanji or kana (katakana folded to hiragana; ー, おう and えい folded, so こうひい finds コーヒー), by romaji through `lib/romaji-input.ts` (si/shi, nn, kyō; long vowels shortened as a whole-word fallback, so kyo and sensee work), or by English (a whole gloss, a gloss word that starts with the query, then a word start anywhere; "to", "a" and "the" ignored; accents folded).
+    - Ranking: exact, then prefix, then inside; ties put lesson words first, then shorter readings.
+    - Filters: topic, source, starting kana row (voiced kana count with their row), and My words.
+    - CSV: RFC 4180 quoting, a UTF-8 byte order mark and CRLF. Columns: Japanese, reading, romaji, meaning, part of speech, topic, source.
+    - The growth reducer shows 40 results per batch and starts again at one batch for each new search.
+  - My words: store `np:my-words` v1, a list of entry ids (`written markup#pos`, since 本 is a noun and a counter), validated to unique strings and listed in `SCHEMAS` for H3. Ids that no longer match an entry are kept but not counted.
+  - `components/dictionary/DictionaryBrowser.tsx`: the page's HTML holds no words. The data is fetched when the browser is idle, or at once when the search box gets focus. Results are built in a transition, the query is deferred, and the list grows in a transition when its end nears the screen (IntersectionObserver) or through a "Show more" button. Each row is the word with forced furigana (inspectable), its meaning, part of speech and topic, and a ☆ toggle. The kana beside the word shows only when furigana is hidden.
+  - `lib/load-dictionary.ts`: the shared fetch, moved out of InspectorLine.
+  - Header: four nav links fit 375 px (tighter phone padding); under 375 px the wordmark hides and the dot stays as the home link.
+
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
   - Q1: four furigana modes, kana-only by default.
@@ -180,8 +192,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 455 in 19 files.
-- Dictionary: 537 lesson words (74 verbs), 94 extra kanji-example words, 14 names; 404 kanji.
+- Tests: 499 in 20 files.
+- Dictionary: 537 lesson words (74 verbs), 94 extra kanji-example words, 14 names; 404 kanji. The dictionary page lists 631 entries.
 - Template: all 62 lessons converted.
 - Quiz questions: 250, of which 37 are typed in romaji and 3 ask for a name.
 
@@ -334,6 +346,23 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Should-fix applied: Escape works from inside the card and returns focus; a late fetch can't reopen a closed card; outside taps close it; special readings are marked, not dropped; the route ends in .json; the live region is persistent and announces only the word; tests for the extra-word order, special readings and the client import guard.
   - Polish applied: malformed % in a kanji URL, empty readings, kanji on a missed word, hover only on pointer devices, and the card no longer pushes the layout.
   - Not applied: a component test for InspectorLine (there's no DOM test setup; the browser check above covers it), Japanese-only table cells each being a Tab stop (one per cell, as the plan asks per line), and stale state when a persistent instance's children change (no current caller does).
+
+- D3 in the checks: 499 tests, typecheck, lint, build (`/dictionary` static, no words in its HTML).
+- D3 in the browser at 375 px, light and dark (the browser pane wasn't drawing frames, so the scroll and screenshot checks ran in the Playwright plugin's browser):
+  - kyo finds 今日, 京都, 東京 and 勉強; book finds 本 first; こーひー finds コーヒー;
+  - ☆ writes a v1 envelope; My words lists the saved words; the CSV starts with EF BB BF and has CRLF rows;
+  - the か row filter gives 117 words; "Show more" and scrolling both grow the list 40 at a time;
+  - Tab reaches the source radios, the row radios (arrow keys move), the stars and the words; Enter opens the word card and Escape returns focus to the word; unstarring in My words moves focus to the next star;
+  - focus rings visible, including on the filled row chip; the header fits at 375 and 360 px; no horizontal scroll; console clean apart from Fast Refresh logs.
+- D3 review: a fresh Opus 5.5 reviewer probed about 90 learner queries. Applied:
+  - Errors fixed: English queries starting with "to", "a" or "the" ranked wrong or found nothing; glosses kept bracket gaps and example tails, and 15 entries (counters, お/ご, くん…) had none.
+  - Should-fix applied: English matches only at word starts ("eat" no longer finds meat, weather, heat); one RegExp per query, not per entry; My words counts only ids that still match an entry; focus kept after unstarring in My words; star labels name the word, reading and part of speech; a failed load is announced; the row chips are a radio group; a real test of the lesson-first tie-break; the byte order mark written as a code point.
+  - Polish applied: accents folded in English; ー and long kana folded; the doubled reading beside the ruby hidden; class order; the eyebrow text.
+  - Not applied:
+    - pruning saved ids that no longer match: a later build could bring the word back, and pruning can't be undone;
+    - guarding CSV fields that start with = + - @: the data is the app's own, and a guard would change the values;
+    - announcing the count only once typing settles: the query is already deferred;
+    - こんにちは and です have no entry (a greeting written as a phrase, and a function word); G's expansion can add them.
 
 ### Waiting on the owner
 - B4 sources to confirm. The reviewers recalled these differently:

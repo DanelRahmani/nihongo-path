@@ -43,10 +43,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="flex min-h-full flex-col">
         <header className="sticky top-0 z-20 border-b border-line/80 bg-paper/80 backdrop-blur-xl backdrop-saturate-150">
-          <div className="mx-auto flex h-16 max-w-5xl items-center gap-2 px-4 sm:gap-4 sm:px-6">
-            <Link href="/" className="group flex shrink-0 items-center gap-2.5 sm:gap-3" aria-label="Nihongo Path home">
+          <div className="mx-auto flex h-16 max-w-5xl items-center gap-1 px-4 sm:gap-4 sm:px-6">
+            <Link href="/" className="group flex min-h-9 min-w-9 shrink-0 items-center gap-2 sm:gap-3" aria-label="Nihongo Path home">
               <span className="size-3.5 rounded-full bg-accent shadow-[0_0_0_4px_var(--accent-soft)] transition-transform duration-300 ease-soft group-hover:scale-110" />
-              <span lang="ja" className="font-serif text-lg font-bold tracking-wider whitespace-nowrap sm:text-xl">
+              <span lang="ja" className="font-serif text-base font-bold tracking-wide whitespace-nowrap max-[374px]:hidden sm:text-xl sm:tracking-wider">
                 日本語の道
               </span>
             </Link>

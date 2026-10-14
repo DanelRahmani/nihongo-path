@@ -145,6 +145,10 @@ html[data-size="l"] main {
 [data-romaji="on"] .romaji {
   display: block;
 }
+/* The "Type it" line (app/type): shown without the lesson's word spaces, as it is typed. */
+[data-furigana] .typed-line .ws {
+  display: none;
+}
 /* The dictionary's kana beside a word: its ruby shows the reading, except where furigana is hidden. */
 .dictionary-reading {
   display: none;

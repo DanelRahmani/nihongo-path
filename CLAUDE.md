@@ -7,8 +7,8 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **E9** ("Type it"). Then G and H.
-  - A draft exists (uncommitted when E8 was committed, in `git stash` if not in the tree): `lib/type-it.ts` (`compareTyped`, `describeSlip`), `lib/type-lines.ts`, `components/type-it/TypeIt.tsx`, `app/type/page.tsx`, `tests/type-it.test.ts`, the Drill tab match for `/type` and a link on the kana drill page. To do: a search entry; the browser check; the review; CLAUDE.md.
+- **H3** (backup, restore, offline). G, H1 and H2 wait on the owner (see Waiting on the owner).
+  - A draft exists (in `git stash` as "h3" if not in the tree): `lib/backup.ts` (`makeBackup`, `readBackup`, `STORE_NAMES`), `tests/backup.test.ts` (round trip over every store, v0 file, newer and unusable stores), `lib/service-worker.ts` (`serviceWorkerSource`, `PRECACHE`). To do: the `/sw.js` route (`force-static`), registration in production only, a "Your data" page with export and import (write `writes`, then reload), a footer link and search entry, tests for the worker (simulate install, fetch and activate), the browser check, the review, CLAUDE.md.
   - E2's kanji set is the interim lesson set; when Waller's lists arrive, build `kanji-n5`/`kanji-n4` decks with `kanjiDeck(cards, id)` (learned kanji count across every deck whose id starts with "kanji"). Keep a deck's same-word siblings in different groups, and say on the answer side which kanji a card is for (as now).
   - A new deck registers in three places: its card data in `lib/review-data.ts` (`reviewData` and `reviewIds`), its deck in `components/review/ReviewQueue.tsx` (`queueFrom`), and its id in `lib/notebook.ts` if the home page names it.
   - Deck and card builders (E) must never import `content/reading.ts` or `lib/corpus.ts`; `tests/reading.test.ts` checks this.
@@ -275,6 +275,12 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - An answer with no kana or kanji isn't counted: the reader is asked to switch to a Japanese keyboard. A miss shows the answer, what was typed, the checker's note and the lesson's explanation; a right answer moves on. Answers don't go to the notebook or the daily goal.
   - The result names where to start ("Start at the beginning" for the first band, "No unit stopped you" when all pass), links the lessons of slipped questions, and offers to mark the earlier units' lessons finished, with the 9 kana lessons ticked by default (every question is in kana). Only unfinished lessons are counted and marked, Undo puts the progress back, and "Take it again" restarts. Focus moves to the result's heading, then to Undo.
 
+- **E9 Type it (2026-10-14):** `/type`, linked from the kana drill page and search; the Drill tab is highlighted there.
+  - A random line from the finished lessons (all lessons before any is finished): every example, alt and dialogue line of the sentence lessons, each once (373). The learner copies it with a Japanese keyboard, in kana or in kanji (a switch). The kana line is shown without spaces, wrapping only between the lesson's words; the kanji line shows its furigana.
+  - `lib/type-it.ts`, pure: `compareTyped` walks the line in the markup's pieces. Slips are named and stepped over, so one doesn't hide the rest: a space (half or full width, at the end too), `,` `.` `?` `!` and their full- and half-width forms for 、 。 ？ ！, `...` or 。。。 for …, `-` for ー, the reading left in kana (merged across a word: にほんご for 日本語), another kanji run from the keyboard's list (taken only when the typing lines up again after it, and worded without claiming a reading), digits for a numeral (3本), the keyboard's kanji for a word the lessons write in kana (下さい), katakana and hiragana swapped (half-width ｺｰﾋｰ too), and わ, え or お for the particles は, へ, を. Anything else stops the walk where it differs, and the page shows what was typed there (or the extra at the end). `compareLine` adds that kana mode's typing is the line in kanji.
+  - A line counts toward the daily goal once, when first typed exactly; pasting is turned off. Focus goes to the box after Start, Next and Skip (never the same line twice running), and to "Next line" after an exact line; switching scripts leaves focus on the switch. An always-mounted status announces each result and each new line.
+  - `KANA_WORDS` is now exported from `lib/quiz.ts`.
+
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
   - Q1: four furigana modes, kana-only by default.
@@ -312,7 +318,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 752 in 33 files.
+- Tests: 768 in 34 files.
+- Type it: 373 lines.
 - Placement check: 7 bands, 14 questions.
 - Polite and casual drill: 30 cards per direction; 13 reviewed alternatives.
 - Cloze deck: 247 cards; 189 lines left out (54 same-frame pair lines, 58 kana-lesson lines, 28 mostly highlighted, 21 with several highlights, 28 by hand).
@@ -595,7 +602,19 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Polish applied: right answers move on; "You typed" and the explanation on a miss; "Take it again"; a link to the first lesson of the start unit; the home link only while few lessons are done; tests for the kana split, a short band and the lesson titles.
   - Not applied: whether 実力 or レベルチェック suits the page's mark better (a native speaker's call); `progressStore.set` instead of the hook (the result needs the progress to count unfinished lessons).
 
+- E9 in the checks: 768 tests, typecheck, lint, build (`/type` static, 89 KB with its lines, like `/cloze`). Every line is exact against its own target in both scripts, and its kana typed in kanji mode gives only kana-for-kanji slips (tested).
+- E9 in the browser (Playwright's Chromium) at 375 px, light and dark: Start focuses the box; an exact line counts once, and switching scripts back and forth then typing it again doesn't count it again (focus stays on the switch); Next and Skip focus the box; a wrong kana gives "It differs from here" with what was typed; the kanji line has no word spaces; no horizontal scroll; console clean. A screenshot was sent to the owner.
+- E9 review: a fresh Opus 5.5 reviewer, who ran every line through the comparer in both scripts. Applied:
+  - Errors fixed: the goal could be farmed by switching scripts and checking again (now once per line); "another kanji read X" was claimed for any kanji (now worded without the claim, taken as a whole run of any length, and only when the typing lines up after it).
+  - Should-fix applied: pasting turned off; focus no longer pulled out of the switch; Skip never repeats the line and focuses the box; an always-mounted status; the box described by the line; notes for the keyboard's kanji for kana words, digits, kanji typed in kana mode and わ for は; more punctuation look-alikes and half-width katakana; tests over every line and for each case listed.
+  - Polish applied: slips merged across a word; "Extra at the end" and "You typed"; `Feedback` for the result; duplicate lines dropped; the line kept as an object, so another tab can't swap it.
+  - Not applied: naming okurigana in kana-for-kanji notes (たべ → 食べ: the note says た → 食, then the rest matches); an sr-only reading for the kanji line (its ruby is read already).
+
 ### Waiting on the owner
+- Approvals needed before G, H1 and H2 (skipped for now, per the working rules):
+  - G (dictionary expansion) needs downloads: JMdict's latest release (the D1 copy, jmdict-simplified 3.6.2, is outside the repo and not in this container) and the wordfreq Japanese frequency list. Say yes to each, with the source you prefer.
+  - H1 (performance) needs Lighthouse as a devDependency.
+  - H2 (accessibility sweep) needs Playwright as a devDependency. The checks so far used a Playwright copy installed outside the repo, which a script in the repo can't rely on.
 - E7: when a notebook item from a scheduled deck is answered in the review before it is due, the schedule is left alone (as practice). Say if a miss there should send the card back to box 1.
 - E2's kanji set: the cards use the 404 lesson kanji until Waller's N5/N4 lists can be downloaded and their licence confirmed. Say if you'd rather keep the lesson set, use another list, or add N5/N4 on top. Also unverified: the order in which real Japanese keyboards (iOS, Gboard, macOS, MS-IME) offer digits and variant spellings (5月, 子ども), which the checker names but rejects.
 - B4 sources to confirm. The reviewers recalled these differently:

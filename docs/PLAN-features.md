@@ -122,7 +122,7 @@ Rules for every sub-phase: one commit and push to `features`; checks pass before
 | **E6 Polite ↔ plain drill** (done 2026-10-14) | Two decks, one per direction, built from the `alt` pairs. Convert a whole sentence; punctuation is ignored; engine variants are accepted (ません/ないです); feedback names the first word that differs, using the authored word boundaries | `diffFirstWord()`, variant acceptance |
 | **E7 One review queue** (done 2026-10-14) | Everything due across decks, most overdue first, then the notebook. Each item is asked with its own deck's prompt and checker and scheduled in its own deck. The home badge shows the total | Merge order; scheduling stays per deck |
 | **E8 Placement check** (done 2026-10-14) | Two questions per band (band = unit, kana excluded: 7 bands, 14 questions), taken from the lesson quizzes. The first band with two misses is where to start; a single miss is a slip. Offers to mark earlier lessons as finished | Pure `placement()` over miss patterns |
-| **E9 "Type it" game** | Copy-type a line through the IME. The target is either kana or kanji (the learner picks). Feedback is specific: an extra or half-width space, 、 vs ",", the wrong kanji choice | IME-aware comparer cases |
+| **E9 "Type it" game** (done 2026-10-14) | Copy-type a line through the IME. The target is either kana or kanji (the learner picks). Feedback is specific: an extra or half-width space, 、 vs ",", the wrong kanji choice | IME-aware comparer cases |
 
 ### G. Dictionary expansion (after Q4)
 

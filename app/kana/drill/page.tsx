@@ -37,7 +37,11 @@ export default function DrillPage() {
         <Link href="/conjugation" className="text-accent hover:underline">
           conjugation trainer
         </Link>{" "}
-        are answered with a Japanese keyboard.
+        are answered with a Japanese keyboard. To get used to the keyboard itself,{" "}
+        <Link href="/type" className="text-accent hover:underline">
+          type out lesson lines
+        </Link>
+        .
       </p>
       <div className="mt-8">
         <KanaDrill />

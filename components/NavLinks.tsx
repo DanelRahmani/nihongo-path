@@ -7,7 +7,7 @@ import { useRef } from "react";
 const LINKS = [
   { href: "/", jp: "道", label: "Path", match: (p: string) => p === "/" || p.startsWith("/learn") },
   { href: "/kana", jp: "かな", label: "Kana", match: (p: string) => p === "/kana" },
-  { href: "/kana/drill", jp: "練習", label: "Drill", match: (p: string) => p.startsWith("/kana/drill") || p.startsWith("/kanji/drill") || p.startsWith("/conjugation") || p.startsWith("/vocabulary") || p.startsWith("/cloze") || p.startsWith("/register") || p.startsWith("/review") },
+  { href: "/kana/drill", jp: "練習", label: "Drill", match: (p: string) => p.startsWith("/kana/drill") || p.startsWith("/kanji/drill") || p.startsWith("/conjugation") || p.startsWith("/vocabulary") || p.startsWith("/cloze") || p.startsWith("/register") || p.startsWith("/review") || p.startsWith("/type") },
 ];
 
 /** Reference pages, in the Extras menu. */

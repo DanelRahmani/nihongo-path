@@ -16,7 +16,7 @@ export interface QuizCheck {
  * Words the lessons write in kana (content/STYLE.md §5) that a Japanese keyboard often converts to
  * kanji. The kanji spelling is folded to kana on both sides, so it counts.
  */
-const KANA_WORDS: [string, string][] = [
+export const KANA_WORDS: [string, string][] = [
   ["美味し", "おいし"],
   ["綺麗", "きれい"],
   ["可愛", "かわい"],

@@ -135,7 +135,7 @@ Rules for every sub-phase: one commit and push to `features`; checks pass before
 
 | Sub-phase | What ships | Tests added |
 |---|---|---|
-| **H1 Performance** | `scripts/perf-ab.mjs`: two local production builds, Lighthouse runs interleaved A/B/A/B, medians reported. Then the fonts: subset to the characters the content uses (the set is known at build time), preload only fonts used at first paint, load mincho lazily if it's only used for examples | The charset extractor; perf numbers recorded in CLAUDE.md |
+| **H1 Performance** (done 2026-10-14) | `scripts/perf-ab.mjs`: two local production builds, Lighthouse runs interleaved A/B/A/B, medians reported. Then the fonts: subset to the characters the content uses (the set is known at build time), preload only fonts used at first paint, load mincho lazily if it's only used for examples | The charset extractor; perf numbers recorded in CLAUDE.md |
 | **H2 Accessibility sweep** (done 2026-10-14) | `scripts/a11y-sweep.mjs` (Playwright) visits every route at 375 px in light and dark and checks: no horizontal scroll; every Tab stop has a visible focus ring (computed outline or shadow); no running animations under reduced motion. Final design-system pass. Lighthouse accessibility 100 | The sweep runs in CI-style mode and fails on any finding |
 | **H3 Backup, restore, offline** (done 2026-10-14) | Export and import every `np:*` store as one versioned file (validated, then migrated). A hand-written service worker produced by a `force-static` route (precache the shell and data JSON, network-first for HTML), with no hosting config changes | Export → import round trip across every store; a v0 file imports correctly; the service-worker manifest builder |
 

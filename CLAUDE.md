@@ -7,8 +7,8 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **H1** (performance): `scripts/perf-ab.mjs` is drafted (uses `scripts/serve-out.mjs` and Lighthouse, both now in the repo); run it on two builds, then the font work.
-  - H1: the search index grew to 777 KB (175 KB gzipped) with the expansion words; building the word results from `/dictionary-data.json` (F3 review) would remove most of that. Font requests per page today: 10 (a lesson) to 73 (`/read`).
+- **H1 review** (a fresh Opus reviewer on the font trim and the A/B script), then the final check and the push to `main` (the owner gave permission on 2026-10-14 for when everything is finished).
+  - Later performance work: the search index is 777 KB (175 KB gzipped) with the expansion words, loaded when search first opens; building the word results from `/dictionary-data.json` (F3 review) would remove most of that. The home page's layout shift (0.14) is the fonts swapping in the Today card.
   - More expansion batches, if wanted: candidates 2251 on, written and reviewed as G2 was (writer spec in the session scratchpad; restate it in the agent prompt: keep id/jp/pos/verb as given, short English meanings of 60 characters at most in British spelling, verbs start "to", "(する: to …)" for suru nouns, a topic from the list, `// skipped: id jp (reason)` lines, `kana: "reading"` candidates skipped for the owner).
   - The credits page, the footer credit line and the dictionary JSON's licence field are already live for the existing JMdict/KANJIDIC2 data.
   - Before each later session's batches, `npm run expand-refresh -- <jmdict-eng.json>` (the full file) checks every word against the newest JMdict.
@@ -310,6 +310,11 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Design system: `fieldClass()` (`components/ui/field.ts`) for the seven typed-answer boxes, `.ring-within` for labels around hidden radios and checkboxes.
   - `scripts/serve-out.mjs`: the shared static server (clean URLs, no path escape, cached build files). devDependencies `playwright` 1.56.1 (pinned: it matches the pre-installed browsers; no install scripts, no browser download) and `lighthouse` 13.5.0.
 
+- **H1 Performance (2026-10-14):**
+  - `npm run perf -- <out-A> [<out-B>] [--runs 5] [--route /path]…` (`scripts/perf-ab.mjs`): Lighthouse's mobile preset (simulated slow 4G, 4× CPU) on one or two static builds, runs interleaved A/B/A/B with the order alternating, medians per page (score, FCP, LCP, TBT, CLS, bytes, font bytes and requests). `scripts/serve-out.mjs` gzips text as the host does.
+  - The fonts: every page's render-blocking CSS held next/font's 731 `@font-face` rules for the two Japanese families (Google's unicode-range slices × 6 weights), 195 KB gzipped. `npm run build` now runs `scripts/fonts/run.ts` after `next build`: it reads every character the export can show (pages, router payloads, data JSON, scripts: 1,537), narrows each rule's unicode-range to them, drops the 378 rules that cover none, and deletes the 378 font files nothing names. The CSS is 15 KB gzipped; fonts stay sliced, so a page still fetches only the slices it needs, and a character typed outside the set shows in the fallback font. `scripts/fonts/trim.ts` is pure and tested (`tests/fonts.test.ts`: the charset, range parsing with wildcards, trimming, wide ranges, fallback rules kept).
+  - Not done, with reasons: no font is preloaded (each page's first paint needs a different handful of slices, and a preload competes with the CSS on a slow link; `display: swap` paints text at once); mincho isn't loaded lazily (it is the default face for Japanese lines and titles, so first paint uses it); `font-display: optional` would remove the swap shift but show system fonts on a first visit (a design change for the owner).
+
 ### Decisions
 - Owner, 2026-10-14 (later): 文字 もじ, 反応 はんのう and 天皇 てんのう are right (named exceptions in lib/joyo.ts and STYLE §5). The book citations (Genki chapters, Tae Kim, Cure Dolly, Tofugu, IMABI titles, the haiku editions) are left as they are, unverified; don't ask about them again.
 - Owner, 2026-10-14 (answers to the "Waiting on the owner" questions):
@@ -353,7 +358,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 823 in 38 files. Accessibility sweep: 84 pages, 10,926 focus stops, 8 interactive states, 10 Lighthouse pages at 100.
+- Tests: 823 in 38 files. Fonts: 1,537 characters, 353 of 731 `@font-face` rules kept (15 KB gzipped). Accessibility sweep: 84 pages, 10,926 focus stops, 8 interactive states, 10 Lighthouse pages at 100.
 - Expansion candidates: 5,000 (of 18,515 kept from 19,956 counted entries). Expansion words: 2,052 from the first 2,250 (198 skipped).
 - Service worker: 17 pages and data files precached.
 - Type it: 373 lines.
@@ -670,6 +675,18 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Should-fix applied: the global focus ring moved into the base layer without its 4 px radius (it overrode every `focus-visible:` utility, so the path tabs' inset ring never showed); the walk reports a loop or trap and more than 400 stops; the dictionary list no longer grows while keyboard focus walks it (Tab could never reach the footer; "Show more" stays); scenarios fail when they don't reach their state; crashes are findings, setup failures exit 2 with the findings so far; stray arguments refused; `chrome-launcher` and `axe-core` declared; axe-core's WCAG 2 A/AA rules on every page in both schemes.
   - Polish applied: colours read through a canvas (oklab), the padding box and the strip fades (custom properties `--fade-start`, `--fade-end`, now 0.625 rem so no ring sits in them) in the clip check, transitions kept off until every read is done, config files in the stale check, FocusIntoView skips vertical-only scrollers and taps, serve-out answers 400 to a bad address and survives a read error. The word card now also closes when Tab leaves its line (the new sticky check found it covering the next words).
   - Not applied: pinning `engines.node` (it would change the Node version Vercel builds with, a hosting setting); a popover staying open on Shift+Tab to the header buttons before its toggle (it sits below them). Not verified: WebKit and real touch devices.
+
+- H1 in the checks: 827 tests, typecheck, lint, build (the trim runs inside `npm run build`), and the full accessibility sweep on the trimmed build (no findings). Lighthouse A/B, 5 runs each, current code without (A) and with (B) the trim, medians:
+
+  | Page | Score | FCP ms | LCP ms | KB |
+  |---|---|---|---|---|
+  | / | 86 → 86 | 2105 → 1955 | 3011 → 3079 | 1087 → 911 |
+  | lesson (polite-and-casual) | 78 → 86 | 2857 → 1956 | 4057 → 3254 | 900 → 724 |
+  | /kana/drill | 82 → 94 | 2854 → 1954 | 3904 → 2594 | 794 → 618 |
+  | /read | 91 → 95 | 2105 → 1056 | 3155 → 1860 | 1382 → 1206 |
+  | /dictionary | 80 → 88 | 2104 → 1655 | 3153 → 2759 | 928 → 752 |
+
+  Font bytes and requests per page are unchanged (the same slices), from 15 requests (231 KB) on the kana drill to 73 (921 KB) on `/read`. TBT moved by ±150 ms between runs on this shared machine; it isn't affected by CSS. Before gzip in the local server, an earlier baseline measured 57–64.
 
 ### Waiting on the owner
 - G2: four candidates written in kana because lib/joyo.ts can't confirm their kanji reading, skipped for now: できごと (出来事), はやる (流行る), けが (怪我: 怪 isn't 常用, so kana is right) and くい. Also from G1: 決して and 引っ張る (the checker's っ rules). Say which should be added, and in which form.

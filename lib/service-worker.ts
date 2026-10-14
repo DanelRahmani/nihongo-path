@@ -26,6 +26,8 @@ export const RETIRE_WORKER = false;
 export const PRECACHE = [
   "/",
   "/kana",
+  // The old address of the kana drill: a bookmark to it still works offline (it forwards to /kana).
+  "/kana/drill",
   "/kanji/drill",
   "/vocabulary",
   "/cloze",

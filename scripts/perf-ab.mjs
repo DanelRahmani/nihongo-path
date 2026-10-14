@@ -20,7 +20,7 @@ const args = process.argv.slice(2);
 const flag = (name) => args.flatMap((a, i) => (a === name ? [args[i + 1]] : []));
 const dirs = args.filter((a, i) => !a.startsWith("--") && !args[i - 1]?.startsWith("--"));
 const runs = Number(flag("--runs")[0] ?? 5);
-const routes = flag("--route").length ? flag("--route") : ["/", "/learn/start/polite-and-casual", "/kana/drill", "/read", "/dictionary"];
+const routes = flag("--route").length ? flag("--route") : ["/", "/learn/start/polite-and-casual", "/kana", "/read", "/dictionary"];
 
 if (dirs.length < 1 || dirs.length > 2 || dirs.some((d) => !existsSync(join(d, "index.html"))) || !(runs > 0)) {
   console.error("Usage: npm run perf -- <out-dir-A> [<out-dir-B>] [--runs 5] [--route /path]…");

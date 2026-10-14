@@ -320,6 +320,12 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Next G batches: the new words' characters join the scan by themselves at the next build.
   - Not done, with reasons: no font is preloaded (each page's first paint needs a different handful of slices, and a preload competes with the CSS on a slow link; `display: swap` paints text at once); mincho isn't loaded lazily (it is the default face for Japanese lines and titles, so first paint uses it); `font-display: optional` would remove the swap shift but show system fonts on a first visit (a design change for the owner).
 
+- **Practice menu, one Kana page, strip arrows (owner request, 2026-10-14):**
+  - The navbar's 練習 link is now a Practice menu (a shared `NavMenu` popover, like Extras): Review, Kana drill, Kanji cards, Vocabulary, Fill the gap (穴埋め), Polite and casual, Conjugation, Type it. The English labels show from 800 px (they overflowed the header from 640 to 793 px).
+  - `/kana` holds the drill (`#drill`) and then the charts (`#charts`). `/kana/drill` is a noindex page that sends old links and bookmarks on (script and meta refresh) and stays precached for offline bookmarks; the sweep skips noindex pages. Links, search entries ("Kana drill", "Kana charts") and the precache point at the new page.
+  - `components/ui/ArrowStrip.tsx`: ‹ › buttons on the path tabs, the grammar strip and the dictionary's row chips, on devices with a fine pointer, while there is more to scroll that way. They're mouse-only (no Tab stop, hidden from screen readers, and a click doesn't take focus).
+  - The sweep has a Practice menu scenario and an overflow pass at 768 and 800 px.
+
 ### Decisions
 - Owner, 2026-10-14: "when you are fully finished, you shall commit to main, i give permission for that". After H1, `main` was fast-forwarded to `features` (G2, H2, H1 and their reviews on top of the Extras-menu merge); no merge commit, nothing force-pushed. Pushing `main` deploys the live site.
 - Owner, 2026-10-14 (later): 文字 もじ, 反応 はんのう and 天皇 てんのう are right (named exceptions in lib/joyo.ts and STYLE §5). The book citations (Genki chapters, Tae Kim, Cure Dolly, Tofugu, IMABI titles, the haiku editions) are left as they are, unverified; don't ask about them again.
@@ -374,7 +380,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - Vocabulary deck: 378 cards.
 - Conjugation trainer: 93 words (60 verbs), 1,100 or so questions with every lesson done.
 - Decks: 6 kana decks (208 cards) and the kanji deck (404 cards in 41 groups; 49 share a word). Quiz questions in the notebook: 250 possible ids, all unique.
-- Search index: 3,235 items (16 pages, 62 lessons, 61 grammar topics, 404 kanji, 2,692 words); 777 KB, 175 KB gzipped.
+- Search index: 3,236 items (17 pages, 62 lessons, 61 grammar topics, 404 kanji, 2,692 words); 777 KB, 175 KB gzipped.
 - Dictionary: 547 lesson words (75 verbs), 93 extra kanji-example words, 2,052 expansion words, 14 names; 404 kanji. The dictionary page lists 2,692 entries; `/dictionary-data.json` is 360 KB (88 KB gzipped).
 - Template: all 62 lessons converted.
 - Grammar overview: 61 topics from 37 lessons, 96 examples.
@@ -697,6 +703,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 
 
 ### Waiting on the owner
+- Menu marks: 丁寧 for Polite and casual names only the polite side (言い換え would cover both directions), and 読む (Reading) is the only verb among nouns (読み物 would match). Kept as they are until a native speaker decides.
 - G2: four candidates written in kana because lib/joyo.ts can't confirm their kanji reading, skipped for now: できごと (出来事), はやる (流行る), けが (怪我: 怪 isn't 常用, so kana is right) and くい. Also from G1: 決して and 引っ張る (the checker's っ rules). Say which should be added, and in which form.
 - G2 calls to confirm: 是非 written in kana, めがね in hiragana (眼鏡 is a 付表 word, めがね is also common), 殺す left out, era names (明治) left out.
 - E2: unverified: the order in which real Japanese keyboards (iOS, Gboard, macOS, MS-IME) offer digits and variant spellings (5月, 子ども), which the checker names but rejects.

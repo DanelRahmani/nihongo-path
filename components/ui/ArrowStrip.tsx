@@ -5,7 +5,7 @@ import { type ComponentPropsWithoutRef, type ReactNode, type Ref, useCallback, u
 type StripProps = Omit<ComponentPropsWithoutRef<"div">, "children"> & {
   /** The element the strip is: a plain div (tabs, radios) or a nav (a strip of links). */
   as?: "div" | "nav";
-  ref?: Ref<HTMLDivElement>;
+  ref?: Ref<HTMLElement>;
   children: ReactNode;
 };
 
@@ -17,11 +17,11 @@ type StripProps = Omit<ComponentPropsWithoutRef<"div">, "children"> & {
  * measure), so the page doesn't change between the server's HTML and hydration.
  */
 export function ArrowStrip({ as: Tag = "div", ref, className = "", children, ...rest }: StripProps) {
-  const inner = useRef<HTMLDivElement | null>(null);
+  const inner = useRef<HTMLElement | null>(null);
   const [edges, setEdges] = useState({ start: false, end: false });
 
   const setRef = useCallback(
-    (el: HTMLDivElement | null) => {
+    (el: HTMLElement | null) => {
       inner.current = el;
       if (typeof ref === "function") ref(el);
       else if (ref) ref.current = el;
@@ -32,7 +32,11 @@ export function ArrowStrip({ as: Tag = "div", ref, className = "", children, ...
   useEffect(() => {
     const el = inner.current;
     if (!el) return;
-    const update = () => setEdges({ start: el.scrollLeft > 1, end: el.scrollLeft + el.clientWidth < el.scrollWidth - 1 });
+    const update = () => {
+      const start = el.scrollLeft > 1;
+      const end = el.scrollLeft + el.clientWidth < el.scrollWidth - 1;
+      setEdges((e) => (e.start === start && e.end === end ? e : { start, end }));
+    };
     update();
     el.addEventListener("scroll", update, { passive: true });
     const resize = new ResizeObserver(update);
@@ -56,6 +60,8 @@ export function ArrowStrip({ as: Tag = "div", ref, className = "", children, ...
       type="button"
       tabIndex={-1}
       aria-hidden
+      // Keep focus where it is (a click would otherwise focus this hidden button, and arrow keys in the strip stop).
+      onPointerDown={(e) => e.preventDefault()}
       onClick={() => scroll(direction)}
       className={`absolute top-1/2 z-10 hidden size-9 -translate-y-1/2 place-items-center rounded-full border border-line-strong bg-surface text-lg leading-none text-ink-2 shadow-card transition-colors duration-150 pointer-fine:grid hover:border-accent hover:text-accent ${
         direction < 0 ? "-left-2 sm:-left-4" : "-right-2 sm:-right-4"

@@ -7,12 +7,16 @@ import { useEffect } from "react";
 export function MovedTo({ href, label }: { href: string; label: string }) {
   useEffect(() => window.location.replace(href), [href]);
   return (
-    <p className="mt-4 leading-relaxed text-ink-2">
+    <>
+      {/* Without JavaScript too (React puts the meta in the head). */}
+      <meta httpEquiv="refresh" content={`0; url=${href}`} />
+      <p className="mt-4 leading-relaxed text-ink-2">
       This page has moved to{" "}
       <Link href={href} className="link-inline">
         {label}
       </Link>
       .
-    </p>
+      </p>
+    </>
   );
 }

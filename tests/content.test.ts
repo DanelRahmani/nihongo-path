@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { ALL_LESSONS, UNITS } from "@/content/units";
 import { corpusFields } from "@/lib/corpus";
@@ -34,6 +35,11 @@ describe("curriculum structure", () => {
         if (b.type === "link") expect(routes.has(b.href), `${key} → ${b.href}`).toBe(true);
       }
     }
+  });
+
+  it("links to sections of the Kana page that exist", () => {
+    const page = readFileSync("app/kana/page.tsx", "utf8");
+    for (const id of ["drill", "charts"]) expect(page).toContain(`id="${id}"`);
   });
 
   it("keeps table rows the same width as their headers", () => {

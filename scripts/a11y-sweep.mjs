@@ -15,7 +15,8 @@
  * Then the states the walk can't reach: the search dialog with results, the Extras menu, the Display popover, the
  * word card, a drill and a quiz after a miss, the home page with saved progress, and the dictionary's row radios
  * walked with the arrow keys. Each scenario fails if it doesn't reach its state. A third pass at text size L
- * with furigana and romaji checks overflow only. Last, Lighthouse's accessibility audit on representative pages
+ * with furigana and romaji, and one at 768 and 800 px (a tablet; the header's labels show from 800), check
+ * overflow only. Last, Lighthouse's accessibility audit on representative pages
  * must score 100 (skip it with --no-lighthouse).
  *
  *   npm run a11y [-- --route /path] [--all] [--no-lighthouse] [--stale-ok] [--css "rule"]
@@ -531,8 +532,8 @@ async function runScenario(browser, scheme, scenario) {
 }
 
 /** A browser context at 375 px with reduced motion and no service worker (it would serve later pages from its cache). */
-async function newContext(browser, scheme = "light") {
-  const context = await browser.newContext({ viewport: { width: 375, height: 800 }, colorScheme: scheme, reducedMotion: "reduce", serviceWorkers: "block" });
+async function newContext(browser, scheme = "light", width = 375) {
+  const context = await browser.newContext({ viewport: { width, height: 800 }, colorScheme: scheme, reducedMotion: "reduce", serviceWorkers: "block" });
   if (css) await context.addInitScript((rule) => document.addEventListener("DOMContentLoaded", () => document.head.append(Object.assign(document.createElement("style"), { textContent: rule }))), css);
   return context;
 }
@@ -609,6 +610,28 @@ try {
           await checkLayout(page, where);
           for (const error of errors) report(where, `console: ${error.slice(0, 160)}`);
         }),
+    );
+  }
+  if (!only) {
+    // A tablet in portrait: the header shows its English labels from 50rem, so check the widths around it too.
+    await pool(
+      list.filter((l) => l.expect === 200),
+      async (browser, { route }) => {
+        for (const width of [768, 800]) {
+          let context;
+          const where = `${route} (${width} px)`;
+          try {
+            context = await newContext(browser, "light", width);
+            const { page, errors } = await open(context, route, where);
+            await checkLayout(page, where);
+            for (const error of errors) report(where, `console: ${error.slice(0, 160)}`);
+          } catch (e) {
+            report(where, `crashed: ${String(e.message ?? e).split("\n")[0]}`);
+          } finally {
+            await context?.close();
+          }
+        }
+      },
     );
   }
   console.log(`Sweep done in ${Math.round((Date.now() - started) / 1000)} s: ${stops} focus stops checked.`);

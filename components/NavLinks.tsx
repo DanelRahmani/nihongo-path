@@ -18,12 +18,13 @@ const LINKS = [
   { href: "/kana", jp: "かな", label: "Kana", match: (p: string) => p.startsWith("/kana") },
 ];
 
-/** The drills, in the Practice menu. The kana drill lives on the Kana page. */
+/** The drills, in the Practice menu (the kana drill lives on the Kana page, and is listed here too). */
 const PRACTICE: MenuItem[] = [
   { href: "/review", jp: "復習", label: "Review", text: "Everything due from every drill, then your mistakes", match: (p) => p.startsWith("/review") },
+  { href: "/kana#drill", jp: "かな", label: "Kana drill", text: "Hiragana and katakana, on the Kana page", match: (p) => p.startsWith("/kana") },
   { href: "/kanji/drill", jp: "漢字", label: "Kanji cards", text: "Type words in kanji with a Japanese keyboard", match: (p) => p.startsWith("/kanji/drill") },
   { href: "/vocabulary", jp: "単語", label: "Vocabulary", text: "English to Japanese cards for the lessons' words", match: (p) => p.startsWith("/vocabulary") },
-  { href: "/cloze", jp: "空欄", label: "Fill the gap", text: "Lesson lines with the highlighted part missing", match: (p) => p.startsWith("/cloze") },
+  { href: "/cloze", jp: "穴埋め", label: "Fill the gap", text: "Lesson lines with the highlighted part missing", match: (p) => p.startsWith("/cloze") },
   { href: "/register", jp: "丁寧", label: "Polite and casual", text: "Say a lesson line in the other register", match: (p) => p.startsWith("/register") },
   { href: "/conjugation", jp: "活用", label: "Conjugation", text: "One verb or adjective, one form at a time", match: (p) => p.startsWith("/conjugation") },
   { href: "/type", jp: "入力", label: "Type it", text: "Copy lesson lines with a Japanese keyboard", match: (p) => p.startsWith("/type") },
@@ -37,7 +38,7 @@ const EXTRAS: MenuItem[] = [
 ];
 
 const pill = (active: boolean) =>
-  `flex h-9 items-center gap-1.5 rounded-full px-1.5 text-sm whitespace-nowrap transition-colors duration-150 sm:px-3.5 ${
+  `flex h-9 items-center gap-1.5 rounded-full px-1.5 text-sm whitespace-nowrap transition-colors duration-150 sm:px-2.5 min-[50rem]:px-3.5 ${
     active ? "bg-accent-soft text-accent" : "text-ink-2 hover:bg-paper-2 hover:text-ink"
   }`;
 
@@ -62,8 +63,8 @@ function NavMenu({ id, jp, label, items, pathname }: { id: string; jp: string; l
         <span lang="ja" className="font-serif text-base">
           {jp}
         </span>
-        <span className="sr-only sm:not-sr-only">{label}</span>
-        <span aria-hidden className="hidden text-xs sm:inline">
+        <span className="sr-only min-[50rem]:not-sr-only">{label}</span>
+        <span aria-hidden className="hidden text-xs min-[50rem]:inline">
           ▾
         </span>
       </button>
@@ -87,7 +88,7 @@ function NavMenu({ id, jp, label, items, pathname }: { id: string; jp: string; l
                   onClick={() => menu.current?.hidePopover()}
                   className={`flex items-center gap-3 rounded-xl px-3 py-2.5 transition-colors duration-150 ${current ? "bg-accent-soft text-accent" : "hover:bg-paper-2"}`}
                 >
-                  <span lang="ja" aria-hidden className="w-9 shrink-0 font-serif text-lg font-bold text-accent">
+                  <span lang="ja" aria-hidden className="w-14 shrink-0 font-serif text-lg font-bold whitespace-nowrap text-accent">
                     {item.jp}
                   </span>
                   <span className="min-w-0">
@@ -115,7 +116,7 @@ export function NavLinks() {
             <span lang="ja" className="font-serif text-base">
               {l.jp}
             </span>
-            <span className="sr-only sm:not-sr-only">{l.label}</span>
+            <span className="sr-only min-[50rem]:not-sr-only">{l.label}</span>
           </Link>
         );
       })}

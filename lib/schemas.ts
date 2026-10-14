@@ -213,12 +213,20 @@ export const notebookSchema: StoreSchema<Notebook> = {
     const notebook: Notebook = {};
     for (const item of Object.values(data)) {
       if (!isPlainObject(item)) continue;
-      const { deck, card, misses, rightInRow, added, lastMiss } = item;
+      const { deck, card, misses, rightInRow, added, lastMiss, lastRight } = item;
       if (typeof deck !== "string" || typeof card !== "string" || !deck || !card || deck.includes("|")) continue;
       if (!Number.isInteger(misses) || (misses as number) < 1 || !Number.isInteger(rightInRow) || (rightInRow as number) < 0) continue;
       if (!Number.isFinite(added) || !Number.isFinite(lastMiss)) continue;
       // Keyed again from the item itself, so a mangled key can't hide it.
-      notebook[noteKey(deck, card)] = { deck, card, misses: misses as number, rightInRow: rightInRow as number, added: added as number, lastMiss: lastMiss as number };
+      notebook[noteKey(deck, card)] = {
+        deck,
+        card,
+        misses: misses as number,
+        rightInRow: rightInRow as number,
+        added: added as number,
+        lastMiss: lastMiss as number,
+        ...(Number.isFinite(lastRight) ? { lastRight: lastRight as number } : {}),
+      };
     }
     return notebook;
   },

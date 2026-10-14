@@ -5,13 +5,11 @@ import { useMemo } from "react";
 import { showKanji, TypedDrill } from "@/components/drill/TypedDrill";
 import { Jp, Rich } from "@/components/Jp";
 import { panelClass } from "@/components/ui/Panel";
-import { type ClozeCard, clozeDeck, GAP } from "@/lib/cloze-deck";
+import { type ClozeCard, clozeDeck } from "@/lib/cloze-deck";
 import { plainOf } from "@/lib/markup";
 import { useStore } from "@/lib/storage";
 import { progressStore } from "@/lib/stores";
 
-/** The line with its gap filled by the answer, highlighted as the lesson highlights it. */
-const filled = (c: ClozeCard) => c.line.replace(GAP, `{${c.answer}}`);
 
 /**
  * The cloze deck: a lesson line with a gap and its English; the learner types the missing words with a Japanese
@@ -21,6 +19,8 @@ export function ClozeDrill({ cards, lessons }: { cards: ClozeCard[]; lessons: st
   const [progress] = useStore(progressStore);
   const done = useMemo(() => new Set(Object.keys(progress)), [progress]);
   const deck = useMemo(() => clozeDeck(cards, lessons, done), [cards, lessons, done]);
+  // The line with its gap filled by the answer, highlighted as the lesson highlights it.
+  const filled = (c: ClozeCard) => deck.answerJp!(c);
   const lessonsDone = lessons.filter((l) => done.has(l) && cards.some((c) => c.lesson === l)).length;
   return (
     <TypedDrill

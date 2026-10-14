@@ -7,10 +7,10 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **E7** (one review queue). Then E8–E9 (practice), G and H.
-  - A draft exists (uncommitted when E6 was committed): `lib/review-queue.ts` (`buildQueue`: due cards of every deck, most overdue first, then notebook items not already due, oldest miss first; `askFrom`; `reviewCount` from the stores alone, for the home badge) and `tests/review-queue.test.ts`. To do: a `/review` page that loads every deck's card data (a `force-static` JSON route, since it is large: kanji, vocabulary, cloze, register, conjugation words, and a quiz index for `QUIZ_DECK` items), askers for the quiz and conjugation items, a generic front for each deck (`Prompt` may need a `hint`), scheduling due cards in their own deck and logging every answer to the notebook, the home badge (the Today card), the browser check, the review, CLAUDE.md.
+- **E8** (placement check). Then E9, G and H.
+  - A draft exists (uncommitted when E7 was committed): `lib/placement.ts` (`placement()`, `lessonsBefore`), `lib/placement-bands.ts` (7 bands, two typed-in-Japanese lesson-quiz questions each, from lessons a third and two thirds through the unit), `components/placement/PlacementCheck.tsx`, `app/placement/page.tsx`, `tests/placement.test.ts`. To do: a link from the home page (near the next-lesson card) and search; the browser check; the review; CLAUDE.md.
   - E2's kanji set is the interim lesson set; when Waller's lists arrive, build `kanji-n5`/`kanji-n4` decks with `kanjiDeck(cards, id)` (learned kanji count across every deck whose id starts with "kanji"). Keep a deck's same-word siblings in different groups, and say on the answer side which kanji a card is for (as now).
-  - E7 asks items through `askItem(deckId, cardId)`, which knows only the kana decks. Kanji, quiz and conjugation items need their data on the review page: pass it as props, as the trainer pages do, or add lazy deck loaders. Count what resolves with `resolvableItems`. Quiz items (`QUIZ_DECK`) need a quiz index; consider a quiz pseudo-deck adapting `checkQuestion` (its field is `answer`, not `canonical`).
+  - A new deck registers in three places: its card data in `lib/review-data.ts` (`reviewData` and `reviewIds`), its deck in `components/review/ReviewQueue.tsx` (`queueFrom`), and its id in `lib/notebook.ts` if the home page names it.
   - Deck and card builders (E) must never import `content/reading.ts` or `lib/corpus.ts`; `tests/reading.test.ts` checks this.
   - The "new kanji only" furigana rules (`furiganaCss`, specificity 0,3,1) must stay less specific than the reading view's (`:root body .reading-view …`, 0,3,2), or the reading view would show readings for unlearned kanji. New pages that show kanji outside the lessons and the dictionary must add them to `furiganaKanji()` (`tests/kanji-deck.test.ts` checks the corpus, grammar and date).
   - Keep `lib/joyo.ts` (and its 135 KB `content/data/joyo.json`) out of client code; `tests/lookup.test.ts` and `tests/dictionary.test.ts` check the client imports. The 常用 readings reach the client through `/dictionary-data.json`, loaded by `lib/load-dictionary.ts`.
@@ -261,6 +261,14 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Engine: a noun's polite past negative also takes で は なかった です (checked by the lesson tables).
   - The drill gained `focusFirst`, so switching direction keeps focus on the switch.
 
+- **E7 One review queue (2026-10-14):** `/review`, reached from the Today card's badge ("Review 2 due and 1 mistake"), the Drill tab and search.
+  - `lib/review-queue.ts`: `buildQueue` merges every deck's due cards, most overdue first (ties keep deck order), then the notebook's items that aren't already due and that a right answer would count for now, oldest miss first. Items of unknown decks or removed cards are left out (kept in the store). `applyReview`: a due card is scheduled in its own deck; a notebook item goes to the notebook only (the schedule is left alone, as practice does). Every answer counts toward the daily goal.
+  - Each item is asked with its own deck's prompt and checker, on one card face: the text (Japanese or English), a hint (the English, the meaning, the form asked), and after a miss the answer with its furigana, the deck's note (which kanji a card is for) and a quiz question's explanation. Quiz and conjugation items come back through askers (`lib/review-askers.ts`) and link their lesson.
+  - The card data (266 KB) is the static `/review-data.json`, fetched only when something is due. The queue is fixed when the page opens.
+  - The home badge counts from the stores and, once the static `/review-ids.json` index has loaded at idle, only the ids this build can ask, so it matches what `/review` shows.
+  - Notebook: a right answer now counts only 10 minutes after the last right answer as well as after the miss, so a reload can't clear an item in a minute.
+  - Decks gained an optional `answerJp` and `answerNote`, and prompts an optional `hint` and `answerIn` (Japanese, romaji or a name). "New kanji" furigana now covers the search's page names too.
+
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
   - Q1: four furigana modes, kana-only by default.
@@ -298,7 +306,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 724 in 30 files.
+- Tests: 743 in 32 files.
 - Polite and casual drill: 30 cards per direction; 13 reviewed alternatives.
 - Cloze deck: 247 cards; 189 lines left out (54 same-frame pair lines, 58 kana-lesson lines, 28 mostly highlighted, 21 with several highlights, 28 by hand).
 - Vocabulary deck: 378 cards.
@@ -564,7 +572,16 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Polish applied: the か guard matches only か; `plainOf` instead of a copy; the English rendered with `Rich`; the keep-words class literal; arrows hidden from screen readers; the Today card links the drill.
   - Not applied: remembering the direction between visits; ね/よね swaps (needs a native speaker's call); combining variants on lines with two predicates (no such line yet).
 
+- E7 in the checks: 743 tests, typecheck, lint, build (`/review`, `/review-data.json` and `/review-ids.json` static; the home page loads only the counting code and the deck-id constants).
+- E7 in the browser (Playwright's Chromium) at 375 px, light and dark: seeded with a due kana card, a more overdue kanji card, a conjugation miss and a quiz miss whose question no longer exists, the badge read "Review 2 due and 1 mistake"; the queue asked the kanji card, then the kana card (romaji input), then the conjugation item from the notebook, and left out the stale quiz item; the missed kanji card went to box 1 and the right kana card to box 3, each in its own deck; "Review done" at the end; an empty store shows "Nothing to review" without fetching the data; no horizontal scroll; console clean.
+- E7 review: a fresh Opus 5.5 reviewer, who also checked the bundles. Applied:
+  - Error fixed: the home badge counted ids the review page can never show (now the id index; the count and the queue agree, tested with stale ids).
+  - Should-fix applied: notebook items missed a moment ago aren't asked; a reload can't clear an item (spaced right answers); quiz items show their explanation and link their lesson; screen readers hear the quiz prompt without markup; "name" questions get their own placeholder; `applyReview` as a tested pure function; tests for the askers and the data; no type cast; no data fetch when nothing is waiting.
+  - Polish applied: the lesson lists the page doesn't need left out of the data; the right-answer line shows the answer with furigana; the kanji card says which kanji it is for; the cloze drill reads the deck's answer; the badge reads naturally ("Review 2 mistakes"); stale comments; the mount gate and a store subscription dropped; `isJapanese` shared; focus moves to "Review done"; the search page names' kanji in the furigana rules; test tidy-ups.
+  - Not applied: a miss on a notebook item that isn't due doesn't reset its box (the owner may prefer otherwise; recorded below); spreading cards that share a prompt (冷 蔵 庫) apart in the queue.
+
 ### Waiting on the owner
+- E7: when a notebook item from a scheduled deck is answered in the review before it is due, the schedule is left alone (as practice). Say if a miss there should send the card back to box 1.
 - E2's kanji set: the cards use the 404 lesson kanji until Waller's N5/N4 lists can be downloaded and their licence confirmed. Say if you'd rather keep the lesson set, use another list, or add N5/N4 on top. Also unverified: the order in which real Japanese keyboards (iOS, Gboard, macOS, MS-IME) offer digits and variant spellings (5月, 子ども), which the checker names but rejects.
 - B4 sources to confirm. The reviewers recalled these differently:
   - Genki: plain past of nouns in Genki I ch. 9 (desu-da now cites ch. 1, 4, 8–9); counters in Genki II ch. 14; たがっている in Genki I ch. 11; volitional in Genki II ch. 15; potential in Genki II ch. 13; たら in Genki II ch. 17; ている in ch. 7 and てください in ch. 6.

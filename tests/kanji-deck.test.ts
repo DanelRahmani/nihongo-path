@@ -8,6 +8,7 @@ import { furiganaKanji, kanjiCards } from "@/lib/kanji-cards";
 import { checkKanji, GROUP_SIZE, KANJI_DECK_ID, kanjiDeck, learnedKanji, readingOfCard, writtenOf } from "@/lib/kanji-deck";
 import { corpusFields, grammarFields } from "@/lib/corpus";
 import { srsSchema } from "@/lib/schemas";
+import { SITE_PAGES } from "@/lib/search";
 import { DATE_KANJI } from "@/lib/today";
 import { plainOf, readingOf } from "@/lib/markup";
 import { type CardState, deckState, EMPTY_SRS, type SrsState, UNLOCK_BOX, unlockedGroupCount } from "@/lib/srs";
@@ -85,7 +86,7 @@ describe("checkKanji", () => {
 
   it("is the deck's checker, and the prompt gives the reading and the meaning", () => {
     expect(DECK.check(food, writtenOf(food)).correct).toBe(true);
-    expect(DECK.prompt(food)).toEqual({ text: readingOfCard(food), lang: "ja", ask: `${readingOfCard(food)}, ${food.wordMeaning}: type the word in kanji` });
+    expect(DECK.prompt(food)).toEqual({ text: readingOfCard(food), lang: "ja", ask: `${readingOfCard(food)}, ${food.wordMeaning}: type the word in kanji`, hint: food.wordMeaning });
   });
 });
 
@@ -112,7 +113,8 @@ describe("unlocking and the learned set", () => {
     const all = new Set(furiganaKanji());
     expect(all.size).toBe([...furiganaKanji()].length);
     const shown = [...corpusFields(), ...grammarFields()].filter((f) => f.jp && !f.quoted).flatMap((f) => [...plainOf(f.text, false)]);
-    for (const c of [...shown, ...DATE_KANJI]) if (/\p{Script=Han}/u.test(c)) expect(all.has(c), c).toBe(true);
+    const pages = SITE_PAGES.flatMap((p) => [...plainOf(p.jp, false)]);
+    for (const c of [...shown, ...DATE_KANJI, ...pages]) if (/\p{Script=Han}/u.test(c)) expect(all.has(c), c).toBe(true);
   });
 });
 

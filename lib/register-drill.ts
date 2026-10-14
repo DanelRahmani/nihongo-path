@@ -98,7 +98,13 @@ export function registerDeck(direction: Direction, cards: RegisterCard[], lesson
     groupOf: (c) => c.lesson,
     isOpen: (c) => done.has(c.lesson),
     card: (id) => byId.get(id),
-    prompt: (c) => ({ text: c.from, lang: "ja", ask: `Say it ${direction === "casual" ? "casually" : "politely"}: ${plainOf(c.from, false)} (${c.en})` }),
+    prompt: (c) => ({
+      text: c.from,
+      lang: "ja",
+      ask: `Say it ${direction === "casual" ? "casually" : "politely"}: ${plainOf(c.from, false)} (${c.en})`,
+      hint: `${c.en} Say it ${direction === "casual" ? "casually" : "politely"}.`,
+    }),
+    answerJp: (c) => c.to,
     check: (c, answer) => checkRegister(c, answer, direction),
     groupLabel: (lesson) => lesson,
   };

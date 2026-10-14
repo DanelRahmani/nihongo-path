@@ -76,7 +76,9 @@ export function kanjiDeck(cards: KanjiCard[], id = KANJI_DECK_ID): Deck<KanjiCar
     groups,
     groupOf: (c) => c.group,
     card: (cardId) => byId.get(cardId),
-    prompt: (c) => ({ text: readingOfCard(c), lang: "ja", ask: `${readingOfCard(c)}, ${c.wordMeaning}: type the word in kanji` }),
+    prompt: (c) => ({ text: readingOfCard(c), lang: "ja", ask: `${readingOfCard(c)}, ${c.wordMeaning}: type the word in kanji`, hint: c.wordMeaning }),
+    answerJp: (c) => c.word,
+    answerNote: (c) => `This card's kanji: ${c.id} (${c.meanings.join(", ")})`,
     check: checkKanji,
     groupLabel: (group) =>
       cards

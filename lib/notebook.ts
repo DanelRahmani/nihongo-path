@@ -39,6 +39,8 @@ export interface NoteItem {
   /** When the item was first missed, and missed last (ms). */
   added: number;
   lastMiss: number;
+  /** When it was last answered right (ms), so the two right answers are spaced too. */
+  lastRight?: number;
 }
 
 /** Items by key (noteKey). */
@@ -49,15 +51,16 @@ export const noteKey = (deck: string, card: string) => `${deck}|${card}`;
 
 /**
  * One answer to an item. A miss adds it, or resets its run of right answers; a right answer to an item in the
- * notebook counts towards LEAVE_AFTER once SPACING has passed since the miss. A right answer to an item that
- * isn't in the notebook changes nothing.
+ * notebook counts towards LEAVE_AFTER once SPACING has passed since the miss and since the last right answer (a
+ * reload a minute later isn't remembering it either). A right answer to an item that isn't in the notebook changes
+ * nothing.
  */
 export function reportAnswer(notebook: Notebook, deck: string, card: string, correct: boolean, now: number): Notebook {
   const key = noteKey(deck, card);
   const item = notebook[key];
   if (correct) {
-    if (!item || now - item.lastMiss < SPACING) return notebook;
-    if (item.rightInRow + 1 < LEAVE_AFTER) return { ...notebook, [key]: { ...item, rightInRow: item.rightInRow + 1 } };
+    if (!item || !askable(item, now)) return notebook;
+    if (item.rightInRow + 1 < LEAVE_AFTER) return { ...notebook, [key]: { ...item, rightInRow: item.rightInRow + 1, lastRight: now } };
     const rest = { ...notebook };
     delete rest[key];
     return rest;
@@ -66,6 +69,11 @@ export function reportAnswer(notebook: Notebook, deck: string, card: string, cor
     ...notebook,
     [key]: { deck, card, misses: (item?.misses ?? 0) + 1, rightInRow: 0, added: item?.added ?? now, lastMiss: now },
   };
+}
+
+/** True when a right answer to the item would count now: SPACING since the last miss and the last right answer. */
+export function askable(item: NoteItem, now: number): boolean {
+  return now - item.lastMiss >= SPACING && (item.lastRight === undefined || now - item.lastRight >= SPACING);
 }
 
 /**

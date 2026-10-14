@@ -21,7 +21,7 @@ const useMounted = () => useSyncExternalStore(noSubscribe, () => true, () => fal
  */
 export const showKanji = (word: string) => word.replace(/\[(?!!)/g, "[!");
 
-const isJapanese = (s: string) => /[぀-ヿ\p{Script=Han}]/u.test(s);
+export const isJapanese = (s: string) => /[぀-ヿ\p{Script=Han}]/u.test(s);
 
 export interface TypedDrillProps<C extends { id: string }> {
   deck: Deck<C>;

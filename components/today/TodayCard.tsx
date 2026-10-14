@@ -6,19 +6,18 @@ import { Jp } from "@/components/Jp";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { panelClass } from "@/components/ui/Panel";
 import { Segmented } from "@/components/ui/Segmented";
-import { askItem, KANA_DECKS } from "@/lib/decks";
+import { KANA_DECKS } from "@/lib/decks";
 import { whenIdle } from "@/lib/idle";
 import { KANJI_DECK_ID } from "@/lib/kanji-deck";
 import { plainOf } from "@/lib/markup";
-import { CASUAL_DECK_ID, CLOZE_DECK_ID, CONJUGATION_DECK, POLITE_DECK_ID, QUIZ_DECK, resolvableItems, VOCAB_DECK_ID } from "@/lib/notebook";
+import { CASUAL_DECK_ID, CLOZE_DECK_ID, POLITE_DECK_ID, VOCAB_DECK_ID } from "@/lib/notebook";
 import { deckState, deckStats } from "@/lib/srs";
+import { reviewCount } from "@/lib/review-queue";
 import { useStore } from "@/lib/storage";
 import { activityStore, notebookStore, srsStore } from "@/lib/stores";
 import { dayKey, englishDate, GOALS, type Goal, japaneseDate, setGoal, streak, todayProgress, wordOfTheDay } from "@/lib/today";
 import type { TodayWord } from "@/lib/today-words";
 
-/** Notebook decks whose cards load only on their own page. */
-const LAZY_DECKS = new Set([QUIZ_DECK, KANJI_DECK_ID, CONJUGATION_DECK, VOCAB_DECK_ID, CLOZE_DECK_ID, CASUAL_DECK_ID, POLITE_DECK_ID]);
 
 /**
  * The current minute, so due cards and midnight show up while the page is open, and at once when a sleeping tab
@@ -33,6 +32,22 @@ const subscribeMinute = (onChange: () => void) => {
   };
 };
 const useMinute = () => useSyncExternalStore(subscribeMinute, () => Math.floor(Date.now() / 60_000), () => null);
+
+let idsPromise: Promise<Record<string, string[]>> | undefined;
+
+/** The static /review-ids.json (the card ids this build can ask); a failed fetch is forgotten. */
+function loadIds(): Promise<Record<string, string[]>> {
+  idsPromise ??= fetch("/review-ids.json")
+    .then((response) => {
+      if (!response.ok) throw new Error("The review index could not be loaded.");
+      return response.json() as Promise<Record<string, string[]>>;
+    })
+    .catch((error: unknown) => {
+      idsPromise = undefined;
+      throw error;
+    });
+  return idsPromise;
+}
 
 let wordsPromise: Promise<TodayWord[]> | undefined;
 
@@ -79,9 +94,10 @@ function GoalRing({ answered, goal }: { answered: number; goal: number }) {
 }
 
 /**
- * The home page's Today card: today's date with its era, the daily goal ring and streak, the kana reviews due, the
- * mistakes waiting in the notebook and the word of the day. The numbers depend on the reader's day and stored answers, so the server sends the card
- * with them hidden (same layout, no jump) and the browser fills them in.
+ * The home page's Today card: today's date with its era, the daily goal ring and streak, the reviews waiting
+ * (everything due and the notebook's mistakes, linked to the review page), the drills and the word of the day. The
+ * numbers depend on the reader's day and stored answers, so the server sends the card with them hidden (same
+ * layout, no jump) and the browser fills them in.
  */
 export function TodayCard() {
   const minute = useMinute();
@@ -89,15 +105,20 @@ export function TodayCard() {
   const [srs] = useStore(srsStore);
   const [notebook] = useStore(notebookStore);
   const [words, setWords] = useState<TodayWord[] | null>(null);
+  const [ids, setIds] = useState<Record<string, Set<string>> | null>(null);
 
   useEffect(() => {
     let live = true;
-    const cancel = whenIdle(() =>
+    const cancel = whenIdle(() => {
       loadWords()
         .then((w) => live && setWords(w))
         // No word of the day this visit; the rest of the card doesn't need it.
-        .catch(() => {}),
-    );
+        .catch(() => {});
+      loadIds()
+        .then((index) => live && setIds(Object.fromEntries(Object.entries(index).map(([deck, list]) => [deck, new Set(list)]))))
+        // Without the index the count includes ids a later build removed.
+        .catch(() => {});
+    });
     return () => {
       live = false;
       cancel();
@@ -118,9 +139,11 @@ export function TodayCard() {
   const vocabDue = dueIn(VOCAB_DECK_ID);
   const clozeDue = dueIn(CLOZE_DECK_ID);
   const registerDue = dueIn(CASUAL_DECK_ID) + dueIn(POLITE_DECK_ID);
-  // Quiz and drill items (kanji, vocabulary, cloze, register, conjugation) can't be checked here (their data
-  // isn't on this page), so they count as they are; a kana card a later build removed doesn't.
-  const mistakes = resolvableItems(notebook, (i) => LAZY_DECKS.has(i.deck) || askItem(i.deck, i.card) !== null).length;
+  // The review page's queue, counted from the stores; once the id index has loaded, only what it can ask.
+  const counts = reviewCount(srs, notebook, now.getTime(), ids ? (deck, card) => ids[deck]?.has(card) ?? false : undefined);
+  const allDue = counts.due;
+  const mistakes = counts.notebook;
+  const reviews = allDue + mistakes;
   const word = words?.length ? words[wordOfTheDay(today, words.length)] : null;
   const date = japaneseDate(now);
 
@@ -180,11 +203,18 @@ export function TodayCard() {
               {registerDue === 0 ? "Polite and casual" : `${registerDue} to convert`} <span aria-hidden>→</span>
             </Link>
           </p>
-          <p className={`text-sm text-ink-2 ${hidden}`} aria-hidden={minute === null || undefined}>
-            {mistakes === 0
-              ? "No mistakes waiting"
-              : `${mistakes} mistake${mistakes === 1 ? "" : "s"} waiting · two right answers later on clear one`}
-          </p>
+          <Link
+            href="/review"
+            aria-hidden={minute === null || undefined}
+            className={`group inline-flex min-h-11 items-center gap-3 self-start rounded-full border px-4 py-2 text-sm transition-colors duration-150 ${
+              reviews > 0 ? "border-accent bg-accent-soft text-accent hover:bg-accent hover:text-on-accent" : "border-line-strong text-ink-2 hover:border-accent"
+            } ${hidden}`}
+          >
+            {reviews === 0
+              ? "Nothing to review"
+              : `Review ${[allDue && `${allDue} due`, mistakes && `${mistakes} mistake${mistakes === 1 ? "" : "s"}`].filter(Boolean).join(" and ")}`}
+            <span aria-hidden>→</span>
+          </Link>
           <div>
             <Segmented
               legend="Daily goal"

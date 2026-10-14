@@ -19,6 +19,10 @@ export interface Prompt {
   lang: "ja" | "en";
   /** The instruction, which is also the answer box's label: "Type the romaji". */
   ask: string;
+  /** A line under the text (markup): the English of a line, a word's meaning, the form asked. */
+  hint?: string;
+  /** What the reader types: Japanese (the default), a reading in romaji, or a name in English letters. */
+  answerIn?: "ja" | "romaji" | "name";
 }
 
 export interface Deck<C extends { id: string } = { id: string }> extends SrsDeck<C> {
@@ -28,6 +32,10 @@ export interface Deck<C extends { id: string } = { id: string }> extends SrsDeck
   card(id: string): C | undefined;
   prompt(card: C): Prompt;
   check(card: C, answer: string): Check;
+  /** The answer to show after a miss, in lesson markup, when it reads better than the checker's plain answer. */
+  answerJp?(card: C): string;
+  /** A line under the answer (markup): which kanji a card is for, when several share a word. */
+  answerNote?(card: C): string;
   /** A group's cards, for "New row unlocked: か き く け こ". */
   groupLabel(group: string): string;
 }
@@ -58,7 +66,7 @@ export const KANA_DECKS: KanaDeck[] = KANA_DECK_DEFS.map((def) => {
     groups: def.rows,
     groupOf: (k: Kana) => k.row,
     card: (id: string) => byId.get(id),
-    prompt: (k: Kana): Prompt => ({ text: k.char, lang: "ja", ask: "Type the romaji" }),
+    prompt: (k: Kana): Prompt => ({ text: k.char, lang: "ja", ask: "Type the romaji", answerIn: "romaji" }),
     check: checkKana,
     groupLabel: (row: string) =>
       cards
@@ -82,6 +90,12 @@ export interface AskableItem {
   cardId: string;
   prompt: Prompt;
   check(answer: string): Check;
+  answerJp?: string;
+  answerNote?: string;
+  /** Shown after the answer (markup): a quiz question's explanation. */
+  explain?: string;
+  /** Where the item comes from, linked: its lesson. */
+  source?: { title: string; href: string };
 }
 
 /**
@@ -92,5 +106,12 @@ export function askItem(deckId: string, cardId: string): AskableItem | null {
   const deck = DECKS.get(deckId);
   const card = deck?.card(cardId);
   if (!deck || !card) return null;
-  return { deckId, cardId, prompt: deck.prompt(card), check: (answer) => deck.check(card, answer) };
+  return {
+    deckId,
+    cardId,
+    prompt: deck.prompt(card),
+    check: (answer) => deck.check(card, answer),
+    ...(deck.answerJp ? { answerJp: deck.answerJp(card) } : {}),
+    ...(deck.answerNote ? { answerNote: deck.answerNote(card) } : {}),
+  };
 }

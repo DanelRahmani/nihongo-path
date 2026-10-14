@@ -79,7 +79,8 @@ export function vocabDeck(cards: VocabCard[], lessons: string[], done: ReadonlyS
     groupOf: (c) => c.group,
     isOpen: (c) => c.lessons.some((l) => done.has(l)),
     card: (id) => byId.get(id),
-    prompt: (c) => ({ text: c.meaning, lang: "en", ask: `${c.meaning}: type it in Japanese` }),
+    prompt: (c) => ({ text: c.meaning, lang: "en", ask: `${c.meaning}: type it in Japanese`, ...(c.pos ? { hint: c.pos } : {}) }),
+    answerJp: (c) => c.jp,
     check: checkVocab,
     groupLabel: (group) =>
       cards

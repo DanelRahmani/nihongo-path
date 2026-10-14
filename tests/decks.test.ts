@@ -118,8 +118,13 @@ describe("the mistake notebook", () => {
 
   it(`lets an item go after ${LEAVE_AFTER} right answers in a row`, () => {
     const once = right(miss({}));
-    expect(Object.values(once)[0].rightInRow).toBe(1);
-    expect(right(once)).toEqual({});
+    expect(Object.values(once)[0]).toMatchObject({ rightInRow: 1, lastRight: LATER });
+    expect(right(once, "a", LATER + SPACING)).toEqual({});
+  });
+
+  it("spaces the two right answers too: a reload a minute later doesn't count", () => {
+    const once = right(miss({}));
+    expect(right(once, "a", LATER + 60_000)).toBe(once);
   });
 
   it("doesn't count a right answer soon after the miss", () => {

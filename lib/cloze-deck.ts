@@ -68,7 +68,9 @@ export function clozeDeck(cards: ClozeCard[], lessons: string[], done: ReadonlyS
       text: c.line,
       lang: "ja",
       ask: `Fill the blank${c.register ? `, ${c.register}` : ""}: ${plainOf(c.line, false).replace(GAP, " blank ")} (${c.en})`,
+      hint: c.register ? `${c.en} (${c.register})` : c.en,
     }),
+    answerJp: (c) => c.line.replace(GAP, `{${c.answer}}`),
     check: checkCloze,
     groupLabel: (lesson) => lesson,
   };

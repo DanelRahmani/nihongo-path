@@ -3,6 +3,7 @@ import { WORDS } from "@/content/words";
 import { EXTRA_WORDS } from "@/content/words/extra";
 import { GROUP_SIZE, type KanjiCard } from "@/lib/kanji-deck";
 import { parse, plainOf, readingOf } from "@/lib/markup";
+import { SITE_PAGES } from "@/lib/search";
 import { DATE_KANJI } from "@/lib/today";
 
 /** Parts of speech that make poor kanji cards: their meaning names a job, not a thing to recall. */
@@ -52,11 +53,13 @@ export function kanjiCards(): KanjiCard[] {
 }
 
 /**
- * Every kanji the app shows in a Japanese line (the lesson kanji, the dictionary's words and the Today card's
- * date), which "furigana on new kanji" writes rules for. Server only; the layout hands it to the head script.
+ * Every kanji the app shows in a Japanese line (the lesson kanji, the dictionary's words, the Today card's date
+ * and the search's page names), which "furigana on new kanji" writes rules for. Server only; the layout hands it to the head script.
  */
 export function furiganaKanji(): string {
   const all = new Set([...KANJI.map((k) => k.char), ...DATE_KANJI]);
+  // The search's page names (練習, 活用, 復習) show as Japanese lines in the search results.
+  for (const page of SITE_PAGES) for (const c of plainOf(page.jp, false)) if (/\p{Script=Han}/u.test(c)) all.add(c);
   for (const w of [...WORDS, ...EXTRA_WORDS]) for (const c of plainOf(w.jp, false)) if (/\p{Script=Han}/u.test(c)) all.add(c);
   return [...all].join("");
 }

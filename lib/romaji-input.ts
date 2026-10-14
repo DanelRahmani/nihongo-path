@@ -13,7 +13,8 @@ const ALTERNATIVES: [RegExp, string][] = [
   [/si/g, "shi"],
   [/ti/g, "chi"],
   [/tu/g, "tsu"],
-  [/hu/g, "fu"],
+  // Not the hu of Hepburn shu and chu.
+  [/(^|[^sc])hu/g, "$1fu"],
   [/zi|di/g, "ji"],
   [/du/g, "zu"],
   [/wo/g, "o"],
@@ -31,7 +32,8 @@ export function normalizeRomaji(s: string): string {
     .toLowerCase()
     .replace(/[āīūēōâîûêô]/g, (c) => MACRONS[c])
     .replace(/[\s'’\-.,!?~]/g, "");
-  // Hepburn itself never contains si, ti, tu, hu or zi (shi, chi, tsu, fu, ji), so these folds leave it alone.
+  // Hepburn itself never contains si, ti, tu, zi, or hu outside shu and chu (shi, chi, tsu, ji, fu), so these folds
+  // leave it alone.
   for (const [from, to] of ALTERNATIVES) out = out.replace(from, to);
   return out.replace(/ou/g, "oo");
 }

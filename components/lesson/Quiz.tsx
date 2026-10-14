@@ -49,6 +49,8 @@ function Question({ q, n, onResult }: { q: QuizQuestion; n: number; onResult: (c
             onChange={(e) => setInput(e.target.value)}
             onCompositionStart={() => (composing.current = true)}
             onCompositionEnd={() => (composing.current = false)}
+            // Safari ends the composition before the Enter that confirms it, which then has keyCode 229.
+            onKeyDown={(e) => e.key === "Enter" && e.nativeEvent.keyCode === 229 && e.preventDefault()}
             placeholder={PLACEHOLDER[q.answerIn ?? "japanese"]}
             autoComplete="off"
             autoCapitalize="none"

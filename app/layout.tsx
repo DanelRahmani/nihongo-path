@@ -4,6 +4,7 @@ import Link from "next/link";
 import { DisplaySettings } from "@/components/DisplaySettings";
 import { InlineScript } from "@/components/InlineScript";
 import { NavLinks } from "@/components/NavLinks";
+import { SearchLauncher } from "@/components/search/SearchLauncher";
 import { DEFAULT_ATTRIBUTES, HEAD_SCRIPT } from "@/lib/display";
 import "./globals.css";
 
@@ -46,12 +47,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div className="mx-auto flex h-16 max-w-5xl items-center gap-1 px-4 sm:gap-4 sm:px-6">
             <Link href="/" className="group flex min-h-9 min-w-9 shrink-0 items-center gap-2 sm:gap-3" aria-label="Nihongo Path home">
               <span className="size-3.5 rounded-full bg-accent shadow-[0_0_0_4px_var(--accent-soft)] transition-transform duration-300 ease-soft group-hover:scale-110" />
-              <span lang="ja" className="font-serif text-base font-bold tracking-wide whitespace-nowrap max-[374px]:hidden sm:text-xl sm:tracking-wider">
+              <span lang="ja" className="font-serif text-base font-bold tracking-wide whitespace-nowrap max-[419px]:hidden sm:text-xl sm:tracking-wider">
                 日本語の道
               </span>
             </Link>
             <NavLinks />
-            <div className="ml-auto shrink-0">
+            <div className="ml-auto flex shrink-0 items-center gap-1 sm:gap-2">
+              <SearchLauncher />
               <DisplaySettings />
             </div>
           </div>

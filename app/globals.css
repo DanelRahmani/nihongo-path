@@ -208,6 +208,19 @@ body {
   border-radius: 4px;
 }
 
+/* The search box shows focus with its bar's accent border; the outline would be clipped by the dialog's corners.
+   In forced colours, where the border colour is lost, it keeps an outline inside the box. */
+.search-input:focus-visible {
+  outline: none;
+}
+
+@media (forced-colors: active) {
+  .search-input:focus-visible {
+    outline: 2px solid;
+    outline-offset: -2px;
+  }
+}
+
 /* Component classes live in a layer, so utilities (text-good on a seal) can override them. */
 @layer components {
   .inspect-word {

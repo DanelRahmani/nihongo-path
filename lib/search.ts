@@ -4,9 +4,9 @@
  * dictionary's folds (lib/dictionary.ts): katakana as hiragana, lenient romaji, English at word starts. Pure.
  */
 import type { Word } from "@/content/types";
-import { buildEntries, closeness, foldEnglish, looseRomaji, parseQuery, toHiragana } from "@/lib/dictionary";
+import { buildEntries, closeness, foldEnglish, looseKana, looseRomaji, parseQuery, toHiragana, withoutArticle } from "@/lib/dictionary";
 import { langRuns, plainOf, readingOf } from "@/lib/markup";
-import { kanaToRomaji } from "@/lib/romaji";
+import { kanaToRomaji, romajiOf } from "@/lib/romaji";
 import { normalizeRomaji } from "@/lib/romaji-input";
 
 export type SearchKind = "page" | "lesson" | "grammar" | "kanji" | "word";
@@ -26,74 +26,120 @@ export interface SearchItem {
   jp: string[];
   /** Romaji to match, normalised (lib/romaji-input.ts). */
   roma: string[];
-  /** English to match, folded (lower case, no accents). */
+  /** English names, folded and without a leading article: a page or lesson title, a kanji's meanings, a word's glosses. */
+  names: string[];
+  /** All the English to match at a word start, folded. */
   en: string;
 }
 
 /** The app's top-level pages, so "dictionary" or 辞書 finds the page itself. */
 export const SITE_PAGES: IndexSources["pages"] = [
-  { title: "Path", detail: "All the lessons, unit by unit", href: "/", jp: "道" },
+  { title: "Path", detail: "All the lessons, unit by unit", href: "/", jp: "[道|みち]" },
   { title: "Kana charts", detail: "Hiragana and katakana", href: "/kana", jp: "かな" },
-  { title: "Kana drill", detail: "Spaced-repetition practice for kana", href: "/kana/drill", jp: "練習" },
-  { title: "Grammar overview", detail: "Particles, grammar and verb forms on one page", href: "/grammar", jp: "文法" },
-  { title: "Dictionary", detail: "Every word, by kanji, kana, romaji or English", href: "/dictionary", jp: "辞書" },
-  { title: "Reading", detail: "A sign, a menu, a chat, a story and haiku", href: "/read", jp: "読む" },
+  { title: "Kana drill", detail: "Spaced-repetition practice for kana", href: "/kana/drill", jp: "[練習|れんしゅう]" },
+  { title: "Grammar overview", detail: "Particles, grammar and verb forms on one page", href: "/grammar", jp: "[文法|ぶんぽう]" },
+  { title: "Dictionary", detail: "Every word, by kanji, kana, romaji or English", href: "/dictionary", jp: "[辞書|じしょ]" },
+  { title: "Reading", detail: "A sign, a menu, a chat, a story and haiku", href: "/read", jp: "[読|よ]む" },
 ];
 
 export interface IndexSources {
+  /** jp: the page's Japanese name in markup, so its reading and romaji match too. */
   pages: { title: string; detail: string; href: string; jp: string }[];
-  lessons: { href: string; title: string; summary: string; mark: string; unit: string }[];
+  /** kana: a lesson of the kana units, whose mark is a kana to read as itself (は is ha there, not the particle wa). */
+  lessons: { href: string; title: string; summary: string; mark: string; unit: string; kana: boolean }[];
   grammar: { slug: string; pattern: string; meaning: string }[];
   kanji: { char: string; meanings: string[]; on: string[]; kun: string[] }[];
   words: Word[];
   extra: Word[];
 }
 
-/** The Japanese stretches of English prose with Japanese in it: "Place に[行|い]く" → に行く, にいく. */
-function japaneseIn(markup: string): string[] {
-  const runs = (text: string) => langRuns(text).filter((r) => r.ja).map((r) => toHiragana(r.text.replace(/[\s〜・…]/g, "")));
-  return [...new Set([...runs(plainOf(markup, false)), ...runs(readingOf(markup, false))])].filter(Boolean);
+const unique = (xs: string[]) => [...new Set(xs.filter(Boolean))];
+
+/** A Japanese stretch in pieces at its punctuation: 〜て、〜て → て, て; これ・それ → これ, それ. */
+const pieces = (run: string) => run.split(/[\s〜・…。、？]+/).filter(Boolean);
+
+/** A run that starts with the particle へ or は stacked on another (への, には is fine), read as two words: e no. */
+const particleStack = (kana: string) => kana.replace(/^([はへ])(?=[のもとにでがをや])/, "$1 ");
+
+/** Romaji of a kana reading as letters, never as a particle: a kanji read は is ha. */
+const literalRomaji = (kana: string) => normalizeRomaji(romajiOf(`[字|${kana}]`));
+
+/**
+ * The Japanese stretches of English prose with Japanese in it, and their romaji: "Place に[行|い]く" gives に行く
+ * and にいく, read niiku. A stretch is read as a sentence would be, so は and へ alone are the particles wa and e.
+ */
+function japaneseIn(markup: string): { jp: string[]; roma: string[] } {
+  const runs = (text: string) => langRuns(text).filter((r) => r.ja).flatMap((r) => pieces(r.text));
+  const readings = runs(readingOf(markup, false));
+  return {
+    jp: unique([...runs(plainOf(markup, false)), ...readings].map(toHiragana)),
+    roma: unique(readings.map((r) => normalizeRomaji(kanaToRomaji(particleStack(r))))),
+  };
 }
 
-const unique = (xs: string[]) => [...new Set(xs.filter(Boolean))];
+/** English with its Japanese in romaji, so "te form" finds "The て form": the て form → the te form. */
+function romanised(markup: string): string {
+  return langRuns(readingOf(markup, false))
+    .map((r) => (r.ja ? pieces(r.text).map((p) => kanaToRomaji(particleStack(p))).join(" ") : r.text))
+    .join("");
+}
+
+/** English for the names list: folded, without a leading article. */
+const name = (s: string) => withoutArticle(foldEnglish(plainOf(s, false)));
 
 /** The whole index, in a fixed order: pages, lessons, grammar topics, kanji, then words. */
 export function buildSearchIndex(src: IndexSources): SearchItem[] {
   const pages = src.pages.map(
-    (p): SearchItem => ({ kind: "page", label: p.title, detail: p.detail, href: p.href, jp: [toHiragana(p.jp)], roma: [], en: foldEnglish(`${p.title} ${p.detail}`) }),
+    (p): SearchItem => ({
+      kind: "page",
+      label: p.title,
+      detail: p.detail,
+      href: p.href,
+      jp: unique([toHiragana(plainOf(p.jp, false)), readingOf(p.jp, false)]),
+      roma: [normalizeRomaji(romajiOf(p.jp))],
+      names: [name(p.title)],
+      en: foldEnglish(`${p.title} ${p.detail}`),
+    }),
   );
-  const lessons = src.lessons.map(
-    (l): SearchItem => ({
+  const lessons = src.lessons.map((l): SearchItem => {
+    // A mark of two parts (は・が, [内|うち]・[外|そと]) matches either part.
+    const parts = l.mark.split("・").map((part) => part.replace(/^〜/, ""));
+    const inTitle = japaneseIn(l.title);
+    return {
       kind: "lesson",
       label: plainOf(l.title, false),
       detail: `${l.unit} · ${plainOf(l.summary, false)}`,
       href: l.href,
-      jp: unique([toHiragana(plainOf(l.mark, false)), toHiragana(readingOf(l.mark, false)), ...japaneseIn(l.title)]),
-      roma: [],
-      en: foldEnglish(`${plainOf(l.title, false)} ${plainOf(l.summary, false)}`),
-    }),
-  );
-  const grammar = src.grammar.map(
-    (g): SearchItem => ({
+      jp: unique([...parts.flatMap((part) => [toHiragana(plainOf(part, false)), toHiragana(readingOf(part, false))]), ...inTitle.jp]),
+      roma: unique([...parts.map((part) => (l.kana ? literalRomaji(readingOf(part, false)) : normalizeRomaji(romajiOf(part)))), ...(l.kana ? [] : inTitle.roma)]),
+      names: unique([name(l.title), name(romanised(l.title))]),
+      en: foldEnglish(`${plainOf(l.title, false)} ${romanised(l.title)} ${plainOf(l.summary, false)}`),
+    };
+  });
+  const grammar = src.grammar.map((g): SearchItem => {
+    const inPattern = japaneseIn(g.pattern);
+    return {
       kind: "grammar",
       label: plainOf(g.pattern, false),
       detail: plainOf(g.meaning, false),
       href: `/grammar#${g.slug}`,
-      jp: japaneseIn(g.pattern),
-      roma: [],
-      en: foldEnglish(`${plainOf(g.pattern, false)} ${plainOf(g.meaning, false)}`),
-    }),
-  );
+      jp: inPattern.jp,
+      roma: inPattern.roma,
+      names: unique([name(g.pattern), name(romanised(g.pattern))]),
+      en: foldEnglish(`${plainOf(g.pattern, false)} ${romanised(g.pattern)} ${plainOf(g.meaning, false)}`),
+    };
+  });
   const kanji = src.kanji.map((k): SearchItem => {
-    // Kun readings without the okurigana dot: た.べる → たべる, and the stem alone, た.
-    const readings = unique([...k.on.map(toHiragana), ...k.kun.flatMap((r) => [r.replace(".", ""), r.split(".")[0]])]);
+    // Kun readings without the okurigana dot: た.べる → たべる. The stem alone (た) would tie with real readings.
+    const readings = unique([...k.on.map(toHiragana), ...k.kun.map((r) => r.replace(".", ""))]);
     return {
       kind: "kanji",
       label: k.char,
       detail: k.meanings.join(", "),
       href: `/kanji/${k.char}`,
       jp: [k.char, ...readings],
-      roma: unique(readings.map((r) => normalizeRomaji(kanaToRomaji(r)))),
+      roma: unique(readings.map(literalRomaji)),
+      names: k.meanings.map(name),
       en: foldEnglish(k.meanings.join(", ")),
     };
   });
@@ -105,6 +151,7 @@ export function buildSearchIndex(src: IndexSources): SearchItem[] {
       href: `/dictionary?q=${encodeURIComponent(e.written)}`,
       jp: unique([e.keys.written, e.keys.kana]),
       roma: [e.keys.roma],
+      names: e.keys.glosses,
       en: e.keys.en,
     }),
   );
@@ -112,24 +159,31 @@ export function buildSearchIndex(src: IndexSources): SearchItem[] {
 }
 
 /**
- * Lower is better; null for no match. Japanese matches the Japanese keys (exact, start, inside). English letters
- * match the romaji (exact or start; whole word with long vowels shortened) and the English: the whole label,
- * a word in the label that starts with the query, then a word start anywhere in the text.
+ * Lower is better; null for no match. Japanese matches the Japanese keys (exact, start, inside), then the same
+ * with long vowels in one spelling. English letters
+ * match the romaji (exact, or start for three letters or more; the whole word with long vowels shortened) and
+ * the English: a whole name, a word in a name that starts with the query, then a word start anywhere in the text.
  */
 export function scoreItem(item: SearchItem, query: ReturnType<typeof parseQuery>): number | null {
   if (query.kind === "empty") return null;
   const scores: (number | null)[] = [];
   if (query.kind === "jp") {
-    for (const key of item.jp) scores.push(closeness(key, query.text));
-  } else {
-    for (const key of item.roma) {
-      scores.push(closeness(key, query.roma, false));
-      if (looseRomaji(key) === looseRomaji(query.roma)) scores.push(0.5);
+    for (const key of item.jp) {
+      scores.push(closeness(key, query.text));
+      // Long vowels in one spelling (こうひい finds コーヒー), a half step below.
+      const loose = closeness(looseKana(key), query.loose);
+      if (loose !== null) scores.push(loose + 0.5);
     }
-    const label = foldEnglish(item.label);
-    if (label === query.en) scores.push(0);
-    else if (query.start.test(label)) scores.push(1.5);
-    else if (query.en.length >= 2 && query.start.test(item.en)) scores.push(2.5);
+  } else {
+    const reading = item.kind === "kanji" ? 0.25 : 0;
+    for (const key of item.roma) {
+      const strict = closeness(key, query.roma, false);
+      if (strict !== null) scores.push(strict + reading);
+      if (looseRomaji(key) === looseRomaji(query.roma)) scores.push(0.5 + reading);
+    }
+    if (item.names.includes(query.en)) scores.push(0);
+    else if (item.names.some((n) => query.start.test(n))) scores.push(1.5);
+    else if (query.en.length >= 3 && query.start.test(item.en)) scores.push(2.5);
   }
   const found = scores.filter((s): s is number => s !== null);
   return found.length ? Math.min(...found) : null;
@@ -154,32 +208,4 @@ export function searchIndex(items: SearchItem[], query: string, limit = 20): Sea
     )
     .slice(0, limit)
     .map((h) => h.item);
-}
-
-/** The parts of a keyboard event the shortcut needs, so it is testable without a DOM. */
-export interface ShortcutEvent {
-  key: string;
-  ctrlKey: boolean;
-  metaKey: boolean;
-  altKey: boolean;
-  isComposing?: boolean;
-  target: EventTarget | { tagName?: string; type?: string; isContentEditable?: boolean } | null;
-}
-
-/** Inputs that take typed text (a checkbox or a radio button doesn't). */
-const TEXT_INPUTS = new Set(["text", "search", "email", "url", "tel", "password", "number", "date", "time", "datetime-local", "month", "week"]);
-
-/** True when the reader is typing into the target, where / and Ctrl/⌘K are text, not commands. */
-export function isTypingTarget(target: ShortcutEvent["target"]): boolean {
-  if (!target || typeof target !== "object") return false;
-  const el = target as { tagName?: string; type?: string; isContentEditable?: boolean };
-  const tag = el.tagName?.toUpperCase();
-  return el.isContentEditable === true || tag === "TEXTAREA" || tag === "SELECT" || (tag === "INPUT" && TEXT_INPUTS.has((el.type ?? "text").toLowerCase()));
-}
-
-/** / or Ctrl/⌘K, outside text fields and outside a keyboard's composition (IME). */
-export function isSearchShortcut(e: ShortcutEvent): boolean {
-  if (e.isComposing || e.altKey || isTypingTarget(e.target)) return false;
-  if (e.key.toLowerCase() === "k") return e.ctrlKey || e.metaKey;
-  return e.key === "/" && !e.ctrlKey && !e.metaKey;
 }

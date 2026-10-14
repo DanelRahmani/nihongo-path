@@ -113,7 +113,7 @@ export function glossesOf(meaning: string): string[] {
     .filter(Boolean);
 }
 
-export const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /** Vowel of each kana, to read ー as the vowel it lengthens. */
 const VOWEL: Record<string, string> = {};

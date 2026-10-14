@@ -7,15 +7,11 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **F3** (search), in progress. Then F4 (Today card), E1–E9 (practice), G and H.
-  - Done so far (commit "F3 (in progress)"): `lib/search.ts` (pure: `buildSearchIndex` over pages, lessons, grammar topics, kanji and words; `scoreItem`/`searchIndex` ranking that reuses `lib/dictionary.ts`'s folds; `isSearchShortcut`/`isTypingTarget`; `SITE_PAGES`), the `force-static` route `app/search-index.json/route.ts`, and `lib/dictionary.ts` exporting `toHiragana`, `foldEnglish`, `withoutArticle`, `escapeRegExp` and `closeness`. No tests, UI or review yet.
-  - Still to do: `tests/search.test.ts` (index builder, ranking, the shortcut ignores keystrokes typed in inputs, IME composition, Ctrl/⌘K); a tiny client launcher in the header (a search button plus a global keydown listener) that lazy-loads the dialog with `next/dynamic` (`ssr: false`) only when opened and fetches `/search-index.json` then; the dialog as a native `<dialog>` with `showModal()`, a combobox input and a listbox of results (`aria-activedescendant`, arrows, Enter navigates, Escape closes, kind labels); `/dictionary` reading `?q=` on load, since word results link to `/dictionary?q=…`.
-  - Header room: the header is full at 375 px (wordmark, 道 かな 練習 参考, 表示). The plan was to hide the 日本語の道 wordmark below 420 px (keeping the red dot as the home link) to make room for a search icon button. Check with the owner if unsure.
-  - F3 can index `content/grammar.ts` topics by anchor (`/grammar#wa-topic`), the dictionary through `lib/dictionary.ts`, and lessons and kanji.
+- **F4** (Today card). Then E1–E9 (practice), G and H.
+  - The Today card's "mistakes waiting" needs E1's notebook; F4 ships without it and E1 adds the count.
   - Deck and card builders (E) must never import `content/reading.ts` or `lib/corpus.ts`; `tests/reading.test.ts` checks this.
   - E2's "new kanji only" furigana rules must stay less specific than the reading view's (`:root body .reading-view …` in `app/globals.css`), or the reading view would show readings for unlearned kanji.
   - Keep `lib/joyo.ts` (and its 135 KB `content/data/joyo.json`) out of client code; `tests/lookup.test.ts` and `tests/dictionary.test.ts` check the client imports. The 常用 readings reach the client through `/dictionary-data.json`, loaded by `lib/load-dictionary.ts`.
-  - F3's search can reuse `lib/dictionary.ts` (`buildEntries`, `search`) for its word results, and could open `/dictionary` with a query.
   - The N5/N4 kanji wait for Jonathan Waller's lists (see Waiting on the owner), and E2's trainer waits for them.
   - Lessons written later still follow these rules:
     - Every typed answer needs all its correct alternatives listed. The checker ignores spaces and punctuation and folds a few keyboard kanji spellings (美味しい); nothing else. Digit forms (3本) are listed by hand where a number is typed.
@@ -180,6 +176,17 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - `tests/reading.test.ts`: only the page and the corpus import the texts, and only tests and scripts import the corpus (aliases, relative paths and dynamic imports); digits, not kanji numerals; every haiku names its poet and edition and is quoted; the chat stays casual, the story polite, signs and news polite or bare phrases.
 - **Extras menu (owner request, 2026-10-14):** the nav's 辞書 link became 参考 (Extras), a native popover menu with the grammar overview, the dictionary and the reading view. It replaces one link, so the header still fits 375 px; the button is highlighted on those pages and on kanji pages. Checked in the browser at 375 px, light and dark: links navigate and close the menu, Escape and outside taps close it, Tab reaches the menu items with a visible ring, console clean.
 
+- **F3 Search (2026-10-14):** a search button in the header, and / or Ctrl/⌘K anywhere outside a text field, open a search dialog over pages, lessons, grammar topics, kanji and words.
+  - `lib/search.ts`, pure: `buildSearchIndex` and `searchIndex`. Japanese matches written forms and readings (katakana as hiragana; long vowels in one spelling a half step below). Romaji matches through `lib/romaji-input.ts`, with long vowels shortened as a whole-word fallback. English matches a whole name, then a word in a name that starts with the query, then a word start anywhere. Equal scores list pages, lessons, grammar, kanji, then words.
+    - Lesson marks of two parts (は・が) match either part. Particles read as particles in particle lessons and grammar patterns (wa finds the は lessons, e no finds への), but a kana lesson's mark and a kanji's readings read literally (Hiragana 2 is ha; 生 は.える is haeru).
+    - Titles are also indexed with their Japanese in romaji, so "te form" finds the て form lesson. A kanji's reading match ranks a quarter step below, so "you" lists あなた before the kanji read よう, and "taberu" lists 食べる before 食.
+  - `lib/search-sources.ts` gathers the content at build time (it reads the 常用 table), and the `force-static` route `/search-index.json` serves the index (262 KB, 60 KB gzipped).
+  - `lib/search-shortcut.ts` has no imports, so the header's launcher doesn't pull the search code into every page. It ignores / and Ctrl/⌘K in text inputs, textareas, selects and contenteditable (not checkboxes or radios), while an IME is composing, with Alt, and Ctrl+Shift+K (Firefox's console).
+  - `components/search/SearchLauncher.tsx` loads `SearchDialog` with `next/dynamic` (`ssr: false`) on the first request, and preloads it on hover or focus. The dialog is a native `<dialog>` opened with `showModal()`: a combobox over a listbox with `aria-activedescendant`. Arrows move, Enter opens (an Enter that confirms an IME conversion doesn't, Safari's keyCode 229 included; an Enter typed before the deferred list updates opens the best match for the box), and Escape or a backdrop tap closes it, with focus returned by the browser. Each result shows its kind. A persistent status line gives the count.
+  - `/dictionary` reads `?q=` (in its own Suspense boundary, so the page stays prerendered). A link clears the filters, and typing writes the query back with `history.replaceState`, so a link to the word already shown still works.
+  - Header: the 日本語の道 wordmark hides below 420 px (the dot stays as the home link), which makes room for the search button.
+  - Also: `lib/romaji-input.ts` no longer folds the hu of shu and chu into fu (keys read renshuu, not rensfuu); the Quiz ignores an IME-confirming Enter in Safari; `lib/idle.ts` holds `whenIdle`, shared with the Today card.
+
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
   - Q1: four furigana modes, kana-only by default.
@@ -217,7 +224,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 513 in 22 files.
+- Tests: 534 in 23 files.
+- Search index: 1,173 items (6 pages, 62 lessons, 61 grammar topics, 404 kanji, 640 words).
 - Dictionary: 547 lesson words (75 verbs), 93 extra kanji-example words, 14 names; 404 kanji. The dictionary page lists 640 entries.
 - Template: all 62 lessons converted.
 - Grammar overview: 61 topics from 37 lessons, 96 examples.
@@ -407,6 +415,18 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Should-fix: digits read aloud through one ruby group (10ji → juuji, 400en → yonhyakuen); the sign now reads 本日休業 and 10時から営業します; 紅茶 is "black tea"; 御馬 is "the honourable horse"; the haiku aren't inspectable (their words and most kanji have no entries); screen readers hear who sends each chat message; the import guard catches relative and dynamic imports and the route through the corpus; tests for digits and the registers of signs and news.
   - Polish: アイス on the menu; story English ("It rained on Sunday", "It made me a little happy") and the second 私は dropped; glosses for 店長 and 初雪; reading-view CSS made more specific than E2's future furigana rules; the toggle's offset corrected for text size; the toggle hidden without `:has()`; each Meaning names its line for screen readers; the haiku figures named.
   - Not applied: the more precise edition citations, since neither the reviewer nor I can check the books (below).
+
+- F3 in the checks: 534 tests, typecheck, lint, build (`/search-index.json` static; the dialog is its own chunk; no 常用 data in client chunks). The corpus snapshot is unchanged.
+- F3 in the browser (Playwright's Chromium, headless, on the static build) at 360, 375 and 420 px, light and dark: no horizontal scroll, header within its width; / and Ctrl+K open the dialog with focus in the box; arrows move the highlighted option and `aria-activedescendant`; Enter and a click open a kanji page and a dictionary word; Escape closes; / typed into the dictionary's box stays text; the header's search button has a visible ring; a word link to the dictionary fills its box, also after typing something else there; console clean. Screenshots were sent to the owner.
+- F3 review: a fresh Opus 5.5 reviewer checked the Next APIs against the bundled docs, the lazy loading, the client chunks and the ARIA pattern. Applied:
+  - Error fixed: duplicate React keys for words with two entries (本 noun and counter).
+  - Should-fix applied: への read as e no; titles indexed in romaji ("te form"); bare kun stems (た, い) dropped as keys; Safari's IME Enter (keyCode 229) in the dialog and the quiz; the shortcut moved out of `lib/search.ts` so every page doesn't load `lib/dictionary.ts`; a stronger import guard (multi-line imports, `lib/romaji*.ts`); the same-word dictionary link and the filters that could hide it.
+  - Polish applied: Japanese split at its punctuation (これ・それ); the scoring comment; kanji readings a quarter step below ("you"); an unused ref; a failed index fetched once per open, not twice; Ctrl+Shift+K left to Firefox and Ctrl/⌘K kept inside the open dialog; an outline in forced-colours mode; a drag out of the box no longer closes the dialog; the `foldEnglish` change dropped (it changed nothing visible); `escapeRegExp` private again; the hu fold.
+  - Not applied:
+    - building the word results from `/dictionary-data.json` to halve the index: 60 KB gzipped, loaded only on first open, is fine for now;
+    - "te-form" with a hyphen (the space form works);
+    - after a failed load, the status line keeps "couldn't load" until the retry finishes.
+  - In the browser, Ctrl+K pressed within a few milliseconds of Escape lands before the dialog has closed, so it is ignored; a person can't press that fast.
 
 ### Waiting on the owner
 - B4 sources to confirm. The reviewers recalled these differently:

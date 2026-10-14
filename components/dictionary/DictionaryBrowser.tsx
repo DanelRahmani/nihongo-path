@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useDeferredValue, useEffect, useMemo, useReducer, useRef, useState, useTransition } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useCallback, useDeferredValue, useEffect, useMemo, useReducer, useRef, useState, useTransition } from "react";
 import { Jp, Rich } from "@/components/Jp";
 import { Button } from "@/components/ui/Button";
 import { Chip } from "@/components/ui/Chip";
@@ -21,21 +22,12 @@ import {
   toCsv,
   visibleCount,
 } from "@/lib/dictionary";
+import { whenIdle } from "@/lib/idle";
 import { loadDictionary } from "@/lib/load-dictionary";
 import { useStore } from "@/lib/storage";
 import { myWordsStore } from "@/lib/stores";
 
 type Load = { state: "waiting" } | { state: "error" } | { state: "done"; entries: Entry[] };
-
-/** Runs `fn` when the browser is idle, or soon after load where requestIdleCallback is missing (Safari). */
-function whenIdle(fn: () => void): () => void {
-  if ("requestIdleCallback" in window) {
-    const id = window.requestIdleCallback(fn, { timeout: 2000 });
-    return () => window.cancelIdleCallback(id);
-  }
-  const id = setTimeout(fn, 200);
-  return () => clearTimeout(id);
-}
 
 /** Saves the CSV as a file: a Blob keeps the byte order mark that lets Excel read the Japanese. */
 function download(csv: string, name: string) {
@@ -46,6 +38,19 @@ function download(csv: string, name: string) {
   a.remove();
   // Revoked a moment later: some browsers still read the URL after click() returns.
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+/**
+ * Fills the search box from ?q= (the site search links each word to /dictionary?q=…), on load and on each new
+ * link. Its own component in its own Suspense boundary, so the rest of the page is still prerendered. Typing
+ * writes the query back to the address, so a link to the word already shown still changes it.
+ */
+function QueryFromUrl({ onQuery }: { onQuery: (q: string) => void }) {
+  const q = useSearchParams().get("q");
+  useEffect(() => {
+    if (q !== null) onQuery(q);
+  }, [q, onQuery]);
+  return null;
 }
 
 /**
@@ -77,6 +82,32 @@ export function DictionaryBrowser() {
   }, []);
 
   useEffect(() => whenIdle(start), [start]);
+
+  // A query from a link loads the data at once, as focusing the box does, and clears the filters, which could
+  // hide the linked word. The address echoing what was just typed changes nothing.
+  const typed = useRef(query);
+  useEffect(() => {
+    typed.current = query;
+  });
+  const fromUrl = useCallback(
+    (q: string) => {
+      if (q === typed.current) return;
+      setQuery(q);
+      setFilters(DEFAULT_FILTERS);
+      start();
+    },
+    [start],
+  );
+
+  // Keep ?q= in step with the box, without a history entry per keystroke. Next.js picks up history.replaceState
+  // when the state is null (its own state would make it skip the update).
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if ((url.searchParams.get("q") ?? "") === deferredQuery) return;
+    if (deferredQuery) url.searchParams.set("q", deferredQuery);
+    else url.searchParams.delete("q");
+    window.history.replaceState(null, "", url);
+  }, [deferredQuery]);
 
   const mineSet = useMemo(() => new Set(mine), [mine]);
   const entries = load.state === "done" ? load.entries : null;
@@ -122,6 +153,9 @@ export function DictionaryBrowser() {
 
   return (
     <div>
+      <Suspense fallback={null}>
+        <QueryFromUrl onQuery={fromUrl} />
+      </Suspense>
       <div className="flex flex-col gap-5">
         <div>
           <label htmlFor="dictionary-search" className="text-xs font-medium tracking-[0.18em] text-ink-2 uppercase">

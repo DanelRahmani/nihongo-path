@@ -149,3 +149,13 @@ export function practiceCard<C extends { id: string }>(deck: SrsDeck<C>, state: 
   const open = unlockedCards(deck, state).filter((c) => c.id !== lastId);
   return open.length ? open[Math.floor(rand * open.length)] : null;
 }
+
+/** A wait as people say it: 10 min, 3 hours, 2 days. */
+export function formatWait(ms: number): string {
+  const min = Math.ceil(ms / 60_000);
+  if (min < 60) return `${min} min`;
+  const h = Math.round(min / 60);
+  if (h < 24) return `${h} hour${h === 1 ? "" : "s"}`;
+  const d = Math.round(h / 24);
+  return `${d} day${d === 1 ? "" : "s"}`;
+}

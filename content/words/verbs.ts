@@ -42,7 +42,7 @@ export const VERBS: Word[] = [
   verb("[手伝|てつだ]う", "godan", "to help", "everyday"),
   verb("[願|ねが]う", "godan", "to wish, to ask for (お願いします: please)", "greetings"),
   verb("[撮|と]る", "godan", "to take (a photo)", "hobbies"),
-  verb("[測|はか]る", "godan", "to measure", "everyday"),
+  verb("[測|はか]る", "godan", "to measure (length, temperature)", "everyday"),
   verb("[切|き]る", "godan", "to cut", "everyday"),
   verb("[変|か]える", "ichidan", "to change (something)", "everyday"),
   verb("[減|へ]る", "godan", "to decrease", "everyday"),

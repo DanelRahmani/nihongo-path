@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { KanaDrill } from "@/components/kana/KanaDrill";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 
@@ -14,6 +15,13 @@ export default function DrillPage() {
       <p className="mt-4 leading-relaxed text-ink-2">
         See a kana, type how it sounds. Cards you miss come back sooner, and a new row opens once you know the current
         ones.
+      </p>
+      <p className="mt-3 text-sm text-ink-2">
+        Ready for kanji? The{" "}
+        <Link href="/kanji/drill" className="text-accent hover:underline">
+          kanji cards
+        </Link>{" "}
+        are answered with a Japanese keyboard.
       </p>
       <div className="mt-8">
         <KanaDrill />

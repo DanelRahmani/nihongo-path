@@ -149,8 +149,8 @@ html[data-size="l"] main {
 .dictionary-reading {
   display: none;
 }
-[data-furigana="none"] .dictionary-reading,
-[data-furigana="new"] .dictionary-reading {
+/* Not in "new" mode: unlearned words already show their reading, and learned ones are meant to go without. */
+[data-furigana="none"] .dictionary-reading {
   display: inline;
 }
 /* The reading view (app/read): kanji always, furigana only while "Show readings" is ticked. */

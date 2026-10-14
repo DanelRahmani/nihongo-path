@@ -5,7 +5,9 @@ import { DisplaySettings } from "@/components/DisplaySettings";
 import { InlineScript } from "@/components/InlineScript";
 import { NavLinks } from "@/components/NavLinks";
 import { SearchLauncher } from "@/components/search/SearchLauncher";
-import { DEFAULT_ATTRIBUTES, HEAD_SCRIPT } from "@/lib/display";
+import { FuriganaRules } from "@/components/FuriganaRules";
+import { DEFAULT_ATTRIBUTES, furiganaScript, HEAD_SCRIPT } from "@/lib/display";
+import { furiganaKanji } from "@/lib/kanji-cards";
 import "./globals.css";
 
 const mincho = Shippori_Mincho({
@@ -34,6 +36,9 @@ export const viewport: Viewport = {
   ],
 };
 
+/** Every kanji the app shows, for "furigana on new kanji" (worked out once, at build time). */
+const FURIGANA_KANJI = furiganaKanji();
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     // The head script swaps the default display attributes for the reader's before the first paint,
@@ -41,6 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" {...DEFAULT_ATTRIBUTES} suppressHydrationWarning className={`${mincho.variable} ${gothic.variable} h-full`}>
       <head>
         <InlineScript html={HEAD_SCRIPT} />
+        <InlineScript html={furiganaScript(FURIGANA_KANJI)} />
       </head>
       <body className="flex min-h-full flex-col">
         <header className="sticky top-0 z-20 border-b border-line/80 bg-paper/80 backdrop-blur-xl backdrop-saturate-150">
@@ -58,6 +64,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </div>
           </div>
         </header>
+        <FuriganaRules kanji={FURIGANA_KANJI} />
         <main className="flex-1 overflow-x-clip">{children}</main>
         <footer className="border-t border-line bg-paper-2">
           <div className="mx-auto flex max-w-5xl items-center justify-between gap-4 px-4 py-8 text-xs text-ink-2 sm:px-6">

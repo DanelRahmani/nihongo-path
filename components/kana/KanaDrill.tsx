@@ -1,23 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { panelClass } from "@/components/ui/Panel";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import type { Kana } from "@/content/kana";
 import { type Check, KANA_DECKS, type KanaDeck } from "@/lib/decks";
-import { answerCard, deckState, deckStats, nextCard, practiceCard, type SrsState, unlockedGroupCount, unlockGroup } from "@/lib/srs";
+import { answerCard, deckState, deckStats, formatWait, nextCard, practiceCard, type SrsState, unlockedGroupCount, unlockGroup } from "@/lib/srs";
 import { logAnswer, srsStore } from "@/lib/stores";
 import { useStore } from "@/lib/storage";
-
-function formatWait(ms: number): string {
-  const min = Math.ceil(ms / 60_000);
-  if (min < 60) return `${min} min`;
-  const h = Math.round(min / 60);
-  if (h < 24) return `${h} hour${h === 1 ? "" : "s"}`;
-  const d = Math.round(h / 24);
-  return `${d} day${d === 1 ? "" : "s"}`;
-}
 
 function DeckPicker({ onStart }: { onStart: (deck: KanaDeck) => void }) {
   const [srs] = useStore(srsStore);
@@ -72,6 +63,12 @@ function Session({ deck, onExit }: { deck: KanaDeck; onExit: () => void }) {
   const [last, setLast] = useState<{ kana: Kana; check: Check } | null>(null);
   const [unlocked, setUnlocked] = useState<string | null>(null);
   const [now, setNow] = useState(() => Date.now());
+  const nextButton = useRef<HTMLButtonElement>(null);
+
+  // After a miss the answer box is gone: put focus on "Next card", so Enter moves on (autoFocus doesn't fire here).
+  useEffect(() => {
+    if (phase === "wrong") nextButton.current?.focus();
+  }, [phase]);
 
   const advance = (state: SrsState, lastId: string | undefined, inPractice = practice) => {
     const t = Date.now();
@@ -157,7 +154,7 @@ function Session({ deck, onExit }: { deck: KanaDeck; onExit: () => void }) {
                 {current.char}
               </span>
               {phase === "wrong" && (
-                <p className="rise mt-3 text-lg">
+                <p id="kana-answer" className="rise mt-3 text-lg">
                   It&apos;s <strong className="text-accent">{last?.check.canonical}</strong>
                   {current.romaji.length > 1 && (
                     <span className="text-sm text-ink-2"> (also {current.romaji.slice(1).join(", ")})</span>
@@ -190,7 +187,7 @@ function Session({ deck, onExit }: { deck: KanaDeck; onExit: () => void }) {
                 </Button>
               </>
             ) : (
-              <Button type="submit" size="lg" autoFocus className="flex-1">
+              <Button ref={nextButton} type="submit" size="lg" aria-describedby="kana-answer" className="flex-1">
                 Next card
               </Button>
             )}

@@ -10,9 +10,11 @@ import {
   SCRIPT_TO_FURIGANA,
   type Settings,
   settingsSchema,
+  srsSchema,
   TEXT_SIZES,
   THEMES,
 } from "@/lib/schemas";
+import { MAX_BOX, UNLOCK_BOX } from "@/lib/srs";
 
 export const SETTINGS_KEY = "np:settings";
 
@@ -68,10 +70,35 @@ export function applyAttributes(root: { setAttribute(name: string, value: string
 
 /**
  * The CSS for "furigana on new kanji only": in that mode readings start hidden, and each kanji not yet
- * learned gets one rule that shows the reading of every word containing it. E2 feeds it the kanji on
- * the page and the learned set.
+ * learned gets one rule that shows the reading of every word containing it. Fed every kanji the app shows
+ * and the kanji learned in the kanji cards (lib/kanji-deck.ts).
  */
 export function furiganaCss(pageKanji: Iterable<string>, learned: ReadonlySet<string>): string {
   const unlearned = [...new Set(pageKanji)].filter((k) => !learned.has(k));
   return unlearned.map((k) => `[data-furigana=new] .w[data-k*="${k}"] rt{display:revert}`).join("\n");
+}
+
+/** The <style> element that holds those rules: written before the first paint, then kept up to date. */
+export const FURIGANA_STYLE_ID = "furigana-new";
+
+/**
+ * Plain ES5, inlined in <head> after HEAD_SCRIPT: works out the learned kanji from the stored schedule (the current
+ * version only: decks whose id starts with "kanji", readable cards at UNLOCK_BOX or above) and writes furiganaCss's rules for every
+ * other kanji in `allKanji`, so "furigana on new kanji" shows the right readings from the first paint. Anything
+ * unreadable, or a schedule from a newer build, counts as nothing learned: every reading shows.
+ */
+export function furiganaScript(allKanji: string): string {
+  return `(function(){
+var K=${json([...allKanji])},L={},css=[];
+try{
+var p=JSON.parse(localStorage.getItem(${json("np:srs")}));
+var d=p&&p.v===${srsSchema.version}&&p.data&&p.data.decks;
+if(d&&typeof d==="object"){for(var id in d){if(Object.prototype.hasOwnProperty.call(d,id)&&id.indexOf("kanji")===0&&d[id]&&d[id].cards){
+var c=d[id].cards;for(var ch in c){var b=Object.prototype.hasOwnProperty.call(c,ch)&&c[ch];
+if(b&&b.box%1===0&&b.box>=${UNLOCK_BOX}&&b.box<=${MAX_BOX}&&typeof b.due==="number"&&isFinite(b.due))L[ch]=1}}}}
+}catch(e){L={}}
+for(var i=0;i<K.length;i++){var k=K[i];if(!L[k])css.push('[data-furigana=new] .w[data-k*="'+k+'"] rt{display:revert}')}
+var st=document.createElement("style");st.id=${json(FURIGANA_STYLE_ID)};st.textContent=css.join("\\n");
+document.head.appendChild(st);
+})();`;
 }

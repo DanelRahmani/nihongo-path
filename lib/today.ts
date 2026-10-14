@@ -178,6 +178,9 @@ const DAYS = [
 
 const WEEKDAYS: Record<string, string> = { 月: "げつ", 火: "か", 水: "すい", 木: "もく", 金: "きん", 土: "ど", 日: "にち" };
 
+/** Every kanji japaneseDate can write, for the "furigana on new kanji" rules. */
+export const DATE_KANJI = [...Object.keys(ERA_READINGS).join(""), ...Object.keys(WEEKDAYS), "元", "年", "曜"];
+
 /**
  * Today in the Japanese calendar, as lesson markup with readings: [令和|れいわ] [8年|はちねん] [10月|じゅうがつ]
  * [14日|じゅうよっか] [水曜日|すいようび]. Numbers are digits with one ruby group over number and counter, as in

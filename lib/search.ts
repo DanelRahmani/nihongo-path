@@ -37,6 +37,7 @@ export const SITE_PAGES: IndexSources["pages"] = [
   { title: "Path", detail: "All the lessons, unit by unit", href: "/", jp: "[道|みち]" },
   { title: "Kana charts", detail: "Hiragana and katakana", href: "/kana", jp: "かな" },
   { title: "Kana drill", detail: "Spaced-repetition practice for kana", href: "/kana/drill", jp: "[練習|れんしゅう]" },
+  { title: "Kanji cards", detail: "Type words in kanji with a Japanese keyboard", href: "/kanji/drill", jp: "[漢字|かんじ]" },
   { title: "Grammar overview", detail: "Particles, grammar and verb forms on one page", href: "/grammar", jp: "[文法|ぶんぽう]" },
   { title: "Dictionary", detail: "Every word, by kanji, kana, romaji or English", href: "/dictionary", jp: "[辞書|じしょ]" },
   { title: "Reading", detail: "A sign, a menu, a chat, a story and haiku", href: "/read", jp: "[読|よ]む" },

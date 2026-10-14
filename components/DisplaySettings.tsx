@@ -7,7 +7,6 @@ import type { Settings } from "@/lib/schemas";
 import { useStore } from "@/lib/storage";
 import { settingsStore } from "@/lib/stores";
 
-// "Furigana on new kanji" joins these in E2, once kanji can be learned.
 const FURIGANA: { value: Settings["furigana"]; label: string; sample: React.ReactNode; hint: string }[] = [
   { value: "kana", label: "Kana only", sample: "ねこ", hint: "Kanji written in kana, with spaces between words." },
   {
@@ -19,6 +18,19 @@ const FURIGANA: { value: Settings["furigana"]; label: string; sample: React.Reac
       </ruby>
     ),
     hint: "Kanji with the reading above.",
+  },
+  {
+    value: "new",
+    label: "New kanji",
+    sample: (
+      <>
+        <ruby>
+          子<rt>こ</rt>
+        </ruby>
+        猫
+      </>
+    ),
+    hint: "Readings only over kanji you haven't learned yet in the kanji cards.",
   },
   { value: "none", label: "Kanji", sample: "猫", hint: "Kanji alone, as Japanese is printed." },
 ];
@@ -60,7 +72,8 @@ export function DisplaySettings() {
           <Segmented
             legend="Kanji"
             name="furigana"
-            value={settings.furigana === "new" ? "all" : settings.furigana}
+            value={settings.furigana}
+            columns={2}
             onChange={(furigana) => update({ furigana })}
             options={FURIGANA.map((m) => ({ value: m.value, label: m.label, sample: sample(m.sample, "font-jp text-2xl") }))}
           />

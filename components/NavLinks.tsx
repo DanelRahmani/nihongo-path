@@ -7,13 +7,13 @@ import { useRef } from "react";
 const LINKS = [
   { href: "/", jp: "道", label: "Path", match: (p: string) => p === "/" || p.startsWith("/learn") },
   { href: "/kana", jp: "かな", label: "Kana", match: (p: string) => p === "/kana" },
-  { href: "/kana/drill", jp: "練習", label: "Drill", match: (p: string) => p.startsWith("/kana/drill") },
+  { href: "/kana/drill", jp: "練習", label: "Drill", match: (p: string) => p.startsWith("/kana/drill") || p.startsWith("/kanji/drill") },
 ];
 
 /** Reference pages, in the Extras menu. */
 const EXTRAS = [
   { href: "/grammar", jp: "文法", label: "Grammar overview", text: "Particles, grammar and verb forms on one page", match: (p: string) => p.startsWith("/grammar") },
-  { href: "/dictionary", jp: "辞書", label: "Dictionary", text: "Every word, by kanji, kana, romaji or English", match: (p: string) => p.startsWith("/dictionary") || p.startsWith("/kanji") },
+  { href: "/dictionary", jp: "辞書", label: "Dictionary", text: "Every word, by kanji, kana, romaji or English", match: (p: string) => p.startsWith("/dictionary") || (p.startsWith("/kanji") && !p.startsWith("/kanji/drill")) },
   { href: "/read", jp: "読む", label: "Reading", text: "A sign, a menu, a chat, a story and haiku", match: (p: string) => p.startsWith("/read") },
 ];
 

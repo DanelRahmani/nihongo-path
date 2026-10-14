@@ -9,6 +9,9 @@ export const QUIZ_DECK = "quiz";
 /** The notebook's deck name for the conjugation trainer's questions (card id: `${word.jp}#${form}`). */
 export const CONJUGATION_DECK = "conjugation";
 
+/** The vocabulary deck's id (lib/vocab-deck.ts), here so the home page can name it without loading the deck. */
+export const VOCAB_DECK_ID = "vocab";
+
 /** Right answers in a row that take an item out of the notebook. */
 export const LEAVE_AFTER = 2;
 

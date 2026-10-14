@@ -20,19 +20,21 @@ function lessonLines(blocks: Block[]): Jp[] {
 
 /**
  * For each lesson word (by its markup), every lesson, in path order, whose examples, pairs or dialogue use it in
- * some form. Not counted: the kana lessons (their words are reading practice, and a kana like {す}き would read as
- * the stem of すく) and a word inside another (お願い doesn't teach 願う). Words only in prose, tables or quizzes
- * have none. Build time only; it reads the lessons through lib/words.ts, never through lib/corpus.ts.
+ * some form. A word inside another isn't counted (お願い doesn't teach 願う). The kana lessons count only with
+ * `kanaLessons`, and then only whole words: their words are reading practice, and a kana like {す}き would read as
+ * the stem of すく. Words only in prose, tables or quizzes have none. Build time only; it reads the lessons
+ * through lib/words.ts, never through lib/corpus.ts.
  */
-export function wordLessons(): Map<Jp, string[]> {
+export function wordLessons({ kanaLessons = false } = {}): Map<Jp, string[]> {
   const ix = buildIndex(WORDS, NAMES);
   const lessons = new Map<Jp, string[]>();
   for (const { key, lesson } of ALL_LESSONS) {
-    if (lesson.register === "neutral") continue;
+    const kana = lesson.register === "neutral";
+    if (kana && !kanaLessons) continue;
     for (const line of lessonLines(lesson.blocks)) {
       for (const w of lineWords(line)) {
         const r = resolveWord(w, ix);
-        if (!r || (r.how !== "entry" && r.how !== "form")) continue;
+        if (!r || (r.how !== "entry" && (r.how !== "form" || kana))) continue;
         const list = lessons.get(r.word.jp) ?? [];
         if (!list.includes(key)) lessons.set(r.word.jp, [...list, key]);
       }

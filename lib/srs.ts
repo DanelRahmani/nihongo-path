@@ -12,6 +12,11 @@ const DAY = 24 * 60 * MIN;
 export const INTERVALS = [0, 0, 10 * MIN, DAY, 3 * DAY, 7 * DAY];
 /** A group counts as learned once every card reaches this box; the next group then unlocks. */
 export const UNLOCK_BOX = 3;
+/**
+ * For decks whose cards open by lesson (isOpen), new cards wait while this many studied cards are still below
+ * UNLOCK_BOX, so finishing many lessons doesn't bring hundreds of new cards at once.
+ */
+export const LEARNING_LIMIT = 10;
 
 export interface CardState {
   box: number;
@@ -42,6 +47,11 @@ export interface SrsDeck<C extends { id: string } = { id: string }> {
   /** Group keys in unlock order. */
   groups: string[];
   groupOf(card: C): string;
+  /**
+   * For decks whose cards open by something other than learning, such as a lesson marked done (the vocabulary
+   * deck): whether a card is open. Without it, each group opens once every card before it is learned.
+   */
+  isOpen?(card: C): boolean;
 }
 
 export const deckState = (srs: SrsState, deckId: string): DeckState => srs.decks[deckId] ?? EMPTY_DECK_STATE;
@@ -85,8 +95,12 @@ function cardsByGroup<C extends { id: string }>(deck: SrsDeck<C>): Map<string, C
   return map;
 }
 
-/** Number of groups (from the start of the deck) unlocked by learning: every earlier card at UNLOCK_BOX. */
+/**
+ * Number of groups open: from the start of the deck, each once every earlier card is at UNLOCK_BOX (plus any
+ * opened by hand); for a deck with isOpen, the groups with an open card.
+ */
 export function unlockedGroupCount<C extends { id: string }>(deck: SrsDeck<C>, state: DeckState): number {
+  if (deck.isOpen) return [...cardsByGroup(deck).values()].filter((cards) => cards.some((c) => deck.isOpen!(c))).length;
   const byGroup = cardsByGroup(deck);
   let count = 1;
   while (count < deck.groups.length && (byGroup.get(deck.groups[count - 1]) ?? []).every((c) => learned(state, c.id))) count++;
@@ -98,6 +112,7 @@ export function unlockedGroupCount<C extends { id: string }>(deck: SrsDeck<C>, s
  * early group doesn't lock away the due cards of later ones.
  */
 export function unlockedCards<C extends { id: string }>(deck: SrsDeck<C>, state: DeckState): C[] {
+  if (deck.isOpen) return deck.cards.filter((c) => deck.isOpen!(c) || state.cards[c.id] !== undefined);
   const open = new Set(deck.groups.slice(0, unlockedGroupCount(deck, state)));
   return deck.cards.filter((c) => open.has(deck.groupOf(c)) || state.cards[c.id] !== undefined);
 }
@@ -139,7 +154,9 @@ export function dueCards<C extends { id: string }>(deck: SrsDeck<C>, state: Deck
 
 export function nextCard<C extends { id: string }>(deck: SrsDeck<C>, state: DeckState, now: number, lastId?: string): C | null {
   const due = dueCards(deck, state, now);
-  const fresh = unlockedCards(deck, state).filter((c) => !state.cards[c.id]);
+  const open = unlockedCards(deck, state);
+  const learning = open.filter((c) => state.cards[c.id] && state.cards[c.id].box < UNLOCK_BOX).length;
+  const fresh = deck.isOpen && learning >= LEARNING_LIMIT ? [] : open.filter((c) => !state.cards[c.id]);
   const queue = [...due, ...fresh];
   return queue.find((c) => c.id !== lastId) ?? queue[0] ?? null;
 }

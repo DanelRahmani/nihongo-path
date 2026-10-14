@@ -20,6 +20,10 @@ export default function DrillPage() {
         Ready for more? The{" "}
         <Link href="/kanji/drill" className="text-accent hover:underline">
           kanji cards
+        </Link>
+        , the{" "}
+        <Link href="/vocabulary" className="text-accent hover:underline">
+          vocabulary deck
         </Link>{" "}
         and the{" "}
         <Link href="/conjugation" className="text-accent hover:underline">

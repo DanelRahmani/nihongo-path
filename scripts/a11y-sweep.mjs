@@ -3,27 +3,31 @@
  * at 375 px in light and dark, with reduced motion. On each page:
  * - overflow: no horizontal page scroll, and no element reaching past the viewport outside a scroller (main clips
  *   overflow, so the page's scroll width alone can't see it);
- * - focus: Tab through every stop (each element once; up to MAX_STOPS). Each must show an indicator that focus
+ * - focus: Tab through every stop (each element once; up to MAX_STOPS, and focus must end where the walk began or
+ *   leave the page, never loop back mid-page), then back with Shift+Tab. Each stop must show an indicator that focus
  *   adds: an outline, a shadow or a border colour that differs from the same element unfocused (read with
  *   transitions off), on the element or a wrapper up to three levels up. The indicator must reach 3:1 against what
- *   is behind it (WCAG 1.4.11), mustn't be clipped by an ancestor that hides overflow, and the element mustn't sit
- *   under the sticky header (WCAG 2.4.11);
+ *   is behind it (WCAG 1.4.11), mustn't be clipped by an ancestor that hides overflow or fades it out, and the
+ *   element mustn't sit under the sticky header or another sticky or fixed element (WCAG 2.4.11);
+ * - axe-core's WCAG 2 A and AA rules, in both schemes (Lighthouse runs in light only);
  * - motion: no running animation or transition longer than 1 ms, after load and after every Tab;
  * - the page answers 200 and logs no console error or uncaught exception.
  * Then the states the walk can't reach: the search dialog with results, the Extras menu, the Display popover, the
- * word card, a drill and a quiz after a miss, and the home page with saved progress. A third pass at text size L
+ * word card, a drill and a quiz after a miss, the home page with saved progress, and the dictionary's row radios
+ * walked with the arrow keys. Each scenario fails if it doesn't reach its state. A third pass at text size L
  * with furigana and romaji checks overflow only. Last, Lighthouse's accessibility audit on representative pages
  * must score 100 (skip it with --no-lighthouse).
  *
- *   npm run a11y [-- --route /path] [--all] [--no-lighthouse] [--css "rule"]
+ *   npm run a11y [-- --route /path] [--all] [--no-lighthouse] [--stale-ok] [--css "rule"]
  *
  * `--css` adds a style rule to every page, to check the sweep itself: `--css "*:focus { outline: none !important }"`
  * must produce findings.
  * Exits 1 on findings, 2 when it can't run (no build, a build older than the source, bad arguments). Kanji pages
  * share one template, so only the first few are visited unless --all is given.
- * Uses the Playwright devDependency (pinned to the pre-installed browsers) and Lighthouse.
+ * Uses the Playwright devDependency (pinned to the pre-installed browsers), axe-core and Lighthouse.
  */
 import { existsSync, readdirSync, statSync } from "node:fs";
+import { createRequire } from "node:module";
 import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import * as chromeLauncher from "chrome-launcher";
@@ -32,6 +36,7 @@ import { chromium } from "playwright";
 import { serveOut } from "./serve-out.mjs";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
+const AXE = createRequire(import.meta.url).resolve("axe-core/axe.min.js");
 const OUT = join(ROOT, "out");
 const MAX_STOPS = 400;
 const KANJI_SAMPLE = 5;
@@ -46,7 +51,7 @@ const only = routeAt >= 0 ? args[routeAt + 1] : null;
 const cssAt = args.indexOf("--css");
 const css = cssAt >= 0 ? args[cssAt + 1] : null;
 const known = new Set(["--all", "--no-lighthouse", "--route", "--stale-ok", "--css"]);
-if ((routeAt >= 0 && !only?.startsWith("/")) || (cssAt >= 0 && !css) || args.some((a, i) => (a.startsWith("--") ? !known.has(a) : i !== routeAt + 1 && i !== cssAt + 1))) {
+if ((routeAt >= 0 && !only?.startsWith("/")) || (cssAt >= 0 && !css) || args.some((a, i) => (a.startsWith("--") ? !known.has(a) : i !== (routeAt >= 0 ? routeAt + 1 : -1) && i !== (cssAt >= 0 ? cssAt + 1 : -1)))) {
   console.error('Usage: npm run a11y [-- --route /path] [--all] [--no-lighthouse] [--stale-ok] [--css "rule"]');
   process.exit(2);
 }
@@ -66,7 +71,10 @@ function newest(dir) {
   }
   return latest;
 }
-const source = Math.max(...["app", "components", "content", "lib"].map((d) => newest(join(ROOT, d))));
+const source = Math.max(
+  ...["app", "components", "content", "lib"].map((d) => newest(join(ROOT, d))),
+  ...["next.config.ts", "postcss.config.mjs", "package.json"].filter((f) => existsSync(join(ROOT, f))).map((f) => statSync(join(ROOT, f)).mtimeMs),
+);
 if (statSync(join(OUT, "index.html")).mtimeMs < source && !args.includes("--stale-ok")) {
   console.error("out/ is older than the source: run `npm run build` first (or pass --stale-ok).");
   process.exit(2);
@@ -127,14 +135,15 @@ function running() {
  * In the page: the focused element's indicator. Reads the element and up to three ancestors focused, then
  * unfocused (with transitions off and focus events kept from the app), and keeps what focus changed.
  */
-function focusIndicator(tag) {
+function focusIndicator([tag, key]) {
   const el = document.activeElement;
   if (!el || el === document.body || el === document.documentElement) return null;
-  const seen = el.dataset.a11ySeen !== undefined;
-  if (!seen) el.dataset.a11ySeen = tag;
+  const seenTag = el.dataset[key];
+  const seen = seenTag !== undefined;
+  if (!seen) el.dataset[key] = tag;
   const name = (el.getAttribute("aria-label") || el.textContent || el.getAttribute("name") || el.getAttribute("placeholder") || "").trim().replace(/\s+/g, " ").slice(0, 40);
   const what = `${el.tagName.toLowerCase()}${el.id ? `#${el.id}` : ""} “${name}”`;
-  if (seen) return { seen, what };
+  if (seen) return { seen, seenTag, what };
 
   const chain = [el];
   for (let n = el.parentElement; n && chain.length < 4 && n !== document.body; n = n.parentElement) chain.push(n);
@@ -159,21 +168,26 @@ function focusIndicator(tag) {
   const blurred = read();
   el.focus({ preventScroll: true });
   for (const e of events) window.removeEventListener(e, stop, true);
-  still.remove();
   const refocused = document.activeElement === el;
 
+  // Any CSS colour (Tailwind's /NN colours compute to oklab()) as RGBA, through a 1×1 canvas.
+  const ctx = Object.assign(document.createElement("canvas"), { width: 1, height: 1 }).getContext("2d", { willReadFrequently: true });
   const rgba = (c) => {
-    const m = c.match(/rgba?\(([^)]+)\)/);
-    if (!m) return null;
-    const [r, g, b, a = 1] = m[1].split(/[\s,/]+/).filter(Boolean).map(Number);
-    return { r, g, b, a };
+    if (!c || c === "transparent") return null;
+    ctx.clearRect(0, 0, 1, 1);
+    ctx.fillStyle = "#000";
+    ctx.fillStyle = c;
+    ctx.fillRect(0, 0, 1, 1);
+    const [r, g, b, a] = ctx.getImageData(0, 0, 1, 1).data;
+    return { r, g, b, a: a / 255 };
   };
+  const COLOUR = /(?:rgba?|oklab|oklch|lab|lch|hsla?|hwb|color)\([^)]*\)|#[0-9a-f]{3,8}\b/i;
   const layers = (shadow) =>
     shadow === "none"
       ? []
       : shadow.split(/,(?![^(]*\))/).map((l) => {
-          const color = rgba(l);
-          const lengths = l.replace(/rgba?\([^)]*\)/, "").match(/-?[\d.]+px/g)?.map(parseFloat) ?? [];
+          const color = rgba(l.match(COLOUR)?.[0]);
+          const lengths = l.replace(COLOUR, "").match(/-?[\d.]+px/g)?.map(parseFloat) ?? [];
           return { text: l.trim(), color, blur: lengths[2] ?? 0, spread: lengths[3] ?? 0, inset: /inset/.test(l) };
         });
   const luminance = ({ r, g, b }) => {
@@ -233,7 +247,22 @@ function focusIndicator(tag) {
     for (let n = best.node.parentElement; n && n !== document.documentElement; n = n.parentElement) {
       const s = getComputedStyle(n);
       if (s.overflowX === "visible" && s.overflowY === "visible") continue;
-      const a = n.getBoundingClientRect();
+      // The padding box (scrollbars and borders aside), less any faded edge (.scroll-strip's mask).
+      const outer = n.getBoundingClientRect();
+      const scale = outer.width / (n.offsetWidth || outer.width || 1);
+      const length = (v) => {
+        const value = v.trim();
+        if (!value) return 0;
+        const root = parseFloat(getComputedStyle(document.documentElement).fontSize);
+        return (value.endsWith("rem") ? parseFloat(value) * root : parseFloat(value) || 0) * scale;
+      };
+      const masked = (s.maskImage || s.webkitMaskImage || "none") !== "none";
+      const a = {
+        left: outer.left + n.clientLeft * scale + (masked ? length(s.getPropertyValue("--fade-start")) : 0),
+        top: outer.top + n.clientTop * scale,
+      };
+      a.right = outer.left + (n.clientLeft + n.clientWidth) * scale - (masked ? length(s.getPropertyValue("--fade-end")) : 0);
+      a.bottom = outer.top + (n.clientTop + n.clientHeight) * scale;
       const sides = [
         s.overflowX !== "visible" && box.left < a.left - 0.5 && "left",
         s.overflowX !== "visible" && box.right > a.right + 0.5 && "right",
@@ -241,13 +270,14 @@ function focusIndicator(tag) {
         s.overflowY !== "visible" && box.bottom > a.bottom + 0.5 && "bottom",
       ].filter(Boolean);
       if (sides.length) {
-        clippedBy = `${n.tagName.toLowerCase()}.${String(n.className).trim().split(/\s+/).slice(0, 2).join(".")} (${sides.join(", ")})`;
+        clippedBy = `${n.tagName.toLowerCase()}.${String(n.className).trim().split(/\s+/).slice(0, 2).join(".")} (${sides.join(", ")}${masked ? ", under the fade" : ""})`;
         break;
       }
     }
   }
 
-  // Under the sticky header? Only for elements with a box of their own (visually hidden inputs show focus on a wrapper).
+  // Under the sticky header, or another sticky or fixed element? Only for elements with a box of their own (visually
+  // hidden inputs show focus on a wrapper).
   let coveredBy = null;
   const r = el.getBoundingClientRect();
   if (r.width > 2 && r.height > 2 && r.bottom > 0 && r.top < window.innerHeight) {
@@ -255,11 +285,17 @@ function focusIndicator(tag) {
     const y = Math.min(Math.max(r.top + r.height / 2, 0), window.innerHeight - 1);
     const hit = document.elementFromPoint(x, y);
     if (hit && !el.contains(hit) && !hit.contains(el) && !chain.includes(hit)) {
-      const header = hit.closest("header");
-      if (header && !header.contains(el)) coveredBy = "the sticky header";
+      for (let n = hit; n && n !== document.body; n = n.parentElement) {
+        const position = getComputedStyle(n).position;
+        if ((position === "sticky" || position === "fixed") && !n.contains(el)) {
+          coveredBy = n.tagName === "HEADER" ? "the sticky header" : `a ${position} ${n.tagName.toLowerCase()}.${String(n.className).trim().split(/\s+/)[0]}`;
+          break;
+        }
+      }
     }
   }
 
+  still.remove();
   return {
     seen,
     what,
@@ -276,35 +312,55 @@ const notes = [];
 let stops = 0;
 const report = (where, issue) => findings.push(`${where}: ${issue}`);
 
-/** Tab through the page from where focus is now, checking each stop once. */
-async function walk(page, where, limit) {
+/**
+ * Walk the focus order from where focus is now with `key` (Tab, Shift+Tab, or an arrow inside a radio group),
+ * checking each stop once. The walk ends when focus leaves the page or comes back to where it began (a modal dialog
+ * and a radio group wrap round); coming back anywhere else is a loop that skips part of the page, or a trap.
+ * Returns true when it stopped at `limit`.
+ */
+async function walk(page, where, limit, { key = "Tab", pass = "a11ySeen", first = null } = {}) {
+  let start = first;
   for (let i = 0; i < limit; i++) {
-    await page.keyboard.press("Tab");
+    await page.keyboard.press(key);
     // Two frames: focus styles land a frame after the key.
     await page.evaluate(() => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r))));
-    const state = await page.evaluate(focusIndicator, String(i));
+    const state = await page.evaluate(focusIndicator, [`${pass}-${i}`, pass]);
     if (!state) {
       // Focus left the document (past the last stop): the browser chrome would have it now.
-      if (i > 0) return;
+      if (i > 0) return false;
       continue;
     }
-    if (state.seen) return;
+    if (state.seen) {
+      if (start !== null && state.seenTag !== start) report(where, `${key} brought focus back to ${state.what} (a loop or a trap)`);
+      return false;
+    }
+    start ??= `${pass}-${i}`;
     stops++;
     if (!state.ring) report(where, `no visible focus indicator on ${state.what}${state.visibleFocus ? "" : " (not :focus-visible)"}`);
     else if (state.ring.contrast < 3) report(where, `focus ${state.ring.kind} on ${state.what} has contrast ${state.ring.contrast}:1 (needs 3:1)`);
     if (state.clippedBy) report(where, `focus ring on ${state.what} clipped by ${state.clippedBy}`);
-    if (state.coveredBy) report(where, `${state.what} is under ${state.coveredBy} when focused`);
+    if (state.coveredBy) report(where, `${state.what} is under ${state.coveredBy} when focused (${key})`);
     if (!state.refocused) notes.push(`${where}: ${state.what} didn't take focus back after the check`);
     const moving = await page.evaluate(running);
-    if (moving.length) report(where, `running under reduced motion after Tab: ${[...new Set(moving)].join(", ")}`);
+    if (moving.length) report(where, `running under reduced motion after ${key}: ${[...new Set(moving)].join(", ")}`);
   }
-  notes.push(`${where}: stopped at ${limit} Tab stops`);
+  return true;
 }
 
 async function checkLayout(page, where) {
   const { scrollWidth, width, items } = await page.evaluate(overflowing);
   if (scrollWidth > width) report(where, `horizontal scroll (${scrollWidth} px wide at ${width} px)`);
   for (const item of items) report(where, `reaches past the viewport: ${item}`);
+}
+
+/** axe-core's WCAG 2 A and AA rules on the page as it is now (both schemes; Lighthouse covers light only). */
+async function checkAxe(page, where) {
+  await page.addScriptTag({ path: AXE });
+  const violations = await page.evaluate(async () => {
+    const result = await window.axe.run(document, { runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"] } });
+    return result.violations.map((v) => `${v.id}: ${v.nodes.slice(0, 3).map((n) => n.target.join(" ")).join(" | ")}`.slice(0, 240));
+  });
+  for (const v of violations) report(where, `axe ${v}`);
 }
 
 /** Opens a page and waits for it to settle: network idle, fonts, and one idle callback (the Today card loads then). */
@@ -325,7 +381,12 @@ async function sweepPage(context, scheme, route, expect) {
   await checkLayout(page, where);
   const moving = await page.evaluate(running);
   if (moving.length) report(where, `running under reduced motion: ${[...new Set(moving)].join(", ")}`);
-  await walk(page, where, MAX_STOPS);
+  await checkAxe(page, where);
+  if (await walk(page, where, MAX_STOPS)) report(where, `more than ${MAX_STOPS} Tab stops: the page below them can't be reached in reasonable time`);
+  // Back from the end with Shift+Tab: the browser scrolls each stop in from the top, where the sticky header is.
+  await page.evaluate(() => document.activeElement instanceof HTMLElement && document.activeElement.blur());
+  await page.keyboard.press("End");
+  await walk(page, where, MAX_STOPS, { key: "Shift+Tab", pass: "a11yBack" });
   for (const error of errors) report(where, `console: ${error.slice(0, 160)}`);
   await page.close();
 }
@@ -344,8 +405,17 @@ const SEED = () => {
   put("np:notebook", 1, { "hiragana-base|hiragana:あ": { deck: "hiragana-base", card: "hiragana:あ", misses: 1, rightInRow: 0, added: ago, lastMiss: ago } });
 };
 
+/** Waits until `test` holds in the page, or fails the scenario saying which state it didn't reach. */
+async function reach(page, state, test, arg) {
+  try {
+    await page.waitForFunction(test, arg, { timeout: 10_000 });
+  } catch {
+    throw new Error(`didn't reach ${state}`);
+  }
+}
+
 const LESSON = "/learn/start/polite-and-casual";
-/** States the plain walk can't reach: each sets the page up, then the checks run from where focus is. */
+/** States the plain walk can't reach: each sets the page up and checks it got there, then the checks run from where focus is. */
 const SCENARIOS = [
   {
     name: "search dialog",
@@ -380,7 +450,7 @@ const SCENARIOS = [
       await page.keyboard.press("Tab");
       await page.locator("[role=toolbar] [tabindex='0']").first().focus();
       await page.keyboard.press("Enter");
-      await page.waitForTimeout(500);
+      await page.locator(".inspector-popover").waitFor();
     },
   },
   {
@@ -395,7 +465,7 @@ const SCENARIOS = [
       // Typed, not filled, so the browser is in keyboard mode and the focused Next button shows its ring.
       await page.keyboard.type("zzz");
       await page.keyboard.press("Enter");
-      await page.waitForTimeout(300);
+      await reach(page, "the answer side with Next card focused", () => /Next card/.test(document.activeElement?.textContent ?? "") && document.activeElement.matches(":focus-visible"));
     },
   },
   {
@@ -407,31 +477,54 @@ const SCENARIOS = [
       await box.focus();
       await page.keyboard.type("ぬぬぬ");
       await page.keyboard.press("Enter");
-      await page.waitForTimeout(300);
+      await reach(page, "the quiz's feedback", () => !!document.querySelector("main form")?.parentElement?.querySelector("[role=img]"));
     },
   },
-  { name: "home with saved progress", route: "/", limit: 80, seed: true, async setup() {} },
+  {
+    name: "home with saved progress",
+    route: "/",
+    limit: 80,
+    seed: true,
+    async setup(page) {
+      await reach(page, "the Today card's streak and mistake", () => /Streak: 1 day/.test(document.body.innerText) && /mistake/.test(document.body.innerText));
+    },
+  },
+  {
+    name: "dictionary row radios",
+    route: "/dictionary",
+    limit: 20,
+    key: "ArrowRight",
+    async setup(page) {
+      await reach(page, "the row radios", () => document.querySelectorAll("fieldset input[type=radio]").length > 10);
+      await page.keyboard.press("Tab"); // Keyboard modality, so programmatic focus shows its ring.
+      // The checked radio of the last radio group on the page: the "Starts with" row.
+      const radios = page.locator("fieldset input[type=radio]:checked");
+      await radios.last().focus();
+    },
+  },
 ];
 
 async function runScenario(browser, scheme, scenario) {
   const where = `${scenario.route} ${scenario.name} (${scheme})`;
-  const context = await newContext(browser, scheme);
-  if (scenario.seed) await context.addInitScript(SEED);
+  let context;
   try {
+    context = await newContext(browser, scheme);
+    if (scenario.seed) await context.addInitScript(SEED);
     const { page, errors } = await open(context, scenario.route, where);
     await scenario.setup(page);
     await checkLayout(page, where);
     const moving = await page.evaluate(running);
     if (moving.length) report(where, `running under reduced motion: ${[...new Set(moving)].join(", ")}`);
     // The element focus landed on counts as the first stop.
-    const first = await page.evaluate(focusIndicator, "start");
+    const first = await page.evaluate(focusIndicator, ["start", "a11ySeen"]);
     if (first && !first.seen && !first.ring) report(where, `no visible focus indicator on ${first.what}`);
-    await walk(page, where, scenario.limit);
+    if (first?.clippedBy) report(where, `focus ring on ${first.what} clipped by ${first.clippedBy}`);
+    if (await walk(page, where, scenario.limit, { key: scenario.key, first: first ? "start" : null })) notes.push(`${where}: stopped at ${scenario.limit} stops`);
     for (const error of errors) report(where, `console: ${error.slice(0, 160)}`);
   } catch (e) {
     report(where, `crashed: ${String(e.message ?? e).split("\n")[0]}`);
   } finally {
-    await context.close();
+    await context?.close();
   }
 }
 
@@ -444,6 +537,18 @@ async function newContext(browser, scheme = "light") {
 
 /** Text size L, every furigana and romaji: overflow and console only. */
 const LARGE = () => localStorage.setItem("np:settings", JSON.stringify({ v: 2, data: { furigana: "all", romaji: true, size: "l", font: "mincho", theme: "system" } }));
+
+/** The findings so far, and the exit code. */
+function finish(code) {
+  findings.sort();
+  if (notes.length) console.log(`\nNotes:\n${[...new Set(notes)].sort().map((n) => `- ${n}`).join("\n")}`);
+  const unique = [...new Set(findings)];
+  if (unique.length) {
+    console.log(`\n${unique.length} finding${unique.length === 1 ? "" : "s"}:`);
+    for (const f of unique) console.log(`- ${f}`);
+  } else if (code === 0) console.log("\nNo findings.");
+  process.exit(code || (unique.length ? 1 : 0));
+}
 
 const server = await serveOut(OUT);
 const base = `http://127.0.0.1:${server.address().port}`;
@@ -460,78 +565,80 @@ async function pool(items, run) {
   const queue = [...items];
   await Promise.all(
     Array.from({ length: Math.min(workers, items.length) }, async () => {
-      const browser = await chromium.launch();
+      let browser;
       try {
+        browser = await chromium.launch();
         for (let item = queue.shift(); item; item = queue.shift()) await run(browser, item);
       } finally {
-        await browser.close();
+        await browser?.close();
       }
     }),
   );
 }
 
+/** Runs one check in a fresh context, turning a crash into a finding. */
+async function inContext(browser, where, scheme, prepare, check) {
+  let context;
+  try {
+    context = await newContext(browser, scheme);
+    if (prepare) await context.addInitScript(prepare);
+    await check(context);
+  } catch (e) {
+    report(where, `crashed: ${String(e.message ?? e).split("\n")[0]}`);
+  } finally {
+    await context?.close();
+  }
+}
+
 try {
   await Promise.all(
     ["light", "dark"].map((scheme) =>
-      pool(list, async (browser, { route, expect }) => {
-        const context = await newContext(browser, scheme);
-        try {
-          await sweepPage(context, scheme, route, expect);
-        } catch (e) {
-          report(`${route} (${scheme})`, `crashed: ${String(e.message ?? e).split("\n")[0]}`);
-        } finally {
-          await context.close();
-        }
-      }),
+      pool(list, (browser, { route, expect }) => inContext(browser, `${route} (${scheme})`, scheme, null, (context) => sweepPage(context, scheme, route, expect))),
     ),
   );
   if (!only) {
     await Promise.all(["light", "dark"].map((scheme) => pool(SCENARIOS, (browser, s) => runScenario(browser, scheme, s))));
-    await pool(list.filter((l) => l.expect === 200), async (browser, { route }) => {
-      const where = `${route} (large text)`;
-      const context = await newContext(browser);
-      await context.addInitScript(LARGE);
-      try {
-        const { page, errors } = await open(context, route, where);
-        await checkLayout(page, where);
-        for (const error of errors) report(where, `console: ${error.slice(0, 160)}`);
-      } catch (e) {
-        report(where, `crashed: ${String(e.message ?? e).split("\n")[0]}`);
-      } finally {
-        await context.close();
-      }
-    });
+    await pool(
+      list.filter((l) => l.expect === 200),
+      (browser, { route }) =>
+        inContext(browser, `${route} (large text)`, "light", LARGE, async (context) => {
+          const where = `${route} (large text)`;
+          const { page, errors } = await open(context, route, where);
+          await checkLayout(page, where);
+          for (const error of errors) report(where, `console: ${error.slice(0, 160)}`);
+        }),
+    );
   }
-  console.log(`Sweep done in ${Math.round((Date.now() - started) / 1000)} s: ${stops} Tab stops checked.`);
+  console.log(`Sweep done in ${Math.round((Date.now() - started) / 1000)} s: ${stops} focus stops checked.`);
 
   if (runLighthouse) {
     const chrome = await chromeLauncher.launch({ chromePath: process.env.CHROME_PATH || chromium.executablePath(), chromeFlags: ["--headless=new", "--no-sandbox", "--disable-gpu"] });
     try {
       for (const route of only ? [only] : LIGHTHOUSE_ROUTES) {
-        const { lhr } = await lighthouse(base + encodeURI(route), { port: chrome.port, onlyCategories: ["accessibility"], output: "json", logLevel: "error" });
-        const score = Math.round((lhr.categories.accessibility.score ?? 0) * 100);
-        if (lhr.runtimeError) report(`${route} (Lighthouse)`, lhr.runtimeError.message);
-        else if (score < 100) {
-          const failed = lhr.categories.accessibility.auditRefs
-            .map((ref) => lhr.audits[ref.id])
-            .filter((a) => a.score !== null && a.score < 1)
-            .map((a) => `${a.id}: ${(a.details?.items ?? []).slice(0, 3).map((it) => it.node?.snippet ?? it.node?.selector ?? "").join(" | ").slice(0, 200)}`);
-          report(`${route} (Lighthouse)`, `accessibility ${score}: ${failed.join("; ")}`);
-        } else notes.push(`${route}: Lighthouse accessibility 100`);
+        try {
+          const { lhr } = await lighthouse(base + encodeURI(route), { port: chrome.port, onlyCategories: ["accessibility"], output: "json", logLevel: "error" });
+          const score = Math.round((lhr.categories.accessibility.score ?? 0) * 100);
+          if (lhr.runtimeError) report(`${route} (Lighthouse)`, lhr.runtimeError.message);
+          else if (score < 100) {
+            const failed = lhr.categories.accessibility.auditRefs
+              .map((ref) => lhr.audits[ref.id])
+              .filter((a) => a.score !== null && a.score < 1)
+              .map((a) => `${a.id}: ${(a.details?.items ?? []).slice(0, 3).map((it) => it.node?.snippet ?? it.node?.selector ?? "").join(" | ").slice(0, 200)}`);
+            report(`${route} (Lighthouse)`, `accessibility ${score}: ${failed.join("; ")}`);
+          } else notes.push(`${route}: Lighthouse accessibility 100`);
+        } catch (e) {
+          report(`${route} (Lighthouse)`, `crashed: ${String(e.message ?? e).split("\n")[0]}`);
+        }
       }
     } finally {
       await chrome.kill();
     }
   }
-} finally {
+} catch (e) {
+  // Setup failed (a browser that won't start): say so, with whatever was found before it.
+  console.error(e);
   server.close();
+  finish(2);
 }
-
-findings.sort();
-if (notes.length) console.log(`\nNotes:\n${[...new Set(notes)].sort().map((n) => `- ${n}`).join("\n")}`);
-if (findings.length) {
-  console.log(`\n${findings.length} finding${findings.length === 1 ? "" : "s"}:`);
-  for (const f of findings) console.log(`- ${f}`);
-  process.exit(1);
-}
-console.log("\nNo findings.");
+server.close();
+finish(0);

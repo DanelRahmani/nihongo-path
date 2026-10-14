@@ -25,12 +25,19 @@ const gzipped = new Map();
 export function serveOut(dir) {
   const root = resolve(dir);
   const server = createServer((req, res) => {
-    const path = decodeURIComponent(new URL(req.url, "http://x").pathname);
+    let path;
+    try {
+      path = decodeURIComponent(new URL(req.url, "http://x").pathname);
+    } catch {
+      res.writeHead(400);
+      return res.end();
+    }
+    const send = (file) => createReadStream(file).on("error", () => res.destroy()).pipe(res);
     const candidates = [join(root, path), join(root, `${path}.html`), join(root, path, "index.html")];
     const file = candidates.find((c) => (c === root || c.startsWith(root + sep)) && existsSync(c) && statSync(c).isFile());
     if (!file) {
       res.writeHead(404, { "Content-Type": TYPES[".html"] });
-      return createReadStream(join(root, "404.html")).pipe(res);
+      return send(join(root, "404.html"));
     }
     const headers = { "Content-Type": TYPES[extname(file)] ?? "application/octet-stream" };
     // Build files have hashed names, as on the host: cache them, so repeat visits measure what a returning reader gets.
@@ -41,7 +48,7 @@ export function serveOut(dir) {
       return res.end(gzipped.get(file));
     }
     res.writeHead(200, headers);
-    createReadStream(file).pipe(res);
+    send(file);
   });
   return new Promise((done) => server.listen(0, "127.0.0.1", () => done(server)));
 }

@@ -122,7 +122,7 @@ export function PathBrowser({ units }: { units: PathUnit[] }) {
               aria-controls={PANEL_ID}
               tabIndex={active ? 0 : -1}
               onClick={() => choose(u.slug)}
-              className={`flex h-10 shrink-0 scroll-mt-24 items-center gap-2 rounded-full px-4 text-sm whitespace-nowrap transition-colors duration-150 focus-visible:-outline-offset-2 ${
+              className={`flex h-10 shrink-0 scroll-mt-4 items-center gap-2 rounded-full px-4 text-sm whitespace-nowrap transition-colors duration-150 focus-visible:-outline-offset-2 ${
                 active ? "bg-accent-soft font-medium text-accent" : "text-ink-2 hover:bg-paper-2 hover:text-ink"
               }`}
             >

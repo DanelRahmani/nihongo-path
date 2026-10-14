@@ -35,7 +35,7 @@ export default function GrammarPage() {
       </nav>
 
       {GRAMMAR.map((group) => (
-        <section key={group.slug} id={group.slug} aria-labelledby={`${group.slug}-heading`} className="mt-14 scroll-mt-24">
+        <section key={group.slug} id={group.slug} aria-labelledby={`${group.slug}-heading`} className="mt-14 scroll-mt-4">
           <h2 id={`${group.slug}-heading`} className="font-serif text-2xl font-bold">
             {group.title}
           </h2>
@@ -43,7 +43,7 @@ export default function GrammarPage() {
             {group.topics.map((topic) => {
               const lesson = LESSONS.get(topic.lesson)!;
               return (
-                <article key={topic.slug} id={topic.slug} aria-labelledby={`${topic.slug}-pattern`} className={panelClass("surface", "scroll-mt-24 p-5 sm:p-6")}>
+                <article key={topic.slug} id={topic.slug} aria-labelledby={`${topic.slug}-pattern`} className={panelClass("surface", "scroll-mt-4 p-5 sm:p-6")}>
                   <h3 id={`${topic.slug}-pattern`} className="font-serif text-xl font-bold">
                     <Rich text={topic.pattern} />
                   </h3>

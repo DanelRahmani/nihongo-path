@@ -80,6 +80,12 @@ export function InspectorLine({ children }: { children: React.ReactNode }) {
     <span
       className="inspector-line relative"
       ref={line}
+      // Tab away from the line and its card closes the card, so it never covers the element that now has focus.
+      // Focus moving nowhere (a tap on the card's text) leaves it open; taps outside close it above.
+      onBlur={(event) => {
+        const next = event.relatedTarget;
+        if (shown && next instanceof Node && !event.currentTarget.contains(next)) close(false);
+      }}
       onKeyDown={(event) => {
         if (event.key === "Escape" && shown) {
           event.preventDefault();

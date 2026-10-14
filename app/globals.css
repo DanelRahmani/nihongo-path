@@ -213,10 +213,23 @@ body {
   color: var(--on-accent);
 }
 
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 4px;
+/* The focus ring. In the base layer, so focus-visible: utilities (an inset ring on the path tabs) can change it; the
+   outline follows each element's own corners. */
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  /* Whatever Tab or Shift+Tab scrolls into view stays clear of the sticky header (WCAG 2.4.11), and on the reading
+     view of the sticky readings toggle too. */
+  html {
+    scroll-padding-top: 5rem;
+  }
+
+  :root:has(.reading-toggle) {
+    scroll-padding-top: 8.5rem;
+  }
 }
 
 /* The search box shows focus with its bar's accent border; the outline would be clipped by the dialog's corners.
@@ -299,9 +312,12 @@ body {
   }
 
   /* A horizontal strip that scrolls without a scrollbar, fading out at its edges. */
+  /* The fade widths are custom properties so the accessibility sweep can tell a ring under the fade from one in view. */
   .scroll-strip {
+    --fade-start: 0.625rem;
+    --fade-end: 0.625rem;
     scrollbar-width: none;
-    mask-image: linear-gradient(to right, transparent, #000 1rem, #000 calc(100% - 2rem), transparent);
+    mask-image: linear-gradient(to right, transparent, #000 var(--fade-start), #000 calc(100% - var(--fade-end)), transparent);
   }
   .scroll-strip::-webkit-scrollbar {
     display: none;
@@ -309,7 +325,7 @@ body {
 
   /* Keep a focused pill clear of the faded edges (FocusIntoView scrolls it this far in). */
   .scroll-strip > * {
-    scroll-margin-inline: 1.25rem 2.25rem;
+    scroll-margin-inline: 1rem;
   }
 
   /* The rising sun behind the home title. */

@@ -115,12 +115,15 @@ export function DictionaryBrowser() {
   const key = JSON.stringify([deferredQuery, filters]);
   const shown = visibleCount(growth, key, results.length);
 
-  // Grow the list when its end scrolls near the screen.
+  // Grow the list when its end scrolls near the screen. Not while keyboard focus walks the list: Tab would scroll
+  // the end into view again and again, and the page below the list could never be reached. "Show more" stays.
   useEffect(() => {
     const end = sentinel.current;
     if (!end || shown >= results.length) return;
     const observer = new IntersectionObserver(
       (seen) => {
+        const focus = document.activeElement;
+        if (focus && list.current?.contains(focus) && focus.matches(":focus-visible")) return;
         if (seen.some((s) => s.isIntersecting)) startTransition(() => grow({ type: "grow", key, total: results.length }));
       },
       { rootMargin: "600px 0px" },

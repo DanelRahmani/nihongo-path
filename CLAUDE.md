@@ -197,6 +197,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 2026-10-08: the owner asked again to push to main. main was fast-forwarded to B4 (51b591f), bringing B2, B3, C1 and B4; no merge commit.
 - 2026-10-08: the owner asked to push to main again. main was fast-forwarded to B5 (806413d).
 - 2026-10-09: the owner asked to push to main. main was fast-forwarded to D1 (03970ad).
+- D2 and D3 reached main through GitHub pull request #1 (merge 3fb22eb), merged outside this workflow.
+- 2026-10-14: the owner asked to push to main. A fast-forward was no longer possible because of that pull request's merge commit, so `features` (F2, dcd7f38) was merged into main with a merge commit (e6dbe58), whose tree matches `features`. Nothing was force-pushed.
 - D1 (2026-10-08): the owner approved three downloads: JMdict common words and KANJIDIC2 (jmdict-simplified 3.6.2) and the 常用漢字表 PDF. They stay outside the repo; only derived data is committed. The N5/N4 kanji wait for Waller's lists (owner's choice); D1 covers the lesson kanji.
 - The path is unit tabs, not kind filters (owner request). Lesson `kinds` tags (B1) will feed search and the grammar overview instead.
   - Stacked particles are written separately (で は).
@@ -213,7 +215,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - Dictionary: 547 lesson words (75 verbs), 93 extra kanji-example words, 14 names; 404 kanji. The dictionary page lists 640 entries.
 - Template: all 62 lessons converted.
 - Grammar overview: 61 topics from 37 lessons, 96 examples.
-- Reading view: 5 original texts (24 lines and 3 prices) and 4 haiku. Dictionary: 547 lesson words, 93 extra words.
+- Reading view: 5 original texts (23 lines and 3 prices) and 4 haiku. Dictionary: 547 lesson words, 93 extra words.
 - Quiz questions: 250, of which 37 are typed in romaji and 3 ask for a name.
 
 ### How it was checked

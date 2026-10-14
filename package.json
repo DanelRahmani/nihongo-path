@@ -10,7 +10,9 @@
     "test": "vitest run",
     "typecheck": "next typegen && tsc --noEmit",
     "dump": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/ts-paths.mjs scripts/dump-corpus.ts",
-    "check-words": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/ts-paths.mjs scripts/data/check-words-jmdict.ts"
+    "check-words": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/ts-paths.mjs scripts/data/check-words-jmdict.ts",
+    "expand-candidates": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/ts-paths.mjs scripts/expand/candidates.ts",
+    "expand-refresh": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/ts-paths.mjs scripts/expand/refresh.ts"
   },
   "dependencies": {
     "next": "16.3.6",

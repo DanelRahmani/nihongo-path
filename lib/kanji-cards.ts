@@ -1,6 +1,7 @@
 import { KANJI } from "@/content/kanji";
 import { WORDS } from "@/content/words";
 import { EXTRA_WORDS } from "@/content/words/extra";
+import { NON_LESSON_WORDS } from "@/content/words/expansion";
 import { GROUP_SIZE, type KanjiCard } from "@/lib/kanji-deck";
 import { parse, plainOf, readingOf } from "@/lib/markup";
 import { SITE_PAGES } from "@/lib/search";
@@ -60,6 +61,6 @@ export function furiganaKanji(): string {
   const all = new Set([...KANJI.map((k) => k.char), ...DATE_KANJI]);
   // The search's page names (練習, 活用, 復習) show as Japanese lines in the search results.
   for (const page of SITE_PAGES) for (const c of plainOf(page.jp, false)) if (/\p{Script=Han}/u.test(c)) all.add(c);
-  for (const w of [...WORDS, ...EXTRA_WORDS]) for (const c of plainOf(w.jp, false)) if (/\p{Script=Han}/u.test(c)) all.add(c);
+  for (const w of [...WORDS, ...NON_LESSON_WORDS]) for (const c of plainOf(w.jp, false)) if (/\p{Script=Han}/u.test(c)) all.add(c);
   return [...all].join("");
 }

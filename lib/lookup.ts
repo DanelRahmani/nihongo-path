@@ -18,8 +18,10 @@ export interface KanjiInfo extends Kanji {
 }
 
 export interface DictionaryData {
+  /** The data's licence and sources (/credits). */
+  licence?: string;
   words: Word[];
-  /** Words that serve only as kanji examples (content/words/extra.ts), tried after the lesson words. */
+  /** The words that aren't lesson words (kanji examples and the expansion), tried after the lesson words. */
   extra: Word[];
   names: Jp[];
   kanji: KanjiInfo[];

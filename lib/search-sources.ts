@@ -2,7 +2,7 @@ import { GRAMMAR_TOPICS } from "@/content/grammar";
 import { KANJI } from "@/content/kanji";
 import { ALL_LESSONS } from "@/content/units";
 import { WORDS } from "@/content/words";
-import { EXTRA_WORDS } from "@/content/words/extra";
+import { NON_LESSON_WORDS } from "@/content/words/expansion";
 import { tableReadings } from "@/lib/joyo";
 import { type IndexSources, SITE_PAGES } from "@/lib/search";
 
@@ -24,6 +24,6 @@ export function indexSources(): IndexSources {
     grammar: GRAMMAR_TOPICS,
     kanji: KANJI.map((k) => ({ char: k.char, meanings: k.meanings, ...(tableReadings(k.char) ?? { on: [], kun: [] }) })),
     words: WORDS,
-    extra: EXTRA_WORDS,
+    extra: NON_LESSON_WORDS,
   };
 }

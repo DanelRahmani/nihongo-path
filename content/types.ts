@@ -149,6 +149,8 @@ export interface Word {
   /** How a verb conjugates (lib/conjugate.ts). */
   verb?: "godan" | "ichidan" | "suru" | "kuru";
   topic: WordTopic;
+  /** The JMdict entry an expansion word was written from (content/words/expansion), for the refresh check. */
+  jmdict?: string;
 }
 
 /** A kanji the lessons use (content/kanji.ts). Its readings come from the 常用漢字表 (lib/joyo.ts). */

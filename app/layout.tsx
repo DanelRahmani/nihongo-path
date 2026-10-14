@@ -74,9 +74,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               Nihongo Path · a personal study app ·{" "}
               <Link href="/data" className="underline-offset-2 hover:text-accent hover:underline">
                 Your data
+              </Link>{" "}
+              ·{" "}
+              <Link href="/credits" className="underline-offset-2 hover:text-accent hover:underline">
+                Credits
               </Link>
+              <span className="mt-1 block">Dictionary and kanji data: JMdict and KANJIDIC2 © EDRDG, wordfreq; CC BY-SA 4.0.</span>
             </span>
-            <span className="flex items-center gap-2">
+            <span className="flex shrink-0 items-center gap-2 whitespace-nowrap">
               <span lang="ja" className="font-serif text-sm text-ink">
                 一歩ずつ
               </span>

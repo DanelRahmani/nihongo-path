@@ -9,7 +9,7 @@ import { plainOf, readingOf } from "@/lib/markup";
 import { romajiOf } from "@/lib/romaji";
 import { normalizeRomaji } from "@/lib/romaji-input";
 
-/** Lesson words, or the extra words that serve as kanji examples (the expansion). */
+/** Lesson words, or the rest (the kanji-example words and the expansion, content/words/expansion), shown as "Expansion". */
 export type Source = "lesson" | "extra";
 
 /** The kana rows a reading can start with, named by their first kana. */

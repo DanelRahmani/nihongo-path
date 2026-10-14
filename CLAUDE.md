@@ -7,8 +7,10 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **H3** (backup, restore, offline). G, H1 and H2 wait on the owner (see Waiting on the owner).
-  - A draft exists (in `git stash` as "h3" if not in the tree): `lib/backup.ts` (`makeBackup`, `readBackup`, `STORE_NAMES`), `tests/backup.test.ts` (round trip over every store, v0 file, newer and unusable stores), `lib/service-worker.ts` (`serviceWorkerSource`, `PRECACHE`). To do: the `/sw.js` route (`force-static`), registration in production only, a "Your data" page with export and import (write `writes`, then reload), a footer link and search entry, tests for the worker (simulate install, fetch and activate), the browser check, the review, CLAUDE.md.
+- **G1** (dictionary source pipeline), then G2… batches, H1 (performance) and H2 (accessibility sweep). The owner approved the downloads and dev tools on 2026-10-14 (Decisions).
+  - G1: download JMdict common words (latest jmdict-simplified release) and the wordfreq Japanese list into a folder outside the repo (only derived data is committed); `scripts/expand/` per plan §4 G; credits on the dictionary page before any screen shows the new words.
+  - H1: `npm i -D lighthouse`; H2: `npm i -D playwright` (use the pre-installed Chromium at /opt/pw-browsers; don't run `playwright install`).
+  - The service worker is live on any build that reaches main: to remove it, set `RETIRE_WORKER` in `lib/service-worker.ts` and deploy (its header comment says why deleting the route isn't enough).
   - E2's kanji set is the interim lesson set; when Waller's lists arrive, build `kanji-n5`/`kanji-n4` decks with `kanjiDeck(cards, id)` (learned kanji count across every deck whose id starts with "kanji"). Keep a deck's same-word siblings in different groups, and say on the answer side which kanji a card is for (as now).
   - A new deck registers in three places: its card data in `lib/review-data.ts` (`reviewData` and `reviewIds`), its deck in `components/review/ReviewQueue.tsx` (`queueFrom`), and its id in `lib/notebook.ts` if the home page names it.
   - Deck and card builders (E) must never import `content/reading.ts` or `lib/corpus.ts`; `tests/reading.test.ts` checks this.
@@ -281,7 +283,18 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - A line counts toward the daily goal once, when first typed exactly; pasting is turned off. Focus goes to the box after Start, Next and Skip (never the same line twice running), and to "Next line" after an exact line; switching scripts leaves focus on the switch. An always-mounted status announces each result and each new line.
   - `KANA_WORDS` is now exported from `lib/quiz.ts`.
 
+- **H3 Backup, restore and offline (2026-10-14):** `/data` ("Your data"), linked from the footer and search, and a service worker.
+  - `lib/backup.ts`, pure: `makeBackup` writes every `np:*` store as stored, in one file `{"app": "nihongo-path", "backup": 1, "exported", "stores"}`, named by the local date. `readBackup` checks the file, then runs each store through its own migration chain (version 0 included) and validation; a store from a newer build or one that can't be used is left out and named, and a store this browser holds from a newer build is kept. The page lists what will happen to each store, writes on "Restore and reload" (putting back the earlier stores if the browser runs out of room part-way), and reloads. Files over 5 MB aren't read; a slow read of an earlier choice can't replace a later one. With storage blocked, the page says so instead of offering an empty backup.
+  - Stores now drop their in-memory copy on any `storage` event, subscribed or not, so another tab's next write can't put old data back over a restore.
+  - `lib/service-worker.ts` and the `force-static` route `/sw.js`, registered when idle in production builds only. Install saves the home page, the practice pages, `/data`, `/placement`, `/dictionary` and the data JSON in this build's page cache, and the build files those pages name in a build-file cache kept across builds (pruned on activate to what the new build's pages name). The page posts the build files it loaded before the worker took over. Pages and data are network-first, returned at once and kept afterwards (a failed save never costs the page); pages are kept by path, so `?q=` doesn't add copies. Build files are cache-first. Router payloads (`.txt`, `?_rsc=`), Range requests, other origins and non-GET requests go to the network untouched. Only whole 200 same-origin responses are kept. A page never visited gets an offline notice.
+  - Kill switch: `RETIRE_WORKER` makes `/sw.js` a worker that deletes the caches, unregisters itself and reloads open tabs, and the page unregisters instead of registering.
+
 ### Decisions
+- Owner, 2026-10-14 (answers to the "Waiting on the owner" questions):
+  - G: download both JMdict common words and the wordfreq Japanese list.
+  - H1 and H2: Lighthouse and Playwright may be added as devDependencies.
+  - E7: a miss on a notebook item that isn't due leaves its schedule alone (as built).
+  - E2: keep the 404 lesson kanji; add N5/N4 later only if Waller's lists become available and their licence checks out.
 - Owner's answers, 2026-10-07 (plan §7):
   - Q1: four furigana modes, kana-only by default.
   - Q2: long vowels spelled out (kyou).
@@ -318,7 +331,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 768 in 34 files.
+- Tests: 786 in 36 files.
+- Service worker: 17 pages and data files precached.
 - Type it: 373 lines.
 - Placement check: 7 bands, 14 questions.
 - Polite and casual drill: 30 cards per direction; 13 reviewed alternatives.
@@ -610,13 +624,16 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Polish applied: slips merged across a word; "Extra at the end" and "You typed"; `Feedback` for the result; duplicate lines dropped; the line kept as an object, so another tab can't swap it.
   - Not applied: naming okurigana in kana-for-kanji notes (たべ → 食べ: the note says た → 食, then the rest matches); an sr-only reading for the kanji line (its ruby is read already).
 
+- H3 in the checks: 786 tests, typecheck, lint, build (`/data` and `/sw.js` static). The worker's tests run its source against an in-memory Cache Storage whose writes can fail: install, network-first with a failed save, cache-first, untouched requests, posted build files, pruning on activate and the retired worker.
+- H3 in the browser (Playwright's Chromium) at 375 px, light and dark: the worker controls the page after a reload; with the static server stopped, the kana drill loads from the caches and hydrates (its answer boxes render), the home page shows the Today card, and a lesson never opened shows the offline notice (Playwright's own offline switch doesn't reach service workers, so the server was stopped instead); a backup downloads as nihongo-path-2026-10-14.json, and after clearing storage, importing it lists "will be restored" for each store and Restore brings back the exact stored values; a file that isn't a backup is named as such; no horizontal scroll; console clean.
+- H3 review: a fresh Opus 5.5 reviewer. Applied:
+  - Errors fixed: offline pages had none of their build files (install now saves the files each page names, the page posts the ones it loaded first, and build files survive deploys); a failed cache write served the old page while online, and awaiting the write stopped streaming (responses now return at once and are saved afterwards).
+  - Should-fix applied: a kill switch; router payloads and `?q=` no longer grow the cache; other tabs drop their copies on a restore; a failed restore puts the earlier stores back; unreadable, huge and superseded files handled; the download link appended and its address kept until the next export, with "Download started"; blocked storage named.
+  - Polish applied: `/grammar` and `/read` (756 KB of HTML) dropped from the precache and `/data` and `/placement` added, with a test against `out/`; 206 and opaque responses not kept; the file named by the local date; a bad export date not shown; the error as a note, not "Not quite"; repeated messages announced again; "save a backup first" and "close other tabs"; a newer build's store in this browser kept; tests for each.
+  - Not applied: a content hash as the worker's version (each build's pages change anyway, and build files now outlive builds, so a reinstall per deploy costs only the page cache); whether Vercel redirects any precached path (to check with `curl -I` on the live site before merging; static-export paths like `/kana/drill` are served from `kana/drill.html` without a redirect by default).
+
 ### Waiting on the owner
-- Approvals needed before G, H1 and H2 (skipped for now, per the working rules):
-  - G (dictionary expansion) needs downloads: JMdict's latest release (the D1 copy, jmdict-simplified 3.6.2, is outside the repo and not in this container) and the wordfreq Japanese frequency list. Say yes to each, with the source you prefer.
-  - H1 (performance) needs Lighthouse as a devDependency.
-  - H2 (accessibility sweep) needs Playwright as a devDependency. The checks so far used a Playwright copy installed outside the repo, which a script in the repo can't rely on.
-- E7: when a notebook item from a scheduled deck is answered in the review before it is due, the schedule is left alone (as practice). Say if a miss there should send the card back to box 1.
-- E2's kanji set: the cards use the 404 lesson kanji until Waller's N5/N4 lists can be downloaded and their licence confirmed. Say if you'd rather keep the lesson set, use another list, or add N5/N4 on top. Also unverified: the order in which real Japanese keyboards (iOS, Gboard, macOS, MS-IME) offer digits and variant spellings (5月, 子ども), which the checker names but rejects.
+- E2: unverified: the order in which real Japanese keyboards (iOS, Gboard, macOS, MS-IME) offer digits and variant spellings (5月, 子ども), which the checker names but rejects.
 - B4 sources to confirm. The reviewers recalled these differently:
   - Genki: plain past of nouns in Genki I ch. 9 (desu-da now cites ch. 1, 4, 8–9); counters in Genki II ch. 14; たがっている in Genki I ch. 11; volitional in Genki II ch. 15; potential in Genki II ch. 13; たら in Genki II ch. 17; ている in ch. 7 and てください in ch. 6.
   - Tae Kim section titles cited in B4 that may not exist as written: "Existence: ある and いる", "Question words", "The te-form" (possibly "Compound sentences"), "Using the te-form", "Desire: たい" (possibly "Desire and suggestions"), "Numbers and counting". kosoado cites the guide with no section.

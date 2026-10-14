@@ -44,6 +44,7 @@ export const SITE_PAGES: IndexSources["pages"] = [
   { title: "Polite and casual", detail: "Say a lesson line in the other register", href: "/register", jp: "[丁寧|ていねい]" },
   { title: "Review", detail: "Everything due from every drill, then your mistakes", href: "/review", jp: "[復習|ふくしゅう]" },
   { title: "Type it", detail: "Copy lesson lines with a Japanese keyboard", href: "/type", jp: "[入力|にゅうりょく]" },
+  { title: "Your data", detail: "Back up your progress to a file, or restore it", href: "/data", jp: "[記録|きろく]" },
   { title: "Placement check", detail: "A few quiz questions to find where on the path to start", href: "/placement", jp: "[実力|じつりょく]" },
   { title: "Grammar overview", detail: "Particles, grammar and verb forms on one page", href: "/grammar", jp: "[文法|ぶんぽう]" },
   { title: "Dictionary", detail: "Every word, by kanji, kana, romaji or English", href: "/dictionary", jp: "[辞書|じしょ]" },

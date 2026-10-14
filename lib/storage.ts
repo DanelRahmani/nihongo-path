@@ -32,6 +32,13 @@ export function createPersistentStore<T>(key: string, schema: StoreSchema<T>): P
   /** False when a newer build wrote this key: keep its data rather than overwrite it with ours. */
   let writable = true;
   const listeners = new Set<() => void>();
+  // Another tab (or a restore) changed the key: drop the copy at once, even with no subscriber, so this tab's next
+  // write starts from the new value instead of writing its old copy over it.
+  if (typeof window !== "undefined") {
+    window.addEventListener("storage", (e) => {
+      if (e.key === key || e.key === null) cache = undefined;
+    });
+  }
   const read = () => {
     if (cache === undefined) {
       const { value, status } = decode(readRaw(key), schema);

@@ -13,13 +13,16 @@
  * - motion: no running animation or transition longer than 1 ms, after load and after every Tab;
  * - the page answers 200 and logs no console error or uncaught exception.
  * Then the states the walk can't reach: the search dialog with results, the Extras menu, the Display popover, the
- * word card, a drill and a quiz after a miss, the home page with saved progress, and the dictionary's row radios
+ * word card, a drill and a quiz after a miss, a quiz's second try, the home page with saved progress, and the dictionary's row radios
  * walked with the arrow keys. Each scenario fails if it doesn't reach its state. A third pass at text size L
  * with furigana and romaji, and one at 768 and 800 px (a tablet; the header's labels show from 800), check
  * overflow only. Last, Lighthouse's accessibility audit on representative pages
  * must score 100 (skip it with --no-lighthouse).
  *
- *   npm run a11y [-- --route /path] [--all] [--no-lighthouse] [--stale-ok] [--css "rule"]
+ *   npm run a11y [-- --route /path]… [--states] [--all] [--no-lighthouse] [--stale-ok] [--css "rule"]
+ *
+ * `--route` (repeatable) sweeps only those pages, without the interactive states and extra passes, which `--states`
+ * adds back: a quick check of the pages one change touches.
  *
  * `--css` adds a style rule to every page, to check the sweep itself: `--css "*:focus { outline: none !important }"`
  * must produce findings.
@@ -47,13 +50,16 @@ const LIGHTHOUSE_ROUTES = ["/", "/learn/particles/wa-vs-ga", "/kana", "/vocabula
 const args = process.argv.slice(2);
 const all = args.includes("--all");
 const runLighthouse = !args.includes("--no-lighthouse");
-const routeAt = args.indexOf("--route");
-const only = routeAt >= 0 ? args[routeAt + 1] : null;
+const routeAts = args.flatMap((a, i) => (a === "--route" ? [i] : []));
+const onlyRoutes = routeAts.map((i) => args[i + 1]);
+const only = onlyRoutes.length ? [...new Set(onlyRoutes)] : null;
+const withStates = args.includes("--states");
 const cssAt = args.indexOf("--css");
 const css = cssAt >= 0 ? args[cssAt + 1] : null;
-const known = new Set(["--all", "--no-lighthouse", "--route", "--stale-ok", "--css"]);
-if ((routeAt >= 0 && !only?.startsWith("/")) || (cssAt >= 0 && !css) || args.some((a, i) => (a.startsWith("--") ? !known.has(a) : i !== (routeAt >= 0 ? routeAt + 1 : -1) && i !== (cssAt >= 0 ? cssAt + 1 : -1)))) {
-  console.error('Usage: npm run a11y [-- --route /path] [--all] [--no-lighthouse] [--stale-ok] [--css "rule"]');
+const known = new Set(["--all", "--no-lighthouse", "--route", "--states", "--stale-ok", "--css"]);
+const values = new Set([...routeAts.map((i) => i + 1), ...(cssAt >= 0 ? [cssAt + 1] : [])]);
+if (onlyRoutes.some((r) => !r?.startsWith("/")) || (cssAt >= 0 && (!css || css.startsWith("--"))) || args.some((a, i) => (a.startsWith("--") && !values.has(i) ? !known.has(a) : !values.has(i)))) {
+  console.error('Usage: npm run a11y [-- --route /path]… [--states] [--all] [--no-lighthouse] [--stale-ok] [--css "rule"]');
   process.exit(2);
 }
 
@@ -484,6 +490,21 @@ const SCENARIOS = [
     },
   },
   {
+    name: "quiz retry",
+    route: LESSON,
+    limit: 6,
+    async setup(page) {
+      // Every question missed, then "Try the ones you missed again": the second-try boxes, focus in the first.
+      const boxes = page.locator('section[aria-labelledby="quiz-heading"] > ol input');
+      for (let i = 0; i < (await boxes.count()); i++) {
+        await boxes.nth(i).fill("ぬぬぬ");
+        await boxes.nth(i).press("Enter");
+      }
+      await page.getByRole("button", { name: /you missed again/ }).click();
+      await reach(page, "the second-try boxes, announced", () => !!document.activeElement?.closest("h3 + ol") && /Second try/.test(document.querySelector('section[aria-labelledby="quiz-heading"] [role=status]')?.textContent ?? ""));
+    },
+  },
+  {
     name: "home with saved progress",
     route: "/",
     limit: 80,
@@ -555,9 +576,9 @@ function finish(code) {
 
 const server = await serveOut(OUT);
 const base = `http://127.0.0.1:${server.address().port}`;
-const list = only ? [{ route: only, expect: 200 }] : [...routes().map((route) => ({ route, expect: 200 })), { route: "/no-such-page", expect: 404 }];
+const list = only ? only.map((route) => ({ route, expect: 200 })) : [...routes().map((route) => ({ route, expect: 200 })), { route: "/no-such-page", expect: 404 }];
 const workers = Math.min(WORKERS, list.length);
-console.log(`Sweeping ${list.length} page${list.length === 1 ? "" : "s"} in light and dark${only ? "" : `, ${SCENARIOS.length} interactive states, and the large-text pass`}…`);
+console.log(`Sweeping ${list.length} page${list.length === 1 ? "" : "s"} in light and dark${only && !withStates ? "" : `, ${SCENARIOS.length} interactive states, and the large-text pass`}…`);
 const started = Date.now();
 
 /**
@@ -599,7 +620,7 @@ try {
       pool(list, (browser, { route, expect }) => inContext(browser, `${route} (${scheme})`, scheme, null, (context) => sweepPage(context, scheme, route, expect))),
     ),
   );
-  if (!only) {
+  if (!only || withStates) {
     await Promise.all(["light", "dark"].map((scheme) => pool(SCENARIOS, (browser, s) => runScenario(browser, scheme, s))));
     await pool(
       list.filter((l) => l.expect === 200),
@@ -639,7 +660,7 @@ try {
   if (runLighthouse) {
     const chrome = await chromeLauncher.launch({ chromePath: process.env.CHROME_PATH || chromium.executablePath(), chromeFlags: ["--headless=new", "--no-sandbox", "--disable-gpu"] });
     try {
-      for (const route of only ? [only] : LIGHTHOUSE_ROUTES) {
+      for (const route of only ?? LIGHTHOUSE_ROUTES) {
         try {
           const { lhr } = await lighthouse(base + encodeURI(route), { port: chrome.port, onlyCategories: ["accessibility"], output: "json", logLevel: "error" });
           const score = Math.round((lhr.categories.accessibility.score ?? 0) * 100);

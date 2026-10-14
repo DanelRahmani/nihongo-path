@@ -175,6 +175,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Corpus: `readingFields()` adds every line and price, so the snapshot gained 48 lines (no existing line changed).
   - Dictionary: 9 new lesson words for the texts (本日, 今朝, 店長, 休業, 初雪, アイス, うれしい, ぬれる, オッケー), and 午後 moved from the extra words.
   - `tests/reading.test.ts`: only the page and the corpus import the texts, and only tests and scripts import the corpus (aliases, relative paths and dynamic imports); digits, not kanji numerals; every haiku names its poet and edition and is quoted; the chat stays casual, the story polite, signs and news polite or bare phrases.
+- **Extras menu (owner request, 2026-10-14):** the nav's 辞書 link became 参考 (Extras), a native popover menu with the grammar overview, the dictionary and the reading view. It replaces one link, so the header still fits 375 px; the button is highlighted on those pages and on kanji pages. Checked in the browser at 375 px, light and dark: links navigate and close the menu, Escape and outside taps close it, Tab reaches the menu items with a visible ring, console clean.
 
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):

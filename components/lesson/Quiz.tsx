@@ -8,7 +8,8 @@ import { Feedback } from "@/components/ui/Feedback";
 import { panelClass } from "@/components/ui/Panel";
 import type { QuizQuestion } from "@/content/types";
 import { checkQuestion, type QuizCheck } from "@/lib/quiz";
-import { recordActivity } from "@/lib/stores";
+import { QUIZ_DECK, quizCardId } from "@/lib/notebook";
+import { logAnswer } from "@/lib/stores";
 
 const PLACEHOLDER = {
   japanese: "Type in kana or kanji",
@@ -16,7 +17,7 @@ const PLACEHOLDER = {
   name: "Type the name in English letters",
 } as const;
 
-function Question({ q, n, onResult }: { q: QuizQuestion; n: number; onResult: (correct: boolean) => void }) {
+function Question({ q, n, lessonKey, onResult }: { q: QuizQuestion; n: number; lessonKey: string; onResult: (correct: boolean) => void }) {
   const id = useId();
   const [input, setInput] = useState("");
   const [result, setResult] = useState<QuizCheck | null>(null);
@@ -33,8 +34,11 @@ function Question({ q, n, onResult }: { q: QuizQuestion; n: number; onResult: (c
           e.preventDefault();
           if (composing.current || !input.trim()) return;
           const r = checkQuestion(q, input);
-          // Checking the same answer again isn't another answer for the daily goal.
-          if (input.trim() !== lastChecked.current) recordActivity();
+          // Checking the same answer again isn't another answer. Only the first try goes to the notebook: after a
+          // miss the answer is on screen, and copying it isn't remembering it.
+          if (input.trim() !== lastChecked.current) {
+            logAnswer(QUIZ_DECK, quizCardId(lessonKey, q.prompt), r.correct, { notebook: lastChecked.current === null });
+          }
           lastChecked.current = input.trim();
           setResult(r);
           onResult(r.correct);
@@ -93,7 +97,7 @@ function Question({ q, n, onResult }: { q: QuizQuestion; n: number; onResult: (c
 }
 
 /** The lesson's closing quiz: typed answers, checked exactly, each with its explanation. */
-export function Quiz({ questions }: { questions: QuizQuestion[] }) {
+export function Quiz({ questions, lessonKey }: { questions: QuizQuestion[]; lessonKey: string }) {
   const [results, setResults] = useState<Record<number, boolean>>({});
   const answered = Object.keys(results).length;
   const right = Object.values(results).filter(Boolean).length;
@@ -112,7 +116,7 @@ export function Quiz({ questions }: { questions: QuizQuestion[] }) {
       </div>
       <ol className="mt-5 divide-y divide-line">
         {questions.map((q, i) => (
-          <Question key={i} q={q} n={i + 1} onResult={(correct) => setResults((r) => ({ ...r, [i]: correct }))} />
+          <Question key={i} q={q} n={i + 1} lessonKey={lessonKey} onResult={(correct) => setResults((r) => ({ ...r, [i]: correct }))} />
         ))}
       </ol>
     </section>

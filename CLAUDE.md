@@ -7,9 +7,12 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **E1** (SRS generalised + mistake notebook). Then E2–E9 (practice), G and H.
-  - The Today card's "mistakes waiting" needs E1's notebook; F4 shipped without it, and E1 adds the count to `components/today/TodayCard.tsx`.
-  - E1 should report misses from `components/kana/KanaDrill.tsx` and `components/lesson/Quiz.tsx`, next to their `recordActivity()` calls.
+- **E2** (kanji flashcards). Then E3–E9 (practice), G and H.
+  - Waller's N5/N4 lists aren't downloaded (Waiting on the owner). Plan: build the trainer on the 404 lesson kanji (`content/kanji.ts`, most used first) in groups of 10, so the N5/N4 sets can replace the card list later. Each card asks the kanji's meaning and its first example word's reading; the learner types the word through the Japanese keyboard. The checker accepts only the reviewed written form.
+  - "Furigana on new kanji only": `furiganaCss(pageKanji, learned)` in `lib/display.ts` already writes the rules, and Jp marks each kanji word with `data-k`. It needs the learned set (box ≥ 3 in the kanji deck) before the first paint, to avoid a flash. Show the mode in `DisplaySettings` once the deck exists.
+  - Per the E1 review, build the kanji deck as its own module and keep it out of every page's client bundle (`TodayCard` and `KanaChart` import `lib/decks.ts`). Prefer lazy per-deck loaders in the registry.
+  - New decks register in `lib/decks.ts`. E7 asks any item through `askItem(deckId, cardId)` and counts what it can resolve with `resolvableItems`. Quiz items (`QUIZ_DECK`) need a quiz index on the client; consider a quiz pseudo-deck adapting `checkQuestion` (its field is `answer`, not `canonical`).
+  - E4's "cards join when the lesson is done" can't be expressed by box unlocking. Add an optional `isGroupOpen` to `SrsDeck` then.
   - Deck and card builders (E) must never import `content/reading.ts` or `lib/corpus.ts`; `tests/reading.test.ts` checks this.
   - E2's "new kanji only" furigana rules must stay less specific than the reading view's (`:root body .reading-view …` in `app/globals.css`), or the reading view would show readings for unlearned kanji.
   - Keep `lib/joyo.ts` (and its 135 KB `content/data/joyo.json`) out of client code; `tests/lookup.test.ts` and `tests/dictionary.test.ts` check the client imports. The 常用 readings reach the client through `/dictionary-data.json`, loaded by `lib/load-dictionary.ts`.
@@ -196,6 +199,20 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Store `np:activity` v1 (`lib/schemas.ts`, in `SCHEMAS`): days validated as real calendar days.
   - The server sends the whole card with its numbers hidden, so it doesn't change size on load.
 
+- **E1 SRS generalised and mistake notebook (2026-10-14):**
+  - `lib/srs.ts` schedules any deck. Store `np:srs` v2 keeps one schedule per deck (`{decks: {id: {cards, extraGroups}}}`). The A2 chain migrates v0 and v1: every kana card keeps its box, due time and counts, hand-unlocked rows carry over, and unknown cards and decks are dropped. Keys such as `__proto__` stay ordinary keys.
+  - Unlocking is one pass over cached groups. A card already studied stays askable after a lapse in an earlier group, so one miss no longer hides the due cards of later rows. `dueCards` lists the due cards, most overdue first, for E7.
+  - `lib/decks.ts`: the registry. Each deck has its cards, groups, `card(id)`, a prompt and `check → {correct, canonical, note}`. The six kana decks are there, and kana typed instead of romaji is named. `askItem(deckId, cardId)` gives a ready-to-ask item, or null for a deck or card this build doesn't have.
+  - `lib/notebook.ts` and store `np:notebook` v1 (in `SCHEMAS`):
+    - every miss in the kana drill (practice included) and every first try at a quiz question enters the notebook;
+    - an item leaves after two right answers in a row;
+    - a right answer counts only 10 minutes or more after the miss, so copying the answer just shown doesn't clear it;
+    - quiz questions are named by lesson and a hash of the prompt;
+    - items whose card is gone are kept but not counted.
+  - `logAnswer(deck, card, correct)` in `lib/stores.ts` feeds both the daily goal and the notebook. The Today card shows "N mistakes waiting".
+  - A store update that changes nothing no longer writes to localStorage.
+  - The drill reads its answer box label and the answer shown from the deck.
+
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
   - Q1: four furigana modes, kana-only by default.
@@ -233,7 +250,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 624 in 24 files.
+- Tests: 647 in 25 files.
+- Decks: 6 kana decks (208 cards). Quiz questions in the notebook: 250 possible ids, all unique.
 - Search index: 1,173 items (6 pages, 62 lessons, 61 grammar topics, 404 kanji, 640 words).
 - Dictionary: 547 lesson words (75 verbs), 93 extra kanji-example words, 14 names; 404 kanji. The dictionary page lists 640 entries.
 - Template: all 62 lessons converted.
@@ -444,6 +462,14 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Should-fix applied: the placeholder was shorter than the card (now the server renders the card itself, numbers hidden); re-checking a quiz answer no longer counts; streaks no longer stop at 400 days; a golden table for the readings.
   - Polish applied: 元 written by the app, not taken from Intl; no Japanese line for an unknown era; the heading present in the server HTML; Word of the day as a heading; the word's space reserved; due counts refreshed each minute and on tab return; a raised goal after today's is met starts tomorrow; impossible dates rejected; a note on new words changing the word of the day; tests for goal changes, days before 1970 and the unknown era.
   - Not applied: a mocked `Intl` returning "1" for the first year; the code writes 元 itself either way.
+
+- E1 in the checks: 647 tests, typecheck, lint, build; snapshot unchanged.
+- E1 in the browser (Playwright's Chromium) at 375 px, light and dark: a v1 kana store (the あ row learned) loads as v2 with 5/46 learned, 1 due and 2 rows open; a miss typed in kana shows the romaji note, writes the card to box 1 and adds it to the notebook; the kana chart shows the learned dots; the Today card says "1 mistake waiting"; no horizontal scroll; console clean.
+- E1 review: a fresh Opus 5.5 reviewer. Applied:
+  - Error fixed: stored keys such as `__proto__` could write onto `Object.prototype` (now built from entries, own properties only, unknown decks dropped).
+  - Should-fix applied: copying the shown answer no longer clears a notebook item (first quiz try only, and a 10-minute spacing); one lapse no longer relocks later rows; unlocking in one pass (it was quadratic); the registry without a type cast, with `card(id)`, `askItem` and nothing assumed to exist; removed cards and rewritten prompts not counted.
+  - Polish applied: the drill's label and answer from the deck; no write when nothing changed; the migration's deck rule marked as frozen; `|` rejected in deck ids; frozen empty states; `dueCards`; wrapping; the duplicate import guard dropped; tests for every gap listed.
+  - Not applied, recorded under Next: per-deck lazy modules (E2), `isGroupOpen` (E4), a quiz pseudo-deck (E7). There's no DOM test setup, so the quiz logging rule is checked in the browser, not in a unit test.
 
 ### Waiting on the owner
 - B4 sources to confirm. The reviewers recalled these differently:

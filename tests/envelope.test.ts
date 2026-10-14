@@ -26,11 +26,24 @@ const LEGACY: Record<StoreKey, { before: unknown; after: unknown }> = {
     after: { furigana: "all", romaji: true, size: "m", font: "mincho", theme: "system" },
   },
   "np:progress": { before: { "start/three-scripts": true }, after: { "start/three-scripts": true } },
-  "np:srs": { before: SRS, after: SRS },
+  // Version 2 keeps one schedule per deck; every card keeps its box and due time.
+  "np:srs": {
+    before: SRS,
+    after: {
+      decks: {
+        "hiragana-base": { cards: { "hiragana:あ": SRS.cards["hiragana:あ"] }, extraGroups: 0 },
+        "katakana-base": { cards: { "katakana:ア": SRS.cards["katakana:ア"] }, extraGroups: 0 },
+      },
+    },
+  },
   "np:path-filter": { before: { kind: "particles", hideDone: true }, after: { unit: "particles", hideDone: true } },
   // Never stored raw; a bare array still reads as version 0.
   "np:my-words": { before: ["[食|た]べる#verb", "[本|ほん]#counter"], after: ["[食|た]べる#verb", "[本|ほん]#counter"] },
   // Never stored raw either.
+  "np:notebook": {
+    before: { "quiz|particles/wa-topic#abc": { deck: "quiz", card: "particles/wa-topic#abc", misses: 1, rightInRow: 0, added: 5, lastMiss: 5 } },
+    after: { "quiz|particles/wa-topic#abc": { deck: "quiz", card: "particles/wa-topic#abc", misses: 1, rightInRow: 0, added: 5, lastMiss: 5 } },
+  },
   "np:activity": { before: { goal: 5, days: { "2026-10-14": { answered: 3, goal: 5 } } }, after: { goal: 5, days: { "2026-10-14": { answered: 3, goal: 5 } } } },
 };
 
@@ -114,11 +127,13 @@ describe("store schemas repair what they can", () => {
   it("drops unreadable kana cards and keeps the rest of the schedule", () => {
     const raw = JSON.stringify({
       cards: { "hiragana:あ": { box: 2, due: 5, reps: 1, lapses: 0 }, "hiragana:い": { box: 9, due: 5, reps: 1, lapses: 0 } },
-      extraRows: { hiragana: 1, katakana: -3 },
+      extraRows: { "hiragana-base": 1, "katakana-base": -3 },
     });
     expect(decode(raw, srsSchema).value).toEqual({
-      cards: { "hiragana:あ": { box: 2, due: 5, reps: 1, lapses: 0 } },
-      extraRows: { hiragana: 1 },
+      decks: {
+        "hiragana-base": { cards: { "hiragana:あ": { box: 2, due: 5, reps: 1, lapses: 0 } }, extraGroups: 1 },
+        "katakana-base": { cards: {}, extraGroups: 0 },
+      },
     });
   });
 

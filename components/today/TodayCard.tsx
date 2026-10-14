@@ -6,12 +6,13 @@ import { Jp } from "@/components/Jp";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { panelClass } from "@/components/ui/Panel";
 import { Segmented } from "@/components/ui/Segmented";
-import { DECKS } from "@/content/kana";
 import { whenIdle } from "@/lib/idle";
 import { plainOf } from "@/lib/markup";
-import { deckStats } from "@/lib/srs";
+import { QUIZ_DECK, resolvableItems } from "@/lib/notebook";
+import { askItem, KANA_DECKS } from "@/lib/decks";
+import { deckState, deckStats } from "@/lib/srs";
 import { useStore } from "@/lib/storage";
-import { activityStore, srsStore } from "@/lib/stores";
+import { activityStore, notebookStore, srsStore } from "@/lib/stores";
 import { dayKey, englishDate, GOALS, type Goal, japaneseDate, setGoal, streak, todayProgress, wordOfTheDay } from "@/lib/today";
 import type { TodayWord } from "@/lib/today-words";
 
@@ -74,14 +75,15 @@ function GoalRing({ answered, goal }: { answered: number; goal: number }) {
 }
 
 /**
- * The home page's Today card: today's date with its era, the daily goal ring and streak, the kana reviews due and
- * the word of the day. The numbers depend on the reader's day and stored answers, so the server sends the card
+ * The home page's Today card: today's date with its era, the daily goal ring and streak, the kana reviews due, the
+ * mistakes waiting in the notebook and the word of the day. The numbers depend on the reader's day and stored answers, so the server sends the card
  * with them hidden (same layout, no jump) and the browser fills them in.
  */
 export function TodayCard() {
   const minute = useMinute();
   const [activity, setActivity] = useStore(activityStore);
   const [srs] = useStore(srsStore);
+  const [notebook] = useStore(notebookStore);
   const [words, setWords] = useState<TodayWord[] | null>(null);
 
   useEffect(() => {
@@ -104,8 +106,11 @@ export function TodayCard() {
   const hidden = minute === null ? "invisible" : "";
   const progress = todayProgress(activity, today);
   const days = streak(activity, today);
-  const due = DECKS.reduce((n, d) => n + deckStats(d, srs, now.getTime()).due, 0);
-  const started = Object.keys(srs.cards).length > 0;
+  const due = KANA_DECKS.reduce((n, d) => n + deckStats(d, deckState(srs, d.id), now.getTime()).due, 0);
+  const started = KANA_DECKS.some((d) => Object.keys(deckState(srs, d.id).cards).length > 0);
+  // Quiz items can't be checked here (the lessons aren't on this page), so they count as they are; a card a later
+  // build removed doesn't.
+  const mistakes = resolvableItems(notebook, (i) => i.deck === QUIZ_DECK || askItem(i.deck, i.card) !== null).length;
   const word = words?.length ? words[wordOfTheDay(today, words.length)] : null;
   const date = japaneseDate(now);
 
@@ -151,6 +156,11 @@ export function TodayCard() {
               →
             </span>
           </Link>
+          <p className={`text-sm text-ink-2 ${hidden}`} aria-hidden={minute === null || undefined}>
+            {mistakes === 0
+              ? "No mistakes waiting"
+              : `${mistakes} mistake${mistakes === 1 ? "" : "s"} waiting · two right answers later on clear one`}
+          </p>
           <div>
             <Segmented
               legend="Daily goal"

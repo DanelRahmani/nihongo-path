@@ -37,7 +37,7 @@ const CALLOUT = {
   tip: { jp: "コツ", label: "Tip", box: "bg-good-soft", seal: "text-good" },
 } as const;
 
-function BlockView({ block }: { block: Block }) {
+function BlockView({ block, lessonKey }: { block: Block; lessonKey: string }) {
   switch (block.type) {
     case "idea":
       return (
@@ -184,7 +184,7 @@ function BlockView({ block }: { block: Block }) {
     }
 
     case "quiz":
-      return <Quiz questions={block.questions} />;
+      return <Quiz questions={block.questions} lessonKey={lessonKey} />;
 
     case "link":
       return (
@@ -210,11 +210,12 @@ function BlockView({ block }: { block: Block }) {
   }
 }
 
-export function LessonRenderer({ blocks }: { blocks: Block[] }) {
+/** A lesson's blocks. `lessonKey` ("unit/lesson") names the quiz's questions in the mistake notebook. */
+export function LessonRenderer({ blocks, lessonKey }: { blocks: Block[]; lessonKey: string }) {
   return (
     <div>
       {blocks.map((b, i) => (
-        <BlockView key={i} block={b} />
+        <BlockView key={i} block={b} lessonKey={lessonKey} />
       ))}
     </div>
   );

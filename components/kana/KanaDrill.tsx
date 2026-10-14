@@ -4,17 +4,10 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { panelClass } from "@/components/ui/Panel";
 import { ProgressBar } from "@/components/ui/ProgressBar";
-import { type Deck, DECKS, deckCards, type Kana } from "@/content/kana";
-import {
-  deckStats,
-  isCorrect,
-  nextCard,
-  practiceCard,
-  schedule,
-  type SrsState,
-  unlockedRowCount,
-} from "@/lib/srs";
-import { recordActivity, srsStore } from "@/lib/stores";
+import type { Kana } from "@/content/kana";
+import { type Check, KANA_DECKS, type KanaDeck } from "@/lib/decks";
+import { answerCard, deckState, deckStats, nextCard, practiceCard, type SrsState, unlockedGroupCount, unlockGroup } from "@/lib/srs";
+import { logAnswer, srsStore } from "@/lib/stores";
 import { useStore } from "@/lib/storage";
 
 function formatWait(ms: number): string {
@@ -26,22 +19,15 @@ function formatWait(ms: number): string {
   return `${d} day${d === 1 ? "" : "s"}`;
 }
 
-function rowLabel(deck: Deck, row: string): string {
-  const chars = deckCards(deck)
-    .filter((k) => k.row === row)
-    .map((k) => k.char);
-  return chars.join(" ");
-}
-
-function DeckPicker({ onStart }: { onStart: (deck: Deck) => void }) {
+function DeckPicker({ onStart }: { onStart: (deck: KanaDeck) => void }) {
   const [srs] = useStore(srsStore);
   const [now] = useState(() => Date.now());
 
   return (
     <div className="grid gap-3 sm:grid-cols-2">
-      {DECKS.map((deck) => {
-        const s = deckStats(deck, srs, now);
-        const sample = deckCards(deck).slice(0, 3).map((k) => k.char).join("");
+      {KANA_DECKS.map((deck) => {
+        const s = deckStats(deck, deckState(srs, deck.id), now);
+        const sample = deck.cards.slice(0, 3).map((k) => k.char).join("");
         return (
           <button
             key={deck.id}
@@ -76,55 +62,55 @@ function DeckPicker({ onStart }: { onStart: (deck: Deck) => void }) {
 
 type Phase = "ask" | "wrong";
 
-function Session({ deck, onExit }: { deck: Deck; onExit: () => void }) {
+function Session({ deck, onExit }: { deck: KanaDeck; onExit: () => void }) {
   const [srs, setSrs] = useStore(srsStore);
   const [practice, setPractice] = useState(false);
-  const [current, setCurrent] = useState<Kana | null>(() => nextCard(deck, srsStore.get(), Date.now()));
+  const [current, setCurrent] = useState<Kana | null>(() => nextCard(deck, deckState(srsStore.get(), deck.id), Date.now()));
   const [phase, setPhase] = useState<Phase>("ask");
   const [input, setInput] = useState("");
   const [score, setScore] = useState({ right: 0, wrong: 0 });
-  const [last, setLast] = useState<{ kana: Kana; correct: boolean } | null>(null);
+  const [last, setLast] = useState<{ kana: Kana; check: Check } | null>(null);
   const [unlocked, setUnlocked] = useState<string | null>(null);
   const [now, setNow] = useState(() => Date.now());
 
   const advance = (state: SrsState, lastId: string | undefined, inPractice = practice) => {
     const t = Date.now();
     setNow(t);
-    setCurrent(inPractice ? practiceCard(deck, state, lastId, Math.random()) : nextCard(deck, state, t, lastId));
+    const own = deckState(state, deck.id);
+    setCurrent(inPractice ? practiceCard(deck, own, lastId, Math.random()) : nextCard(deck, own, t, lastId));
     setInput("");
     setPhase("ask");
   };
 
   const submit = () => {
     if (!current || !input.trim()) return;
-    const correct = isCorrect(current, input);
-    recordActivity();
+    const check = deck.check(current, input);
+    const { correct } = check;
+    // Practice answers count for the daily goal and the notebook, but leave the schedule alone.
+    logAnswer(deck.id, current.id, correct);
     let state = srsStore.get();
     if (!practice) {
-      const before = unlockedRowCount(deck, state);
-      state = { ...state, cards: { ...state.cards, [current.id]: schedule(state.cards[current.id], correct, Date.now()) } };
+      const before = unlockedGroupCount(deck, deckState(state, deck.id));
+      state = answerCard(state, deck.id, current.id, correct, Date.now());
       setSrs(state);
-      const after = unlockedRowCount(deck, state);
-      if (after > before) setUnlocked(rowLabel(deck, deck.rows[after - 1]));
+      const after = unlockedGroupCount(deck, deckState(state, deck.id));
+      if (after > before) setUnlocked(deck.groupLabel(deck.groups[after - 1]));
     }
     setScore((s) => (correct ? { ...s, right: s.right + 1 } : { ...s, wrong: s.wrong + 1 }));
-    setLast({ kana: current, correct });
+    setLast({ kana: current, check });
     if (correct) advance(state, current.id);
     else setPhase("wrong");
   };
 
   const unlockNextRow = () => {
-    const state: SrsState = {
-      ...srs,
-      extraRows: { ...srs.extraRows, [deck.id]: (srs.extraRows[deck.id] ?? 0) + 1 },
-    };
+    const state: SrsState = unlockGroup(srs, deck.id);
     setSrs(state);
-    setUnlocked(rowLabel(deck, deck.rows[unlockedRowCount(deck, state) - 1]));
+    setUnlocked(deck.groupLabel(deck.groups[unlockedGroupCount(deck, deckState(state, deck.id)) - 1]));
     advance(state, undefined, false);
   };
 
-  const rowsOpen = unlockedRowCount(deck, srs);
-  const stats = deckStats(deck, srs, now);
+  const rowsOpen = unlockedGroupCount(deck, deckState(srs, deck.id));
+  const stats = deckStats(deck, deckState(srs, deck.id), now);
 
   return (
     <div>
@@ -140,7 +126,7 @@ function Session({ deck, onExit }: { deck: Deck; onExit: () => void }) {
       </div>
       <h2 className="mt-4 font-medium">{deck.title}</h2>
       <p className="text-xs text-ink-2">
-        {rowsOpen} of {deck.rows.length} rows unlocked
+        {rowsOpen} of {deck.groups.length} rows unlocked
       </p>
 
       {unlocked && (
@@ -172,11 +158,12 @@ function Session({ deck, onExit }: { deck: Deck; onExit: () => void }) {
               </span>
               {phase === "wrong" && (
                 <p className="rise mt-3 text-lg">
-                  It&apos;s <strong className="text-accent">{current.romaji[0]}</strong>
+                  It&apos;s <strong className="text-accent">{last?.check.canonical}</strong>
                   {current.romaji.length > 1 && (
                     <span className="text-sm text-ink-2"> (also {current.romaji.slice(1).join(", ")})</span>
                   )}
                   <span className="block text-sm text-ink-2">You typed “{input}”</span>
+                  {last?.check.note && <span className="block text-sm text-ink-2">{last.check.note}</span>}
                 </p>
               )}
             </div>
@@ -190,7 +177,7 @@ function Session({ deck, onExit }: { deck: Deck; onExit: () => void }) {
                   autoFocus
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  aria-label="Type the romaji"
+                  aria-label={deck.prompt(current).ask}
                   placeholder="Type the reading…"
                   autoComplete="off"
                   autoCapitalize="none"
@@ -209,13 +196,13 @@ function Session({ deck, onExit }: { deck: Deck; onExit: () => void }) {
             )}
           </div>
           <p className="mt-3 h-5 text-sm text-ink-2" aria-live="polite">
-            {last?.correct && phase === "ask" && (
+            {last?.check.correct && phase === "ask" && (
               <>
                 <span className="text-good">○</span>{" "}
                 <span lang="ja" className="font-serif">
                   {last.kana.char}
                 </span>{" "}
-                = {last.kana.romaji[0]}
+                = {last.check.canonical}
               </>
             )}
           </p>
@@ -241,7 +228,7 @@ function Session({ deck, onExit }: { deck: Deck; onExit: () => void }) {
             >
               Practise anyway
             </Button>
-            {rowsOpen < deck.rows.length && <Button onClick={unlockNextRow}>I know these: unlock the next row</Button>}
+            {rowsOpen < deck.groups.length && <Button onClick={unlockNextRow}>I know these: unlock the next row</Button>}
           </div>
           <p className="mt-4 text-xs text-ink-2">Practice doesn&apos;t change your review schedule.</p>
         </div>
@@ -251,6 +238,6 @@ function Session({ deck, onExit }: { deck: Deck; onExit: () => void }) {
 }
 
 export function KanaDrill() {
-  const [deck, setDeck] = useState<Deck | null>(null);
+  const [deck, setDeck] = useState<KanaDeck | null>(null);
   return deck ? <Session key={deck.id} deck={deck} onExit={() => setDeck(null)} /> : <DeckPicker onStart={setDeck} />;
 }

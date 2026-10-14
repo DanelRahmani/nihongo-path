@@ -3,6 +3,8 @@
  * tested and backup/restore can decode any store without React.
  */
 import { isPlainObject, type StoreSchema, wrapUnchanged } from "@/lib/envelope";
+import { KANA } from "@/content/kana";
+import { type Notebook, noteKey } from "@/lib/notebook";
 import { type CardState, EMPTY_SRS, MAX_BOX, type SrsState } from "@/lib/srs";
 import { type Activity, EMPTY_ACTIVITY, GOALS, type Goal, isDayKey } from "@/lib/today";
 
@@ -74,21 +76,50 @@ function isCardState(x: unknown): x is CardState {
   );
 }
 
-/** Drops unreadable cards rather than the whole schedule. */
+const cardsOf = (x: unknown) =>
+  Object.fromEntries(Object.entries(isPlainObject(x) ? x : {}).filter(([, c]) => isCardState(c))) as Record<string, CardState>;
+
+/** An own property only: a polluted prototype must not supply a value. */
+const own = (o: Record<string, unknown>, key: string) => (Object.prototype.hasOwnProperty.call(o, key) ? o[key] : undefined);
+
+/**
+ * The deck each kana card belonged to in version 1, which kept every kana card in one map. Frozen against the
+ * version-1 kana decks (script-group), whatever later builds name their decks.
+ */
+const KANA_DECK_OF = new Map(KANA.map((k) => [k.id, `${k.script}-${k.group}`]));
+const V1_DECKS = new Set(KANA_DECK_OF.values());
+
+/**
+ * Version 1 → 2: one map of kana cards, plus hand-unlocked rows by deck, becomes one schedule per deck. Every
+ * card keeps its box, due time and counts; a card or deck no kana deck has is dropped. Maps are built from
+ * entries, so a stored key such as __proto__ stays an ordinary key.
+ */
+export function srsV1toV2(data: unknown): unknown {
+  if (!isPlainObject(data)) return data;
+  const cards = new Map<string, [string, unknown][]>();
+  for (const [id, card] of Object.entries(isPlainObject(data.cards) ? data.cards : {})) {
+    const deckId = KANA_DECK_OF.get(id);
+    if (deckId) cards.set(deckId, [...(cards.get(deckId) ?? []), [id, card]]);
+  }
+  const extra = new Map(Object.entries(isPlainObject(data.extraRows) ? data.extraRows : {}).filter(([id]) => V1_DECKS.has(id)));
+  const ids = [...V1_DECKS].filter((id) => cards.has(id) || extra.has(id));
+  return { decks: Object.fromEntries(ids.map((id) => [id, { cards: Object.fromEntries(cards.get(id) ?? []), extraGroups: extra.get(id) ?? 0 }])) };
+}
+
+/** Drops unreadable cards rather than a deck's whole schedule, and unreadable decks rather than every deck. */
 export const srsSchema: StoreSchema<SrsState> = {
-  version: 1,
+  version: 2,
   fallback: EMPTY_SRS,
-  migrations: [wrapUnchanged],
+  migrations: [wrapUnchanged, srsV1toV2],
   validate(data) {
-    if (!isPlainObject(data)) return null;
-    const cards = isPlainObject(data.cards) ? data.cards : {};
-    const extraRows = isPlainObject(data.extraRows) ? data.extraRows : {};
-    return {
-      cards: Object.fromEntries(Object.entries(cards).filter(([, c]) => isCardState(c))) as Record<string, CardState>,
-      extraRows: Object.fromEntries(
-        Object.entries(extraRows).filter(([, n]) => Number.isInteger(n) && (n as number) >= 0),
-      ) as Record<string, number>,
-    };
+    if (!isPlainObject(data) || !isPlainObject(data.decks)) return null;
+    const decks = Object.entries(data.decks).flatMap(([id, d]) => {
+      if (!isPlainObject(d)) return [];
+      const extra = own(d, "extraGroups");
+      return [[id, { cards: cardsOf(own(d, "cards")), extraGroups: Number.isInteger(extra) && (extra as number) >= 0 ? (extra as number) : 0 }] as const];
+    });
+    // From entries, so a deck stored under __proto__ is an ordinary key, not the object's prototype.
+    return { decks: Object.fromEntries(decks) };
   },
 };
 
@@ -172,6 +203,27 @@ export const activitySchema: StoreSchema<Activity> = {
   },
 };
 
+/** Keeps each readable item, so one bad entry doesn't empty the notebook. */
+export const notebookSchema: StoreSchema<Notebook> = {
+  version: 1,
+  fallback: {},
+  migrations: [wrapUnchanged],
+  validate(data) {
+    if (!isPlainObject(data)) return null;
+    const notebook: Notebook = {};
+    for (const item of Object.values(data)) {
+      if (!isPlainObject(item)) continue;
+      const { deck, card, misses, rightInRow, added, lastMiss } = item;
+      if (typeof deck !== "string" || typeof card !== "string" || !deck || !card || deck.includes("|")) continue;
+      if (!Number.isInteger(misses) || (misses as number) < 1 || !Number.isInteger(rightInRow) || (rightInRow as number) < 0) continue;
+      if (!Number.isFinite(added) || !Number.isFinite(lastMiss)) continue;
+      // Keyed again from the item itself, so a mangled key can't hide it.
+      notebook[noteKey(deck, card)] = { deck, card, misses: misses as number, rightInRow: rightInRow as number, added: added as number, lastMiss: lastMiss as number };
+    }
+    return notebook;
+  },
+};
+
 /** Every store by its localStorage key. Backup and restore (H3) go through this list. */
 export const SCHEMAS = {
   "np:settings": settingsSchema,
@@ -180,6 +232,7 @@ export const SCHEMAS = {
   "np:path-filter": pathFilterSchema,
   "np:my-words": myWordsSchema,
   "np:activity": activitySchema,
+  "np:notebook": notebookSchema,
 } as const;
 
 export type StoreKey = keyof typeof SCHEMAS;

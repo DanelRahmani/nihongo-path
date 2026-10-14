@@ -45,7 +45,10 @@ export function createPersistentStore<T>(key: string, schema: StoreSchema<T>): P
     get: read,
     getServer: () => schema.fallback,
     set(next) {
-      cache = typeof next === "function" ? (next as (prev: T) => T)(read()) : next;
+      const prev = read();
+      cache = typeof next === "function" ? (next as (prev: T) => T)(prev) : next;
+      // An update that changed nothing (a right answer to an item not in the notebook) writes nothing.
+      if (cache === prev) return;
       if (writable) writeRaw(key, encode(cache, schema));
       listeners.forEach((l) => l());
     },

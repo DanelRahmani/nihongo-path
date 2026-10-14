@@ -1,18 +1,25 @@
 import { describe, expect, it } from "vitest";
-import { DECKS, deckCards, KANA } from "@/content/kana";
+import { KANA } from "@/content/kana";
+import { checkKana, KANA_DECKS } from "@/lib/decks";
 import {
+  answerCard,
+  type DeckState,
+  deckState,
+  deckStats,
+  EMPTY_DECK_STATE,
   EMPTY_SRS,
   INTERVALS,
-  isCorrect,
   nextCard,
+  practiceCard,
   schedule,
-  type SrsState,
+  type SrsDeck,
   UNLOCK_BOX,
-  unlockedRowCount,
+  unlockedGroupCount,
+  unlockGroup,
 } from "@/lib/srs";
 
 const NOW = 1_700_000_000_000;
-const hiragana = DECKS.find((d) => d.id === "hiragana-base")!;
+const hiragana = KANA_DECKS.find((d) => d.id === "hiragana-base")!;
 
 describe("schedule", () => {
   it("promotes a new card to box 2 on a correct answer", () => {
@@ -31,40 +38,46 @@ describe("schedule", () => {
   });
 });
 
-describe("isCorrect", () => {
+describe("checkKana", () => {
   const shi = KANA.find((k) => k.id === "hiragana:し")!;
   it("accepts Hepburn and Kunrei spellings, ignoring case and spaces", () => {
-    expect(isCorrect(shi, "shi")).toBe(true);
-    expect(isCorrect(shi, " SI ")).toBe(true);
-    expect(isCorrect(shi, "chi")).toBe(false);
+    expect(checkKana(shi, "shi")).toEqual({ correct: true, canonical: "shi" });
+    expect(checkKana(shi, " SI ").correct).toBe(true);
+    expect(checkKana(shi, "chi")).toEqual({ correct: false, canonical: "shi" });
+  });
+
+  it("names kana typed instead of romaji", () => {
+    expect(checkKana(shi, "し").note).toMatch(/romaji/);
   });
 });
 
-describe("row unlocking", () => {
-  const aRow = deckCards(hiragana).filter((k) => k.row === "a");
+describe("group unlocking", () => {
+  const aRow = hiragana.cards.filter((k) => k.row === "a");
 
-  it("starts with only the first row", () => {
-    expect(unlockedRowCount(hiragana, EMPTY_SRS)).toBe(1);
+  it("starts with only the first group", () => {
+    expect(unlockedGroupCount(hiragana, EMPTY_DECK_STATE)).toBe(1);
   });
 
-  it("unlocks the next row once the first row reaches the unlock box", () => {
+  it("unlocks the next group once the first reaches the unlock box", () => {
     const cards = Object.fromEntries(aRow.map((k) => [k.id, { box: UNLOCK_BOX, due: NOW, reps: 2, lapses: 0 }]));
-    expect(unlockedRowCount(hiragana, { cards, extraRows: {} })).toBe(2);
+    expect(unlockedGroupCount(hiragana, { cards, extraGroups: 0 })).toBe(2);
   });
 
-  it("honours manually unlocked rows", () => {
-    expect(unlockedRowCount(hiragana, { cards: {}, extraRows: { [hiragana.id]: 2 } })).toBe(3);
+  it("honours groups unlocked by hand, in that deck only", () => {
+    const srs = unlockGroup(unlockGroup(EMPTY_SRS, hiragana.id), hiragana.id);
+    expect(unlockedGroupCount(hiragana, deckState(srs, hiragana.id))).toBe(3);
+    expect(deckState(srs, "katakana-base")).toEqual(EMPTY_DECK_STATE);
   });
 });
 
 describe("nextCard", () => {
   it("introduces new cards in order", () => {
-    expect(nextCard(hiragana, EMPTY_SRS, NOW)?.char).toBe("あ");
+    expect(nextCard(hiragana, EMPTY_DECK_STATE, NOW)?.char).toBe("あ");
   });
 
   it("prefers due cards and avoids an immediate repeat", () => {
-    const state: SrsState = {
-      extraRows: {},
+    const state: DeckState = {
+      extraGroups: 0,
       cards: {
         "hiragana:あ": { box: 1, due: NOW - 10, reps: 1, lapses: 1 },
         "hiragana:い": { box: 1, due: NOW - 5, reps: 1, lapses: 1 },
@@ -75,12 +88,33 @@ describe("nextCard", () => {
   });
 
   it("returns null when every unlocked card is scheduled for later", () => {
-    const cards = Object.fromEntries(
-      deckCards(hiragana)
-        .filter((k) => k.row === "a")
-        .map((k) => [k.id, { box: 2, due: NOW + 1000, reps: 1, lapses: 0 }]),
-    );
-    expect(nextCard(hiragana, { cards, extraRows: {} }, NOW)).toBeNull();
+    const cards = Object.fromEntries(hiragana.cards.filter((k) => k.row === "a").map((k) => [k.id, { box: 2, due: NOW + 1000, reps: 1, lapses: 0 }]));
+    expect(nextCard(hiragana, { cards, extraGroups: 0 }, NOW)).toBeNull();
+  });
+
+  it("works for any deck, not only kana", () => {
+    // A made-up deck of words in two groups.
+    const words: SrsDeck<{ id: string; level: string }> = {
+      id: "test-words",
+      cards: [
+        { id: "neko", level: "one" },
+        { id: "inu", level: "one" },
+        { id: "tori", level: "two" },
+      ],
+      groups: ["one", "two"],
+      groupOf: (c) => c.level,
+    };
+    let srs = EMPTY_SRS;
+    expect(nextCard(words, deckState(srs, words.id), NOW)?.id).toBe("neko");
+    srs = answerCard(srs, words.id, "neko", true, NOW);
+    expect(nextCard(words, deckState(srs, words.id), NOW)?.id).toBe("inu");
+    srs = answerCard(answerCard(srs, words.id, "inu", true, NOW), words.id, "neko", false, NOW);
+    // neko is due again at once; tori is still locked.
+    expect(nextCard(words, deckState(srs, words.id), NOW)?.id).toBe("neko");
+    expect(deckStats(words, deckState(srs, words.id), NOW)).toMatchObject({ total: 3, unlocked: 2, due: 1, fresh: 0 });
+    expect(practiceCard(words, deckState(srs, words.id), "neko", 0)?.id).toBe("inu");
+    // Scheduling one deck leaves the others alone.
+    expect(srs.decks[hiragana.id]).toBeUndefined();
   });
 });
 

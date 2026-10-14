@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { Chip } from "@/components/ui/Chip";
 import { chartRows, isN, KANA, type Kana, type KanaGroup, type Script } from "@/content/kana";
-import { UNLOCK_BOX } from "@/lib/srs";
+import { kanaDeckId } from "@/lib/decks";
+import { deckState, UNLOCK_BOX } from "@/lib/srs";
 import { srsStore } from "@/lib/stores";
 import { useStore } from "@/lib/storage";
 
@@ -38,7 +39,7 @@ export function KanaChart() {
   const [script, setScript] = useState<Script>("hiragana");
   const [hideRomaji, setHideRomaji] = useState(false);
   const [srs] = useStore(srsStore);
-  const learned = (k: Kana) => (srs.cards[k.id]?.box ?? 0) >= UNLOCK_BOX;
+  const learned = (k: Kana) => (deckState(srs, kanaDeckId(k)).cards[k.id]?.box ?? 0) >= UNLOCK_BOX;
   const n = KANA.find((k) => k.script === script && isN(k))!;
 
   return (

@@ -9,6 +9,7 @@ import { answerCard, deckState, deckStats, formatWait, nextCard, practiceCard, t
 import { useStore } from "@/lib/storage";
 import { logAnswer, srsStore } from "@/lib/stores";
 import { fieldClass } from "@/components/ui/field";
+import { KeyboardHelp, typedWithoutJapanese } from "@/components/ui/KeyboardHelp";
 
 type Phase = "ask" | "wrong";
 
@@ -183,6 +184,7 @@ export function TypedDrill<C extends { id: string }>({
                   You typed <span lang={isJapanese(last?.typed ?? "") ? "ja" : undefined}>“{last?.typed}”</span>
                 </p>
                 {last?.check.note && <p className="mt-1 text-sm text-ink-2">{last.check.note}</p>}
+                {(deck.prompt(current).answerIn ?? "ja") === "ja" && typedWithoutJapanese(last?.typed ?? "") && <KeyboardHelp className="mt-1" />}
               </div>
             )}
           </div>

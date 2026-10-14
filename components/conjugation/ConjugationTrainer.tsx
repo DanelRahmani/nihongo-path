@@ -21,6 +21,7 @@ import type { Check } from "@/lib/decks";
 import { useStore } from "@/lib/storage";
 import { logAnswer, notebookStore, progressStore } from "@/lib/stores";
 import { fieldClass } from "@/components/ui/field";
+import { KeyboardHelp, typedWithoutJapanese } from "@/components/ui/KeyboardHelp";
 
 type Lessons = Record<string, { title: string; href: string }>;
 
@@ -186,6 +187,7 @@ export function ConjugationTrainer({ words, lessons }: { words: TrainerWord[]; l
               You typed <span lang={isJapanese(last.typed) ? "ja" : undefined}>“{last.typed}”</span>
             </p>
             {last.check.note && <p className="mt-1 text-sm text-ink-2">{last.check.note}</p>}
+            {typedWithoutJapanese(last.typed) && <KeyboardHelp className="mt-1" />}
           </div>
         )}
       </div>

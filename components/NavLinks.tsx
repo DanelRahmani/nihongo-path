@@ -28,6 +28,7 @@ const PRACTICE: MenuItem[] = [
   { href: "/register", jp: "丁寧", label: "Polite and casual", text: "Say a lesson line in the other register", match: (p) => p.startsWith("/register") },
   { href: "/conjugation", jp: "活用", label: "Conjugation", text: "One verb or adjective, one form at a time", match: (p) => p.startsWith("/conjugation") },
   { href: "/type", jp: "入力", label: "Type it", text: "Copy lesson lines with a Japanese keyboard", match: (p) => p.startsWith("/type") },
+  { href: "/keyboard", jp: "キーボード", label: "Japanese keyboard", text: "Set one up on a phone or computer", match: (p) => p.startsWith("/keyboard") },
 ];
 
 /** Reference pages, in the Extras menu. */

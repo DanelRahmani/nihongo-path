@@ -17,6 +17,7 @@ import { applyReview, buildQueue, type QueueItem, reviewCount } from "@/lib/revi
 import { notebookStore, recordActivity, srsStore } from "@/lib/stores";
 import { vocabDeck } from "@/lib/vocab-deck";
 import { fieldClass } from "@/components/ui/field";
+import { KeyboardHelp, typedWithoutJapanese } from "@/components/ui/KeyboardHelp";
 
 let dataPromise: Promise<ReviewData> | undefined;
 
@@ -240,6 +241,7 @@ export function ReviewQueue() {
                 You typed <span lang={isJapanese(last.typed) ? "ja" : undefined}>“{last.typed}”</span>
               </p>
               {last.check.note && <p className="mt-1 text-sm text-ink-2">{last.check.note}</p>}
+              {(last.item.prompt.answerIn ?? "ja") === "ja" && typedWithoutJapanese(last.typed) && <KeyboardHelp className="mt-1" />}
               {last.item.answerNote && <Rich text={last.item.answerNote} className="mt-2 block text-sm text-ink-2" />}
               {last.item.explain && <Rich text={last.item.explain} className="mt-3 block text-sm leading-6 text-ink-2" />}
             </div>

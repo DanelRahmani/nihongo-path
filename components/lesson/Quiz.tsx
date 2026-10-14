@@ -11,6 +11,7 @@ import { checkQuestion, type QuizCheck } from "@/lib/quiz";
 import { QUIZ_DECK, quizCardId } from "@/lib/notebook";
 import { logAnswer } from "@/lib/stores";
 import { fieldClass } from "@/components/ui/field";
+import { KeyboardHelp, typedWithoutJapanese } from "@/components/ui/KeyboardHelp";
 
 const PLACEHOLDER = {
   japanese: "Type in kana or kanji",
@@ -22,6 +23,7 @@ function Question({ q, n, lessonKey, onResult }: { q: QuizQuestion; n: number; l
   const id = useId();
   const [input, setInput] = useState("");
   const [result, setResult] = useState<QuizCheck | null>(null);
+  const [typed, setTyped] = useState("");
   // Enter also confirms a Japanese keyboard's conversion; that Enter must not submit the answer.
   const composing = useRef(false);
   const lastChecked = useRef<string | null>(null);
@@ -42,6 +44,7 @@ function Question({ q, n, lessonKey, onResult }: { q: QuizQuestion; n: number; l
           }
           lastChecked.current = input.trim();
           setResult(r);
+          setTyped(input);
           onResult(r.correct);
         }}
       >
@@ -89,6 +92,7 @@ function Question({ q, n, lessonKey, onResult }: { q: QuizQuestion; n: number; l
               </p>
             )}
             {result.note && <p className="text-sm">{result.note}</p>}
+            {!result.correct && !romaji && typedWithoutJapanese(typed) && <KeyboardHelp />}
             <Rich text={q.explanation} className="mt-1 block text-sm leading-6 text-ink-2" />
           </Feedback>
         )}

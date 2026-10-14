@@ -12,6 +12,7 @@ import { checkQuestion, type QuizCheck } from "@/lib/quiz";
 import { useStore } from "@/lib/storage";
 import { progressStore } from "@/lib/stores";
 import { fieldClass } from "@/components/ui/field";
+import { typedWithoutJapanese } from "@/components/ui/KeyboardHelp";
 
 /** Kana or kanji anywhere in the answer: without them it was typed without a Japanese keyboard. */
 const HAS_JAPANESE = /[぀-ヿ一-鿿]/;
@@ -32,6 +33,8 @@ export function PlacementCheck({ bands, kanaLessons, lessonTitles }: { bands: Ba
   // A missed answer, shown until Next; right answers move on at once.
   const [missed, setMissed] = useState<{ check: QuizCheck; typed: string } | null>(null);
   const [status, setStatus] = useState("");
+  // The last answer was typed in English letters: the keyboard set-up link shows under the status.
+  const [noJapanese, setNoJapanese] = useState(false);
   const [withKana, setWithKana] = useState(true);
   // The progress before "Mark them finished", for Undo, and how many lessons it marked.
   const [marked, setMarked] = useState<{ before: Record<string, true>; count: number } | null>(null);
@@ -76,8 +79,11 @@ export function PlacementCheck({ bands, kanaLessons, lessonTitles }: { bands: Ba
           one miss is just a slip.
         </p>
         <p className="mt-2 text-sm text-ink-2">
-          Type the answers with a Japanese keyboard. An answer typed in romaji isn&apos;t counted: you&apos;ll be asked to
-          switch keyboards and try again.
+          Type the answers with a Japanese keyboard (
+          <Link href="/keyboard" className="link-inline">
+            set one up
+          </Link>{" "}
+          first if you need to). An answer typed in romaji isn&apos;t counted: you&apos;ll be asked to switch keyboards and try again.
         </p>
         <Button className="mt-5" onClick={() => setStarted(true)}>
           Start the check
@@ -187,8 +193,9 @@ export function PlacementCheck({ bands, kanaLessons, lessonTitles }: { bands: Ba
 
   const submit = () => {
     if (!input.trim() || composing.current) return;
+    setNoJapanese(typedWithoutJapanese(input));
     if (!HAS_JAPANESE.test(input)) {
-      setStatus("That's typed in English letters, so it isn't counted. Switch to a Japanese keyboard and try again.");
+      setStatus("That has no kana or kanji, so it isn't counted. Switch to a Japanese keyboard and try again.");
       return;
     }
     const check = checkQuestion(question, input);
@@ -241,6 +248,16 @@ export function PlacementCheck({ bands, kanaLessons, lessonTitles }: { bands: Ba
       <p role="status" className={status ? "mt-3 text-sm text-ink-2" : "sr-only"}>
         {status}
       </p>
+      {/* Outside the status, so the announcement stays the same. */}
+      {noJapanese && (
+        <p className="mt-1 text-sm text-ink-2">
+          No Japanese keyboard yet?{" "}
+          <Link href="/keyboard" className="link-inline">
+            Set up a Japanese keyboard
+          </Link>{" "}
+          (this check starts again when you come back).
+        </p>
+      )}
       <div className="mt-4 flex gap-2">
         {missed ? (
           <Button ref={nextButton} type="submit" size="lg" aria-describedby="placement-answer" className="flex-1">

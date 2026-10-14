@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { KanaChart } from "@/components/kana/KanaChart";
 import { KanaDrill } from "@/components/kana/KanaDrill";
 import { Eyebrow } from "@/components/ui/Eyebrow";
@@ -17,7 +18,12 @@ export default function KanaPage() {
         <a href="#charts" className="link-inline">
           charts
         </a>{" "}
-        below. The other drills are in the <span lang="ja">練習</span> Practice menu.
+        below. The other drills are in the <span lang="ja">練習</span> Practice menu; most are typed with a Japanese
+        keyboard (
+        <Link href="/keyboard" className="link-inline">
+          set one up
+        </Link>
+        ), but the kana drill is answered in English letters.
       </p>
 
       <section id="drill" aria-labelledby="drill-heading" className="mt-10 scroll-mt-4">

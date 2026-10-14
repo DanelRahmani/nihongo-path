@@ -38,6 +38,8 @@ export const PRECACHE = [
   "/placement",
   "/dictionary",
   "/data",
+  // Read while setting up the keyboard the drills need, perhaps away from a connection.
+  "/keyboard",
   "/dictionary-data.json",
   "/search-index.json",
   "/today-words.json",

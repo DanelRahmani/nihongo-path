@@ -42,7 +42,7 @@ const OUT = join(ROOT, "out");
 const MAX_STOPS = 400;
 const KANJI_SAMPLE = 5;
 const WORKERS = 4;
-const LIGHTHOUSE_ROUTES = ["/", "/learn/particles/wa-vs-ga", "/kana", "/vocabulary", "/dictionary", "/grammar", "/read", "/review", "/data", "/kanji/日"];
+const LIGHTHOUSE_ROUTES = ["/", "/learn/particles/wa-vs-ga", "/kana", "/vocabulary", "/dictionary", "/grammar", "/read", "/review", "/data", "/kanji/日", "/keyboard"];
 
 const args = process.argv.slice(2);
 const all = args.includes("--all");

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Fragment, useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { Jp, Rich } from "@/components/Jp";
 import { isJapanese, showKanji } from "@/components/drill/TypedDrill";
@@ -13,6 +14,7 @@ import { progressStore, recordActivity } from "@/lib/stores";
 import type { TypeLine } from "@/lib/type-lines";
 import { type Comparison, compareLine, describeSlip, type Script } from "@/lib/type-it";
 import { fieldClass } from "@/components/ui/field";
+import { KeyboardHelp, typedWithoutJapanese } from "@/components/ui/KeyboardHelp";
 
 const noSubscribe = () => () => {};
 const useMounted = () => useSyncExternalStore(noSubscribe, () => true, () => false);
@@ -40,6 +42,8 @@ export function TypeIt({ lines }: { lines: TypeLine[] }) {
   const [line, setLine] = useState<TypeLine | null>(null);
   const [input, setInput] = useState("");
   const [result, setResult] = useState<Comparison | null>(null);
+  // The last check was typed in English letters only: the keyboard set-up link shows under the result.
+  const [latin, setLatin] = useState(false);
   const [status, setStatus] = useState("");
   const [typedCount, setTypedCount] = useState(0);
   const [pasted, setPasted] = useState(false);
@@ -81,6 +85,12 @@ export function TypeIt({ lines }: { lines: TypeLine[] }) {
           A line from the lessons{pool === lines ? "" : " you've finished"}: copy it with a Japanese keyboard, exactly. The
           feedback names the slips keyboards make, like a space or a “,” typed in, or the wrong kanji chosen.
         </p>
+        <p className="mt-2 text-sm text-ink-2">
+          No Japanese keyboard yet?{" "}
+          <Link href="/keyboard" className="link-inline">
+            Set up a Japanese keyboard
+          </Link>
+        </p>
         <Button className="mt-5" onClick={next}>
           Start
         </Button>
@@ -93,6 +103,7 @@ export function TypeIt({ lines }: { lines: TypeLine[] }) {
     const r = compareLine(line.jp, script, input);
     setPasted(false);
     setResult(r);
+    setLatin(typedWithoutJapanese(input));
     if (r.exact) {
       setStatus("Exactly right.");
       if (counted.current !== line) {
@@ -194,6 +205,7 @@ export function TypeIt({ lines }: { lines: TypeLine[] }) {
                     ))}
                   </ul>
                 )}
+                {latin && <KeyboardHelp className="mt-2" />}
               </Feedback>
             )}
           </div>

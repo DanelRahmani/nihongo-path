@@ -8,6 +8,7 @@ import { Feedback } from "@/components/ui/Feedback";
 import { panelClass } from "@/components/ui/Panel";
 import type { QuizQuestion } from "@/content/types";
 import { checkQuestion, type QuizCheck } from "@/lib/quiz";
+import { recordActivity } from "@/lib/stores";
 
 const PLACEHOLDER = {
   japanese: "Type in kana or kanji",
@@ -21,6 +22,7 @@ function Question({ q, n, onResult }: { q: QuizQuestion; n: number; onResult: (c
   const [result, setResult] = useState<QuizCheck | null>(null);
   // Enter also confirms a Japanese keyboard's conversion; that Enter must not submit the answer.
   const composing = useRef(false);
+  const lastChecked = useRef<string | null>(null);
   // Romaji readings and names are typed in English letters, and the answer shown is the romaji.
   const romaji = q.answerIn !== undefined;
 
@@ -31,6 +33,9 @@ function Question({ q, n, onResult }: { q: QuizQuestion; n: number; onResult: (c
           e.preventDefault();
           if (composing.current || !input.trim()) return;
           const r = checkQuestion(q, input);
+          // Checking the same answer again isn't another answer for the daily goal.
+          if (input.trim() !== lastChecked.current) recordActivity();
+          lastChecked.current = input.trim();
           setResult(r);
           onResult(r.correct);
         }}

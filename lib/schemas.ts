@@ -4,6 +4,7 @@
  */
 import { isPlainObject, type StoreSchema, wrapUnchanged } from "@/lib/envelope";
 import { type CardState, EMPTY_SRS, MAX_BOX, type SrsState } from "@/lib/srs";
+import { type Activity, EMPTY_ACTIVITY, GOALS, type Goal, isDayKey } from "@/lib/today";
 
 /**
  * How kanji are shown. kana: kanji replaced by their reading · all: furigana over every kanji ·
@@ -141,6 +142,36 @@ export const myWordsSchema: StoreSchema<MyWords> = {
   },
 };
 
+/**
+ * Answers per day for the Today card's goal and streak (lib/today.ts). Keeps every readable day, so one bad entry
+ * doesn't break the streak; an unknown goal falls back to the default.
+ */
+export const activitySchema: StoreSchema<Activity> = {
+  version: 1,
+  fallback: EMPTY_ACTIVITY,
+  migrations: [wrapUnchanged],
+  validate(data) {
+    if (!isPlainObject(data)) return null;
+    const days: Activity["days"] = {};
+    if (isPlainObject(data.days)) {
+      for (const [key, day] of Object.entries(data.days)) {
+        if (!isDayKey(key) || !isPlainObject(day)) continue;
+        const { answered, goal } = day;
+        if (Number.isInteger(answered) && (answered as number) >= 0 && Number.isInteger(goal) && (goal as number) > 0) {
+          days[key] = { answered: answered as number, goal: goal as number };
+        }
+      }
+    }
+    const goal = GOALS.includes(data.goal as Goal) ? (data.goal as Goal) : EMPTY_ACTIVITY.goal;
+    const b = data.before;
+    const before =
+      isPlainObject(b) && typeof b.day === "string" && isDayKey(b.day) && Number.isInteger(b.length) && (b.length as number) > 0
+        ? { day: b.day, length: b.length as number }
+        : undefined;
+    return before ? { goal, days, before } : { goal, days };
+  },
+};
+
 /** Every store by its localStorage key. Backup and restore (H3) go through this list. */
 export const SCHEMAS = {
   "np:settings": settingsSchema,
@@ -148,6 +179,7 @@ export const SCHEMAS = {
   "np:srs": srsSchema,
   "np:path-filter": pathFilterSchema,
   "np:my-words": myWordsSchema,
+  "np:activity": activitySchema,
 } as const;
 
 export type StoreKey = keyof typeof SCHEMAS;

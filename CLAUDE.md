@@ -7,8 +7,9 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **F4** (Today card). Then E1–E9 (practice), G and H.
-  - The Today card's "mistakes waiting" needs E1's notebook; F4 ships without it and E1 adds the count.
+- **E1** (SRS generalised + mistake notebook). Then E2–E9 (practice), G and H.
+  - The Today card's "mistakes waiting" needs E1's notebook; F4 shipped without it, and E1 adds the count to `components/today/TodayCard.tsx`.
+  - E1 should report misses from `components/kana/KanaDrill.tsx` and `components/lesson/Quiz.tsx`, next to their `recordActivity()` calls.
   - Deck and card builders (E) must never import `content/reading.ts` or `lib/corpus.ts`; `tests/reading.test.ts` checks this.
   - E2's "new kanji only" furigana rules must stay less specific than the reading view's (`:root body .reading-view …` in `app/globals.css`), or the reading view would show readings for unlearned kanji.
   - Keep `lib/joyo.ts` (and its 135 KB `content/data/joyo.json`) out of client code; `tests/lookup.test.ts` and `tests/dictionary.test.ts` check the client imports. The 常用 readings reach the client through `/dictionary-data.json`, loaded by `lib/load-dictionary.ts`.
@@ -187,6 +188,14 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Header: the 日本語の道 wordmark hides below 420 px (the dot stays as the home link), which makes room for the search button.
   - Also: `lib/romaji-input.ts` no longer folds the hu of shu and chu into fu (keys read renshuu, not rensfuu); the Quiz ignores an IME-confirming Enter in Safari; `lib/idle.ts` holds `whenIdle`, shared with the Today card.
 
+- **F4 Today card (2026-10-14):** a card on the home page, between the title and the next lesson, replacing the kana badge.
+  - Today's date in the Japanese calendar, with its era from `Intl` (`ja-JP-u-ca-japanese`), as reading-view markup (`[令和|れいわ] [8年|はちねん] [10月|じゅうがつ] [14日|じゅうよっか] [水曜日|すいようび]`), so it follows the furigana mode and romaji. 元年, the irregular months and every day of the month have hand-typed tests. An era the app can't read shows no Japanese line. The English date sits below.
+  - A daily goal ring (5, 10 or 20 answers; 10 by default) and the streak of days the goal was met. Each day keeps the goal that applied, so changing the goal doesn't rewrite the past; a higher goal picked after today's is met starts tomorrow. Answers are kana drill cards and quiz checks (checking the same answer twice counts once). History older than 400 days is folded into one stored streak, so a streak can outlive it.
+  - Kana due for review (the old badge's link), refreshed each minute and when the tab comes back.
+  - The word of the day: lesson words that stand alone (484), at index day × stride mod N, with the stride the number nearest 0.618 N that is coprime to N. `/today-words.json` (25 KB, `force-static`) is fetched when the page is idle.
+  - Store `np:activity` v1 (`lib/schemas.ts`, in `SCHEMAS`): days validated as real calendar days.
+  - The server sends the whole card with its numbers hidden, so it doesn't change size on load.
+
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
   - Q1: four furigana modes, kana-only by default.
@@ -224,7 +233,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 534 in 23 files.
+- Tests: 624 in 24 files.
 - Search index: 1,173 items (6 pages, 62 lessons, 61 grammar topics, 404 kanji, 640 words).
 - Dictionary: 547 lesson words (75 verbs), 93 extra kanji-example words, 14 names; 404 kanji. The dictionary page lists 640 entries.
 - Template: all 62 lessons converted.
@@ -427,6 +436,14 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
     - "te-form" with a hyphen (the space form works);
     - after a failed load, the status line keeps "couldn't load" until the retry finishes.
   - In the browser, Ctrl+K pressed within a few milliseconds of Escape lands before the dialog has closed, so it is ignored; a person can't press that fast.
+
+- F4 in the checks: 624 tests, typecheck, lint, build (`/today-words.json` static); snapshot unchanged.
+- F4 in the browser (Playwright's Chromium, headless) at 375 px, light and dark, in Kana only, Furigana (with romaji, size L) and Kanji (gothic) modes: no horizontal scroll; the date breaks only between words in Kana only mode; the card is the same height in the server HTML and after load (563 px in the default mode); a seeded history shows "Streak: 1 day" and 3/5; answering a quiz question adds one; the goal picker moves with the arrow keys and shows its ring; console clean. A screenshot was sent to the owner.
+- F4 review: a fresh Opus 5.5 reviewer checked every date reading (era, years 1–40, months, days 1–31, weekdays) and the romaji, and found them right (7年 ななねん and 19日 じゅうくにち are the standard choices). Applied:
+  - Error fixed: the date's keep-all didn't reach the text (an unlayered `:lang(ja)` rule won); it now uses an important utility on the Japanese span.
+  - Should-fix applied: the placeholder was shorter than the card (now the server renders the card itself, numbers hidden); re-checking a quiz answer no longer counts; streaks no longer stop at 400 days; a golden table for the readings.
+  - Polish applied: 元 written by the app, not taken from Intl; no Japanese line for an unknown era; the heading present in the server HTML; Word of the day as a heading; the word's space reserved; due counts refreshed each minute and on tab return; a raised goal after today's is met starts tomorrow; impossible dates rejected; a note on new words changing the word of the day; tests for goal changes, days before 1970 and the unknown era.
+  - Not applied: a mocked `Intl` returning "1" for the first year; the code writes 元 itself either way.
 
 ### Waiting on the owner
 - B4 sources to confirm. The reviewers recalled these differently:

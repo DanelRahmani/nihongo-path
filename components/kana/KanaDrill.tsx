@@ -14,7 +14,7 @@ import {
   type SrsState,
   unlockedRowCount,
 } from "@/lib/srs";
-import { srsStore } from "@/lib/stores";
+import { recordActivity, srsStore } from "@/lib/stores";
 import { useStore } from "@/lib/storage";
 
 function formatWait(ms: number): string {
@@ -98,6 +98,7 @@ function Session({ deck, onExit }: { deck: Deck; onExit: () => void }) {
   const submit = () => {
     if (!current || !input.trim()) return;
     const correct = isCorrect(current, input);
+    recordActivity();
     let state = srsStore.get();
     if (!practice) {
       const before = unlockedRowCount(deck, state);

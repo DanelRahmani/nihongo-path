@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { KanaDueBadge } from "@/components/kana/KanaDueBadge";
 import { PathBrowser, type PathUnit } from "@/components/PathBrowser";
 import { ContinueCard } from "@/components/Progress";
+import { TodayCard } from "@/components/today/TodayCard";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { panelClass } from "@/components/ui/Panel";
 import { ALL_LESSONS, KANJI_NUMERALS, UNITS } from "@/content/units";
@@ -48,13 +48,14 @@ export default function Home() {
             Kana first, then the grammar that makes sentences work, each idea shown with example pairs you can compare
             side by side.
           </p>
-          <div className="mt-6">
-            <KanaDueBadge />
-          </div>
         </div>
       </section>
 
-      <section className="mt-14" aria-label="Next lesson">
+      <section className="mt-14" aria-labelledby="today-heading">
+        <TodayCard />
+      </section>
+
+      <section className="mt-8" aria-label="Next lesson">
         <ContinueCard lessons={continueLessons} />
       </section>
 

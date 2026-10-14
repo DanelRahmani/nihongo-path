@@ -15,6 +15,7 @@
     "expand-refresh": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/ts-paths.mjs scripts/expand/refresh.ts",
     "a11y": "node scripts/a11y-sweep.mjs",
     "perf": "node scripts/perf-ab.mjs",
+    "icons": "node scripts/icons/make-icons.mjs",
     "trim-fonts": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --import ./scripts/ts-paths.mjs scripts/fonts/run.ts"
   },
   "dependencies": {

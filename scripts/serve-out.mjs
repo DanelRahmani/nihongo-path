@@ -18,8 +18,10 @@ const TYPES = {
   ".woff2": "font/woff2",
   ".svg": "image/svg+xml",
   ".ico": "image/x-icon",
+  ".png": "image/png",
+  ".webmanifest": "application/manifest+json",
 };
-const COMPRESSIBLE = new Set([".html", ".js", ".css", ".json", ".txt", ".svg"]);
+const COMPRESSIBLE = new Set([".html", ".js", ".css", ".json", ".txt", ".svg", ".webmanifest"]);
 const compressed = new Map();
 
 /** Serves `dir`; resolves to the server once it listens. `server.address().port` gives the port. */

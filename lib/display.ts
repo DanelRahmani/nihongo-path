@@ -30,6 +30,37 @@ export function settingsToAttributes(s: Settings): Record<string, string> {
 
 export const DEFAULT_ATTRIBUTES = settingsToAttributes(DEFAULT_SETTINGS);
 
+/** The paper colour of each theme (app/globals.css --paper): the browser's theme colour and the manifest's. */
+export const THEME_COLORS = { light: "#ffffff", dark: "#1b1b1e" } as const;
+
+/** The id of the theme-color tag that an explicit theme setting adds ahead of the layout's two media-keyed ones. */
+export const THEME_COLOR_ID = "theme-color";
+
+/**
+ * The browser's theme colour under a theme setting, or null to leave it to the layout's media-keyed tags (the system
+ * theme). An explicit theme wins over the system's, so a reader who picked Dark on a light system gets a dark title bar.
+ */
+export function themeColorFor(theme: Settings["theme"]): string | null {
+  return theme === "system" ? null : THEME_COLORS[theme];
+}
+
+/**
+ * Puts a theme-color tag first in <head> for an explicit theme (the first matching tag wins), or removes it for the
+ * system theme. Its own tag, not the layout's: Next replaces those on navigation.
+ */
+export function applyThemeColor(doc: Document, theme: Settings["theme"]): void {
+  const color = themeColorFor(theme);
+  let meta = doc.getElementById(THEME_COLOR_ID);
+  if (!color) return meta?.remove();
+  if (!meta) {
+    meta = doc.createElement("meta");
+    meta.id = THEME_COLOR_ID;
+    meta.setAttribute("name", "theme-color");
+  }
+  meta.setAttribute("content", color);
+  if (doc.head.firstChild !== meta) doc.head.prepend(meta);
+}
+
 const json = (x: unknown) => JSON.stringify(x);
 
 /**
@@ -61,6 +92,8 @@ r.setAttribute("data-romaji",s.romaji?"on":"off");
 r.setAttribute("data-size",s.size);
 r.setAttribute("data-font",s.font);
 r.setAttribute("data-theme",s.theme);
+if(s.theme!=="system"&&document.head){var m=document.createElement("meta");m.id=${json(THEME_COLOR_ID)};m.setAttribute("name","theme-color");
+m.setAttribute("content",s.theme==="dark"?${json(THEME_COLORS.dark)}:${json(THEME_COLORS.light)});document.head.insertBefore(m,document.head.firstChild)}
 })();`;
 
 /** Sets the display attributes on <html>, e.g. when the reader changes a setting. */

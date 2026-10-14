@@ -2,7 +2,7 @@
 
 import { useLayoutEffect } from "react";
 import { Segmented } from "@/components/ui/Segmented";
-import { applyAttributes } from "@/lib/display";
+import { applyAttributes, applyThemeColor } from "@/lib/display";
 import type { Settings } from "@/lib/schemas";
 import { useStore } from "@/lib/storage";
 import { settingsStore } from "@/lib/stores";
@@ -48,7 +48,15 @@ export function DisplaySettings() {
 
   // Keep <html> in step with the store: after every change, and after React's development-mode remount,
   // which clears the attributes the head script set. In production the first run changes nothing.
-  useLayoutEffect(() => applyAttributes(document.documentElement, settingsStore.get()), [settings]);
+  useLayoutEffect(() => {
+    const s = settingsStore.get();
+    applyAttributes(document.documentElement, s);
+    applyThemeColor(document, s.theme);
+    // Next rewrites <head> on navigation and drops the theme-color tag; put it back whenever that happens.
+    const watch = new MutationObserver(() => applyThemeColor(document, settingsStore.get().theme));
+    watch.observe(document.head, { childList: true });
+    return () => watch.disconnect();
+  }, [settings]);
 
   return (
     <>

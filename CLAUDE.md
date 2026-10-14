@@ -326,6 +326,13 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - `components/ui/ArrowStrip.tsx`: ‹ › buttons on the path tabs, the grammar strip and the dictionary's row chips, on devices with a fine pointer, while there is more to scroll that way. They're mouse-only (no Tab stop, hidden from screen readers, and a click doesn't take focus).
   - The sweep has a Practice menu scenario and an overflow pass at 768 and 800 px.
 
+- **I1 Installable app (2026-10-14):** follow-up items I1–I10 (owner's list of ten, one commit each).
+  - `app/manifest.ts` (`force-static`, served as `/manifest.webmanifest`): 日本語の道 Nihongo Path, id and start_url `/`, standalone, the light paper as theme and background colour, `categories: ["education"]`. `THEME_COLORS` in `lib/display.ts` holds both themes' paper for the manifest and the layout's viewport.
+  - Icons: `scripts/icons/mark.svg` (the header's dot and ring, in the header's proportions) is drawn by `npm run icons` (`scripts/icons/make-icons.mjs`, the pinned Playwright Chromium, no new dependency) to `public/icon-192.png`, `icon-512.png`, `icon-maskable-512.png` (full-bleed paper; the ring sits inside the 40 % safe zone, tested) and `app/apple-icon.png` (180 px, Next's apple-touch-icon). The PNGs are committed.
+  - Layout metadata: `applicationName` and `appleWebApp.title` (so iOS doesn't offer a page's own title for the home screen).
+  - The theme colour follows the Display setting: an explicit Light or Dark adds a `<meta name="theme-color" id="theme-color">` first in `<head>` (the head script before the first paint, then `DisplaySettings`), removed for System. Next rewrites `<head>` on navigation, so a MutationObserver puts the tag back.
+  - The service worker is unchanged: the manifest and icons are kept network-first when first fetched; an offline launch opens `/`, which is precached.
+
 ### Decisions
 - Owner, 2026-10-14: "when you are fully finished, you shall commit to main, i give permission for that". After H1, `main` was fast-forwarded to `features` (G2, H2, H1 and their reviews on top of the Extras-menu merge); no merge commit, nothing force-pushed. Pushing `main` deploys the live site.
 - Owner, 2026-10-14 (later): 文字 もじ, 反応 はんのう and 天皇 てんのう are right (named exceptions in lib/joyo.ts and STYLE §5). The book citations (Genki chapters, Tae Kim, Cure Dolly, Tofugu, IMABI titles, the haiku editions) are left as they are, unverified; don't ask about them again.
@@ -373,6 +380,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - Tests: 831 in 39 files. Fonts: 1,573 characters, 359 of 731 `@font-face` rules kept (20 KB with Brotli). Accessibility sweep: 84 pages, 10,926 focus stops, 8 interactive states, 10 Lighthouse pages at 100.
 - Expansion candidates: 5,000 (of 18,515 kept from 19,956 counted entries). Expansion words: 2,052 from the first 2,250 (198 skipped).
 - Service worker: 17 pages and data files precached.
+- App icons: 4 PNGs (192, 512, maskable 512, apple 180).
 - Type it: 373 lines.
 - Placement check: 7 bands, 14 questions.
 - Polite and casual drill: 30 cards per direction; 13 reviewed alternatives.
@@ -701,6 +709,9 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   Every page paints first 150–900 ms sooner and its largest content 290–640 ms sooner; scores move within the runs' spread (/read's −2 included). Each page transfers 30 KB less; font bytes and requests are unchanged (the same slices: 15 requests and 231 KB on the kana drill, 73 and 921 KB on `/read`). TBT isn't affected by CSS and varied by ±150 ms on this shared machine. The H1 review found my first, 5-run home-page row (no gain) didn't reproduce, hence 9 runs. CLS: 0.14 on home and 0.10 on the lesson, the fonts swapping in (this lab browser has no Japanese system font, so the swap moves text more than on a phone).
 - H1 review: a fresh Opus 5.5 reviewer. Applied: the trimmed CSS kept its old name under immutable caching (now renamed by content hash, with a check); the home-page conclusion re-measured; escapes read and a build check that the scan saw the content; full ranges kept on kept rules; Brotli in the local server; the deletion rule as a tested function; the service worker keeping stylesheet fonts. Not verified here: that Vercel runs `npm run build` (the package.json script, which runs the trim) and deploys its `out/`. After the push, a deployed page's stylesheet should have about 180 `@font-face` rules, not 365.
 
+
+- I1 in the checks: 838 tests, typecheck, lint, build, `npm run a11y` (no findings). In Playwright's Chromium on the static build, `Page.getInstallabilityErrors` returns none and the manifest has no errors; the worker registers; console clean. With Dark chosen on a light system, the page's first theme-color tag is #1b1b1e, also after a client-side navigation, and Light on a dark system gives #ffffff.
+- I1 review: a fresh Opus reviewer found no errors. Applied: the ring at the header's proportions (it was thinner); the maskable mark at full size (it fits the safe zone, now tested); the theme colour following the Display setting (it followed only the system); `appleWebApp` and `applicationName`; the manifest's `id`; one `THEME_COLORS` for the manifest and the layout, tested against `--paper`; the built manifest compared with the source; a doctype and fixed scale in the icon script; `dir` and `categories`. Not applied: a stronger ring tint for small icons (the header's colours, a design call), cache-first icons in the worker (no need). Accepted: a dark system sees a white launch screen (a manifest has one background colour).
 
 ### Waiting on the owner
 - Menu marks: 丁寧 for Polite and casual names only the polite side (言い換え would cover both directions), and 読む (Reading) is the only verb among nouns (読み物 would match). Kept as they are until a native speaker decides.

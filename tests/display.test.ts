@@ -2,7 +2,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it } from "vitest";
 import { Jp } from "@/components/Jp";
-import { applyAttributes, DEFAULT_ATTRIBUTES, furiganaCss, HEAD_SCRIPT, settingsToAttributes } from "@/lib/display";
+import { applyAttributes, applyThemeColor, DEFAULT_ATTRIBUTES, furiganaCss, HEAD_SCRIPT, settingsToAttributes, THEME_COLOR_ID, THEME_COLORS, themeColorFor } from "@/lib/display";
 import { decode } from "@/lib/envelope";
 import { DEFAULT_SETTINGS, settingsSchema } from "@/lib/schemas";
 
@@ -103,5 +103,55 @@ describe("Jp renders every display variant", () => {
 
   it("leaves the romaji line out where the caller asks", () => {
     expect(renderToStaticMarkup(createElement(Jp, { jp: "[学生|がくせい]", romaji: false }))).not.toContain("romaji");
+  });
+});
+
+describe("the theme colour", () => {
+  /** A stub document with a <head> that records its children, enough for the head script and applyThemeColor. */
+  function stubDocument() {
+    const children: { id: string; attrs: Record<string, string> }[] = [];
+    const make = () => {
+      const el = {
+        id: "",
+        attrs: {} as Record<string, string>,
+        setAttribute: (k: string, v: string) => void (el.attrs[k] = v),
+        remove: () => void children.splice(children.indexOf(el), 1),
+      };
+      return el;
+    };
+    type El = ReturnType<typeof make>;
+    const head = {
+      get firstChild() {
+        return children[0] ?? null;
+      },
+      insertBefore: (el: El) => void children.unshift(el),
+      prepend: (el: El) => {
+        if (children.includes(el)) children.splice(children.indexOf(el), 1);
+        children.unshift(el);
+      },
+    };
+    const doc = { head, documentElement: { setAttribute() {} }, createElement: make, getElementById: (id: string) => children.find((c) => c.id === id) ?? null };
+    return { doc, children };
+  }
+
+  it("is left to the system with the system theme, and follows the chosen theme otherwise", () => {
+    expect(themeColorFor("system")).toBeNull();
+    expect([themeColorFor("light"), themeColorFor("dark")]).toEqual([THEME_COLORS.light, THEME_COLORS.dark]);
+  });
+
+  it("is set the same way by the head script and by applyThemeColor, which also takes it back off", () => {
+    for (const theme of ["system", "light", "dark"] as const) {
+      const script = stubDocument();
+      const stored = JSON.stringify({ v: 2, data: { ...DEFAULT_SETTINGS, theme } });
+      new Function("localStorage", "document", HEAD_SCRIPT)({ getItem: () => stored }, script.doc);
+      const app = stubDocument();
+      applyThemeColor(app.doc as unknown as Document, theme);
+      applyThemeColor(app.doc as unknown as Document, theme);
+      const tags = (c: typeof app.children) => c.map((e) => `${e.id} ${e.attrs.name} ${e.attrs.content}`);
+      expect(tags(script.children), theme).toEqual(tags(app.children));
+      expect(tags(app.children), theme).toEqual(theme === "system" ? [] : [`${THEME_COLOR_ID} theme-color ${THEME_COLORS[theme]}`]);
+      applyThemeColor(app.doc as unknown as Document, "system");
+      expect(app.children).toEqual([]);
+    }
   });
 });

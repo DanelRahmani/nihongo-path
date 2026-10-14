@@ -8,7 +8,7 @@ import { SearchLauncher } from "@/components/search/SearchLauncher";
 import { ServiceWorker } from "@/components/ServiceWorker";
 import { FocusIntoView } from "@/components/FocusIntoView";
 import { FuriganaRules } from "@/components/FuriganaRules";
-import { DEFAULT_ATTRIBUTES, furiganaScript, HEAD_SCRIPT } from "@/lib/display";
+import { DEFAULT_ATTRIBUTES, furiganaScript, HEAD_SCRIPT, THEME_COLORS } from "@/lib/display";
 import { furiganaKanji } from "@/lib/kanji-cards";
 import "./globals.css";
 
@@ -29,12 +29,16 @@ const gothic = Zen_Kaku_Gothic_New({
 export const metadata: Metadata = {
   title: { default: "Nihongo Path", template: "%s · Nihongo Path" },
   description: "Learn kana, particles, grammar and conversation culture with clear example pairs.",
+  applicationName: "Nihongo Path",
+  // The name iOS offers for Add to Home Screen (otherwise the page's own title).
+  appleWebApp: { title: "Nihongo Path", statusBarStyle: "default" },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#1b1b1e" },
+    // The head script and the Display panel point both at the reader's theme when it isn't the system's.
+    { media: "(prefers-color-scheme: light)", color: THEME_COLORS.light },
+    { media: "(prefers-color-scheme: dark)", color: THEME_COLORS.dark },
   ],
 };
 

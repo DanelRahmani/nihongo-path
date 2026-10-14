@@ -175,6 +175,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Corpus: `readingFields()` adds every line and price, so the snapshot gained 48 lines (no existing line changed).
   - Dictionary: 9 new lesson words for the texts (本日, 今朝, 店長, 休業, 初雪, アイス, うれしい, ぬれる, オッケー), and 午後 moved from the extra words.
   - `tests/reading.test.ts`: only the page and the corpus import the texts, and only tests and scripts import the corpus (aliases, relative paths and dynamic imports); digits, not kanji numerals; every haiku names its poet and edition and is quoted; the chat stays casual, the story polite, signs and news polite or bare phrases.
+- **Extras menu (owner request, 2026-10-14):** the nav's 辞書 link became 参考 (Extras), a native popover menu with the grammar overview, the dictionary and the reading view. It replaces one link, so the header still fits 375 px; the button is highlighted on those pages and on kanji pages. Checked in the browser at 375 px, light and dark: links navigate and close the menu, Escape and outside taps close it, Tab reaches the menu items with a visible ring, console clean.
 
 ### Decisions
 - Owner's answers, 2026-10-07 (plan §7):
@@ -197,6 +198,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 2026-10-08: the owner asked again to push to main. main was fast-forwarded to B4 (51b591f), bringing B2, B3, C1 and B4; no merge commit.
 - 2026-10-08: the owner asked to push to main again. main was fast-forwarded to B5 (806413d).
 - 2026-10-09: the owner asked to push to main. main was fast-forwarded to D1 (03970ad).
+- D2 and D3 reached main through GitHub pull request #1 (merge 3fb22eb), merged outside this workflow.
+- 2026-10-14: the owner asked to push to main. A fast-forward was no longer possible because of that pull request's merge commit, so `features` (F2, dcd7f38) was merged into main with a merge commit (e6dbe58), whose tree matches `features`. Nothing was force-pushed.
 - D1 (2026-10-08): the owner approved three downloads: JMdict common words and KANJIDIC2 (jmdict-simplified 3.6.2) and the 常用漢字表 PDF. They stay outside the repo; only derived data is committed. The N5/N4 kanji wait for Waller's lists (owner's choice); D1 covers the lesson kanji.
 - The path is unit tabs, not kind filters (owner request). Lesson `kinds` tags (B1) will feed search and the grammar overview instead.
   - Stacked particles are written separately (で は).
@@ -213,7 +216,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - Dictionary: 547 lesson words (75 verbs), 93 extra kanji-example words, 14 names; 404 kanji. The dictionary page lists 640 entries.
 - Template: all 62 lessons converted.
 - Grammar overview: 61 topics from 37 lessons, 96 examples.
-- Reading view: 5 original texts (24 lines and 3 prices) and 4 haiku. Dictionary: 547 lesson words, 93 extra words.
+- Reading view: 5 original texts (23 lines and 3 prices) and 4 haiku. Dictionary: 547 lesson words, 93 extra words.
 - Quiz questions: 250, of which 37 are typed in romaji and 3 ask for a name.
 
 ### How it was checked

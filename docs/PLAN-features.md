@@ -33,15 +33,15 @@ Nihongo Path is a working static study app: 9 units, 62 example-first lessons, k
 | 5 | Word inspector | Missing (there's no dictionary and no kanji data) | — | D2 |
 | 6 | Reading view | Missing | — | F2 |
 | 7 | Grammar overview | Missing | — | F1 |
-| 8 | Kana + kanji trainers, tracing | **Kana done well:** Leitner boxes 1–5, row unlock, practice mode, charts. Kanji trainer, tracing, print sheets and KanjiVG are missing | `lib/srs.ts`, `content/kana.ts`, `components/kana/*` | E1–E3 |
-| 9 | Conjugation engine + trainer | Missing. Verb forms are hand-typed tables in the lessons | `content/lessons/verbs.ts` | C1, E4 |
-| 10 | Vocabulary deck | Missing | — | E5 |
-| 11 | Cloze | Missing (136 candidate lines today) | — | E6 |
-| 12 | Polite ↔ plain drill | Missing | — | E7 |
+| 8 | Kana + kanji trainers | **Kana done well:** Leitner boxes 1–5, row unlock, practice mode and charts. Kanji practice will use Anki-style recall cards and Japanese-keyboard answer input; no drawing, tracing or stroke-order animation is planned | `lib/srs.ts`, `content/kana.ts`, `components/kana/*` | E1–E2 |
+| 9 | Conjugation engine + trainer | Missing. Verb forms are hand-typed tables in the lessons | `content/lessons/verbs.ts` | C1, E3 |
+| 10 | Vocabulary deck | Missing | — | E4 |
+| 11 | Cloze | Missing (136 candidate lines today) | — | E5 |
+| 12 | Polite ↔ plain drill | Missing | — | E6 |
 | 13 | Mistake notebook | Missing | — | E1 |
-| 14 | One review queue | Missing (`KanaDueBadge` only counts kana) | `components/kana/KanaDueBadge.tsx` | E8 |
-| 15 | Placement check | Missing (it needs the lesson quizzes first) | — | E9 |
-| 16 | "Type it" game | Missing | — | E10 |
+| 14 | One review queue | Missing (`KanaDueBadge` only counts kana) | `components/kana/KanaDueBadge.tsx` | E7 |
+| 15 | Placement check | Missing (it needs the lesson quizzes first) | — | E8 |
+| 16 | "Type it" game | Missing | — | E9 |
 | 17 | Today card | **Partly.** `ContinueCard` and `KanaDueBadge` exist. Goal ring, streak, word of the day, era date and the mistake count are missing | `app/page.tsx`, `components/Progress.tsx` | F4 |
 | 18 | Search | Missing | — | F3 |
 | 19 | Dictionary page | Missing | — | D1, D3 |
@@ -61,7 +61,7 @@ Nihongo Path is a working static study app: 9 units, 62 example-first lessons, k
 - **Mixed registers:** in Japanese, subordinate clauses are plain by grammar (降ったら、行きません). So the "no mixing" check only looks at sentence-final predicates.
 - **Readings with several candidates** (今日 きょう/こんにち, 一日, 上手): every ruby reading is written per occurrence, dictionary entries are keyed by (written form, reading), and decks accept only the readings listed for that meaning. Jukujikun (今日, 大人, 一人) stay one ruby group; their kanji breakdown says the reading belongs to the whole word, not to each kanji.
 - **Romaji is generated, never typed.** Q2 decides the scheme; it's pinned by golden tests and a snapshot of the whole corpus.
-- **Tracing:** no automatic stroke grading. Stroke recognition is unreliable, so the trainer shows the stroke-order animation and a free tracing canvas, and the learner compares by eye.
+- **Kanji practice:** use Anki-style recall cards and the learner's Japanese keyboard. The app checks the selected kanji spelling and kana reading; it does not include drawing, tracing, stroke-order animation or print sheets.
 - **"Type it" and typed answers use the IME:** the checker waits for `compositionend`, applies NFKC (half-width ｶﾅ → カナ), and treats the ideographic space and 。、！？ explicitly. Romaji typed as an answer isn't accepted, since the spec says kanji or kana; learners use a Japanese keyboard.
 - **Katakana words typed in hiragana** (たくしー for タクシー) count as a miss with a named reason ("this word is written in katakana").
 - **Era date** comes from `Intl.DateTimeFormat("ja-JP-u-ca-japanese", { era: "long", … })`, e.g. 令和8年10月7日(水).
@@ -98,23 +98,8 @@ Rules for every sub-phase: one commit and push to `features`; checks pass before
 | Sub-phase | What ships | Tests added |
 |---|---|---|
 | **D1 Lesson dictionary + kanji data** (done 2026-10-09, except the N5/N4 kanji: see CLAUDE.md) | `content/words/*.ts`: every word used in the lessons, with written form, reading, meaning, part of speech and verb class, topic and the lessons it appears in. `content/kanji.ts`: the lesson kanji plus the N5 and N4 kanji (Q3), with on/kun readings, meanings, 常用 status from KANJIDIC2, and one or two example words per kanji for the trainer (lesson words first, otherwise common JMdict words I choose). I choose the meanings; a Sonnet agent formats batches from my spec; a fresh reviewer checks every batch | Coverage: every word token in the lessons resolves to an entry, an engine form, or the function-word list. Every (form, reading) pair in a lesson matches an entry. Every kanji in the lessons has data and is 常用. **Every ruby reading is checked against the 常用漢字表:** it splits into 常用 readings of its kanji (allowing rendaku and っ), or it is a 付表 word, or it is on the STYLE.md exception list (明日 あした). Readings are kana only |
-| **D2 Word inspector + kanji pages** | A popover on a word in a lesson or the dictionary: reading, meaning, kanji breakdown (each kanji's readings and meaning, linked). The match is exact on (written form, authored reading); inflected forms match through an engine-generated reverse index (Q5). For keyboard users, each Japanese line is one Tab stop and the arrow keys move between words, so hundreds of extra Tab stops are avoided. `/kanji/[char]` is static. The dictionary JSON is fetched on the first tap | Pure `lookup()`: exact hits, inflected hits ("polite past of 食べる"), no fuzzy hits, and 今日 resolves by reading |
+| **D2 Word inspector + kanji pages** (done 2026-10-14) | A popover on a word in a lesson or the dictionary: reading, meaning, kanji breakdown (each kanji's readings and meaning, linked). The match is exact on (written form, authored reading); inflected forms match through an engine-generated reverse index (Q5). For keyboard users, each Japanese line is one Tab stop and the arrow keys move between words, so hundreds of extra Tab stops are avoided. `/kanji/[char]` is static. The dictionary JSON is fetched on the first tap | Pure `lookup()`: exact hits, inflected hits ("polite past of 食べる"), no fuzzy hits, and 今日 resolves by reading |
 | **D3 Dictionary page** | `/dictionary`: search by kanji, by kana (hiragana and katakana treated alike), by lenient romaji (kyo/kyou/kyō, si/shi, nn/n) or by English; filters for topic, source (lesson or expansion) and starting kana row; ★ "My words" with CSV export (UTF-8 BOM). **Feature 21:** the data is a static JSON file from a `force-static` route handler, fetched when the browser is idle, and the list grows in batches inside `startTransition` | Romaji normaliser, search ranking, filters, CSV escaping, the batch-growth reducer |
-
-### E. Practice
-
-| Sub-phase | What ships | Tests added |
-|---|---|---|
-| **E1 SRS generalised + mistake notebook** | A deck registry: each deck has `cards`, a prompt, `check → {correct, canonical, note}` and its own Leitner state. The kana state is migrated with its schedule unchanged (an A2 migration). Notebook store: every trainer and quiz reports misses, and an item leaves after two right answers in a row | Migration preserves every kana card's box and due date; deck-agnostic `nextCard`; notebook enter/leave rules |
-| **E2 Kanji trainer** | The N5 kanji, then the N4 kanji, from Jonathan Waller's lists (Q3), in groups of 10, each group opening when the earlier ones are learned (box ≥ 3). Card: a kanji inside an example word (学 in 学生); type the word's reading in kana. That's exact and never fuzzy, and the meaning is shown afterwards. **"Furigana on new kanji only" goes live**, driven by the learned set | Group unlock, checker, and learned set → CSS rules |
-| **E3 Stroke order and tracing** | KanjiVG paths for kana and the lesson kanji (kana coverage verified on download) turned into small per-character JSON files. Stroke-order animation (reduced motion shows numbered strokes instead), a free tracing canvas, printable A4 sheets via print CSS. KanjiVG credited on these pages | Extraction script output (stroke counts against KANJIDIC2), the print-layout builder |
-| **E4 Conjugation trainer** | Asks one random form of a learned verb or adjective. Each form type links to its lesson. A wrong answer that is another form gets named ("That's the plain past") | Pure `identifyForm()`; question generator never asks a form the word lacks |
-| **E5 Vocabulary deck** | English → typed Japanese. Accepts the kanji form or the kana reading, ignores half-width/full-width, and tells the learner which form they typed. A card joins when its lesson is marked done | Checker (kanji, kana, width, katakana-vs-hiragana note, multi-reading words); joining on lesson completion |
-| **E6 Cloze deck** | Every highlighted example line becomes a fill-the-gap card, with the English as a hint. Alternative answers are accepted only from reviewed data or the engine. Cards are left out by rule (a contrast-pair line where the other side also fits; a highlight covering most of the line; kana lessons) or by hand in `content/cloze-exclusions.ts` with a reason | Builder: card count and every exclusion with its reason; checker |
-| **E7 Polite ↔ plain drill** | Two decks, one per direction, built from the `alt` pairs. Convert a whole sentence; punctuation is ignored; engine variants are accepted (ません/ないです); feedback names the first word that differs, using the authored word boundaries | `diffFirstWord()`, variant acceptance |
-| **E8 One review queue** | Everything due across decks, most overdue first, then the notebook. Each item is asked with its own deck's prompt and checker and scheduled in its own deck. The home badge shows the total | Merge order; scheduling stays per deck |
-| **E9 Placement check** | Two questions per band (band = unit, kana excluded: 7 bands, 14 questions), taken from the lesson quizzes. The first band with two misses is where to start; a single miss is a slip. Offers to mark earlier lessons as finished | Pure `placement()` over miss patterns |
-| **E10 "Type it" game** | Copy-type a line through the IME. The target is either kana or kanji (the learner picks). Feedback is specific: an extra or half-width space, 、 vs ",", the wrong kanji choice | IME-aware comparer cases |
 
 ### F. Reading and reference
 
@@ -124,6 +109,20 @@ Rules for every sub-phase: one commit and push to `features`; checks pass before
 | **F2 Reading view** | `/read`: a sign, a menu, a LINE-style chat, a news headline, a short story (all original) and haiku by Bashō and Issa (public domain; the edition the text and reading were checked against is named, and anything I can't verify goes to "Waiting on the owner"). Furigana is hidden by default with a "show readings" toggle; each line reveals its romaji and translation. CSS-only styling. Reviewed like a lesson | Card builders never import reading texts; markup and corpus tests cover them |
 | **F3 Search** | `/` or Ctrl/⌘K opens a dialog that is lazy-imported, with a lazy JSON index (lessons, kanji, words) | Index builder, ranking, the shortcut ignores keystrokes typed in inputs |
 | **F4 Today card** | Reviews due, mistakes waiting, a daily goal ring (5/10/20 answered items), the streak (days the goal was met), the word of the day (index = day × step mod N, with step coprime to N so every word appears once per cycle), and today's date with the era from `Intl` | Stride covers all N; streak and goal logic; era formatting at a fixed date |
+
+### E. Practice
+
+| Sub-phase | What ships | Tests added |
+|---|---|---|
+| **E1 SRS generalised + mistake notebook** | A deck registry: each deck has `cards`, a prompt, `check → {correct, canonical, note}` and its own Leitner state. The kana state is migrated with its schedule unchanged (an A2 migration). Notebook store: every trainer and quiz reports misses, and an item leaves after two right answers in a row | Migration preserves every kana card's box and due date; deck-agnostic `nextCard`; notebook enter/leave rules |
+| **E2 Kanji flashcards** | The N5 kanji, then the N4 kanji, from Jonathan Waller's lists (Q3), in groups of 10, each group opening when the earlier ones are learned (box ≥ 3). An Anki-style card shows an English meaning and an example reading; the learner enters the example word through a Japanese keyboard and selects the correct kanji spelling. The checker accepts only the reviewed written form and reading, then shows the meaning. **"Furigana on new kanji only" goes live**, driven by the learned set | Group unlock, keyboard-answer checker, and learned set → CSS rules |
+| **E3 Conjugation trainer** | Asks one random form of a learned verb or adjective. Each form type links to its lesson. A wrong answer that is another form gets named ("That's the plain past") | Pure `identifyForm()`; question generator never asks a form the word lacks |
+| **E4 Vocabulary deck** | Anki-style English → typed Japanese cards. The learner types Japanese with their IME and selects the intended kanji spelling. The checker accepts the reviewed kanji form or kana reading, ignores half-width/full-width, and says which form they entered. A card joins when its lesson is marked done | Checker (kanji, kana, width, katakana-vs-hiragana note, multi-reading words); joining on lesson completion |
+| **E5 Cloze deck** | Every highlighted example line becomes a fill-the-gap card, with the English as a hint. Alternative answers are accepted only from reviewed data or the engine. Cards are left out by rule (a contrast-pair line where the other side also fits; a highlight covering most of the line; kana lessons) or by hand in `content/cloze-exclusions.ts` with a reason | Builder: card count and every exclusion with its reason; checker |
+| **E6 Polite ↔ plain drill** | Two decks, one per direction, built from the `alt` pairs. Convert a whole sentence; punctuation is ignored; engine variants are accepted (ません/ないです); feedback names the first word that differs, using the authored word boundaries | `diffFirstWord()`, variant acceptance |
+| **E7 One review queue** | Everything due across decks, most overdue first, then the notebook. Each item is asked with its own deck's prompt and checker and scheduled in its own deck. The home badge shows the total | Merge order; scheduling stays per deck |
+| **E8 Placement check** | Two questions per band (band = unit, kana excluded: 7 bands, 14 questions), taken from the lesson quizzes. The first band with two misses is where to start; a single miss is a slip. Offers to mark earlier lessons as finished | Pure `placement()` over miss patterns |
+| **E9 "Type it" game** | Copy-type a line through the IME. The target is either kana or kanji (the learner picks). Feedback is specific: an extra or half-width space, 、 vs ",", the wrong kanji choice | IME-aware comparer cases |
 
 ### G. Dictionary expansion (after Q4)
 
@@ -140,23 +139,22 @@ Rules for every sub-phase: one commit and push to `features`; checks pass before
 | **H2 Accessibility sweep** | `scripts/a11y-sweep.mjs` (Playwright) visits every route at 375 px in light and dark and checks: no horizontal scroll; every Tab stop has a visible focus ring (computed outline or shadow); no running animations under reduced motion. Final design-system pass. Lighthouse accessibility 100 | The sweep runs in CI-style mode and fails on any finding |
 | **H3 Backup, restore, offline** | Export and import every `np:*` store as one versioned file (validated, then migrated). A hand-written service worker produced by a `force-static` route (precache the shell and data JSON, network-first for HTML), with no hosting config changes | Export → import round trip across every store; a v0 file imports correctly; the service-worker manifest builder |
 
-That makes 32 sub-phases, with G2 repeating once per word batch. The order follows the dependencies: the tokens and display system come before any new UI; the engine comes before the verb retrofit, the inspector and the drills; the dictionary before the vocabulary deck, search and the Today card; quizzes before placement.
+That makes 31 sub-phases, with G2 repeating once per word batch. The order follows the dependencies: the tokens and display system come before any new UI; the engine comes before the verb retrofit, the inspector and the drills; the dictionary before the vocabulary deck, search and the Today card; quizzes before placement. The delivery order after D3 is F, then E, then G and H.
 
 ## 5. Ways of working
 
 - **Review:** after each content unit (B2–B5, D1 batches, F1, F2, G batches), a fresh reviewer agent on the strongest model (Q7) gets the content file, the `dump-corpus` output for it, and STYLE.md. It reports errors, should-fix items, polish and can't-verify items, and edits nothing. I apply every finding or record why not in the commit message and CLAUDE.md; can't-verify items go to "Waiting on the owner".
-- **Delegation:** Sonnet agents handle structured work: formatting data from my spec, KanjiVG and KANJIDIC extraction, checker loops, mechanical moves onto the design system. I keep the judgement: STYLE, examples, quizzes, meanings, golden tables, the engine, triaging reviews. Parallel agents each own one file and use their own scratch folder.
+- **Delegation:** Sonnet agents handle structured work: formatting data from my spec, KANJIDIC extraction, checker loops, mechanical moves onto the design system. I keep the judgement: STYLE, examples, quizzes, meanings, golden tables, the engine, triaging reviews. Parallel agents each own one file and use their own scratch folder.
 - **Git:** one branch, `features`, with a commit and push per sub-phase. Nothing merges to `main`, and no hosting or protection settings change.
 - **CLAUDE.md progress section** (below `@AGENTS.md`): what was built, decisions, numbers (lessons, quiz questions, cards per deck, words, kanji, tests), how it was checked, Waiting on the owner.
 - **Asking first:** each data download and each new devDependency that pulls large binaries (Playwright with Chromium, Lighthouse).
 
-## 6. Data sources and licences (feature 20, also used by D1 and E3)
+## 6. Data sources and licences (feature 20, also used by D1 and E2)
 
 | Source | What we'd use | Licence | What it obliges us to do |
 |---|---|---|---|
 | **JMdict** (EDRDG), via the jmdict-simplified JSON builds | Headwords, readings, alternative spellings, part of speech, "common" priority tags. Glosses only to check the meanings we write | CC BY-SA 4.0 (EDRDG licence) | Credit on **every screen** that shows its data (a footer line); derived data stays CC BY-SA; EDRDG asks for a procedure to keep the data current (monthly for web dictionaries), hence the G1 refresh script |
 | **KANJIDIC2** (EDRDG) | Kanji readings, meanings, grade, stroke count | CC BY-SA 4.0 plus extra conditions in section 8 (I read them before use; we only need readings and meanings) | Same as JMdict |
-| **KanjiVG** (Ulrich Apel) | Stroke paths and stroke order | CC BY-SA 3.0 | Credit on the tracing pages; the extracted paths stay CC BY-SA 3.0 |
 | **wordfreq** (Robyn Speer) | Japanese frequency ranking, to choose which words to add | Data CC BY-SA 4.0, code MIT | Credit. The data is frozen at about 2021 (project sunset), which is fine for ranking |
 | **Tatoeba** | Example sentences | CC BY 2.0 FR (some CC0) | Credit each sentence's author. Quality varies. **Recommended: skip.** Examples stay original |
 
@@ -169,12 +167,12 @@ Our lessons stay yours. The dictionary and kanji data files carry a CC BY-SA not
 | Q1 | Furigana modes | **Four modes, kana only by default:** Kana only · Furigana · Furigana on new kanji · No furigana |
 | Q2 | Romaji scheme | **Keep long vowels spelled out** (kyou, koohii). No reading changes |
 | Q3 | Kanji trainer set | **JLPT N5, then N4**, from Jonathan Waller's lists (tanos.co.uk), the de facto standard; the JLPT has published no official lists since 2010. The licence (reportedly CC BY) is confirmed and credited before the download. The trainer needs an example word for every kanji, which D1 provides. Lesson kanji outside N5/N4 keep their furigana in "new kanji" mode |
-| Q4 | Data sources | **JMdict (jmdict-simplified) + KANJIDIC2 + KanjiVG + wordfreq, skip Tatoeba, about 2,000 extra words.** CC BY-SA terms and the refresh script as in §6 |
+| Q4 | Data sources | **JMdict (jmdict-simplified) + KANJIDIC2 + wordfreq, skip Tatoeba, about 2,000 extra words.** CC BY-SA terms and the refresh script as in §6 |
 | Q5 | Inflected words in the inspector | **Yes:** exact match against the engine's generated forms |
 | Q6 | Deploys | **None.** A preview deploy of `features` only when asked; production untouched |
 | Q7 | Reviewer model | **Opus 5.5** |
 
-Decisions I've taken that you can overrule: retrofit all 62 lessons to the template (placement needs their quizzes); one branch, `features`; the kanji card is "reading of this kanji in a lesson word"; the streak counts days the goal was met; katakana words typed in hiragana count as a miss with the reason named; no stroke grading.
+Decisions I've taken that you can overrule: retrofit all 62 lessons to the template (placement needs their quizzes); one branch, `features`; the kanji card is an Anki-style English-and-reading prompt answered through the Japanese keyboard; the streak counts days the goal was met; katakana words typed in hiragana count as a miss with the reason named.
 
 ## 8. Verification (every sub-phase)
 

@@ -72,7 +72,7 @@ function Question({ q, n, onResult }: { q: QuizQuestion; n: number; onResult: (c
                 {romaji ? (
                   <span className="text-lg font-medium">{result.answer}</span>
                 ) : (
-                  <Jp jp={q.answers[0]} romaji={false} className="font-jp text-lg" />
+                  <Jp jp={q.answers[0]} romaji={false} inspect={false} className="font-jp text-lg" />
                 )}
               </p>
             )}

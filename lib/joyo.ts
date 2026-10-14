@@ -161,3 +161,8 @@ export function joyoReadingOk(base: string, reading: string, joined = false): bo
   };
   return go(0, 0);
 }
+
+/** A kanji's row in the table as printed: on (katakana), kun (hiragana, た.べる), and the indented special readings. */
+export function tableReadings(kanji: string): Entry | undefined {
+  return KANJI[kanji];
+}

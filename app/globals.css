@@ -173,6 +173,31 @@ body {
 
 /* Component classes live in a layer, so utilities (text-good on a seal) can override them. */
 @layer components {
+  .inspect-word {
+    cursor: pointer;
+    border-radius: 0.2em;
+  }
+
+  /* Hover only where there is a pointer: on touch it would stick after a tap. */
+  @media (hover: hover) {
+    .inspect-word:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+  }
+
+  .inspect-word:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  /* The chosen word stays marked while its line has focus or its card is open. */
+  .inspector-line:focus-within .inspect-word[data-active],
+  .inspector-line:has(.inspector-popover) .inspect-word[data-active] {
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
   /* Red-pen highlight: the part of an example the lesson is about. */
   .hl {
     color: var(--accent);

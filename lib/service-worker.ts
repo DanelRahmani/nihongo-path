@@ -2,7 +2,8 @@
  * The service worker (H3), written by hand and served by the `force-static` route app/sw.js. The site works offline
  * for the practice pages and the pages already visited:
  * - on install, the home page, the practice pages and the data JSON are fetched into this build's page cache, and
- *   the build files each page names (`/_next/static/…`) into the build-file cache;
+ *   the build files each page names (`/_next/static/…`) into the build-file cache (the fonts their stylesheets name
+ *   are kept when fetched, not fetched up front);
  * - pages and data are network-first: the network's answer is returned at once and kept afterwards, and the kept
  *   copy is used only when the network fails, so a new build is never hidden behind an old copy;
  * - build files are cache-first: their names change with their content, so they're kept across builds (and pruned
@@ -104,6 +105,13 @@ self.addEventListener("install", (event) => {
       await pages.put(url, response).catch(() => {});
     }));
     await keepBuildFiles([...new Set(files)]);
+    // The fonts this build's stylesheets name stay too (pages never name them), so a page practised offline after
+    // an update keeps the fonts already fetched. They aren't fetched here: each page needs only a few.
+    const statics = await caches.open(STATIC);
+    for (const sheet of new Set(files.filter((file) => file.endsWith(".css")))) {
+      const css = await statics.match(sheet).then((r) => (r ? r.text() : ""), () => "");
+      for (const m of css.matchAll(/url\\(\\s*["']?([^"')]+)["']?\\s*\\)/g)) files.push(new URL(m[1], new URL(sheet, self.location.origin)).pathname);
+    }
     await pages.put(REFS, new Response(JSON.stringify(files))).catch(() => {});
     await self.skipWaiting();
   })());

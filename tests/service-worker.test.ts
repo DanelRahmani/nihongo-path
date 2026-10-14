@@ -172,6 +172,27 @@ describe("the service worker", () => {
     expect([...caches.stores.get(STATIC_CACHE)!.keys()]).toEqual([`${ORIGIN}/_next/static/chunks/new.js`]);
   });
 
+  it("on activate keeps the fonts this build's stylesheets name, without fetching them", async () => {
+    const caches = fakeCaches();
+    const fetched: string[] = [];
+    const net = {
+      fn: (async (r: Request | string) => {
+        fetched.push(href(r));
+        if (href(r).endsWith(".css")) return basic("@font-face{src:url(../media/kept.woff2) format(\"woff2\")}");
+        return href(r).includes("/_next/") ? basic("chunk") : page(["/_next/static/chunks/a.js", "/_next/static/css/b.css"]);
+      }) as Fetch,
+    };
+    const statics = await caches.api.open(STATIC_CACHE);
+    for (const font of ["kept", "gone"]) await statics.put(`${ORIGIN}/_next/static/media/${font}.woff2`, basic("font"));
+    const worker = boot(serviceWorkerSource("v3"), caches, net);
+    await worker.run("install");
+    await worker.run("activate");
+    const keys = [...caches.stores.get(STATIC_CACHE)!.keys()];
+    expect(keys).toContain(`${ORIGIN}/_next/static/media/kept.woff2`);
+    expect(keys).not.toContain(`${ORIGIN}/_next/static/media/gone.woff2`);
+    expect(fetched.some((u) => u.endsWith(".woff2"))).toBe(false);
+  });
+
   it("retired, deletes its caches, unregisters and reloads the open tabs", async () => {
     const caches = fakeCaches();
     for (const name of [`${CACHE_PREFIX}pages-v1`, STATIC_CACHE, "someone-else"]) await caches.api.open(name);

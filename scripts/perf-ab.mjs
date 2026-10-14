@@ -1,6 +1,6 @@
 /**
  * The performance A/B (H1): Lighthouse on two production builds, runs interleaved A, B, A, B… so a busy machine
- * slows both alike, and medians reported per page.
+ * slows both alike, and medians (with their range) reported per page.
  *
  *   npm run perf -- <out-dir-A> <out-dir-B> [--runs 5] [--route /read]…
  *
@@ -64,14 +64,17 @@ for (const route of routes) {
       results.set(key, [...(results.get(key) ?? []), lhr]);
     }
   }
+  // Lighthouse's simulated timings come in steps and often fall in two clusters, so the range goes beside each median.
   const rows = [...bases.keys()].map((side) => {
     const lhrs = results.get(`${route}|${side}`);
-    return Object.fromEntries(Object.entries(METRICS).map(([k, f]) => [k, median(lhrs.map(f))]));
+    return Object.fromEntries(Object.entries(METRICS).map(([k, f]) => [k, lhrs.map(f)]));
   });
+  const cell = (k, values) => `${show(k, median(values))} [${show(k, Math.min(...values))}–${show(k, Math.max(...values))}]`.padStart(24);
   console.log(`\n${route}`);
   for (const k of Object.keys(METRICS)) {
     const [a, b] = rows.map((r) => r[k]);
-    console.log(`  ${k.padEnd(8)} ${show(k, a).padStart(7)}${b === undefined ? "" : `  →${show(k, b).padStart(7)}  (${b - a >= 0 ? "+" : ""}${show(k, b - a)})`}`);
+    const diff = b && median(b) - median(a);
+    console.log(`  ${k.padEnd(8)} ${cell(k, a)}${b === undefined ? "" : `  → ${cell(k, b)}  (${diff >= 0 ? "+" : ""}${show(k, diff)})`}`);
   }
 }
 

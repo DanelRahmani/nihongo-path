@@ -127,6 +127,8 @@ describe("markupOf and chooseForm", () => {
     // The owner's exceptions (lib/joyo.ts): 文字 もじ and the 連声 words.
     expect(chooseForm(entry(["文字"], ["もじ"], ["n"]))).toMatchObject({ jp: "[文字|もじ]" });
     expect(chooseForm(entry(["反応"], ["はんのう"], ["n"]))).toMatchObject({ jp: "[反応|はんのう]" });
+    expect(chooseForm(entry(["出来事"], ["できごと"], ["n"]))).toMatchObject({ jp: "[出来事|できごと]" });
+    expect(chooseForm(entry(["流行る"], ["はやる"], ["v5r"]))).toMatchObject({ jp: "[流行|はや]る" });
   });
 });
 

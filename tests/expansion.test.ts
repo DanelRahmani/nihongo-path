@@ -13,13 +13,23 @@ const CANDIDATES = new Map(
   (JSON.parse(readFileSync("content/data/expand-candidates.json", "utf8")).candidates as { id: string; jp: string; pos: string; verb?: string }[]).map((c) => [c.id, c]),
 );
 
+/**
+ * Forms the owner chose over the candidate list's kana (batch 10; named exceptions in lib/joyo.ts and STYLE §5). The
+ * list, built before the exceptions, still gives kana for them; a rebuilt list would give these forms.
+ */
+const OWNER_FORMS: Record<string, string> = { "1340570": "[出来事|できごと]", "1552310": "[流行|はや]る" };
+/** Words the owner added that have no candidate (batch 10), with the reason. */
+const OWNER_ADDED: Record<string, string> = { "[令和|れいわ]": "not in the candidate list (wordfreq's counts mostly predate 2019)" };
+
 /** The checker every expansion batch passes (plan G2): each word as STYLE §5 writes it, once, with a usable entry. */
 describe("the dictionary expansion", () => {
   it.each(Object.keys(BATCHES))("batch %s: writes each word from its candidate, kanji and readings 常用, readings in hiragana", (n) => {
     for (const w of BATCHES[n]) {
       const c = CANDIDATES.get(w.jmdict ?? "");
-      expect(c, `${w.jp}: no candidate ${w.jmdict}`).toBeDefined();
-      expect(w.jp, `${w.jp}: written as the candidate list gives it`).toBe(c?.jp);
+      if (!(w.jp in OWNER_ADDED)) {
+        expect(c, `${w.jp}: no candidate ${w.jmdict}`).toBeDefined();
+        expect(w.jp, `${w.jp}: written as the candidate list gives it`).toBe(OWNER_FORMS[w.jmdict ?? ""] ?? c?.jp);
+      }
       for (const [, base, reading] of w.jp.matchAll(/\[([^|\]]+)\|([^\]]+)\]/g)) {
         expect([...base].every((c, i) => (c === "々" ? i > 0 : isJoyo(c))), w.jp).toBe(true);
         expect(joyoReadingOk(base, reading), w.jp).toBe(true);

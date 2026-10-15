@@ -44,7 +44,7 @@ export const BATCH_09: Word[] = [
   x("1123990", "ボディー", "noun", "body (of a person or vehicle)", "body"),
   x("1603550", "[褒|ほ]める", "verb", "to praise, to compliment", "feelings", "ichidan"),
   x("1979920", "あんた", "pronoun", "you (casual, can sound rude)", "language"),
-  // skipped: 1340570 できごと (reading check)
+  // skipped: 1340570 できごと (reading check; added in batch 10 at the owner's choice)
   // skipped: 1295250 [祭|まつ]る (rare "to enshrine"; 祭り covers the everyday word)
   x("1075000", "センス", "noun", "sense, taste (fashion, humour)", "feelings"),
   x("1088560", "ドライバー", "noun", "driver; screwdriver", "travel"),
@@ -141,7 +141,7 @@ export const BATCH_09: Word[] = [
   x("1597200", "[頼|たよ]る", "verb", "to rely on, to depend on", "feelings", "godan"),
   x("1443970", "うさぎ", "noun", "rabbit", "nature"),
   x("1154330", "[暗|くら]い", "i-adj", "dark, dim; gloomy", "nature"),
-  // skipped: 1552310 はやる (reading check)
+  // skipped: 1552310 はやる (reading check; added in batch 10 at the owner's choice)
   x("1496240", "[付近|ふきん]", "noun", "neighbourhood, vicinity", "places"),
   x("1535850", "[戻|もど]す", "verb", "to put back, to return (something)", "everyday", "godan"),
   x("1606590", "[別|わか]れる", "verb", "to part, to separate; to split up", "people", "ichidan"),
@@ -186,7 +186,7 @@ export const BATCH_09: Word[] = [
   x("1524690", "[毎週|まいしゅう]", "noun", "every week", "time"),
   x("1543200", "[予測|よそく]", "noun", "prediction, forecast (する: to predict)", "everyday"),
   x("1604740", "[民族|みんぞく]", "noun", "ethnic group, people, nation", "people"),
-  // skipped: 1611970 [明治|めいじ] (proper noun, an era name)
+  // skipped: 1611970 [明治|めいじ] (proper noun, an era name; added in batch 10 at the owner's choice)
   x("1648000", "ホームページ", "noun", "website, home page", "everyday"),
   x("1520190", "[防|ふせ]ぐ", "verb", "to prevent, to defend against", "everyday", "godan"),
   x("1516160", "[宝|たから]", "noun", "treasure", "everyday"),

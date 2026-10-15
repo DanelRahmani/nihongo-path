@@ -8,6 +8,7 @@ import { BATCH_06 } from "@/content/words/expansion/batch-06";
 import { BATCH_07 } from "@/content/words/expansion/batch-07";
 import { BATCH_08 } from "@/content/words/expansion/batch-08";
 import { BATCH_09 } from "@/content/words/expansion/batch-09";
+import { BATCH_10 } from "@/content/words/expansion/batch-10";
 import { EXTRA_WORDS } from "@/content/words/extra";
 
 /**
@@ -28,6 +29,7 @@ export const BATCHES: Record<string, Word[]> = {
   "07": BATCH_07,
   "08": BATCH_08,
   "09": BATCH_09,
+  "10": BATCH_10,
 };
 
 export const EXPANSION_WORDS: Word[] = Object.values(BATCHES).flat();

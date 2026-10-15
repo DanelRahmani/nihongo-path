@@ -159,7 +159,8 @@ export function markupOf(written: string, reading: string): Jp | null {
 
 /**
  * Readings the 常用 table can't confirm that may be right all the same: held for the owner's word (CLAUDE.md), then
- * added to lib/joyo.ts's exceptions (文字 もじ, 反応 はんのう and 天皇 てんのう were, 2026-10-14). Empty for now.
+ * added to lib/joyo.ts's exceptions (文字 もじ, 反応 はんのう and 天皇 てんのう were, 2026-10-14; 出来事 and 流行る,
+ * 2026-10-15). Empty for now.
  */
 export const CHECK_BY_HAND = new Set<string>();
 

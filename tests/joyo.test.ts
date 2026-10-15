@@ -43,6 +43,10 @@ describe("joyoReadingOk", () => {
     ["扱", "あつか"],
     ["明日", "みょうにち"],
     ["来", "き"],
+    // The owner's exceptions for the expansion (2026-10-15), and the table's own reading of 流行 alongside.
+    ["出来事", "できごと"],
+    ["流行", "はや"],
+    ["流行", "りゅうこう"],
     ["試合", "しあい"],
     ["切手", "きって"],
     ["切符", "きっぷ"],
@@ -54,6 +58,9 @@ describe("joyoReadingOk", () => {
 
   it("voices a word joined to the one before it", () => {
     expect(joyoReadingOk("本", "ぼん")).toBe(false);
+    // The exceptions are whole bases with their own reading: nothing else gets through them.
+    expect(joyoReadingOk("出来", "でき")).toBe(false);
+    expect(joyoReadingOk("流行", "ばや")).toBe(false);
     expect(joyoReadingOk("本", "ぼん", true)).toBe(true);
   });
 

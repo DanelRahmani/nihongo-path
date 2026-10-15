@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { MoreWords } from "@/components/vocab/MoreWords";
 import { VocabDrill } from "@/components/vocab/VocabDrill";
-import { EXPANSION_WORDS } from "@/content/words/expansion";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { ALL_LESSONS } from "@/content/units";
 import { vocabCards } from "@/lib/vocab-cards";
+import { vocabMoreCards } from "@/lib/vocab-more-cards";
 
 export const metadata: Metadata = { title: "Vocabulary" };
 
@@ -25,7 +25,7 @@ export default function VocabularyPage() {
       <div className="mt-8">
         <VocabDrill cards={vocabCards(PATH)} lessons={PATH} />
       </div>
-      <MoreWords count={EXPANSION_WORDS.length} />
+      <MoreWords count={vocabMoreCards().length} />
     </div>
   );
 }

@@ -252,5 +252,5 @@ export const BATCH_04: Word[] = [
   x("1310150", "[支持|しじ]", "noun", "support, backing (する: to support)", "everyday"),
   x("1333750", "[集中|しゅうちゅう]", "noun", "concentration (する: to concentrate)", "school-work"),
   x("1345430", "[女優|じょゆう]", "noun", "actress", "people"),
-  // skipped: 1349820 [昭和|しょうわ] (era name, a proper noun)
+  // skipped: 1349820 [昭和|しょうわ] (era name, a proper noun; added in batch 10 at the owner's choice)
 ];

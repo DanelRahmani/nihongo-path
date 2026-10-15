@@ -137,7 +137,7 @@ export const BATCH_03: Word[] = [
   x("1524230", "[魔法|まほう]", "noun", "magic, sorcery", "hobbies"),
   x("1537300", "[野球|やきゅう]", "noun", "baseball", "hobbies"),
   x("1553120", "[旅|たび]", "noun", "trip, journey", "travel"),
-  // skipped: 1608110 [平成|へいせい] (proper noun: an era name)
+  // skipped: 1608110 [平成|へいせい] (proper noun: an era name; added in batch 10 at the owner's choice)
   x("1010350", "ばれる", "verb", "to be found out, to come out (of a secret) (casual)", "everyday", "ichidan"),
   x("1609270", "いろんな", "pre-noun", "various, all kinds of (casual)", "everyday"),
   x("1550840", "[離|はな]れる", "verb", "to be apart, to be far; to leave", "everyday", "ichidan"),

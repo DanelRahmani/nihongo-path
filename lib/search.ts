@@ -1,6 +1,7 @@
 /**
  * Site search (the dialog opened with / or Ctrl/⌘K): one flat index of pages, lessons, grammar topics, kanji and
- * words, built at build time into the static /search-index.json, and ranked on the client. Matching reuses the
+ * words, ranked on the client. The static /search-items.json holds all but the words, which the dialog builds from
+ * /dictionary-data.json (wordItems). Matching reuses the
  * dictionary's folds (lib/dictionary.ts): katakana as hiragana, lenient romaji, English at word starts. Pure.
  */
 import type { Word } from "@/content/types";
@@ -157,7 +158,15 @@ export function buildSearchIndex(src: IndexSources): SearchItem[] {
       en: foldEnglish(k.meanings.join(", ")),
     };
   });
-  const words = buildEntries({ words: src.words, extra: src.extra }).map(
+  return [...pages, ...lessons, ...grammar, ...kanji, ...wordItems(src)];
+}
+
+/**
+ * The words' items, last in the index. /search-items.json leaves them out (I9): the search dialog builds them from
+ * /dictionary-data.json, which the word card loads anyway, so the same items come out in the same order.
+ */
+export function wordItems(src: Pick<IndexSources, "words" | "extra">): SearchItem[] {
+  return buildEntries({ words: src.words, extra: src.extra }).map(
     (e): SearchItem => ({
       kind: "word",
       label: e.written,
@@ -170,7 +179,6 @@ export function buildSearchIndex(src: IndexSources): SearchItem[] {
       ...(e.source === "extra" ? { extra: true as const } : {}),
     }),
   );
-  return [...pages, ...lessons, ...grammar, ...kanji, ...words];
 }
 
 /**

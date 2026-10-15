@@ -8,7 +8,7 @@ import { type IndexSources, SITE_PAGES } from "@/lib/search";
 
 /**
  * The content the search index is built from. Build time only: it reads the 常用 table, which stays out of
- * client code (the dialog fetches the built /search-index.json instead).
+ * client code (the dialog fetches the built /search-items.json instead).
  */
 export function indexSources(): IndexSources {
   return {

@@ -65,7 +65,7 @@ describe("the service worker", () => {
   it("is plain script that parses, names its build, and lists the shell and the data", () => {
     for (const source of [serviceWorkerSource("abc"), serviceWorkerSource("abc", { retire: true })]) expect(() => new Function("self", "caches", "fetch", source)).not.toThrow();
     expect(serviceWorkerSource("abc")).toContain(`"${CACHE_PREFIX}pages-abc"`);
-    for (const url of ["/", "/review", "/dictionary-data.json", "/search-index.json", "/review-data.json"]) expect(PRECACHE).toContain(url);
+    for (const url of ["/", "/review", "/dictionary-data.json", "/search-items.json", "/review-data.json"]) expect(PRECACHE).toContain(url);
     expect(RETIRE_WORKER).toBe(false);
   });
 

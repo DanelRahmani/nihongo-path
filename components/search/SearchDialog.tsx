@@ -3,13 +3,15 @@
 import { useRouter } from "next/navigation";
 import { useDeferredValue, useEffect, useId, useMemo, useRef, useState } from "react";
 import { Rich } from "@/components/Jp";
-import { KIND_LABELS, type SearchItem, searchIndex } from "@/lib/search";
+import { loadDictionary } from "@/lib/load-dictionary";
+import { KIND_LABELS, type SearchItem, searchIndex, wordItems } from "@/lib/search";
 
 let indexPromise: Promise<SearchItem[]> | undefined;
+let wordsPromise: Promise<SearchItem[]> | undefined;
 
-/** The static /search-index.json, fetched once per page view; a failed fetch is forgotten, so reopening retries. */
+/** The static /search-items.json (pages, lessons, grammar, kanji), once per page view; a failure is forgotten. */
 function loadIndex(): Promise<SearchItem[]> {
-  indexPromise ??= fetch("/search-index.json")
+  indexPromise ??= fetch("/search-items.json")
     .then((response) => {
       if (!response.ok) throw new Error("The search index could not be loaded.");
       return response.json() as Promise<SearchItem[]>;
@@ -21,7 +23,34 @@ function loadIndex(): Promise<SearchItem[]> {
   return indexPromise;
 }
 
-type Load = { state: "waiting" } | { state: "error" } | { state: "done"; items: SearchItem[] };
+/**
+ * The words' results, built from /dictionary-data.json (shared with the word card and /dictionary, which build the
+ * same entries once): after a yield, so the other results show first and typing isn't held up. A failure is
+ * forgotten, so the next open tries again.
+ */
+function loadWords(): Promise<SearchItem[]> {
+  wordsPromise ??= loadDictionary()
+    .then(
+      (data) =>
+        new Promise<SearchItem[]>((resolve, reject) =>
+          setTimeout(() => {
+            try {
+              resolve(wordItems(data));
+            } catch (error) {
+              reject(error);
+            }
+          }, 0),
+        ),
+    )
+    .catch((error: unknown) => {
+      wordsPromise = undefined;
+      throw error;
+    });
+  return wordsPromise;
+}
+
+type Words = "loading" | "ready" | "failed";
+type Load = { state: "waiting" } | { state: "error" } | { state: "done"; items: SearchItem[]; words: Words };
 
 const LIMIT = 30;
 
@@ -54,17 +83,27 @@ export default function SearchDialog({ request }: { request: number }) {
   }, [request]);
 
   // Load the index on the first open, and again on a later open if it failed.
-  const loaded = load.state === "done";
+  // Load the index on the first open, then the words; on a later open, whichever failed. Results already shown
+  // stay when a retry fails.
+  // (Done once the words are in: the run that started the words' load must stay live until they arrive.)
+  const complete = load.state === "done" && load.words === "ready";
   useEffect(() => {
-    if (loaded) return;
+    if (complete) return;
     let live = true;
     loadIndex()
-      .then((items) => live && setLoad({ state: "done", items }))
-      .catch(() => live && setLoad({ state: "error" }));
+      .then((items) => {
+        if (!live) return;
+        setLoad({ state: "done", items, words: "loading" });
+        return loadWords().then(
+          (words) => live && setLoad({ state: "done", items: [...items, ...words], words: "ready" }),
+          () => live && setLoad({ state: "done", items, words: "failed" }),
+        );
+      })
+      .catch(() => live && setLoad((l) => (l.state === "done" ? l : { state: "error" })));
     return () => {
       live = false;
     };
-  }, [request, loaded]);
+  }, [request, complete]);
 
   const results = useMemo(() => (load.state === "done" ? searchIndex(load.items, deferredQuery, LIMIT) : []), [load, deferredQuery]);
   const active = chosen.results === results ? chosen.index : 0;
@@ -107,11 +146,17 @@ export default function SearchDialog({ request }: { request: number }) {
       ? "Search couldn't load. Close it and try again."
       : load.state === "waiting"
         ? "Loading…"
-        : !deferredQuery.trim()
-          ? ""
-          : results.length
-            ? `${results.length === LIMIT ? `Top ${LIMIT}` : results.length} result${results.length === 1 ? "" : "s"}`
-            : "No matches";
+        : [
+            !deferredQuery.trim()
+              ? ""
+              : results.length
+                ? `${results.length === LIMIT ? `Top ${LIMIT}` : results.length} result${results.length === 1 ? "" : "s"}`
+                : "No matches",
+            // The rest is searched while the words load, and without them if they fail; the next open tries again.
+            load.words === "loading" ? "Loading words…" : load.words === "failed" ? "Words couldn't load: searching pages, lessons, grammar and kanji. Close and reopen to try again." : "",
+          ]
+            .filter(Boolean)
+            .join(". ");
 
   return (
     <dialog

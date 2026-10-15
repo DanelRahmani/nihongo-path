@@ -166,8 +166,18 @@ function entryOf(word: Word, source: Source): Entry {
 }
 
 /** Every dictionary entry, lesson words first. Names, particles and fragments aren't entries. */
+/** Entries already built, per pair of word lists, so the dictionary page and the search dialog build them once. */
+const built = new WeakMap<readonly Word[], WeakMap<readonly Word[], Entry[]>>();
+
 export function buildEntries(data: Pick<DictionaryData, "words" | "extra">): Entry[] {
-  return [...data.words.map((w) => entryOf(w, "lesson")), ...data.extra.map((w) => entryOf(w, "extra"))];
+  const byExtra = built.get(data.words) ?? new WeakMap<readonly Word[], Entry[]>();
+  built.set(data.words, byExtra);
+  let entries = byExtra.get(data.extra);
+  if (!entries) {
+    entries = [...data.words.map((w) => entryOf(w, "lesson")), ...data.extra.map((w) => entryOf(w, "extra"))];
+    byExtra.set(data.extra, entries);
+  }
+  return entries;
 }
 
 export type Query =

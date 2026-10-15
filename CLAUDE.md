@@ -379,6 +379,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Expansion batch 10 (`content/words/expansion/batch-10.ts`): 出来事 and 流行る in kanji (named exceptions in `lib/joyo.ts` and STYLE §5), and the era names 明治, 大正, 昭和 ("; old-fashioned (casual)" too), 平成 and 令和 (JMdict 2839013, not in the candidate list since wordfreq's counts mostly predate 2019). `tests/expansion.test.ts` allows the owner's forms (`OWNER_FORMS`; the candidate list still has their kana) and the one word without a candidate (`OWNER_ADDED`); the earlier `// skipped:` lines say "added in batch 10". `tests/joyo.test.ts` and `tests/expand.test.ts` cover the new exceptions and that nothing else passes through them.
 
 ### Decisions
+- 2026-10-15: after I1–I10, with the owner's permission given for this round ("push to main only once all ten items are done and green"), `main` was fast-forwarded to `features`; no merge commit, nothing force-pushed. The whole build was checked once more first: 889 tests, typecheck, lint, a clean build and the full accessibility sweep.
 - Owner, 2026-10-15 (I10, one round of questions; 象は鼻が長い stays, credited to Mikami Akira in STYLE §2): add 出来事 and 流行る in kanji; keep けが, くい, 決して and 引っ張る held back; keep 是非 in kana, めがね in hiragana and 殺す left out, and add the era names; keep the menu marks 丁寧 and 読む, 象は鼻が長い and the refused ゆく/いらっしゃれる forms; leave the external items (Waller's lists, the KANJIDIC2 licence, the special marks, the 2242 list, pitch audio, the keyboard checks) listed.
 - I5 (2026-10-14): a quiz with every answer right offers "Mark this lesson as done" but never marks the lesson by itself (the conservative choice the owner named); the learner decides, from the quiz or the footer.
 - Owner, 2026-10-14 (during I3): run the full accessibility sweep once, after all ten follow-up items, not after each. From I4 on, each item gets `npm run a11y -- --route …` on the pages it touches; the full `npm run a11y` runs before main.
@@ -425,7 +426,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
-- Tests: 831 in 39 files. Fonts: 1,573 characters, 359 of 731 `@font-face` rules kept (20 KB with Brotli). Accessibility sweep: 84 pages, 10,926 focus stops, 8 interactive states, 10 Lighthouse pages at 100.
+- Tests: 889 in 46 files. Fonts: 1,582 characters, 363 of 729 `@font-face` rules kept. Accessibility sweep (2026-10-15, after I1–I10): 84 pages × 2 schemes, 11,086 focus stops, 12 interactive states, 11 Lighthouse pages at 100, no findings.
 - Expansion candidates: 5,000 (of 18,515 kept from 19,956 counted entries). Expansion words: 2,059 (2,052 from the first 2,250 candidates, 198 skipped; 7 more in batch 10).
 - App icons: 4 PNGs (192, 512, maskable 512, apple 180).
 - Service worker precache: 18 pages and data files (with /keyboard). Accessibility sweep: 84 pages; Lighthouse on 11.

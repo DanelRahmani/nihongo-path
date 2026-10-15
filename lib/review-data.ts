@@ -9,11 +9,12 @@ import { conjugate, formsOf, questionId } from "@/lib/conjugation-trainer";
 import { KANA_DECKS } from "@/lib/decks";
 import { KANJI_DECK_ID } from "@/lib/kanji-deck";
 import { plainOf } from "@/lib/markup";
-import { CASUAL_DECK_ID, CLOZE_DECK_ID, CONJUGATION_DECK, POLITE_DECK_ID, QUIZ_DECK, quizCardId, VOCAB_DECK_ID } from "@/lib/notebook";
+import { CASUAL_DECK_ID, CLOZE_DECK_ID, CONJUGATION_DECK, POLITE_DECK_ID, QUIZ_DECK, quizCardId, VOCAB_DECK_ID, VOCAB_MORE_DECK_ID } from "@/lib/notebook";
 import type { Direction, RegisterCard } from "@/lib/register-drill";
 import { registerCards } from "@/lib/register-cards";
 import type { LessonLinks, QuizEntry } from "@/lib/review-askers";
 import { vocabCards } from "@/lib/vocab-cards";
+import { vocabMoreCards } from "@/lib/vocab-more-cards";
 import type { VocabCard } from "@/lib/vocab-deck";
 
 /**
@@ -64,6 +65,8 @@ export function reviewIds(): Record<string, string[]> {
     ...Object.fromEntries(KANA_DECKS.map((d) => [d.id, d.cards.map((c) => c.id)])),
     [KANJI_DECK_ID]: kanjiCards().map((c) => c.id),
     [VOCAB_DECK_ID]: vocabCards(path).map((c) => c.id),
+    // The "More words" cards themselves are in /vocab-more.json, fetched by the review only when it needs them.
+    [VOCAB_MORE_DECK_ID]: vocabMoreCards().map((c) => c.id),
     [CLOZE_DECK_ID]: clozeCards().cards.map((c) => c.id),
     [CASUAL_DECK_ID]: register.casual.map((c) => c.id),
     [POLITE_DECK_ID]: register.polite.map((c) => c.id),

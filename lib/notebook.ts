@@ -14,6 +14,8 @@ export const VOCAB_DECK_ID = "vocab";
 
 /** The cloze deck's id (lib/cloze-deck.ts), for the same reason. */
 export const CLOZE_DECK_ID = "cloze";
+/** The optional deck of the dictionary expansion's words (I6). */
+export const VOCAB_MORE_DECK_ID = "vocab-more";
 
 /** The polite ↔ casual drill's two decks (lib/register-drill.ts): into casual, into polite. */
 export const CASUAL_DECK_ID = "to-casual";

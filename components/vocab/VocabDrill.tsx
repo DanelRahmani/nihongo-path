@@ -8,7 +8,26 @@ import { panelClass } from "@/components/ui/Panel";
 import { plainOf } from "@/lib/markup";
 import { useStore } from "@/lib/storage";
 import { progressStore } from "@/lib/stores";
+import type { Check } from "@/lib/decks";
 import { type VocabCard, vocabDeck } from "@/lib/vocab-deck";
+
+/** The card faces both vocabulary decks share (the lesson words and More words). */
+export const VOCAB_FACES = {
+  front: (c: VocabCard) => (
+    <>
+      <p className="text-2xl font-medium sm:text-3xl">{c.meaning}</p>
+      {c.pos && <p className="mt-2 text-xs tracking-[0.15em] text-ink-2 uppercase">{c.pos}</p>}
+    </>
+  ),
+  answer: (c: VocabCard) => <Jp jp={showKanji(c.jp)} romaji={false} inspect={false} className="mt-1 font-jp text-4xl font-medium" />,
+  right: (c: VocabCard, check: Check) => (
+    <>
+      <span className="text-good">○</span> <Jp jp={showKanji(c.jp)} romaji={false} inspect={false} /> · {c.meaning}
+      {check.note && <span className="block">{check.note}</span>}
+    </>
+  ),
+  said: (c: VocabCard, check: Check) => [`Right: ${plainOf(c.jp, false)}.`, check.note].filter(Boolean).join(" "),
+};
 
 /**
  * The vocabulary deck: English on the front; the learner types the word with a Japanese keyboard. Each lesson's
@@ -37,20 +56,7 @@ export function VocabDrill({ cards, lessons }: { cards: VocabCard[]; lessons: st
           </p>
         </div>
       }
-      front={(c) => (
-        <>
-          <p className="text-2xl font-medium sm:text-3xl">{c.meaning}</p>
-          {c.pos && <p className="mt-2 text-xs tracking-[0.15em] text-ink-2 uppercase">{c.pos}</p>}
-        </>
-      )}
-      answer={(c) => <Jp jp={showKanji(c.jp)} romaji={false} inspect={false} className="mt-1 font-jp text-4xl font-medium" />}
-      right={(c, check) => (
-        <>
-          <span className="text-good">○</span> <Jp jp={showKanji(c.jp)} romaji={false} inspect={false} /> · {c.meaning}
-          {check.note && <span className="block">{check.note}</span>}
-        </>
-      )}
-      said={(c, check) => [`Right: ${plainOf(c.jp, false)}.`, check.note].filter(Boolean).join(" ")}
+      {...VOCAB_FACES}
     />
   );
 }

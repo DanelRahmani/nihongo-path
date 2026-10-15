@@ -232,6 +232,24 @@ export const notebookSchema: StoreSchema<Notebook> = {
   },
 };
 
+/** Study choices that aren't display settings: whether the "More words" deck (I6) is on. Off by default. */
+export interface Study {
+  moreWords: boolean;
+}
+
+export const DEFAULT_STUDY: Study = Object.freeze({ moreWords: false });
+
+/** An unreadable field falls back to its default, so one bad value doesn't reset the rest. */
+export const studySchema: StoreSchema<Study> = {
+  version: 1,
+  fallback: DEFAULT_STUDY,
+  migrations: [wrapUnchanged],
+  validate(data) {
+    if (!isPlainObject(data)) return null;
+    return { moreWords: typeof data.moreWords === "boolean" ? data.moreWords : DEFAULT_STUDY.moreWords };
+  },
+};
+
 /** Every store by its localStorage key. Backup and restore (H3) go through this list. */
 export const SCHEMAS = {
   "np:settings": settingsSchema,
@@ -241,6 +259,7 @@ export const SCHEMAS = {
   "np:my-words": myWordsSchema,
   "np:activity": activitySchema,
   "np:notebook": notebookSchema,
+  "np:study": studySchema,
 } as const;
 
 export type StoreKey = keyof typeof SCHEMAS;

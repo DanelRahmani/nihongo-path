@@ -87,6 +87,14 @@ describe("nextCard", () => {
     expect(nextCard(hiragana, state, NOW, "hiragana:あ")?.char).toBe("い");
   });
 
+  it("holds new cards back once today's allowance is used, but still asks due ones (I7)", () => {
+    expect(nextCard(hiragana, EMPTY_DECK_STATE, NOW, undefined, 0)).toBeNull();
+    expect(nextCard(hiragana, EMPTY_DECK_STATE, NOW, undefined, 1)?.char).toBe("あ");
+    const state: DeckState = { extraGroups: 0, cards: { "hiragana:い": { box: 1, due: NOW - 5, reps: 1, lapses: 1 } } };
+    expect(nextCard(hiragana, state, NOW, undefined, 0)?.char).toBe("い");
+    expect(nextCard(hiragana, state, NOW, "hiragana:い", 0)?.char).toBe("い");
+  });
+
   it("returns null when every unlocked card is scheduled for later", () => {
     const cards = Object.fromEntries(hiragana.cards.filter((k) => k.row === "a").map((k) => [k.id, { box: 2, due: NOW + 1000, reps: 1, lapses: 0 }]));
     expect(nextCard(hiragana, { cards, extraGroups: 0 }, NOW)).toBeNull();

@@ -27,7 +27,7 @@ export const BATCH_08: Word[] = [
   x("1153270", "[圧倒的|あっとうてき]", "na-adj", "overwhelming", "everyday"),
   x("1180030", "[応募|おうぼ]", "noun", "application, entry (する: to apply, to enter)", "school-work"),
   x("1199470", "[回収|かいしゅう]", "noun", "collection, recovery (する: to collect, to take back)", "everyday"),
-  x("1199680", "[回答|かいとう]", "noun", "reply, answer (する: to reply)", "language"),
+  x("1199680", "[回答|かいとう]", "noun", "answer (to a question or survey) (する: to answer)", "language"),
   x("1200740", "[改|あらた]めて", "adverb", "once again, anew; formally", "everyday"),
   x("1222840", "[季節|きせつ]", "noun", "season, time of year", "time"),
   x("1223021", "[規則|きそく]", "noun", "rule, regulation", "school-work"),

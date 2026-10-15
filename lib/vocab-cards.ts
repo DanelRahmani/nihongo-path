@@ -5,10 +5,10 @@ import type { VocabCard } from "@/lib/vocab-deck";
 import { FIXED_FORM, wordLessons } from "@/lib/word-lessons";
 
 /** Parts of speech that make vocabulary cards; affixes and counters are learned in use. */
-const POS: WordPos[] = ["noun", "pronoun", "verb", "i-adj", "na-adj", "adverb", "expression", "interjection", "question", "conjunction", "pre-noun"];
+export const POS: WordPos[] = ["noun", "pronoun", "verb", "i-adj", "na-adj", "adverb", "expression", "interjection", "question", "conjunction", "pre-noun"];
 
 /** The part of speech, shown on the front, so 多い (adjective) and たくさん (adverb) are told apart. */
-const POS_NAMES: Partial<Record<WordPos, string>> = {
+export const POS_NAMES: Partial<Record<WordPos, string>> = {
   verb: "verb",
   "i-adj": "adjective",
   "na-adj": "adjective",

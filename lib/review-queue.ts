@@ -85,3 +85,11 @@ export function applyReview(srs: SrsState, notebook: Notebook, item: QueueItem, 
     notebook: reportAnswer(notebook, item.deckId, item.cardId, correct, now),
   };
 }
+
+/**
+ * Whether the review must load a deck's cards (one fetched apart from /review-data.json, such as More words): only
+ * while it is switched on and its schedule or the notebook holds one of its cards.
+ */
+export function deckInUse(srs: SrsState, notebook: Notebook, deckId: string, on: boolean): boolean {
+  return on && (Object.keys(deckState(srs, deckId).cards).length > 0 || Object.values(notebook).some((item) => item.deck === deckId));
+}

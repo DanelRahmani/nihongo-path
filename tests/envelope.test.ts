@@ -45,6 +45,8 @@ const LEGACY: Record<StoreKey, { before: unknown; after: unknown }> = {
     after: { "quiz|particles/wa-topic#abc": { deck: "quiz", card: "particles/wa-topic#abc", misses: 1, rightInRow: 0, added: 5, lastMiss: 5 } },
   },
   "np:activity": { before: { goal: 5, days: { "2026-10-14": { answered: 3, goal: 5 } } }, after: { goal: 5, days: { "2026-10-14": { answered: 3, goal: 5 } } } },
+  // Never stored raw either; an unreadable field falls back to its default.
+  "np:study": { before: { moreWords: "yes" }, after: { moreWords: false } },
 };
 
 describe("envelopes", () => {

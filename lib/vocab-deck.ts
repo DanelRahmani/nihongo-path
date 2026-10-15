@@ -6,13 +6,16 @@
  */
 import type { Check, Deck } from "@/lib/decks";
 import { plainOf, readingOf } from "@/lib/markup";
-import { VOCAB_DECK_ID } from "@/lib/notebook";
+import { VOCAB_DECK_ID, VOCAB_MORE_DECK_ID } from "@/lib/notebook";
 import { checkAnswer, normalizeAnswer } from "@/lib/quiz";
 
-export { VOCAB_DECK_ID } from "@/lib/notebook";
+export { VOCAB_DECK_ID, VOCAB_MORE_DECK_ID } from "@/lib/notebook";
+
+/** "More words" cards come in groups of this many, in frequency order. */
+export const MORE_GROUP_SIZE = 50;
 
 export interface VocabCard {
-  /** The dictionary entry id (written markup#pos, lib/dictionary.ts), as My words uses. */
+  /** The lesson deck: the dictionary entry id (written markup#pos, lib/dictionary.ts), as My words uses. More words: the JMdict id. */
   id: string;
   /** The word in lesson markup: [食|た]べる. */
   jp: string;
@@ -25,6 +28,11 @@ export interface VocabCard {
    * meaning, and reviewed near-synonyms (多い, たくさん).
    */
   also: string[];
+  /**
+   * More words only: lesson words with the card's main sense (its first sense without brackets), which the learner
+   * may type for it. Named, but not counted: the senses can differ (食う is rough; かかる and 撮る both "take").
+   */
+  near?: string[];
   /** Other spellings that count, as typed: 子ども, 1つ, ありがとうございます. */
   spellings: string[];
   /** Every lesson ("unit/lesson") whose lines use the word, in path order: the card joins when one is marked done. */
@@ -53,6 +61,8 @@ export function checkVocab(card: VocabCard, answer: string): Check {
       ? { correct: true, canonical, note: `${readingOf(other, false)} is the other reading of ${canonical}.` }
       : { correct: true, canonical, note: `${otherWritten} means this too. This card's word is ${canonical}.` };
   }
+  const near = card.near?.find((jp) => checkAnswer([jp], answer).correct);
+  if (near) return { correct: false, canonical, note: `${plainOf(near, false)} also means that, but this card asks for ${canonical}: the meaning's note tells them apart.` };
   // A katakana spelling of a kanji word: name its spelling, not "hiragana".
   if (result.note?.includes("written in hiragana") && /\p{Script=Han}/u.test(canonical)) {
     return { correct: false, canonical, note: `Same sound: it's written ${canonical} (${reading}).` };
@@ -88,4 +98,53 @@ export function vocabDeck(cards: VocabCard[], lessons: string[], done: ReadonlyS
         .map((c) => plainOf(c.jp, false))
         .join(" "),
   };
+}
+
+/**
+ * "More words" (I6): the expansion's words as cards, most frequent first, in groups of 50. Off until the learner
+ * turns it on; then every card is open, and new ones wait while 10 studied cards are still below box 3, as in the
+ * lesson deck. The review always asks its due cards (`enabled` true there), whatever the switch says now.
+ */
+export function vocabMoreDeck(cards: VocabCard[], enabled: boolean): Deck<VocabCard> {
+  const byId = new Map(cards.map((c) => [c.id, c]));
+  return {
+    id: VOCAB_MORE_DECK_ID,
+    title: "More words",
+    titleJp: "語彙",
+    cards,
+    groups: [...new Set(cards.map((c) => c.group))],
+    groupOf: (c) => c.group,
+    isOpen: () => enabled,
+    practiceStudied: true,
+    card: (id) => byId.get(id),
+    prompt: (c) => ({ text: c.meaning, lang: "en", ask: `${c.meaning}: type it in Japanese`, ...(c.pos ? { hint: c.pos } : {}) }),
+    answerJp: (c) => c.jp,
+    check: checkVocab,
+    groupLabel: (group) => `words ${(Number(group) - 1) * MORE_GROUP_SIZE + 1}–${Math.min(Number(group) * MORE_GROUP_SIZE, cards.length)}`,
+  };
+}
+
+/** A "More words" card as /vocab-more.json carries it: empty lists and the group (worked out from the order) left out. */
+export type PackedMoreCard = [id: string, jp: string, meaning: string, pos: string, also?: string[], near?: string[]];
+
+export function packMoreCards(cards: VocabCard[]): PackedMoreCard[] {
+  return cards.map((c): PackedMoreCard => {
+    if (c.near?.length) return [c.id, c.jp, c.meaning, c.pos, c.also, c.near];
+    return c.also.length ? [c.id, c.jp, c.meaning, c.pos, c.also] : [c.id, c.jp, c.meaning, c.pos];
+  });
+}
+
+/** The cards back from their packed form, in the same order and groups of 50 as lib/vocab-more-cards.ts. */
+export function unpackMoreCards(packed: PackedMoreCard[]): VocabCard[] {
+  return packed.map(([id, jp, meaning, pos, also = [], near], i) => ({
+    id,
+    jp,
+    meaning,
+    pos,
+    also,
+    ...(near ? { near } : {}),
+    spellings: [],
+    lessons: [],
+    group: String(Math.floor(i / MORE_GROUP_SIZE) + 1),
+  }));
 }

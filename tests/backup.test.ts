@@ -13,6 +13,7 @@ const VALUES: Record<StoreKey, unknown> = {
   "np:my-words": ["[本|ほん]#noun"],
   "np:activity": { goal: 20, days: { "2026-10-13": { answered: 25, goal: 20 }, "2026-10-14": { answered: 3, goal: 20 } } },
   "np:notebook": reportAnswer({}, "quiz", "particles/wa-vs-ga#abc", false, 1_700_000_000_000),
+  "np:study": { moreWords: true },
 };
 
 const schema = (key: StoreKey) => SCHEMAS[key] as StoreSchema<unknown>;

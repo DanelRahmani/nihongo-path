@@ -172,7 +172,7 @@ export const BATCH_03: Word[] = [
   x("1433330", "[通信|つうしん]", "noun", "communication (する: to communicate)", "everyday"),
   x("1455210", "[特定|とくてい]", "noun", "specific, particular (する: to identify)", "everyday"),
   x("1459870", "[南|みなみ]", "noun", "south", "places"),
-  x("1510890", "[変化|へんか]", "noun", "change (する: to change)", "everyday"),
+  x("1510890", "[変化|へんか]", "noun", "change (that happens) (する: to change)", "everyday"),
   x("1531940", "[命|いのち]", "noun", "life", "body"),
   x("1543130", "[予想|よそう]", "noun", "expectation, prediction (する: to expect)", "everyday"),
   // skipped: 1420730 [地|ち] (bare reading is rare; mostly in compounds like 地図)

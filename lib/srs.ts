@@ -52,6 +52,8 @@ export interface SrsDeck<C extends { id: string } = { id: string }> {
    * deck): whether a card is open. Without it, each group opens once every card before it is learned.
    */
   isOpen?(card: C): boolean;
+  /** "Practise anyway" asks only cards already studied (a deck whose open cards are mostly unseen, such as More words). */
+  practiceStudied?: boolean;
 }
 
 export const deckState = (srs: SrsState, deckId: string): DeckState => srs.decks[deckId] ?? EMPTY_DECK_STATE;
@@ -140,11 +142,6 @@ export function deckStats<C extends { id: string }>(deck: SrsDeck<C>, state: Dec
   };
 }
 
-/**
- * The next card to ask: the most overdue card first, then a new card in unlock order.
- * Avoids repeating `lastId` back-to-back when anything else is available.
- * Returns null when nothing is due and there are no new cards.
- */
 /** The cards due now, the most overdue first. */
 export function dueCards<C extends { id: string }>(deck: SrsDeck<C>, state: DeckState, now: number): C[] {
   return unlockedCards(deck, state)
@@ -152,18 +149,25 @@ export function dueCards<C extends { id: string }>(deck: SrsDeck<C>, state: Deck
     .sort((a, b) => state.cards[a.id].due - state.cards[b.id].due);
 }
 
-export function nextCard<C extends { id: string }>(deck: SrsDeck<C>, state: DeckState, now: number, lastId?: string): C | null {
+/**
+ * The next card to ask: the most overdue card first, then a new card in unlock order.
+ * Avoids repeating `lastId` back-to-back when anything else is available.
+ * Returns null when nothing is due and there are no new cards. `newLeft` is today's allowance of new cards (I7).
+ */
+export function nextCard<C extends { id: string }>(deck: SrsDeck<C>, state: DeckState, now: number, lastId?: string, newLeft = Infinity): C | null {
   const due = dueCards(deck, state, now);
   const open = unlockedCards(deck, state);
   const learning = open.filter((c) => state.cards[c.id] && state.cards[c.id].box < UNLOCK_BOX).length;
-  const fresh = deck.isOpen && learning >= LEARNING_LIMIT ? [] : open.filter((c) => !state.cards[c.id]);
+  // New cards wait while 10 are still being learned (decks that open with lessons), and once today's limit is met (I7).
+  const held = newLeft <= 0 || (deck.isOpen && learning >= LEARNING_LIMIT);
+  const fresh = held ? [] : open.filter((c) => !state.cards[c.id]);
   const queue = [...due, ...fresh];
   return queue.find((c) => c.id !== lastId) ?? queue[0] ?? null;
 }
 
 /** Any unlocked card other than `lastId`, for practice that ignores the schedule. */
 export function practiceCard<C extends { id: string }>(deck: SrsDeck<C>, state: DeckState, lastId: string | undefined, rand: number): C | null {
-  const open = unlockedCards(deck, state).filter((c) => c.id !== lastId);
+  const open = unlockedCards(deck, state).filter((c) => c.id !== lastId && (!deck.practiceStudied || state.cards[c.id]));
   return open.length ? open[Math.floor(rand * open.length)] : null;
 }
 

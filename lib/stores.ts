@@ -1,6 +1,6 @@
 "use client";
 
-import { activitySchema, myWordsSchema, notebookSchema, pathFilterSchema, progressSchema, settingsSchema, srsSchema } from "@/lib/schemas";
+import { activitySchema, myWordsSchema, notebookSchema, pathFilterSchema, progressSchema, settingsSchema, srsSchema, studySchema } from "@/lib/schemas";
 import { reportAnswer } from "@/lib/notebook";
 import { createPersistentStore } from "@/lib/storage";
 import { dayKey, recordAnswer } from "@/lib/today";
@@ -25,6 +25,9 @@ export const activityStore = createPersistentStore("np:activity", activitySchema
 
 /** The mistake notebook: items missed in any trainer or quiz, until answered right twice in a row. */
 export const notebookStore = createPersistentStore("np:notebook", notebookSchema);
+
+/** Study choices: the "More words" deck switch. */
+export const studyStore = createPersistentStore("np:study", studySchema);
 
 /** Counts one answered item (a drill card or a quiz question) towards today's goal. */
 export function recordActivity() {

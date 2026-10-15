@@ -13,8 +13,9 @@ import { EXTRA_WORDS } from "@/content/words/extra";
 /**
  * The dictionary expansion (G2…): common words beyond the lessons, written in batches from the candidate list
  * (content/data/expand-candidates.json, scripts/expand/) and reviewed like lesson content. Derived from JMdict
- * (© EDRDG, CC BY-SA 4.0); the meanings are ours. Not lesson words: the decks, drills and kanji cards never use
- * them, and a lesson word always wins over them in the word inspector.
+ * (© EDRDG, CC BY-SA 4.0); the meanings are ours. Not lesson words: the lesson decks, drills and kanji cards never
+ * use them (only the opt-in "More words" deck does, lib/vocab-more-cards.ts), and a lesson word always wins over
+ * them in the word inspector.
  */
 /** The batches by number, so the checker (tests/expansion.test.ts) tests each one on its own. */
 export const BATCHES: Record<string, Word[]> = {

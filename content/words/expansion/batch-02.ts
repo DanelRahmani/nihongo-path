@@ -105,7 +105,7 @@ export const BATCH_02: Word[] = [
   x("1407980", "[多分|たぶん]", "adverb", "probably", "language"),
   x("1412170", "[代表|だいひょう]", "noun", "representative (する: to represent)", "people"),
   x("1477620", "[発生|はっせい]", "noun", "occurrence (する: to occur)", "everyday"),
-  x("1511040", "[変更|へんこう]", "noun", "change (する: to change)", "everyday"),
+  x("1511040", "[変更|へんこう]", "noun", "change, alteration (する: to alter)", "everyday"),
   x("1562400", "[話題|わだい]", "noun", "topic of conversation", "language"),
   x("1582000", "[敵|てき]", "noun", "enemy, opponent", "people"),
   x("1359040", "[信|しん]じる", "verb", "to believe, trust", "feelings", "ichidan"),
@@ -131,7 +131,7 @@ export const BATCH_02: Word[] = [
   // skipped: 1408815 ぶつ (ぶつ is rare and rough as a bare verb (to hit); kana form is a common ending)
   x("1351280", "[笑|わら]い", "noun", "laugh, laughter", "feelings"),
   x("1241750", "[筋|すじ]", "noun", "muscle; plot, logic", "body"),
-  x("1218150", "[企画|きかく]", "noun", "plan, project (する: to plan)", "school-work"),
+  x("1218150", "[企画|きかく]", "noun", "project, proposal (する: to plan an event)", "school-work"),
   x("1075940", "タイプ", "noun", "type, kind", "everyday"),
   x("1158400", "[移動|いどう]", "noun", "movement (する: to move, travel)", "travel"),
   x("1223440", "[記録|きろく]", "noun", "record (する: to record)", "school-work"),
@@ -168,7 +168,7 @@ export const BATCH_02: Word[] = [
   // skipped: 1303400 まく (artefact: kana count mixes several verbs)
   x("1327120", "[守|まも]る", "verb", "to protect; to keep (a rule or promise)", "everyday", "godan"),
   x("1004320", "こういう", "pre-noun", "this kind of, like this", "language"),
-  x("1222590", "[気分|きぶん]", "noun", "feeling, mood", "feelings"),
+  x("1222590", "[気分|きぶん]", "noun", "mood; how you feel (physically)", "feelings"),
   x("1283500", "[高校|こうこう]", "noun", "high school", "school-work"),
   x("1316040", "[時期|じき]", "noun", "time, season, period", "time"),
   x("1320140", "[失敗|しっぱい]", "noun", "failure, mistake (する: to fail)", "everyday"),

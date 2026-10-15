@@ -9,13 +9,14 @@ import { panelClass } from "@/components/ui/Panel";
 import { clozeDeck } from "@/lib/cloze-deck";
 import { type Check, type Deck, KANA_DECKS } from "@/lib/decks";
 import { kanjiDeck } from "@/lib/kanji-deck";
-import { CONJUGATION_DECK, QUIZ_DECK } from "@/lib/notebook";
+import { CONJUGATION_DECK, QUIZ_DECK, VOCAB_MORE_DECK_ID } from "@/lib/notebook";
 import { registerDeck } from "@/lib/register-drill";
 import { conjugationAsker, quizAsker } from "@/lib/review-askers";
 import type { ReviewData } from "@/lib/review-data";
-import { applyReview, buildQueue, type QueueItem, reviewCount } from "@/lib/review-queue";
-import { notebookStore, recordActivity, srsStore } from "@/lib/stores";
-import { vocabDeck } from "@/lib/vocab-deck";
+import { applyReview, buildQueue, deckInUse, type QueueItem, reviewCount } from "@/lib/review-queue";
+import { notebookStore, recordActivity, srsStore, studyStore } from "@/lib/stores";
+import { type VocabCard, vocabDeck, vocabMoreDeck } from "@/lib/vocab-deck";
+import { loadMoreWords } from "@/lib/load-more-words";
 import { fieldClass } from "@/components/ui/field";
 import { KeyboardHelp, typedWithoutJapanese } from "@/components/ui/KeyboardHelp";
 
@@ -46,7 +47,7 @@ type Load = { state: "waiting" } | { state: "error" } | { state: "done"; queue: 
  * deck's title for the card's label. Only studied cards and notebook items are asked, so no deck needs the
  * reader's finished lessons.
  */
-function queueFrom(data: ReviewData): { queue: QueueItem[]; titles: Record<string, string> } {
+function queueFrom(data: ReviewData, more: VocabCard[]): { queue: QueueItem[]; titles: Record<string, string> } {
   const path = Object.keys(data.lessons);
   const none = new Set<string>();
   const decks: Deck[] = [
@@ -56,6 +57,8 @@ function queueFrom(data: ReviewData): { queue: QueueItem[]; titles: Record<strin
     clozeDeck(data.cloze, path, none),
     registerDeck("casual", data.register.casual, path, none),
     registerDeck("polite", data.register.polite, path, none),
+    // Studied "More words" cards are reviewed whatever the switch says now.
+    vocabMoreDeck(more, true),
   ];
   const askers = { [QUIZ_DECK]: quizAsker(data.quiz, data.lessons), [CONJUGATION_DECK]: conjugationAsker(data.conjugation, data.lessons) };
   const titles = { ...Object.fromEntries(decks.map((d) => [d.id, d.title])), [QUIZ_DECK]: "Lesson quiz", [CONJUGATION_DECK]: "Conjugation" };
@@ -82,15 +85,19 @@ export function ReviewQueue() {
   useEffect(() => {
     let live = true;
     // Nothing due and nothing in the notebook: no need for the card data.
-    const count = reviewCount(srsStore.get(), notebookStore.get(), Date.now());
+    const moreOn = studyStore.get().moreWords;
+    const count = reviewCount(srsStore.get(), notebookStore.get(), Date.now(), (deck) => deck !== VOCAB_MORE_DECK_ID || moreOn);
     if (count.due + count.notebook === 0) {
       queueMicrotask(() => live && setLoad({ state: "done", queue: [], titles: {} }));
       return () => {
         live = false;
       };
     }
-    loadData()
-      .then((data) => live && setLoad({ state: "done", ...queueFrom(data) }))
+    // The "More words" cards (/vocab-more.json, 128 KB) only while the deck is switched on and has something to ask;
+    // switched off, its cards stay saved but aren't asked. If they fail to load, the other decks are still asked.
+    const usesMore = deckInUse(srsStore.get(), notebookStore.get(), VOCAB_MORE_DECK_ID, moreOn);
+    Promise.all([loadData(), usesMore ? loadMoreWords().catch((): VocabCard[] => []) : Promise.resolve([])])
+      .then(([data, more]) => live && setLoad({ state: "done", ...queueFrom(data, more) }))
       .catch(() => live && setLoad({ state: "error" }));
     return () => {
       live = false;

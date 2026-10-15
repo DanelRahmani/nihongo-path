@@ -91,4 +91,5 @@ export const STORE_NAMES: Record<StoreKey, string> = {
   "np:my-words": "My words",
   "np:activity": "Daily goal and streak",
   "np:notebook": "Mistake notebook",
+  "np:study": "Study choices (More words)",
 };

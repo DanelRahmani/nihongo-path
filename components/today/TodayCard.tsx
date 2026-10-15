@@ -10,11 +10,11 @@ import { KANA_DECKS } from "@/lib/decks";
 import { whenIdle } from "@/lib/idle";
 import { KANJI_DECK_ID } from "@/lib/kanji-deck";
 import { plainOf } from "@/lib/markup";
-import { CASUAL_DECK_ID, CLOZE_DECK_ID, POLITE_DECK_ID, VOCAB_DECK_ID } from "@/lib/notebook";
+import { CASUAL_DECK_ID, CLOZE_DECK_ID, POLITE_DECK_ID, VOCAB_DECK_ID, VOCAB_MORE_DECK_ID } from "@/lib/notebook";
 import { deckState, deckStats } from "@/lib/srs";
 import { reviewCount } from "@/lib/review-queue";
 import { useStore } from "@/lib/storage";
-import { activityStore, notebookStore, srsStore } from "@/lib/stores";
+import { activityStore, notebookStore, srsStore, studyStore } from "@/lib/stores";
 import { dayKey, englishDate, GOALS, type Goal, japaneseDate, setGoal, streak, todayProgress, wordOfTheDay } from "@/lib/today";
 import type { TodayWord } from "@/lib/today-words";
 
@@ -104,6 +104,7 @@ export function TodayCard() {
   const [activity, setActivity] = useStore(activityStore);
   const [srs] = useStore(srsStore);
   const [notebook] = useStore(notebookStore);
+  const [study] = useStore(studyStore);
   const [words, setWords] = useState<TodayWord[] | null>(null);
   const [ids, setIds] = useState<Record<string, Set<string>> | null>(null);
 
@@ -114,6 +115,9 @@ export function TodayCard() {
         .then((w) => live && setWords(w))
         // No word of the day this visit; the rest of the card doesn't need it.
         .catch(() => {});
+      // The id index only matters once there is something to count (a new visitor has nothing).
+      const waiting = reviewCount(srsStore.get(), notebookStore.get(), Date.now());
+      if (waiting.due + waiting.notebook === 0) return;
       loadIds()
         .then((index) => live && setIds(Object.fromEntries(Object.entries(index).map(([deck, list]) => [deck, new Set(list)]))))
         // Without the index the count includes ids a later build removed.
@@ -140,7 +144,8 @@ export function TodayCard() {
   const clozeDue = dueIn(CLOZE_DECK_ID);
   const registerDue = dueIn(CASUAL_DECK_ID) + dueIn(POLITE_DECK_ID);
   // The review page's queue, counted from the stores; once the id index has loaded, only what it can ask.
-  const counts = reviewCount(srs, notebook, now.getTime(), ids ? (deck, card) => ids[deck]?.has(card) ?? false : undefined);
+  // More words switched off: its cards stay saved but aren't asked (as on the review page).
+  const counts = reviewCount(srs, notebook, now.getTime(), (deck, card) => (deck !== VOCAB_MORE_DECK_ID || study.moreWords) && (ids ? (ids[deck]?.has(card) ?? false) : true));
   const allDue = counts.due;
   const mistakes = counts.notebook;
   const reviews = allDue + mistakes;

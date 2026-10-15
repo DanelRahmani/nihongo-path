@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useId, useRef, useState } from "react";
 import { Jp, Rich } from "@/components/Jp";
 import { Button } from "@/components/ui/Button";
@@ -10,7 +11,9 @@ import type { QuizQuestion } from "@/content/types";
 import { checkQuestion, type QuizCheck } from "@/lib/quiz";
 import { QUIZ_DECK, quizCardId } from "@/lib/notebook";
 import { logAnswer } from "@/lib/stores";
-import { missedInRound, recordCheck, retryMissed, roundName, startRounds } from "@/lib/quiz-rounds";
+import { allRight, missedInRound, recordCheck, retryMissed, roundName, startRounds } from "@/lib/quiz-rounds";
+import { Hanko, useLessonDone } from "@/components/Progress";
+import { LangText } from "@/components/LangText";
 import { fieldClass } from "@/components/ui/field";
 import { KeyboardHelp, typedWithoutJapanese } from "@/components/ui/KeyboardHelp";
 
@@ -133,14 +136,91 @@ function Question({
   );
 }
 
+/** The lesson after this one, for the quiz's "next lesson" link. */
+export interface NextLesson {
+  href: string;
+  title: string;
+}
+
+/**
+ * Once every question has been answered right (at a round's first check), the natural next step: marking the lesson
+ * done, which opens its cards in the drills. Never automatic; the footer's button stays as well. Focus moves to the
+ * button when the last answer lands, never on load.
+ */
+function FinishLesson({ lessonKey, next, focus, onDone }: { lessonKey: string; next?: NextLesson; focus: boolean; onDone: () => void }) {
+  const [done, setDone] = useLessonDone(lessonKey);
+  // The stamp plays once, after this panel's own click (not again when the footer marks it later).
+  const [justDone, setJustDone] = useState(false);
+  const button = useRef<HTMLButtonElement>(null);
+  const doneText = useRef<HTMLParagraphElement>(null);
+  const id = useId();
+  useEffect(() => {
+    if (focus) button.current?.focus();
+  }, [focus]);
+
+  return (
+    <div className={panelClass("tint", "mt-6 p-5")}>
+      {done ? (
+        <div className="flex items-center gap-4">
+          <span onAnimationEnd={() => setJustDone(false)}>
+            <Hanko size="md" animate={justDone} decorative />
+          </span>
+          <p ref={doneText} tabIndex={-1}>
+            <span id={`${id}-done`} className="font-medium">
+              Lesson done.
+            </span>{" "}
+            {next ? (
+              <>
+                Next:{" "}
+                <Link href={next.href} aria-describedby={`${id}-done`} className="link-inline">
+                  <LangText text={next.title} />
+                </Link>
+              </>
+            ) : (
+              "That was the last lesson on the path."
+            )}
+          </p>
+        </div>
+      ) : (
+        <>
+          <p id={`${id}-right`} className="font-medium">
+            Every answer right.
+          </p>
+          <p id={`${id}-why`} className="mt-1 text-sm text-ink-2">
+            Marking the lesson done opens its words and lines in the drills.
+          </p>
+          <Button
+            ref={button}
+            className="mt-4"
+            // Read with the button when focus lands on it, so the message isn't lost to the focus move.
+            aria-describedby={`${id}-right ${id}-why`}
+            onClick={() => {
+              setJustDone(true);
+              setDone(true);
+              onDone();
+              // The button is gone: focus the next lesson's link, or the line that says the lesson is done.
+              requestAnimationFrame(() => (doneText.current?.querySelector<HTMLElement>("a") ?? doneText.current)?.focus());
+            }}
+          >
+            Mark this lesson as done
+          </Button>
+        </>
+      )}
+    </div>
+  );
+}
+
 /**
  * The lesson's closing quiz: typed answers, checked exactly, each with its explanation. Once every question has been
  * checked, the ones missed at the first try can be asked again in fresh boxes (lib/quiz-rounds.ts), round after round.
  */
-export function Quiz({ questions, lessonKey }: { questions: QuizQuestion[]; lessonKey: string }) {
+export function Quiz({ questions, lessonKey, next }: { questions: QuizQuestion[]; lessonKey: string; next?: NextLesson }) {
   const [state, setState] = useState(() => startRounds(questions.length));
   const [status, setStatus] = useState("");
   const headingId = useId();
+  const [lessonDone] = useLessonDone(lessonKey);
+  // Every answer has just become right in this visit: the call to action takes focus.
+  const [finished, setFinished] = useState(false);
   const round = state.rounds.length - 1;
   const current = state.rounds[round];
   const missed = missedInRound(state);
@@ -148,13 +228,19 @@ export function Quiz({ questions, lessonKey }: { questions: QuizQuestion[]; less
   const right = Object.keys(state.right).length;
 
   const check = (i: number, correct: boolean) => {
-    const next = recordCheck(state, i, correct);
-    setState(next);
+    const after = recordCheck(state, i, correct);
+    setState(after);
     // The end of a round: the score, and the offer to try the misses again (each box's own feedback says the rest).
-    const r = next.rounds.at(-1)!;
+    const r = after.rounds.at(-1)!;
     const ended = Object.keys(r.first).length === r.asked.length && Object.keys(current.first).length < r.asked.length;
+    if (allRight(after, questions.length) && !allRight(state, questions.length)) {
+      // Not yet done: focus moves to the button, which carries the message. Already done: nothing moves, so say it.
+      setFinished(!lessonDone);
+      setStatus(lessonDone ? "Every answer right. This lesson is already marked done." : "");
+      return;
+    }
     if (!ended) return;
-    const still = missedInRound(next).length;
+    const still = missedInRound(after).length;
     const offer = `“Try the ${still === 1 ? "one" : still} you missed again” is below the quiz.`;
     if (round === 0) setStatus(still ? `${r.asked.length - still} of ${r.asked.length} right at the first try. ${offer}` : "");
     else setStatus(still ? `${roundName(round)}: ${r.asked.length - still} of ${r.asked.length} right. ${offer}` : `${roundName(round)}: all right.`);
@@ -210,6 +296,7 @@ export function Quiz({ questions, lessonKey }: { questions: QuizQuestion[]; less
           </Button>
         </div>
       )}
+      {allRight(state, questions.length) && <FinishLesson lessonKey={lessonKey} next={next} focus={finished} onDone={() => setStatus("Lesson marked as done.")} />}
       {/* Always mounted, so screen readers announce each change. */}
       <p role="status" className="sr-only">
         {status}

@@ -13,7 +13,7 @@
  * - motion: no running animation or transition longer than 1 ms, after load and after every Tab;
  * - the page answers 200 and logs no console error or uncaught exception.
  * Then the states the walk can't reach: the search dialog with results, the Extras menu, the Display popover, the
- * word card, a drill and a quiz after a miss, a quiz's second try, the home page with saved progress, and the dictionary's row radios
+ * word card, a drill and a quiz after a miss, a quiz's second try and its call to action when every answer is right, the home page with saved progress, and the dictionary's row radios
  * walked with the arrow keys. Each scenario fails if it doesn't reach its state. A third pass at text size L
  * with furigana and romaji, and one at 768 and 800 px (a tablet; the header's labels show from 800), check
  * overflow only. Last, Lighthouse's accessibility audit on representative pages
@@ -502,6 +502,20 @@ const SCENARIOS = [
       }
       await page.getByRole("button", { name: /you missed again/ }).click();
       await reach(page, "the second-try boxes, announced", () => !!document.activeElement?.closest("h3 + ol") && /Second try/.test(document.querySelector('section[aria-labelledby="quiz-heading"] [role=status]')?.textContent ?? ""));
+    },
+  },
+  {
+    name: "quiz all right",
+    route: LESSON,
+    limit: 3,
+    async setup(page) {
+      // Every answer right: "Mark this lesson as done" takes focus. The answers are this lesson's.
+      const boxes = page.locator('section[aria-labelledby="quiz-heading"] > ol input');
+      for (const [i, answer] of ["読む", "飲みます", "学生だよ", "暑い"].entries()) {
+        await boxes.nth(i).fill(answer);
+        await boxes.nth(i).press("Enter");
+      }
+      await reach(page, "the finish button, focused", () => document.activeElement?.textContent === "Mark this lesson as done");
     },
   },
   {

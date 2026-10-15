@@ -60,7 +60,7 @@ export default async function LessonPage({ params }: PageProps<"/learn/[unit]/[l
         </div>
       </header>
 
-      <LessonRenderer blocks={lesson.blocks} lessonKey={key} />
+      <LessonRenderer blocks={lesson.blocks} lessonKey={key} next={next && { href: next.href, title: next.lesson.title }} />
 
       <footer className="mt-16 border-t border-line pt-10">
         <CompleteButton lessonKey={key} />

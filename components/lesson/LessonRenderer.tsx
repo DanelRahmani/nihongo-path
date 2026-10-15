@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Cell, Jp, Rich } from "@/components/Jp";
-import { Quiz } from "@/components/lesson/Quiz";
+import { type NextLesson, Quiz } from "@/components/lesson/Quiz";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { panelClass } from "@/components/ui/Panel";
 import type { Block, Example } from "@/content/types";
@@ -37,7 +37,7 @@ const CALLOUT = {
   tip: { jp: "コツ", label: "Tip", box: "bg-good-soft", seal: "text-good" },
 } as const;
 
-function BlockView({ block, lessonKey }: { block: Block; lessonKey: string }) {
+function BlockView({ block, lessonKey, next }: { block: Block; lessonKey: string; next?: NextLesson }) {
   switch (block.type) {
     case "idea":
       return (
@@ -184,7 +184,7 @@ function BlockView({ block, lessonKey }: { block: Block; lessonKey: string }) {
     }
 
     case "quiz":
-      return <Quiz questions={block.questions} lessonKey={lessonKey} />;
+      return <Quiz questions={block.questions} lessonKey={lessonKey} next={next} />;
 
     case "link":
       return (
@@ -210,12 +210,15 @@ function BlockView({ block, lessonKey }: { block: Block; lessonKey: string }) {
   }
 }
 
-/** A lesson's blocks. `lessonKey` ("unit/lesson") names the quiz's questions in the mistake notebook. */
-export function LessonRenderer({ blocks, lessonKey }: { blocks: Block[]; lessonKey: string }) {
+/**
+ * A lesson's blocks. `lessonKey` ("unit/lesson") names the quiz's questions in the mistake notebook; `next` is the
+ * lesson after it, which the quiz offers once the lesson is done.
+ */
+export function LessonRenderer({ blocks, lessonKey, next }: { blocks: Block[]; lessonKey: string; next?: NextLesson }) {
   return (
     <div>
       {blocks.map((b, i) => (
-        <BlockView key={i} block={b} lessonKey={lessonKey} />
+        <BlockView key={i} block={b} lessonKey={lessonKey} next={next} />
       ))}
     </div>
   );

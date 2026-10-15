@@ -11,28 +11,37 @@ import { progressStore } from "@/lib/stores";
 import { useStore } from "@/lib/storage";
 
 /** The red seal for a finished lesson: 済 means "done". */
-export function Hanko({ size = "md", animate = false }: { size?: "sm" | "md" | "lg"; animate?: boolean }) {
-  const cls = { sm: "size-7 shrink-0 text-sm", md: "size-10 text-lg", lg: "size-16 text-3xl" }[size];
+/** `decorative` hides the seal from screen readers when the text beside it already says "done". */
+export function Hanko({ size = "md", animate = false, decorative = false }: { size?: "sm" | "md" | "lg"; animate?: boolean; decorative?: boolean }) {
+  const cls = { sm: "size-7 text-sm", md: "size-10 text-lg", lg: "size-16 text-3xl" }[size];
+  const label = decorative ? { "aria-hidden": true } : { role: "img", "aria-label": "Done" };
   return (
-    <span lang="ja" role="img" aria-label="Done" className={`hanko ${cls} ${animate ? "hanko-stamp" : ""}`}>
+    <span lang="ja" {...label} className={`hanko shrink-0 ${cls} ${animate ? "hanko-stamp" : ""}`}>
       済
     </span>
   );
 }
 
-export function CompleteButton({ lessonKey }: { lessonKey: string }) {
+/** Whether a lesson is marked done, and a setter shared by the footer's button and the quiz's call to action. */
+export function useLessonDone(lessonKey: string): [boolean, (done: boolean) => void] {
   const [progress, setProgress] = useStore(progressStore);
+  const set = (done: boolean) =>
+    setProgress((p) => {
+      const next = { ...p };
+      if (done) next[lessonKey] = true;
+      else delete next[lessonKey];
+      return next;
+    });
+  return [Boolean(progress[lessonKey]), set];
+}
+
+export function CompleteButton({ lessonKey }: { lessonKey: string }) {
+  const [done, setDone] = useLessonDone(lessonKey);
   const [justStamped, setJustStamped] = useState(false);
-  const done = Boolean(progress[lessonKey]);
 
   const toggle = () => {
     setJustStamped(!done);
-    setProgress((p) => {
-      const next = { ...p };
-      if (done) delete next[lessonKey];
-      else next[lessonKey] = true;
-      return next;
-    });
+    setDone(!done);
   };
 
   return (

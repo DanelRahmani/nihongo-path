@@ -7,11 +7,21 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **The feature plan is done** (A1–H3, every row marked in `docs/PLAN-features.md`). `features` was pushed to `main` on 2026-10-14 with the owner's permission (see Decisions). Where to pick up:
-  - After the deploy, check the live site: a page's font stylesheet has about 180 `@font-face` rules (the trim ran on Vercel), the service worker installs, and `/dictionary` lists the expansion words.
+- **The feature plan (A1–H3) and the owner's ten follow-up items (I1–I10) are done.** `features` was pushed to `main` on 2026-10-15 with the owner's permission (see Decisions). Where to pick up:
+  - After the deploy, check the live site:
+    - the browser offers to install the app, with the red-dot icon;
+    - `/keyboard` loads and is in the Practice menu;
+    - a kanji page lists its lessons, and the word card shows "In the lessons";
+    - a quiz offers "Try the N you missed again", and then "Mark this lesson as done" once every answer is right;
+    - "Study the More words deck too" on `/vocabulary` loads cards;
+    - "New cards a day" on the Today card;
+    - search finds words, and `/search-items.json` is about 139 KB (`/search-index.json` is gone);
+    - a page's font stylesheet has about 180 `@font-face` rules.
   - The items under "Waiting on the owner" below.
-  - Optional: more expansion batches (from candidate 2251), the search index's size, the home page's font-swap shift.
-  - Later performance work: the search index is 777 KB (175 KB gzipped) with the expansion words, loaded when search first opens; building the word results from `/dictionary-data.json` (F3 review) would remove most of that. The home page's layout shift (0.14) is the fonts swapping in the Today card.
+  - `npm run expand-refresh` on JMdict 3.6.2 reports 17 "part of speech now …" findings. They are G2's reviewed corrections (`// pos: was X`), present before I10. Teach the script to accept a correction marked in the batch, so it exits 0 again.
+  - I8 idea: a sweep pass that lays the home page out with the web fonts blocked and then loaded, and fails if anything above the fold moves. The remaining 0.03 CLS is the Today card's date wrapping its last word in the fallback (date- and width-dependent).
+  - Optional: more expansion batches (from candidate 2251; proper nouns only for countries, major cities and the modern era names).
+  - The quiz retry and finish panel (I4, I5) are pure in `lib/quiz-rounds.ts`; the daily new-card limit (I7) is in `lib/new-cards.ts`, with `answerScheduled` in `lib/stores.ts` as the one way a drill answers a scheduled card.
   - More expansion batches, if wanted: candidates 2251 on, written and reviewed as G2 was (writer spec in the session scratchpad; restate it in the agent prompt: keep id/jp/pos/verb as given, short English meanings of 60 characters at most in British spelling, verbs start "to", "(する: to …)" for suru nouns, a topic from the list, `// skipped: id jp (reason)` lines, `kana: "reading"` candidates skipped for the owner; proper nouns skipped except countries, major cities and the modern era names).
   - The credits page, the footer credit line and the dictionary JSON's licence field are already live for the existing JMdict/KANJIDIC2 data.
   - Before each later session's batches, `npm run expand-refresh -- <jmdict-eng.json>` (the full file) checks every word against the newest JMdict.

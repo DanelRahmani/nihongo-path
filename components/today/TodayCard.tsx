@@ -240,7 +240,8 @@ export function TodayCard() {
               onChange={(n) => setStudy((s) => ({ ...s, newPerDay: Number(n) as NewPerDay }))}
               options={NEW_PER_DAY.map((n) => ({ value: String(n), label: <span className="text-sm">{n}</span> }))}
             />
-            <p className={`mt-2 text-xs text-ink-2 ${hidden}`} aria-hidden={minute === null || undefined}>
+            {/* A guard: two lines kept, so a font that wraps it differently before the web font arrives can't move the card. */}
+            <p className={`mt-2 min-h-8 text-xs leading-4 text-ink-2 ${hidden}`} aria-hidden={minute === null || undefined}>
               {newToday(newCards, today)} of {study.newPerDay} new cards today, across the drills
               {newToday(newCards, today) >= study.newPerDay ? "; new ones open tomorrow" : ""}. Reviews aren&apos;t limited.
             </p>
@@ -253,7 +254,7 @@ export function TodayCard() {
           Word of the day
         </Eyebrow>
         {/* The word arrives after the card: its space is kept so nothing below moves. */}
-        <div className="mt-3 flex min-h-[4.75rem] flex-wrap items-end justify-between gap-x-6 gap-y-2">
+        <div className="mt-3 flex min-h-[5.25rem] flex-wrap items-end justify-between gap-x-6 gap-y-2">
           {word && (
             <>
               <div className="min-w-0">

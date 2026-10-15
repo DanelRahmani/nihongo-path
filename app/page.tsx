@@ -37,9 +37,12 @@ export default function Home() {
     <div className="mx-auto max-w-3xl px-4 pt-10 pb-24 sm:px-6 sm:pt-16">
       <section className="relative flex items-start gap-6 sm:gap-12">
         <span aria-hidden className="sun -top-16 -left-24 size-80 sm:-left-32 sm:size-[28rem]" />
+        {/* Its height is reserved: five characters of 1em plus 0.12em tracking. Before the Japanese font arrives, a
+            fallback's vertical metrics can make the column much shorter, and everything below would move when it
+            swaps in. (Its width, one line-height, is the same in both.) */}
         <h1
           lang="ja"
-          className="tategaki relative shrink-0 font-serif text-5xl leading-[1.05] font-extrabold tracking-[0.12em] sm:text-7xl"
+          className="tategaki relative h-[5.6em] shrink-0 font-serif text-5xl leading-[1.05] font-extrabold tracking-[0.12em] sm:text-7xl"
         >
           日本語<span className="text-accent">の</span>道
         </h1>

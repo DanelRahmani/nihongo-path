@@ -2,12 +2,14 @@
 
 import { type ReactNode, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { Button } from "@/components/ui/Button";
-import { panelClass } from "@/components/ui/Panel";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import type { Check, Deck } from "@/lib/decks";
-import { answerCard, deckState, deckStats, formatWait, nextCard, practiceCard, type SrsState, unlockedGroupCount, unlockGroup } from "@/lib/srs";
+import { deckState, deckStats, nextCard, practiceCard, type SrsState, unlockedGroupCount, unlockGroup } from "@/lib/srs";
 import { useStore } from "@/lib/storage";
-import { logAnswer, srsStore } from "@/lib/stores";
+import { answerScheduled, logAnswer, newCardsLeft, newCardsStore, srsStore, studyStore } from "@/lib/stores";
+import { newLeft } from "@/lib/new-cards";
+import { CaughtUp } from "@/components/drill/CaughtUp";
+import { dayKey } from "@/lib/today";
 import { fieldClass } from "@/components/ui/field";
 import { KeyboardHelp, typedWithoutJapanese } from "@/components/ui/KeyboardHelp";
 
@@ -87,7 +89,12 @@ export function TypedDrill<C extends { id: string }>({
   const nextButton = useRef<HTMLButtonElement>(null);
 
   const own = (state: SrsState) => deckState(state, deck.id);
-  const current = picked === undefined ? (mounted ? nextCard(deck, own(srs), now) : null) : picked;
+  const [study] = useStore(studyStore);
+  const [newCards] = useStore(newCardsStore);
+  // Today's allowance, from the clock now: a limit raised in another tab, or a new day, opens new cards again.
+  const left = newLeft(newCards, dayKey(new Date()), study.newPerDay);
+  const fromSchedule = picked === undefined || (picked === null && !practice && left > 0);
+  const current = fromSchedule ? (mounted ? nextCard(deck, own(srs), now, undefined, left) : null) : picked;
 
   // After a miss the answer box is gone: put focus on "Next card", so Enter moves on.
   useEffect(() => {
@@ -97,7 +104,7 @@ export function TypedDrill<C extends { id: string }>({
   const advance = (state: SrsState, lastId: string | undefined, inPractice = practice) => {
     const t = Date.now();
     setNow(t);
-    setPicked(inPractice ? practiceCard(deck, own(state), lastId, Math.random()) : nextCard(deck, own(state), t, lastId));
+    setPicked(inPractice ? practiceCard(deck, own(state), lastId, Math.random()) : nextCard(deck, own(state), t, lastId, newCardsLeft(t)));
     setInput("");
     setPhase("ask");
   };
@@ -109,7 +116,7 @@ export function TypedDrill<C extends { id: string }>({
     let state = srsStore.get();
     if (!practice) {
       const before = unlockedGroupCount(deck, own(state));
-      state = answerCard(state, deck.id, current.id, check.correct, Date.now());
+      state = answerScheduled(state, deck.id, current.id, check.correct, Date.now());
       setSrs(state);
       const after = unlockedGroupCount(deck, own(state));
       if (after > before && !deck.isOpen) setUnlocked(deck.groupLabel(deck.groups[after - 1]));
@@ -132,6 +139,8 @@ export function TypedDrill<C extends { id: string }>({
 
   const open = unlockedGroupCount(deck, own(srs));
   const stats = deckStats(deck, own(srs), now);
+  // Nothing to ask because today's new cards are used up (I7), though new ones are waiting.
+  const heldByLimit = left <= 0 && nextCard(deck, own(srs), now) !== null;
   const status = unlocked ? `${unlockLabel}: ${unlocked}` : last?.check.correct && phase === "ask" ? said(last.card, last.check) : "";
 
   // Nothing to ask at all; a card studied before its lesson was unmarked still counts.
@@ -239,30 +248,17 @@ export function TypedDrill<C extends { id: string }>({
           )}
         </form>
       ) : (
-        <div className={panelClass("surface", "rise mt-6 p-8 text-center")}>
-          <p lang="ja" className="font-serif text-5xl text-accent">
-            お見事
-          </p>
-          <p className="mt-3 text-lg font-medium">All caught up</p>
-          <p className="mt-1 text-sm text-ink-2">
-            {stats.nextDue
-              ? `The next card is due in ${formatWait(stats.nextDue - now)}. Spacing reviews out is what makes them stick.`
-              : "Nothing is scheduled yet."}
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-2">
-            <Button
-              variant="secondary"
-              onClick={() => {
-                setPractice(true);
-                advance(srsStore.get(), undefined, true);
-              }}
-            >
-              Practise anyway
-            </Button>
-            {manualUnlock && open < deck.groups.length && <Button onClick={unlockNext}>I know these: open the next group</Button>}
-          </div>
-          <p className="mt-4 text-xs text-ink-2">Practice doesn&apos;t change your review schedule.</p>
-        </div>
+        <CaughtUp
+          nextDue={stats.nextDue}
+          now={now}
+          held={heldByLimit}
+          started={Object.keys(own(srs).cards).length > 0}
+          onPractise={() => {
+            setPractice(true);
+            advance(srsStore.get(), undefined, true);
+          }}
+          unlock={manualUnlock && open < deck.groups.length ? { label: "I know these: open the next group", onClick: unlockNext } : undefined}
+        />
       )}
     </div>
   );

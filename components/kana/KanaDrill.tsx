@@ -6,8 +6,11 @@ import { panelClass } from "@/components/ui/Panel";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import type { Kana } from "@/content/kana";
 import { type Check, KANA_DECKS, type KanaDeck } from "@/lib/decks";
-import { answerCard, deckState, deckStats, formatWait, nextCard, practiceCard, type SrsState, unlockedGroupCount, unlockGroup } from "@/lib/srs";
-import { logAnswer, srsStore } from "@/lib/stores";
+import { deckState, deckStats, nextCard, practiceCard, type SrsState, unlockedGroupCount, unlockGroup } from "@/lib/srs";
+import { answerScheduled, logAnswer, newCardsLeft, newCardsStore, srsStore, studyStore } from "@/lib/stores";
+import { newLeft } from "@/lib/new-cards";
+import { CaughtUp } from "@/components/drill/CaughtUp";
+import { dayKey } from "@/lib/today";
 import { useStore } from "@/lib/storage";
 import { fieldClass } from "@/components/ui/field";
 
@@ -57,7 +60,9 @@ type Phase = "ask" | "wrong";
 function Session({ deck, onExit }: { deck: KanaDeck; onExit: () => void }) {
   const [srs, setSrs] = useStore(srsStore);
   const [practice, setPractice] = useState(false);
-  const [current, setCurrent] = useState<Kana | null>(() => nextCard(deck, deckState(srsStore.get(), deck.id), Date.now()));
+  const [study] = useStore(studyStore);
+  const [newCards] = useStore(newCardsStore);
+  const [picked, setCurrent] = useState<Kana | null>(() => nextCard(deck, deckState(srsStore.get(), deck.id), Date.now(), undefined, newCardsLeft(Date.now())));
   const [phase, setPhase] = useState<Phase>("ask");
   const [input, setInput] = useState("");
   const [score, setScore] = useState({ right: 0, wrong: 0 });
@@ -65,6 +70,9 @@ function Session({ deck, onExit }: { deck: KanaDeck; onExit: () => void }) {
   const [unlocked, setUnlocked] = useState<string | null>(null);
   const [now, setNow] = useState(() => Date.now());
   const nextButton = useRef<HTMLButtonElement>(null);
+  // Today's allowance, from the clock now: a limit raised in another tab, or a new day, opens new cards again.
+  const left = newLeft(newCards, dayKey(new Date()), study.newPerDay);
+  const current = picked === null && !practice && left > 0 ? nextCard(deck, deckState(srs, deck.id), now, undefined, left) : picked;
 
   // After a miss the answer box is gone: put focus on "Next card", so Enter moves on (autoFocus doesn't fire here).
   useEffect(() => {
@@ -75,7 +83,7 @@ function Session({ deck, onExit }: { deck: KanaDeck; onExit: () => void }) {
     const t = Date.now();
     setNow(t);
     const own = deckState(state, deck.id);
-    setCurrent(inPractice ? practiceCard(deck, own, lastId, Math.random()) : nextCard(deck, own, t, lastId));
+    setCurrent(inPractice ? practiceCard(deck, own, lastId, Math.random()) : nextCard(deck, own, t, lastId, newCardsLeft(t)));
     setInput("");
     setPhase("ask");
   };
@@ -89,7 +97,7 @@ function Session({ deck, onExit }: { deck: KanaDeck; onExit: () => void }) {
     let state = srsStore.get();
     if (!practice) {
       const before = unlockedGroupCount(deck, deckState(state, deck.id));
-      state = answerCard(state, deck.id, current.id, correct, Date.now());
+      state = answerScheduled(state, deck.id, current.id, correct, Date.now());
       setSrs(state);
       const after = unlockedGroupCount(deck, deckState(state, deck.id));
       if (after > before) setUnlocked(deck.groupLabel(deck.groups[after - 1]));
@@ -109,6 +117,8 @@ function Session({ deck, onExit }: { deck: KanaDeck; onExit: () => void }) {
 
   const rowsOpen = unlockedGroupCount(deck, deckState(srs, deck.id));
   const stats = deckStats(deck, deckState(srs, deck.id), now);
+  // Nothing to ask because today's new cards are used up (I7), though new ones are waiting.
+  const heldByLimit = left <= 0 && nextCard(deck, deckState(srs, deck.id), now) !== null;
 
   return (
     <div>
@@ -206,30 +216,17 @@ function Session({ deck, onExit }: { deck: KanaDeck; onExit: () => void }) {
           </p>
         </form>
       ) : (
-        <div className={panelClass("surface", "rise mt-6 p-8 text-center")}>
-          <p lang="ja" className="font-serif text-5xl text-accent">
-            お見事
-          </p>
-          <p className="mt-3 text-lg font-medium">All caught up</p>
-          <p className="mt-1 text-sm text-ink-2">
-            {stats.nextDue
-              ? `The next card is due in ${formatWait(stats.nextDue - now)}. Spacing reviews out is what makes them stick.`
-              : "Nothing is scheduled yet."}
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-2">
-            <Button
-              variant="secondary"
-              onClick={() => {
-                setPractice(true);
-                advance(srsStore.get(), undefined, true);
-              }}
-            >
-              Practise anyway
-            </Button>
-            {rowsOpen < deck.groups.length && <Button onClick={unlockNextRow}>I know these: unlock the next row</Button>}
-          </div>
-          <p className="mt-4 text-xs text-ink-2">Practice doesn&apos;t change your review schedule.</p>
-        </div>
+        <CaughtUp
+          nextDue={stats.nextDue}
+          now={now}
+          held={heldByLimit}
+          started={Object.keys(deckState(srs, deck.id).cards).length > 0}
+          onPractise={() => {
+            setPractice(true);
+            advance(srsStore.get(), undefined, true);
+          }}
+          unlock={rowsOpen < deck.groups.length ? { label: "I know these: unlock the next row", onClick: unlockNextRow } : undefined}
+        />
       )}
     </div>
   );

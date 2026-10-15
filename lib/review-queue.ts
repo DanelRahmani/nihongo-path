@@ -79,6 +79,8 @@ export function reviewCount(srs: SrsState, notebook: Notebook, now: number, exis
  * only (it leaves the schedule alone, as practice does). Every answer is reported to the notebook. The daily goal
  * is counted by the caller (lib/stores.ts logAnswer).
  */
+// applyReview schedules due cards only: they are studied, so the daily new-card limit (I7) never applies. If the
+// queue ever asks a card with no schedule, answer it through answerScheduled (lib/stores.ts) so it is counted.
 export function applyReview(srs: SrsState, notebook: Notebook, item: QueueItem, correct: boolean, now: number): { srs: SrsState; notebook: Notebook } {
   return {
     srs: item.from === "due" ? answerCard(srs, item.deckId, item.cardId, correct, now) : srs,

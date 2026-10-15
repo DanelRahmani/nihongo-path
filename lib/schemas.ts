@@ -7,6 +7,7 @@ import { KANA } from "@/content/kana";
 import { type Notebook, noteKey } from "@/lib/notebook";
 import { type CardState, EMPTY_SRS, MAX_BOX, type SrsState } from "@/lib/srs";
 import { type Activity, EMPTY_ACTIVITY, GOALS, type Goal, isDayKey } from "@/lib/today";
+import { DEFAULT_NEW_PER_DAY, NEW_PER_DAY, type NewCards, type NewPerDay, NO_NEW_CARDS } from "@/lib/new-cards";
 
 /**
  * How kanji are shown. kana: kanji replaced by their reading · all: furigana over every kanji ·
@@ -232,21 +233,40 @@ export const notebookSchema: StoreSchema<Notebook> = {
   },
 };
 
-/** Study choices that aren't display settings: whether the "More words" deck (I6) is on. Off by default. */
+/**
+ * Study choices that aren't display settings: whether the "More words" deck (I6) is on (off by default), and how
+ * many new cards a day the decks may introduce (I7; 10 by default).
+ */
 export interface Study {
   moreWords: boolean;
+  newPerDay: NewPerDay;
 }
 
-export const DEFAULT_STUDY: Study = Object.freeze({ moreWords: false });
+export const DEFAULT_STUDY: Study = Object.freeze({ moreWords: false, newPerDay: DEFAULT_NEW_PER_DAY });
 
-/** An unreadable field falls back to its default, so one bad value doesn't reset the rest. */
+/** An unreadable field falls back to its default, so one bad value doesn't reset the rest. v2 added `newPerDay`. */
 export const studySchema: StoreSchema<Study> = {
-  version: 1,
+  version: 2,
   fallback: DEFAULT_STUDY,
+  migrations: [wrapUnchanged, (data) => (isPlainObject(data) ? { ...data, newPerDay: DEFAULT_NEW_PER_DAY } : data)],
+  validate(data) {
+    if (!isPlainObject(data)) return null;
+    return {
+      moreWords: typeof data.moreWords === "boolean" ? data.moreWords : DEFAULT_STUDY.moreWords,
+      newPerDay: NEW_PER_DAY.includes(data.newPerDay as NewPerDay) ? (data.newPerDay as NewPerDay) : DEFAULT_STUDY.newPerDay,
+    };
+  },
+};
+
+/** New cards answered today (I7, lib/new-cards.ts): an unreadable day or count reads as none. */
+export const newCardsSchema: StoreSchema<NewCards> = {
+  version: 1,
+  fallback: NO_NEW_CARDS,
   migrations: [wrapUnchanged],
   validate(data) {
     if (!isPlainObject(data)) return null;
-    return { moreWords: typeof data.moreWords === "boolean" ? data.moreWords : DEFAULT_STUDY.moreWords };
+    const { day, count } = data;
+    return typeof day === "string" && isDayKey(day) && Number.isInteger(count) && (count as number) >= 0 ? { day, count: count as number } : NO_NEW_CARDS;
   },
 };
 
@@ -260,6 +280,7 @@ export const SCHEMAS = {
   "np:activity": activitySchema,
   "np:notebook": notebookSchema,
   "np:study": studySchema,
+  "np:new-cards": newCardsSchema,
 } as const;
 
 export type StoreKey = keyof typeof SCHEMAS;

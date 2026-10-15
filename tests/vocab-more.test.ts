@@ -102,8 +102,8 @@ describe("the study store", () => {
   it("is listed for backup, off by default, and keeps a readable switch", () => {
     expect(SCHEMAS["np:study"]).toBe(studySchema);
     expect(DEFAULT_STUDY.moreWords).toBe(false);
-    expect(studySchema.validate({ moreWords: true })).toEqual({ moreWords: true });
-    expect(studySchema.validate({ moreWords: "on" })).toEqual({ moreWords: false });
+    expect(studySchema.validate({ moreWords: true, newPerDay: 10 })).toEqual({ moreWords: true, newPerDay: 10 });
+    expect(studySchema.validate({ moreWords: "on", newPerDay: 10 })).toEqual({ moreWords: false, newPerDay: 10 });
     expect(studySchema.validate([])).toBeNull();
   });
 });

@@ -14,7 +14,8 @@ import { CASUAL_DECK_ID, CLOZE_DECK_ID, POLITE_DECK_ID, VOCAB_DECK_ID, VOCAB_MOR
 import { deckState, deckStats } from "@/lib/srs";
 import { reviewCount } from "@/lib/review-queue";
 import { useStore } from "@/lib/storage";
-import { activityStore, notebookStore, srsStore, studyStore } from "@/lib/stores";
+import { activityStore, newCardsStore, notebookStore, srsStore, studyStore } from "@/lib/stores";
+import { NEW_PER_DAY, type NewPerDay, newToday } from "@/lib/new-cards";
 import { dayKey, englishDate, GOALS, type Goal, japaneseDate, setGoal, streak, todayProgress, wordOfTheDay } from "@/lib/today";
 import type { TodayWord } from "@/lib/today-words";
 
@@ -104,7 +105,8 @@ export function TodayCard() {
   const [activity, setActivity] = useStore(activityStore);
   const [srs] = useStore(srsStore);
   const [notebook] = useStore(notebookStore);
-  const [study] = useStore(studyStore);
+  const [study, setStudy] = useStore(studyStore);
+  const [newCards] = useStore(newCardsStore);
   const [words, setWords] = useState<TodayWord[] | null>(null);
   const [ids, setIds] = useState<Record<string, Set<string>> | null>(null);
 
@@ -229,6 +231,19 @@ export function TodayCard() {
               options={GOALS.map((g) => ({ value: String(g), label: <span className="text-sm">{g} a day</span> }))}
             />
             {progress.next !== null && <p className="mt-2 text-xs text-ink-2">Today is done; {progress.next} a day starts tomorrow.</p>}
+          </div>
+          <div>
+            <Segmented
+              legend="New cards a day"
+              name="new-per-day"
+              value={String(study.newPerDay)}
+              onChange={(n) => setStudy((s) => ({ ...s, newPerDay: Number(n) as NewPerDay }))}
+              options={NEW_PER_DAY.map((n) => ({ value: String(n), label: <span className="text-sm">{n}</span> }))}
+            />
+            <p className={`mt-2 text-xs text-ink-2 ${hidden}`} aria-hidden={minute === null || undefined}>
+              {newToday(newCards, today)} of {study.newPerDay} new cards today, across the drills
+              {newToday(newCards, today) >= study.newPerDay ? "; new ones open tomorrow" : ""}. Reviews aren&apos;t limited.
+            </p>
           </div>
         </div>
       </div>

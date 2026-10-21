@@ -4,8 +4,15 @@ import { useRef, useState, useSyncExternalStore } from "react";
 import { Button } from "@/components/ui/Button";
 import { Feedback } from "@/components/ui/Feedback";
 import { panelClass } from "@/components/ui/Panel";
-import { backupFileName, makeBackup, type ReadBackup, readBackup, STORE_NAMES, type StoreOutcome } from "@/lib/backup";
-import type { StoreKey } from "@/lib/schemas";
+import { type ReadBackup, readBackup, STORE_NAMES, type StoreOutcome } from "@/lib/backup";
+import { decode, encode, type StoreSchema } from "@/lib/envelope";
+import { buildExport, exportCsv, exportFileName, type ExportLesson } from "@/lib/export";
+import { loadMoreWords } from "@/lib/load-more-words";
+import { loadReviewData } from "@/lib/load-review-data";
+import { KEPT_ON_MERGE, mergeStores } from "@/lib/merge";
+import { VOCAB_MORE_DECK_ID } from "@/lib/notebook";
+import { describeItems, type ReviewDecks, reviewDecks } from "@/lib/review-decks";
+import { SCHEMAS, type StoreKey, type StoreValues } from "@/lib/schemas";
 
 const noSubscribe = () => () => {};
 const useMounted = () => useSyncExternalStore(noSubscribe, () => true, () => false);
@@ -29,8 +36,32 @@ function storageWorks(): boolean {
   }
 }
 
-/** Bigger than any backup can be: localStorage itself holds about 5 MB. */
-const MAX_FILE = 5 * 1024 * 1024;
+/**
+ * Bigger than any export can be: localStorage holds about 5 MB, and the export's analysis sections (each answer
+ * spelled out) make the file about three times the stores.
+ */
+const MAX_FILE = 64 * 1024 * 1024;
+
+const schemaOf = (key: StoreKey) => SCHEMAS[key] as StoreSchema<unknown>;
+
+/** Every store's value as this browser holds it (the fallback where it holds nothing usable). */
+function readValues(): StoreValues {
+  return Object.fromEntries((Object.keys(SCHEMAS) as StoreKey[]).map((k) => [k, decode(readRaw(k), schemaOf(k)).value])) as StoreValues;
+}
+
+/** The decks that describe each item, or null when their data can't be loaded. */
+async function loadDecks(stores: StoreValues): Promise<ReviewDecks | null> {
+  const usesMore =
+    VOCAB_MORE_DECK_ID in stores["np:srs"].decks ||
+    stores["np:history"].some((r) => r.k === VOCAB_MORE_DECK_ID) ||
+    Object.values(stores["np:notebook"]).some((n) => n.deck === VOCAB_MORE_DECK_ID);
+  try {
+    const [data, more] = await Promise.all([loadReviewData(), usesMore ? loadMoreWords().catch(() => []) : Promise.resolve([])]);
+    return reviewDecks(data, more);
+  } catch {
+    return null;
+  }
+}
 
 const OUTCOME: Record<StoreOutcome, string> = {
   restored: "will be restored",
@@ -48,8 +79,9 @@ let lastUrl: string | undefined;
  * display settings start from the restored data. Stores the file lacks are kept. A write that fails part-way puts
  * the earlier stores back.
  */
-export function DataBackup() {
+export function DataBackup({ lessons, appVersion }: { lessons: ExportLesson[]; appVersion: string }) {
   const mounted = useMounted();
+  const [busy, setBusy] = useState(false);
   const [read, setRead] = useState<(ReadBackup & { name: string }) | null>(null);
   const [status, setStatus] = useState("");
   const fileInput = useRef<HTMLInputElement>(null);
@@ -73,26 +105,48 @@ export function DataBackup() {
 
   const held = (Object.keys(STORE_NAMES) as StoreKey[]).filter((key) => readRaw(key) !== null);
 
-  const exportFile = () => {
-    const now = new Date();
-    const blob = new Blob([makeBackup(readRaw, now)], { type: "application/json" });
+  const download = (name: string, text: string, type: string) => {
+    const blob = new Blob([text], { type });
     // The previous file's address is released only now: Safari can still be opening it a while after the click.
     if (lastUrl) URL.revokeObjectURL(lastUrl);
     lastUrl = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = lastUrl;
-    link.download = backupFileName(now);
+    link.download = name;
     document.body.append(link);
     link.click();
     link.remove();
-    announce(`Download started: ${link.download}.`);
   };
 
-  const restore = () => {
+  const exportFile = async (kind: "json" | "csv") => {
+    setBusy(true);
+    const now = Date.now();
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const stores = readValues();
+    const decks = await loadDecks(stores);
+    const file = buildExport({ stores, read: readRaw, lessons, describe: describeItems(decks), now, timeZone, appVersion });
+    const name = exportFileName(now, timeZone, kind);
+    if (kind === "json") download(name, JSON.stringify(file), "application/json");
+    else download(name, exportCsv(file), "text/csv;charset=utf-8");
+    setBusy(false);
+    announce(
+      `Download started: ${name}.` +
+        (decks ? "" : " The questions' text couldn't be loaded (are you offline?), so prompts and answers are left out; everything else is there."),
+    );
+  };
+
+  const restore = (mode: "merge" | "replace") => {
     if (!read?.ok) return;
-    const before = Object.keys(read.writes).map((key) => [key, readRaw(key)] as const);
+    let writes = read.writes;
+    if (mode === "merge") {
+      const keys = (Object.keys(read.writes) as StoreKey[]).filter((k) => !KEPT_ON_MERGE.includes(k));
+      const incoming = Object.fromEntries(keys.map((k) => [k, decode(read.writes[k] ?? null, schemaOf(k)).value])) as Partial<StoreValues>;
+      const merged = mergeStores(readValues(), incoming);
+      writes = Object.fromEntries(keys.map((k) => [k, encode(merged[k], schemaOf(k))]));
+    }
+    const before = Object.keys(writes).map((key) => [key, readRaw(key)] as const);
     try {
-      for (const [key, raw] of Object.entries(read.writes)) window.localStorage.setItem(key, raw as string);
+      for (const [key, raw] of Object.entries(writes)) window.localStorage.setItem(key, raw as string);
     } catch {
       // Put back what was written before the failure, so the browser doesn't hold half of each.
       for (const [key, raw] of before) {
@@ -115,28 +169,39 @@ export function DataBackup() {
     <div className="space-y-6">
       <section className={panelClass("surface", "p-6")} aria-labelledby="export-heading">
         <h2 id="export-heading" className="text-lg font-medium">
-          Save a backup
+          Export my progress
         </h2>
         <p className="mt-1 text-sm text-ink-2">
           {held.length
             ? `This browser holds: ${held.map((k) => STORE_NAMES[k].toLowerCase()).join(", ")}.`
-            : "This browser holds nothing yet: the backup would be empty."}
+            : "This browser holds nothing yet: the export would be empty."}
         </p>
-        <Button className="mt-4" onClick={exportFile} disabled={!held.length}>
-          Save to a file
-        </Button>
+        <p className="mt-2 text-sm text-ink-2">
+          The file is a full backup, and it also lists every lesson, every item you&apos;ve answered with its schedule and
+          answers, each day&apos;s totals and a summary, for analysing elsewhere. Answers are recorded from this version of
+          the app on. The summary as a spreadsheet: one row per item.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <Button onClick={() => exportFile("json")} disabled={!held.length || busy}>
+            Export my progress
+          </Button>
+          <Button variant="secondary" onClick={() => exportFile("csv")} disabled={!held.length || busy}>
+            Export summary (CSV)
+          </Button>
+        </div>
       </section>
 
       <section className={panelClass("surface", "p-6")} aria-labelledby="import-heading">
         <h2 id="import-heading" className="text-lg font-medium">
-          Restore a backup
+          Import progress
         </h2>
         <p className="mt-1 text-sm text-ink-2">
-          What the file holds replaces what this browser holds; anything the file doesn&apos;t hold stays as it is. To be
-          safe, save a backup of this browser first.
+          Merge keeps the newer state of each card and joins both histories, finished lessons and saved words; your
+          display settings stay as they are. Replace swaps what this browser holds for what the file holds. Either way,
+          anything the file doesn&apos;t hold stays as it is. To be safe, export this browser&apos;s progress first.
         </p>
         <label className="mt-4 block text-sm">
-          <span className="font-medium">Backup file</span>
+          <span className="font-medium">Export file</span>
           <input
             ref={fileInput}
             type="file"
@@ -185,8 +250,11 @@ export function DataBackup() {
             </ul>
             <p className="mt-3 text-sm text-ink-2">Close the app&apos;s other tabs first, so they don&apos;t write their old copies back.</p>
             <div className="mt-4 flex flex-wrap gap-2">
-              <Button onClick={restore} disabled={!Object.keys(read.writes).length}>
-                Restore and reload
+              <Button onClick={() => restore("merge")} disabled={!Object.keys(read.writes).length}>
+                Merge and reload
+              </Button>
+              <Button variant="secondary" onClick={() => restore("replace")} disabled={!Object.keys(read.writes).length}>
+                Replace and reload
               </Button>
               <Button
                 variant="secondary"

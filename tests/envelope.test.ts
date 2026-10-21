@@ -39,6 +39,10 @@ const LEGACY: Record<StoreKey, { before: unknown; after: unknown }> = {
   "np:path-filter": { before: { kind: "particles", hideDone: true }, after: { unit: "particles", hideDone: true } },
   // Never stored raw; a bare array still reads as version 0.
   "np:my-words": { before: ["[食|た]べる#verb", "[本|ほん]#counter"], after: ["[食|た]べる#verb", "[本|ほん]#counter"] },
+  // Added with envelopes (Phase 0), so never stored raw either.
+  "np:history": { before: [{ k: "quiz", c: "a#1", t: 1, r: "x", a: "x" }], after: [{ k: "quiz", c: "a#1", t: 1, r: "x", a: "x" }] },
+  "np:lessons-log": { before: { "start/three-scripts": { firstOpenedAt: 1 } }, after: { "start/three-scripts": { firstOpenedAt: 1 } } },
+  "np:placement": { before: [], after: [] },
   // Never stored raw either.
   "np:notebook": {
     before: { "quiz|particles/wa-topic#abc": { deck: "quiz", card: "particles/wa-topic#abc", misses: 1, rightInRow: 0, added: 5, lastMiss: 5 } },

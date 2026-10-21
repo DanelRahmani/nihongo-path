@@ -59,6 +59,8 @@ function Question({
   // Enter also confirms a Japanese keyboard's conversion; that Enter must not submit the answer.
   const composing = useRef(false);
   const lastChecked = useRef<string | null>(null);
+  // The first keystroke of this try, for the answer history's time to answer.
+  const startedAt = useRef<number | null>(null);
   // Romaji readings and names are typed in English letters, and the answer shown is the romaji.
   const romaji = q.answerIn !== undefined;
 
@@ -72,7 +74,14 @@ function Question({
           // Checking the same answer again isn't another answer. Only the first try goes to the notebook: after a
           // miss the answer is on screen, and copying it isn't remembering it.
           if (input.trim() !== lastChecked.current) {
-            logAnswer(QUIZ_DECK, quizCardId(lessonKey, q.prompt), r.correct, { notebook: !retry && lastChecked.current === null });
+            const first = !retry && lastChecked.current === null;
+            logAnswer(QUIZ_DECK, quizCardId(lessonKey, q.prompt), r.correct, {
+              notebook: first,
+              answer: input,
+              ...(startedAt.current === null ? {} : { ms: Date.now() - startedAt.current }),
+              ...(first ? {} : { mode: "x" as const }),
+            });
+            startedAt.current = null;
           }
           lastChecked.current = input.trim();
           setResult(r);
@@ -93,7 +102,10 @@ function Question({
             aria-describedby={describedBy}
             lang={romaji ? "en" : "ja"}
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => {
+              startedAt.current ??= Date.now();
+              setInput(e.target.value);
+            }}
             onCompositionStart={() => (composing.current = true)}
             onCompositionEnd={() => (composing.current = false)}
             // Safari ends the composition before the Enter that confirms it, which then has keyCode 229.

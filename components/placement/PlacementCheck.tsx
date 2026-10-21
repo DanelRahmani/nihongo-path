@@ -10,7 +10,7 @@ import { panelClass } from "@/components/ui/Panel";
 import { type Band, lessonsBefore, placement } from "@/lib/placement";
 import { checkQuestion, type QuizCheck } from "@/lib/quiz";
 import { useStore } from "@/lib/storage";
-import { progressStore } from "@/lib/stores";
+import { placementStore, progressStore, setLessonsDone } from "@/lib/stores";
 import { fieldClass } from "@/components/ui/field";
 import { typedWithoutJapanese } from "@/components/ui/KeyboardHelp";
 
@@ -26,7 +26,7 @@ const lessonHref = (lesson: string) => `/learn/${lesson}`;
  * answer with no kana or kanji isn't counted: the reader is asked to switch to a Japanese keyboard.
  */
 export function PlacementCheck({ bands, kanaLessons, lessonTitles }: { bands: Band[]; kanaLessons: string[]; lessonTitles: Record<string, string> }) {
-  const [progress, setProgress] = useStore(progressStore);
+  const [progress] = useStore(progressStore);
   const [started, setStarted] = useState(false);
   const [answers, setAnswers] = useState<boolean[][]>([]);
   const [input, setInput] = useState("");
@@ -37,7 +37,7 @@ export function PlacementCheck({ bands, kanaLessons, lessonTitles }: { bands: Ba
   const [noJapanese, setNoJapanese] = useState(false);
   const [withKana, setWithKana] = useState(true);
   // The progress before "Mark them finished", for Undo, and how many lessons it marked.
-  const [marked, setMarked] = useState<{ before: Record<string, true>; count: number } | null>(null);
+  const [marked, setMarked] = useState<{ keys: string[]; count: number } | null>(null);
   const composing = useRef(false);
   const nextButton = useRef<HTMLButtonElement>(null);
   const resultHeading = useRef<HTMLHeadingElement>(null);
@@ -58,6 +58,19 @@ export function PlacementCheck({ bands, kanaLessons, lessonTitles }: { bands: Ba
   useEffect(() => {
     if (finished) resultHeading.current?.focus();
   }, [finished]);
+  // Each finished check is kept for the progress export, once.
+  const saved = useRef(false);
+  useEffect(() => {
+    if (!finished) {
+      saved.current = false;
+      return;
+    }
+    if (saved.current) return;
+    saved.current = true;
+    const answered = bands.flatMap((b, i) => (answers[i] ?? []).map((correct, j) => ({ unit: b.unit, lesson: b.questions[j].lesson, correct })));
+    const start = result.start === null ? null : bands[result.start].unit;
+    placementStore.set((list) => [...list, { at: Date.now(), start, answers: answered }]);
+  }, [finished, bands, answers, result.start]);
   const markedCount = marked?.count ?? null;
   useEffect(() => {
     if (markedCount !== null) undoButton.current?.focus();
@@ -137,7 +150,7 @@ export function PlacementCheck({ bands, kanaLessons, lessonTitles }: { bands: Ba
                 ref={undoButton}
                 variant="secondary"
                 onClick={() => {
-                  setProgress(marked.before);
+                  setLessonsDone(marked.keys, false);
                   setMarked(null);
                   requestAnimationFrame(() => markButton.current?.focus());
                 }}
@@ -156,8 +169,8 @@ export function PlacementCheck({ bands, kanaLessons, lessonTitles }: { bands: Ba
                   ref={markButton}
                   className="mt-4"
                   onClick={() => {
-                    setMarked({ before: progress, count: toMark.length });
-                    setProgress((p) => ({ ...p, ...Object.fromEntries(toMark.map((l) => [l, true as const])) }));
+                    setMarked({ keys: toMark, count: toMark.length });
+                    setLessonsDone(toMark, true, true);
                   }}
                 >
                   Mark {toMark.length} lesson{toMark.length === 1 ? "" : "s"} finished

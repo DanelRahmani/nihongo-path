@@ -1,8 +1,10 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { backupFileName, makeBackup, readBackup, STORE_NAMES } from "@/lib/backup";
 import { decode, encode, type StoreSchema } from "@/lib/envelope";
+import { mergeStores } from "@/lib/merge";
 import { reportAnswer } from "@/lib/notebook";
-import { SCHEMAS, type StoreKey } from "@/lib/schemas";
+import { SCHEMAS, type StoreKey, type StoreValues } from "@/lib/schemas";
 
 /** A non-default value for every store, as a learner's browser would hold it. */
 const VALUES: Record<StoreKey, unknown> = {
@@ -15,6 +17,9 @@ const VALUES: Record<StoreKey, unknown> = {
   "np:notebook": reportAnswer({}, "quiz", "particles/wa-vs-ga#abc", false, 1_700_000_000_000),
   "np:study": { moreWords: true, newPerDay: 20 },
   "np:new-cards": { day: "2026-10-15", count: 4 },
+  "np:history": [{ k: "hiragana-base", c: "hiragana:あ", t: 1_700_000_000_000, r: "c", a: "a", ms: 1200 }],
+  "np:lessons-log": { "start/three-scripts": { firstOpenedAt: 1_700_000_000_000, completedAt: 1_700_000_100_000 } },
+  "np:placement": [{ at: 1_700_000_000_000, start: "particles", answers: [{ unit: "word-order", lesson: "word-order/verb-last", correct: true }] }],
 };
 
 const schema = (key: StoreKey) => SCHEMAS[key] as StoreSchema<unknown>;
@@ -84,7 +89,7 @@ describe("backup", () => {
     expect(readBackup("not json")).toMatchObject({ ok: false });
     expect(readBackup(JSON.stringify({ app: "other", backup: 1, stores: {} }))).toMatchObject({ ok: false });
     expect(readBackup(JSON.stringify({ app: "nihongo-path", stores: {} }))).toMatchObject({ ok: false, reason: "This backup has no version." });
-    expect(readBackup(JSON.stringify({ app: "nihongo-path", backup: 2, stores: {} }))).toMatchObject({ ok: false, reason: expect.stringContaining("newer") });
+    expect(readBackup(JSON.stringify({ app: "nihongo-path", backup: 3, stores: {} }))).toMatchObject({ ok: false, reason: expect.stringContaining("newer") });
     expect(readBackup(JSON.stringify({ app: "nihongo-path", backup: 1, stores: {} }))).toMatchObject({ ok: false });
     // __proto__ in the file is an ordinary key, never a store.
     expect(readBackup('{"app":"nihongo-path","backup":1,"stores":{"__proto__":{"np:progress":{}}}}')).toMatchObject({ ok: false });
@@ -117,5 +122,21 @@ describe("backup", () => {
     expect(read).toMatchObject({ ok: true, exported: null, outcomes: [{ key: "np:progress", outcome: "unusable" }, { key: "np:my-words", outcome: "restored" }] });
     expect(readBackup(JSON.stringify({ ...base, backup: "1" }))).toMatchObject({ ok: false });
     expect(readBackup(JSON.stringify({ ...base, backup: 1.5 }))).toMatchObject({ ok: false });
+  });
+
+  it("imports a frozen version 1 file (before the progress export), and merges it without losing newer answers", () => {
+    const read = readBackup(readFileSync("tests/fixtures/backup-v1.json", "utf8"));
+    if (!read.ok) throw new Error(read.reason);
+    const incoming = Object.fromEntries(Object.entries(read.writes).map(([k, raw]) => [k, decode(raw, schema(k as StoreKey)).value]));
+    const here = Object.fromEntries((Object.keys(SCHEMAS) as StoreKey[]).map((k) => [k, decode(null, schema(k)).value])) as StoreValues;
+    here["np:progress"] = { "particles/wa-vs-ga": true };
+    here["np:history"] = [{ k: "hiragana-base", c: "hiragana:あ", t: 1_792_100_000_000, r: "x", a: "o" }];
+    here["np:srs"] = { decks: { "hiragana-base": { cards: { "hiragana:あ": { box: 1, due: 1_792_100_000_000, reps: 5, lapses: 2 } }, extraGroups: 0 } } };
+    const merged = mergeStores(here, incoming);
+    expect(merged["np:progress"]).toEqual({ "particles/wa-vs-ga": true, "start/three-scripts": true });
+    // This browser answered the card after the file was made, so its state wins.
+    expect(merged["np:srs"].decks["hiragana-base"].cards["hiragana:あ"].reps).toBe(5);
+    expect(merged["np:history"]).toHaveLength(1);
+    expect(merged["np:activity"].days["2026-10-14"].answered).toBe(12);
   });
 });

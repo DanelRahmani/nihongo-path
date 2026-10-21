@@ -270,6 +270,102 @@ export const newCardsSchema: StoreSchema<NewCards> = {
   },
 };
 
+/**
+ * One answer, in short keys because the log only grows (Phase 0): k deck ("quiz" and "conjugation" too, as in the
+ * notebook), c card id, t time (epoch ms), r result (c correct, x incorrect), a what was typed, ms time to answer,
+ * m how it was asked: p practice (not scheduled), r the review queue, x a retry of a quiz question already answered.
+ */
+export interface Review {
+  k: string;
+  c: string;
+  t: number;
+  r: "c" | "x";
+  a: string;
+  ms?: number;
+  m?: "p" | "r" | "x";
+}
+
+/** Every answer since recording began (Phase 0), oldest first. Append-only. */
+export type History = Review[];
+
+/** Typed answers longer than this are cut, so one pasted essay can't fill storage. */
+export const MAX_ANSWER = 200;
+
+function toReview(x: unknown): Review | null {
+  if (!isPlainObject(x)) return null;
+  const { k, c, t, r, a, ms, m } = x;
+  if (typeof k !== "string" || !k || k.length > 50 || typeof c !== "string" || !c || c.length > 300) return null;
+  if (!Number.isFinite(t) || (t as number) < 0 || (r !== "c" && r !== "x")) return null;
+  const review: Review = { k, c, t: t as number, r, a: typeof a === "string" ? a.slice(0, MAX_ANSWER) : "" };
+  if (Number.isFinite(ms) && (ms as number) >= 0) review.ms = Math.round(ms as number);
+  if (m === "p" || m === "r" || m === "x") review.m = m;
+  return review;
+}
+
+/** Drops unreadable answers rather than the whole log. */
+export const historySchema: StoreSchema<History> = {
+  version: 1,
+  fallback: [],
+  migrations: [wrapUnchanged],
+  validate(data) {
+    if (!Array.isArray(data)) return null;
+    return data.map(toReview).filter((r): r is Review => r !== null);
+  },
+};
+
+/**
+ * When each lesson ("unit/lesson") was first opened and marked done (epoch ms), and whether the placement check
+ * marked it. Lessons opened or finished before recording began have no times.
+ */
+export type LessonsLog = Record<string, { firstOpenedAt?: number; completedAt?: number; placed?: true }>;
+
+const time = (x: unknown) => (Number.isFinite(x) && (x as number) >= 0 ? (x as number) : undefined);
+
+export const lessonsLogSchema: StoreSchema<LessonsLog> = {
+  version: 1,
+  fallback: {},
+  migrations: [wrapUnchanged],
+  validate(data) {
+    if (!isPlainObject(data)) return null;
+    const log: LessonsLog = {};
+    for (const [key, e] of Object.entries(data)) {
+      if (!isPlainObject(e)) continue;
+      const entry: LessonsLog[string] = {};
+      const opened = time(e.firstOpenedAt);
+      const completed = time(e.completedAt);
+      if (opened !== undefined) entry.firstOpenedAt = opened;
+      if (completed !== undefined) entry.completedAt = completed;
+      if (e.placed === true) entry.placed = true;
+      log[key] = entry;
+    }
+    return log;
+  },
+};
+
+/** One finished placement check: when, the unit it placed the reader at (null: none stopped them), and each answer. */
+export interface PlacementResult {
+  at: number;
+  start: string | null;
+  answers: { unit: string; lesson: string; correct: boolean }[];
+}
+
+export const placementSchema: StoreSchema<PlacementResult[]> = {
+  version: 1,
+  fallback: [],
+  migrations: [wrapUnchanged],
+  validate(data) {
+    if (!Array.isArray(data)) return null;
+    return data.flatMap((p): PlacementResult[] => {
+      if (!isPlainObject(p) || time(p.at) === undefined || !(p.start === null || typeof p.start === "string") || !Array.isArray(p.answers)) return [];
+      const answers = p.answers.filter(
+        (a): a is PlacementResult["answers"][number] =>
+          isPlainObject(a) && typeof a.unit === "string" && typeof a.lesson === "string" && typeof a.correct === "boolean",
+      );
+      return [{ at: p.at as number, start: p.start as string | null, answers: answers.map(({ unit, lesson, correct }) => ({ unit, lesson, correct })) }];
+    });
+  },
+};
+
 /** Every store by its localStorage key. Backup and restore (H3) go through this list. */
 export const SCHEMAS = {
   "np:settings": settingsSchema,
@@ -281,6 +377,15 @@ export const SCHEMAS = {
   "np:notebook": notebookSchema,
   "np:study": studySchema,
   "np:new-cards": newCardsSchema,
+  "np:history": historySchema,
+  "np:lessons-log": lessonsLogSchema,
+  "np:placement": placementSchema,
 } as const;
 
 export type StoreKey = keyof typeof SCHEMAS;
+
+/** The value a store holds. */
+export type StoreValue<K extends StoreKey> = (typeof SCHEMAS)[K] extends StoreSchema<infer T> ? T : never;
+
+/** One value per store. */
+export type StoreValues = { [K in StoreKey]: StoreValue<K> };

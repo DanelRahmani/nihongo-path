@@ -6,6 +6,7 @@ import { ProgressBar } from "@/components/ui/ProgressBar";
 import type { Check, Deck } from "@/lib/decks";
 import { deckState, deckStats, nextCard, practiceCard, type SrsState, unlockedGroupCount, unlockGroup } from "@/lib/srs";
 import { useStore } from "@/lib/storage";
+import { useAnswerClock } from "@/lib/answer-clock";
 import { answerScheduled, logAnswer, newCardsLeft, newCardsStore, srsStore, studyStore } from "@/lib/stores";
 import { newLeft } from "@/lib/new-cards";
 import { CaughtUp } from "@/components/drill/CaughtUp";
@@ -95,6 +96,7 @@ export function TypedDrill<C extends { id: string }>({
   const left = newLeft(newCards, dayKey(new Date()), study.newPerDay);
   const fromSchedule = picked === undefined || (picked === null && !practice && left > 0);
   const current = fromSchedule ? (mounted ? nextCard(deck, own(srs), now, undefined, left) : null) : picked;
+  const clock = useAnswerClock(current?.id);
 
   // After a miss the answer box is gone: put focus on "Next card", so Enter moves on.
   useEffect(() => {
@@ -112,7 +114,7 @@ export function TypedDrill<C extends { id: string }>({
   const submit = () => {
     if (!current || !input.trim()) return;
     const check = deck.check(current, input);
-    logAnswer(deck.id, current.id, check.correct);
+    logAnswer(deck.id, current.id, check.correct, { answer: input, ms: clock.ms(), ...(practice ? { mode: "p" as const } : {}) });
     let state = srsStore.get();
     if (!practice) {
       const before = unlockedGroupCount(deck, own(state));

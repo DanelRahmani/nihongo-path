@@ -8,13 +8,16 @@ import { decode, encode, isPlainObject, type StoreSchema } from "@/lib/envelope"
 import { SCHEMAS, type StoreKey } from "@/lib/schemas";
 
 export const BACKUP_APP = "nihongo-path";
-/** The file format's version: the wrapper, not the stores, which carry their own. */
-export const BACKUP_VERSION = 1;
+/**
+ * The file format's version: the wrapper, not the stores, which carry their own. Version 2 (Phase 0) adds the
+ * progress export's sections (lib/export.ts) beside `stores`; import reads `stores` alone, so both versions import.
+ */
+export const BACKUP_VERSION = 2;
 
 const KEYS = Object.keys(SCHEMAS) as StoreKey[];
 
-/** The backup file's text: every store that holds something, as stored (unparseable values are left out). */
-export function makeBackup(read: (key: string) => string | null, now: Date): string {
+/** The backup's wrapper and stores: every store that holds something, as stored (unparseable values are left out). */
+export function makeBackupObject(read: (key: string) => string | null, now: Date) {
   const stores: Record<string, unknown> = {};
   for (const key of KEYS) {
     const raw = read(key);
@@ -25,8 +28,11 @@ export function makeBackup(read: (key: string) => string | null, now: Date): str
       // A corrupt value: the app already ignores it, so the backup does too.
     }
   }
-  return JSON.stringify({ app: BACKUP_APP, backup: BACKUP_VERSION, exported: now.toISOString(), stores }, null, 2);
+  return { app: BACKUP_APP, backup: BACKUP_VERSION, exported: now.toISOString(), stores };
 }
+
+/** The backup file's text, stores only. The progress export (lib/export.ts) adds its sections around them. */
+export const makeBackup = (read: (key: string) => string | null, now: Date): string => JSON.stringify(makeBackupObject(read, now), null, 2);
 
 /** The file name for a backup made at `now`, by the local date: nihongo-path-2026-10-14.json. */
 export const backupFileName = (now: Date) =>
@@ -93,4 +99,7 @@ export const STORE_NAMES: Record<StoreKey, string> = {
   "np:notebook": "Mistake notebook",
   "np:study": "Study choices (More words, new cards a day)",
   "np:new-cards": "New cards today",
+  "np:history": "Answer history",
+  "np:lessons-log": "When lessons were opened and finished",
+  "np:placement": "Placement check results",
 };

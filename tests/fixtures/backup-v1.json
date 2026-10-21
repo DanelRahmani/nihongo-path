@@ -1,0 +1,12 @@
+{
+  "app": "nihongo-path",
+  "backup": 1,
+  "exported": "2026-10-15T08:00:00.000Z",
+  "stores": {
+    "np:settings": { "v": 2, "data": { "furigana": "all", "romaji": true, "size": "m", "font": "mincho", "theme": "dark" } },
+    "np:progress": { "v": 1, "data": { "start/three-scripts": true } },
+    "np:srs": { "v": 2, "data": { "decks": { "hiragana-base": { "cards": { "hiragana:あ": { "box": 3, "due": 1792000000000, "reps": 4, "lapses": 1 } }, "extraGroups": 0 } } } },
+    "np:activity": { "v": 1, "data": { "goal": 10, "days": { "2026-10-14": { "answered": 12, "goal": 10 } } } },
+    "np:study": { "v": 2, "data": { "moreWords": false, "newPerDay": 10 } }
+  }
+}

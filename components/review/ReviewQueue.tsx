@@ -6,35 +6,19 @@ import { isJapanese, showKanji } from "@/components/drill/TypedDrill";
 import { Jp, Rich } from "@/components/Jp";
 import { Button } from "@/components/ui/Button";
 import { panelClass } from "@/components/ui/Panel";
-import { clozeDeck } from "@/lib/cloze-deck";
-import { type Check, type Deck, KANA_DECKS } from "@/lib/decks";
-import { kanjiDeck } from "@/lib/kanji-deck";
-import { CONJUGATION_DECK, QUIZ_DECK, VOCAB_MORE_DECK_ID } from "@/lib/notebook";
-import { registerDeck } from "@/lib/register-drill";
-import { conjugationAsker, quizAsker } from "@/lib/review-askers";
+import type { Check } from "@/lib/decks";
+import { VOCAB_MORE_DECK_ID } from "@/lib/notebook";
 import type { ReviewData } from "@/lib/review-data";
+import { reviewDecks } from "@/lib/review-decks";
+import { loadReviewData } from "@/lib/load-review-data";
 import { applyReview, buildQueue, deckInUse, type QueueItem, reviewCount } from "@/lib/review-queue";
-import { notebookStore, recordActivity, srsStore, studyStore } from "@/lib/stores";
-import { type VocabCard, vocabDeck, vocabMoreDeck } from "@/lib/vocab-deck";
+import { useAnswerClock } from "@/lib/answer-clock";
+import { notebookStore, recordActivity, recordReview, srsStore, studyStore } from "@/lib/stores";
+import type { VocabCard } from "@/lib/vocab-deck";
 import { loadMoreWords } from "@/lib/load-more-words";
 import { fieldClass } from "@/components/ui/field";
 import { KeyboardHelp, typedWithoutJapanese } from "@/components/ui/KeyboardHelp";
 
-let dataPromise: Promise<ReviewData> | undefined;
-
-/** The static /review-data.json, fetched once per page view; a failed fetch is forgotten, so a reload retries. */
-function loadData(): Promise<ReviewData> {
-  dataPromise ??= fetch("/review-data.json")
-    .then((response) => {
-      if (!response.ok) throw new Error("The review data could not be loaded.");
-      return response.json() as Promise<ReviewData>;
-    })
-    .catch((error: unknown) => {
-      dataPromise = undefined;
-      throw error;
-    });
-  return dataPromise;
-}
 
 
 /** The answer box's hint, by what the item asks for (as the lesson quizzes word it). */
@@ -48,20 +32,7 @@ type Load = { state: "waiting" } | { state: "error" } | { state: "done"; queue: 
  * reader's finished lessons.
  */
 function queueFrom(data: ReviewData, more: VocabCard[]): { queue: QueueItem[]; titles: Record<string, string> } {
-  const path = Object.keys(data.lessons);
-  const none = new Set<string>();
-  const decks: Deck[] = [
-    ...KANA_DECKS,
-    kanjiDeck(data.kanji),
-    vocabDeck(data.vocab, path, none),
-    clozeDeck(data.cloze, path, none),
-    registerDeck("casual", data.register.casual, path, none),
-    registerDeck("polite", data.register.polite, path, none),
-    // Studied "More words" cards are reviewed whatever the switch says now.
-    vocabMoreDeck(more, true),
-  ];
-  const askers = { [QUIZ_DECK]: quizAsker(data.quiz, data.lessons), [CONJUGATION_DECK]: conjugationAsker(data.conjugation, data.lessons) };
-  const titles = { ...Object.fromEntries(decks.map((d) => [d.id, d.title])), [QUIZ_DECK]: "Lesson quiz", [CONJUGATION_DECK]: "Conjugation" };
+  const { decks, askers, titles } = reviewDecks(data, more);
   return { queue: buildQueue(decks, askers, srsStore.get(), notebookStore.get(), Date.now()), titles };
 }
 
@@ -73,6 +44,7 @@ function queueFrom(data: ReviewData, more: VocabCard[]): { queue: QueueItem[]; t
 export function ReviewQueue() {
   const [load, setLoad] = useState<Load>({ state: "waiting" });
   const [index, setIndex] = useState(0);
+  const clock = useAnswerClock(index);
   const [phase, setPhase] = useState<"ask" | "wrong">("ask");
   const [input, setInput] = useState("");
   const [last, setLast] = useState<{ item: QueueItem; check: Check; typed: string } | null>(null);
@@ -96,7 +68,7 @@ export function ReviewQueue() {
     // The "More words" cards (/vocab-more.json, 128 KB) only while the deck is switched on and has something to ask;
     // switched off, its cards stay saved but aren't asked. If they fail to load, the other decks are still asked.
     const usesMore = deckInUse(srsStore.get(), notebookStore.get(), VOCAB_MORE_DECK_ID, moreOn);
-    Promise.all([loadData(), usesMore ? loadMoreWords().catch((): VocabCard[] => []) : Promise.resolve([])])
+    Promise.all([loadReviewData(), usesMore ? loadMoreWords().catch((): VocabCard[] => []) : Promise.resolve([])])
       .then(([data, more]) => live && setLoad({ state: "done", ...queueFrom(data, more) }))
       .catch(() => live && setLoad({ state: "error" }));
     return () => {
@@ -178,6 +150,7 @@ export function ReviewQueue() {
     const after = applyReview(srsStore.get(), notebookStore.get(), item, check.correct, Date.now());
     srsStore.set(after.srs);
     notebookStore.set(after.notebook);
+    recordReview(item.deckId, item.cardId, check.correct, { answer: input, ms: clock.ms(), mode: "r" });
     recordActivity();
     setScore((s) => (check.correct ? { ...s, right: s.right + 1 } : { ...s, wrong: s.wrong + 1 }));
     setLast({ item, check, typed: input });

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Jp, Rich } from "@/components/Jp";
 import { LessonRenderer } from "@/components/lesson/LessonRenderer";
-import { CompleteButton } from "@/components/Progress";
+import { CompleteButton, LessonOpened } from "@/components/Progress";
 import { panelClass } from "@/components/ui/Panel";
 import { ALL_LESSONS, findLesson, KANJI_NUMERALS, UNITS } from "@/content/units";
 import { plainOf } from "@/lib/markup";
@@ -60,6 +60,7 @@ export default async function LessonPage({ params }: PageProps<"/learn/[unit]/[l
         </div>
       </header>
 
+      <LessonOpened lessonKey={key} />
       <LessonRenderer blocks={lesson.blocks} lessonKey={key} next={next && { href: next.href, title: next.lesson.title }} />
 
       <footer className="mt-16 border-t border-line pt-10">

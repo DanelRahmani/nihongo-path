@@ -12,6 +12,7 @@ import { newLeft } from "@/lib/new-cards";
 import { CaughtUp } from "@/components/drill/CaughtUp";
 import { dayKey } from "@/lib/today";
 import { useStore } from "@/lib/storage";
+import { useAnswerClock } from "@/lib/answer-clock";
 import { fieldClass } from "@/components/ui/field";
 
 function DeckPicker({ onStart }: { onStart: (deck: KanaDeck) => void }) {
@@ -73,6 +74,7 @@ function Session({ deck, onExit }: { deck: KanaDeck; onExit: () => void }) {
   // Today's allowance, from the clock now: a limit raised in another tab, or a new day, opens new cards again.
   const left = newLeft(newCards, dayKey(new Date()), study.newPerDay);
   const current = picked === null && !practice && left > 0 ? nextCard(deck, deckState(srs, deck.id), now, undefined, left) : picked;
+  const clock = useAnswerClock(current?.id);
 
   // After a miss the answer box is gone: put focus on "Next card", so Enter moves on (autoFocus doesn't fire here).
   useEffect(() => {
@@ -93,7 +95,7 @@ function Session({ deck, onExit }: { deck: KanaDeck; onExit: () => void }) {
     const check = deck.check(current, input);
     const { correct } = check;
     // Practice answers count for the daily goal and the notebook, but leave the schedule alone.
-    logAnswer(deck.id, current.id, correct);
+    logAnswer(deck.id, current.id, correct, { answer: input, ms: clock.ms(), ...(practice ? { mode: "p" as const } : {}) });
     let state = srsStore.get();
     if (!practice) {
       const before = unlockedGroupCount(deck, deckState(state, deck.id));

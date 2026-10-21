@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Jp, Rich } from "@/components/Jp";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { panelClass } from "@/components/ui/Panel";
 import { ProgressBar } from "@/components/ui/ProgressBar";
-import { progressStore } from "@/lib/stores";
+import { markOpened } from "@/lib/history";
+import { lessonsLogStore, progressStore, setLessonsDone } from "@/lib/stores";
 import { useStore } from "@/lib/storage";
 
 /** The red seal for a finished lesson: 済 means "done". */
@@ -24,15 +25,14 @@ export function Hanko({ size = "md", animate = false, decorative = false }: { si
 
 /** Whether a lesson is marked done, and a setter shared by the footer's button and the quiz's call to action. */
 export function useLessonDone(lessonKey: string): [boolean, (done: boolean) => void] {
-  const [progress, setProgress] = useStore(progressStore);
-  const set = (done: boolean) =>
-    setProgress((p) => {
-      const next = { ...p };
-      if (done) next[lessonKey] = true;
-      else delete next[lessonKey];
-      return next;
-    });
-  return [Boolean(progress[lessonKey]), set];
+  const [progress] = useStore(progressStore);
+  return [Boolean(progress[lessonKey]), (done) => setLessonsDone([lessonKey], done)];
+}
+
+/** Records the first time a lesson is opened (Phase 0's lessons log). Renders nothing. */
+export function LessonOpened({ lessonKey }: { lessonKey: string }) {
+  useEffect(() => lessonsLogStore.set((log) => markOpened(log, lessonKey, Date.now())), [lessonKey]);
+  return null;
 }
 
 export function CompleteButton({ lessonKey }: { lessonKey: string }) {

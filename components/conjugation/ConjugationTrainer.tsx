@@ -19,6 +19,7 @@ import {
 } from "@/lib/conjugation-trainer";
 import type { Check } from "@/lib/decks";
 import { useStore } from "@/lib/storage";
+import { useAnswerClock } from "@/lib/answer-clock";
 import { logAnswer, notebookStore, progressStore } from "@/lib/stores";
 import { fieldClass } from "@/components/ui/field";
 import { KeyboardHelp, typedWithoutJapanese } from "@/components/ui/KeyboardHelp";
@@ -65,6 +66,7 @@ export function ConjugationTrainer({ words, lessons }: { words: TrainerWord[]; l
 
   // The question shown, while it is still open (finishing or unfinishing a lesson can close it).
   const asked = current && open.some((q) => questionId(q) === questionId(current)) ? current : null;
+  const clock = useAnswerClock(asked && questionId(asked));
 
   // The notebook's conjugation misses, as questions.
   const missed = useMemo(
@@ -86,7 +88,7 @@ export function ConjugationTrainer({ words, lessons }: { words: TrainerWord[]; l
   const submit = () => {
     if (!asked || !input.trim()) return;
     const check = checkConjugation(asked, input);
-    logAnswer(CONJUGATION_DECK, questionId(asked), check.correct);
+    logAnswer(CONJUGATION_DECK, questionId(asked), check.correct, { answer: input, ms: clock.ms() });
     setScore((s) => (check.correct ? { ...s, right: s.right + 1 } : { ...s, wrong: s.wrong + 1 }));
     setLast({ q: asked, check, typed: input });
     if (check.correct) next(asked);

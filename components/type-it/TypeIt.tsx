@@ -10,7 +10,8 @@ import { panelClass } from "@/components/ui/Panel";
 import { Segmented } from "@/components/ui/Segmented";
 import { readingOf } from "@/lib/markup";
 import { useStore } from "@/lib/storage";
-import { progressStore, recordActivity } from "@/lib/stores";
+import { useAnswerClock } from "@/lib/answer-clock";
+import { progressStore, recordActivity, recordReview } from "@/lib/stores";
 import type { TypeLine } from "@/lib/type-lines";
 import { type Comparison, compareLine, describeSlip, type Script } from "@/lib/type-it";
 import { fieldClass } from "@/components/ui/field";
@@ -40,6 +41,7 @@ export function TypeIt({ lines }: { lines: TypeLine[] }) {
   }, [lines, progress]);
   // The line itself, not an index: finishing a lesson in another tab changes the pool, not the line being typed.
   const [line, setLine] = useState<TypeLine | null>(null);
+  const clock = useAnswerClock(line);
   const [input, setInput] = useState("");
   const [result, setResult] = useState<Comparison | null>(null);
   // The last check was typed in English letters only: the keyboard set-up link shows under the result.
@@ -101,6 +103,8 @@ export function TypeIt({ lines }: { lines: TypeLine[] }) {
   const check = () => {
     if (!input || composing.current) return;
     const r = compareLine(line.jp, script, input);
+    // Every check is a try: the card is the line itself, as the lessons write it.
+    recordReview("type", line.jp, r.exact, { answer: input, ms: clock.ms() });
     setPasted(false);
     setResult(r);
     setLatin(typedWithoutJapanese(input));

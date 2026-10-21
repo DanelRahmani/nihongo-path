@@ -7,7 +7,7 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **Owner's JLPT prompt (2026-10-21):** Phase 0 (progress export) is done on `features`, not yet on main. Phases 1–3 (N5–N2 grammar wired into the drills, placement to N2) and 4 (an LLM sentence checker, design first) wait until after the owner's January exams; one phase per commit, then a report and a stop. Keep new tests to an absolute minimum (owner). JLPT phases fill the export's `jlptLevel` and `grammarPointId` (docs/EXPORT_FORMAT.md; bump `BACKUP_VERSION`).
+- **Owner's JLPT prompt (2026-10-21):** Phase 0 (progress export) is done and on main (2026-10-21). Phases 1–3 (N5–N2 grammar wired into the drills, placement to N2) and 4 (an LLM sentence checker, design first) wait until after the owner's January exams; one phase per commit, then a report and a stop. Keep new tests to an absolute minimum (owner). JLPT phases fill the export's `jlptLevel` and `grammarPointId` (docs/EXPORT_FORMAT.md; bump `BACKUP_VERSION`).
   - Every new drill answers through `logAnswer()` (or `recordReview()`) in `lib/stores.ts` with `{answer, ms, mode}`, so it reaches the history; lessons are marked done through `setLessonsDone()`, which logs the time.
 - **The feature plan (A1–H3) and the owner's ten follow-up items (I1–I10) are done.** `features` was pushed to `main` on 2026-10-15 with the owner's permission (see Decisions). Where to pick up:
   - After the deploy, check the live site:
@@ -387,6 +387,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - `docs/EXPORT_FORMAT.md` documents every field; `BACKLOG.md` lists the localStorage limit (about 60,000 answers). The first attempt, built on a stale checkout, is kept on the local branch `phase0-stale`.
 
 ### Decisions
+- 2026-10-21: the owner asked to push Phase 0 to main. main was fast-forwarded to 36473bb; no merge commit.
 - 2026-10-15: after I1–I10, with the owner's permission given for this round ("push to main only once all ten items are done and green"), `main` was fast-forwarded to `features`; no merge commit, nothing force-pushed. The whole build was checked once more first: 889 tests, typecheck, lint, a clean build and the full accessibility sweep.
 - Owner, 2026-10-15 (I10, one round of questions; 象は鼻が長い stays, credited to Mikami Akira in STYLE §2): add 出来事 and 流行る in kanji; keep けが, くい, 決して and 引っ張る held back; keep 是非 in kana, めがね in hiragana and 殺す left out, and add the era names; keep the menu marks 丁寧 and 読む, 象は鼻が長い and the refused ゆく/いらっしゃれる forms; leave the external items (Waller's lists, the KANJIDIC2 licence, the special marks, the 2242 list, pitch audio, the keyboard checks) listed.
 - I5 (2026-10-14): a quiz with every answer right offers "Mark this lesson as done" but never marks the lesson by itself (the conservative choice the owner named); the learner decides, from the quiz or the footer.

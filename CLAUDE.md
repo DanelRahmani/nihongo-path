@@ -7,7 +7,7 @@ Plan: `docs/PLAN-features.md` (sub-phases A1–H3). Work happens on branch `feat
 Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/romaji.ts`, `lib/markup.ts`), read its §6: the corpus snapshot must stay unchanged unless the change is the point.
 
 ### Next
-- **Owner's JLPT prompt (2026-10-21):** Phase 0 (progress export) is done and on main (2026-10-21). Phases 1–3 (N5–N2 grammar wired into the drills, placement to N2) and 4 (an LLM sentence checker, design first) wait until after the owner's January exams; one phase per commit, then a report and a stop. Keep new tests to an absolute minimum (owner). JLPT phases fill the export's `jlptLevel` and `grammarPointId` (docs/EXPORT_FORMAT.md; bump `BACKUP_VERSION`).
+- **Owner's JLPT prompt (2026-10-21):** Phase 0 (progress export) is done and on main (2026-10-21). The owner then chose (2026-10-21) to do Phases 1–3 (N5–N2 grammar wired into the drills, placement to N2) and 4 (an LLM sentence checker, design first) now. **Phase 1's brief: `docs/PLAN-jlpt-phase1.md`** (start there); one phase per commit, then a report and a stop. Keep new tests to an absolute minimum (owner). JLPT phases fill the export's `jlptLevel` and `grammarPointId` (docs/EXPORT_FORMAT.md; bump `BACKUP_VERSION`).
   - Every new drill answers through `logAnswer()` (or `recordReview()`) in `lib/stores.ts` with `{answer, ms, mode}`, so it reaches the history; lessons are marked done through `setLessonsDone()`, which logs the time.
 - **The feature plan (A1–H3) and the owner's ten follow-up items (I1–I10) are done.** `features` was pushed to `main` on 2026-10-15 with the owner's permission (see Decisions). Where to pick up:
   - After the deploy, check the live site:

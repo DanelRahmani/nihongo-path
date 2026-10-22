@@ -150,7 +150,10 @@ function verbForms(jp: Jp, cls: VerbClass): [Jp, string][] {
       if (form === "potential" || form === "passive" || form === "causative" || form === "causativePassive") {
         for (const { form: vf } of VERB_FORMS) {
           const v = conjugateVerb(f, "ichidan", vf);
-          if (v.ok) out.push([firstWord(v.jp), `${form}+${vf}`]);
+          if (!v.ok) continue;
+          out.push([firstWord(v.jp), `${form}+${vf}`]);
+          // The spoken ちゃう of the passive and causative: [取|と]られちゃった, [待|ま]たせちゃって.
+          if (vf === "te") for (const [c, l] of helperContractions(firstWord(v.jp))) out.push([c, `${form}+${l}`]);
         }
       }
       if (form === "te") out.push(...teContractions(f, "te"), ...chaContraction(f), ...helperContractions(firstWord(f)));

@@ -70,7 +70,7 @@ export const BATCH_04: Word[] = [
   x("1605280", "もともと", "adverb", "originally, from the start", "time"),
   x("1469870", "[悩|なや]む", "verb", "to worry, to be troubled", "feelings", "godan"),
   // skipped: 1583630 [付|つ]き (a suffix: "attached to, with")
-  x("1006780", "そちら", "pronoun", "that way, there; you (polite)", "language"),
+  // moved to the lessons (n4-giving-voice/kenjougo): 1006780 そちら
   x("1365860", "つらい", "i-adj", "painful, hard to bear", "feelings"),
   x("1132680", "メイン", "noun", "main; main dish", "everyday"),
   x("1220810", "[機械|きかい]", "noun", "machine", "everyday"),

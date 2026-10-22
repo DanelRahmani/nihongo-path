@@ -25,7 +25,7 @@ interface FormInfo {
   lesson: string;
 }
 
-/** The verb forms the lessons teach. Forms no lesson teaches yet (passive, causative, ば, commands) aren't asked. */
+/** The verb forms the lessons teach. Forms no lesson teaches yet (the commands) aren't asked. */
 export const VERB_FORM_INFO: Partial<Record<VerbForm, FormInfo>> = {
   plain: { label: "dictionary form", lesson: "verbs/verb-groups" },
   polite: { label: "polite (ます)", lesson: "verbs/masu-form" },
@@ -43,6 +43,12 @@ export const VERB_FORM_INFO: Partial<Record<VerbForm, FormInfo>> = {
   potential: { label: "potential (can)", lesson: "verbs/potential" },
   tara: { label: "たら conditional (if, when)", lesson: "verbs/tara-conditional" },
   ba: { label: "ば conditional (if)", lesson: "n4-conditions/ba" },
+  passive: { label: "passive", lesson: "n4-giving-voice/passive" },
+  causative: { label: "causative (make or let do)", lesson: "n4-giving-voice/causative" },
+  causativePassive: { label: "causative-passive (be made to)", lesson: "n4-giving-voice/causative-passive" },
+  // The plain forms: a verb's honorific or humble word as a dictionary would list it (召し上がる, 参る).
+  honorific: { label: "honorific (尊敬語), plain form", lesson: "n4-giving-voice/sonkeigo" },
+  humble: { label: "humble (謙譲語), plain form", lesson: "n4-giving-voice/kenjougo" },
 };
 
 /** The adjective forms the lessons teach, by the lesson that teaches each class's forms. */

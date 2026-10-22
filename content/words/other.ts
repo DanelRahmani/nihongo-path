@@ -123,4 +123,10 @@ export const OTHER: Word[] = [
   w("counter", "[時間|じかん]", "hour(s): [二時間|にじかん]", "numbers"),
   w("pronoun", "みんな", "everyone, all of you", "people"),
   w("interjection", "もしもし", "hello (on the phone)", "greetings"),
+// Giving, voice and polite speech (unit 十二)
+  w("pronoun", "そちら", "there, your side; you (polite)", "language"),
+  w("interjection", "いえいえ", "not at all, don't mention it", "greetings"),
+  w("expression", "ご[覧|らん]", "(ご覧になる: to see, respectful; ご覧ください: please look)", "language"),
+  w("counter", "[階|かい]", "floor (of a building): [二階|にかい]", "numbers"),
+  w("expression", "おいで", "(respectful) coming, going, being: おいでになる", "language"),
 ];

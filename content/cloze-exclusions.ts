@@ -220,6 +220,32 @@ export const CLOZE_EXCLUSIONS: Record<string, string> = {
   "n4-plans/made-ni-aida#1l0b2zc": "ときに also fits “While I'm in Japan”.",
   // [砂糖|さとう] が ＿＿、 [困|こま]りました。 (なくて)
   "n4-plans/naide-zuni#1gaabz9": "なかったから and なかったので also fit “There was no sugar, so I was stuck”.",
+  // n4-giving-voice/sonkeigo and kenjougo: every gap is a keigo verb, and the plain polite verb (言います, います, あります) fits it too.
+  "n4-giving-voice/sonkeigo#17mwjyw": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/sonkeigo#1q5s4iv": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/sonkeigo#1b7xpp0": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/sonkeigo#i78opy": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/sonkeigo#1j4rvnm": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/sonkeigo#1szw7kl": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/sonkeigo#1s41wmh": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/sonkeigo#hgt96u": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/sonkeigo#1v9ttwy": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/sonkeigo#1ty2uq5": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/kenjougo#8qhahe": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/kenjougo#1huluwt": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/kenjougo#28q667": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/kenjougo#134ojia": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/kenjougo#1g2f72g": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/kenjougo#12nvag4": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/kenjougo#1y0syiy": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/kenjougo#14psxoq": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/kenjougo#3lno4q": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/kenjougo#5oil2s": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/kenjougo#cucoy0": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/kenjougo#1uhwxcx": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/kenjougo#rdiwi": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/kenjougo#1mt8yyj": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
+  "n4-giving-voice/kenjougo#mhwduq": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
 };
 
 /**
@@ -438,4 +464,59 @@ export const CLOZE_ALSO: Record<string, string[]> = {
   "n4-plans/naide-zuni#1726skb": ["ず に"],
   "n4-plans/naide-zuni#14m9701": ["ず に"],
   "n4-plans/naide-zuni#1mrjyff": ["ず に"],
+  // n4-giving-voice/requests: every request form the lesson teaches fits, so the casual gaps take each casual one and the polite gaps each polite one.
+  // n4-giving-voice/causative-passive: the lesson teaches the long form beside the short one.
+  // ちょっと [手伝|てつだ]って ＿＿？ (くれない)
+  "n4-giving-voice/requests#12my6op": ["くれる", "もらえる", "もらえない"],
+  // ちょっと [手伝|てつだ]って ＿＿？ (くれません か)
+  "n4-giving-voice/requests#umhh1k": ["くれます か", "もらえません か", "もらえます か", "いただけません か", "いただけます か"],
+  // その [塩|しお]、 [取|と]って ＿＿？ (くれる)
+  "n4-giving-voice/requests#i2iix7": ["くれない", "もらえる", "もらえない"],
+  // その [塩|しお] を [取|と]って ＿＿？ (くれます か)
+  "n4-giving-voice/requests#1al7nzn": ["くれません か", "もらえません か", "もらえます か", "いただけません か", "いただけます か"],
+  // [帰|かえ]り に [牛乳|ぎゅうにゅう] を [買|か]って きて ＿＿？ (もらえる)
+  "n4-giving-voice/requests#1j1ehfp": ["くれる", "くれない", "もらえない"],
+  // [帰|かえ]り に [牛乳|ぎゅうにゅう] を [買|か]って きて ＿＿？ (もらえます か)
+  "n4-giving-voice/requests#13sxat8": ["くれません か", "くれます か", "もらえません か", "いただけません か", "いただけます か"],
+  // [駅|えき] に [着|つ]いたら、 [電話|でんわ] して ＿＿？ (もらえない)
+  "n4-giving-voice/requests#s0doo9": ["くれる", "くれない", "もらえる"],
+  // [駅|えき] に [着|つ]いたら、 [電話|でんわ] して ＿＿？ (もらえません か)
+  "n4-giving-voice/requests#1r2fc48": ["くれません か", "くれます か", "もらえます か", "いただけません か", "いただけます か"],
+  // すみません、 [写真|しゃしん] を [撮|と]って ＿＿？ (もらえません か)
+  "n4-giving-voice/requests#y0re12": ["くれません か", "くれます か", "もらえます か", "いただけません か", "いただけます か"],
+  // もう [少|すこ]し ゆっくり [話|はな]して ＿＿？ (くれません か)
+  "n4-giving-voice/requests#tu4nn9": ["くれます か", "もらえません か", "もらえます か", "いただけません か", "いただけます か"],
+  // もう [少|すこ]し ゆっくり [話|はな]して ＿＿？ (くれない)
+  "n4-giving-voice/requests#1nu007i": ["くれる", "もらえる", "もらえない"],
+  // すみません、 [駅|えき] まで の [道|みち] を [教|おし]えて ＿＿？ (いただけません か)
+  "n4-giving-voice/requests#1pyumhs": ["くれません か", "くれます か", "もらえません か", "もらえます か", "いただけます か"],
+  // [申|もう]し[訳|わけ] ありません が、 [少|すこ]し [待|ま]って ＿＿？ (いただけません か)
+  "n4-giving-voice/requests#wuw9nl": ["くれません か", "くれます か", "もらえません か", "もらえます か", "いただけます か"],
+  // [窓|まど] を [開|あ]けて ＿＿？ (もらえません か)
+  "n4-giving-voice/requests#jgn24k": ["くれません か", "くれます か", "もらえます か", "いただけません か", "いただけます か"],
+  // [佐藤|さとう]-さん、 この メール を [英語|えいご] に [直|なお]して ＿＿？ (いただけません か)
+  "n4-giving-voice/requests#3dya2k": ["くれません か", "くれます か", "もらえません か", "もらえます か", "いただけます か"],
+  // [子供|こども] の とき、 [毎日|まいにち] [牛乳|ぎゅうにゅう] を ＿＿。 ([飲|の]まされました)
+  "n4-giving-voice/causative-passive#9kn49f": ["[飲|の]ませられました"],
+  // [子供|こども] の とき、 [毎日|まいにち] [牛乳|ぎゅうにゅう] を ＿＿。 ([飲|の]まされた)
+  "n4-giving-voice/causative-passive#h23a8y": ["[飲|の]ませられた"],
+  // [先輩|せんぱい] に [重|おも]い [荷物|にもつ] を ＿＿。 ([運|はこ]ばされた)
+  "n4-giving-voice/causative-passive#205jeh": ["[運|はこ]ばせられた"],
+  // [先輩|せんぱい] に [重|おも]い [荷物|にもつ] を ＿＿。 ([運|はこ]ばされました)
+  "n4-giving-voice/causative-passive#ct82e4": ["[運|はこ]ばせられました"],
+  // [駅|えき] で [一時間|いちじかん] も ＿＿。 ([待|ま]たされました)
+  "n4-giving-voice/causative-passive#1lrwevj": ["[待|ま]たせられました"],
+  // [駅|えき] で [一時間|いちじかん] も ＿＿。 ([待|ま]たされた)
+  "n4-giving-voice/causative-passive#f07rgu": ["[待|ま]たせられた"],
+  // [楽|たの]しかった けど、 カラオケ で [何度|なんど] も ＿＿ よ。 ([歌|うた]わされた)
+  "n4-giving-voice/causative-passive#i9bi0j": ["[歌|うた]わせられた"],
+  // n4-giving-voice/te-ageru-kureru-morau: to a manager or a teacher the honorific and humble forms fit as well.
+  "n4-giving-voice/te-ageru-kureru-morau#10j4hz5": ["いただきました"],
+  "n4-giving-voice/te-ageru-kureru-morau#k256f1": ["くださって", "いただいて"],
+  "n4-giving-voice/te-ageru-kureru-morau#ydiiki": ["くださって", "いただいて"],
+  // n4-giving-voice/sasete-kudasai: the lesson teaches ください, もらえませんか and いただけませんか as alternatives.
+  "n4-giving-voice/sasete-kudasai#v7t62n": ["させて もらえません か", "させて いただけません か", "させて もらえます か", "させて いただけます か"],
+  "n4-giving-voice/sasete-kudasai#mvebea": ["せて ください", "せて いただけません か", "せて もらえます か", "せて いただけます か"],
+  "n4-giving-voice/sasete-kudasai#1yif3ee": ["せて ください", "せて もらえません か", "せて もらえます か", "せて いただけます か"],
+  "n4-giving-voice/sasete-kudasai#ooo7h3": ["せて ください", "せて もらえません か", "せて もらえます か", "せて いただけます か"],
 };

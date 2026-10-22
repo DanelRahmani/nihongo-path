@@ -100,4 +100,9 @@ export const DESCRIBING: Word[] = [
   naAdj("[急|きゅう]", "sudden (急に: suddenly)", "everyday"),
   w("adverb", "ずっと", "all the time, the whole time; much (more)", "time"),
   w("adverb", "もちろん", "of course", "language"),
+// Giving, voice and polite speech (unit 十二)
+  iAdj("かわいい", "cute", "feelings"),
+  iAdj("[悪|わる]い", "bad", "everyday"),
+  naAdj("[嫌|いや]", "unpleasant; not wanting to", "feelings"),
+  w("adverb", "[全然|ぜんぜん]", "(not) at all", "language"),
 ];

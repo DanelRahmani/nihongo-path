@@ -2,6 +2,7 @@ import { basics } from "@/content/lessons/basics";
 import { hiragana } from "@/content/lessons/hiragana";
 import { katakana } from "@/content/lessons/katakana";
 import { n4Conditions } from "@/content/lessons/n4-conditions";
+import { n4GivingVoice } from "@/content/lessons/n4-giving-voice";
 import { n4Plans } from "@/content/lessons/n4-plans";
 import { n5Essentials } from "@/content/lessons/n5-essentials";
 import { culture } from "@/content/lessons/culture";
@@ -109,6 +110,14 @@ export const UNITS: Unit[] = [
     titleJp: "[予定|よてい]",
     description: "What it's for, so that, deciding and planning, can, and the て forms that finish, prepare and leave things done.",
     lessons: n4Plans,
+  },
+  {
+    slug: "n4-giving-voice",
+    kind: "grammar",
+    title: "Giving, voice and polite speech",
+    titleJp: "[敬語|けいご]",
+    description: "Giving and receiving, favours and requests, the passive and causative, and honorific and humble speech.",
+    lessons: n4GivingVoice,
   },
 ];
 

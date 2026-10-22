@@ -10,7 +10,7 @@ export const BATCH_02: Word[] = [
   x("1348910", "[少|すく]ない", "i-adj", "few, little", "everyday"),
   x("1583470", "[品|しな]", "noun", "goods, item, article", "shopping"),
   x("1604570", "[見|み]つける", "verb", "to find, discover", "everyday", "ichidan"),
-  x("1259210", "[見|み]せる", "verb", "to show", "everyday", "ichidan"),
+  // moved to the lessons (n4-giving-voice/sasete-kudasai): 1259210 [見|み]せる
   x("1440920", "まとめ", "noun", "summary, wrap-up", "school-work"),
   x("1018190", "アプリ", "noun", "app", "everyday"),
   // skipped: 1129970 マン (マン, a suffix-like "man" (as in -man); not a word on its own)
@@ -61,13 +61,13 @@ export const BATCH_02: Word[] = [
   x("1251320", "[経済|けいざい]", "noun", "economy; finances", "school-work"),
   x("1313670", "[事業|じぎょう]", "noun", "business, enterprise; project", "school-work"),
   x("1313850", "[事故|じこ]", "noun", "accident", "everyday"),
-  x("1395620", "[全然|ぜんぜん]", "adverb", "(not) at all", "language"),
+  // moved to the lessons (n4-giving-voice/suffering-passive): 1395620 [全然|ぜんぜん]
   x("1405790", "[続|つづ]く", "verb", "to continue, go on", "everyday", "godan"),
   x("1387240", "まず", "adverb", "first of all; probably", "language"),
   x("1195970", "[過|す]ぎる", "verb", "to pass; to go too far", "everyday", "ichidan"),
   x("1081190", "データ", "noun", "data", "school-work"),
   x("1378520", "[生|い]きる", "verb", "to live; to be alive", "everyday", "ichidan"),
-  x("1587610", "[嫌|いや]", "na-adj", "unpleasant, disliked; unwilling", "feelings"),
+  // moved to the lessons (n4-giving-voice/suffering-passive): 1587610 [嫌|いや]
   x("1610430", "つまり", "adverb", "in other words, that is", "language"),
   x("1216880", "[含|ふく]む", "verb", "to include, contain", "everyday", "godan"),
   x("1389880", "[専門|せんもん]", "noun", "speciality, field of study", "school-work"),
@@ -204,7 +204,7 @@ export const BATCH_02: Word[] = [
   x("1600260", "[残|のこ]す", "verb", "to leave behind; to save", "everyday", "godan"),
   x("1580650", "[人々|ひとびと]", "noun", "people, everyone", "people"),
   // moved to the lessons (n4-plans/te-oku): 1120410 ページ
-  x("1404390", "[息子|むすこ]", "noun", "(my) son", "people"),
+  // moved to the lessons (n4-giving-voice/causative): 1404390 [息子|むすこ]
   // moved to the lessons (n5-essentials/toki): 1171010 [右|みぎ]
   x("1212380", "[感謝|かんしゃ]", "noun", "thanks (する: to thank)", "greetings"),
   x("1218560", "[危険|きけん]", "noun", "danger", "everyday"),

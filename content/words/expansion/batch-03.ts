@@ -26,7 +26,7 @@ export const BATCH_03: Word[] = [
   // skipped: 2067900 [間|かん] (homograph: mostly a suffix, as in 一週間)
   x("1548550", "[落|お]ちる", "verb", "to fall, to drop; to fail (a test)", "everyday", "ichidan"),
   x("1116400", "プレイ", "noun", "play, playing (a game or sport) (する: to play)", "hobbies"),
-  x("1223660", "[起|お]こす", "verb", "to wake (someone) up; to cause, to raise", "everyday", "godan"),
+  // moved to the lessons (n4-giving-voice/passive): 1223660 [起|お]こす
   x("1075040", "センター", "noun", "centre (a facility); centre (position)", "places"),
   // skipped: 2772730 にくい (the 〜にくい ending, not a word)
   x("1324300", "[若|わか]い", "i-adj", "young", "people"),
@@ -40,7 +40,7 @@ export const BATCH_03: Word[] = [
   x("1487400", "[必|かなら]ず", "adverb", "without fail, always, surely", "everyday"),
   x("1495060", "[不明|ふめい]", "na-adj", "unknown, unclear", "everyday"),
   x("1540150", "[友人|ゆうじん]", "noun", "friend (a little formal)", "people"),
-  x("1531190", "[娘|むすめ]", "noun", "(my) daughter; young woman", "people"),
+  // moved to the lessons (n4-giving-voice/causative): 1531190 [娘|むすめ]
   x("1535440", "[目指|めざ]す", "verb", "to aim at, to aim to become", "everyday", "godan"),
   x("1310600", "よす", "verb", "to stop (doing), to give up (casual)", "everyday", "godan"),
   // moved to the lessons (n5-essentials/dake-shika): 1512130 [返|かえ]す
@@ -98,7 +98,7 @@ export const BATCH_03: Word[] = [
   x("1537970", "[役|やく]", "noun", "role, part; duty", "school-work"),
   x("1582200", "[途中|とちゅう]", "noun", "on the way, partway", "travel"),
   x("1206530", "[学|まな]ぶ", "verb", "to learn, to study (a little formal)", "school-work", "godan"),
-  x("1218760", "[喜|よろこ]ぶ", "verb", "to be glad, to be delighted", "feelings", "godan"),
+  // moved to the lessons (n4-giving-voice/causative): 1218760 [喜|よろこ]ぶ
   x("1238680", "[驚|おどろ]く", "verb", "to be surprised", "feelings", "godan"),
   x("1429700", "[飛|と]ぶ", "verb", "to fly; to jump", "everyday", "godan"),
   x("1219960", "いくつ", "question", "how many; how old", "numbers"), // pos: was adverb
@@ -146,7 +146,7 @@ export const BATCH_03: Word[] = [
   x("1004830", "これら", "pronoun", "these", "language"),
   x("1008920", "どういう", "pre-noun", "what kind of", "language"),
   x("1075500", "ソフト", "noun", "software; soft", "everyday"), // pos: was na-adj
-  x("1156530", "[意見|いけん]", "noun", "opinion, view", "everyday"),
+  // moved to the lessons (n4-giving-voice/passive): 1156530 [意見|いけん]
   x("1220870", "[機関|きかん]", "noun", "organization, agency; engine", "everyday"),
   // skipped: 1249230 [郡|ぐん] (administrative district: address vocabulary, rare for learners)
   x("1294890", "[採用|さいよう]", "noun", "hiring; adoption (する: to hire, to adopt)", "school-work"),
@@ -200,7 +200,7 @@ export const BATCH_03: Word[] = [
   // moved to the lessons (n5-essentials/no-nominaliser): 1588120 [歌|うた]う
   // skipped: 1354600 [丈|たけ] (count is an artefact of 大丈夫)
   x("1326990", "[取|と]れる", "verb", "to come off; to be obtained, can be taken", "everyday", "ichidan"),
-  x("1390020", "[川|かわ]", "noun", "river", "nature"),
+  // moved to the lessons (n4-giving-voice/causative): 1390020 [川|かわ]
   x("1562610", "[枠|わく]", "noun", "frame, border; limits", "everyday"),
   x("1049010", "コード", "noun", "code; cord", "everyday"),
   x("1139950", "ランキング", "noun", "ranking", "everyday"),

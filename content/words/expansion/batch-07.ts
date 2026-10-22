@@ -93,7 +93,7 @@ export const BATCH_07: Word[] = [
   x("1467350", "[妊娠|にんしん]", "noun", "pregnancy (する: to become pregnant)", "body"),
   x("1501350", "[複雑|ふくざつ]", "na-adj", "complicated, complex", "everyday"),
   x("1524670", "[毎回|まいかい]", "adverb", "every time, each time", "time"), // pos: used as an adverb
-  x("1602710", "[両親|りょうしん]", "noun", "parents", "people"),
+  // moved to the lessons (n4-giving-voice/sasete-kudasai): 1602710 [両親|りょうしん]
   // skipped: 2080900 [史|し] (suffix-like single kanji (history, as in 〜史))
   x("1606620", "[我|わ]が", "pre-noun", "my, our (written)", "language"),
   x("1251900", "つなぐ", "verb", "to connect, to tie together; to hold hands", "everyday", "godan"),

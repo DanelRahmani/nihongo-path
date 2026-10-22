@@ -12,7 +12,7 @@ export const BATCH_05: Word[] = [
   x("1530030", "[無事|ぶじ]", "na-adj", "safe, without incident", "everyday"), // pos: was noun
   x("1546680", "[要求|ようきゅう]", "noun", "demand (する: to demand)", "everyday"),
   // skipped: 1554270 [料|りょう] (fee or material in compounds; really a suffix)
-  x("1555830", "[隣|となり]", "noun", "next door; next to, neighbour", "places"),
+  // moved to the lessons (n4-giving-voice/suffering-passive): 1555830 [隣|となり]
   x("1194450", "[稼|かせ]ぐ", "verb", "to earn (money)", "school-work", "godan"),
   // skipped: 1632670 かむ (only the "blow one's nose" sense; a learner means 噛む "to bite", not a candidate)
   x("1414470", "だいたい", "adverb", "roughly, about; mostly", "everyday"),
@@ -96,7 +96,7 @@ export const BATCH_05: Word[] = [
   x("1597790", "[付|つ]き[合|あ]う", "verb", "to go out with; to keep company", "people", "godan"),
   x("1041030", "キス", "noun", "kiss (する: to kiss)", "feelings"),
   x("1227370", "[久|ひさ]しぶり", "noun", "first time in a long while; long time no see (casual)", "time"),
-  x("1253190", "[迎|むか]える", "verb", "to welcome, to meet (someone arriving)", "everyday", "ichidan"),
+  // moved to the lessons (n4-giving-voice/te-ageru-kureru-morau): 1253190 [迎|むか]える
   x("1160570", "[育|そだ]てる", "verb", "to raise, to bring up", "people", "ichidan"),
   x("1401910", "[草|くさ]", "noun", "grass, weed", "nature"),
   x("1604870", "むしろ", "adverb", "rather, if anything", "language"),
@@ -204,7 +204,7 @@ export const BATCH_05: Word[] = [
   x("1123840", "ボス", "noun", "boss, leader", "school-work"),
   x("1172590", "うわさ", "noun", "rumour (する: to gossip about)", "language"),
   x("1175380", "[閲覧|えつらん]", "noun", "reading, browsing (する: to browse, to view)", "hobbies"),
-  x("1242350", "[近所|きんじょ]", "noun", "neighbourhood", "places"),
+  // moved to the lessons (n4-giving-voice/ageru-kureru-morau): 1242350 [近所|きんじょ]
   x("1264420", "[言語|げんご]", "noun", "language", "language"),
   x("1270040", "[後半|こうはん]", "noun", "second half", "time"),
   x("1272110", "[交渉|こうしょう]", "noun", "negotiation (する: to negotiate)", "school-work"),
@@ -244,7 +244,7 @@ export const BATCH_05: Word[] = [
   x("1445980", "[党|とう]", "noun", "political party", "people"),
   x("1504330", "[分野|ぶんや]", "noun", "field, area (of study or work)", "school-work"),
   x("1539390", "[優先|ゆうせん]", "noun", "priority (する: to give priority to)", "everyday"),
-  x("1203020", "[階|かい]", "noun", "floor, storey (of a building)", "places"),
+  // moved to the lessons (n4-giving-voice/kenjougo): 1203020 [階|かい]
   x("1589340", "[思|おも]い[出|で]", "noun", "memory, recollection", "feelings"),
   x("1599430", "[中身|なかみ]", "noun", "contents, what is inside", "everyday"),
   x("1384860", "[切|き]れる", "verb", "to be cut, to snap; to run out", "everyday", "ichidan"),

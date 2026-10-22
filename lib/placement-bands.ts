@@ -20,6 +20,7 @@ export const PICKS: Record<string, string[]> = {
   "n5-essentials": ["temo-ii#0", "temo-ii#1"],
   "n4-conditions": ["conditionals-compared#0", "noni#0"],
   "n4-plans": ["you-ni-suru-naru#1", "te-shimau#1"],
+  "n4-giving-voice": ["ageru-kureru-morau#0", "passive#0"],
 };
 
 /** The placement bands, built at build time from the units and the picked quiz questions. Server only. */

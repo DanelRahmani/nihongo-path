@@ -1,3 +1,4 @@
+import { jlpt } from "@/content/jlpt";
 import type { Lesson } from "@/content/types";
 
 // The conjugation tables here are checked against lib/conjugate.ts (tests/lesson-tables.test.ts).
@@ -11,6 +12,7 @@ export const verbs: Lesson[] = [
     source: "Genki I ch. 3; Tae Kim's Guide — “Verb basics”",
     register: "both",
     kinds: ["verbs"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -101,6 +103,7 @@ export const verbs: Lesson[] = [
     source: "Genki I ch. 3–4; Tae Kim's Guide — “Polite form and verb stems”",
     register: "polite",
     kinds: ["verbs"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -202,6 +205,7 @@ export const verbs: Lesson[] = [
     source: "Genki I ch. 8; Tae Kim's Guide — “Negative verbs”",
     register: "plain",
     kinds: ["verbs"],
+    jlpt: jlpt("N5"),
     blocks: [
       { type: "idea", text: "The casual way to say *don't* is the ない form: [食|た]べ**ない**, [飲|の]ま**ない**." },
       {
@@ -284,6 +288,7 @@ export const verbs: Lesson[] = [
     source: "Genki I ch. 6; Tae Kim's Guide — “The te-form”",
     register: "plain",
     kinds: ["verbs"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -382,6 +387,7 @@ export const verbs: Lesson[] = [
     source: "Genki I ch. 9; Tae Kim's Guide — “Past tense”",
     register: "plain",
     kinds: ["verbs"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -471,6 +477,7 @@ export const verbs: Lesson[] = [
     source: "Genki I ch. 6–7; Tae Kim's Guide — “Using the te-form”",
     register: "both",
     kinds: ["verbs"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -552,6 +559,7 @@ export const verbs: Lesson[] = [
     source: "Genki I ch. 11; Tae Kim's Guide — “Desire: たい”",
     register: "both",
     kinds: ["verbs"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -632,6 +640,7 @@ export const verbs: Lesson[] = [
     source: "Genki I ch. 5 (ましょう); Genki II ch. 15 (volitional); Tae Kim's Guide — “Volitional form”",
     register: "both",
     kinds: ["verbs"],
+    jlpt: jlpt("N4"),
     blocks: [
       {
         type: "idea",
@@ -719,6 +728,7 @@ export const verbs: Lesson[] = [
     source: "Genki II ch. 13; Tae Kim's Guide — “Potential form”",
     register: "both",
     kinds: ["verbs"],
+    jlpt: jlpt("N4"),
     blocks: [
       {
         type: "idea",
@@ -804,6 +814,7 @@ export const verbs: Lesson[] = [
     source: "Genki II ch. 17; Tae Kim's Guide — “Conditionals”",
     register: "plain",
     kinds: ["verbs"],
+    jlpt: jlpt("N4"),
     blocks: [
       {
         type: "idea",

@@ -42,6 +42,7 @@ export const VERB_FORM_INFO: Partial<Record<VerbForm, FormInfo>> = {
   politeVolitional: { label: "polite volitional (〜ましょう)", lesson: "verbs/volitional" },
   potential: { label: "potential (can)", lesson: "verbs/potential" },
   tara: { label: "たら conditional (if, when)", lesson: "verbs/tara-conditional" },
+  ba: { label: "ば conditional (if)", lesson: "n4-conditions/ba" },
 };
 
 /** The adjective forms the lessons teach, by the lesson that teaches each class's forms. */
@@ -163,6 +164,7 @@ export function identifyForm(word: TrainerWord, answer: string): string[] {
 const ALL_VERB_FORMS: VerbForm[] = [
   "plain", "plainNeg", "plainPast", "plainPastNeg", "stem", "polite", "politeNeg", "politePast", "politePastNeg", "te", "tai",
   "potential", "volitional", "politeVolitional", "passive", "causative", "ba", "tara", "imperative", "prohibitive", "nasai", "teKudasai",
+  "causativePassive", "honorific", "humble",
 ];
 const ALL_ADJECTIVE_FORMS: AdjectiveForm[] = ["plain", "plainNeg", "plainPast", "plainPastNeg", "polite", "politeNeg", "politePast", "politePastNeg", "te", "adverb", "attributive", "ba", "tara"];
 
@@ -175,6 +177,9 @@ const OTHER_LABELS: Record<string, string> = {
   imperative: "plain command",
   prohibitive: "don't (な)",
   nasai: "なさい command",
+  causativePassive: "causative-passive",
+  honorific: "honorific (尊敬語)",
+  humble: "humble (謙譲語)",
   adverb: "adverb (く / に)",
   attributive: "form before a noun",
 };

@@ -1,3 +1,4 @@
+import { jlpt } from "@/content/jlpt";
 import type { Lesson } from "@/content/types";
 
 export const basics: Lesson[] = [
@@ -104,6 +105,7 @@ export const basics: Lesson[] = [
     source: "Genki I ch. 3, 8 and 9; Tae Kim's Guide — “Polite form and verb stems”",
     register: "both",
     kinds: ["basics"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",

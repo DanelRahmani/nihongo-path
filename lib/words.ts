@@ -12,8 +12,8 @@ import { plainOf, readingOf } from "@/lib/markup";
 /** Particles, the copula and other grammar words: resolved, but not dictionary entries. */
 export const FUNCTION_WORDS = new Set([
   ..."は が を に で へ と や も の か ね よ な".split(" "),
-  ..."よね から まで より って とか けど でも し など".split(" "),
-  ..."だ です でした だった じゃ だったら なら でしょう だろう ん なん なの ので のに".split(" "),
+  ..."よね から まで より って とか けど けれど けれども でも し など だけ しか くらい ぐらい ばかり ながら".split(" "),
+  ..."だ です でした だった じゃ だったら なら でしょう でしょ だろう ん なん なの ので のに".split(" "),
 ]);
 
 /**
@@ -61,10 +61,81 @@ function teContractions(te: Jp, form: string): [Jp, string][] {
   return ["る", "た", "ます", "ません", "ました", "ない", "なかった"].map((end) => [te + end, `${form}+${end}`]);
 }
 
+/** ては contracted in speech: [撮|と]っちゃ, [飲|の]んじゃ (〜ちゃだめ, 〜ちゃいけない). */
+function chaContraction(te: Jp): [Jp, string][] {
+  if (te.endsWith("て")) return [[`${te.slice(0, -1)}ちゃ`, "te+ちゃ (ては)"]];
+  if (te.endsWith("で")) return [[`${te.slice(0, -1)}じゃ`, "te+じゃ (では)"]];
+  return [];
+}
+
+/**
+ * てしまう and ておく contracted in speech, each a う-verb of its own: [食|た]べちゃう, [飲|の]んじゃった,
+ * [買|か]っとく, [読|よ]んどいて.
+ */
+function helperContractions(te: Jp): [Jp, string][] {
+  const voiced = te.endsWith("で");
+  if (!voiced && !te.endsWith("て")) return [];
+  const base = te.slice(0, -1);
+  const out: [Jp, string][] = [];
+  for (const [helper, label] of [[voiced ? "じゃう" : "ちゃう", "chau"], [voiced ? "どく" : "とく", "toku"]]) {
+    for (const { form: vf } of VERB_FORMS) {
+      if (vf === "honorific" || vf === "humble") continue;
+      const v = conjugateVerb(`${base}${helper}`, "godan", vf);
+      if (v.ok) out.push([firstWord(v.jp), `${label}+${vf}`]);
+    }
+  }
+  return out;
+}
+
+/** The ない form's spoken offshoots: [忘|わす]れないで (ないでください), [行|い]かなきゃ (なければ), [行|い]かなくちゃ (なくては). */
+function naiContractions(neg: Jp): [Jp, string][] {
+  if (!neg.endsWith("ない")) return [];
+  const stem = neg.slice(0, -2);
+  return [
+    [`${neg}で`, "naide"],
+    [`${stem}なきゃ`, "nakya"],
+    [`${stem}なくちゃ`, "nakucha"],
+  ];
+}
+
+/** すぎる (too much) after a verb stem or an adjective's stem, a る-verb: [食|た]べすぎた, [高|たか]すぎる, [静|しず]かすぎて. */
+function sugiruForms(stem: Jp, label: string): [Jp, string][] {
+  const out: [Jp, string][] = [];
+  for (const { form: vf } of VERB_FORMS) {
+    const v = conjugateVerb(`${stem}すぎる`, "ichidan", vf);
+    if (v.ok) out.push([firstWord(v.jp), `${label}+${vf}`]);
+  }
+  return out;
+}
+
+/** Verbs that follow a stem as one compound verb: [読|よ]み[始|はじ]める, [食|た]べ[終|お]わった, [泣|な]き[出|だ]した. */
+const STEM_VERBS: [Jp, VerbClass, string][] = [
+  ["[始|はじ]める", "ichidan", "hajimeru"],
+  ["[終|お]わる", "godan", "owaru"],
+  ["[続|つづ]ける", "ichidan", "tsuzukeru"],
+  ["[出|だ]す", "godan", "dasu"],
+];
+
+function stemVerbForms(stem: Jp): [Jp, string][] {
+  const out: [Jp, string][] = [];
+  for (const [verb, cls, label] of STEM_VERBS) {
+    for (const { form: vf } of VERB_FORMS) {
+      if (vf === "honorific" || vf === "humble") continue;
+      const v = conjugateVerb(`${stem}${verb}`, cls, vf);
+      if (!v.ok) continue;
+      out.push([firstWord(v.jp), `${label}+${vf}`]);
+      if (vf === "te") out.push(...teContractions(firstWord(v.jp), `${label}+te`));
+    }
+  }
+  return out;
+}
+
 /** Every one-word form the engine builds from a verb: [食|た]べ, [食|た]べた, [食|た]べられない, [食|た]べてる… */
 function verbForms(jp: Jp, cls: VerbClass): [Jp, string][] {
   const out: [Jp, string][] = [];
   for (const { form } of VERB_FORMS) {
+    // Keigo forms are other words (召し上がる) or お + stem, which resolve as entries of their own.
+    if (form === "honorific" || form === "humble") continue;
     const r = conjugateVerb(jp, cls, form);
     if (!r.ok) continue;
     for (const f of [r.jp, ...r.variants, ...(r.colloquial ?? [])]) {
@@ -76,13 +147,16 @@ function verbForms(jp: Jp, cls: VerbClass): [Jp, string][] {
           if (a.ok) out.push([firstWord(a.jp), `${form}+${af}`]);
         }
       }
-      if (form === "potential" || form === "passive" || form === "causative") {
+      if (form === "potential" || form === "passive" || form === "causative" || form === "causativePassive") {
         for (const { form: vf } of VERB_FORMS) {
           const v = conjugateVerb(f, "ichidan", vf);
           if (v.ok) out.push([firstWord(v.jp), `${form}+${vf}`]);
         }
       }
-      if (form === "te") out.push(...teContractions(f, "te"));
+      if (form === "te") out.push(...teContractions(f, "te"), ...chaContraction(f), ...helperContractions(firstWord(f)));
+      if (form === "plainNeg") out.push(...naiContractions(f));
+      // たり (doing things like …): the plain past + り, also of the negative ([来|こ]なかったり).
+      if (form === "plainPast" || form === "plainPastNeg") out.push([`${firstWord(f)}り`, `${form}+tari`]);
       // たがる (wants to, of someone else): stem + たがる, a godan verb.
       if (form === "stem") {
         for (const { form: vf } of VERB_FORMS) {
@@ -91,6 +165,8 @@ function verbForms(jp: Jp, cls: VerbClass): [Jp, string][] {
           out.push([firstWord(v.jp), `tagaru+${vf}`]);
           if (vf === "te") out.push(...teContractions(v.jp, "tagaru+te"));
         }
+        out.push(...sugiruForms(f, "sugiru"));
+        if (!f.includes(" ")) out.push(...stemVerbForms(f));
       }
     }
   }
@@ -125,6 +201,25 @@ export function buildIndex(words: Word[], names: Jp[]): WordIndex {
         const a = conjugateAdjective(word.jp, cls, af);
         if (a.ok) for (const f of [a.jp, ...a.variants]) add(firstWord(f), { word, form: af });
       }
+      // The negative conjugates again: [高|たか]くない → [高|たか]くなくて (くなくてもいい).
+      if (cls === "i") {
+        const neg = conjugateAdjective(word.jp, "i", "plainNeg");
+        if (neg.ok) {
+          for (const af of ADJECTIVE_FORMS) {
+            const a = conjugateAdjective(neg.jp, "i", af);
+            if (a.ok) add(firstWord(a.jp), { word, form: `plainNeg+${af}` });
+          }
+        }
+      }
+      // たり of an い-adjective: [暑|あつ]かったり, [高|たか]くなかったり.
+      if (cls === "i") {
+        for (const af of ["plainPast", "plainPastNeg"] as const) {
+          const a = conjugateAdjective(word.jp, "i", af);
+          if (a.ok) add(`${firstWord(a.jp)}り`, { word, form: `${af}+tari` });
+        }
+      }
+      // すぎる: [高|たか]すぎる, [静|しず]かすぎる (いい has no stem of its own: よすぎる comes from よい).
+      if (word.jp !== "いい") for (const [f, form] of sugiruForms(cls === "i" ? word.jp.replace(/い$/, "") : word.jp, "sugiru")) add(f, { word, form });
       // The さ noun: [高|たか]い → [高|たか]さ.
       if (word.pos === "i-adj") add(word.jp.replace(/い$/, "さ"), { word, form: "sa" });
     }
@@ -157,7 +252,18 @@ export const KANA_CHOICES: Record<string, Jp> = {
   かき: "[柿|かき]",
   よる: "[夜|よる]",
   きた: "[来|く]る",
+  きちゃった: "[来|く]る",
+  // The helper verbs after a て form, written in kana: [持|も]って いって, [買|か]って きて.
+  いって: "[行|い]く",
+  いった: "[行|い]く",
+  きて: "[来|く]る",
+  きます: "[来|く]る",
+  きました: "[来|く]る",
+  かぜ: "[風|かぜ]",
 };
+
+/** Suffixes that follow a verb's ます stem: [読|よ]み[方|かた] (how to read). */
+const STEM_SUFFIXES = new Set(["方|かた"]);
 
 /** Titles that follow a name like a suffix: [山田|やまだ]-[先生|せんせい]. */
 const TITLES = new Set(["先生", "先輩", "部長", "社長"]);
@@ -223,6 +329,7 @@ function resolveKey(key: string, ix: WordIndex, depth: number, opts: ResolveOpti
     if (written.length > sw.length && written.endsWith(sw) && reading.endsWith(sr)) {
       const core = resolveKey(`${written.slice(0, -sw.length)}|${reading.slice(0, -sr.length)}`, ix, depth + 1, opts);
       if (core?.how === "entry" || core?.how === "affix") return { how: "affix", word: core.word, affix: s };
+      if (core?.how === "form" && core.form === "stem" && STEM_SUFFIXES.has(keyOf(s.jp))) return { how: "affix", word: core.word, affix: s };
       if (core?.how === "counter") return core;
     }
   }

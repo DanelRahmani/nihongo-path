@@ -81,10 +81,11 @@ Where they leave a choice, follow modern everyday usage (newspapers, NHK, curren
 - **Always in kana:**
   - formal nouns: こと, とき ("when…"), ところ (abstract), もの (abstract), わけ, はず, よう, ほか, とおり;
   - ある and いる (existence), できる ("can"), なる ("become"), ない;
-  - helper verbs after the て form: 〜て いる, 〜て ある, 〜て いく, 〜て くる, 〜て みる, 〜て おく, 〜て しまう, 〜て あげる, 〜て くれる, 〜て もらう, 〜て いただく, 〜て ください. On their own these verbs keep their kanji: `[行|い]く`, `[来|く]る`, `[見|み]る`;
+  - helper verbs after the て form (the quiz checker also accepts the kanji a keyboard offers for these and for the formal nouns above, as whole words): 〜て いる, 〜て ある, 〜て いく, 〜て くる, 〜て みる, 〜て おく, 〜て しまう, 〜て あげる, 〜て くれる, 〜て もらう, 〜て いただく, 〜て ください. On their own these verbs keep their kanji: `[行|い]く`, `[来|く]る`, `[見|み]る`;
   - ください, in every use (a house choice);
+  - ほしい after the て form (〜て ほしい), while the adjective on its own keeps its kanji (`[欲|ほ]しい`), as newspapers and NHK write them;
   - いい and よい with all their forms (よくない, よかった), a house choice: 良い is 常用, but beginner text writes these in kana;
-  - grammar words: 〜かもしれない, 〜について, など, ぐらい/くらい;
+  - grammar words: 〜かもしれない, 〜について, など, ぐらい/くらい, ごろ (around a time), ばかり (たばかり "only just", and "nothing but"), ほう in のほうが and ほうがいい, and 〜すぎる after a stem or adjective (`[食|た]べすぎる`, `[高|たか]すぎる`);
   - set phrases and common adverbs as people write them: ありがとう, おはよう, すみません, よろしく, どうぞ, ちょっと.
 - **Content nouns keep their kanji; formal nouns don't:** `[時間|じかん]`, `[七時|しちじ]`, `[食|た]べ[物|もの]`, but とき, ところ, もの in their grammatical use. The set compounds `[申|もう]し[訳|わけ]` and `[言|い]い[訳|わけ]` keep 訳.
 - **Okurigana follow the main rule:** `[行|い]く` / `[行|おこな]う`, `[少|すこ]し`, `[新|あたら]しい`, `[終|お]わる`, `[分|わ]かる`, `[生|う]まれる`, `[話|はな]す` (verb) / `[話|はなし]` (noun). Nouns that custom writes without okurigana stay that way (`[切手|きって]`).

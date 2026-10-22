@@ -6,10 +6,17 @@ import { panelClass } from "@/components/ui/Panel";
 import { GRAMMAR, GRAMMAR_TOPICS } from "@/content/grammar";
 import { ALL_LESSONS } from "@/content/units";
 import { ArrowStrip } from "@/components/ui/ArrowStrip";
+import { GrammarLevels } from "@/components/GrammarLevels";
 
 export const metadata: Metadata = { title: "Grammar overview" };
 
 const LESSONS = new Map(ALL_LESSONS.map((l) => [l.key, l]));
+
+/** The levels a group's topics cover, for the level filter: "N5 N4". */
+const levelsOf = (topics: typeof GRAMMAR_TOPICS) => [...new Set(topics.map((t) => t.jlpt.level))].join(" ");
+
+const COUNTS: Record<string, number> = {};
+for (const t of GRAMMAR_TOPICS) COUNTS[t.jlpt.level] = (COUNTS[t.jlpt.level] ?? 0) + 1;
 
 export default function GrammarPage() {
   return (
@@ -20,13 +27,16 @@ export default function GrammarPage() {
       </h1>
       <p className="mt-4 leading-relaxed text-ink-2">
         The constructions the particle, grammar and verb lessons teach, on one page: the pattern, what it means, and an example from its lesson. Tap a
-        word for its meaning, or follow the link to the lesson for the full story.
+        word for its meaning, or follow the link to the lesson for the full story. JLPT levels follow Bunpro&apos;s lists, checked against JLPT
+        Sensei&apos;s; there is no official list, and the two differ in places.
       </p>
 
-      <ArrowStrip as="nav" aria-label="Grammar groups" className="scroll-strip -mx-4 mt-8 flex gap-1.5 overflow-x-auto px-4 py-1.5">
+      <GrammarLevels counts={COUNTS}>
+      <ArrowStrip as="nav" aria-label="Grammar groups" className="scroll-strip -mx-4 mt-6 flex gap-1.5 overflow-x-auto px-4 py-1.5">
         {GRAMMAR.map((g) => (
           <a
             key={g.slug}
+            data-levels={levelsOf(g.topics)}
             href={`#${g.slug}`}
             className="flex h-9 shrink-0 items-center rounded-full border border-line-strong bg-surface px-4 text-sm whitespace-nowrap text-ink-2 transition-colors duration-150 hover:border-ink-2 hover:text-ink focus-visible:-outline-offset-2"
           >
@@ -36,7 +46,7 @@ export default function GrammarPage() {
       </ArrowStrip>
 
       {GRAMMAR.map((group) => (
-        <section key={group.slug} id={group.slug} aria-labelledby={`${group.slug}-heading`} className="mt-14 scroll-mt-4">
+        <section key={group.slug} id={group.slug} data-levels={levelsOf(group.topics)} aria-labelledby={`${group.slug}-heading`} className="mt-14 scroll-mt-4">
           <h2 id={`${group.slug}-heading`} className="font-serif text-2xl font-bold">
             {group.title}
           </h2>
@@ -44,10 +54,13 @@ export default function GrammarPage() {
             {group.topics.map((topic) => {
               const lesson = LESSONS.get(topic.lesson)!;
               return (
-                <article key={topic.slug} id={topic.slug} aria-labelledby={`${topic.slug}-pattern`} className={panelClass("surface", "scroll-mt-4 p-5 sm:p-6")}>
-                  <h3 id={`${topic.slug}-pattern`} className="font-serif text-xl font-bold">
-                    <Rich text={topic.pattern} />
-                  </h3>
+                <article key={topic.slug} id={topic.slug} data-jlpt={topic.jlpt.level} aria-labelledby={`${topic.slug}-pattern`} className={panelClass("surface", "scroll-mt-4 p-5 sm:p-6")}>
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 id={`${topic.slug}-pattern`} className="font-serif text-xl font-bold">
+                      <Rich text={topic.pattern} />
+                    </h3>
+                    <span className="mt-1 shrink-0 rounded-full border border-line-strong px-2 py-0.5 text-xs text-ink-2">JLPT {topic.jlpt.level}</span>
+                  </div>
                   <p className="mt-1.5 text-ink-2">
                     <Rich text={topic.meaning} />
                   </p>
@@ -71,6 +84,7 @@ export default function GrammarPage() {
           </div>
         </section>
       ))}
+      </GrammarLevels>
 
       <p className="mt-12 text-xs text-ink-2">{GRAMMAR_TOPICS.length} constructions from {new Set(GRAMMAR_TOPICS.map((t) => t.lesson)).size} lessons.</p>
     </div>

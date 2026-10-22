@@ -1,3 +1,4 @@
+import { jlpt } from "@/content/jlpt";
 import type { Lesson } from "@/content/types";
 
 // Quiz answers are typed in Japanese and checked exactly (spaces and punctuation aside), so every
@@ -13,6 +14,7 @@ export const particles: Lesson[] = [
     source: "Tae Kim's Guide — “The topic particle は”; Genki I ch. 1; Cure Dolly — は and the core sentence",
     register: "polite",
     kinds: ["particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       { type: "idea", text: "は means “as for X…”: it sets the **topic**, and the rest of the sentence comments on it." },
       {
@@ -88,6 +90,7 @@ export const particles: Lesson[] = [
     source: "Cure Dolly — core sentence and zero が; Tae Kim's Guide — “The identifier particle が”; Genki I ch. 8",
     register: "plain",
     kinds: ["particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -180,6 +183,7 @@ export const particles: Lesson[] = [
     source: "Tae Kim's Guide — “The は and が particles”; Genki I ch. 8; Cure Dolly — core sentence and zero が",
     register: "both",
     kinds: ["particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -305,6 +309,7 @@ export const particles: Lesson[] = [
     source: "Tae Kim's Guide — “The object particle を”; Genki I ch. 3",
     register: "both",
     kinds: ["particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       { type: "idea", text: "を (pronounced **o**, and often romanised wo) marks the **object**, the thing an action is done *to*." },
       {
@@ -386,6 +391,7 @@ export const particles: Lesson[] = [
     source: "Tae Kim's Guide — “The target particle に”; Genki I ch. 3–4; Genki II ch. 14",
     register: "both",
     kinds: ["particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -485,6 +491,7 @@ export const particles: Lesson[] = [
     source: "Tae Kim's Guide — “The contextual particle で”; Genki I ch. 3, 10",
     register: "both",
     kinds: ["particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -573,6 +580,7 @@ export const particles: Lesson[] = [
     source: "Genki I ch. 3–4; Tae Kim's Guide — に and で",
     register: "both",
     kinds: ["particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       { type: "idea", text: "に is for **being** at or **going** to a place, and で is for **doing** something there." },
       {
@@ -652,6 +660,7 @@ export const particles: Lesson[] = [
     source: "Tae Kim's Guide — “The directional particle へ”; Genki I ch. 3",
     register: "plain",
     kinds: ["particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       { type: "idea", text: "へ (pronounced **e**) marks a **direction**, toward somewhere, while に marks the **destination** itself." },
       {
@@ -718,6 +727,7 @@ export const particles: Lesson[] = [
     source: "Genki I ch. 4, 11; Tae Kim's Guide — “The inclusive particle と” and “The vague listing particle や”",
     register: "both",
     kinds: ["particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -794,6 +804,7 @@ export const particles: Lesson[] = [
     source: "Genki I ch. 2; Tae Kim's Guide — “The inclusive topic particle も”; Cure Dolly — も as the inclusive は",
     register: "both",
     kinds: ["particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -867,6 +878,7 @@ export const particles: Lesson[] = [
     source: "Genki I ch. 1–2; Tae Kim's Guide — “The の particle”",
     register: "both",
     kinds: ["particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -945,6 +957,7 @@ export const particles: Lesson[] = [
     source: "Genki I ch. 4, 6; Tae Kim's Guide — から and まで",
     register: "both",
     kinds: ["particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       { type: "idea", text: "から marks the **starting point** (from), and まで the **end point** (until, or as far as)." },
       {
@@ -1023,6 +1036,7 @@ export const particles: Lesson[] = [
     source: "Genki I ch. 1; Tae Kim's Guide — “The question marker か”",
     register: "both",
     kinds: ["particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       { type: "idea", text: "Put か at the end of a sentence and it becomes a **question**, with nothing else moved." },
       {
@@ -1099,6 +1113,7 @@ export const particles: Lesson[] = [
     source: "Genki I ch. 2; Tae Kim's Guide — “Sentence-ending particles”",
     register: "both",
     kinds: ["particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       { type: "idea", text: "よ tells the listener something **new** (“you know”), and ね checks something you **share** (“right?”)." },
       {

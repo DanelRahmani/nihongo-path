@@ -4,8 +4,8 @@ import { x } from "@/content/words/expansion/make";
 /** Expansion batch 03: candidates 501–750. Meanings are ours; forms from JMdict (© EDRDG, CC BY-SA 4.0). */
 export const BATCH_03: Word[] = [
   // skipped: 1630250 はざま (reading check)
-  x("2013900", "[赤|あか]", "noun", "red (the colour)", "everyday"),
-  x("1445690", "[怒|おこ]る", "verb", "to get angry; to scold", "feelings", "godan"),
+  // moved to the lessons (n5-essentials/comparing): 2013900 [赤|あか]
+  // moved to the lessons (n4-plans/hajimeru): 1445690 [怒|おこ]る
   x("1403830", "そば", "noun", "beside, near; right after", "places"),
   x("1376600", "[正|ただ]しい", "i-adj", "correct, right", "everyday"),
   x("1591420", "[決|き]まる", "verb", "to be decided, to be settled", "everyday", "godan"),
@@ -18,10 +18,10 @@ export const BATCH_03: Word[] = [
   x("1480210", "[反応|はんのう]", "noun", "reaction, response (する: to react)", "everyday"),
   x("1482290", "[番号|ばんごう]", "noun", "number (in a series)", "numbers"),
   x("1522750", "[本人|ほんにん]", "noun", "the person themselves, the person in question", "people"),
-  x("1543750", "[予約|よやく]", "noun", "reservation, booking (する: to reserve)", "travel"),
-  x("1350110", "[消|け]す", "verb", "to turn off; to erase", "everyday", "godan"),
+  // moved to the lessons (n4-plans/te-oku): 1543750 [予約|よやく]
+  // moved to the lessons (n5-essentials/naide-kudasai): 1350110 [消|け]す
   // skipped: 1339160 だし (artefact: kana form also spells だ+し; the soup stock sense is a food word of minor frequency here)
-  x("1215230", "[間|あいだ]", "noun", "space between; period, while", "time"),
+  // moved to the lessons (n4-plans/made-ni-aida): 1215230 [間|あいだ]
   // skipped: 1215240 [間|ま] (homograph: the bare word is あいだ; ま is mostly in compounds)
   // skipped: 2067900 [間|かん] (homograph: mostly a suffix, as in 一週間)
   x("1548550", "[落|お]ちる", "verb", "to fall, to drop; to fail (a test)", "everyday", "ichidan"),
@@ -43,8 +43,8 @@ export const BATCH_03: Word[] = [
   x("1531190", "[娘|むすめ]", "noun", "(my) daughter; young woman", "people"),
   x("1535440", "[目指|めざ]す", "verb", "to aim at, to aim to become", "everyday", "godan"),
   x("1310600", "よす", "verb", "to stop (doing), to give up (casual)", "everyday", "godan"),
-  x("1512130", "[返|かえ]す", "verb", "to give back, to return (something)", "everyday", "godan"),
-  x("1604130", "[祭|まつ]り", "noun", "festival", "hobbies"),
+  // moved to the lessons (n5-essentials/dake-shika): 1512130 [返|かえ]す
+  // moved to the lessons (n4-plans/te-miru): 1604130 [祭|まつ]り
   x("1232870", "[許|ゆる]す", "verb", "to allow, to permit; to forgive", "everyday", "godan"),
   x("1486360", "[美|うつく]しい", "i-adj", "beautiful", "feelings"),
   // skipped: 1581630 [値|あたい] (rare reading; the lessons' everyday word for price is ね)
@@ -85,7 +85,7 @@ export const BATCH_03: Word[] = [
   x("1168650", "ちなみに", "conjunction", "by the way, incidentally", "language"),
   x("1599120", "[取引|とりひき]", "noun", "transaction, deal (する: to do business)", "school-work"),
   x("1775880", "ロシア", "noun", "Russia", "places"),
-  x("1585650", "[箱|はこ]", "noun", "box", "home"),
+  // moved to the lessons (n5-essentials/dareka-daremo): 1585650 [箱|はこ]
   x("1397350", "[素敵|すてき]", "na-adj", "lovely, wonderful, stylish", "feelings"),
   x("1014340", "アイドル", "noun", "pop idol", "hobbies"),
   // skipped: 1214690 [艦|かん] (warship; military and specialised)
@@ -116,7 +116,7 @@ export const BATCH_03: Word[] = [
   x("1516990", "[方向|ほうこう]", "noun", "direction", "travel"),
   x("1522370", "[本気|ほんき]", "noun", "seriousness, being serious", "feelings"),
   x("1594110", "[仕方|しかた]", "noun", "way of doing, method", "everyday"),
-  x("1206050", "[覚|おぼ]える", "verb", "to remember, to memorize; to learn", "school-work", "ichidan"),
+  // moved to the lessons (n4-plans/noni-purpose): 1206050 [覚|おぼ]える
   x("1319750", "[失|うしな]う", "verb", "to lose (a little formal)", "everyday", "godan"),
   x("1434180", "[低|ひく]い", "i-adj", "low", "everyday"),
   x("1136600", "ユーザー", "noun", "user", "everyday"),
@@ -125,7 +125,7 @@ export const BATCH_03: Word[] = [
   x("1153440", "[扱|あつか]う", "verb", "to handle, to treat, to deal with", "everyday", "godan"),
   x("1156100", "[委員|いいん]", "noun", "committee member", "school-work"),
   x("1218880", "[器|うつわ]", "noun", "bowl, vessel, container", "home"),
-  x("1290800", "[左|ひだり]", "noun", "left", "places"),
+  // moved to the lessons (n5-essentials/toki): 1290800 [左|ひだり]
   x("1346190", "[勝手|かって]", "na-adj", "selfish, as one pleases", "feelings"), // pos: was noun
   x("1358490", "[食事|しょくじ]", "noun", "meal (する: to have a meal)", "food"),
   x("1392290", "[選択|せんたく]", "noun", "choice, selection (する: to choose)", "everyday"),
@@ -159,7 +159,7 @@ export const BATCH_03: Word[] = [
   x("1512850", "[弁護士|べんごし]", "noun", "lawyer", "school-work"),
   x("1596240", "[専用|せんよう]", "noun", "for the exclusive use (of)", "everyday"),
   x("2164620", "[名古屋|なごや]", "noun", "Nagoya (city in central Japan)", "places"),
-  x("1381380", "[青|あお]", "noun", "blue (the colour); green (traffic light)", "everyday"),
+  // moved to the lessons (n5-essentials/comparing): 1381380 [青|あお]
   x("1552140", "[流|なが]れる", "verb", "to flow; to pass (of time)", "nature", "ichidan"),
   x("1189960", "[加|くわ]える", "verb", "to add", "everyday", "ichidan"),
   x("1467530", "[認|みと]める", "verb", "to recognize, to admit, to approve", "everyday", "ichidan"),
@@ -178,9 +178,9 @@ export const BATCH_03: Word[] = [
   // skipped: 1420730 [地|ち] (bare reading is rare; mostly in compounds like 地図)
   x("1352320", "[上|あ]げる", "verb", "to raise, to lift; to put up (a price, a hand)", "everyday", "ichidan"),
   x("1548370", "[頼|たの]む", "verb", "to ask, to request; to order", "everyday", "godan"),
-  x("1604550", "[見|み]つかる", "verb", "to be found", "everyday", "godan"),
+  // moved to the lessons (n4-conditions/temo): 1604550 [見|み]つかる
   x("1216890", "[含|ふく]める", "verb", "to include", "everyday", "ichidan"),
-  x("1421970", "[遅|おそ]い", "i-adj", "slow; late", "time"),
+  // moved to the lessons (n5-essentials/hou-ga-ii): 1421970 [遅|おそ]い
   x("1443990", "とにかく", "adverb", "anyway, in any case", "language"),
   x("1604300", "[回|まわ]る", "verb", "to turn, to go around", "everyday", "godan"),
   x("1331840", "[州|しゅう]", "noun", "state, province (of a country)", "places"),
@@ -189,15 +189,15 @@ export const BATCH_03: Word[] = [
   // skipped: 1250610 [掲載|けいさい] (formal, publishing vocabulary)
   x("1263760", "[現場|げんば]", "noun", "the scene, the site (of work or an event)", "school-work"),
   x("1317170", "[耳|みみ]", "noun", "ear", "body"),
-  x("1356510", "[条件|じょうけん]", "noun", "condition, requirement", "everyday"),
+  // moved to the lessons (n4-conditions, the unit name): 1356510 [条件|じょうけん]
   x("1361510", "[新|あら]た", "na-adj", "new, fresh (written)", "everyday"),
   x("1374810", "[制作|せいさく]", "noun", "production of a work (する: to produce)", "hobbies"),
-  x("1509290", "[壁|かべ]", "noun", "wall", "home"),
+  // moved to the lessons (n4-plans/te-aru): 1509290 [壁|かべ]
   x("2164640", "[福岡|ふくおか]", "noun", "Fukuoka (city in Kyushu)", "places"),
-  x("1265070", "[古|ふる]い", "i-adj", "old (not for people)", "everyday"),
+  // moved to the lessons (n5-essentials/comparing): 1265070 [古|ふる]い
   x("1593070", "[越|こ]える", "verb", "to cross over; to exceed", "travel", "ichidan"),
   // skipped: 1580555 [誠|まこと] (literary 'truth, sincerity'; mostly a name)
-  x("1588120", "[歌|うた]う", "verb", "to sing", "hobbies", "godan"),
+  // moved to the lessons (n5-essentials/no-nominaliser): 1588120 [歌|うた]う
   // skipped: 1354600 [丈|たけ] (count is an artefact of 大丈夫)
   x("1326990", "[取|と]れる", "verb", "to come off; to be obtained, can be taken", "everyday", "ichidan"),
   x("1390020", "[川|かわ]", "noun", "river", "nature"),
@@ -212,7 +212,7 @@ export const BATCH_03: Word[] = [
   x("1919590", "[級|きゅう]", "noun", "grade, class, level", "school-work"),
   // skipped: 1429740 [長|ちょう] (mostly a suffix: 社長)
   x("1551530", "[立|た]てる", "verb", "to stand (something) up; to make (a plan)", "everyday", "ichidan"),
-  x("1269410", "[後|うし]ろ", "noun", "back, behind", "places"),
+  // moved to the lessons (n4-plans/you-ni): 1269410 [後|うし]ろ
   x("1600240", "[年齢|ねんれい]", "noun", "age (in years)", "people"),
   x("1078420", "ツアー", "noun", "tour", "travel"),
   x("1208450", "[活躍|かつやく]", "noun", "active role (する: to play an active part)", "school-work"),
@@ -223,11 +223,11 @@ export const BATCH_03: Word[] = [
   x("1406060", "それでも", "conjunction", "even so, still", "language"),
   x("1447320", "[投票|とうひょう]", "noun", "vote (する: to vote)", "everyday"),
   x("1491150", "[不安|ふあん]", "na-adj", "anxious; anxiety", "feelings"), // pos: was noun
-  x("1553170", "[旅行|りょこう]", "noun", "trip, travel (する: to travel)", "travel"),
+  // moved to the lessons (n5-essentials/no-nominaliser): 1553170 [旅行|りょこう]
   // skipped: 1247660 [軍|ぐん] (military term, mostly a suffix: 'army')
   // skipped: 1012840 やばい (slang: 'awful', 'amazing', 'risky')
   x("1603500", "[保証|ほしょう]", "noun", "guarantee, warranty (する: to guarantee)", "shopping"),
-  x("1429060", "[調|しら]べる", "verb", "to look into, to check, to look up", "school-work", "ichidan"),
+  // moved to the lessons (n4-plans/noni-purpose): 1429060 [調|しら]べる
   x("1396590", "[狙|ねら]う", "verb", "to aim at, to be after", "everyday", "godan"),
   x("1579170", "[魂|たましい]", "noun", "soul, spirit", "feelings"),
   x("1427900", "[張|は]る", "verb", "to stretch, to spread; to put up (a tent)", "everyday", "godan"),
@@ -252,5 +252,5 @@ export const BATCH_03: Word[] = [
   x("1559610", "[連続|れんぞく]", "noun", "in a row, series (する: to continue)", "time"),
   // skipped: 1511870 [編|へん] (suffix 'volume, edited by')
   x("1586850", "あるいは", "conjunction", "or; perhaps (formal)", "language"),
-  x("1449540", "[答|こた]える", "verb", "to answer, to reply", "school-work", "ichidan"),
+  // moved to the lessons (n4-plans/naide-zuni): 1449540 [答|こた]える
 ];

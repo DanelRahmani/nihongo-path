@@ -60,7 +60,7 @@ One entry per lesson, in path order.
 | `slug` | string | The lesson's slug. |
 | `stage` | object | The unit: `index` (0 for 〇 Start here, 8 for 八 Culture), `slug`, `title`. |
 | `title` | string | Lesson title. |
-| `jlptLevel` | string \| null | `null` until the JLPT phases tag lessons. |
+| `jlptLevel` | string \| null | The lesson's JLPT level (`N5`, `N4`…) from its `jlpt` tag (`content/jlpt.ts`: Bunpro's lists, cross-checked with JLPT Sensei's), for the grammar, particle and verb lessons; `null` for the others (the scripts lesson, kana, suffixes, culture). |
 | `status` | `"not started" \| "in progress" \| "completed"` | Completed = marked done; in progress = opened or a quiz question answered. |
 | `firstOpenedAt` | string \| null | First visit; `null` for visits before recording began. |
 | `completedAt` | string \| null | When marked done; `null` if not done, or done before recording began. |
@@ -77,11 +77,11 @@ Every item that has a schedule, a notebook entry or at least one recorded answer
 | `deckTitle` | string \| null | The deck's name in the app. |
 | `card` | string | The card's id in its deck. Quiz cards are `unit/lesson#hash` of the question; conjugation cards `word#form`; Type it cards the line's markup. |
 | `drill` | string | `kana`, `kanji`, `vocabulary`, `cloze`, `register`, `conjugation`, `quiz`, `type`, or `other` for a deck this build doesn't know. |
-| `lessonId` | string \| null | The item's lesson, where the app links one (quiz and conjugation questions). |
-| `grammarPointId` | `null` | Until grammar points have ids. |
+| `lessonId` | string \| null | The item's lesson: quiz, cloze and polite ↔ casual cards from their card id, conjugation questions from the lesson that teaches the form, Type it lines from the lesson they come from. `null` for kana, kanji and vocabulary cards. |
+| `grammarPointId` | string \| null | The slug of the lesson's grammar topic (its anchor on `/grammar`, e.g. `te-iru`) when the item's lesson has exactly one topic in `content/grammar.ts`; `null` otherwise. |
 | `prompt` | string \| null | The question as plain text, with its hint in brackets. `null` if the item is no longer in the app, or the question data couldn't load. |
 | `expected` | string \| null | The answer shown after a miss, as plain text (romaji where the answer is typed in romaji). The checkers also accept kana for kanji, listed alternatives and so on. |
-| `jlptLevel` | string \| null | `null` for now. |
+| `jlptLevel` | string \| null | The `jlptLevel` of the item's lesson; `null` without a lesson, or when the lesson has no level. |
 | `status` | `"learning" \| "learned" \| "unscheduled"` | Scheduled cards: learned at box ≥ 3 (the unlock rule). Quiz, conjugation and Type it items aren't scheduled. |
 | `scheduler` | object \| null | The Leitner state as stored: `{kind: "leitner-5", box (1–5), due (epoch ms), reps, lapses, dueAt}`. Box waits: 0, 10 minutes, 1, 3, 7 days. |
 | `notebook` | object \| null | In the mistake notebook: `{misses, rightInRow, addedAt, lastMissAt}`. It leaves after 2 right answers in a row. |
@@ -111,7 +111,7 @@ Each finished placement check, oldest first: `{at, startUnit (the unit it placed
 | `dueByDeck` | object | The same, per deck. |
 | `notebookItems` | integer | Items in the mistake notebook. |
 | `lessonsByStage` | object | Per unit slug, `{completed, total}`. |
-| `lessonsByJlptLevel` | object | Per level (`unknown` for now), `{completed, total}`. |
+| `lessonsByJlptLevel` | object | Per level, `{completed, total}`; lessons without a level count as `unknown`. |
 
 ## `stores`
 

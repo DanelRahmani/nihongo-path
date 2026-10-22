@@ -24,13 +24,15 @@ export interface Field {
    * dictionary checks skip it (content/STYLE.md §5).
    */
   quoted?: true;
+  /** A line flagged for a native speaker (`needsReview` on an example, dialogue line or quiz question). */
+  needsReview?: string;
 }
 
 /** Every piece of text in a lesson, in reading order. */
 export function lessonFields(lesson: Lesson, key: string): Field[] {
   const out: Field[] = [];
-  const add = (text: string | undefined, jp: boolean, where: string, en?: string) => {
-    if (text !== undefined) out.push({ lesson: key, where, text, jp, en });
+  const add = (text: string | undefined, jp: boolean, where: string, en?: string, needsReview?: string) => {
+    if (text !== undefined) out.push({ lesson: key, where, text, jp, en, ...(needsReview ? { needsReview } : {}) });
   };
   out.push({ lesson: key, where: "mark", text: lesson.mark, jp: true, label: true });
   add(lesson.summary, false, "summary");
@@ -48,7 +50,7 @@ export function lessonFields(lesson: Lesson, key: string): Field[] {
         break;
       case "examples":
         b.items.forEach((ex, j) => {
-          add(ex.jp, true, `${at} #${j} jp`, ex.en);
+          add(ex.jp, true, `${at} #${j} jp`, ex.en, ex.needsReview);
           add(ex.alt, true, `${at} #${j} alt`, ex.en);
           add(ex.en, false, `${at} #${j} en`);
           add(ex.note, false, `${at} #${j} note`);
@@ -58,7 +60,7 @@ export function lessonFields(lesson: Lesson, key: string): Field[] {
         add(b.title, false, `${at} title`);
         [b.a, b.b].forEach((ex, j) => {
           const side = j ? "B" : "A";
-          add(ex.jp, true, `${at} ${side} jp`, ex.en);
+          add(ex.jp, true, `${at} ${side} jp`, ex.en, ex.needsReview);
           add(ex.alt, true, `${at} ${side} alt`, ex.en);
           add(ex.en, false, `${at} ${side} en`);
           add(ex.note, false, `${at} ${side} note`);
@@ -72,7 +74,7 @@ export function lessonFields(lesson: Lesson, key: string): Field[] {
         break;
       case "dialogue":
         b.lines.forEach((l, j) => {
-          add(l.jp, true, `${at} line ${j} jp`, l.en);
+          add(l.jp, true, `${at} line ${j} jp`, l.en, l.needsReview);
           add(l.alt, true, `${at} line ${j} alt`, l.en);
           add(l.en, false, `${at} line ${j} en`);
         });
@@ -83,7 +85,7 @@ export function lessonFields(lesson: Lesson, key: string): Field[] {
         break;
       case "quiz":
         b.questions.forEach((q, j) => {
-          add(q.prompt, false, `${at} q${j + 1} prompt`);
+          add(q.prompt, false, `${at} q${j + 1} prompt`, undefined, q.needsReview);
           q.answers.forEach((a, k) => add(a, true, `${at} q${j + 1} answer ${k + 1}${q.answerIn ? " (typed in romaji)" : ""}`));
           add(q.explanation, false, `${at} q${j + 1} explanation`);
         });
@@ -168,12 +170,13 @@ export function dumpText(fields: Field[]): string {
       if (f.jp) {
         parts.push(`[${f.where}]`, `  jp      ${plainOf(f.text)}`, `  reading ${readingOf(f.text)}`, `  romaji  ${shownRomaji(f)}`);
         if (f.en) parts.push(`  en      ${f.en}`);
-      } else if (hasJapanese(f.text)) {
+      } else if (hasJapanese(f.text) || f.needsReview) {
         const text = plainOf(f.text, false);
         const reading = readingOf(f.text, false);
         parts.push(`[${f.where}] (prose)`, `  text    ${text}`);
         if (reading !== text) parts.push(`  reading ${reading}`);
       }
+      if (f.needsReview) parts.push(`  REVIEW  ${f.needsReview}`);
     }
     parts.push("");
   }

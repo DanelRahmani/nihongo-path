@@ -17,6 +17,9 @@ export const PICKS: Record<string, string[]> = {
   verbs: ["te-form#0", "nai-form#2"],
   suffixes: ["name-suffixes#1", "titles#0"],
   culture: ["uchi-soto#0", "soft-refusals#0"],
+  "n5-essentials": ["temo-ii#0", "temo-ii#1"],
+  "n4-conditions": ["conditionals-compared#0", "noni#0"],
+  "n4-plans": ["you-ni-suru-naru#1", "te-shimau#1"],
 };
 
 /** The placement bands, built at build time from the units and the picked quiz questions. Server only. */

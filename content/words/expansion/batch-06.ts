@@ -22,7 +22,7 @@ export const BATCH_06: Word[] = [
   x("1467590", "[認定|にんてい]", "noun", "official approval (する: to certify, to recognise)", "school-work"),
   x("1502560", "[物質|ぶっしつ]", "noun", "material, substance", "nature"),
   x("1549470", "[利益|りえき]", "noun", "profit; benefit", "school-work"),
-  x("1432850", "[通|かよ]う", "verb", "to commute, to attend regularly", "school-work", "godan"),
+  // moved to the lessons (n4-plans/nagara): 1432850 [通|かよ]う
   // skipped: 1363170 [真|しん] (rare as a bare word; mostly a prefix)
   x("1519630", "[望|のぞ]む", "verb", "to hope for, to wish for", "feelings", "godan"),
   x("1329650", "[受|う]け[取|と]る", "verb", "to receive, to accept", "everyday", "godan"),
@@ -147,7 +147,7 @@ export const BATCH_06: Word[] = [
   x("2055530", "だが", "conjunction", "but, however (written, or blunt speech)", "language"),
   x("2080530", "ノー", "interjection", "no (as in no smoking, no problem)", "language"),
   x("1441900", "[伝|つた]わる", "verb", "to be conveyed, to spread (news)", "language", "godan"),
-  x("1227560", "[休|やす]む", "verb", "to rest, to take a day off; to be absent", "everyday", "godan"),
+  // moved to the lessons (n5-essentials/hou-ga-ii): 1227560 [休|やす]む
   x("1257330", "[建|た]てる", "verb", "to build, to construct", "everyday", "ichidan"),
   x("1555930", "[涙|なみだ]", "noun", "tear, tears", "body"),
   x("1344410", "[助|たす]ける", "verb", "to help; to save, to rescue", "everyday", "ichidan"),
@@ -163,7 +163,7 @@ export const BATCH_06: Word[] = [
   x("1199640", "[回転|かいてん]", "noun", "rotation, turning (する: to rotate, to turn)", "everyday"),
   x("1021360", "イタリア", "noun", "Italy", "places"),
   x("1066680", "スーツ", "noun", "suit (clothing)", "shopping"),
-  x("1087820", "ドア", "noun", "door", "home"),
+  // moved to the lessons (n5-essentials/naide-kudasai): 1087820 ドア
   x("1148850", "ワイン", "noun", "wine", "food"),
   x("1213060", "[汗|あせ]", "noun", "sweat", "body"),
   x("1234700", "[共通|きょうつう]", "noun", "common, shared (する: to have in common)", "everyday"),
@@ -196,7 +196,7 @@ export const BATCH_06: Word[] = [
   x("1432410", "[追|お]う", "verb", "to chase, to pursue; to follow", "everyday", "godan"),
   x("1416170", "たたく", "verb", "to hit, to knock, to pat", "everyday", "godan"),
   x("1127600", "マシン", "noun", "machine", "everyday"),
-  x("1538440", "[踊|おど]る", "verb", "to dance", "hobbies", "godan"),
+  // moved to the lessons (n5-essentials/tari): 1538440 [踊|おど]る
   // skipped: 1034420 オタク (slang (otaku))
   x("1034660", "オフィス", "noun", "office", "school-work"),
   // skipped: 1036170 カー (suffix-like; counted from compounds such as レンタカー)
@@ -206,7 +206,7 @@ export const BATCH_06: Word[] = [
   x("1046170", "グッズ", "noun", "goods, merchandise", "shopping"),
   x("1158950", "[違反|いはん]", "noun", "violation, breaking a rule (する: to violate)", "everyday"),
   x("1216010", "[関東|かんとう]", "noun", "Kanto (region around Tokyo)", "places"),
-  x("1231690", "[去年|きょねん]", "noun", "last year", "time"),
+  // moved to the lessons (n5-essentials/ta-koto-ga-aru): 1231690 [去年|きょねん]
   x("1353260", "[上司|じょうし]", "noun", "boss, superior (at work)", "school-work"),
   x("1358600", "[食品|しょくひん]", "noun", "food products, groceries", "food"),
   x("1390600", "[戦略|せんりゃく]", "noun", "strategy", "school-work"),
@@ -231,7 +231,7 @@ export const BATCH_06: Word[] = [
   x("1599780", "[匂|にお]う", "verb", "to smell, to give off a scent", "everyday", "godan"),
   x("1323250", "[車両|しゃりょう]", "noun", "vehicle, train car", "travel"),
   x("1408810", "[打|う]つ", "verb", "to hit, to strike; to type", "everyday", "godan"),
-  x("1344380", "[助|たす]かる", "verb", "to be saved; to be a help", "everyday", "godan"),
+  // moved to the lessons (n4-plans/made-ni-aida): 1344380 [助|たす]かる
   // skipped: 1312880 めす (rare (female animal))
   x("1007010", "それとも", "conjunction", "or, or else", "language"),
   x("1048550", "ゲスト", "noun", "guest", "people"),

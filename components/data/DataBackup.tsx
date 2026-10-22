@@ -79,7 +79,17 @@ let lastUrl: string | undefined;
  * display settings start from the restored data. Stores the file lacks are kept. A write that fails part-way puts
  * the earlier stores back.
  */
-export function DataBackup({ lessons, appVersion }: { lessons: ExportLesson[]; appVersion: string }) {
+export function DataBackup({
+  lessons,
+  appVersion,
+  typeLessons,
+  lessonTopics,
+}: {
+  lessons: ExportLesson[];
+  appVersion: string;
+  typeLessons: Record<string, string>;
+  lessonTopics: Record<string, string>;
+}) {
   const mounted = useMounted();
   const [busy, setBusy] = useState(false);
   const [read, setRead] = useState<(ReadBackup & { name: string }) | null>(null);
@@ -124,7 +134,7 @@ export function DataBackup({ lessons, appVersion }: { lessons: ExportLesson[]; a
     const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const stores = readValues();
     const decks = await loadDecks(stores);
-    const file = buildExport({ stores, read: readRaw, lessons, describe: describeItems(decks), now, timeZone, appVersion });
+    const file = buildExport({ stores, read: readRaw, lessons, describe: describeItems(decks), now, timeZone, appVersion, typeLessons, lessonTopics });
     const name = exportFileName(now, timeZone, kind);
     if (kind === "json") download(name, JSON.stringify(file), "application/json");
     else download(name, exportCsv(file), "text/csv;charset=utf-8");

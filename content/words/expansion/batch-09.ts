@@ -98,7 +98,7 @@ export const BATCH_09: Word[] = [
   x("1433820", "[潰|つぶ]す", "verb", "to crush, to squash; to waste (time)", "everyday", "godan"),
   x("1365330", "おやじ", "noun", "dad, one's old man (casual); middle-aged man", "people"),
   // skipped: 2871349 モテ (slang for being popular)
-  x("1213400", "[甘|あま]い", "i-adj", "sweet; lenient, soft", "food"),
+  // moved to the lessons (n5-essentials/toki): 1213400 [甘|あま]い
   x("1100850", "パートナー", "noun", "partner", "people"),
   x("1101440", "パス", "noun", "pass; passing (an exam) (する: to pass)", "everyday"),
   // skipped: 1124800 ポール (pole; low-value katakana, mostly in compounds and names)
@@ -140,7 +140,7 @@ export const BATCH_09: Word[] = [
   x("1597780", "[捕|つか]まえる", "verb", "to catch, to capture, to arrest", "everyday", "ichidan"),
   x("1597200", "[頼|たよ]る", "verb", "to rely on, to depend on", "feelings", "godan"),
   x("1443970", "うさぎ", "noun", "rabbit", "nature"),
-  x("1154330", "[暗|くら]い", "i-adj", "dark, dim; gloomy", "nature"),
+  // moved to the lessons (n5-essentials/naru-suru): 1154330 [暗|くら]い
   // skipped: 1552310 はやる (reading check; added in batch 10 at the owner's choice)
   x("1496240", "[付近|ふきん]", "noun", "neighbourhood, vicinity", "places"),
   x("1535850", "[戻|もど]す", "verb", "to put back, to return (something)", "everyday", "godan"),
@@ -183,7 +183,7 @@ export const BATCH_09: Word[] = [
   x("1512080", "[辺|あた]り", "noun", "vicinity, around", "places"),
   x("1519750", "[棒|ぼう]", "noun", "stick, pole, rod", "everyday"),
   x("1519830", "[冒険|ぼうけん]", "noun", "adventure (する: to take a risk)", "hobbies"),
-  x("1524690", "[毎週|まいしゅう]", "noun", "every week", "time"),
+  // moved to the lessons (n4-plans/you-ni): 1524690 [毎週|まいしゅう]
   x("1543200", "[予測|よそく]", "noun", "prediction, forecast (する: to predict)", "everyday"),
   x("1604740", "[民族|みんぞく]", "noun", "ethnic group, people, nation", "people"),
   // skipped: 1611970 [明治|めいじ] (proper noun, an era name; added in batch 10 at the owner's choice)
@@ -197,14 +197,14 @@ export const BATCH_09: Word[] = [
   x("1559450", "[連合|れんごう]", "noun", "union, alliance (する: to ally)", "everyday"),
   x("1594720", "[収集|しゅうしゅう]", "noun", "collecting (する: to collect)", "hobbies"),
   x("1379620", "しょうが", "noun", "ginger", "food"),
-  x("1390980", "[洗濯|せんたく]", "noun", "laundry, washing clothes (する: to do laundry)", "home"),
+  // moved to the lessons (n5-essentials/tari): 1390980 [洗濯|せんたく]
   x("1237680", "[狭|せま]い", "i-adj", "narrow, small (of space); limited", "home"),
   x("1168060", "[印|しるし]", "noun", "mark, sign, symbol", "everyday"),
   x("1049870", "コイン", "noun", "coin", "shopping"),
   x("1051540", "コレクション", "noun", "collection (する: to collect)", "hobbies"),
   x("1064880", "ジム", "noun", "gym", "hobbies"),
   // skipped: 1065560 ジャパン (proper noun, used in names and brands; 日本 covers it)
-  x("1078630", "テーブル", "noun", "table", "home"),
+  // moved to the lessons (n4-plans/te-aru): 1078630 テーブル
   x("1089280", "ドレス", "noun", "dress", "shopping"),
   // skipped: 1100090 バン (kana form here is an artefact; "bun (hairstyle)" is rare, mostly van or ばん)
   x("1100750", "パーツ", "noun", "part, component", "everyday"),

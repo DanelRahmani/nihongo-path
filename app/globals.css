@@ -208,6 +208,17 @@ body {
   word-break: keep-all;
 }
 
+/* The grammar overview's level filter (components/GrammarLevels.tsx): topics, groups and group links of other levels
+   hide. Without JavaScript no level is set, so everything shows. */
+[data-level="N5"] [data-jlpt]:not([data-jlpt="N5"]),
+[data-level="N4"] [data-jlpt]:not([data-jlpt="N4"]),
+[data-level="N3"] [data-jlpt]:not([data-jlpt="N3"]),
+[data-level="N5"] [data-levels]:not([data-levels~="N5"]),
+[data-level="N4"] [data-levels]:not([data-levels~="N4"]),
+[data-level="N3"] [data-levels]:not([data-levels~="N3"]) {
+  display: none;
+}
+
 ::selection {
   background: var(--accent);
   color: var(--on-accent);

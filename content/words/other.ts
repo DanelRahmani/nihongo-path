@@ -11,6 +11,7 @@ export const OTHER: Word[] = [
   w("question", "いつ", "when", "language"),
   w("question", "いくら", "how much (price)", "shopping"),
   w("question", "どう", "how", "language"),
+  w("question", "いかが", "how (polite どう)", "language"),
   w("question", "どうして", "why", "language"),
   w("question", "なんで", "why (casual)", "language"),
   w("question", "どれ", "which (of three or more)", "language"),
@@ -19,6 +20,8 @@ export const OTHER: Word[] = [
   w("question", "どっち", "which (of two), which way (casual)", "language"),
   w("pronoun", "[何|なに]か", "something", "language"),
   w("pronoun", "どこか", "somewhere", "language"),
+  w("pronoun", "[誰|だれ]か", "someone", "language"),
+  w("adverb", "いつか", "someday, sometime", "time"),
 
   // Pointing words (こそあど)
   w("pronoun", "これ", "this (one)", "language"),
@@ -102,6 +105,7 @@ export const OTHER: Word[] = [
   w("suffix", "たち", "and the others; (plural of people)", "people"),
   w("suffix", "ら", "(plural, casual: [彼|かれ]ら; not for people you look up to)", "people"),
   w("suffix", "[方|がた]", "(polite plural of people: [先生方|せんせいがた])", "people"),
+  w("suffix", "[方|かた]", "way of …ing, how to (after a verb stem: [読|よ]み[方|かた])", "language"),
   w("suffix", "[人|じん]", "person from (a country): [日本人|にほんじん]", "people"),
   w("suffix", "[語|ご]", "language: [日本語|にほんご]", "language"),
   w("suffix", "[中|ちゅう]", "in the middle of; during", "time"),
@@ -110,4 +114,13 @@ export const OTHER: Word[] = [
   w("suffix", "さ", "-ness (turns an adjective into a noun: [高|たか]さ)", "language"),
   // The reading view (content/reading.ts)
   w("interjection", "オッケー", "OK (casual)", "language"),
+  // N5 essentials (unit 九)
+  w("conjunction", "だから", "so, therefore; like I said", "language"),
+  w("counter", "[歳|さい]", "years old: [六歳|ろくさい]", "numbers"),
+  w("counter", "[月|がつ]", "(names the months: [八月|はちがつ] August)", "numbers"),
+  w("interjection", "ねえ", "hey; (at the end) …, right?", "language"),
+  w("suffix", "ごろ", "around (a point in time): [三時|さんじ]ごろ", "time"),
+  w("counter", "[時間|じかん]", "hour(s): [二時間|にじかん]", "numbers"),
+  w("pronoun", "みんな", "everyone, all of you", "people"),
+  w("interjection", "もしもし", "hello (on the phone)", "greetings"),
 ];

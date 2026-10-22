@@ -21,7 +21,7 @@ export const BATCH_08: Word[] = [
   x("1533610", "[麺|めん]", "noun", "noodles", "food"),
   x("1259620", "[見事|みごと]", "na-adj", "splendid, excellent, superb", "feelings"),
   x("1483380", "[扉|とびら]", "noun", "door (hinged), gate", "home"),
-  x("1115150", "プール", "noun", "swimming pool", "hobbies"),
+  // moved to the lessons (n4-plans/you-ni): 1115150 プール
   x("1143680", "ルート", "noun", "route, path; channel", "travel"),
   x("1147020", "ローン", "noun", "loan", "shopping"),
   x("1153270", "[圧倒的|あっとうてき]", "na-adj", "overwhelming", "everyday"),
@@ -69,7 +69,7 @@ export const BATCH_08: Word[] = [
   x("1599390", "[直|なお]す", "verb", "to fix, to repair; to correct", "everyday", "godan"),
   x("1586420", "[暖|あたた]かい", "i-adj", "warm, mild (weather, a room)", "nature"),
   x("1394600", "ようやく", "adverb", "finally, at last; barely", "everyday"),
-  x("1208000", "[割|わ]る", "verb", "to break, to split; to divide", "everyday", "godan"),
+  // moved to the lessons (n4-plans/te-shimau): 1208000 [割|わ]る
   x("1435380", "[定|さだ]める", "verb", "to decide, to set, to establish", "everyday", "ichidan"),
   // skipped: 1057190 サブ (really a prefix, "sub-")
   x("1088580", "ドライブ", "noun", "drive, car trip (する: to go for a drive)", "travel"),
@@ -119,7 +119,7 @@ export const BATCH_08: Word[] = [
   x("1013560", "アーティスト", "noun", "artist, musician", "hobbies"),
   x("1005110", "さあ", "interjection", "come on; well, now then", "everyday"),
   x("1042820", "ギター", "noun", "guitar", "hobbies"),
-  x("1106400", "ピアノ", "noun", "piano", "hobbies"),
+  // moved to the lessons (n4-plans/hajimeru): 1106400 ピアノ
   x("1137220", "ユニット", "noun", "unit; small group (e.g. in music)", "everyday"),
   x("1156610", "[意思|いし]", "noun", "intention, will, wish", "feelings"),
   // skipped: 1215770 [関|せき] (barrier gate; mostly a place or surname)
@@ -142,7 +142,7 @@ export const BATCH_08: Word[] = [
   x("1365850", "[辛|から]い", "i-adj", "spicy, hot; salty", "food"),
   x("1335520", "[汁|しる]", "noun", "soup, broth; juice", "food"),
   x("1571320", "なめる", "verb", "to lick; to taste; to make light of", "body", "ichidan"),
-  x("1215260", "[間|ま]に[合|あ]う", "verb", "to be in time (for); to be enough", "everyday", "godan"),
+  // moved to the lessons (n4-plans/noni-purpose): 1215260 [間|ま]に[合|あ]う
   // skipped: 1537250 [野|の] (literary on its own; counted from compounds and names such as 上野)
   // skipped: 1465410 [入|い]り (mostly the suffix 〜入り (containing; start of a season))
   x("1592500", "[具合|ぐあい]", "noun", "condition, state (of health or things)", "everyday"),
@@ -233,7 +233,7 @@ export const BATCH_08: Word[] = [
   x("1315130", "[字|じ]", "noun", "character, letter (written)", "language"),
   // skipped: 1409810 [対|つい] (homograph; rare "pair" reading)
   x("1211150", "[巻|ま]き[込|こ]む", "verb", "to involve, to drag into", "everyday", "godan"),
-  x("1529390", "[眠|ねむ]る", "verb", "to sleep, to be asleep; to rest (in peace)", "body", "godan"),
+  // moved to the lessons (n4-conditions/to-natural): 1529390 [眠|ねむ]る
   x("1403040", "[騒|さわ]ぐ", "verb", "to make noise, to make a fuss", "everyday", "godan"),
   x("1217070", "おもちゃ", "noun", "toy", "hobbies"),
   x("1594180", "[仕組|しく]み", "noun", "mechanism, structure, system", "everyday"),

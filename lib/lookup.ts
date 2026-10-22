@@ -78,9 +78,23 @@ const FORM_LABELS: Record<string, string> = {
   teKudasai: "てください form",
   imperative: "plain imperative",
   prohibitive: "な prohibitive",
+  causativePassive: "causative-passive form",
+  honorific: "honorific (尊敬語)",
+  humble: "humble (謙譲語)",
   adverb: "adverb form",
   attributive: "attributive form",
   sa: "さ noun",
+  naide: "ないで (don't …; without …)",
+  nakya: "なきゃ (casual なければ: must)",
+  nakucha: "なくちゃ (casual なくては: must)",
+  tari: "たり (doing things like …)",
+  chau: "ちゃう (casual てしまう)",
+  toku: "とく (casual ておく)",
+  sugiru: "すぎる (too much)",
+  hajimeru: "stem + はじめる (start …ing)",
+  owaru: "stem + おわる (finish …ing)",
+  tsuzukeru: "stem + つづける (keep on …ing)",
+  dasu: "stem + だす (suddenly start)",
 };
 
 type Indexes = { lesson: ReturnType<typeof buildIndex>; all: ReturnType<typeof buildIndex> };

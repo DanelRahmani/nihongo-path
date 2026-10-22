@@ -10,7 +10,7 @@ export const BATCH_07: Word[] = [
   x("1478370", "[伴|ともな]う", "verb", "to come with, to involve; to accompany", "everyday", "godan"),
   x("1457320", "トン", "noun", "tonne (1,000 kg)", "numbers"),
   x("1590970", "[完璧|かんぺき]", "na-adj", "perfect, flawless", "everyday"),
-  x("1423000", "[着|き]る", "verb", "to wear, to put on (clothes)", "shopping", "ichidan"),
+  // moved to the lessons (n5-essentials/hou-ga-ii): 1423000 [着|き]る
   x("1242170", "[近|ちか]づく", "verb", "to approach, to get close", "everyday", "godan"),
   x("1055840", "サイド", "noun", "side", "everyday"),
   x("1139960", "ランク", "noun", "rank, ranking (する: to rank)", "everyday"),
@@ -43,7 +43,7 @@ export const BATCH_07: Word[] = [
   x("1552650", "たまる", "verb", "to pile up, to accumulate; to be saved", "everyday", "godan"),
   x("1263490", "[表|あらわ]す", "verb", "to express, to show; to represent", "everyday", "godan"),
   x("1297110", "[坂|さか]", "noun", "slope, hill", "nature"),
-  x("1589730", "[買|か]い[物|もの]", "noun", "shopping (する: to shop)", "shopping"),
+  // moved to the lessons (n5-essentials/tari): 1589730 [買|か]い[物|もの]
   x("1277140", "[向|む]こう", "noun", "the other side, over there; beyond", "places"),
   x("1587150", "[育成|いくせい]", "noun", "raising, training, development (する: to raise, to train)", "school-work"),
   x("1050590", "コピー", "noun", "copy, photocopy (する: to copy)", "school-work"),
@@ -66,10 +66,10 @@ export const BATCH_07: Word[] = [
   x("1541290", "[有効|ゆうこう]", "na-adj", "valid, effective", "everyday"),
   x("1586780", "あらゆる", "pre-noun", "all, every (before a noun)", "language"),
   x("1518130", "[豊|ゆた]か", "na-adj", "rich, abundant", "everyday"),
-  x("1598550", "[出|で]かける", "verb", "to go out; to set out, to leave", "everyday", "ichidan"),
+  // moved to the lessons (n5-essentials/mae-ato): 1598550 [出|で]かける
   x("1294170", "もはや", "adverb", "already; no longer (with a negative; formal)", "time"),
-  x("1579720", "[寂|さび]しい", "i-adj", "lonely", "feelings"),
-  x("1390930", "[洗|あら]う", "verb", "to wash", "home", "godan"),
+  // moved to the lessons (n4-plans/koto-ni-suru-naru): 1579720 [寂|さび]しい
+  // moved to the lessons (n5-essentials/nakute-mo-ii): 1390930 [洗|あら]う
   x("1518540", "[亡|な]くなる", "verb", "to pass away, to die (polite)", "everyday", "godan"),
   x("1753790", "[世界中|せかいじゅう]", "noun", "all over the world", "places"),
   x("1072810", "スペース", "noun", "space, room; blank space", "everyday"),
@@ -154,7 +154,7 @@ export const BATCH_07: Word[] = [
   // skipped: 1192680 [科|か] (suffix-like single kanji (内科, 英文科))
   x("1444610", "[渡|わた]す", "verb", "to hand over, to pass; to lay across (a bridge)", "everyday", "godan"),
   x("1199890", "[壊|こわ]す", "verb", "to break, to destroy", "everyday", "godan"),
-  x("1299680", "[皿|さら]", "noun", "plate, dish", "food"),
+  // moved to the lessons (n4-plans/te-oku): 1299680 [皿|さら]
   x("1426250", "[昼|ひる]", "noun", "noon, daytime; lunch (casual)", "time"),
   x("1602120", "[日々|ひび]", "noun", "days, daily life; day after day", "time"),
   x("1539080", "[優|すぐ]れる", "verb", "to be excellent, to surpass", "everyday", "ichidan"),

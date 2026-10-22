@@ -24,7 +24,8 @@ describe("More words cards", () => {
       expect(lessonWords.has(c.jp), c.jp).toBe(false);
     }
     expect(new Set(cards.map((c) => c.id)).size).toBe(cards.length);
-    expect(cards.length).toBeGreaterThan(2000);
+    // Words a later lesson teaches leave the deck (MOVED_TO_LESSONS), so the count falls as lessons are added.
+    expect(cards.length).toBeGreaterThan(1500);
   });
 
   it("come most frequent first, by the candidate list's rank, in groups of 50", () => {

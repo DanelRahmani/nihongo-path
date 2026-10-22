@@ -15,10 +15,10 @@ export const BATCH_04: Word[] = [
   x("1508900", "[米国|べいこく]", "noun", "the United States (formal, news)", "places"),
   x("1526860", "[満足|まんぞく]", "noun", "satisfaction (する: to be satisfied)", "feelings"),
   x("1556370", "[例|たと]えば", "adverb", "for example", "language"),
-  x("1559160", "[練習|れんしゅう]", "noun", "practice (する: to practise)", "school-work"),
+  // moved to the lessons (n4-plans/you-ni): 1559160 [練習|れんしゅう]
   // skipped: 1956480 [食|しょく] (a suffix or kanji element: "food, eating" in compounds)
   x("2772770", "やはり", "adverb", "as expected; after all (more formal)", "language"),
-  x("1427340", "ちょうど", "adverb", "exactly, just", "everyday"),
+  // moved to the lessons (n4-plans/noni-purpose): 1427340 ちょうど
   x("1333550", "[集|あつ]まる", "verb", "to gather, to assemble", "everyday", "godan"),
   x("1254480", "[穴|あな]", "noun", "hole", "everyday"),
   x("1555710", "[輪|わ]", "noun", "ring, circle, loop", "everyday"),
@@ -29,7 +29,7 @@ export const BATCH_04: Word[] = [
   x("1497980", "[負|ま]ける", "verb", "to lose, to be defeated", "hobbies", "ichidan"),
   x("1566210", "いずれ", "adverb", "sooner or later, eventually; which, either (formal)", "language"), // pos: was pronoun
   x("1502480", "[物語|ものがたり]", "noun", "story, tale", "language"),
-  x("1013050", "ゆっくり", "adverb", "slowly, at leisure (する: to take it easy)", "everyday"),
+  // moved to the lessons (n5-essentials/no-nominaliser): 1013050 ゆっくり
   x("1069370", "スタート", "noun", "start (する: to start)", "everyday"),
   x("1132420", "メーカー", "noun", "manufacturer, maker", "shopping"),
   x("1133570", "メッセージ", "noun", "message", "language"),
@@ -44,7 +44,7 @@ export const BATCH_04: Word[] = [
   // skipped: 1374620 [制|せい] (suffix-like "system" in compounds)
   x("1419270", "[団体|だんたい]", "noun", "group, organization", "people"),
   x("1435490", "[定期|ていき]", "noun", "regular, periodic; commuter pass (short form)", "travel"),
-  x("1443000", "[電気|でんき]", "noun", "electricity; electric light", "home"),
+  // moved to the lessons (n5-essentials/naide-kudasai): 1443000 [電気|でんき]
   x("1453550", "[同様|どうよう]", "noun", "same, just like", "everyday"),
   x("1453790", "[導入|どうにゅう]", "noun", "introduction, adoption (する: to introduce)", "school-work"),
   // skipped: 2581590 お[話|はなし] (お + 話, already an entry)
@@ -89,10 +89,10 @@ export const BATCH_04: Word[] = [
   x("1505070", "[雰囲気|ふんいき]", "noun", "atmosphere, mood", "feelings"),
   x("1508070", "[平和|へいわ]", "noun", "peace", "everyday"),
   x("2164670", "[広島|ひろしま]", "noun", "Hiroshima", "places"),
-  x("1591150", "[聞|き]こえる", "verb", "to be heard; to sound like", "everyday", "ichidan"),
+  // moved to the lessons (n4-plans/you-ni): 1591150 [聞|き]こえる
   x("1593710", "[桜|さくら]", "noun", "cherry blossom, cherry tree", "nature"),
   x("1583260", "[避|さ]ける", "verb", "to avoid", "everyday", "ichidan"),
-  x("1229840", "[泣|な]く", "verb", "to cry, to weep", "feelings", "godan"),
+  // moved to the lessons (n4-plans/hajimeru): 1229840 [泣|な]く
   x("1478190", "[抜|ぬ]く", "verb", "to pull out; to leave out", "everyday", "godan"),
   x("1235950", "[境|さかい]", "noun", "border, boundary", "places"),
   x("1158450", "[維持|いじ]", "noun", "maintenance, keeping up (する: to maintain)", "everyday"),
@@ -105,7 +105,7 @@ export const BATCH_04: Word[] = [
   x("1359730", "[信頼|しんらい]", "noun", "trust, confidence (する: to trust)", "feelings"),
   x("1380840", "[西|にし]", "noun", "west", "places"),
   x("1386020", "[設計|せっけい]", "noun", "design, plan (する: to design)", "school-work"),
-  x("1401210", "[相談|そうだん]", "noun", "talking over, asking advice (する: to consult)", "everyday"),
+  // moved to the lessons (n4-conditions/advice): 1401210 [相談|そうだん]
   x("1401240", "[相当|そうとう]", "noun", "considerably, quite; equivalent (する: to equal)", "everyday"),
   x("1406090", "そこで", "conjunction", "so, therefore, and then", "language"),
   x("1440800", "[店舗|てんぽ]", "noun", "shop, store (formal)", "shopping"),
@@ -177,7 +177,7 @@ export const BATCH_04: Word[] = [
   x("1154910", "[闇|やみ]", "noun", "darkness", "nature"),
   x("1212210", "[患者|かんじゃ]", "noun", "patient", "people"),
   x("1223090", "[規模|きぼ]", "noun", "scale, size (of an event, business)", "everyday"),
-  x("1228560", "[急|きゅう]", "na-adj", "sudden; urgent", "everyday"),
+  // moved to the lessons (n4-plans/hajimeru): 1228560 [急|きゅう]
   x("1257540", "[建物|たてもの]", "noun", "building", "places"),
   x("1310270", "[支配|しはい]", "noun", "rule, control (する: to rule)", "everyday"),
   x("1320970", "[実験|じっけん]", "noun", "experiment (する: to experiment)", "school-work"),
@@ -211,13 +211,13 @@ export const BATCH_04: Word[] = [
   x("1375950", "[政策|せいさく]", "noun", "policy", "everyday"),
   // skipped: 1390420 [戦闘|せんとう] (violent term: battle, combat)
   x("1475910", "[爆発|ばくはつ]", "noun", "explosion (する: to explode)", "everyday"),
-  x("1490230", "[病気|びょうき]", "noun", "illness, sickness", "body"),
+  // moved to the lessons (n5-essentials/toki): 1490230 [病気|びょうき]
   x("1533550", "[面倒|めんどう]", "noun", "trouble, bother; troublesome; looking after", "feelings"),
   x("1556040", "[類|るい]", "noun", "kind, sort", "everyday"),
   x("1558800", "[恋愛|れんあい]", "noun", "romantic love, romance (する: to be in a relationship)", "feelings"),
   x("1581400", "[他人|たにん]", "noun", "other people; stranger", "people"),
   x("1212250", "[感|かん]じ", "noun", "feeling, impression", "feelings"),
-  x("1252560", "[軽|かる]い", "i-adj", "light (not heavy); minor", "everyday"),
+  // moved to the lessons (n5-essentials/comparing): 1252560 [軽|かる]い
   x("1012800", "やっと", "adverb", "at last, finally; barely", "time"),
   x("1047880", "ケース", "noun", "case (container); case (instance)", "everyday"),
   x("1070320", "ステージ", "noun", "stage", "hobbies"),

@@ -6,7 +6,7 @@
  */
 import { BACKUP_VERSION, makeBackupObject } from "@/lib/backup";
 import { csvField } from "@/lib/dictionary";
-import { CASUAL_DECK_ID, CLOZE_DECK_ID, CONJUGATION_DECK, POLITE_DECK_ID, QUIZ_DECK, VOCAB_DECK_ID, VOCAB_MORE_DECK_ID } from "@/lib/notebook";
+import { CASUAL_DECK_ID, CLOZE_DECK_ID, CONJUGATION_DECK, POLITE_DECK_ID, QUIZ_DECK, quizCardId, VOCAB_DECK_ID, VOCAB_MORE_DECK_ID } from "@/lib/notebook";
 import type { Review, StoreValues } from "@/lib/schemas";
 import { type CardState, UNLOCK_BOX } from "@/lib/srs";
 import { streak } from "@/lib/today";
@@ -62,7 +62,7 @@ export interface ExportedItem {
   card: string;
   drill: Drill;
   lessonId: string | null;
-  grammarPointId: null;
+  grammarPointId: string | null;
   prompt: string | null;
   expected: string | null;
   jlptLevel: string | null;
@@ -104,7 +104,17 @@ export interface ExportInput {
   now: number;
   timeZone: string;
   appVersion: string;
+  /** Type it lines' lessons, keyed by `lineKey` of the line (a Type it card is the line itself). */
+  typeLessons?: Record<string, string>;
+  /** The grammar topic of each lesson that has exactly one (content/grammar.ts). */
+  lessonTopics?: Record<string, string>;
 }
+
+/** A short key for a Type it line, so the page can map lines to lessons without shipping them. */
+export const lineKey = (line: string) => quizCardId("", line).slice(1);
+
+/** Card ids that start with their lesson: quiz, cloze and polite ↔ casual cards ("unit/lesson#hash"). */
+const LESSON_CARD = /^([a-z0-9-]+\/[a-z0-9-]+)#/;
 
 const DAY = 86_400_000;
 const iso = (t: number) => new Date(t).toISOString();
@@ -178,7 +188,7 @@ function accuracy(reviews: Review[], since: number): Accuracy {
   return { answers, correct, accuracy: answers ? Math.round((correct / answers) * 1000) / 1000 : null };
 }
 
-export function buildExport({ stores, read, lessons, describe, now, timeZone, appVersion }: ExportInput) {
+export function buildExport({ stores, read, lessons, describe, now, timeZone, appVersion, typeLessons = {}, lessonTopics = {} }: ExportInput) {
   const history = stores["np:history"];
   const decks = stores["np:srs"].decks;
   const notebook = stores["np:notebook"];
@@ -213,6 +223,11 @@ export function buildExport({ stores, read, lessons, describe, now, timeZone, ap
     days.get(localDay(r0.t))!.newItems++;
   }
 
+  const levelOf = new Map(lessons.map((l) => [l.id, l.jlptLevel]));
+  /** An item's lesson: from its question, its card id, or (Type it) its line. Kana, kanji and word cards have none. */
+  const lessonOf = (deck: string, card: string, text: ItemText | null): string | null =>
+    text?.lessonId ?? card.match(LESSON_CARD)?.[1] ?? (deck === "type" ? (typeLessons[lineKey(card)] ?? null) : null);
+
   const ids = new Set<string>();
   for (const [deck, state] of Object.entries(decks)) for (const card of Object.keys(state.cards)) ids.add(`${deck}|${card}`);
   for (const item of Object.values(notebook)) ids.add(`${item.deck}|${item.card}`);
@@ -226,17 +241,18 @@ export function buildExport({ stores, read, lessons, describe, now, timeZone, ap
     const text = describe(deck, card);
     const sched = cardOf(deck, card);
     const note = notebook[id];
+    const lessonId = lessonOf(deck, card, text);
     return {
       id,
       deck,
       deckTitle: text?.deckTitle ?? null,
       card,
       drill: drillOf(deck),
-      lessonId: text?.lessonId ?? null,
-      grammarPointId: null,
+      lessonId,
+      grammarPointId: lessonId ? (lessonTopics[lessonId] ?? null) : null,
       prompt: text?.prompt ?? null,
       expected: text?.expected ?? null,
-      jlptLevel: null,
+      jlptLevel: lessonId ? (levelOf.get(lessonId) ?? null) : null,
       status: sched ? (sched.box >= UNLOCK_BOX ? "learned" : "learning") : "unscheduled",
       scheduler: sched ? { kind: "leitner-5", ...sched, dueAt: iso(sched.due) } : null,
       notebook: note ? { misses: note.misses, rightInRow: note.rightInRow, addedAt: iso(note.added), lastMissAt: iso(note.lastMiss) } : null,

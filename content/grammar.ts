@@ -4,7 +4,8 @@
  * tests/grammar.test.ts checks that, and that every particle, grammar and verb lesson has a topic.
  * Patterns are English prose with Japanese inside: no word spaces in the Japanese (content/STYLE.md §3).
  */
-import type { Jp, Rich } from "@/content/types";
+import { jlpt } from "@/content/jlpt";
+import type { JlptTag, Jp, Rich } from "@/content/types";
 
 export interface GrammarExample {
   jp: Jp;
@@ -22,6 +23,8 @@ export interface GrammarTopic {
   meaning: Rich;
   /** The lesson that teaches it: "particles/wa-topic". */
   lesson: string;
+  /** Its JLPT level (content/jlpt.ts). */
+  jlpt: JlptTag;
   examples: GrammarExample[];
 }
 
@@ -41,6 +44,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "…です · …ます · plain form",
         meaning: "In speech, every sentence ends polite (です/ます) or casual (the plain form), depending on who you're talking to.",
         lesson: "start/polite-and-casual",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[毎朝|まいあさ] コーヒー を [飲|の]{みます}。", en: "I drink coffee every morning.", register: "Polite" },
           { jp: "[毎朝|まいあさ] コーヒー を [飲|の]{む}。", en: "I drink coffee every morning.", register: "Casual" },
@@ -51,6 +55,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "… Verb。",
         meaning: "In a normal sentence the verb, adjective or です/だ comes last; only small endings like か, よ and ね follow it.",
         lesson: "word-order/verb-last",
+        jlpt: jlpt("N5", "Not an item on either list: the sentence structure taught with the N5 basics"),
         examples: [{ jp: "[私|わたし] は パン を {[食|た]べます}。", en: "I eat bread." }],
       },
       {
@@ -58,6 +63,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Topic は Subject が …",
         meaning: "The topic sets the scene, and the comment has its own が-subject: “as for today, the weather is nice”.",
         lesson: "word-order/topic-comment",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "{[今日|きょう] は} [天気|てんき] が いい。", en: "The weather's nice today." }],
       },
       {
@@ -65,6 +71,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Noun + particle, in any order, then Verb",
         meaning: "Particles label each word's job, so the pieces before the verb can move.",
         lesson: "word-order/particles-move",
+        jlpt: jlpt("N5", "Not an item on either list: the sentence structure taught with the N5 basics"),
         examples: [
           { jp: "[昨日|きのう] [友達|ともだち] {と} [公園|こうえん] {で} [遊|あそ]んだ。", en: "Yesterday I hung out with a friend in the park." },
           { jp: "[昨日|きのう] [公園|こうえん] {で} [友達|ともだち] {と} [遊|あそ]んだ。", en: "Yesterday I hung out in the park with a friend." },
@@ -75,6 +82,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "(I / you / it) … Verb",
         meaning: "Leave out whatever the listener already knows, especially “I” and “you”.",
         lesson: "word-order/dropping-words",
+        jlpt: jlpt("N5", "Not an item on either list: the sentence structure taught with the N5 basics"),
         examples: [{ jp: "[明日|あした] {[来|き]ます} か？", en: "Are (you) coming tomorrow?" }],
       },
       {
@@ -82,6 +90,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Description + Noun",
         meaning: "Adjectives, の phrases and whole clauses go before the noun they describe.",
         lesson: "word-order/modifiers-first",
+        jlpt: jlpt("N5", "Not an item on either list: the sentence structure taught with the N5 basics"),
         examples: [
           { jp: "{[赤|あか]い} [車|くるま]", en: "a red car" },
           { jp: "{[昨日|きのう] [買|か]った} [車|くるま]", en: "the car I bought yesterday" },
@@ -98,6 +107,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "A は B",
         meaning: "は sets the topic: “as for A, B”.",
         lesson: "particles/wa-topic",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "[私|わたし] {は} [学生|がくせい] です。", en: "I'm a student." }],
       },
       {
@@ -105,6 +115,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Subject が Verb / Adjective",
         meaning: "が marks who or what does the verb or is the adjective; the subject is there even when unsaid (the zero が).",
         lesson: "particles/ga-subject",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[雨|あめ] {が} [降|ふ]って いる。", en: "It's raining." },
           { jp: "[頭|あたま] {が} [痛|いた]い。", en: "I have a headache." },
@@ -115,6 +126,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Question word が … か？",
         meaning: "A question word as the subject takes が, never は; so does the answer.",
         lesson: "particles/wa-vs-ga",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[誰|だれ] {が} [来|き]ました か？", en: "Who came?" },
           { jp: "[田中|たなか]-さん {が} [来|き]ました。", en: "Tanaka came. (It was Tanaka.)" },
@@ -125,6 +137,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Person は Thing が[好|す]き",
         meaning: "The topic is the one who likes; が marks what they like.",
         lesson: "particles/wa-vs-ga",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "[私|わたし] {は} [猫|ねこ] {が} [好|す]き です。", en: "I like cats." }],
       },
       {
@@ -132,6 +145,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "A は …、B は …",
         meaning: "は can contrast: two は in one sentence almost always do, and は in place of を hints “unlike other things”.",
         lesson: "particles/wa-vs-ga",
+        jlpt: jlpt("N5", "JLPT Sensei lists contrastive は (は〜が…は) at N4"),
         examples: [{ jp: "コーヒー {は} [飲|の]む けど、 お[茶|ちゃ] {は} [飲|の]まない。", en: "I drink coffee, but I don't drink tea." }],
       },
       {
@@ -139,6 +153,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Object を Verb",
         meaning: "を marks what the action is done to, and also the place you move through or leave.",
         lesson: "particles/wo-object",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[本|ほん] {を} [読|よ]みます。", en: "I read books." },
           { jp: "[公園|こうえん] {を} [歩|ある]く。", en: "I walk through the park." },
@@ -149,6 +164,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Place に[行|い]く · Time に Verb",
         meaning: "に points at a target: where you go, and when something happens.",
         lesson: "particles/ni-target",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[学校|がっこう] {に} [行|い]く。", en: "I'm going to school." },
           { jp: "[七時|しちじ] {に} [起|お]きます。", en: "I get up at seven." },
@@ -159,6 +175,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Person に Object を Verb",
         meaning: "に marks the person who receives: “to” someone.",
         lesson: "particles/ni-target",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "[友達|ともだち] {に} プレゼント を あげた。", en: "I gave my friend a present." }],
       },
       {
@@ -166,6 +183,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Verb stem に[行|い]く",
         meaning: "Go somewhere to do something.",
         lesson: "particles/ni-target",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "[公園|こうえん] に [遊|あそ]び {に} [行|い]く。", en: "I'm going to the park to play." }],
       },
       {
@@ -173,6 +191,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Noun になる",
         meaning: "Become something.",
         lesson: "particles/ni-target",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "[水|みず] が [氷|こおり] {に} なった。", en: "The water turned into ice." }],
       },
       {
@@ -180,6 +199,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Place で Verb",
         meaning: "で marks the place where an action happens.",
         lesson: "particles/de-place-means",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "[公園|こうえん] {で} [遊|あそ]ぶ。", en: "I play in the park." }],
       },
       {
@@ -187,6 +207,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Means で Verb",
         meaning: "で marks what you use: a tool, a vehicle or a language.",
         lesson: "particles/de-place-means",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[電車|でんしゃ] {で} [東京|とうきょう] に [行|い]く。", en: "I go to Tokyo by train." },
           { jp: "[箸|はし] {で} [食|た]べる。", en: "I eat with chopsticks." },
@@ -197,6 +218,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Range で[一番|いちばん] Adjective",
         meaning: "The most … in a group or place.",
         lesson: "particles/de-place-means",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "クラス {で} [一番|いちばん] [背|せ] が [高|たか]い。", en: "(I'm) the tallest in the class." }],
       },
       {
@@ -204,6 +226,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Place に (be, arrive) · Place で (do)",
         meaning: "The verb decides: に for being or arriving somewhere, で for doing something there.",
         lesson: "particles/ni-vs-de",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[駅|えき] {に} [着|つ]いた。", en: "I've arrived at the station." },
           { jp: "[駅|えき] {で} [待|ま]って いる。", en: "I'm waiting at the station." },
@@ -214,6 +237,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Place へ Verb · A への B",
         meaning: "へ (pronounced e) points in a direction, toward somewhere; with verbs of motion it is nearly the same as に, which is more common.",
         lesson: "particles/e-vs-ni",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[北|きた] {へ} [向|む]かう。", en: "I head north." },
           { jp: "[母|はは] {へ の} [手紙|てがみ]", en: "a letter to my mother" },
@@ -224,6 +248,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "A と B",
         meaning: "Joins nouns: A and B, a complete list.",
         lesson: "particles/to-ya",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "りんご {と} バナナ を [食|た]べた。", en: "I ate an apple and a banana." }],
       },
       {
@@ -231,6 +256,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Person と Verb",
         meaning: "Do something with someone.",
         lesson: "particles/to-ya",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "[友達|ともだち] {と} [映画|えいが] を [見|み]た。", en: "I watched a movie with a friend." }],
       },
       {
@@ -238,6 +264,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "A や B",
         meaning: "Joins nouns: A, B and so on, a few examples rather than the whole list.",
         lesson: "particles/to-ya",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "[本|ほん] {や} [雑誌|ざっし] を [読|よ]む。", en: "I read books, magazines and so on." }],
       },
       {
@@ -245,6 +272,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "A も … · A も B も …",
         meaning: "A too; both A and B.",
         lesson: "particles/mo-also",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "パン {も} [食|た]べる。", en: "I'll eat bread too." },
           { jp: "[猫|ねこ] {も} [犬|いぬ] {も} [好|す]き です。", en: "I like both cats and dogs." },
@@ -255,6 +283,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "[何|なに]も + negative",
         meaning: "Nothing, not anything.",
         lesson: "particles/mo-also",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "[何|なに] {も} [食|た]べなかった。", en: "I didn't eat anything." }],
       },
       {
@@ -262,6 +291,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "A の B",
         meaning: "A's B, B of A: A describes B.",
         lesson: "particles/no-linking",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[私|わたし] {の} [本|ほん]", en: "my book" },
           { jp: "[友達|ともだち] {の} お[母|かあ]さん", en: "my friend's mother" },
@@ -272,6 +302,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Adjective の · Noun の",
         meaning: "The … one; after a noun, “…'s” on its own (mine, Tanaka's).",
         lesson: "particles/no-linking",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[小|ちい]さい {の} は あります か？", en: "Do you have a small one?" },
           { jp: "それ は [田中|たなか]-さん {の} です。", en: "That's Tanaka's." },
@@ -282,6 +313,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "A から B まで",
         meaning: "From A until (or as far as) B, in time or space.",
         lesson: "particles/kara-made",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[九時|くじ] {から} [五時|ごじ] {まで} [働|はたら]きます。", en: "I work from nine to five." },
           { jp: "[家|いえ] {から} [駅|えき] {まで} [歩|ある]いた。", en: "I walked from home to the station." },
@@ -292,6 +324,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Reason から、Result",
         meaning: "Gives a reason: “…, so …” (because).",
         lesson: "particles/kara-made",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "[暑|あつ]い {から}、 [窓|まど] を [開|あ]けて。", en: "It's hot, so open the window." }],
       },
       {
@@ -299,6 +332,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Sentence か？",
         meaning: "か at the end makes a question; nothing else moves.",
         lesson: "particles/ka-question",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "コーヒー を [飲|の]みます {か}？", en: "Do you drink coffee?" },
           { jp: "[先生|せんせい] です {か}？", en: "Are you a teacher?" },
@@ -309,6 +343,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Sentence？ (casual)",
         meaning: "Casual questions usually drop か and let the pitch rise.",
         lesson: "particles/ka-question",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "コーヒー [飲|の]む？", en: "Do you drink coffee?" }],
       },
       {
@@ -316,6 +351,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "A か B",
         meaning: "A or B.",
         lesson: "particles/ka-question",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "[紅茶|こうちゃ] {か} コーヒー", en: "tea or coffee" }],
       },
       {
@@ -323,6 +359,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Sentence よ",
         meaning: "Tells the listener something new: “you know”.",
         lesson: "particles/yo-ne",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "この [道|みち]、 [危|あぶ]ない です {よ}。", en: "This road's dangerous, you know." }],
       },
       {
@@ -330,6 +367,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Sentence ね · Sentence よね？",
         meaning: "Checks something you share: “isn't it?”, “right?”.",
         lesson: "particles/yo-ne",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[雨|あめ]、 よく [降|ふ]ります {ね}。", en: "It really keeps raining, doesn't it?" },
           { jp: "[明日|あした] [来|く]る {よね}？", en: "You're coming tomorrow, right?" },
@@ -346,6 +384,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "A は B です · A は B だ",
         meaning: "A is B, polite and casual.",
         lesson: "grammar/desu-da",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[田中|たなか]-さん は [先生|せんせい] {です}。", en: "Ms Tanaka is a teacher.", register: "Polite" },
           { jp: "[田中|たなか]-さん は [先生|せんせい] {だ} よ。", en: "Ms Tanaka is a teacher.", register: "Casual" },
@@ -356,6 +395,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Noun じゃない (じゃありません) · だった (でした) · じゃなかった (じゃありませんでした)",
         meaning: "Isn't, was and wasn't for nouns, casual (polite).",
         lesson: "grammar/desu-da",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[明日|あした] は [休|やす]み {じゃ ない}。", en: "Tomorrow isn't a day off." },
           { jp: "[昨日|きのう] は [雨|あめ] {でした}。", en: "It rained yesterday." },
@@ -366,6 +406,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "〜い · 〜くない · 〜かった · 〜くなかった",
         meaning: "い-adjectives change their own ending: isn't, was, wasn't.",
         lesson: "grammar/i-adjectives",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[今日|きょう] は {[寒|さむ]くない}。", en: "It isn't cold today." },
           { jp: "[昨日|きのう] の [映画|えいが] は {[面白|おもしろ]かった}。", en: "Yesterday's film was really good." },
@@ -376,6 +417,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "いい → よくない · よかった",
         meaning: "いい builds its other forms from よい.",
         lesson: "grammar/i-adjectives",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "{よくない}。", en: "It's not good." },
           { jp: "[天気|てんき] が {よかった}。", en: "The weather was good." },
@@ -386,6 +428,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "な-adj です · な-adj な Noun",
         meaning: "な-adjectives behave like nouns, and take な before a noun.",
         lesson: "grammar/na-adjectives",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "この [町|まち] は {[静|しず]か} です。", en: "This town is quiet." },
           { jp: "{[静|しず]か な} [町|まち]", en: "a quiet town" },
@@ -402,6 +445,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Place に Thing がある · Place に Person がいる",
         meaning: "There is: いる for people and animals, ある for everything else.",
         lesson: "grammar/aru-iru",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[公園|こうえん] に [子供|こども] が {いる}。", en: "There are children in the park." },
           { jp: "[公園|こうえん] に ベンチ が {ある}。", en: "There's a bench in the park." },
@@ -412,6 +456,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Thing がある · Person がいる",
         meaning: "To have: ある for things, いる for people.",
         lesson: "grammar/aru-iru",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "お[金|かね] が {ありません}。", en: "I don't have any money." },
           { jp: "[兄弟|きょうだい] が {いる}？", en: "Do you have any brothers or sisters?" },
@@ -422,6 +467,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "こ・そ・あ・ど",
         meaning: "Near me, near you, over there, which: これ/それ/あれ/どれ, この…, ここ….",
         lesson: "grammar/kosoado",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "{これ} は [何|なん] です か？", en: "What's this?" },
           { jp: "トイレ は {どこ} です か？", en: "Where's the toilet?" },
@@ -432,6 +478,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "… Question word … か？",
         meaning: "The question word goes where the answer would go; add か, or drop it in casual speech.",
         lesson: "grammar/question-words",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "{いつ} [日本|にほん] に [来|き]ました か？", en: "When did you come to Japan?" },
           { jp: "[昨日|きのう] {[何|なに]} を [食|た]べた？", en: "What did you eat yesterday?" },
@@ -442,6 +489,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Thing を Number + Counter",
         meaning: "Count things with a counter after the number; number + counter usually sits right before the verb, with no particle.",
         lesson: "grammar/numbers-counting",
+        jlpt: jlpt("N5", "Neither list has counters as a grammar point (they are N5 vocabulary); Bunpro puts なん + counter + か at N4"),
         examples: [
           { jp: "[切手|きって] を {[五枚|ごまい]} ください。", en: "Five stamps, please." },
           { jp: "りんご を {[三|みっ]つ} ください。", en: "Three apples, please." },
@@ -458,6 +506,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "る-verbs · う-verbs · する and [来|く]る",
         meaning: "A verb's group decides how every form is built.",
         lesson: "verbs/verb-groups",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[帰|かえ]{り}ます", en: "(I) go home" },
           { jp: "[変|か]え{ます}", en: "(I) change (it)" },
@@ -468,6 +517,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Verb stem + ます · ません · ました · ませんでした",
         meaning: "Polite verbs: do, don't, did, didn't.",
         lesson: "verbs/masu-form",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[明日|あした] [東京|とうきょう] に [行|い]{きます}。", en: "I'll go to Tokyo tomorrow." },
           { jp: "[昨日|きのう] は [勉強|べんきょう] {しません でした}。", en: "I didn't study yesterday." },
@@ -478,6 +528,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Verb stem + ませんか？",
         meaning: "Won't you …? A polite invitation.",
         lesson: "verbs/masu-form",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "[一緒|いっしょ] に [晩|ばん]ご[飯|はん] を [食|た]べません か？", en: "Would you like to have dinner together?" }],
       },
       {
@@ -485,6 +536,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "る-verb 〜ない · う-verb a-sound + ない",
         meaning: "Casual “don't”.",
         lesson: "verbs/nai-form",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "お[酒|さけ] は [飲|の]{まない}。", en: "I don't drink alcohol." }],
       },
       {
@@ -492,6 +544,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "〜て、〜て、…",
         meaning: "The て form links actions: “… and then …”.",
         lesson: "verbs/te-form",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "[家|いえ] に {[帰|かえ]って}、 すぐ [寝|ね]た。", en: "I went home and went straight to bed." }],
       },
       {
@@ -499,6 +552,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "〜て。 (casual)",
         meaning: "The て form alone is a casual request.",
         lesson: "verbs/te-form",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "[窓|まど] を [開|あ]け{て}。", en: "Open the window." }],
       },
       {
@@ -506,6 +560,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "い-adj 〜くて · な-adj or Noun で",
         meaning: "Links an adjective or noun to what follows: “… and …”.",
         lesson: "verbs/te-form",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "この [店|みせ] は [安|やす]{くて} おいしい。", en: "This place is cheap and tasty." }],
       },
       {
@@ -513,6 +568,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "〜た · 〜なかった",
         meaning: "Casual past: did, didn't.",
         lesson: "verbs/ta-form",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[本|ほん] を [三冊|さんさつ] [読|よ]{んだ}。", en: "I read three books." },
           { jp: "[朝|あさ]ご[飯|はん] を [食|た]べ{なかった}。", en: "I didn't eat breakfast." },
@@ -523,6 +579,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "〜ている",
         meaning: "Is doing; or a lasting state.",
         lesson: "verbs/te-iru-te-kudasai",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[今|いま]、 [本|ほん] を [読|よ]んで {いる}。", en: "I'm reading a book right now." },
           { jp: "[姉|あね] は [京都|きょうと] に [住|す]んで {いる}。", en: "My sister lives in Kyoto." },
@@ -533,6 +590,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "〜てください",
         meaning: "Please do ….",
         lesson: "verbs/te-iru-te-kudasai",
+        jlpt: jlpt("N5"),
         examples: [{ jp: "ちょっと [待|ま]って {ください}。", en: "Please wait a moment." }],
       },
       {
@@ -540,6 +598,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Verb stem + たい · たくない",
         meaning: "Want to do; don't want to.",
         lesson: "verbs/tai-form",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "[日本|にほん] に [行|い]き{たい}。", en: "I want to go to Japan." },
           { jp: "[今日|きょう] は [何|なに] も し{たくない}。", en: "I don't want to do anything today." },
@@ -550,6 +609,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Verb stem + たがっている",
         meaning: "Someone else wants to do something.",
         lesson: "verbs/tai-form",
+        jlpt: jlpt("N4"),
         examples: [{ jp: "[弟|おとうと] は ゲーム を [買|か]い{たがって いる}。", en: "My little brother wants to buy a game." }],
       },
       {
@@ -557,6 +617,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "Verb stem + ましょう · ましょうか",
         meaning: "Let's …; shall we …?; shall I …?",
         lesson: "verbs/volitional",
+        jlpt: jlpt("N5"),
         examples: [
           { jp: "そろそろ [行|い]き{ましょう} か。", en: "Shall we get going?" },
           { jp: "[手伝|てつだ]い{ましょう} か？", en: "Shall I help you?" },
@@ -567,6 +628,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "る-verb 〜よう · う-verb o-sound + う",
         meaning: "Casual “let's …”, or “I think I'll …”.",
         lesson: "verbs/volitional",
+        jlpt: jlpt("N4"),
         examples: [
           { jp: "[一緒|いっしょ] に [帰|かえ]{ろう}。", en: "Let's go home together." },
           { jp: "もう [寝|ね]{よう}。", en: "I think I'll go to bed now." },
@@ -577,6 +639,7 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "る-verb 〜られる · う-verb e-sound + る",
         meaning: "Can do: the potential form.",
         lesson: "verbs/potential",
+        jlpt: jlpt("N4"),
         examples: [
           { jp: "[日本語|にほんご] が {[話|はな]せます}。", en: "I can speak Japanese." },
           { jp: "[納豆|なっとう] が {[食|た]べられない}。", en: "I can't eat natto." },
@@ -587,9 +650,869 @@ export const GRAMMAR: GrammarGroup[] = [
         pattern: "〜たら、…",
         meaning: "If …, or when ….",
         lesson: "verbs/tara-conditional",
+        jlpt: jlpt("N4"),
         examples: [
           { jp: "[雨|あめ] が [降|ふ]っ{たら}、 [行|い]かない。", en: "If it rains, I won't go." },
           { jp: "[駅|えき] に [着|つ]い{たら}、 [電話|でんわ] して。", en: "Call me when you get to the station." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "n5-essentials",
+    title: "N5 essentials",
+    topics: [
+      {
+        slug: "temo-ii",
+        pattern: "Verb て form + もいい",
+        meaning: "May …, it's fine to …: asking for and giving permission.",
+        lesson: "n5-essentials/temo-ii",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "ここ に [座|すわ]って {も いい} です か？", en: "May I sit here?", register: "Polite" },
+          { jp: "ここ に [座|すわ]って {も いい}？", en: "May I sit here?", register: "Casual" },
+        ],
+      },
+      {
+        slug: "tewa-ikenai",
+        pattern: "Verb て form + はいけない",
+        meaning: "Mustn't …: it isn't allowed. Casually 〜ちゃだめ.",
+        lesson: "n5-essentials/temo-ii",
+        jlpt: jlpt("N5"),
+        examples: [{ jp: "ここ で [写真|しゃしん] を [撮|と]って {は いけません}。", en: "You mustn't take photos here." }],
+      },
+      {
+        slug: "naide-kudasai",
+        pattern: "Verb ない form + でください",
+        meaning: "Please don't …. Casually just 〜ないで.",
+        lesson: "n5-essentials/naide-kudasai",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "この こと は [誰|だれ] に も [言|い]わ{ないで ください} ね。", en: "Please don't tell anyone about this, OK?", register: "Polite" },
+          { jp: "この こと、 [誰|だれ] に も [言|い]わ{ないで} ね。", en: "Please don't tell anyone about this, OK?", register: "Casual" },
+        ],
+      },
+      {
+        slug: "nakute-wa-ikenai",
+        pattern: "Verb ない form: ない → なくてはいけない · なくてはならない",
+        meaning: "Must …, have to ….",
+        lesson: "n5-essentials/nakereba",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[明日|あした] は [六時|ろくじ] に [起|お]き{なくて は} いけません。", en: "I have to get up at six tomorrow." },
+          { jp: "[毎朝|まいあさ] [早|はや]く [家|いえ] を [出|で]{なくて は} なりません。", en: "I have to leave home early every morning." },
+        ],
+      },
+      {
+        slug: "nakereba-naranai",
+        pattern: "Verb ない form: ない → なければならない · なければいけない",
+        meaning: "Must …: ならない for rules and duties, いけない more personal.",
+        lesson: "n5-essentials/nakereba",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[図書館|としょかん] で は [静|しず]か に し{なければ} なりません。", en: "You must be quiet in the library." },
+          { jp: "[今日|きょう] は [早|はや]く [帰|かえ]ら{なければ} いけません。", en: "I have to go home early today." },
+        ],
+      },
+      {
+        slug: "naito",
+        pattern: "Verb ない form + と(いけない)",
+        meaning: "Have to …, I'd better …: common in speech, often without いけない.",
+        lesson: "n5-essentials/nakereba",
+        jlpt: jlpt("N4", "JLPT Sensei lists ないといけない at N5."),
+        examples: [
+          { jp: "そろそろ [寝|ね]{ない と} いけません。", en: "I should get to bed soon.", register: "Polite" },
+          { jp: "そろそろ [寝|ね]{ない と}。", en: "I should get to bed soon.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "nakya-nakucha",
+        pattern: "Verb ない form: ない → なきゃ · なくちゃ",
+        meaning: "Got to …: the casual short forms of なければ and なくては.",
+        lesson: "n5-essentials/nakereba",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "もう [九時|くじ] だ。 [行|い]か{なきゃ}。", en: "It's nine already. I've got to go." },
+          { jp: "[明日|あした] テスト だ から、 [勉強|べんきょう] し{なくちゃ}。", en: "I've got a test tomorrow, so I need to study." },
+        ],
+      },
+      {
+        slug: "nakute-mo-ii",
+        pattern: "Verb ない form: ない → なくてもいい",
+        meaning: "Don't have to …: it isn't necessary.",
+        lesson: "n5-essentials/nakute-mo-ii",
+        jlpt: jlpt("N4", "JLPT Sensei lists なくてもいい at N5."),
+        examples: [
+          { jp: "[明日|あした] は [来|こ]{なくて も いい} です よ。", en: "You don't have to come tomorrow.", register: "Polite" },
+          { jp: "[明日|あした] は [来|こ]{なくて も いい} よ。", en: "You don't have to come tomorrow.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "mae-ni",
+        pattern: "Plain non-past verb + [前|まえ]に · Noun + の[前|まえ]に",
+        meaning: "Before …. The verb stays non-past, even about the past.",
+        lesson: "n5-essentials/mae-ato",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[寝|ね]る {[前|まえ] に} [本|ほん] を [読|よ]みます。", en: "I read before going to bed." },
+          { jp: "[日本|にほん] に [来|く]る {[前|まえ] に}、 [少|すこ]し [日本語|にほんご] を [勉強|べんきょう] しました。", en: "Before I came to Japan, I studied a little Japanese." },
+        ],
+      },
+      {
+        slug: "ato-de",
+        pattern: "Verb た form + [後|あと]で · Noun + の[後|あと]で",
+        meaning: "After …. The verb stays in the た form, even about the future.",
+        lesson: "n5-essentials/mae-ato",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[晩|ばん]ご[飯|はん] を [食|た]べた {[後|あと] で}、 テレビ を [見|み]ました。", en: "After dinner, I watched TV." },
+          { jp: "[授業|じゅぎょう] が [終|お]わった {[後|あと] で}、 [図書館|としょかん] で [勉強|べんきょう] する。", en: "When class is over, I'll study in the library." },
+        ],
+      },
+      {
+        slug: "te-kara",
+        pattern: "Verb て form + から",
+        meaning: "After doing …, then …; since ….",
+        lesson: "n5-essentials/mae-ato",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[宿題|しゅくだい] を して {から}、 [遊|あそ]び に [行|い]く。", en: "I'll go out to play once I've done my homework." },
+          { jp: "[日本|にほん] に [来|き]て {から}、 [三年|さんねん] に なります。", en: "It's been three years since I came to Japan." },
+        ],
+      },
+      {
+        slug: "toki",
+        pattern: "Plain form + とき · な-adjective + なとき · Noun + のとき",
+        meaning: "When …. The tense inside とき shows which comes first.",
+        lesson: "n5-essentials/toki",
+        jlpt: jlpt("N4", "JLPT Sensei lists とき at N5."),
+        examples: [
+          { jp: "[子供|こども] の {とき}、 [大阪|おおさか] に [住|す]んで いました。", en: "When I was a child, I lived in Osaka." },
+          { jp: "[朝|あさ] [起|お]きた {とき}、 [雪|ゆき] が [降|ふ]って いました。", en: "When I woke up this morning, it was snowing." },
+        ],
+      },
+      {
+        slug: "no-nominaliser",
+        pattern: "Verb + のが[好|す]き · のが[上手|じょうず] · のは …",
+        meaning: "の turns an action into a noun: liking it, being good at it, talking about it.",
+        lesson: "n5-essentials/no-nominaliser",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[私|わたし] は [絵|え] を [描|か]く {の} が [好|す]き です。", en: "I like drawing." },
+          { jp: "[朝|あさ] [早|はや]く [起|お]きる {の} は [大変|たいへん] です。", en: "Getting up early is hard." },
+        ],
+      },
+      {
+        slug: "yori-hou-ga",
+        pattern: "A より B のほうが …",
+        meaning: "B is more … than A.",
+        lesson: "n5-essentials/comparing",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[今日|きょう] は [昨日|きのう] {より} [暑|あつ]い です ね。", en: "Today's hotter than yesterday, isn't it?" },
+          { jp: "バス より [電車|でんしゃ] の {ほう} が [速|はや]い よ。", en: "The train's faster than the bus." },
+        ],
+      },
+      {
+        slug: "dochira",
+        pattern: "A と B と、どちらが …？",
+        meaning: "Which is more …, A or B? Casually どっち.",
+        lesson: "n5-essentials/comparing",
+        jlpt: jlpt("N5", "JLPT Sensei has no entry of its own for it; its より～ほうが covers comparing two."),
+        examples: [
+          { jp: "[肉|にく] と [魚|さかな] と、 {どちら} が [好|す]き です か？", en: "Which do you like better, meat or fish?", register: "Polite" },
+          { jp: "[肉|にく] と [魚|さかな]、 {どっち} が [好|す]き？", en: "Which do you like better, meat or fish?", register: "Casual" },
+        ],
+      },
+      {
+        slug: "naka-de-ichiban",
+        pattern: "Group の[中|なか]で A が[一番|いちばん] …",
+        meaning: "A is the most … of the group.",
+        lesson: "n5-essentials/comparing",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[家族|かぞく] の [中|なか] で、 [母|はは] が {[一番|いちばん]} [早|はや]く [起|お]きます。", en: "My mother gets up earliest in my family." },
+          { jp: "スポーツ {の [中|なか] で}、 [何|なに] が [一番|いちばん] [好|す]き です か？", en: "What's your favourite sport?" },
+        ],
+      },
+      {
+        slug: "hou-ga-ii",
+        pattern: "Verb た form + ほうがいい · Verb ない form + ほうがいい",
+        meaning: "You'd better …; you'd better not …: advice.",
+        lesson: "n5-essentials/hou-ga-ii",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[夜|よる] は [寒|さむ]い から、 [上着|うわぎ] を [着|き]た {ほう が いい} よ。", en: "It's cold at night, so you'd better wear a jacket." },
+          { jp: "この [水|みず] は [飲|の]まない {ほう が いい} です よ。", en: "You'd better not drink this water." },
+        ],
+      },
+      {
+        slug: "deshou",
+        pattern: "Plain form + でしょう · だろう",
+        meaning: "Probably …: でしょう is polite, だろう plain. Nouns and な-adjectives drop だ.",
+        lesson: "n5-essentials/deshou",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[明日|あした] は [雨|あめ] が [降|ふ]る {でしょう}。", en: "It will probably rain tomorrow.", register: "Polite" },
+          { jp: "[明日|あした] は [雨|あめ] が [降|ふ]る {だろう}。", en: "It will probably rain tomorrow.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "deshou-agreement",
+        pattern: "… でしょう？",
+        meaning: "…, isn't it? …, right? With a rising tone, it asks the listener to agree.",
+        lesson: "n5-essentials/deshou",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[疲|つか]れた {でしょう}？ どうぞ [座|すわ]って ください。", en: "You must be tired. Please have a seat." },
+          { jp: "この ケーキ、 おいしい {でしょう}？", en: "This cake's good, isn't it?" },
+        ],
+      },
+      {
+        slug: "kata",
+        pattern: "Verb stem + [方|かた]",
+        meaning: "How to …, the way of …ing. The object takes の.",
+        lesson: "n5-essentials/kata",
+        jlpt: jlpt("N4", "JLPT Sensei lists 方 (かた) at N5."),
+        examples: [
+          { jp: "この [漢字|かんじ] の [読|よ]み{[方|かた]} を [教|おし]えて ください。", en: "Please tell me how to read this kanji." },
+          { jp: "[母|はは] に カレー の [作|つく]り{[方|かた]} を [習|なら]いました。", en: "I learnt how to make curry from my mother." },
+        ],
+      },
+      {
+        slug: "tari",
+        pattern: "Verb た form + り … Verb た form + り + する",
+        meaning: "Do things like A and B: a few examples, in no particular order.",
+        lesson: "n5-essentials/tari",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[週末|しゅうまつ] は [洗濯|せんたく] を {したり}、 [料理|りょうり] を [作|つく]ったり します。", en: "At the weekend I do the washing, cook, that kind of thing." },
+          { jp: "[田中|たなか]-さん は [授業|じゅぎょう] に {[来|き]たり} [来|こ]なかったり する。", en: "Tanaka-san comes to class some days and not others." },
+        ],
+      },
+      {
+        slug: "ta-koto-ga-aru",
+        pattern: "Verb た form + ことがある · ことがない",
+        meaning: "Have (ever) done …; have never done …: an experience.",
+        lesson: "n5-essentials/ta-koto-ga-aru",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[納豆|なっとう] を [食|た]べた {こと が あります} か？", en: "Have you ever eaten natto?", register: "Polite" },
+          { jp: "[納豆|なっとう]、 [食|た]べた {こと ある}？", en: "Have you ever eaten natto?", register: "Casual" },
+        ],
+      },
+      {
+        slug: "hoshii",
+        pattern: "Noun + が[欲|ほ]しい",
+        meaning: "I want (a thing). About someone else: を[欲|ほ]しがっている.",
+        lesson: "n5-essentials/hoshii",
+        jlpt: jlpt("N4", "JLPT Sensei lists がほしい at N5."),
+        examples: [
+          { jp: "[新|あたら]しい スマホ {が [欲|ほ]しい} です。", en: "I want a new smartphone." },
+          { jp: "[妹|いもうと] は [自転車|じてんしゃ] を {[欲|ほ]しがって} います。", en: "My little sister wants a bike." },
+        ],
+      },
+      {
+        slug: "mou",
+        pattern: "もう + past · もう + negative",
+        meaning: "Already …; (with a negative) not any more.",
+        lesson: "n5-essentials/mou-mada",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "{もう} [昼|ひる]ご[飯|はん] を [食|た]べました か？", en: "Have you had lunch yet?" },
+          { jp: "あの [店|みせ] は {もう} ない よ。", en: "That shop isn't there any more." },
+        ],
+      },
+      {
+        slug: "mada",
+        pattern: "まだ + ている · まだ + ていない",
+        meaning: "Still …; (with the ている negative) not yet.",
+        lesson: "n5-essentials/mou-mada",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[姉|あね] は {まだ} [寝|ね]て いる。", en: "My big sister is still asleep." },
+          { jp: "その [映画|えいが]、 {まだ} [見|み]て いない。", en: "I haven't seen that film yet." },
+        ],
+      },
+      {
+        slug: "dake",
+        pattern: "Noun + だけ · Verb + だけ",
+        meaning: "Only, just.",
+        lesson: "n5-essentials/dake-shika",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[一|ひと]つ {だけ} [質問|しつもん] して も いい です か？", en: "Can I ask just one question?" },
+          { jp: "すみません、 [見|み]て いる {だけ} です。", en: "Sorry, I'm just looking." },
+        ],
+      },
+      {
+        slug: "shika-nai",
+        pattern: "Noun + しか + negative",
+        meaning: "Only, nothing but: less than you'd want. The verb is always negative.",
+        lesson: "n5-essentials/dake-shika",
+        jlpt: jlpt("N4", "Not in the JLPT Sensei lists as read on 2026-10-21."),
+        examples: [
+          { jp: "[財布|さいふ] に [千円|せんえん] {しか} ない。", en: "I've only got a thousand yen in my wallet." },
+          { jp: "[日本語|にほんご] は [少|すこ]し {しか} [話|はな]せません。", en: "I can only speak a little Japanese." },
+        ],
+      },
+      {
+        slug: "sugiru",
+        pattern: "Verb stem + すぎる · い-adjective without い + すぎる · な-adjective + すぎる",
+        meaning: "Too …; … too much.",
+        lesson: "n5-essentials/sugiru",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[昨日|きのう] は [飲|の]み{すぎました}。", en: "I drank too much last night." },
+          { jp: "この [靴|くつ] は [小|ちい]さ{すぎる}。", en: "These shoes are too small." },
+        ],
+      },
+      {
+        slug: "tsumori",
+        pattern: "Plain non-past verb + つもり · Verb ない form + つもり",
+        meaning: "I intend to …, I'm planning to …; I don't intend to ….",
+        lesson: "n5-essentials/tsumori",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[来年|らいねん]、 [日本|にほん] で [勉強|べんきょう] する {つもり} です。", en: "I'm planning to study in Japan next year." },
+          { jp: "[夏休|なつやす]み は どこ に も [行|い]かない {つもり} です。", en: "I'm not planning to go anywhere over the summer holidays." },
+        ],
+      },
+      {
+        slug: "question-word-ka",
+        pattern: "Question word + か: [誰|だれ]か · [何|なに]か · どこか · いつか",
+        meaning: "Someone, something, somewhere, someday.",
+        lesson: "n5-essentials/dareka-daremo",
+        jlpt: jlpt("N5", "Not listed by JLPT Sensei."),
+        examples: [
+          { jp: "[何|なに]{か} [質問|しつもん] は あります か？", en: "Are there any questions?", register: "Polite" },
+          { jp: "[何|なに]{か} [質問|しつもん] ある？", en: "Are there any questions?", register: "Casual" },
+        ],
+      },
+      {
+        slug: "question-word-mo",
+        pattern: "Question word + も + negative: [誰|だれ]も · どこにも",
+        meaning: "No one, nowhere (and [何|なに]も, nothing).",
+        lesson: "n5-essentials/dareka-daremo",
+        jlpt: jlpt("N5", "Not listed by JLPT Sensei."),
+        examples: [
+          { jp: "[教室|きょうしつ] に は [誰|だれ] {も} いません。", en: "There's no one in the classroom." },
+          { jp: "[昨日|きのう] は どこ に {も} [行|い]かなかった。", en: "I didn't go anywhere yesterday." },
+        ],
+      },
+      {
+        slug: "ku-naru",
+        pattern: "い-adjective: い → くなる · な-adjective or Noun + になる",
+        meaning: "Become …, get …: a change.",
+        lesson: "n5-essentials/naru-suru",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[朝|あさ] と [夜|よる] は [寒|さむ]{く なりました} ね。", en: "It's got cold in the mornings and evenings, hasn't it?" },
+          { jp: "[日本語|にほんご] が [上手|じょうず] {に なりました} ね。", en: "Your Japanese has improved." },
+        ],
+      },
+      {
+        slug: "ni-suru",
+        pattern: "Noun + にする",
+        meaning: "Decide on …, go with …: choosing.",
+        lesson: "n5-essentials/naru-suru",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[私|わたし] は カレー {に します}。", en: "I'll have the curry.", register: "Polite" },
+          { jp: "[私|わたし] は カレー {に する}。", en: "I'll have the curry.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "kurai-gurai",
+        pattern: "Amount + くらい · ぐらい",
+        meaning: "About, roughly (an amount).",
+        lesson: "n5-essentials/gurai-goro",
+        jlpt: jlpt("N5", "Not listed by JLPT Sensei."),
+        examples: [
+          { jp: "[毎日|まいにち] [二時間|にじかん] {ぐらい} [勉強|べんきょう] して います。", en: "I study for about two hours every day." },
+          { jp: "どれ {くらい} [日本|にほん] に いる ん です か？", en: "How long are you in Japan for?" },
+        ],
+      },
+      {
+        slug: "goro",
+        pattern: "Time + ごろ",
+        meaning: "Around (a point in time).",
+        lesson: "n5-essentials/gurai-goro",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[毎朝|まいあさ] [六時|ろくじ]{ごろ} [起|お]きます。", en: "I get up around six every morning." },
+          { jp: "[八時|はちじ]{ごろ} に [電話|でんわ] する ね。", en: "I'll call you around eight." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "n4-conditions",
+    title: "If, even if, because",
+    topics: [
+      {
+        slug: "ba",
+        pattern: "Verb ば form · い-adjective ければ",
+        meaning: "If …: the condition that leads to a result. Not for a request or plan after an action.",
+        lesson: "n4-conditions/ba",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "この [薬|くすり] を [飲|の]{めば}、 [元気|げんき] に なります よ。", en: "Take this medicine and you'll feel better.", register: "Polite" },
+          { jp: "この [薬|くすり] を [飲|の]{めば}、 [元気|げんき] に なる よ。", en: "Take this medicine and you'll feel better.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "to-natural",
+        pattern: "Plain non-past + と",
+        meaning: "When …, (naturally) …: what follows every time, directions, or what you found. No requests or plans after it.",
+        lesson: "n4-conditions/to-natural",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[秋|あき] に なる {と}、 [山|やま] が [赤|あか]く なります。", en: "When autumn comes, the mountains turn red." },
+          { jp: "[外|そと] に [出|で]る {と}、 [雪|ゆき] が [降|ふ]って いました。", en: "When I went outside, it was snowing." },
+        ],
+      },
+      {
+        slug: "nara",
+        pattern: "Plain form · Noun · な-adjective + なら",
+        meaning: "If (it's the case that) …: picks up what was just said or planned, often to give advice before it happens.",
+        lesson: "n4-conditions/nara",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "カメラ を [買|か]う {なら}、 この [店|みせ] が [安|やす]い です よ。", en: "If you're buying a camera, this shop is cheap." },
+          { jp: "[明日|あした] [暇|ひま] {なら}、 [一緒|いっしょ] に [買|か]い[物|もの] に [行|い]きません か？", en: "If you're free tomorrow, shall we go shopping together?" },
+        ],
+      },
+      {
+        slug: "conditionals-compared",
+        pattern: "たら · と · ば · なら",
+        meaning: "Four ways to say “if”: たら the safe default, と natural results, ば what it takes, なら the case someone raised.",
+        lesson: "n4-conditions/conditionals-compared",
+        jlpt: jlpt("N4", "A contrast lesson, not an item on either list; each of the four forms is N4 on both."),
+        examples: [
+          { jp: "[田中|たなか]-さん が [来|き]{たら}、 [呼|よ]んで ください。", en: "When Tanaka gets here, please come and get me." },
+          { jp: "[急|いそ]{げば}、 [電車|でんしゃ] に [乗|の]れます よ。", en: "If you hurry, you'll make the train." },
+        ],
+      },
+      {
+        slug: "temo",
+        pattern: "Verb て form + も · い-adjective くても · Noun/な-adjective + でも",
+        meaning: "Even if …: what follows holds anyway.",
+        lesson: "n4-conditions/temo",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[雨|あめ] が [降|ふ]って {も}、 [自転車|じてんしゃ] で [行|い]きます。", en: "Even if it rains, I'll go by bike.", register: "Polite" },
+          { jp: "[雨|あめ] が [降|ふ]って {も}、 [自転車|じてんしゃ] で [行|い]く よ。", en: "Even if it rains, I'll go by bike.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "question-word-temo",
+        pattern: "Question word … ても",
+        meaning: "No matter who, what, when, how many times ….",
+        lesson: "n4-conditions/temo",
+        jlpt: jlpt("N4", "Taught with ても; neither list gives it as a separate item."),
+        examples: [
+          { jp: "[何度|なんど] [聞|き]いて {も}、 [分|わ]かりません。", en: "No matter how many times I ask, I don't get it." },
+          { jp: "[誰|だれ] が [来|き]て {も}、 ドア を [開|あ]けないで ね。", en: "Whoever comes, don't open the door." },
+        ],
+      },
+      {
+        slug: "noni",
+        pattern: "Plain form + のに (Noun · な-adjective + なのに)",
+        meaning: "Even though …: against expectation, with surprise, regret or a complaint.",
+        lesson: "n4-conditions/noni",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[一時間|いちじかん] [待|ま]った {のに}、 [彼|かれ] は [来|き]ません でした。", en: "I waited an hour, and he still didn't come." },
+          { jp: "[待|ま]って いた {のに}…", en: "And I was waiting for you…" },
+        ],
+      },
+      {
+        slug: "kedo",
+        pattern: "Clause + けど · けれども · が",
+        meaning: "But: けど everyday, けれども fuller, が formal and written.",
+        lesson: "n4-conditions/kedo",
+        jlpt: jlpt("N5"),
+        examples: [
+          { jp: "[行|い]きたい です {けど}、 [時間|じかん] が ありません。", en: "I'd like to go, but I don't have time." },
+          { jp: "[日本語|にほんご] は [難|むずか]しい です {が}、 [面白|おもしろ]い です。", en: "Japanese is difficult, but it's interesting." },
+        ],
+      },
+      {
+        slug: "kedo-soft",
+        pattern: "…んですけど…",
+        meaning: "Leaves a request or question open for the listener to pick up: a soft, polite opener.",
+        lesson: "n4-conditions/kedo",
+        jlpt: jlpt("N5", "Taught with けど; neither list gives it as a separate item."),
+        examples: [{ jp: "すみません、 [駅|えき] に [行|い]きたい ん です {けど}…", en: "Excuse me, I'm trying to get to the station…" }],
+      },
+      {
+        slug: "shi",
+        pattern: "Plain form + し (Noun · な-adjective + だし)",
+        meaning: "And what's more …: lists reasons, often leaving the conclusion unsaid.",
+        lesson: "n4-conditions/shi",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[時間|じかん] も ない {し}、 タクシー で [行|い]きましょう。", en: "We're short of time, so let's take a taxi.", register: "Polite" },
+          { jp: "[時間|じかん] も ない {し}、 タクシー で [行|い]こう。", en: "We're short of time, so let's take a taxi.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "tara-dou",
+        pattern: "Verb た form + らどう",
+        meaning: "Why don't you …?: a direct suggestion.",
+        lesson: "n4-conditions/advice",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[病院|びょういん] に [行|い]っ{たら どう}？", en: "Why don't you go to the doctor?", register: "Casual" },
+          { jp: "[病院|びょういん] に [行|い]っ{たら どう です か}？", en: "Why don't you go to the doctor?", register: "Polite" },
+        ],
+      },
+      {
+        slug: "tara-ii",
+        pattern: "Verb たら · ば + いい",
+        meaning: "What should I …? You can just …: asking for and giving advice.",
+        lesson: "n4-conditions/advice",
+        jlpt: jlpt("N4", "JLPT Sensei lists たらいいですか at N4; not checked as a separate item on Bunpro's list."),
+        examples: [
+          { jp: "どこ で [降|お]り{たら いい} です か？", en: "Where should I get off?" },
+          { jp: "[辞書|じしょ] を [見|み]れ{ば いい} よ。", en: "You can just look it up in a dictionary." },
+        ],
+      },
+      {
+        slug: "ba-yokatta",
+        pattern: "Verb ば + よかった",
+        meaning: "I should have …: regret about the past.",
+        lesson: "n4-conditions/advice",
+        jlpt: jlpt("N4", "Not listed by JLPT Sensei."),
+        examples: [
+          { jp: "もっと [勉強|べんきょう] すれ{ば よかった}。", en: "I should have studied more." },
+          { jp: "[彼|かれ] に [言|い]わなけれ{ば よかった}。", en: "I shouldn't have told him." },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "n4-plans",
+    title: "Plans, purpose and aspect",
+    topics: [
+      {
+        slug: "noni-purpose",
+        pattern: "Plain non-past verb + のに + [使|つか]う · いい · [必要|ひつよう] · かかる",
+        meaning: "For doing …: what something is used for, good for, or takes.",
+        lesson: "n4-plans/noni-purpose",
+        jlpt: jlpt("N3", "JLPT Sensei lists のに (in order to) at N4."),
+        examples: [
+          { jp: "この ナイフ は パン を [切|き]る {のに} [使|つか]います。", en: "I use this knife for cutting bread." },
+          { jp: "[会社|かいしゃ] まで [行|い]く {のに} [一時間|いちじかん] かかります。", en: "It takes an hour to get to work." },
+        ],
+      },
+      {
+        slug: "you-ni",
+        pattern: "Potential · ない form · a verb of what happens + ように",
+        meaning: "So that …, so as not to …: the result you're aiming for.",
+        lesson: "n4-plans/you-ni",
+        jlpt: jlpt("N4", "JLPT Sensei lists ように (so that) at N3; its N4 ように・ような is the “like, as” sense."),
+        examples: [
+          { jp: "[忘|わす]れない {よう に}、 [名前|なまえ] を ノート に [書|か]きました。", en: "I wrote the name in my notebook so I wouldn't forget it." },
+          { jp: "[日本語|にほんご] が [話|はな]せる {よう に}、 [毎日|まいにち] [練習|れんしゅう] して います。", en: "I practise every day so that I can speak Japanese." },
+        ],
+      },
+      {
+        slug: "you-ni-suru",
+        pattern: "Plain verb + ようにする",
+        meaning: "Make a point of …, try to …; ようにしている for a habit you keep up.",
+        lesson: "n4-plans/you-ni-suru-naru",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[毎日|まいにち] [野菜|やさい] を [食|た]べる {よう に して います}。", en: "I try to eat vegetables every day.", register: "Polite" },
+          { jp: "[毎日|まいにち] [野菜|やさい] を [食|た]べる {よう に して いる}。", en: "I try to eat vegetables every day.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "you-ni-naru",
+        pattern: "Potential · plain verb + ようになる",
+        meaning: "Come to …: can do it now, or have started doing it.",
+        lesson: "n4-plans/you-ni-suru-naru",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[日本語|にほんご] が [少|すこ]し [話|はな]せる {よう に なりました}。", en: "I can speak a little Japanese now." },
+          { jp: "[最近|さいきん]、 [朝|あさ] [早|はや]く [起|お]きる {よう に なりました}。", en: "Lately I've started getting up early." },
+        ],
+      },
+      {
+        slug: "koto-ni-suru",
+        pattern: "Plain non-past verb + ことにする",
+        meaning: "Decide to …: your own choice. ことにしている: a rule you keep.",
+        lesson: "n4-plans/koto-ni-suru-naru",
+        jlpt: jlpt("N3", "JLPT Sensei lists ことにする at N4."),
+        examples: [
+          { jp: "[今年|ことし] から [日記|にっき] を [書|か]く {こと に しました}。", en: "I've decided to keep a diary from this year." },
+          { jp: "[雨|あめ] だ から、 [今日|きょう] は [出|で]かけない {こと に した}。", en: "It's raining, so I've decided not to go out today." },
+        ],
+      },
+      {
+        slug: "koto-ni-naru",
+        pattern: "Plain non-past verb + ことになる",
+        meaning: "It's been decided that …: by others or by circumstances. ことになっている: the rule.",
+        lesson: "n4-plans/koto-ni-suru-naru",
+        jlpt: jlpt("N3", "JLPT Sensei lists ことになる at N4, and ことになっている separately at N3."),
+        examples: [
+          { jp: "[来月|らいげつ] から [大阪|おおさか] で [働|はたら]く {こと に なりました}。", en: "It's been decided that I'll work in Osaka from next month." },
+          { jp: "[結婚|けっこん] する {こと に なりました}。", en: "We're getting married." },
+        ],
+      },
+      {
+        slug: "koto-ga-dekiru",
+        pattern: "Plain non-past verb + ことができる",
+        meaning: "Can …: the same as the potential, a little more formal.",
+        lesson: "n4-plans/koto-ga-dekiru",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "この [図書館|としょかん] で は、 [本|ほん] を [三冊|さんさつ] まで [借|か]りる {こと が できます}。", en: "At this library you can borrow up to three books." },
+          { jp: "[残念|ざんねん] です が、 [明日|あした] は [行|い]く {こと が できません}。", en: "I'm afraid I can't come tomorrow." },
+        ],
+      },
+      {
+        slug: "you-to-omou",
+        pattern: "Volitional + と[思|おも]う · と[思|おも]っている",
+        meaning: "I think I'll …, I'm thinking of …: softer than つもり.",
+        lesson: "n4-plans/you-to-omou",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[週末|しゅうまつ] は [部屋|へや] を [掃除|そうじ] し{よう と [思|おも]って います}。", en: "I'm thinking of cleaning my room at the weekend.", register: "Polite" },
+          { jp: "[週末|しゅうまつ] は [部屋|へや] を [掃除|そうじ] し{よう と [思|おも]ってる}。", en: "I'm thinking of cleaning my room at the weekend.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "yotei",
+        pattern: "Plain non-past verb · Noun の + [予定|よてい]",
+        meaning: "Is due to …, is scheduled to …; [予定|よてい]がある: have plans.",
+        lesson: "n4-plans/you-to-omou",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[会議|かいぎ] は [三時|さんじ] に [終|お]わる {[予定|よてい] です}。", en: "The meeting is scheduled to finish at three." },
+          { jp: "[今夜|こんや] は {[予定|よてい]} が ある から、 [行|い]けない。", en: "I've got plans tonight, so I can't go." },
+        ],
+      },
+      {
+        slug: "te-shimau",
+        pattern: "Verb て form + しまう (casual ちゃう · じゃう)",
+        meaning: "Do completely; or something happens that you didn't want.",
+        lesson: "n4-plans/te-shimau",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[電車|でんしゃ] に [傘|かさ] を [忘|わす]れて {しまいました}。", en: "I've gone and left my umbrella on the train.", register: "Polite" },
+          { jp: "[電車|でんしゃ] に [傘|かさ] を [忘|わす]れ{ちゃった}。", en: "I've gone and left my umbrella on the train.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "te-oku",
+        pattern: "Verb て form + おく (casual とく · どく)",
+        meaning: "Do in advance, ready for later; or leave as it is.",
+        lesson: "n4-plans/te-oku",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[旅行|りょこう] の [前|まえ] に、 [天気|てんき] を [調|しら]べて {おきます}。", en: "I'll check the weather before the trip." },
+          { jp: "[暑|あつ]い から、 [窓|まど] を [開|あ]けて {おいて} ください。", en: "It's hot, so please leave the window open." },
+        ],
+      },
+      {
+        slug: "te-aru",
+        pattern: "Transitive verb て form + ある",
+        meaning: "Has been done, and the result stays (usually on purpose). Intransitive verbs take ている.",
+        lesson: "n4-plans/te-aru",
+        jlpt: jlpt("N4", "JLPT Sensei lists てある at N5."),
+        examples: [
+          { jp: "[壁|かべ] に [絵|え] が かけて {あります}。", en: "There's a picture hanging on the wall." },
+          { jp: "ホテル は もう [予約|よやく] して {あります}。", en: "The hotel's already booked." },
+        ],
+      },
+      {
+        slug: "te-miru",
+        pattern: "Verb て form + みる",
+        meaning: "Try …, … and see: do it to find out what it's like.",
+        lesson: "n4-plans/te-miru",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[新|あたら]しい ラーメン[屋|や] に [行|い]って {みました}。", en: "I tried the new ramen place." },
+          { jp: "[日本|にほん] の お[祭|まつ]り に [行|い]って {みたい} です。", en: "I'd like to go and see a festival in Japan." },
+        ],
+      },
+      {
+        slug: "te-iku-kuru",
+        pattern: "Verb て form + いく · くる",
+        meaning: "Take, go off with (ていく); bring, go and do it and come back (てくる).",
+        lesson: "n4-plans/te-iku-kuru",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "ピクニック に は お[弁当|べんとう] を [持|も]って {いきます}。", en: "I'll take a packed lunch to the picnic." },
+          { jp: "[飲|の]み[物|もの] を [買|か]って {くる} ね。", en: "I'll go and get some drinks." },
+        ],
+      },
+      {
+        slug: "te-kuru-change",
+        pattern: "A change in the て form + くる · いく",
+        meaning: "Has been changing until now (てくる); will go on changing (ていく).",
+        lesson: "n4-plans/te-iku-kuru",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[最近|さいきん]、 [寒|さむ]く なって {きました} ね。", en: "It's been getting colder lately, hasn't it?" },
+          { jp: "これ から [日本|にほん] に [来|く]る [人|ひと] は [増|ふ]えて {いく} でしょう。", en: "The number of people coming to Japan will probably keep growing." },
+        ],
+      },
+      {
+        slug: "ru-tokoro",
+        pattern: "Verb, plain non-past + ところだ",
+        meaning: "Just about to …; ところだった: was just about to.",
+        lesson: "n4-plans/tokoro",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "これ から [晩|ばん]ご[飯|はん] を [作|つく]る {ところ です}。", en: "I'm just about to make dinner." },
+          { jp: "[電車|でんしゃ] が [出|で]る {ところ だった} ので、 [走|はし]りました。", en: "The train was about to leave, so I ran." },
+        ],
+      },
+      {
+        slug: "te-iru-tokoro",
+        pattern: "Verb ている + ところだ",
+        meaning: "In the middle of …, right now.",
+        lesson: "n4-plans/tokoro",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[今|いま]、 [宿題|しゅくだい] を して いる {ところ です}。", en: "I'm in the middle of my homework." },
+          { jp: "[駅|えき] に [向|む]かって いる {ところ です}。", en: "I'm on my way to the station." },
+        ],
+      },
+      {
+        slug: "ta-tokoro",
+        pattern: "Verb た form + ところだ",
+        meaning: "Have just …, this very moment.",
+        lesson: "n4-plans/tokoro",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[今|いま]、 [家|いえ] に [着|つ]いた {ところ です}。", en: "I've just got home." },
+          { jp: "ちょうど [今|いま]、 メール を [送|おく]った {ところ です}。", en: "I've just this minute sent the email." },
+        ],
+      },
+      {
+        slug: "ta-bakari",
+        pattern: "Verb た form + ばかり",
+        meaning: "Have only just …: it still feels recent, even if some time has passed.",
+        lesson: "n4-plans/ta-bakari",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[先月|せんげつ] [日本|にほん] に [来|き]た {ばかり です}。", en: "I only came to Japan last month." },
+          { jp: "この パソコン、 [買|か]った {ばかり} な のに、 もう [壊|こわ]れて しまった。", en: "I've only just bought this computer, and it's already broken." },
+        ],
+      },
+      {
+        slug: "nagara",
+        pattern: "Verb stem + ながら",
+        meaning: "While …ing: one person doing two things at once; the main action comes last.",
+        lesson: "n4-plans/nagara",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[音楽|おんがく] を [聞|き]き {ながら} [勉強|べんきょう] します。", en: "I study while listening to music." },
+          { jp: "[歩|ある]き {ながら} スマホ を [使|つか]う の は [危|あぶ]ない よ。", en: "It's dangerous to use your phone while you're walking." },
+        ],
+      },
+      {
+        slug: "made-ni",
+        pattern: "Noun (a time) · Verb, plain non-past + までに",
+        meaning: "By …: a deadline. まで alone is “until”.",
+        lesson: "n4-plans/made-ni-aida",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[金曜日|きんようび] {まで に} レポート を [出|だ]して ください。", en: "Please hand in your report by Friday." },
+          { jp: "[七時|しちじ] {まで に} [帰|かえ]る よ。", en: "I'll be home by seven." },
+        ],
+      },
+      {
+        slug: "aida",
+        pattern: "Verb ている · Noun の + [間|あいだ]",
+        meaning: "While …, all through …: the main action fills the whole stretch.",
+        lesson: "n4-plans/made-ni-aida",
+        jlpt: jlpt("N4", "Bunpro lists ている間に at N4 and Noun の間に at N3; JLPT Sensei lists 間 and 間に at N4."),
+        examples: [
+          { jp: "[夏休|なつやす]み の {[間|あいだ]}、 ずっと [祖母|そぼ] の [家|いえ] に いました。", en: "I stayed at my grandmother's all through the summer holidays." },
+          { jp: "[電車|でんしゃ] に [乗|の]って いる {[間|あいだ]}、 ずっと [寝|ね]て いた。", en: "I slept the whole time I was on the train." },
+        ],
+      },
+      {
+        slug: "aida-ni",
+        pattern: "Verb ている · Noun の + [間|あいだ]に",
+        meaning: "While …, during …: the main action happens at one point inside the stretch.",
+        lesson: "n4-plans/made-ni-aida",
+        jlpt: jlpt("N4", "Bunpro lists ている間に at N4 and Noun の間に at N3; JLPT Sensei lists 間に at N4."),
+        examples: [
+          { jp: "[日本|にほん] に いる {[間|あいだ] に}、 [一度|いちど] [京都|きょうと] に [行|い]きたい です。", en: "While I'm in Japan, I want to go to Kyoto at least once." },
+          { jp: "[休|やす]み の {[間|あいだ] に}、 [髪|かみ] を [切|き]って きます。", en: "I'll get my hair cut some time during the holidays." },
+        ],
+      },
+      {
+        slug: "naide-without",
+        pattern: "Verb ない form + で + Verb",
+        meaning: "Without …ing, or instead of …ing. なくて gives a reason instead.",
+        lesson: "n4-plans/naide-zuni",
+        jlpt: jlpt("N4", "JLPT Sensei lists ないで at N5."),
+        examples: [
+          { jp: "[今朝|けさ] は [朝|あさ]ご[飯|はん] を [食|た]べ{ないで} [家|いえ] を [出|で]ました。", en: "This morning I left home without having breakfast." },
+          { jp: "[今日|きょう] は バス に [乗|の]ら{ないで}、 [駅|えき] まで [歩|ある]きました。", en: "Today I walked to the station instead of taking the bus." },
+        ],
+      },
+      {
+        slug: "koto-ga-aru-sometimes",
+        pattern: "Verb, plain non-past · ない form + ことがある",
+        meaning: "Sometimes …, there are times when …; こともある is softer. After the た form it's experience.",
+        lesson: "n4-plans/koto-ga-aru",
+        jlpt: jlpt("N3", "JLPT Sensei lists ことがある (sometimes) at N4."),
+        examples: [
+          { jp: "[朝|あさ] は [電車|でんしゃ] が [遅|おく]れる {こと が あります}。", en: "The trains are sometimes late in the morning." },
+          { jp: "[忙|いそが]しい とき は、 [昼|ひる]ご[飯|はん] を [食|た]べない {こと が ある}。", en: "When I'm busy, I sometimes skip lunch." },
+        ],
+      },
+      {
+        slug: "stem-hajimeru",
+        pattern: "Verb stem + [始|はじ]める",
+        meaning: "Start …ing.",
+        lesson: "n4-plans/hajimeru",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[先月|せんげつ] から ピアノ を [習|なら]い{[始|はじ]めた}。", en: "I started learning the piano last month." },
+          { jp: "[子供|こども] が [歩|ある]き{[始|はじ]めました}。", en: "Our little one has started walking." },
+        ],
+      },
+      {
+        slug: "stem-owaru",
+        pattern: "Verb stem + [終|お]わる",
+        meaning: "Finish …ing.",
+        lesson: "n4-plans/hajimeru",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[宿題|しゅくだい] を やり{[終|お]わったら}、 [遊|あそ]び に [行|い]こう。", en: "Once you've finished your homework, let's go out." },
+          { jp: "[映画|えいが] を [見|み]{[終|お]わって} から、 [晩|ばん]ご[飯|はん] を [食|た]べました。", en: "After we'd finished watching the film, we had dinner." },
+        ],
+      },
+      {
+        slug: "stem-tsuzukeru",
+        pattern: "Verb stem + [続|つづ]ける",
+        meaning: "Keep on …ing, go on …ing.",
+        lesson: "n4-plans/hajimeru",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[彼|かれ] は [十年|じゅうねん] [同|おな]じ [会社|かいしゃ] で [働|はたら]き{[続|つづ]けて} います。", en: "He's been working at the same company for ten years." },
+          { jp: "[彼女|かのじょ] は [一時間|いちじかん] も [話|はな]し{[続|つづ]けた}。", en: "She kept talking for a whole hour." },
+        ],
+      },
+      {
+        slug: "stem-dasu",
+        pattern: "Verb stem + [出|だ]す",
+        meaning: "Suddenly start …ing, burst out …ing.",
+        lesson: "n4-plans/hajimeru",
+        jlpt: jlpt("N4"),
+        examples: [
+          { jp: "[子供|こども] が [急|きゅう] に [泣|な]き{[出|だ]した}。", en: "The child suddenly burst into tears." },
+          { jp: "[犬|いぬ] が [急|きゅう] に [走|はし]り{[出|だ]した}。", en: "The dog suddenly broke into a run." },
         ],
       },
     ],

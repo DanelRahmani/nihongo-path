@@ -50,16 +50,60 @@ export function normalizeAnswer(s: string): string {
 const toHiragana = (s: string) =>
   [...s].map((c) => (c >= "ァ" && c <= "ヶ" ? String.fromCodePoint(c.codePointAt(0)! - 0x60) : c)).join("");
 
+/**
+ * Grammar words the lessons write in kana (STYLE §5) whose kanji a keyboard offers. Only as a whole word, so the
+ * 時 of [七時|しちじ] never stands for とき.
+ */
+const FORMAL_NOUNS: Record<string, string> = {
+  とき: "時", こと: "事", ところ: "所", ほう: "方", もの: "物", ごろ: "頃", ため: "為", わけ: "訳", はず: "筈", とおり: "通り", うち: "内",
+};
+
+/** Helper verbs after a て form, by the kana their forms start with: [食|た]べて みる may be typed 食べて見る. */
+const TE_HELPERS: [RegExp, string][] = [
+  [/^み/, "見"],
+  [/^お(?=[かきくけこい])/, "置"],
+  [/^い(?=[かきくけこっ])/, "行"],
+  [/^[くきこ](?=[るたてなまよれさ])/, "来"],
+  [/^あげ/, "上げ"],
+];
+
+/** A kana word's keyboard kanji spellings, as well as the word itself. */
+function kanaOptions(text: string, whole: boolean, afterTe: boolean): string[] {
+  const out = [text];
+  const [, core, punct] = /^(.*?)([。、？！…」]*)$/u.exec(text)!;
+  if (whole && FORMAL_NOUNS[core]) out.push(FORMAL_NOUNS[core] + punct);
+  // すぎる after a stem ([食|た]べすぎた → 食べ過ぎた), and ほしい (欲しい) in any form.
+  if (text.includes("すぎ")) out.push(text.replace("すぎ", "過ぎ"));
+  if (whole && text.startsWith("ほし")) out.push(text.replace("ほし", "欲し"));
+  if (whole && afterTe) for (const [re, kanji] of TE_HELPERS) if (re.test(text)) out.push(text.replace(re, kanji));
+  return out;
+}
+
 /** Every way to write an answer: each kanji word in kanji or in kana (学生だ, がくせいだ, 学生 + だ…). */
 export function acceptedForms(answer: string): string[] {
   let forms = [""];
-  for (const t of parse(answer, true)) {
-    if (t.kind === "space" || t.kind === "join") continue;
-    const options = t.kind === "ruby" ? [t.base, t.reading] : [t.text];
+  const tokens = parse(answer, true);
+  let prevWord = "";
+  let word = "";
+  tokens.forEach((t, i) => {
+    if (t.kind === "space" || t.kind === "join") {
+      if (t.kind === "space") [prevWord, word] = [word, ""];
+      return;
+    }
+    const before = tokens[i - 1];
+    const after = tokens[i + 1];
+    const whole = (!before || before.kind === "space") && (!after || after.kind === "space");
+    const options = t.kind === "ruby" ? [t.base, t.reading] : kanaOptions(t.text, whole, /[てで]$/.test(prevWord));
+    word += t.kind === "ruby" ? t.reading : t.text;
     forms = forms.flatMap((f) => options.map((o) => f + o));
-  }
-  return [...new Set(forms.map(normalizeAnswer))];
+  });
+  const normal = forms.map(normalizeAnswer);
+  // ている in speech drops its い in every form: [食|た]べてる, [読|よ]んでた, [待|ま]ってます.
+  return [...new Set([...normal, ...normal.map((f) => f.replace(TE_IRU, "$1"))])];
 }
+
+/** The い of ている after a て or で form, before the endings of いる. */
+const TE_IRU = /([てで])い(?=る|た|ま|な|て)/g;
 
 export function checkAnswer(answers: string[], input: string): QuizCheck {
   const typed = normalizeAnswer(input);

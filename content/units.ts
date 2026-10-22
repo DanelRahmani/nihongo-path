@@ -1,6 +1,9 @@
 import { basics } from "@/content/lessons/basics";
 import { hiragana } from "@/content/lessons/hiragana";
 import { katakana } from "@/content/lessons/katakana";
+import { n4Conditions } from "@/content/lessons/n4-conditions";
+import { n4Plans } from "@/content/lessons/n4-plans";
+import { n5Essentials } from "@/content/lessons/n5-essentials";
 import { culture } from "@/content/lessons/culture";
 import { grammar } from "@/content/lessons/grammar";
 import { particles } from "@/content/lessons/particles";
@@ -83,6 +86,30 @@ export const UNITS: Unit[] = [
     description: "Politeness, avoiding “you”, soft refusals and the phrases people actually use.",
     lessons: culture,
   },
+  {
+    slug: "n5-essentials",
+    kind: "grammar",
+    title: "N5 essentials",
+    titleJp: "[基本|きほん]",
+    description: "Permission and rules, before and after, comparing, experiences: the rest of JLPT N5.",
+    lessons: n5Essentials,
+  },
+  {
+    slug: "n4-conditions",
+    kind: "grammar",
+    title: "If, even if, because",
+    titleJp: "[条件|じょうけん]",
+    description: "The four ways to say if, even if and even though, but, and listing reasons.",
+    lessons: n4Conditions,
+  },
+  {
+    slug: "n4-plans",
+    kind: "grammar",
+    title: "Plans, purpose and aspect",
+    titleJp: "[予定|よてい]",
+    description: "What it's for, so that, deciding and planning, can, and the て forms that finish, prepare and leave things done.",
+    lessons: n4Plans,
+  },
 ];
 
 export function findLesson(unitSlug: string, lessonSlug: string) {
@@ -114,4 +141,4 @@ export const ALL_LESSONS: LessonRef[] = UNITS.flatMap((unit, u) =>
 );
 
 /** Unit numbers as kanji numerals: the path is a real sequence. */
-export const KANJI_NUMERALS = ["〇", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十"];
+export const KANJI_NUMERALS = ["〇", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三"];

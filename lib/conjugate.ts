@@ -32,7 +32,10 @@ export type VerbForm =
   | "imperative"
   | "prohibitive"
   | "nasai"
-  | "teKudasai";
+  | "teKudasai"
+  | "causativePassive"
+  | "honorific"
+  | "humble";
 
 export type AdjectiveForm =
   | "plain"
@@ -84,6 +87,9 @@ export const VERB_FORMS: { form: VerbForm; label: string; register?: "polite" | 
   { form: "prohibitive", label: "don't (な, blunt)", register: "plain" },
   { form: "nasai", label: "なさい command (to children and students; exam instructions)", register: "plain" },
   { form: "teKudasai", label: "please (〜て ください)", register: "polite" },
+  { form: "causativePassive", label: "causative-passive (made to)" },
+  { form: "honorific", label: "honorific (尊敬語)" },
+  { form: "humble", label: "humble (謙譲語)" },
 ];
 
 const ok = (jp: Jp, ...variants: Jp[]): Conjugated => ({ ok: true, jp, variants });
@@ -136,6 +142,9 @@ const HONORIFIC_LACKS: Partial<Record<VerbForm, string>> = {
   politeVolitional: "Honorific verbs aren't used in the “let's” form.",
   passive: "Honorific verbs have no passive.",
   causative: "Honorific verbs have no causative.",
+  causativePassive: "Honorific verbs have no causative-passive.",
+  honorific: "This verb is already honorific.",
+  humble: "An honorific verb has no humble form: the humble verbs are separate words (参る, いたす, 申す).",
   prohibitive: "Honorific verbs aren't used with the blunt な.",
   nasai: "Honorific verbs aren't used with なさい.",
 };
@@ -148,6 +157,9 @@ const STATIVE_LACKS: Partial<Record<VerbForm, string>> = {
   politeVolitional: "A verb of state has no “let's” form.",
   passive: "A verb of state has no passive.",
   causative: "A verb of state has no causative in use.",
+  causativePassive: "A verb of state has no causative-passive.",
+  honorific: "Verbs of state aren't made honorific with お〜に なる.",
+  humble: "A verb of state has no humble form.",
   imperative: "A verb of state isn't used as a command.",
   prohibitive: "A verb of state isn't used as a command.",
   nasai: "A verb of state isn't used as a command.",
@@ -162,6 +174,9 @@ const ARU: Partial<Record<VerbForm, string>> = {
   tai: "ありたい is used only after で, in formal writing (〜で ありたい).",
   passive: "ある has no passive in use.",
   causative: "ある has no causative in use.",
+  causativePassive: "ある has no causative-passive.",
+  honorific: "ある's honorific (おありに なる, おありです) lives in set phrases; it isn't built here.",
+  humble: "ある has no humble form; its polite ございます is courteous, not humble.",
   imperative: "ある isn't used as a command (あれ is literary).",
   prohibitive: "ある isn't used as a command.",
   nasai: "ある isn't used as a command.",
@@ -175,6 +190,8 @@ const WAKARU: Partial<Record<VerbForm, string>> = {
   prohibitive: "分かる isn't used with the blunt な.",
   nasai: "分かる isn't used with なさい in everyday speech.",
   passive: "分かる has no passive in use.",
+  causativePassive: "分かる has no causative-passive in everyday use.",
+  humble: "分かる has no humble form; say かしこまりました or 承知しました.",
 };
 const DEKIRU: Partial<Record<VerbForm, string>> = {
   potential: "できる already means “can do”, so it has no potential form.",
@@ -183,6 +200,9 @@ const DEKIRU: Partial<Record<VerbForm, string>> = {
   politeVolitional: "できる describes ability, so it has no “let's” form.",
   passive: "できる has no passive.",
   causative: "できる has no causative.",
+  causativePassive: "できる has no causative-passive.",
+  honorific: "できる's honorific (おできに なる) is rare; the honorific “can” is お〜に なれる.",
+  humble: "できる has no humble form.",
   imperative: "できる describes ability, so it has no plain command.",
   prohibitive: "できる isn't used as a command.",
   nasai: "できる isn't used as a command.",
@@ -196,6 +216,7 @@ const KURERU: Partial<Record<VerbForm, string>> = {
   politeVolitional: "くれる has no “let's” form.",
   passive: "くれる has no passive.",
   causative: "くれる has no causative.",
+  causativePassive: "くれる has no causative-passive.",
   nasai: "くれる isn't used with なさい.",
   teKudasai: "くれる isn't used with ください; ください itself is the request.",
 };
@@ -265,6 +286,10 @@ function godan(prefix: string, word: string, form: VerbForm): Conjugated {
     case "prohibitive": return p(word + " な");
     case "nasai": return p(rawI + "なさい");
     case "teKudasai": return irashi ? p(te + " ください", "いらして ください") : p(te + " ください");
+    // The short form ([書|か]かされる) is as common as the full one; verbs in す have only the full one.
+    case "causativePassive": return last === "す" ? p(a + "せられる") : p(a + "せられる", a + "される");
+    case "honorific": return oNiNaru(prefix, rawI);
+    case "humble": return oSuru(prefix, w, rawI);
   }
 }
 
@@ -297,6 +322,9 @@ function ichidan(prefix: string, word: string, form: VerbForm): Conjugated {
     case "prohibitive": return p(word + " な");
     case "nasai": return p(b + "なさい");
     case "teKudasai": return p(b + "て ください");
+    case "causativePassive": return p(b + "させられる");
+    case "honorific": return oNiNaru(prefix, b);
+    case "humble": return oSuru(prefix, written(word), b);
   }
 }
 
@@ -330,6 +358,14 @@ function suru(prefix: string, word: string, form: VerbForm): Conjugated {
     case "prohibitive": return p("する な");
     case "nasai": return p("しなさい");
     case "teKudasai": return p("して ください");
+    case "causativePassive": return p("させられる");
+    // なさる and いたす replace する. A few nouns also take お/ご〜 する: ご[連絡|れんらく] する.
+    case "honorific": return p("なさる");
+    case "humble": {
+      const noun = (prefix + head).trim();
+      const o = SURU_HUMBLE[written(noun)];
+      return o ? ok(prefix + head + "いたす", o + noun + " する") : p("いたす");
+    }
   }
 }
 
@@ -363,7 +399,65 @@ function kuru(prefix: string, word: string, form: VerbForm): Conjugated {
     case "prohibitive": return p(k("く") + "る な");
     case "nasai": return p(k("き") + "なさい");
     case "teKudasai": return p(k("き") + "て ください");
+    case "causativePassive": return p(k("こ") + "させられる");
+    case "honorific": return ok(prefix + head + "いらっしゃる");
+    case "humble": return ok(prefix + head + "[参|まい]る");
   }
+}
+
+/**
+ * Verbs whose honorific (尊敬語) or humble (謙譲語) form is another word, taken from this table and never built:
+ * [honorific, humble], each its main form and variants, or the reason it isn't used. Keyed by written form.
+ */
+const KEIGO: Record<string, [Jp[] | string, Jp[] | string]> = {
+  行く: [["いらっしゃる"], ["[参|まい]る", "[伺|うかが]う"]],
+  いく: [["いらっしゃる"], ["[参|まい]る", "[伺|うかが]う"]],
+  いる: [["いらっしゃる"], ["おる"]],
+  食べる: [["[召|め]し[上|あ]がる"], ["いただく"]],
+  飲む: [["[召|め]し[上|あ]がる"], ["いただく"]],
+  言う: [["おっしゃる"], ["[申|もう]す", "[申|もう]し[上|あ]げる"]],
+  見る: [["ご[覧|らん] に なる"], ["[拝見|はいけん] する"]],
+  寝る: [["お[休|やす]み に なる"], "寝る has no humble form."],
+  着る: [["お[召|め]し に なる"], "着る has no humble form."],
+  くれる: [["くださる"], "くれる means someone gives to me, so it has no humble form."],
+  もらう: ["The honorific of もらう is お[受|う]け[取|と]り に なる, or the giver's くださる; it isn't built here.", ["いただく"]],
+  あげる: ["“Give” in honorific speech is くださる (to me), not a form of あげる.", ["[差|さ]し[上|あ]げる"]],
+  聞く: [["お[聞|き]き に なる"], ["[伺|うかが]う", "お[聞|き]き する"]],
+  会う: [["お[会|あ]い に なる"], ["お[会|あ]い する", "お[目|め] に かかる"]],
+  知る: ["“Know” in honorific speech is ご[存|ぞん]じ です, a set phrase, not a form of 知る.", "“Know” in humble speech is [存|ぞん]じて おります, a set phrase, not a form of 知る."],
+};
+
+/**
+ * Verbs that take the humble お〜 する: things done for or toward the listener (お[待|ま]ち する, I'll wait for you).
+ * Other verbs have no humble form in everyday use (you don't swim or go home for someone). Keyed by written form.
+ */
+const HUMBLE_OK = new Set([
+  "待つ", "持つ", "書く", "話す", "見せる", "貸す", "借りる", "返す", "送る", "届ける", "伝える", "知らせる", "呼ぶ",
+  "手伝う", "願う", "教える", "預かる", "渡す", "調べる", "作る", "取る", "入れる", "答える", "尋ねる", "訪ねる",
+]);
+
+/** The nouns of する verbs that also take the humble お/ご〜 する, with their prefix: ご[連絡|れんらく] する. */
+const SURU_HUMBLE: Record<string, string> = { 電話: "お", 返事: "お", 約束: "お", 連絡: "ご", 案内: "ご", 説明: "ご", 紹介: "ご", 相談: "ご" };
+
+/** お + stem + に なる (お[読|よ]み に なる). A stem of one sound ([見|み], [寝|ね], [出|で]) isn't used this way. */
+function oNiNaru(prefix: string, stem: string): Conjugated {
+  if (read(stem).length < 2) return missing("A one-sound stem isn't made honorific with お〜に なる; such verbs use another word or the passive (〜られる).");
+  return ok(prefix + "お" + stem + " に なる");
+}
+
+/** お + stem + する (お[待|ま]ち する), for the verbs that take it. */
+function oSuru(prefix: string, w: string, stem: string): Conjugated {
+  if (!HUMBLE_OK.has(w)) return missing("お〜 する is for things you do for or toward someone; this verb has no humble form in everyday use.");
+  return ok(prefix + "お" + stem + " する");
+}
+
+/** The keigo table's form of a verb, or undefined when the form is built. */
+function keigoOf(prefix: string, word: string, form: VerbForm): Conjugated | undefined {
+  if (form !== "honorific" && form !== "humble") return undefined;
+  const entry = KEIGO[written(word)];
+  if (!entry) return undefined;
+  const v = entry[form === "honorific" ? 0 : 1];
+  return typeof v === "string" ? missing(v) : ok(prefix + v[0], ...v.slice(1).map((x) => prefix + x));
 }
 
 function lacks(word: string, cls: VerbClass, form: VerbForm): string | undefined {
@@ -377,6 +471,8 @@ function lacks(word: string, cls: VerbClass, form: VerbForm): string | undefined
 function conjugateRaw(prefix: string, word: string, cls: VerbClass, form: VerbForm): Conjugated {
   const reason = lacks(word, cls, form);
   if (reason) return missing(reason);
+  const keigo = keigoOf(prefix, word, form);
+  if (keigo) return keigo;
   switch (cls) {
     case "godan": return godan(prefix, word, form);
     case "ichidan": return ichidan(prefix, word, form);

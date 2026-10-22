@@ -27,7 +27,7 @@ export const BATCH_02: Word[] = [
   x("1558050", "[歴史|れきし]", "noun", "history", "school-work"),
   x("1391780", "[線|せん]", "noun", "line", "everyday"),
   x("1471120", "[派|は]", "noun", "group, faction; school (of thought)", "people"),
-  x("1473950", "[売|う]る", "verb", "to sell", "shopping", "godan"),
+  // moved to the lessons (n4-plans/you-to-omou): 1473950 [売|う]る
   x("1021750", "イメージ", "noun", "image, impression (する: to picture)", "everyday"),
   x("1145910", "レベル", "noun", "level, standard", "everyday"),
   x("1201260", "[海外|かいがい]", "noun", "overseas, abroad", "travel"),
@@ -49,9 +49,9 @@ export const BATCH_02: Word[] = [
   x("1455280", "[特別|とくべつ]", "na-adj", "special", "everyday"),
   x("1482340", "[番組|ばんぐみ]", "noun", "(TV or radio) programme", "hobbies"),
   x("1581180", "[全国|ぜんこく]", "noun", "the whole country", "places"),
-  x("1207590", "かかる", "verb", "to take (time or money); to hang", "everyday", "godan"),
+  // moved to the lessons (n4-plans/noni-purpose): 1207590 かかる
   x("1349300", "なお", "adverb", "still; furthermore (written)", "language"),
-  x("1351360", "[笑|わら]う", "verb", "to laugh; to smile", "feelings", "godan"),
+  // moved to the lessons (n4-plans/nagara): 1351360 [笑|わら]う
   x("1242590", "[金|かね]", "noun", "money (blunt when bare)", "shopping"),
   x("1242600", "[金|きん]", "noun", "gold", "nature"),
   x("1495740", "[付|つ]く", "verb", "to be attached, to stick; to come with", "everyday", "godan"),
@@ -79,8 +79,8 @@ export const BATCH_02: Word[] = [
   x("1477310", "[発見|はっけん]", "noun", "discovery (する: to discover)", "everyday"),
   x("1596960", "[戦|たたか]う", "verb", "to fight, battle", "everyday", "godan"),
   x("1324940", "[主|おも]", "na-adj", "main, chief", "everyday"),
-  x("1169250", "[引|ひ]く", "verb", "to pull; to draw; to catch (a cold)", "everyday", "godan"),
-  x("1236900", "[教|おし]える", "verb", "to teach; to tell, show", "school-work", "ichidan"),
+  // moved to the lessons (n4-plans/you-ni): 1169250 [引|ひ]く
+  // moved to the lessons (n5-essentials/kata): 1236900 [教|おし]える
   x("1611610", "[間違|まちが]う", "verb", "to be wrong, to be mistaken", "everyday", "godan"),
   x("1172400", "うそ", "noun", "lie", "everyday"),
   x("1226960", "[逆|ぎゃく]", "noun", "reverse, opposite", "everyday"),
@@ -102,7 +102,7 @@ export const BATCH_02: Word[] = [
   x("1251270", "[経験|けいけん]", "noun", "experience (する: to experience)", "school-work"),
   x("1360930", "[心配|しんぱい]", "noun", "worry (する: to worry)", "feelings"),
   x("1383180", "[責任|せきにん]", "noun", "responsibility", "school-work"),
-  x("1407980", "[多分|たぶん]", "adverb", "probably", "language"),
+  // moved to the lessons (n5-essentials/deshou): 1407980 [多分|たぶん]
   x("1412170", "[代表|だいひょう]", "noun", "representative (する: to represent)", "people"),
   x("1477620", "[発生|はっせい]", "noun", "occurrence (する: to occur)", "everyday"),
   x("1511040", "[変更|へんこう]", "noun", "change, alteration (する: to alter)", "everyday"),
@@ -114,7 +114,7 @@ export const BATCH_02: Word[] = [
   x("1483090", "[彼|かれ]ら", "pronoun", "they, them (of people)", "people"),
   // skipped: 1355930 [嬢|じょう] (嬢, a suffix (Miss) rather than a word on its own)
   x("1124860", "ポイント", "noun", "point, key point; points (loyalty card)", "everyday"),
-  x("1304680", "[残念|ざんねん]", "na-adj", "unfortunate, regrettable", "feelings"),
+  // moved to the lessons (n4-plans/koto-ga-dekiru): 1304680 [残念|ざんねん]
   x("1310100", "[支援|しえん]", "noun", "support, aid (する: to support)", "everyday"),
   x("1347310", "[商品|しょうひん]", "noun", "goods, product", "shopping"),
   x("1392190", "[選挙|せんきょ]", "noun", "election", "school-work"),
@@ -140,7 +140,7 @@ export const BATCH_02: Word[] = [
   x("1311125", "あたし", "pronoun", "I, me (casual, used mostly by women)", "people"),
   x("1293700", "[最|もっと]も", "adverb", "the most (formal)", "language"),
   x("1510640", "[変|へん]", "na-adj", "strange, odd", "feelings"),
-  x("1073210", "スポーツ", "noun", "sport, sports", "hobbies"),
+  // moved to the lessons (n5-essentials/comparing): 1073210 スポーツ
   x("1172910", "[運動|うんどう]", "noun", "exercise; campaign (する: to exercise)", "hobbies"),
   x("1310410", "[施設|しせつ]", "noun", "facility, institution", "places"),
   x("1395660", "[全体|ぜんたい]", "noun", "whole, entirety", "everyday"),
@@ -151,7 +151,7 @@ export const BATCH_02: Word[] = [
   x("1639050", "[配信|はいしん]", "noun", "distribution, streaming (する: to stream)", "hobbies"),
   x("1524990", "または", "conjunction", "or (written)", "language"),
   x("1592100", "[食|く]う", "verb", "to eat (rough, male speech)", "food", "godan"),
-  x("1289590", "[困|こま]る", "verb", "to be in trouble, to not know what to do", "feelings", "godan"),
+  // moved to the lessons (n4-plans/naide-zuni): 1289590 [困|こま]る
   x("1598530", "[出会|であ]う", "verb", "to meet by chance, come across", "people", "godan"),
   x("1006900", "その[他|ほか]", "noun", "the rest, others; besides", "language"),
   x("1012500", "もし", "adverb", "if", "language"),
@@ -203,9 +203,9 @@ export const BATCH_02: Word[] = [
   x("1596690", "それぞれ", "adverb", "each, respectively", "language"),
   x("1600260", "[残|のこ]す", "verb", "to leave behind; to save", "everyday", "godan"),
   x("1580650", "[人々|ひとびと]", "noun", "people, everyone", "people"),
-  x("1120410", "ページ", "noun", "page", "school-work"),
+  // moved to the lessons (n4-plans/te-oku): 1120410 ページ
   x("1404390", "[息子|むすこ]", "noun", "(my) son", "people"),
-  x("1171010", "[右|みぎ]", "noun", "right (side)", "places"),
+  // moved to the lessons (n5-essentials/toki): 1171010 [右|みぎ]
   x("1212380", "[感謝|かんしゃ]", "noun", "thanks (する: to thank)", "greetings"),
   x("1218560", "[危険|きけん]", "noun", "danger", "everyday"),
   x("1318090", "[自然|しぜん]", "noun", "nature; natural", "nature"),
@@ -229,7 +229,7 @@ export const BATCH_02: Word[] = [
   x("1286930", "[国内|こくない]", "noun", "domestic; within the country", "places"),
   x("1313960", "[事実|じじつ]", "noun", "fact", "everyday"),
   x("1318340", "[自動|じどう]", "noun", "automatic", "everyday"),
-  x("1341000", "[春|はる]", "noun", "spring", "nature"),
+  // moved to the lessons (n5-essentials/comparing): 1341000 [春|はる]
   x("1365520", "[身|み]", "noun", "body, oneself", "body"),
   x("1399610", "[想像|そうぞう]", "noun", "imagination (する: to imagine)", "feelings"),
   x("1413180", "[大会|たいかい]", "noun", "tournament, competition; convention", "hobbies"),

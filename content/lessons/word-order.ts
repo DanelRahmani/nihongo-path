@@ -1,3 +1,4 @@
+import { jlpt } from "@/content/jlpt";
 import type { Lesson } from "@/content/types";
 
 export const wordOrder: Lesson[] = [
@@ -9,6 +10,7 @@ export const wordOrder: Lesson[] = [
     source: "Tae Kim's Guide — “Basic grammar”; Genki I ch. 3; Cure Dolly — the core sentence",
     register: "both",
     kinds: ["word-order"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -106,6 +108,7 @@ export const wordOrder: Lesson[] = [
       "Cure Dolly — は and the core sentence; Tae Kim's Guide — “The topic particle は”; the elephant sentence is the title of Mikami Akira's 1960 book Zou wa hana ga nagai",
     register: "both",
     kinds: ["word-order", "particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -195,6 +198,7 @@ export const wordOrder: Lesson[] = [
     source: "Genki I ch. 3; Tae Kim's Guide — “Basic grammar”",
     register: "plain",
     kinds: ["word-order", "particles"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -288,6 +292,7 @@ export const wordOrder: Lesson[] = [
     source: "Cure Dolly — zero が; Genki I ch. 1; Tae Kim's Guide",
     register: "polite",
     kinds: ["word-order"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -368,6 +373,7 @@ export const wordOrder: Lesson[] = [
     source: "Genki I ch. 9 and Genki II ch. 15 (noun-modifying clauses); Tae Kim's Guide — “Relative clauses”",
     register: "plain",
     kinds: ["word-order"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",

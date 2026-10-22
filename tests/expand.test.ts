@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { NAMES, WORDS } from "@/content/words";
+import { MOVED_TO_LESSONS } from "@/content/words/expansion";
 import { EXTRA_WORDS } from "@/content/words/extra";
 import { isJoyo, joyoReadingOk } from "@/lib/joyo";
 import { plainOf, readingOf } from "@/lib/markup";
@@ -199,7 +200,7 @@ describe("the candidate list", () => {
     const names = new Set(NAMES.map((n) => plainOf(n, false)));
     const keys = new Set<string>();
     for (const c of list) {
-      expect(lesson.has(c.jp), c.jp).toBe(false);
+      expect(lesson.has(c.jp) && !MOVED_TO_LESSONS.has(c.id), c.jp).toBe(false);
       expect(names.has(plainOf(c.jp, false)), c.jp).toBe(false);
       const key = `${plainOf(c.jp, false)}|${readingOf(c.jp, false)}`;
       expect(keys.has(key), c.jp).toBe(false);

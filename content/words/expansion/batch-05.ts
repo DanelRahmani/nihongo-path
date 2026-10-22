@@ -63,7 +63,7 @@ export const BATCH_05: Word[] = [
   x("1577490", "かっこいい", "i-adj", "cool, good-looking", "feelings"),
   x("1263510", "[現|あらわ]れる", "verb", "to appear, to come into view", "everyday", "ichidan"),
   x("1184160", "[下|さ]がる", "verb", "to go down, to drop; to hang", "everyday", "godan"),
-  x("1483740", "[疲|つか]れる", "verb", "to get tired", "body", "ichidan"),
+  // moved to the lessons (n5-essentials/toki): 1483740 [疲|つか]れる
   x("1270760", "ごらん", "interjection", "look; try and see (said kindly to children or juniors)", "language"),
   x("1221740", "[気|き]に[入|い]る", "verb", "to like, to be pleased with", "feelings", "godan"),
   x("1007000", "それで", "conjunction", "so, and then; that's why", "language"),
@@ -87,7 +87,7 @@ export const BATCH_05: Word[] = [
   x("1483560", "[比較|ひかく]", "noun", "comparison (する: to compare)", "school-work"),
   // skipped: 1490160 [病|やまい] (literary reading; the lessons' 病 is びょう)
   x("1497680", "[父親|ちちおや]", "noun", "father (as a parent)", "people"),
-  x("1500100", "[風呂|ふろ]", "noun", "bath, bathtub", "home"),
+  // moved to the lessons (n5-essentials/mae-ato): 1500100 [風呂|ふろ]
   x("1512360", "[便|びん]", "noun", "flight, service (of a plane or ship)", "travel"),
   x("1558920", "[恋人|こいびと]", "noun", "boyfriend, girlfriend, sweetheart", "people"),
   x("1607520", "[演奏|えんそう]", "noun", "musical performance (する: to perform)", "hobbies"),
@@ -100,7 +100,7 @@ export const BATCH_05: Word[] = [
   x("1160570", "[育|そだ]てる", "verb", "to raise, to bring up", "people", "ichidan"),
   x("1401910", "[草|くさ]", "noun", "grass, weed", "nature"),
   x("1604870", "むしろ", "adverb", "rather, if anything", "language"),
-  x("1123880", "ボタン", "noun", "button", "everyday"),
+  // moved to the lessons (n5-essentials/kata): 1123880 ボタン
   x("1006950", "そもそも", "adverb", "in the first place, to begin with", "language"),
   x("1000590", "あんな", "pre-noun", "that kind of, like that", "language"),
   x("1022880", "インターネット", "noun", "the Internet", "hobbies"),
@@ -133,12 +133,12 @@ export const BATCH_05: Word[] = [
   x("1473960", "[売|う]れる", "verb", "to sell (well); to become popular", "shopping", "ichidan"),
   x("1591100", "[効|き]く", "verb", "to be effective, to work (of medicine)", "body", "godan"),
   x("2657130", "とどまる", "verb", "to remain, to stay (in a place)", "everyday", "godan"),
-  x("1199900", "[壊|こわ]れる", "verb", "to break, to be broken", "home", "ichidan"),
+  // moved to the lessons (n4-plans/ta-bakari): 1199900 [壊|こわ]れる
   x("1240180", "ごく", "adverb", "very, extremely (slightly formal)", "language"),
   x("1416340", "[奪|うば]う", "verb", "to take away (by force), to steal", "everyday", "godan"),
   x("1083030", "デジタル", "noun", "digital", "hobbies"),
   x("1215330", "[間違|まちが]える", "verb", "to make a mistake in, to get wrong", "school-work", "ichidan"),
-  x("1318950", "[辞|や]める", "verb", "to quit (a job or school), to resign", "school-work", "ichidan"),
+  // moved to the lessons (n4-plans/ta-bakari): 1318950 [辞|や]める
   x("1076000", "タイミング", "noun", "timing", "everyday"),
   x("1081430", "デート", "noun", "date (する: to go on a date)", "people"),
   x("1097870", "バイト", "noun", "part-time job (する: to work part-time) (casual)", "school-work"),
@@ -167,7 +167,7 @@ export const BATCH_05: Word[] = [
   x("1581210", "かつて", "adverb", "once, formerly; (not) ever before", "time"),
   x("1602880", "[増|ふ]やす", "verb", "to increase (something), to add to", "everyday", "godan"),
   x("1037960", "カバー", "noun", "cover (する: to cover, to make up for)", "everyday"),
-  x("1180470", "[押|お]す", "verb", "to push, to press", "everyday", "godan"),
+  // moved to the lessons (n5-essentials/kata): 1180470 [押|お]す
   x("1238380", "[興奮|こうふん]", "noun", "excitement (する: to get excited)", "feelings"),
   x("1035710", "オリンピック", "noun", "the Olympics", "hobbies"),
   x("1114090", "ブランド", "noun", "brand", "shopping"),
@@ -188,7 +188,7 @@ export const BATCH_05: Word[] = [
   x("1595240", "[事態|じたい]", "noun", "situation, state of affairs", "everyday"),
   // skipped: 2080720 [両|りょう] (prefix 'both-' and a counter for train cars)
   x("1597150", "たばこ", "noun", "cigarette, tobacco", "everyday"),
-  x("1291800", "[座|すわ]る", "verb", "to sit down", "everyday", "godan"),
+  // moved to the lessons (n5-essentials/temo-ii): 1291800 [座|すわ]る
   x("1167860", "[稲妻|いなずま]", "noun", "lightning", "nature"),
   x("1427510", "しゃべる", "verb", "to talk, to chat (casual)", "language", "godan"),
   x("1418620", "[短|みじか]い", "i-adj", "short; brief", "everyday"),
@@ -251,6 +251,6 @@ export const BATCH_05: Word[] = [
   x("1203270", "[外|はず]す", "verb", "to take off, to remove; to miss", "everyday", "godan"),
   x("1448800", "[当|あ]たり[前|まえ]", "noun", "natural, obvious, ordinary", "everyday"),
   x("1552120", "[流|なが]す", "verb", "to pour, to flush; to play (music)", "home", "godan"),
-  x("1228260", "[吸|す]う", "verb", "to breathe in; to smoke; to suck", "body", "godan"),
+  // moved to the lessons (n4-plans/koto-ga-dekiru): 1228260 [吸|す]う
   x("1580260", "[傷|きず]", "noun", "wound, injury; scratch", "body"),
 ];

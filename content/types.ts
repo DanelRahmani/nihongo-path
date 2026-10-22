@@ -18,6 +18,8 @@ export interface Example {
   note?: Rich;
   /** The same line in the other register (polite ↔ plain), shown beneath it. */
   alt?: Jp;
+  /** Why the line's naturalness is uncertain, for a native speaker to check. Never rendered; `npm run dump` prints it. */
+  needsReview?: string;
 }
 
 export interface DialogueLine {
@@ -26,6 +28,18 @@ export interface DialogueLine {
   en: string;
   /** The same line in the other register, shown beneath it. */
   alt?: Jp;
+  /** As on Example. */
+  needsReview?: string;
+}
+
+export type JlptLevel = "N5" | "N4" | "N3" | "N2";
+
+/** A grammar point's JLPT level. The lists are unofficial and disagree, so the tag names its source (content/jlpt.ts). */
+export interface JlptTag {
+  level: JlptLevel;
+  source: string;
+  /** How the cross-check list differs, where it does. */
+  disputed?: string;
 }
 
 /** A typed quiz question. Answers are Jp markup; the kanji form and the kana reading of each are accepted. */
@@ -41,6 +55,8 @@ export interface QuizQuestion {
   answerIn?: "romaji" | "name";
   /** Shown after the reader checks their answer, right or wrong. */
   explanation: Rich;
+  /** As on Example. */
+  needsReview?: string;
 }
 
 export type Block =
@@ -76,6 +92,8 @@ export interface Lesson {
   kinds?: LessonKind[];
   /** Template parts this lesson leaves out, each with the reason. */
   exempt?: Partial<Record<TemplatePart, string>>;
+  /** The JLPT level of the lesson's main point, for grammar, particle and verb lessons. */
+  jlpt?: JlptTag;
   blocks: Block[];
 }
 

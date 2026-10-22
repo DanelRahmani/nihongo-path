@@ -1,3 +1,4 @@
+import { jlpt } from "@/content/jlpt";
 import type { Lesson } from "@/content/types";
 
 // Quiz answers with numbers also list the digit form (3[本|ほん]): a Japanese keyboard often turns
@@ -12,6 +13,7 @@ export const grammar: Lesson[] = [
     source: "Genki I ch. 1, 4, 8–9; Tae Kim's Guide — “Expressing state-of-being”; Cure Dolly — です and だ",
     register: "both",
     kinds: ["grammar"],
+    jlpt: jlpt("N5"),
     blocks: [
       { type: "idea", text: "**Noun + です** means “is (a) noun”, and だ is its casual version; both go at the very end." },
       {
@@ -95,6 +97,7 @@ export const grammar: Lesson[] = [
     source: "Genki I ch. 5; Tae Kim's Guide — “Adjectives”; Cure Dolly — adjectives as verbs",
     register: "both",
     kinds: ["grammar"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -198,6 +201,7 @@ export const grammar: Lesson[] = [
     source: "Genki I ch. 5; Tae Kim's Guide — “Adjectives”",
     register: "both",
     kinds: ["grammar"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -278,6 +282,7 @@ export const grammar: Lesson[] = [
     source: "Genki I ch. 4; Tae Kim's Guide — “Existence: ある and いる”",
     register: "both",
     kinds: ["grammar"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -362,6 +367,7 @@ export const grammar: Lesson[] = [
     source: "Genki I ch. 2; Tae Kim's Guide",
     register: "both",
     kinds: ["grammar"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -442,6 +448,7 @@ export const grammar: Lesson[] = [
     source: "Genki I ch. 1–3; Tae Kim's Guide — “Question words”",
     register: "both",
     kinds: ["grammar"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",
@@ -532,6 +539,7 @@ export const grammar: Lesson[] = [
     source: "Genki I ch. 1–2; Genki II ch. 14; Tae Kim's Guide — “Numbers and counting”",
     register: "polite",
     kinds: ["grammar"],
+    jlpt: jlpt("N5"),
     blocks: [
       {
         type: "idea",

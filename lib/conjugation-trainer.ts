@@ -25,7 +25,7 @@ interface FormInfo {
   lesson: string;
 }
 
-/** The verb forms the lessons teach. Forms no lesson teaches yet (the commands) aren't asked. */
+/** The verb forms the lessons teach, each asked once its lesson is done. */
 export const VERB_FORM_INFO: Partial<Record<VerbForm, FormInfo>> = {
   plain: { label: "dictionary form", lesson: "verbs/verb-groups" },
   polite: { label: "polite (ます)", lesson: "verbs/masu-form" },
@@ -49,6 +49,9 @@ export const VERB_FORM_INFO: Partial<Record<VerbForm, FormInfo>> = {
   // The plain forms: a verb's honorific or humble word as a dictionary would list it (召し上がる, 参る).
   honorific: { label: "honorific (尊敬語), plain form", lesson: "n4-giving-voice/sonkeigo" },
   humble: { label: "humble (謙譲語), plain form", lesson: "n4-giving-voice/kenjougo" },
+  imperative: { label: "plain command (blunt)", lesson: "n4-seeming/commands" },
+  prohibitive: { label: "don't (な, blunt)", lesson: "n4-seeming/commands" },
+  nasai: { label: "なさい command", lesson: "n4-seeming/commands" },
 };
 
 /** The adjective forms the lessons teach, by the lesson that teaches each class's forms. */

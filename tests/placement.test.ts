@@ -9,7 +9,7 @@ const BANDS = placementBands();
 describe("the bands", () => {
   it("are the units after the kana, in path order, two lesson-quiz questions each, typed in Japanese", () => {
     expect(BANDS.map((b) => b.unit)).toEqual(UNITS.map((u) => u.slug).filter((s) => s !== "hiragana" && s !== "katakana"));
-    expect(BANDS).toHaveLength(11);
+    expect(BANDS).toHaveLength(12);
     for (const b of BANDS) {
       expect(b.questions, b.unit).toHaveLength(PER_BAND);
       expect(new Set(b.questions.map((q) => q.prompt)).size, b.unit).toBe(PER_BAND);
@@ -46,6 +46,8 @@ describe("the bands", () => {
         "n4-plans/te-shimau: Polite, with てしまう: “I've lost the ticket” (use なくす): [切符|きっぷ]を＿。",
         "n4-giving-voice/ageru-kureru-morau: Casual: “My grandmother gave me some money”: [祖母|そぼ]がお[金|かね]を＿。",
         "n4-giving-voice/passive: Casual passive: “I got woken up by my little brother” (use [起|お]こす): [弟|おとうと]に＿。",
+        "n4-seeming/sou-hearsay: Fix it (you heard it): [山田|やまだ]さんは[先生|せんせい]そうです。",
+        "n4-seeming/to-omou: Casual, with と[思|おも]う: “I think he's Japanese”: [彼|かれ]は[日本人|にほんじん]＿。",
       ]
     `);
   });

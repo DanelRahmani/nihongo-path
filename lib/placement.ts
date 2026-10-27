@@ -15,6 +15,8 @@ export interface PlacementQuestion extends QuizQuestion {
 export interface Band {
   unit: string;
   title: string;
+  /** The JLPT level most of the unit's lessons carry, for "around JLPT N4"; absent for units the lists don't cover. */
+  jlpt?: string;
   /** The unit's lessons ("unit/lesson"), in path order: the ones to mark finished when the reader places past it. */
   lessons: string[];
   questions: PlacementQuestion[];

@@ -139,7 +139,7 @@ export const BATCH_08: Word[] = [
   x("1601890", "[必死|ひっし]", "na-adj", "desperate, frantic, all-out", "feelings"),
   x("1592380", "[蔵|くら]", "noun", "storehouse, warehouse", "home"),
   x("1317340", "[自|みずか]ら", "adverb", "personally, in person, of one's own accord (formal)", "everyday"), // pos: was noun (mostly adverbial: 自ら選ぶ; 自らの is the noun use)
-  x("1365850", "[辛|から]い", "i-adj", "spicy, hot; salty", "food"),
+  // moved to the lessons (n4-seeming/sou-looks): 1365850 [辛|から]い
   x("1335520", "[汁|しる]", "noun", "soup, broth; juice", "food"),
   x("1571320", "なめる", "verb", "to lick; to taste; to make light of", "body", "ichidan"),
   // moved to the lessons (n4-plans/noni-purpose): 1215260 [間|ま]に[合|あ]う
@@ -230,7 +230,7 @@ export const BATCH_08: Word[] = [
   x("2005890", "やる[気|き]", "noun", "motivation, drive", "feelings"),
   x("2164680", "[仙台|せんだい]", "noun", "Sendai (a city in northern Japan)", "places"),
   // skipped: 1315120 [字|あざ] (homograph; rare "village section")
-  x("1315130", "[字|じ]", "noun", "character, letter (written)", "language"),
+  // moved to the lessons (n4-seeming/yasui-nikui): 1315130 [字|じ]
   // skipped: 1409810 [対|つい] (homograph; rare "pair" reading)
   x("1211150", "[巻|ま]き[込|こ]む", "verb", "to involve, to drag into", "everyday", "godan"),
   // moved to the lessons (n4-conditions/to-natural): 1529390 [眠|ねむ]る

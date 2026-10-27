@@ -176,4 +176,13 @@ export const VERBS: Word[] = [
   verb("[起|お]こす", "godan", "to wake (someone) up", "everyday"),
   verb("[騒|さわ]ぐ", "godan", "to make noise, to make a fuss", "everyday"),
   verb("[越|こ]す", "godan", "to cross over, to move house; お越し: (respectful) coming, going", "language"),
+  // Seeming, hearsay and thinking (unit 十三)
+  verb("[落|お]ちる", "ichidan", "to fall, to drop; to fail (a test)", "everyday"),
+  verb("[勝|か]つ", "godan", "to win", "hobbies"),
+  verb("[止|と]まる", "godan", "to stop, to come to a stop", "everyday"),
+  verb("[消|き]える", "ichidan", "to disappear, go out", "everyday"),
+  verb("[負|ま]ける", "ichidan", "to lose, to be defeated", "hobbies"),
+  verb("[上|あ]がる", "godan", "to go up, rise; to come in (to a house)", "everyday"),
+  verb("[決|き]める", "ichidan", "to decide, choose", "everyday"),
+  verb("[触|さわ]る", "godan", "to touch", "everyday"),
 ];

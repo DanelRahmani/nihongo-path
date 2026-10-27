@@ -14,6 +14,10 @@ export const FUNCTION_WORDS = new Set([
   ..."は が を に で へ と や も の か ね よ な".split(" "),
   ..."よね から まで より って とか けど けれど けれども でも し など だけ しか くらい ぐらい ばかり ながら".split(" "),
   ..."だ です でした だった じゃ だったら なら でしょう でしょ だろう ん なん なの ので のに".split(" "),
+  // かもしれない (written in kana, かも alone in casual speech) and によると (according to), one grammar word each.
+  ..."かも しれない しれません によると".split(" "),
+  // かな and かしら (I wonder), sentence-final like ね.
+  ..."かな かしら".split(" "),
 ]);
 
 /**
@@ -130,6 +134,31 @@ function stemVerbForms(stem: Jp): [Jp, string][] {
   return out;
 }
 
+/** やすい (easy to) and にくい (hard to) after a verb stem, each an い-adjective: [読|よ]みやすかった, [見|み]にくくない. */
+function stemAdjectiveForms(stem: Jp): [Jp, string][] {
+  const out: [Jp, string][] = [];
+  for (const [end, label] of [["やすい", "yasui"], ["にくい", "nikui"]]) {
+    for (const af of ADJECTIVE_FORMS) {
+      const a = conjugateAdjective(`${stem}${end}`, "i", af);
+      if (a.ok) out.push([firstWord(a.jp), `${label}+${af}`]);
+    }
+  }
+  return out;
+}
+
+/** がる (someone else shows a feeling) after an adjective's stem, a う-verb: [怖|こわ]がって, [残念|ざんねん]がる. */
+function garuForms(stem: Jp): [Jp, string][] {
+  const out: [Jp, string][] = [];
+  for (const { form: vf } of VERB_FORMS) {
+    if (vf === "honorific" || vf === "humble") continue;
+    const v = conjugateVerb(`${stem}がる`, "godan", vf);
+    if (!v.ok) continue;
+    out.push([firstWord(v.jp), `garu+${vf}`]);
+    if (vf === "te") out.push(...teContractions(firstWord(v.jp), "garu+te"));
+  }
+  return out;
+}
+
 /** Every one-word form the engine builds from a verb: [食|た]べ, [食|た]べた, [食|た]べられない, [食|た]べてる… */
 function verbForms(jp: Jp, cls: VerbClass): [Jp, string][] {
   const out: [Jp, string][] = [];
@@ -158,6 +187,8 @@ function verbForms(jp: Jp, cls: VerbClass): [Jp, string][] {
       }
       if (form === "te") out.push(...teContractions(f, "te"), ...chaContraction(f), ...helperContractions(firstWord(f)));
       if (form === "plainNeg") out.push(...naiContractions(f));
+      // そう after ない (ある's negative): なさそう (there doesn't seem to be).
+      if (form === "plainNeg" && f === "ない") out.push(["なさそう", "plainNeg+sou"]);
       // たり (doing things like …): the plain past + り, also of the negative ([来|こ]なかったり).
       if (form === "plainPast" || form === "plainPastNeg") out.push([`${firstWord(f)}り`, `${form}+tari`]);
       // たがる (wants to, of someone else): stem + たがる, a godan verb.
@@ -170,6 +201,10 @@ function verbForms(jp: Jp, cls: VerbClass): [Jp, string][] {
         }
         out.push(...sugiruForms(f, "sugiru"));
         if (!f.includes(" ")) out.push(...stemVerbForms(f));
+        // そう (looks about to): [降|ふ]りそう.
+        if (!f.includes(" ")) out.push([`${f}そう`, "sou"]);
+        // やすい and にくい (easy, hard to …): い-adjectives on the stem, [読|よ]みやすい, [使|つか]いにくかった.
+        if (!f.includes(" ")) out.push(...stemAdjectiveForms(f));
       }
     }
   }
@@ -222,7 +257,19 @@ export function buildIndex(words: Word[], names: Jp[]): WordIndex {
         }
       }
       // すぎる: [高|たか]すぎる, [静|しず]かすぎる (いい has no stem of its own: よすぎる comes from よい).
+      // がる (of someone else's feelings): [怖|こわ]がる, [嫌|いや]がる, [欲|ほ]しがる.
+      if (word.jp !== "いい" && word.jp !== "よい") {
+        for (const [f, form] of garuForms(cls === "i" ? word.jp.replace(/い$/, "") : word.jp)) add(f, { word, form });
+      }
       if (word.jp !== "いい") for (const [f, form] of sugiruForms(cls === "i" ? word.jp.replace(/い$/, "") : word.jp, "sugiru")) add(f, { word, form });
+      // そう (looks …): [高|たか]そう, [元気|げんき]そう; いい → よさそう; the negative [高|たか]くなさそう.
+      if (cls === "na") add(`${word.jp}そう`, { word, form: "sou" });
+      else if (word.jp === "いい" || word.jp === "よい") add("よさそう", { word, form: "sou" });
+      else {
+        add(word.jp.replace(/い$/, "そう"), { word, form: "sou" });
+        const neg = conjugateAdjective(word.jp, "i", "plainNeg");
+        if (neg.ok) add(`${firstWord(neg.jp).replace(/い$/, "")}さそう`, { word, form: "plainNeg+sou" });
+      }
       // The さ noun: [高|たか]い → [高|たか]さ.
       if (word.pos === "i-adj") add(word.jp.replace(/い$/, "さ"), { word, form: "sa" });
     }

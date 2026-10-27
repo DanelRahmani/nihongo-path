@@ -118,7 +118,7 @@ export const BATCH_06: Word[] = [
   x("1201620", "のり", "noun", "dried seaweed, nori", "food"),
   x("1177070", "[炎|ほのお]", "noun", "flame", "nature"),
   x("1240750", "わずか", "na-adj", "a little, only, barely", "everyday"),
-  x("1310620", "[止|と]まる", "verb", "to stop, to come to a stop", "everyday", "godan"),
+  // moved to the lessons (n4-seeming/sou-hearsay): 1310620 [止|と]まる
   // skipped: 1225940 あり (artefact: あり is the ant noun but also counted from the verb ある)
   x("1541560", "ありがたい", "i-adj", "grateful, welcome", "feelings"),
   x("1591290", "きっかけ", "noun", "chance, trigger, opportunity", "everyday"),
@@ -191,7 +191,7 @@ export const BATCH_06: Word[] = [
   x("1514940", "[暮|く]らす", "verb", "to live, to spend one's days", "home", "godan"),
   // skipped: 1246510 くず (insulting sense (scum); mostly kana waste, rare for learners)
   x("1211310", "[耐|た]える", "verb", "to bear, to endure, to withstand", "feelings", "ichidan"),
-  x("1426680", "[虫|むし]", "noun", "insect, bug", "nature"),
+  // moved to the lessons (n4-seeming/garu): 1426680 [虫|むし]
   x("1101600", "パターン", "noun", "pattern", "everyday"),
   x("1432410", "[追|お]う", "verb", "to chase, to pursue; to follow", "everyday", "godan"),
   x("1416170", "たたく", "verb", "to hit, to knock, to pat", "everyday", "godan"),

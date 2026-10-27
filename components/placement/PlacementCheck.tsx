@@ -111,7 +111,8 @@ export function PlacementCheck({ bands, kanaLessons, lessonTitles }: { bands: Ba
     const toMark = [...before, ...(withKana ? kanaLessons : [])].filter((l) => !progress[l]);
     // The lessons of the questions missed as slips: worth a look even though their unit passed.
     const slips = bands.flatMap((b, i) => (b === start ? [] : b.questions.filter((_, j) => answers[i]?.[j] === false).map((q) => q.lesson)));
-    const title = result.start === 0 ? "Start at the beginning" : start ? `Start with ${start.title}` : "No unit stopped you";
+    const level = start?.jlpt ? `: around JLPT ${start.jlpt}` : "";
+    const title = result.start === 0 ? "Start at the beginning" : start ? `Start with ${start.title}${level}` : "No unit stopped you";
     return (
       <div className={panelClass("surface", "p-6")}>
         <h2 ref={resultHeading} tabIndex={-1} className="text-lg font-medium focus:outline-none">

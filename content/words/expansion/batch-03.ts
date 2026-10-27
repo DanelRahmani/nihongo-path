@@ -7,7 +7,7 @@ export const BATCH_03: Word[] = [
   // moved to the lessons (n5-essentials/comparing): 2013900 [赤|あか]
   // moved to the lessons (n4-plans/hajimeru): 1445690 [怒|おこ]る
   x("1403830", "そば", "noun", "beside, near; right after", "places"),
-  x("1376600", "[正|ただ]しい", "i-adj", "correct, right", "everyday"),
+  // moved to the lessons (n4-seeming/ka-dou-ka): 1376600 [正|ただ]しい
   x("1591420", "[決|き]まる", "verb", "to be decided, to be settled", "everyday", "godan"),
   x("1587310", "[位置|いち]", "noun", "position, location (する: to be located)", "places"),
   x("1016610", "アップ", "noun", "increase; upload (する: to raise, to upload)", "everyday"),
@@ -24,7 +24,7 @@ export const BATCH_03: Word[] = [
   // moved to the lessons (n4-plans/made-ni-aida): 1215230 [間|あいだ]
   // skipped: 1215240 [間|ま] (homograph: the bare word is あいだ; ま is mostly in compounds)
   // skipped: 2067900 [間|かん] (homograph: mostly a suffix, as in 一週間)
-  x("1548550", "[落|お]ちる", "verb", "to fall, to drop; to fail (a test)", "everyday", "ichidan"),
+  // moved to the lessons (n4-seeming/sou-looks): 1548550 [落|お]ちる
   x("1116400", "プレイ", "noun", "play, playing (a game or sport) (する: to play)", "hobbies"),
   // moved to the lessons (n4-giving-voice/passive): 1223660 [起|お]こす
   x("1075040", "センター", "noun", "centre (a facility); centre (position)", "places"),
@@ -142,7 +142,7 @@ export const BATCH_03: Word[] = [
   x("1609270", "いろんな", "pre-noun", "various, all kinds of (casual)", "everyday"),
   x("1550840", "[離|はな]れる", "verb", "to be apart, to be far; to leave", "everyday", "ichidan"),
   x("1530510", "[無駄|むだ]", "na-adj", "wasteful, useless; waste", "everyday"), // pos: was noun
-  x("1346150", "[勝|か]つ", "verb", "to win", "hobbies", "godan"),
+  // moved to the lessons (n4-seeming/sou-hearsay): 1346150 [勝|か]つ
   x("1004830", "これら", "pronoun", "these", "language"),
   x("1008920", "どういう", "pre-noun", "what kind of", "language"),
   x("1075500", "ソフト", "noun", "software; soft", "everyday"), // pos: was na-adj

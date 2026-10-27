@@ -158,10 +158,10 @@ export const BATCH_05: Word[] = [
   x("1339260", "[出身|しゅっしん]", "noun", "(one's) home town, country or school of origin", "people"),
   x("1392680", "[前回|ぜんかい]", "noun", "last time, previous time", "time"),
   x("1447230", "[投資|とうし]", "noun", "investment (する: to invest)", "shopping"),
-  x("1538130", "[約束|やくそく]", "noun", "promise; appointment (する: to promise)", "everyday"),
+  // moved to the lessons (n4-seeming/commands): 1538130 [約束|やくそく]
   x("1559510", "[連載|れんさい]", "noun", "serial (story), series (する: to serialize)", "hobbies"),
   x("1236650", "おそらく", "adverb", "probably, most likely", "language"),
-  x("1357980", "[触|さわ]る", "verb", "to touch", "everyday", "godan"),
+  // moved to the lessons (n4-seeming/commands): 1357980 [触|さわ]る
   x("1311870", "[至|いた]る", "verb", "to reach, to arrive at (written)", "everyday", "godan"),
   x("1467150", "[任|まか]せる", "verb", "to leave (it) to someone, to entrust", "everyday", "ichidan"),
   x("1581210", "かつて", "adverb", "once, formerly; (not) ever before", "time"),

@@ -21,13 +21,22 @@ export const PICKS: Record<string, string[]> = {
   "n4-conditions": ["conditionals-compared#0", "noni#0"],
   "n4-plans": ["you-ni-suru-naru#1", "te-shimau#1"],
   "n4-giving-voice": ["ageru-kureru-morau#0", "passive#0"],
+  "n4-seeming": ["sou-hearsay#4", "to-omou#1"],
 };
+
+/** The JLPT level most of a unit's lessons carry, or undefined when none is tagged. */
+function unitLevel(levels: (string | undefined)[]): string | undefined {
+  const counts = new Map<string, number>();
+  for (const l of levels) if (l) counts.set(l, (counts.get(l) ?? 0) + 1);
+  return [...counts].sort((a, b) => b[1] - a[1])[0]?.[0];
+}
 
 /** The placement bands, built at build time from the units and the picked quiz questions. Server only. */
 export function placementBands(): Band[] {
   return UNITS.filter((u) => !SKIPPED.has(u.slug)).map((unit) => ({
     unit: unit.slug,
     title: unit.title,
+    ...(unitLevel(unit.lessons.map((l) => l.jlpt?.level)) ? { jlpt: unitLevel(unit.lessons.map((l) => l.jlpt?.level)) } : {}),
     lessons: unit.lessons.map((l) => `${unit.slug}/${l.slug}`),
     questions: (PICKS[unit.slug] ?? []).map((pick): PlacementQuestion => {
       const [slug, index] = pick.split("#");

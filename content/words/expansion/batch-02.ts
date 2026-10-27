@@ -82,7 +82,7 @@ export const BATCH_02: Word[] = [
   // moved to the lessons (n4-plans/you-ni): 1169250 [引|ひ]く
   // moved to the lessons (n5-essentials/kata): 1236900 [教|おし]える
   x("1611610", "[間違|まちが]う", "verb", "to be wrong, to be mistaken", "everyday", "godan"),
-  x("1172400", "うそ", "noun", "lie", "everyday"),
+  // moved to the lessons (n4-seeming/hazu): 1172400 うそ
   x("1226960", "[逆|ぎゃく]", "noun", "reverse, opposite", "everyday"),
   x("1294180", "[最大|さいだい]", "noun", "biggest, greatest", "everyday"),
   x("1325260", "[主義|しゅぎ]", "noun", "-ism, principle", "school-work"),
@@ -92,7 +92,7 @@ export const BATCH_02: Word[] = [
   x("1591720", "[協力|きょうりょく]", "noun", "cooperation (する: to cooperate)", "school-work"),
   x("1551940", "ほぼ", "adverb", "almost, nearly", "everyday"),
   x("1588760", "[得|え]る", "verb", "to get, obtain (formal)", "everyday", "ichidan"),
-  x("1352290", "[上|あ]がる", "verb", "to go up, rise; to come in (to a house)", "everyday", "godan"),
+  // moved to the lessons (n4-seeming/to-iu): 1352290 [上|あ]がる
   x("1397450", "[組|くみ]", "noun", "class (at school); group, team", "school-work"),
   x("1134370", "メンバー", "noun", "member (of a group)", "people"),
   x("1284430", "[合|あ]う", "verb", "to fit, to suit, to match; to agree", "everyday", "godan"),
@@ -139,7 +139,7 @@ export const BATCH_02: Word[] = [
   x("1515670", "[報告|ほうこく]", "noun", "report (する: to report)", "school-work"),
   x("1311125", "あたし", "pronoun", "I, me (casual, used mostly by women)", "people"),
   x("1293700", "[最|もっと]も", "adverb", "the most (formal)", "language"),
-  x("1510640", "[変|へん]", "na-adj", "strange, odd", "feelings"),
+  // moved to the lessons (n4-seeming/ga-suru): 1510640 [変|へん]
   // moved to the lessons (n5-essentials/comparing): 1073210 スポーツ
   x("1172910", "[運動|うんどう]", "noun", "exercise; campaign (する: to exercise)", "hobbies"),
   x("1310410", "[施設|しせつ]", "noun", "facility, institution", "places"),
@@ -164,7 +164,7 @@ export const BATCH_02: Word[] = [
   x("1473230", "[倍|ばい]", "noun", "double, times (as much)", "numbers"),
   x("1513530", "[保護|ほご]", "noun", "protection (する: to protect)", "everyday"),
   x("1599420", "なかなか", "adverb", "quite; (not) easily", "language"),
-  x("1350040", "[消|き]える", "verb", "to disappear, go out", "everyday", "ichidan"),
+  // moved to the lessons (n4-seeming/you-mitai): 1350040 [消|き]える
   // skipped: 1303400 まく (artefact: kana count mixes several verbs)
   x("1327120", "[守|まも]る", "verb", "to protect; to keep (a rule or promise)", "everyday", "godan"),
   x("1004320", "こういう", "pre-noun", "this kind of, like this", "language"),
@@ -177,8 +177,8 @@ export const BATCH_02: Word[] = [
   x("1418160", "[担当|たんとう]", "noun", "being in charge (する: to take charge)", "school-work"),
   x("1436360", "[提供|ていきょう]", "noun", "offer (する: to provide)", "everyday"),
   x("1440600", "[展開|てんかい]", "noun", "development (する: to develop, unfold)", "everyday"),
-  x("1526960", "[味|あじ]", "noun", "taste, flavour", "food"),
-  x("1190860", "おかしい", "i-adj", "strange, funny; wrong", "feelings"),
+  // moved to the lessons (n4-seeming/ga-suru): 1526960 [味|あじ]
+  // moved to the lessons (n4-seeming/hazu): 1190860 おかしい
   // skipped: 1257800 まくる (まくる is mainly a suffix (to keep doing); kana form is an artefact)
   x("1602060", "ひどい", "i-adj", "terrible, cruel, awful", "feelings"),
   x("1216250", "[丸|まる]", "noun", "circle; whole", "everyday"),
@@ -214,7 +214,7 @@ export const BATCH_02: Word[] = [
   x("1506050", "しかも", "conjunction", "moreover; and yet", "language"),
   x("1585230", "[例|れい]", "noun", "example", "language"),
   x("1923480", "キャラ", "noun", "character (in a story or game); personality (casual)", "hobbies"),
-  x("2008740", "そんなに", "adverb", "that much, so (much)", "language"),
+  // moved to the lessons (n4-seeming/sou-looks): 2008740 そんなに
   x("1552390", "さすが", "adverb", "as expected; indeed", "language"),
   // skipped: 1211140 [巻|まき] (巻 as a roll or volume is mostly a counter-like word)
   x("1270990", "[語|かた]る", "verb", "to talk about, tell", "language", "godan"),
@@ -238,7 +238,7 @@ export const BATCH_02: Word[] = [
   x("1478620", "[判断|はんだん]", "noun", "judgement (する: to judge)", "school-work"),
   x("1217110", "がん", "noun", "cancer", "body"),
   x("1589880", "[関|かか]わる", "verb", "to be involved in, concerned with", "everyday", "godan"),
-  x("1254180", "[決|き]める", "verb", "to decide, choose", "everyday", "ichidan"),
+  // moved to the lessons (n4-seeming/ka-dou-ka): 1254180 [決|き]める
   x("1223680", "[起|お]こる", "verb", "to happen, occur", "everyday", "godan"),
   x("1365040", "[親|おや]", "noun", "parent, parents", "people"),
   x("1397300", "[素晴|すば]らしい", "i-adj", "wonderful, splendid", "feelings"),

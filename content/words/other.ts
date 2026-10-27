@@ -112,6 +112,8 @@ export const OTHER: Word[] = [
   w("suffix", "[中|じゅう]", "all through, all over", "time"),
   w("suffix", "[屋|や]", "shop (selling…): [本屋|ほんや]", "shopping"),
   w("suffix", "さ", "-ness (turns an adjective into a noun: [高|たか]さ)", "language"),
+  w("suffix", "みたい", "seems, looks like; like (〜みたいな, 〜みたいに); after a て form: want to try (from みる)", "language"),
+  w("suffix", "らしい", "apparently, it seems; (after a noun) typical of, just like", "language"),
   // The reading view (content/reading.ts)
   w("interjection", "オッケー", "OK (casual)", "language"),
   // N5 essentials (unit 九)
@@ -129,4 +131,6 @@ export const OTHER: Word[] = [
   w("expression", "ご[覧|らん]", "(ご覧になる: to see, respectful; ご覧ください: please look)", "language"),
   w("counter", "[階|かい]", "floor (of a building): [二階|にかい]", "numbers"),
   w("expression", "おいで", "(respectful) coming, going, being: おいでになる", "language"),
+  // Seeming, hearsay and thinking (unit 十三)
+  w("pre-noun", "そんな", "that kind of, such", "language"),
 ];

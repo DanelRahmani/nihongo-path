@@ -1,7 +1,7 @@
 /**
  * JLPT levels for lessons and grammar topics. There is no official grammar list: the levels follow Bunpro's
  * JLPT lists, cross-checked with JLPT Sensei's, and a disagreement is described in `disputed`.
- * Both lists were read on 2026-10-21.
+ * Both lists were read on 2026-10-21, and their N3 sections again on 2026-10-28 (JLPT Phase 2).
  */
 import type { JlptLevel, JlptTag } from "@/content/types";
 

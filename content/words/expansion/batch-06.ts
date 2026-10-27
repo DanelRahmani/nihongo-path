@@ -91,7 +91,7 @@ export const BATCH_06: Word[] = [
   x("1590145", "[影|かげ]", "noun", "shadow", "nature"),
   x("1397590", "[組|く]む", "verb", "to put together, to cross (legs, arms)", "everyday", "godan"),
   x("1413530", "[大型|おおがた]", "noun", "large-sized, large-scale", "everyday"),
-  x("1541900", "[誘|さそ]う", "verb", "to invite; to tempt", "people", "godan"),
+  // moved to the lessons (n4-giving-voice/passive): 1541900 [誘|さそ]う
   x("1416010", "きのこ", "noun", "mushroom", "food"),
   x("1577670", "めがね", "noun", "glasses, eyeglasses", "everyday"),
   x("1345640", "[除|のぞ]く", "verb", "to remove, to exclude", "everyday", "godan"),
@@ -118,7 +118,7 @@ export const BATCH_06: Word[] = [
   x("1201620", "のり", "noun", "dried seaweed, nori", "food"),
   x("1177070", "[炎|ほのお]", "noun", "flame", "nature"),
   x("1240750", "わずか", "na-adj", "a little, only, barely", "everyday"),
-  x("1310620", "[止|と]まる", "verb", "to stop, to come to a stop", "everyday", "godan"),
+  // moved to the lessons (n4-seeming/sou-hearsay): 1310620 [止|と]まる
   // skipped: 1225940 あり (artefact: あり is the ant noun but also counted from the verb ある)
   x("1541560", "ありがたい", "i-adj", "grateful, welcome", "feelings"),
   x("1591290", "きっかけ", "noun", "chance, trigger, opportunity", "everyday"),
@@ -148,7 +148,7 @@ export const BATCH_06: Word[] = [
   x("2080530", "ノー", "interjection", "no (as in no smoking, no problem)", "language"),
   x("1441900", "[伝|つた]わる", "verb", "to be conveyed, to spread (news)", "language", "godan"),
   // moved to the lessons (n5-essentials/hou-ga-ii): 1227560 [休|やす]む
-  x("1257330", "[建|た]てる", "verb", "to build, to construct", "everyday", "ichidan"),
+  // moved to the lessons (n4-giving-voice/passive): 1257330 [建|た]てる
   x("1555930", "[涙|なみだ]", "noun", "tear, tears", "body"),
   x("1344410", "[助|たす]ける", "verb", "to help; to save, to rescue", "everyday", "ichidan"),
   // skipped: 1404750 [足|た]る (formal/archaic sense (to suffice); rare in modern use)
@@ -185,13 +185,13 @@ export const BATCH_06: Word[] = [
   x("1498130", "[負担|ふたん]", "noun", "burden, load (する: to bear a cost)", "everyday"),
   x("1516280", "[崩壊|ほうかい]", "noun", "collapse (する: to collapse)", "everyday"),
   // skipped: 1522310 [本格|ほんかく] (counted from 本格的; rare as a bare word)
-  x("1576630", "[塩|しお]", "noun", "salt", "food"),
+  // moved to the lessons (n4-giving-voice/requests): 1576630 [塩|しお]
   // skipped: 2164600 こうべ (reading check; proper noun (Kobe, kana in JMdict))
   x("1181390", "[殴|なぐ]る", "verb", "to hit, to punch", "everyday", "godan"),
   x("1514940", "[暮|く]らす", "verb", "to live, to spend one's days", "home", "godan"),
   // skipped: 1246510 くず (insulting sense (scum); mostly kana waste, rare for learners)
   x("1211310", "[耐|た]える", "verb", "to bear, to endure, to withstand", "feelings", "ichidan"),
-  x("1426680", "[虫|むし]", "noun", "insect, bug", "nature"),
+  // moved to the lessons (n4-seeming/garu): 1426680 [虫|むし]
   x("1101600", "パターン", "noun", "pattern", "everyday"),
   x("1432410", "[追|お]う", "verb", "to chase, to pursue; to follow", "everyday", "godan"),
   x("1416170", "たたく", "verb", "to hit, to knock, to pat", "everyday", "godan"),
@@ -224,7 +224,7 @@ export const BATCH_06: Word[] = [
   x("1147600", "ロック", "noun", "lock (する: to lock)", "everyday"),
   x("1378040", "まとも", "na-adj", "decent, proper, honest", "everyday"), // pos: na-adj (was noun)
   x("1310300", "[支払|しはら]う", "verb", "to pay", "shopping", "godan"),
-  x("1172660", "[運|はこ]ぶ", "verb", "to carry, to transport", "everyday", "godan"),
+  // moved to the lessons (n4-giving-voice/causative-passive): 1172660 [運|はこ]ぶ
   x("1023840", "インド", "noun", "India", "places"),
   // skipped: 1584680 [面|おもて] (homograph; bare 面 is read めん)
   x("1584695", "[面|めん]", "noun", "side, aspect; surface; mask (in kendo)", "everyday"),

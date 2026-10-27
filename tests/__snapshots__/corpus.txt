@@ -11,6 +11,8 @@
 基本 | きほん | (label: no romaji)
 条件 | じょうけん | (label: no romaji)
 予定 | よてい | (label: no romaji)
+敬語 | けいご | (label: no romaji)
+推量 | すいりょう | (label: no romaji)
 
 ## kinds
 基本 | きほん | (label: no romaji)
@@ -3064,6 +3066,1098 @@
 待ち続けました | まちつづけました | machitsuzukemashita
 怒り出した | おこりだした | okoridashita
 ご飯を作り始めました。 | ごはん を つくりはじめました。 | gohan o tsukurihajimemashita.
+
+## n4-giving-voice/ageru-kureru-morau
+あげる・くれる | あげる・くれる | (label: no romaji)
+あげる | あげる | ageru
+友達に花をあげる | ともだち に はな を あげる | tomodachi ni hana o ageru
+くれる | くれる | kureru
+母が時計をくれる | はは が とけい を くれる | haha ga tokei o kureru
+もらう | もらう | morau
+父に自転車をもらう | ちち に じてんしゃ を もらう | chichi ni jitensha o morau
+友達に花をあげました。 | ともだち に はな を あげました。 | tomodachi ni hana o agemashita.
+友達に花をあげた。 | ともだち に はな を あげた。 | tomodachi ni hana o ageta.
+弟に古いゲームをあげた。 | おとうと に ふるい ゲーム を あげた。 | otouto ni furui geemu o ageta.
+弟に古いゲームをあげました。 | おとうと に ふるい ゲーム を あげました。 | otouto ni furui geemu o agemashita.
+田中さんは木村さんにチョコレートをあげました。 | たなかさん は きむらさん に チョコレート を あげました。 | tanaka-san wa kimura-san ni chokoreeto o agemashita.
+猫にご飯をあげましたか？ | ねこ に ごはん を あげました か？ | neko ni gohan o agemashita ka?
+猫にご飯あげた？ | ねこ に ごはん あげた？ | neko ni gohan ageta?
+母がこの時計をくれました。 | はは が この とけい を くれました。 | haha ga kono tokei o kuremashita.
+母がこの時計をくれた。 | はは が この とけい を くれた。 | haha ga kono tokei o kureta.
+誰がこのお菓子をくれたの？ | だれ が この おかし を くれた の？ | dare ga kono okashi o kureta no?
+誰がこのお菓子をくれたんですか？ | だれ が この おかし を くれた ん です か？ | dare ga kono okashi o kureta n desu ka?
+友達が私の妹に本をくれました。 | ともだち が わたし の いもうと に ほん を くれました。 | tomodachi ga watashi no imouto ni hon o kuremashita.
+近所の人が野菜をくれた。 | きんじょ の ひと が やさい を くれた。 | kinjo no hito ga yasai o kureta.
+近所の人が野菜をくれました。 | きんじょ の ひと が やさい を くれました。 | kinjo no hito ga yasai o kuremashita.
+父に自転車をもらいました。 | ちち に じてんしゃ を もらいました。 | chichi ni jitensha o moraimashita.
+父に自転車をもらった。 | ちち に じてんしゃ を もらった。 | chichi ni jitensha o moratta.
+先輩から古い教科書をもらった。 | せんぱい から ふるい きょうかしょ を もらった。 | senpai kara furui kyoukasho o moratta.
+先輩から古い教科書をもらいました。 | せんぱい から ふるい きょうかしょ を もらいました。 | senpai kara furui kyoukasho o moraimashita.
+誕生日に何をもらいましたか？ | たんじょうび に なに を もらいました か？ | tanjoubi ni nani o moraimashita ka?
+誕生日に何もらった？ | たんじょうび に なに もらった？ | tanjoubi ni nani moratta?
+妹は友達から手紙をもらいました。 | いもうと は ともだち から てがみ を もらいました。 | imouto wa tomodachi kara tegami o moraimashita.
+友達が本をくれました。 | ともだち が ほん を くれました。 | tomodachi ga hon o kuremashita.
+友達に本をもらいました。 | ともだち に ほん を もらいました。 | tomodachi ni hon o moraimashita.
+そのマフラー、かわいいね。 | その マフラー、 かわいい ね。 | sono mafuraa, kawaii ne.
+ありがとう。姉がくれたんだ。 | ありがとう。 あね が くれた ん だ。 | arigatou. ane ga kureta n da.
+私も去年、母にマフラーをもらったよ。 | わたし も きょねん、 はは に マフラー を もらった よ。 | watashi mo kyonen, haha ni mafuraa o moratta yo.
+くれた | くれた | kureta
+あげました | あげました | agemashita
+差し上げました | さしあげました | sashiagemashita
+に | に | ni
+から | から | kara
+くれた | くれた | kureta
+友達が私にお土産をくれました。 | ともだち が わたし に おみやげ を くれました。 | tomodachi ga watashi ni omiyage o kuremashita.
+友達がお土産をくれました。 | ともだち が おみやげ を くれました。 | tomodachi ga omiyage o kuremashita.
+友達にお土産をもらいました。 | ともだち に おみやげ を もらいました。 | tomodachi ni omiyage o moraimashita.
+友達からお土産をもらいました。 | ともだち から おみやげ を もらいました。 | tomodachi kara omiyage o moraimashita.
+私は友達にお土産をもらいました。 | わたし は ともだち に おみやげ を もらいました。 | watashi wa tomodachi ni omiyage o moraimashita.
+私は友達からお土産をもらいました。 | わたし は ともだち から おみやげ を もらいました。 | watashi wa tomodachi kara omiyage o moraimashita.
+
+## n4-giving-voice/te-ageru-kureru-morau
+〜てくれる | 〜てくれる | (label: no romaji)
+教えてあげる | おしえて あげる | oshiete ageru
+教えてくれる | おしえて くれる | oshiete kureru
+教えてもらう | おしえて もらう | oshiete morau
+来てくれてありがとう | きて くれて ありがとう | kite kurete arigatou
+妹に宿題を教えてあげました。 | いもうと に しゅくだい を おしえて あげました。 | imouto ni shukudai o oshiete agemashita.
+妹に宿題を教えてあげた。 | いもうと に しゅくだい を おしえて あげた。 | imouto ni shukudai o oshiete ageta.
+弟の写真を撮ってあげた。 | おとうと の しゃしん を とって あげた。 | otouto no shashin o totte ageta.
+弟の写真を撮ってあげました。 | おとうと の しゃしん を とって あげました。 | otouto no shashin o totte agemashita.
+子供に本を読んであげるのが好きです。 | こども に ほん を よんで あげる の が すき です。 | kodomo ni hon o yonde ageru no ga suki desu.
+子供に本を読んであげるのが好き。 | こども に ほん を よんで あげる の が すき。 | kodomo ni hon o yonde ageru no ga suki.
+田中さんは友達を駅まで送ってあげました。 | たなかさん は ともだち を えき まで おくって あげました。 | tanaka-san wa tomodachi o eki made okutte agemashita.
+友達が写真を撮ってくれました。 | ともだち が しゃしん を とって くれました。 | tomodachi ga shashin o totte kuremashita.
+友達が写真を撮ってくれた。 | ともだち が しゃしん を とって くれた。 | tomodachi ga shashin o totte kureta.
+手伝ってくれてありがとう。 | てつだって くれて ありがとう。 | tetsudatte kurete arigatou.
+手伝ってくれてありがとうございます。 | てつだって くれて ありがとう ございます。 | tetsudatte kurete arigatou gozaimasu.
+母が毎朝お弁当を作ってくれます。 | はは が まいあさ おべんとう を つくって くれます。 | haha ga maiasa obentou o tsukutte kuremasu.
+母が毎朝お弁当を作ってくれる。 | はは が まいあさ おべんとう を つくって くれる。 | haha ga maiasa obentou o tsukutte kureru.
+先生が日本の歌を教えてくれた。 | せんせい が にほん の うた を おしえて くれた。 | sensei ga nihon no uta o oshiete kureta.
+先生が日本の歌を教えてくれました。 | せんせい が にほん の うた を おしえて くれました。 | sensei ga nihon no uta o oshiete kuremashita.
+友達に部屋の掃除を手伝ってもらいました。 | ともだち に へや の そうじ を てつだって もらいました。 | tomodachi ni heya no souji o tetsudatte moraimashita.
+友達に部屋の掃除を手伝ってもらった。 | ともだち に へや の そうじ を てつだって もらった。 | tomodachi ni heya no souji o tetsudatte moratta.
+兄に宿題を見てもらった。 | あに に しゅくだい を みて もらった。 | ani ni shukudai o mite moratta.
+兄に宿題を見てもらいました。 | あに に しゅくだい を みて もらいました。 | ani ni shukudai o mite moraimashita.
+店の人に使い方を説明してもらった。 | みせ の ひと に つかいかた を せつめい して もらった。 | mise no hito ni tsukaikata o setsumei shite moratta.
+店の人に使い方を説明してもらいました。 | みせ の ひと に つかいかた を せつめい して もらいました。 | mise no hito ni tsukaikata o setsumei shite moraimashita.
+母に駅まで迎えに来てもらいました。 | はは に えき まで むかえ に きて もらいました。 | haha ni eki made mukae ni kite moraimashita.
+友達が車で送ってくれました。 | ともだち が くるま で おくって くれました。 | tomodachi ga kuruma de okutte kuremashita.
+友達に車で送ってもらいました。 | ともだち に くるま で おくって もらいました。 | tomodachi ni kuruma de okutte moraimashita.
+昨日は手伝ってくれて、ありがとうございました。 | きのう は てつだって くれて、 ありがとう ございました。 | kinou wa tetsudatte kurete, arigatou gozaimashita.
+いえいえ。会議は大丈夫でしたか？ | いえいえ。 かいぎ は だいじょうぶ でした か？ | ieie. kaigi wa daijoubu deshita ka?
+はい。部長にも見てもらいました。助かりました。 | はい。 ぶちょう に も みて もらいました。 たすかりました。 | hai. buchou ni mo mite moraimashita. tasukarimashita.
+直してあげた | なおして あげた | naoshite ageta
+貸してくれました | かして くれました | kashite kuremashita
+貸してくださいました | かして くださいました | kashite kudasaimashita
+見てもらいました | みて もらいました | mite moraimashita
+見ていただきました | みて いただきました | mite itadakimashita
+来てくれて | きて くれて | kite kurete
+友達が地図を書いてくれました。 | ともだち が ちず を かいて くれました。 | tomodachi ga chizu o kaite kuremashita.
+友達に地図を書いてもらいました。 | ともだち に ちず を かいて もらいました。 | tomodachi ni chizu o kaite moraimashita.
+友達が私に地図を書いてくれました。 | ともだち が わたし に ちず を かいて くれました。 | tomodachi ga watashi ni chizu o kaite kuremashita.
+私は友達に地図を書いてもらいました。 | わたし は ともだち に ちず を かいて もらいました。 | watashi wa tomodachi ni chizu o kaite moraimashita.
+
+## n4-giving-voice/requests
+〜てもらえませんか | 〜てもらえませんか | (label: no romaji)
+手伝ってくれない？ | てつだって くれない？ | tetsudatte kurenai?
+手伝ってもらえる？ | てつだって もらえる？ | tetsudatte moraeru?
+手伝ってもらえませんか？ | てつだって もらえません か？ | tetsudatte moraemasen ka?
+手伝っていただけませんか？ | てつだって いただけません か？ | tetsudatte itadakemasen ka?
+ちょっと手伝ってくれない？ | ちょっと てつだって くれない？ | chotto tetsudatte kurenai?
+ちょっと手伝ってくれませんか？ | ちょっと てつだって くれません か？ | chotto tetsudatte kuremasen ka?
+その塩、取ってくれる？ | その しお、 とって くれる？ | sono shio, totte kureru?
+その塩を取ってくれますか？ | その しお を とって くれます か？ | sono shio o totte kuremasu ka?
+帰りに牛乳を買ってきてもらえる？ | かえり に ぎゅうにゅう を かって きて もらえる？ | kaeri ni gyuunyuu o katte kite moraeru?
+帰りに牛乳を買ってきてもらえますか？ | かえり に ぎゅうにゅう を かって きて もらえます か？ | kaeri ni gyuunyuu o katte kite moraemasu ka?
+駅に着いたら、電話してもらえない？ | えき に ついたら、 でんわ して もらえない？ | eki ni tsuitara, denwa shite moraenai?
+駅に着いたら、電話してもらえませんか？ | えき に ついたら、 でんわ して もらえません か？ | eki ni tsuitara, denwa shite moraemasen ka?
+すみません、写真を撮ってもらえませんか？ | すみません、 しゃしん を とって もらえません か？ | sumimasen, shashin o totte moraemasen ka?
+もう少しゆっくり話してくれませんか？ | もう すこし ゆっくり はなして くれません か？ | mou sukoshi yukkuri hanashite kuremasen ka?
+もう少しゆっくり話してくれない？ | もう すこし ゆっくり はなして くれない？ | mou sukoshi yukkuri hanashite kurenai?
+すみません、駅までの道を教えていただけませんか？ | すみません、 えき まで の みち を おしえて いただけません か？ | sumimasen, eki made no michi o oshiete itadakemasen ka?
+申し訳ありませんが、少し待っていただけませんか？ | もうしわけ ありません が、 すこし まって いただけません か？ | moushiwake arimasen ga, sukoshi matte itadakemasen ka?
+窓を開けてください。 | まど を あけて ください。 | mado o akete kudasai.
+窓を開けてもらえませんか？ | まど を あけて もらえません か？ | mado o akete moraemasen ka?
+佐藤さん、このメールを英語に直していただけませんか？ | さとうさん、 この メール を えいご に なおして いただけません か？ | satou-san, kono meeru o eigo ni naoshite itadakemasen ka?
+いいですよ。いつまでですか？ | いい です よ。 いつ まで です か？ | ii desu yo. itsu made desu ka?
+明日の朝までにお願いできますか？ | あした の あさ まで に おねがい できます か？ | ashita no asa made ni onegai dekimasu ka?
+わかりました。 | わかりました。 | wakarimashita.
+開けてくれる | あけて くれる | akete kureru
+開けてくれない | あけて くれない | akete kurenai
+書いてもらえませんか | かいて もらえません か | kaite moraemasen ka
+書いてもらえますか | かいて もらえます か | kaite moraemasu ka
+貸していただけませんか | かして いただけません か | kashite itadakemasen ka
+貸していただけますか | かして いただけます か | kashite itadakemasu ka
+つけてもらえる | つけて もらえる | tsukete moraeru
+つけてもらえない | つけて もらえない | tsukete moraenai
+すみません、ちょっと待ってもらえませんか？ | すみません、 ちょっと まって もらえません か？ | sumimasen, chotto matte moraemasen ka?
+すみません、ちょっと待ってもらえますか？ | すみません、 ちょっと まって もらえます か？ | sumimasen, chotto matte moraemasu ka?
+すみません、ちょっと待っていただけませんか？ | すみません、 ちょっと まって いただけません か？ | sumimasen, chotto matte itadakemasen ka?
+すみません、ちょっと待っていただけますか？ | すみません、 ちょっと まって いただけます か？ | sumimasen, chotto matte itadakemasu ka?
+すみません、ちょっと待ってくれませんか？ | すみません、 ちょっと まって くれません か？ | sumimasen, chotto matte kuremasen ka?
+すみません、ちょっと待ってくれますか？ | すみません、 ちょっと まって くれます か？ | sumimasen, chotto matte kuremasu ka?
+
+## n4-giving-voice/te-hoshii
+〜てほしい | 〜てほしい | (label: no romaji)
+母に来てほしい | はは に きて ほしい | haha ni kite hoshii
+母に言わないでほしい | はは に いわないで ほしい | haha ni iwanaide hoshii
+時間が欲しい | じかん が ほしい | jikan ga hoshii
+早く帰りたい | はやく かえりたい | hayaku kaeritai
+母にも来てほしいです。 | はは に も きて ほしい です。 | haha ni mo kite hoshii desu.
+母にも来てほしい。 | はは に も きて ほしい。 | haha ni mo kite hoshii.
+誰かに手伝ってほしい。 | だれ か に てつだって ほしい。 | dare ka ni tetsudatte hoshii.
+誰かに手伝ってほしいです。 | だれ か に てつだって ほしい です。 | dare ka ni tetsudatte hoshii desu.
+子供には野菜をもっと食べてほしい。 | こども に は やさい を もっと たべて ほしい。 | kodomo ni wa yasai o motto tabete hoshii.
+子供には野菜をもっと食べてほしいです。 | こども に は やさい を もっと たべて ほしい です。 | kodomo ni wa yasai o motto tabete hoshii desu.
+先生にもう一度説明してほしかった。 | せんせい に もう いちど せつめい して ほしかった。 | sensei ni mou ichido setsumei shite hoshikatta.
+先生にもう一度説明してほしかったです。 | せんせい に もう いちど せつめい して ほしかった です。 | sensei ni mou ichido setsumei shite hoshikatta desu.
+夜は大きい音で音楽を聞かないでほしいです。 | よる は おおきい おと で おんがく を きかないで ほしい です。 | yoru wa ookii oto de ongaku o kikanaide hoshii desu.
+夜は大きい音で音楽を聞かないでほしい。 | よる は おおきい おと で おんがく を きかないで ほしい。 | yoru wa ookii oto de ongaku o kikanaide hoshii.
+宿題を忘れないでほしいです。 | しゅくだい を わすれないで ほしい です。 | shukudai o wasurenaide hoshii desu.
+宿題を忘れないでほしい。 | しゅくだい を わすれないで ほしい。 | shukudai o wasurenaide hoshii.
+ここに物を置かないでほしいです。 | ここ に もの を おかないで ほしい です。 | koko ni mono o okanaide hoshii desu.
+ここに物を置かないでほしい。 | ここ に もの を おかないで ほしい。 | koko ni mono o okanaide hoshii.
+一人で行かないでほしい。 | ひとり で いかないで ほしい。 | hitori de ikanaide hoshii.
+一人で行かないでほしいです。 | ひとり で いかないで ほしい です。 | hitori de ikanaide hoshii desu.
+早く帰りたい。 | はやく かえりたい。 | hayaku kaeritai.
+早く帰ってほしい。 | はやく かえって ほしい。 | hayaku kaette hoshii.
+来週、僕の誕生日パーティーをするんだ。あやにも来てほしい。 | らいしゅう、 ぼく の たんじょうび パーティー を する ん だ。 あや に も きて ほしい。 | raishuu, boku no tanjoubi paatii o suru n da. aya ni mo kite hoshii.
+行く行く！何時から？ | いく いく！ なんじ から？ | iku iku! nanji kara?
+七時からだよ。 | しちじ から だ よ。 | shichiji kara da yo.
+読んでほしいです | よんで ほしい です | yonde hoshii desu
+言わないでほしい | いわないで ほしい | iwanaide hoshii
+言ってほしくない | いって ほしくない | itte hoshikunai
+来てほしかった | きて ほしかった | kite hoshikatta
+掃除してほしい | そうじ して ほしい | souji shite hoshii
+友達に待ってほしいです。 | ともだち に まって ほしい です。 | tomodachi ni matte hoshii desu.
+友達に待ってほしい。 | ともだち に まって ほしい。 | tomodachi ni matte hoshii.
+友達に待っていてほしいです。 | ともだち に まって いて ほしい です。 | tomodachi ni matte ite hoshii desu.
+友達に待っていてほしい。 | ともだち に まって いて ほしい。 | tomodachi ni matte ite hoshii.
+
+## n4-giving-voice/passive
+〜られる | 〜られる | (label: no romaji)
+食べる | たべる | taberu
+食べられる | たべられる | taberareru
+書く | かく | kaku
+書かれる | かかれる | kakareru
+言う | いう | iu
+言われる | いわれる | iwareru
+する | する | suru
+される | される | sareru
+来る | くる | kuru
+来られる | こられる | korareru
+先生に褒められました。 | せんせい に ほめられました。 | sensei ni homeraremashita.
+先生に褒められた。 | せんせい に ほめられた。 | sensei ni homerareta.
+この本は多くの人に読まれています。 | この ほん は おおく の ひと に よまれて います。 | kono hon wa ooku no hito ni yomarete imasu.
+この本は多くの人に読まれている。 | この ほん は おおく の ひと に よまれて いる。 | kono hon wa ooku no hito ni yomarete iru.
+弟は友達に笑われました。 | おとうと は ともだち に わらわれました。 | otouto wa tomodachi ni warawaremashita.
+弟は友達に笑われた。 | おとうと は ともだち に わらわれた。 | otouto wa tomodachi ni warawareta.
+この寺は八百年前に建てられました。 | この てら は はっぴゃくねん まえ に たてられました。 | kono tera wa happyakunen mae ni tateraremashita.
+会議で部長に意見を聞かれた。 | かいぎ で ぶちょう に いけん を きかれた。 | kaigi de buchou ni iken o kikareta.
+会議で部長に意見を聞かれました。 | かいぎ で ぶちょう に いけん を きかれました。 | kaigi de buchou ni iken o kikaremashita.
+私は魚が食べられます。 | わたし は さかな が たべられます。 | watashi wa sakana ga taberaremasu.
+魚は猫に食べられました。 | さかな は ねこ に たべられました。 | sakana wa neko ni taberaremashita.
+どうしたの？元気ないね。 | どう した の？ げんき ない ね。 | dou shita no? genki nai ne.
+会議に遅れて、部長に怒られたんだ。 | かいぎ に おくれて、 ぶちょう に おこられた ん だ。 | kaigi ni okurete, buchou ni okorareta n da.
+そうなんだ。大変だったね。 | そう なん だ。 たいへん だった ね。 | sou nan da. taihen datta ne.
+起こされた | おこされた | okosareta
+起こされちゃった | おこされちゃった | okosarechatta
+話されています | はなされて います | hanasarete imasu
+話されます | はなされます | hanasaremasu
+誘われた | さそわれた | sasowareta
+割られました | わられました | wararemashita
+割られてしまいました | わられて しまいました | wararete shimaimashita
+私は部長に褒められました。 | わたし は ぶちょう に ほめられました。 | watashi wa buchou ni homeraremashita.
+部長に褒められました。 | ぶちょう に ほめられました。 | buchou ni homeraremashita.
+
+## n4-giving-voice/suffering-passive
+降られた | ふられた | (label: no romaji)
+雨に降られた | あめ に ふられた | ame ni furareta
+足を踏まれた | あし を ふまれた | ashi o fumareta
+隣の人にタバコを吸われた | となり の ひと に タバコ を すわれた | tonari no hito ni tabako o suwareta
+買い物の帰りに雨に降られました。 | かいもの の かえり に あめ に ふられました。 | kaimono no kaeri ni ame ni furaremashita.
+買い物の帰りに雨に降られた。 | かいもの の かえり に あめ に ふられた。 | kaimono no kaeri ni ame ni furareta.
+電車で知らない人に足を踏まれた。 | でんしゃ で しらない ひと に あし を ふまれた。 | densha de shiranai hito ni ashi o fumareta.
+電車で知らない人に足を踏まれました。 | でんしゃ で しらない ひと に あし を ふまれました。 | densha de shiranai hito ni ashi o fumaremashita.
+夜中に子供に泣かれて、全然寝られなかった。 | よなか に こども に なかれて、 ぜんぜん ねられなかった。 | yonaka ni kodomo ni nakarete, zenzen nerarenakatta.
+夜中に子供に泣かれて、全然寝られませんでした。 | よなか に こども に なかれて、 ぜんぜん ねられません でした。 | yonaka ni kodomo ni nakarete, zenzen neraremasen deshita.
+駅で財布を盗まれました。 | えき で さいふ を ぬすまれました。 | eki de saifu o nusumaremashita.
+駅で財布を盗まれた。 | えき で さいふ を ぬすまれた。 | eki de saifu o nusumareta.
+隣の人にタバコを吸われて、嫌だった。 | となり の ひと に タバコ を すわれて、 いや だった。 | tonari no hito ni tabako o suwarete, iya datta.
+雨が降りました。 | あめ が ふりました。 | ame ga furimashita.
+雨に降られました。 | あめ に ふられました。 | ame ni furaremashita.
+森さん、大丈夫ですか？ | もりさん、 だいじょうぶ です か？ | mori-san, daijoubu desu ka?
+昨日、隣の部屋の人に夜中まで騒がれて、寝られなかったんです。 | きのう、 となり の へや の ひと に よなか まで さわがれて、 ねられなかった ん です。 | kinou, tonari no heya no hito ni yonaka made sawagarete, nerarenakatta n desu.
+それは大変でしたね。 | それ は たいへん でした ね。 | sore wa taihen deshita ne.
+読まれた | よまれた | yomareta
+読まれてしまった | よまれて しまった | yomarete shimatta
+読まれちゃった | よまれちゃった | yomarechatta
+降られました | ふられました | furaremashita
+降られてしまいました | ふられて しまいました | furarete shimaimashita
+盗まれた | ぬすまれた | nusumareta
+盗まれてしまった | ぬすまれて しまった | nusumarete shimatta
+盗まれちゃった | ぬすまれちゃった | nusumarechatta
+取られた | とられた | torareta
+取られてしまった | とられて しまった | torarete shimatta
+取られちゃった | とられちゃった | torarechatta
+雨に降られました。 | あめ に ふられました。 | ame ni furaremashita.
+
+## n4-giving-voice/causative
+〜させる | 〜させる | (label: no romaji)
+食べる | たべる | taberu
+食べさせる | たべさせる | tabesaseru
+書く | かく | kaku
+書かせる | かかせる | kakaseru
+言う | いう | iu
+言わせる | いわせる | iwaseru
+する | する | suru
+させる | させる | saseru
+来る | くる | kuru
+来させる | こさせる | kosaseru
+母は私に毎日ピアノを練習させました。 | はは は わたし に まいにち ピアノ を れんしゅう させました。 | haha wa watashi ni mainichi piano o renshuu sasemashita.
+母は私に毎日ピアノを練習させた。 | はは は わたし に まいにち ピアノ を れんしゅう させた。 | haha wa watashi ni mainichi piano o renshuu saseta.
+先生は学生に作文を書かせました。 | せんせい は がくせい に さくぶん を かかせました。 | sensei wa gakusei ni sakubun o kakasemashita.
+先生は学生に作文を書かせた。 | せんせい は がくせい に さくぶん を かかせた。 | sensei wa gakusei ni sakubun o kakaseta.
+子供を公園で遊ばせました。 | こども を こうえん で あそばせました。 | kodomo o kouen de asobasemashita.
+子供を公園で遊ばせた。 | こども を こうえん で あそばせた。 | kodomo o kouen de asobaseta.
+父は弟を一人で行かせなかった。 | ちち は おとうと を ひとり で いかせなかった。 | chichi wa otouto o hitori de ikasenakatta.
+父は弟を一人で行かせませんでした。 | ちち は おとうと を ひとり で いかせません でした。 | chichi wa otouto o hitori de ikasemasen deshita.
+娘に好きな本を選ばせました。 | むすめ に すき な ほん を えらばせました。 | musume ni suki na hon o erabasemashita.
+子供を走らせました。 | こども を はしらせました。 | kodomo o hashirasemashita.
+子供に走らせました。 | こども に はしらせました。 | kodomo ni hashirasemashita.
+週末は何をしたの？ | しゅうまつ は なに を した の？ | shuumatsu wa nani o shita no?
+犬を川で泳がせたんだ。すごく喜んでたよ。 | いぬ を かわ で およがせた ん だ。 すごく よろこんでた よ。 | inu o kawa de oyogaseta n da. sugoku yorokondeta yo.
+いいね。うちの犬は水が嫌いなんだ。 | いい ね。 うち の いぬ は みず が きらい なん だ。 | ii ne. uchi no inu wa mizu ga kirai nan da.
+掃除させました | そうじ させました | souji sasemashita
+持たせた | もたせた | motaseta
+見させました | みさせました | misasemashita
+待たせて | またせて | matasete
+待たせちゃって | またせちゃって | matasechatte
+待たせてしまって | またせて しまって | matasete shimatte
+母は弟に皿を洗わせました。 | はは は おとうと に さら を あらわせました。 | haha wa otouto ni sara o arawasemashita.
+
+## n4-giving-voice/causative-passive
+させられる | させられる | (label: no romaji)
+食べる | たべる | taberu
+食べさせる | たべさせる | tabesaseru
+食べさせられる | たべさせられる | tabesaserareru
+待つ | まつ | matsu
+待たせる | またせる | mataseru
+待たせられる·待たされる | またせられる · またされる | mataserareru · matasareru
+話す | はなす | hanasu
+話させる | はなさせる | hanasaseru
+話させられる | はなさせられる | hanasaserareru
+する | する | suru
+させる | させる | saseru
+させられる | させられる | saserareru
+来る | くる | kuru
+来させる | こさせる | kosaseru
+来させられる | こさせられる | kosaserareru
+子供のとき、毎日牛乳を飲まされました。 | こども の とき、 まいにち ぎゅうにゅう を のまされました。 | kodomo no toki, mainichi gyuunyuu o nomasaremashita.
+子供のとき、毎日牛乳を飲まされた。 | こども の とき、 まいにち ぎゅうにゅう を のまされた。 | kodomo no toki, mainichi gyuunyuu o nomasareta.
+先輩に重い荷物を運ばされた。 | せんぱい に おもい にもつ を はこばされた。 | senpai ni omoi nimotsu o hakobasareta.
+先輩に重い荷物を運ばされました。 | せんぱい に おもい にもつ を はこばされました。 | senpai ni omoi nimotsu o hakobasaremashita.
+駅で一時間も待たされました。 | えき で いちじかん も またされました。 | eki de ichijikan mo matasaremashita.
+駅で一時間も待たされた。 | えき で いちじかん も またされた。 | eki de ichijikan mo matasareta.
+授業でみんなの前で発表させられた。 | じゅぎょう で みんな の まえ で はっぴょう させられた。 | jugyou de minna no mae de happyou saserareta.
+授業でみんなの前で発表させられました。 | じゅぎょう で みんな の まえ で はっぴょう させられました。 | jugyou de minna no mae de happyou saseraremashita.
+会議で急に英語で話させられました。 | かいぎ で きゅう に えいご で はなさせられました。 | kaigi de kyuu ni eigo de hanasaseraremashita.
+先生は学生に宿題をさせました。 | せんせい は がくせい に しゅくだい を させました。 | sensei wa gakusei ni shukudai o sasemashita.
+学生は先生に宿題をさせられました。 | がくせい は せんせい に しゅくだい を させられました。 | gakusei wa sensei ni shukudai o saseraremashita.
+昨日のパーティー、どうだった？ | きのう の パーティー、 どう だった？ | kinou no paatii, dou datta?
+楽しかったけど、カラオケで何度も歌わされたよ。 | たのしかった けど、 カラオケ で なんど も うたわされた よ。 | tanoshikatta kedo, karaoke de nando mo utawasareta yo.
+それは大変だったね。 | それ は たいへん だった ね。 | sore wa taihen datta ne.
+掃除させられました | そうじ させられました | souji saseraremashita
+読まされた | よまされた | yomasareta
+読ませられた | よませられた | yomaserareta
+行かされました | いかされました | ikasaremashita
+行かせられました | いかせられました | ikaseraremashita
+辞めさせられた | やめさせられた | yamesaserareta
+父に車を洗わされました。 | ちち に くるま を あらわされました。 | chichi ni kuruma o arawasaremashita.
+父に車を洗わせられました。 | ちち に くるま を あらわせられました。 | chichi ni kuruma o arawaseraremashita.
+
+## n4-giving-voice/sasete-kudasai
+〜させてください | 〜させてください | (label: no romaji)
+休む | やすむ | yasumu
+休ませて | やすませて | yasumasete
+休ませてください | やすませて ください | yasumasete kudasai
+考える | かんがえる | kangaeru
+考えさせて | かんがえさせて | kangaesasete
+考えさせてください | かんがえさせて ください | kangaesasete kudasai
+する | する | suru
+させて | させて | sasete
+させてください | させて ください | sasete kudasai
+使う | つかう | tsukau
+使わせて | つかわせて | tsukawasete
+使わせてください | つかわせて ください | tsukawasete kudasai
+今日は私に払わせてください。 | きょう は わたし に はらわせて ください。 | kyou wa watashi ni harawasete kudasai.
+今日は私に払わせて。 | きょう は わたし に はらわせて。 | kyou wa watashi ni harawasete.
+すみません、少し考えさせてください。 | すみません、 すこし かんがえさせて ください。 | sumimasen, sukoshi kangaesasete kudasai.
+ごめん、少し考えさせて。 | ごめん、 すこし かんがえさせて。 | gomen, sukoshi kangaesasete.
+その仕事、私にやらせて。 | その しごと、 わたし に やらせて。 | sono shigoto, watashi ni yarasete.
+その仕事、私にやらせてください。 | その しごと、 わたし に やらせて ください。 | sono shigoto, watashi ni yarasete kudasai.
+この部屋を使わせてもらえませんか？ | この へや を つかわせて もらえません か？ | kono heya o tsukawasete moraemasen ka?
+具合が悪いので、今日は早く帰らせていただけませんか？ | ぐあい が わるい ので、 きょう は はやく かえらせて いただけません か？ | guai ga warui node, kyou wa hayaku kaerasete itadakemasen ka?
+写真を撮ってください。 | しゃしん を とって ください。 | shashin o totte kudasai.
+写真を撮らせてください。 | しゃしん を とらせて ください。 | shashin o torasete kudasai.
+部長、来週の金曜日、休ませていただけませんか？ | ぶちょう、 らいしゅう の きんようび、 やすませて いただけません か？ | buchou, raishuu no kin'youbi, yasumasete itadakemasen ka?
+いいですよ。何かあるんですか？ | いい です よ。 なに か ある ん です か？ | ii desu yo. nani ka aru n desu ka?
+国から両親が来るんです。 | くに から りょうしん が くる ん です。 | kuni kara ryoushin ga kuru n desu.
+行かせてください | いかせて ください | ikasete kudasai
+見させて | みさせて | misasete
+見せて | みせて | misete
+質問させていただけませんか | しつもん させて いただけません か | shitsumon sasete itadakemasen ka
+質問させていただけますか | しつもん させて いただけます か | shitsumon sasete itadakemasu ka
+質問をさせていただけませんか | しつもん を させて いただけません か | shitsumon o sasete itadakemasen ka
+質問をさせていただけますか | しつもん を させて いただけます か | shitsumon o sasete itadakemasu ka
+座らせてもらえませんか | すわらせて もらえません か | suwarasete moraemasen ka
+座らせてもらえますか | すわらせて もらえます か | suwarasete moraemasu ka
+私に説明させてください。 | わたし に せつめい させて ください。 | watashi ni setsumei sasete kudasai.
+私に説明をさせてください。 | わたし に せつめい を させて ください。 | watashi ni setsumei o sasete kudasai.
+説明させてください。 | せつめい させて ください。 | setsumei sasete kudasai.
+説明をさせてください。 | せつめい を させて ください。 | setsumei o sasete kudasai.
+
+## n4-giving-voice/sonkeigo
+尊敬語 | そんけいご | (label: no romaji)
+お待ちになる | おまち に なる | omachi ni naru
+いらっしゃる·召し上がる·おっしゃる | いらっしゃる · めしあがる · おっしゃる | irassharu · meshiagaru · ossharu
+お待ちください | おまち ください | omachi kudasai
+行く·来る·いる | いく · くる · いる | iku · kuru · iru
+いらっしゃる | いらっしゃる | irassharu
+食べる·飲む | たべる · のむ | taberu · nomu
+召し上がる | めしあがる | meshiagaru
+言う | いう | iu
+おっしゃる | おっしゃる | ossharu
+する | する | suru
+なさる | なさる | nasaru
+見る | みる | miru
+ご覧になる | ごらん に なる | goran ni naru
+くれる | くれる | kureru
+くださる | くださる | kudasaru
+寝る | ねる | neru
+お休みになる | おやすみ に なる | oyasumi ni naru
+社長はもうお帰りになりました。 | しゃちょう は もう おかえり に なりました。 | shachou wa mou okaeri ni narimashita.
+先生はこの本をお読みになりましたか？ | せんせい は この ほん を およみ に なりました か？ | sensei wa kono hon o oyomi ni narimashita ka?
+田中様、何時にお着きになりますか？ | たなかさま、 なんじ に おつき に なります か？ | tanaka-sama, nanji ni otsuki ni narimasu ka?
+部長は毎朝七時にお出かけになります。 | ぶちょう は まいあさ しちじ に おでかけ に なります。 | buchou wa maiasa shichiji ni odekake ni narimasu.
+先生は今教室にいらっしゃいます。 | せんせい は いま きょうしつ に いらっしゃいます。 | sensei wa ima kyoushitsu ni irasshaimasu.
+何を召し上がりますか？ | なに を めしあがります か？ | nani o meshiagarimasu ka?
+部長がそうおっしゃいました。 | ぶちょう が そう おっしゃいました。 | buchou ga sou osshaimashita.
+週末は何をなさいますか？ | しゅうまつ は なに を なさいます か？ | shuumatsu wa nani o nasaimasu ka?
+もうこの映画をご覧になりましたか？ | もう この えいが を ごらん に なりました か？ | mou kono eiga o goran ni narimashita ka?
+こちらでお待ちください。 | こちら で おまち ください。 | kochira de omachi kudasai.
+どうぞお入りください。 | どうぞ おはいり ください。 | douzo ohairi kudasai.
+こちらにお名前をお書きください。 | こちら に おなまえ を おかき ください。 | kochira ni onamae o okaki kudasai.
+どうぞご自由にお取りください。 | どうぞ ごじゆう に おとり ください。 | douzo gojiyuu ni otori kudasai.
+先生は何時に来ますか？ | せんせい は なんじ に きます か？ | sensei wa nanji ni kimasu ka?
+先生は何時にいらっしゃいますか？ | せんせい は なんじ に いらっしゃいます か？ | sensei wa nanji ni irasshaimasu ka?
+部長、明日の会議にはいらっしゃいますか？ | ぶちょう、 あした の かいぎ に は いらっしゃいます か？ | buchou, ashita no kaigi ni wa irasshaimasu ka?
+ええ、出ますよ。十時からでしたね。 | ええ、 でます よ。 じゅうじ から でした ね。 | ee, demasu yo. juuji kara deshita ne.
+はい。コーヒー、召し上がりますか？ | はい。 コーヒー、 めしあがります か？ | hai. koohii, meshiagarimasu ka?
+ありがとう。いただきます。 | ありがとう。 いただきます。 | arigatou. itadakimasu.
+いらっしゃいます | いらっしゃいます | irasshaimasu
+来られます | こられます | koraremasu
+お見えになります | おみえ に なります | omie ni narimasu
+お越しになります | おこし に なります | okoshi ni narimasu
+おいでになります | おいで に なります | oide ni narimasu
+お待ちになって | おまち に なって | omachi ni natte
+おっしゃいました | おっしゃいました | osshaimashita
+言われました | いわれました | iwaremashita
+お使いください | おつかい ください | otsukai kudasai
+私は毎朝コーヒーを飲みます。 | わたし は まいあさ コーヒー を のみます。 | watashi wa maiasa koohii o nomimasu.
+私は毎朝コーヒーを飲んでいます。 | わたし は まいあさ コーヒー を のんで います。 | watashi wa maiasa koohii o nonde imasu.
+
+## n4-giving-voice/kenjougo
+謙譲語 | けんじょうご | (label: no romaji)
+お持ちします | おもち します | omochi shimasu
+ご案内します | ごあんない します | goannai shimasu
+参る·申す·おる | まいる · もうす · おる | mairu · mousu · oru
+こちらでございます | こちら で ございます | kochira de gozaimasu
+行く·来る | いく · くる | iku · kuru
+参る | まいる | mairu
+いる | いる | iru
+おる | おる | oru
+する | する | suru
+いたす | いたす | itasu
+言う | いう | iu
+申す | もうす | mousu
+食べる·飲む·もらう | たべる · のむ · もらう | taberu · nomu · morau
+いただく | いただく | itadaku
+見る | みる | miru
+拝見する | はいけん する | haiken suru
+伺う | うかがう | ukagau
+あげる | あげる | ageru
+差し上げる | さしあげる | sashiageru
+荷物をお持ちします。 | にもつ を おもち します。 | nimotsu o omochi shimasu.
+後でお電話します。 | あと で おでんわ します。 | ato de odenwa shimasu.
+駅までご案内します。 | えき まで ごあんない します。 | eki made goannai shimasu.
+写真は明日お送りいたします。 | しゃしん は あした おおくり いたします。 | shashin wa ashita ookuri itashimasu.
+私はスミスと申します。 | わたし は スミス と もうします。 | watashi wa sumisu to moushimasu.
+明日三時にそちらに参ります。 | あした さんじ に そちら に まいります。 | ashita sanji ni sochira ni mairimasu.
+私は東京に住んでおります。 | わたし は とうきょう に すんで おります。 | watashi wa toukyou ni sunde orimasu.
+先週、先生のお宅に伺いました。 | せんしゅう、 せんせい の おたく に うかがいました。 | senshuu, sensei no otaku ni ukagaimashita.
+お手紙、拝見しました。 | おてがみ、 はいけん しました。 | otegami, haiken shimashita.
+お茶をいただきます。 | おちゃ を いただきます。 | ocha o itadakimasu.
+先生に本をいただきました。 | せんせい に ほん を いただきました。 | sensei ni hon o itadakimashita.
+お待たせいたしました。 | おまたせ いたしました。 | omatase itashimashita.
+それは私がいたします。 | それ は わたし が いたします。 | sore wa watashi ga itashimasu.
+トイレは二階にございます。 | トイレ は にかい に ございます。 | toire wa nikai ni gozaimasu.
+こちらが新しいメニューでございます。 | こちら が あたらしい メニュー で ございます。 | kochira ga atarashii menyuu de gozaimasu.
+ご質問はございますか？ | ごしつもん は ございます か？ | goshitsumon wa gozaimasu ka?
+はい、山田でございます。 | はい、 やまだ で ございます。 | hai, yamada de gozaimasu.
+申し訳ございません。その色は今ございません。 | もうしわけ ございません。 その いろ は いま ございません。 | moushiwake gozaimasen. sono iro wa ima gozaimasen.
+明日また来ます。 | あした また きます。 | ashita mata kimasu.
+明日また参ります。 | あした また まいります。 | ashita mata mairimasu.
+もしもし、山田と申しますが、森さんはいらっしゃいますか？ | もしもし、 やまだ と もうします が、 もりさん は いらっしゃいます か？ | moshimoshi, yamada to moushimasu ga, mori-san wa irasshaimasu ka?
+申し訳ございません。森は今出かけております。 | もうしわけ ございません。 もり は いま でかけて おります。 | moushiwake gozaimasen. mori wa ima dekakete orimasu.
+わかりました。また夕方にお電話いたします。 | わかりました。 また ゆうがた に おでんわ いたします。 | wakarimashita. mata yuugata ni odenwa itashimasu.
+参ります | まいります | mairimasu
+お手伝いします | おてつだい します | otetsudai shimasu
+お手伝いいたします | おてつだい いたします | otetsudai itashimasu
+ございます | ございます | gozaimasu
+拝見しました | はいけん しました | haiken shimashita
+拝見いたしました | はいけん いたしました | haiken itashimashita
+私が駅までお送りします。 | わたし が えき まで おおくり します。 | watashi ga eki made ookuri shimasu.
+私が駅までお送りいたします。 | わたし が えき まで おおくり いたします。 | watashi ga eki made ookuri itashimasu.
+
+## n4-seeming/sou-looks
+〜そう | 〜そう | (label: no romaji)
+高そう | たかそう | takasou
+よさそう·なさそう | よさそう · なさそう | yosasou · nasasou
+元気そう | げんきそう | genkisou
+高くなさそう | たかくなさそう | takakunasasou
+降りそう | ふりそう | furisou
+おいしそうなパン | おいしそう な パン | oishisou na pan
+楽しそうに話す | たのしそう に はなす | tanoshisou ni hanasu
+このケーキ、おいしそうですね。 | この ケーキ、 おいしそう です ね。 | kono keeki, oishisou desu ne.
+このケーキ、おいしそう！ | この ケーキ、 おいしそう！ | kono keeki, oishisou!
+田中さん、今日は忙しそうですね。 | たなかさん、 きょう は いそがしそう です ね。 | tanaka-san, kyou wa isogashisou desu ne.
+田中さん、今日は忙しそうだね。 | たなかさん、 きょう は いそがしそう だ ね。 | tanaka-san, kyou wa isogashisou da ne.
+山田さんは元気そうでした。 | やまださん は げんきそう でした。 | yamada-san wa genkisou deshita.
+山田さんは元気そうだった。 | やまださん は げんきそう だった。 | yamada-san wa genkisou datta.
+重そうだね。持とうか？ | おもそう だ ね。 もとう か？ | omosou da ne. motou ka?
+重そうですね。持ちましょうか？ | おもそう です ね。 もちましょう か？ | omosou desu ne. mochimashou ka?
+この店、よさそうですね。 | この みせ、 よさそう です ね。 | kono mise, yosasou desu ne.
+この店、よさそうだね。 | この みせ、 よさそう だ ね。 | kono mise, yosasou da ne.
+雨が降りそうですね。 | あめ が ふりそう です ね。 | ame ga furisou desu ne.
+雨が降りそうだね。 | あめ が ふりそう だ ね。 | ame ga furisou da ne.
+荷物が落ちそうですよ。 | にもつ が おちそう です よ。 | nimotsu ga ochisou desu yo.
+荷物が落ちそうだよ。 | にもつ が おちそう だ よ。 | nimotsu ga ochisou da yo.
+妹が泣きそうです。 | いもうと が なきそう です。 | imouto ga nakisou desu.
+妹が泣きそう。 | いもうと が なきそう。 | imouto ga nakisou.
+会議に間に合いそう？ | かいぎ に まにあいそう？ | kaigi ni maniaisou?
+会議に間に合いそうですか？ | かいぎ に まにあいそう です か？ | kaigi ni maniaisou desu ka?
+駅の前においしそうなパン屋がある。 | えき の まえ に おいしそう な パンや が ある。 | eki no mae ni oishisou na pan'ya ga aru.
+駅の前においしそうなパン屋があります。 | えき の まえ に おいしそう な パンや が あります。 | eki no mae ni oishisou na pan'ya ga arimasu.
+子供たちが楽しそうに遊んでいます。 | こどもたち が たのしそう に あそんで います。 | kodomotachi ga tanoshisou ni asonde imasu.
+子供たちが楽しそうに遊んでいる。 | こどもたち が たのしそう に あそんで いる。 | kodomotachi ga tanoshisou ni asonde iru.
+優しそうな人ですね。 | やさしそう な ひと です ね。 | yasashisou na hito desu ne.
+優しそうな人だね。 | やさしそう な ひと だ ね。 | yasashisou na hito da ne.
+父はいつもビールをおいしそうに飲みます。 | ちち は いつも ビール を おいしそう に のみます。 | chichi wa itsumo biiru o oishisou ni nomimasu.
+父はいつもビールをおいしそうに飲む。 | ちち は いつも ビール を おいしそう に のむ。 | chichi wa itsumo biiru o oishisou ni nomu.
+この服、高いですね。 | この ふく、 たかい です ね。 | kono fuku, takai desu ne.
+この服、高そうですね。 | この ふく、 たかそう です ね。 | kono fuku, takasou desu ne.
+ねえ、このラーメン、おいしそう！ | ねえ、 この ラーメン、 おいしそう！ | nee, kono raamen, oishisou!
+でしょ？ここ、いつも人が多いんだ。 | でしょ？ ここ、 いつも ひと が おおい ん だ。 | desho? koko, itsumo hito ga ooi n da.
+でも、ちょっと辛そうだね。 | でも、 ちょっと からそう だ ね。 | demo, chotto karasou da ne.
+大丈夫。そんなに辛くないよ。 | だいじょうぶ。 そんなに からくない よ。 | daijoubu. sonnani karakunai yo.
+面白そうです | おもしろそう です | omoshirosou desu
+晴れそうです | はれそう です | haresou desu
+強そうな | つよそう な | tsuyosou na
+よさそう | よさそう | yosasou
+よさそうだ | よさそう だ | yosasou da
+このいすは壊れそうです。 | この いす は こわれそう です。 | kono isu wa kowaresou desu.
+
+## n4-seeming/sou-hearsay
+〜そうだ | 〜そうだ | (label: no romaji)
+来るそうだ | くる そう だ | kuru sou da
+来たそうだ | きた そう だ | kita sou da
+高いそうだ | たかい そう だ | takai sou da
+静かだそうだ | しずか だ そう だ | shizuka da sou da
+雨だそうだ | あめ だ そう だ | ame da sou da
+ニュースによると | ニュース によると | nyuusu niyoruto
+週末は雪が降るそうです。 | しゅうまつ は ゆき が ふる そう です。 | shuumatsu wa yuki ga furu sou desu.
+週末は雪が降るそうだよ。 | しゅうまつ は ゆき が ふる そう だ よ。 | shuumatsu wa yuki ga furu sou da yo.
+山田さんは来月結婚するそうです。 | やまださん は らいげつ けっこん する そう です。 | yamada-san wa raigetsu kekkon suru sou desu.
+山田さんは来月結婚するそうだよ。 | やまださん は らいげつ けっこん する そう だ よ。 | yamada-san wa raigetsu kekkon suru sou da yo.
+あの店のラーメンはとてもおいしいそうです。 | あの みせ の ラーメン は とても おいしい そう です。 | ano mise no raamen wa totemo oishii sou desu.
+あの店のラーメンはとてもおいしいそうだ。 | あの みせ の ラーメン は とても おいしい そう だ。 | ano mise no raamen wa totemo oishii sou da.
+田中さんのお父さんは医者だそうです。 | たなかさん の おとうさん は いしゃ だ そう です。 | tanaka-san no otousan wa isha da sou desu.
+昨日の試合は日本が勝ったそうだ。 | きのう の しあい は にほん が かった そう だ。 | kinou no shiai wa nihon ga katta sou da.
+昨日の試合は日本が勝ったそうです。 | きのう の しあい は にほん が かった そう です。 | kinou no shiai wa nihon ga katta sou desu.
+ニュースによると、電車が止まっているそうです。 | ニュース によると、 でんしゃ が とまって いる そう です。 | nyuusu niyoruto, densha ga tomatte iru sou desu.
+ニュースによると、電車が止まってるそうだよ。 | ニュース によると、 でんしゃ が とまってる そう だ よ。 | nyuusu niyoruto, densha ga tomatteru sou da yo.
+先生の話によると、来週テストがあるそうです。 | せんせい の はなし によると、 らいしゅう テスト が ある そう です。 | sensei no hanashi niyoruto, raishuu tesuto ga aru sou desu.
+忙しそうです。 | いそがしそう です。 | isogashisou desu.
+忙しいそうです。 | いそがしい そう です。 | isogashii sou desu.
+駅の前に新しい喫茶店ができたそうですよ。 | えき の まえ に あたらしい きっさてん が できた そう です よ。 | eki no mae ni atarashii kissaten ga dekita sou desu yo.
+へえ、そうですか。 | へえ、 そう です か。 | hee, sou desu ka.
+友達の話によると、ケーキがおいしいそうです。 | ともだち の はなし によると、 ケーキ が おいしい そう です。 | tomodachi no hanashi niyoruto, keeki ga oishii sou desu.
+じゃあ、今度行ってみましょう。 | じゃあ、 こんど いって みましょう。 | jaa, kondo itte mimashou.
+だそうです | だ そう です | da sou desu
+引いたそうです | ひいた そう です | hiita sou desu
+引いているそうです | ひいて いる そう です | hiite iru sou desu
+静かだそうだ | しずか だ そう だ | shizuka da sou da
+によると | によると | niyoruto
+の話によると | の はなし によると | no hanashi niyoruto
+山田さんは先生だそうです。 | やまださん は せんせい だ そう です。 | yamada-san wa sensei da sou desu.
+
+## n4-seeming/you-mitai
+〜みたい | 〜みたい | (label: no romaji)
+来るようだ | くる よう だ | kuru you da
+来るみたいだ | くる みたい だ | kuru mitai da
+寒いようだ | さむい よう だ | samui you da
+寒いみたいだ | さむい みたい だ | samui mitai da
+静かなようだ | しずか な よう だ | shizuka na you da
+静かみたいだ | しずか みたい だ | shizuka mitai da
+雨のようだ | あめ の よう だ | ame no you da
+雨みたいだ | あめ みたい だ | ame mitai da
+子供のように | こども の よう に | kodomo no you ni
+子供みたいに | こども みたい に | kodomo mitai ni
+子供のような | こども の よう な | kodomo no you na
+子供みたいな | こども みたい な | kodomo mitai na
+鍵がかかっているようです。 | かぎ が かかって いる よう です。 | kagi ga kakatte iru you desu.
+鍵がかかってるみたい。 | かぎ が かかってる みたい。 | kagi ga kakatteru mitai.
+山田さんは風邪のようです。 | やまださん は かぜ の よう です。 | yamada-san wa kaze no you desu.
+山田さん、風邪みたい。 | やまださん、 かぜ みたい。 | yamada-san, kaze mitai.
+田中さんは最近暇なようです。 | たなかさん は さいきん ひま な よう です。 | tanaka-san wa saikin hima na you desu.
+田中さん、最近暇みたい。 | たなかさん、 さいきん ひま みたい。 | tanaka-san, saikin hima mitai.
+部長は会議の時間を忘れているようです。 | ぶちょう は かいぎ の じかん を わすれて いる よう です。 | buchou wa kaigi no jikan o wasurete iru you desu.
+誰か来たみたいだね。 | だれ か きた みたい だ ね。 | dare ka kita mitai da ne.
+誰か来たみたいですね。 | だれ か きた みたい です ね。 | dare ka kita mitai desu ne.
+雨が降ってきたみたい。 | あめ が ふって きた みたい。 | ame ga futte kita mitai.
+雨が降ってきたみたいです。 | あめ が ふって きた みたい です。 | ame ga futte kita mitai desu.
+妹は新しい学校が好きみたい。 | いもうと は あたらしい がっこう が すき みたい。 | imouto wa atarashii gakkou ga suki mitai.
+妹は新しい学校が好きみたいです。 | いもうと は あたらしい がっこう が すき みたい です。 | imouto wa atarashii gakkou ga suki mitai desu.
+彼は日本語が分かるみたいです。 | かれ は にほんご が わかる みたい です。 | kare wa nihongo ga wakaru mitai desu.
+彼、日本語が分かるみたい。 | かれ、 にほんご が わかる みたい。 | kare, nihongo ga wakaru mitai.
+兄は子供のように喜びました。 | あに は こども の よう に よろこびました。 | ani wa kodomo no you ni yorokobimashita.
+兄は子供みたいに喜んだ。 | あに は こども みたい に よろこんだ。 | ani wa kodomo mitai ni yorokonda.
+今日は夏みたいに暑いね。 | きょう は なつ みたい に あつい ね。 | kyou wa natsu mitai ni atsui ne.
+今日は夏のように暑いですね。 | きょう は なつ の よう に あつい です ね。 | kyou wa natsu no you ni atsui desu ne.
+田中さんみたいな人になりたい。 | たなかさん みたい な ひと に なりたい。 | tanaka-san mitai na hito ni naritai.
+田中さんのような人になりたいです。 | たなかさん の よう な ひと に なりたい です。 | tanaka-san no you na hito ni naritai desu.
+本当に夢みたいです。 | ほんとう に ゆめ みたい です。 | hontou ni yume mitai desu.
+本当に夢みたい！ | ほんとう に ゆめ みたい！ | hontou ni yume mitai!
+日本人みたいに日本語を話したい。 | にほんじん みたい に にほんご を はなしたい。 | nihonjin mitai ni nihongo o hanashitai.
+日本人みたいに日本語を話したいです。 | にほんじん みたい に にほんご を はなしたい です。 | nihonjin mitai ni nihongo o hanashitai desu.
+雨が降ったようです。 | あめ が ふった よう です。 | ame ga futta you desu.
+雨が降ったそうです。 | あめ が ふった そう です。 | ame ga futta sou desu.
+え？電気が消えてる。 | え？ でんき が きえてる。 | e? denki ga kieteru.
+誰もいないみたいだね。 | だれ も いない みたい だ ね。 | dare mo inai mitai da ne.
+今日は休みみたい。ドアにメモがあるよ。 | きょう は やすみ みたい。 ドア に メモ が ある よ。 | kyou wa yasumi mitai. doa ni memo ga aru yo.
+遅れているみたい | おくれて いる みたい | okurete iru mitai
+遅れているみたいだ | おくれて いる みたい だ | okurete iru mitai da
+遅れたみたい | おくれた みたい | okureta mitai
+遅れたみたいだ | おくれた みたい だ | okureta mitai da
+のようだ | の よう だ | no you da
+のようです | の よう です | no you desu
+みたいな | みたい な | mitai na
+のように | の よう に | no you ni
+彼は元気みたいです。 | かれ は げんき みたい です。 | kare wa genki mitai desu.
+彼は元気なようです。 | かれ は げんき な よう です。 | kare wa genki na you desu.
+
+## n4-seeming/rashii
+らしい | らしい | (label: no romaji)
+来るらしい | くる らしい | kuru rashii
+高いらしい | たかい らしい | takai rashii
+静からしい | しずか らしい | shizuka rashii
+雨らしい | あめ らしい | ame rashii
+春らしい | はるらしい | harurashii
+雨が降りそうだ | あめ が ふりそう だ | ame ga furisou da
+雨が降るそうだ | あめ が ふる そう だ | ame ga furu sou da
+ようだ·みたいだ | よう だ · みたい だ | you da · mitai da
+雨が降ったようだ | あめ が ふった よう だ | ame ga futta you da
+らしい | らしい | rashii
+雨が降るらしい | あめ が ふる らしい | ame ga furu rashii
+田中さんは明日来ないらしいよ。 | たなかさん は あした こない らしい よ。 | tanaka-san wa ashita konai rashii yo.
+田中さんは明日来ないらしいですよ。 | たなかさん は あした こない らしい です よ。 | tanaka-san wa ashita konai rashii desu yo.
+あの映画、すごく面白いらしい。 | あの えいが、 すごく おもしろい らしい。 | ano eiga, sugoku omoshiroi rashii.
+あの映画はとても面白いらしいです。 | あの えいが は とても おもしろい らしい です。 | ano eiga wa totemo omoshiroi rashii desu.
+来週の試験は難しいらしいです。 | らいしゅう の しけん は むずかしい らしい です。 | raishuu no shiken wa muzukashii rashii desu.
+来週の試験、難しいらしいよ。 | らいしゅう の しけん、 むずかしい らしい よ。 | raishuu no shiken, muzukashii rashii yo.
+隣の人は先生らしい。 | となり の ひと は せんせい らしい。 | tonari no hito wa sensei rashii.
+隣の人は先生らしいです。 | となり の ひと は せんせい らしい です。 | tonari no hito wa sensei rashii desu.
+この町は昔とても静かだったらしいです。 | この まち は むかし とても しずか だった らしい です。 | kono machi wa mukashi totemo shizuka datta rashii desu.
+今日は春らしい天気ですね。 | きょう は はるらしい てんき です ね。 | kyou wa harurashii tenki desu ne.
+今日は春らしい天気だね。 | きょう は はるらしい てんき だ ね。 | kyou wa harurashii tenki da ne.
+それは彼らしい答えですね。 | それ は かれらしい こたえ です ね。 | sore wa karerashii kotae desu ne.
+それは彼らしい答えだね。 | それ は かれらしい こたえ だ ね。 | sore wa karerashii kotae da ne.
+日本らしいお土産を買いたいです。 | にほんらしい おみやげ を かいたい です。 | nihonrashii omiyage o kaitai desu.
+日本らしいお土産を買いたい。 | にほんらしい おみやげ を かいたい。 | nihonrashii omiyage o kaitai.
+母らしい手紙だった。 | ははらしい てがみ だった。 | haharashii tegami datta.
+母らしい手紙でした。 | ははらしい てがみ でした。 | haharashii tegami deshita.
+雨らしいです。 | あめ らしい です。 | ame rashii desu.
+雨みたいです。 | あめ みたい です。 | ame mitai desu.
+聞いた？山田さん、会社を辞めるらしいよ。 | きいた？ やまださん、 かいしゃ を やめる らしい よ。 | kiita? yamada-san, kaisha o yameru rashii yo.
+え、ほんと？誰から聞いたの？ | え、 ほんと？ だれ から きいた の？ | e, honto? dare kara kiita no?
+田中さん。でも、まだ分からないらしい。 | たなかさん。 でも、 まだ わからない らしい。 | tanaka-san. demo, mada wakaranai rashii.
+休みらしい | やすみ らしい | yasumi rashii
+人気があるらしいです | にんき が ある らしい です | ninki ga aru rashii desu
+人気らしいです | にんき らしい です | ninki rashii desu
+降ったらしい | ふった らしい | futta rashii
+らしい | らしい | rashii
+姉の友達は医者らしいです。 | あね の ともだち は いしゃ らしい です。 | ane no tomodachi wa isha rashii desu.
+
+## n4-seeming/hazu
+はず | はず | (label: no romaji)
+来るはずだ | くる はず だ | kuru hazu da
+来るはずがない | くる はず が ない | kuru hazu ga nai
+高いはずだ | たかい はず だ | takai hazu da
+高いはずがない | たかい はず が ない | takai hazu ga nai
+静かなはずだ | しずか な はず だ | shizuka na hazu da
+静かなはずがない | しずか な はず が ない | shizuka na hazu ga nai
+休みのはずだ | やすみ の はず だ | yasumi no hazu da
+休みのはずがない | やすみ の はず が ない | yasumi no hazu ga nai
+電車はもうすぐ来るはずです。 | でんしゃ は もうすぐ くる はず です。 | densha wa mousugu kuru hazu desu.
+電車はもうすぐ来るはずだよ。 | でんしゃ は もうすぐ くる はず だ よ。 | densha wa mousugu kuru hazu da yo.
+田中さんは今日休みのはずです。 | たなかさん は きょう やすみ の はず です。 | tanaka-san wa kyou yasumi no hazu desu.
+田中さん、今日は休みのはずだよ。 | たなかさん、 きょう は やすみ の はず だ よ。 | tanaka-san, kyou wa yasumi no hazu da yo.
+鍵は机の上に置いたはずだけど… | かぎ は つくえ の うえ に おいた はず だ けど… | kagi wa tsukue no ue ni oita hazu da kedo...
+鍵は机の上に置いたはずですけど… | かぎ は つくえ の うえ に おいた はず です けど… | kagi wa tsukue no ue ni oita hazu desu kedo...
+図書館は八時まで開いているはずです。 | としょかん は はちじ まで あいて いる はず です。 | toshokan wa hachiji made aite iru hazu desu.
+図書館は八時まで開いてるはずだよ。 | としょかん は はちじ まで あいてる はず だ よ。 | toshokan wa hachiji made aiteru hazu da yo.
+荷物は昨日着くはずでしたが… | にもつ は きのう つく はず でした が… | nimotsu wa kinou tsuku hazu deshita ga...
+そんなこと、あるはずがない。 | そんな こと、 ある はず が ない。 | sonna koto, aru hazu ga nai.
+そんなこと、あるはずがありません。 | そんな こと、 ある はず が ありません。 | sonna koto, aru hazu ga arimasen.
+彼がうそを言うはずがない。 | かれ が うそ を いう はず が ない。 | kare ga uso o iu hazu ga nai.
+彼がうそを言うはずがありません。 | かれ が うそ を いう はず が ありません。 | kare ga uso o iu hazu ga arimasen.
+毎日練習したから、負けるはずがない。 | まいにち れんしゅう した から、 まける はず が ない。 | mainichi renshuu shita kara, makeru hazu ga nai.
+毎日練習したから、負けるはずがありません。 | まいにち れんしゅう した から、 まける はず が ありません。 | mainichi renshuu shita kara, makeru hazu ga arimasen.
+この問題が子供に分かるはずがありません。 | この もんだい が こども に わかる はず が ありません。 | kono mondai ga kodomo ni wakaru hazu ga arimasen.
+この問題が子供に分かるはずがないよ。 | この もんだい が こども に わかる はず が ない よ。 | kono mondai ga kodomo ni wakaru hazu ga nai yo.
+山田さんも来るはずです。 | やまださん も くる はず です。 | yamada-san mo kuru hazu desu.
+山田さんも来るでしょう。 | やまださん も くる でしょう。 | yamada-san mo kuru deshou.
+会議は三時からですよね？ | かいぎ は さんじ から です よね？ | kaigi wa sanji kara desu yone?
+はい、そのはずです。部長がそう言っていました。 | はい、 その はず です。 ぶちょう が そう いって いました。 | hai, sono hazu desu. buchou ga sou itte imashita.
+でも、まだ誰も来ていませんね。 | でも、 まだ だれ も きて いません ね。 | demo, mada dare mo kite imasen ne.
+おかしいですね… | おかしい です ね… | okashii desu ne...
+終わるはずです | おわる はず です | owaru hazu desu
+知っているはずだ | しって いる はず だ | shitte iru hazu da
+知っているはず | しって いる はず | shitte iru hazu
+はずがない | はず が ない | hazu ga nai
+はずない | はず ない | hazu nai
+のはず | の はず | no hazu
+彼は元気なはずです。 | かれ は げんき な はず です。 | kare wa genki na hazu desu.
+
+## n4-seeming/kamoshirenai
+かもしれない | かもしれない | (label: no romaji)
+来るかもしれない | くる かも しれない | kuru kamo shirenai
+高いかもしれない | たかい かも しれない | takai kamo shirenai
+静かかもしれない | しずか かも しれない | shizuka kamo shirenai
+雨かもしれない | あめ かも しれない | ame kamo shirenai
+雨かも | あめ かも | ame kamo
+明日は雪かもしれません。 | あした は ゆき かも しれません。 | ashita wa yuki kamo shiremasen.
+明日は雪かもしれない。 | あした は ゆき かも しれない。 | ashita wa yuki kamo shirenai.
+会議に少し遅れるかもしれません。 | かいぎ に すこし おくれる かも しれません。 | kaigi ni sukoshi okureru kamo shiremasen.
+会議に少し遅れるかもしれない。 | かいぎ に すこし おくれる かも しれない。 | kaigi ni sukoshi okureru kamo shirenai.
+その話、本当かもしれないよ。 | その はなし、 ほんとう かも しれない よ。 | sono hanashi, hontou kamo shirenai yo.
+その話は本当かもしれませんよ。 | その はなし は ほんとう かも しれません よ。 | sono hanashi wa hontou kamo shiremasen yo.
+財布を電車に忘れたかもしれない。 | さいふ を でんしゃ に わすれた かも しれない。 | saifu o densha ni wasureta kamo shirenai.
+財布を電車に忘れたかもしれません。 | さいふ を でんしゃ に わすれた かも しれません。 | saifu o densha ni wasureta kamo shiremasen.
+この仕事は私には難しいかもしれません。 | この しごと は わたし に は むずかしい かも しれません。 | kono shigoto wa watashi ni wa muzukashii kamo shiremasen.
+それ、いいかも！ | それ、 いい かも！ | sore, ii kamo!
+それ、いいかもしれませんね。 | それ、 いい かも しれません ね。 | sore, ii kamo shiremasen ne.
+今日は早く帰れるかも。 | きょう は はやく かえれる かも。 | kyou wa hayaku kaereru kamo.
+今日は早く帰れるかもしれません。 | きょう は はやく かえれる かも しれません。 | kyou wa hayaku kaereru kamo shiremasen.
+風邪引いたかも。 | かぜ ひいた かも。 | kaze hiita kamo.
+風邪を引いたかもしれません。 | かぜ を ひいた かも しれません。 | kaze o hiita kamo shiremasen.
+あの人、先生かも。 | あの ひと、 せんせい かも。 | ano hito, sensei kamo.
+あの人は先生かもしれません。 | あの ひと は せんせい かも しれません。 | ano hito wa sensei kamo shiremasen.
+店はもう閉まっているでしょう。 | みせ は もう しまって いる でしょう。 | mise wa mou shimatte iru deshou.
+店はもう閉まっているかもしれません。 | みせ は もう しまって いる かも しれません。 | mise wa mou shimatte iru kamo shiremasen.
+明日のピクニック、雨かもよ。 | あした の ピクニック、 あめ かも よ。 | ashita no pikunikku, ame kamo yo.
+え、ほんと？じゃあ、傘を持っていったほうがいいかもね。 | え、 ほんと？ じゃあ、 かさ を もって いった ほう が いい かも ね。 | e, honto? jaa, kasa o motte itta hou ga ii kamo ne.
+そうだね。上着もあったほうがいいかもしれない。 | そう だ ね。 うわぎ も あった ほう が いい かも しれない。 | sou da ne. uwagi mo atta hou ga ii kamo shirenai.
+寒いかもしれません | さむい かも しれません | samui kamo shiremasen
+かも | かも | kamo
+かもしれない | かも しれない | kamo shirenai
+かもね | かも ね | kamo ne
+かもしれないね | かも しれない ね | kamo shirenai ne
+行けないかもしれません | いけない かも しれません | ikenai kamo shiremasen
+かもしれない | かも しれない | kamo shirenai
+かも | かも | kamo
+明日は雨かもしれません。 | あした は あめ かも しれません。 | ashita wa ame kamo shiremasen.
+
+## n4-seeming/to-omou
+と思う | とおもう | (label: no romaji)
+来ると思う | くる と おもう | kuru to omou
+来ないと思う | こない と おもう | konai to omou
+高いと思う | たかい と おもう | takai to omou
+静かだと思う | しずか だ と おもう | shizuka da to omou
+学生だと思う | がくせい だ と おもう | gakusei da to omou
+この映画は面白いと思います。 | この えいが は おもしろい と おもいます。 | kono eiga wa omoshiroi to omoimasu.
+この映画は面白いと思う。 | この えいが は おもしろい と おもう。 | kono eiga wa omoshiroi to omou.
+田中さんはもう帰ったと思うよ。 | たなかさん は もう かえった と おもう よ。 | tanaka-san wa mou kaetta to omou yo.
+田中さんはもう帰ったと思いますよ。 | たなかさん は もう かえった と おもいます よ。 | tanaka-san wa mou kaetta to omoimasu yo.
+あの人は先生だと思います。 | あの ひと は せんせい だ と おもいます。 | ano hito wa sensei da to omoimasu.
+あの人、先生だと思う。 | あの ひと、 せんせい だ と おもう。 | ano hito, sensei da to omou.
+明日は雨が降らないと思う。 | あした は あめ が ふらない と おもう。 | ashita wa ame ga furanai to omou.
+明日は雨が降らないと思います。 | あした は あめ が ふらない と おもいます。 | ashita wa ame ga furanai to omoimasu.
+京都のほうが静かだと思う。 | きょうと の ほう が しずか だ と おもう。 | kyouto no hou ga shizuka da to omou.
+京都のほうが静かだと思います。 | きょうと の ほう が しずか だ と おもいます。 | kyouto no hou ga shizuka da to omoimasu.
+母は私がまだ子供だと思っています。 | はは は わたし が まだ こども だ と おもって います。 | haha wa watashi ga mada kodomo da to omotte imasu.
+母は私がまだ子供だと思っている。 | はは は わたし が まだ こども だ と おもって いる。 | haha wa watashi ga mada kodomo da to omotte iru.
+兄はこの車が一番いいと思っています。 | あに は この くるま が いちばん いい と おもって います。 | ani wa kono kuruma ga ichiban ii to omotte imasu.
+兄はこの車が一番いいと思っている。 | あに は この くるま が いちばん いい と おもって いる。 | ani wa kono kuruma ga ichiban ii to omotte iru.
+みんな、田中さんが来ると思っていた。 | みんな、 たなかさん が くる と おもって いた。 | minna, tanaka-san ga kuru to omotte ita.
+みんな、田中さんが来ると思っていました。 | みんな、 たなかさん が くる と おもって いました。 | minna, tanaka-san ga kuru to omotte imashita.
+多くの人が日本語は難しいと思っています。 | おおく の ひと が にほんご は むずかしい と おもって います。 | ooku no hito ga nihongo wa muzukashii to omotte imasu.
+山田さんは明日も来ると思います。 | やまださん は あした も くる と おもいます。 | yamada-san wa ashita mo kuru to omoimasu.
+私は明日も来ようと思います。 | わたし は あした も こよう と おもいます。 | watashi wa ashita mo koyou to omoimasu.
+この店、どう思いますか？ | この みせ、 どう おもいます か？ | kono mise, dou omoimasu ka?
+料理はおいしいと思います。でも、ちょっと高いですね。 | りょうり は おいしい と おもいます。 でも、 ちょっと たかい です ね。 | ryouri wa oishii to omoimasu. demo, chotto takai desu ne.
+そうですね。山田さんも高いと思っていますよ。 | そう です ね。 やまださん も たかい と おもって います よ。 | sou desu ne. yamada-san mo takai to omotte imasu yo.
+近いと思います | ちかい と おもいます | chikai to omoimasu
+だと思う | だ と おもう | da to omou
+来ないと思う | こない と おもう | konai to omou
+来ると思わない | くる と おもわない | kuru to omowanai
+と思っています | と おもって います | to omotte imasu
+この本は有名だと思います。 | この ほん は ゆうめい だ と おもいます。 | kono hon wa yuumei da to omoimasu.
+
+## n4-seeming/to-iu
+と言う | という | (label: no romaji)
+「おはよう」と言った | 「おはよう」 と いった | "ohayou" to itta
+来ないと言った | こない と いった | konai to itta
+緑という店 | みどり と いう みせ | midori to iu mise
+来るということ | くる と いう こと | kuru to iu koto
+先生は「明日テストをします」と言いました。 | せんせい は 「あした テスト を します」 と いいました。 | sensei wa "ashita tesuto o shimasu" to iimashita.
+先生は「明日テストをします」と言った。 | せんせい は 「あした テスト を します」 と いった。 | sensei wa "ashita tesuto o shimasu" to itta.
+田中さんは今日は来ないと言っていました。 | たなかさん は きょう は こない と いって いました。 | tanaka-san wa kyou wa konai to itte imashita.
+田中さん、今日は来ないって言ってた。 | たなかさん、 きょう は こない って いってた。 | tanaka-san, kyou wa konai tte itteta.
+父は仕事が忙しいと言っていた。 | ちち は しごと が いそがしい と いって いた。 | chichi wa shigoto ga isogashii to itte ita.
+父は仕事が忙しいと言っていました。 | ちち は しごと が いそがしい と いって いました。 | chichi wa shigoto ga isogashii to itte imashita.
+彼は「すぐ行く」と言った。 | かれ は 「すぐ いく」 と いった。 | kare wa "sugu iku" to itta.
+彼は「すぐ行く」と言いました。 | かれ は 「すぐ いく」 と いいました。 | kare wa "sugu iku" to iimashita.
+これは日本語で何と言いますか？ | これ は にほんご で なん と いいます か？ | kore wa nihongo de nan to iimasu ka?
+「緑」という喫茶店を知っていますか？ | 「みどり」 と いう きっさてん を しって います か？ | "midori" to iu kissaten o shitte imasu ka?
+「緑」っていう喫茶店、知ってる？ | 「みどり」 って いう きっさてん、 しってる？ | "midori" tte iu kissaten, shitteru?
+山田という人から電話がありました。 | やまだ と いう ひと から でんわ が ありました。 | yamada to iu hito kara denwa ga arimashita.
+山田っていう人から電話があったよ。 | やまだ って いう ひと から でんわ が あった よ。 | yamada tte iu hito kara denwa ga atta yo.
+これは何という花ですか？ | これ は なん と いう はな です か？ | kore wa nan to iu hana desu ka?
+これ、何っていう花？ | これ、 なん って いう はな？ | kore, nan tte iu hana?
+「月」という映画を見ました。 | 「つき」 と いう えいが を みました。 | "tsuki" to iu eiga o mimashita.
+「月」っていう映画を見た。 | 「つき」 って いう えいが を みた。 | "tsuki" tte iu eiga o mita.
+明日は休みということですか？ | あした は やすみ と いう こと です か？ | ashita wa yasumi to iu koto desu ka?
+明日は休みってこと？ | あした は やすみ って こと？ | ashita wa yasumi tte koto?
+来月値段が上がるということを知っていますか？ | らいげつ ねだん が あがる と いう こと を しって います か？ | raigetsu nedan ga agaru to iu koto o shitte imasu ka?
+一人で生活するということは大変です。 | ひとり で せいかつ する と いう こと は たいへん です。 | hitori de seikatsu suru to iu koto wa taihen desu.
+一人で生活するということは大変だ。 | ひとり で せいかつ する と いう こと は たいへん だ。 | hitori de seikatsu suru to iu koto wa taihen da.
+じゃあ、今日は会えないということだね。 | じゃあ、 きょう は あえない と いう こと だ ね。 | jaa, kyou wa aenai to iu koto da ne.
+じゃあ、今日は会えないということですね。 | じゃあ、 きょう は あえない と いう こと です ね。 | jaa, kyou wa aenai to iu koto desu ne.
+「行きます」と言いました。 | 「いきます」 と いいました。 | "ikimasu" to iimashita.
+行くと言いました。 | いく と いいました。 | iku to iimashita.
+さっき、森という人が来たよ。 | さっき、 もり と いう ひと が きた よ。 | sakki, mori to iu hito ga kita yo.
+え、何か言ってた？ | え、 なにか いってた？ | e, nanika itteta?
+明日また来るって言ってたよ。 | あした また くる って いってた よ。 | ashita mata kuru tte itteta yo.
+と言いました | と いいました | to iimashita
+と言っていました | と いって いました | to itte imashita
+って言いました | って いいました | tte iimashita
+って言っていました | って いって いました | tte itte imashita
+忙しいと言っていた | いそがしい と いって いた | isogashii to itte ita
+忙しいって言っていた | いそがしい って いって いた | isogashii tte itte ita
+忙しいと言った | いそがしい と いった | isogashii to itta
+忙しいって言った | いそがしい って いった | isogashii tte itta
+という | と いう | to iu
+っていう | って いう | tte iu
+ということです | と いう こと です | to iu koto desu
+っていうことです | って いう こと です | tte iu koto desu
+彼は明日暇だと言いました。 | かれ は あした ひま だ と いいました。 | kare wa ashita hima da to iimashita.
+彼は明日暇だって言いました。 | かれ は あした ひま だ って いいました。 | kare wa ashita hima da tte iimashita.
+
+## n4-seeming/ka-dou-ka
+かどうか | かどうか | (label: no romaji)
+何時に来るか | なんじ に くる か | nanji ni kuru ka
+来るかどうか | くる か どう か | kuru ka dou ka
+何を買ったか | なに を かった か | nani o katta ka
+買ったかどうか | かった か どう か | katta ka dou ka
+どれが安いか | どれ が やすい か | dore ga yasui ka
+安いかどうか | やすい か どう か | yasui ka dou ka
+どこが静かか | どこ が しずか か | doko ga shizuka ka
+静かかどうか | しずか か どう か | shizuka ka dou ka
+誰の傘か | だれ の かさ か | dare no kasa ka
+本当かどうか | ほんとう か どう か | hontou ka dou ka
+会議が何時に始まるか分かりません。 | かいぎ が なんじ に はじまる か わかりません。 | kaigi ga nanji ni hajimaru ka wakarimasen.
+会議、何時に始まるか分からない。 | かいぎ、 なんじ に はじまる か わからない。 | kaigi, nanji ni hajimaru ka wakaranai.
+誰が来るか知っていますか？ | だれ が くる か しって います か？ | dare ga kuru ka shitte imasu ka?
+誰が来るか知ってる？ | だれ が くる か しってる？ | dare ga kuru ka shitteru?
+何を買ったか忘れた。 | なに を かった か わすれた。 | nani o katta ka wasureta.
+何を買ったか忘れました。 | なに を かった か わすれました。 | nani o katta ka wasuremashita.
+どこに傘を置いたか覚えていない。 | どこ に かさ を おいた か おぼえて いない。 | doko ni kasa o oita ka oboete inai.
+どこに傘を置いたか覚えていません。 | どこ に かさ を おいた か おぼえて いません。 | doko ni kasa o oita ka oboete imasen.
+どの電車に乗ればいいか教えてください。 | どの でんしゃ に のれば いい か おしえて ください。 | dono densha ni noreba ii ka oshiete kudasai.
+明日行くかどうかまだ決めていません。 | あした いく か どう か まだ きめて いません。 | ashita iku ka dou ka mada kimete imasen.
+明日行くかどうかまだ決めていない。 | あした いく か どう か まだ きめて いない。 | ashita iku ka dou ka mada kimete inai.
+窓が閉まっているかどうか見てきます。 | まど が しまって いる か どう か みて きます。 | mado ga shimatte iru ka dou ka mite kimasu.
+窓が閉まっているかどうか見てくるね。 | まど が しまって いる か どう か みて くる ね。 | mado ga shimatte iru ka dou ka mite kuru ne.
+森さんが来るかどうか分からない。 | もりさん が くる か どう か わからない。 | mori-san ga kuru ka dou ka wakaranai.
+森さんが来るかどうか分かりません。 | もりさん が くる か どう か わかりません。 | mori-san ga kuru ka dou ka wakarimasen.
+この答えが正しいかどうか先生に聞いてみます。 | この こたえ が ただしい か どう か せんせい に きいて みます。 | kono kotae ga tadashii ka dou ka sensei ni kiite mimasu.
+この答えが正しいかどうか先生に聞いてみる。 | この こたえ が ただしい か どう か せんせい に きいて みる。 | kono kotae ga tadashii ka dou ka sensei ni kiite miru.
+その部屋が静かかどうか知りたいです。 | その へや が しずか か どう か しりたい です。 | sono heya ga shizuka ka dou ka shiritai desu.
+その部屋が静かかどうか知りたい。 | その へや が しずか か どう か しりたい。 | sono heya ga shizuka ka dou ka shiritai.
+山田さんが行くかどうか聞きました。 | やまださん が いく か どう か ききました。 | yamada-san ga iku ka dou ka kikimashita.
+山田さんがいつ行くか聞きました。 | やまださん が いつ いく か ききました。 | yamada-san ga itsu iku ka kikimashita.
+明日の会議、何時に終わるか知っていますか？ | あした の かいぎ、 なんじ に おわる か しって います か？ | ashita no kaigi, nanji ni owaru ka shitte imasu ka?
+すみません、分かりません。部長に聞いてみます。 | すみません、 わかりません。 ぶちょう に きいて みます。 | sumimasen, wakarimasen. buchou ni kiite mimasu.
+ありがとうございます。部屋が使えるかどうかも聞いてもらえますか？ | ありがとう ございます。 へや が つかえる か どう か も きいて もらえます か？ | arigatou gozaimasu. heya ga tsukaeru ka dou ka mo kiite moraemasu ka?
+どこにあるか | どこ に ある か | doko ni aru ka
+どこか | どこ か | doko ka
+どこにあるのか | どこ に ある の か | doko ni aru no ka
+どこなのか | どこ な の か | doko na no ka
+開くかどうか | あく か どう か | aku ka dou ka
+開いているかどうか | あいて いる か どう か | aite iru ka dou ka
+かどうか | か どう か | ka dou ka
+か | か | ka
+食べたいか | たべたい か | tabetai ka
+食べたいのか | たべたい の か | tabetai no ka
+バスが何時に来るか分かりません。 | バス が なんじ に くる か わかりません。 | basu ga nanji ni kuru ka wakarimasen.
+バスが何時に来るのか分かりません。 | バス が なんじ に くる の か わかりません。 | basu ga nanji ni kuru no ka wakarimasen.
+
+## n4-seeming/n-desu
+んです | んです | (label: no romaji)
+行くんです | いく ん です | iku n desu
+行ったんです | いった ん です | itta n desu
+痛いんです | いたい ん です | itai n desu
+暇なんです | ひま なん です | hima nan desu
+学生なんです | がくせい なん です | gakusei nan desu
+行くの？ | いく の？ | iku no?
+すみません、頭が痛いんです。 | すみません、 あたま が いたい ん です。 | sumimasen, atama ga itai n desu.
+ごめん、頭が痛いんだ。 | ごめん、 あたま が いたい ん だ。 | gomen, atama ga itai n da.
+明日は行けません。仕事があるんです。 | あした は いけません。 しごと が ある ん です。 | ashita wa ikemasen. shigoto ga aru n desu.
+明日は行けない。仕事があるんだ。 | あした は いけない。 しごと が ある ん だ。 | ashita wa ikenai. shigoto ga aru n da.
+この町は夜とても静かなんです。 | この まち は よる とても しずか なん です。 | kono machi wa yoru totemo shizuka nan desu.
+この町、夜はすごく静かなんだ。 | この まち、 よる は すごく しずか なん だ。 | kono machi, yoru wa sugoku shizuka nan da.
+弟はまだ大学生なんです。 | おとうと は まだ だいがくせい なん です。 | otouto wa mada daigakusei nan desu.
+弟はまだ大学生なんだ。 | おとうと は まだ だいがくせい なん だ。 | otouto wa mada daigakusei nan da.
+昨日のパーティー、本当に楽しかったんだ。 | きのう の パーティー、 ほんとう に たのしかった ん だ。 | kinou no paatii, hontou ni tanoshikatta n da.
+昨日のパーティー、本当に楽しかったんです。 | きのう の パーティー、 ほんとう に たのしかった ん です。 | kinou no paatii, hontou ni tanoshikatta n desu.
+どうしたんですか？ | どう した ん です か？ | dou shita n desu ka?
+どうしたの？ | どう した の？ | dou shita no?
+どうして日本語を勉強しているんですか？ | どうして にほんご を べんきょう して いる ん です か？ | doushite nihongo o benkyou shite iru n desu ka?
+どうして日本語を勉強しているの？ | どうして にほんご を べんきょう して いる の？ | doushite nihongo o benkyou shite iru no?
+新しい靴だね。どこで買ったの？ | あたらしい くつ だ ね。 どこ で かった の？ | atarashii kutsu da ne. doko de katta no?
+新しい靴ですね。どこで買ったんですか？ | あたらしい くつ です ね。 どこ で かった ん です か？ | atarashii kutsu desu ne. doko de katta n desu ka?
+元気がないね。何かあったの？ | げんき が ない ね。 なにか あった の？ | genki ga nai ne. nanika atta no?
+元気がないですね。何かあったんですか？ | げんき が ない です ね。 なにか あった ん です か？ | genki ga nai desu ne. nanika atta n desu ka?
+昨日休みましたか？ | きのう やすみました か？ | kinou yasumimashita ka?
+昨日休んだんですか？ | きのう やすんだ ん です か？ | kinou yasunda n desu ka?
+健太、眠そうだね。どうしたの？ | けんた、 ねむそう だ ね。 どう した の？ | kenta, nemusou da ne. dou shita no?
+昨日、三時までゲームをしていたんだ。 | きのう、 さんじ まで ゲーム を して いた ん だ。 | kinou, sanji made geemu o shite ita n da.
+え、今日テストがあるんだよ！ | え、 きょう テスト が ある ん だ よ！ | e, kyou tesuto ga aru n da yo!
+来なかったんです | こなかった ん です | konakatta n desu
+来なかったのです | こなかった の です | konakatta no desu
+笑っているの | わらって いる の | waratte iru no
+なんです | なん です | nan desu
+なのです | な の です | na no desu
+なくしたんだ | なくした ん だ | nakushita n da
+なくしちゃったんだ | なくしちゃった ん だ | nakushichatta n da
+なくしてしまったんだ | なくして しまった ん だ | nakushite shimatta n da
+母は先生なんです。 | はは は せんせい なん です。 | haha wa sensei nan desu.
+母は先生なのです。 | はは は せんせい な の です。 | haha wa sensei na no desu.
+
+## n4-seeming/kana
+かな | かな | (label: no romaji)
+来るかな | くる かな | kuru kana
+来たかな | きた かな | kita kana
+高いかな | たかい かな | takai kana
+静かかな | しずか かな | shizuka kana
+雨かな | あめ かな | ame kana
+帰ろうかな | かえろう かな | kaerou kana
+来ないかな | こない かな | konai kana
+明日、晴れるかな。 | あした、 はれる かな。 | ashita, hareru kana.
+明日は晴れるでしょうか。 | あした は はれる でしょう か。 | ashita wa hareru deshou ka.
+この服、大きすぎるかな？ | この ふく、 おおきすぎる かな？ | kono fuku, ookisugiru kana?
+この服、大きすぎるでしょうか？ | この ふく、 おおきすぎる でしょう か？ | kono fuku, ookisugiru deshou ka?
+田中さん、もう着いたかな。 | たなかさん、 もう ついた かな。 | tanaka-san, mou tsuita kana.
+田中さんはもう着いたでしょうか。 | たなかさん は もう ついた でしょう か。 | tanaka-san wa mou tsuita deshou ka.
+誰に聞けばいいかな。 | だれ に きけば いい かな。 | dare ni kikeba ii kana.
+誰に聞けばいいでしょうか。 | だれ に きけば いい でしょう か。 | dare ni kikeba ii deshou ka.
+早く夏休みにならないかな。 | はやく なつやすみ に ならない かな。 | hayaku natsuyasumi ni naranai kana.
+今日はカレーにしようかな。 | きょう は カレー に しよう かな。 | kyou wa karee ni shiyou kana.
+週末は家にいようかな。 | しゅうまつ は いえ に いよう かな。 | shuumatsu wa ie ni iyou kana.
+新しい靴を買おうかな。 | あたらしい くつ を かおう かな。 | atarashii kutsu o kaou kana.
+早く春にならないかな。 | はやく はる に ならない かな。 | hayaku haru ni naranai kana.
+健太、早く来ないかな。 | けんた、 はやく こない かな。 | kenta, hayaku konai kana.
+誰か手伝ってくれないかな。 | だれ か てつだって くれない かな。 | dare ka tetsudatte kurenai kana.
+あの人、誰かしら。 | あの ひと、 だれ かしら。 | ano hito, dare kashira.
+雨、明日まで降るかしら。 | あめ、 あした まで ふる かしら。 | ame, ashita made furu kashira.
+このケーキ、子供も食べられるかしら。 | この ケーキ、 こども も たべられる かしら。 | kono keeki, kodomo mo taberareru kashira.
+窓、閉めたかしら。 | まど、 しめた かしら。 | mado, shimeta kashira.
+会議は何時からかな？ | かいぎ は なんじ から かな？ | kaigi wa nanji kara kana?
+会議は何時からでしょうか？ | かいぎ は なんじ から でしょう か？ | kaigi wa nanji kara deshou ka?
+山田さん、明日来るかな？ | やまださん、 あした くる かな？ | yamada-san, ashita kuru kana?
+どうかな。最近忙しいみたいだよ。 | どう かな。 さいきん いそがしい みたい だ よ。 | dou kana. saikin isogashii mitai da yo.
+じゃあ、後で電話してみようかな。 | じゃあ、 あと で でんわ して みよう かな。 | jaa, ato de denwa shite miyou kana.
+いるかな | いる かな | iru kana
+いるかしら | いる かしら | iru kashira
+いるのかな | いる の かな | iru no kana
+いるのかしら | いる の かしら | iru no kashira
+でしょうか | でしょう か | deshou ka
+かな | かな | kana
+かしら | かしら | kashira
+なのかな | な の かな | na no kana
+なのかしら | な の かしら | na no kashira
+帰ろうかな | かえろう かな | kaerou kana
+帰ろうかしら | かえろう かしら | kaerou kashira
+今日は休みかな。 | きょう は やすみ かな。 | kyou wa yasumi kana.
+今日は休みなのかな。 | きょう は やすみ な の かな。 | kyou wa yasumi na no kana.
+今日は休みかしら。 | きょう は やすみ かしら。 | kyou wa yasumi kashira.
+
+## n4-seeming/yasui-nikui
+〜やすい | 〜やすい | (label: no romaji)
+読みやすい | よみやすい | yomiyasui
+読みにくい | よみにくい | yominikui
+運転しやすい | うんてん しやすい | unten shiyasui
+運転しにくい | うんてん しにくい | unten shinikui
+読みやすかった | よみやすかった | yomiyasukatta
+読みにくかった | よみにくかった | yominikukatta
+読みやすくない | よみやすくない | yomiyasukunai
+読みにくくない | よみにくくない | yominikukunai
+読みやすい本 | よみやすい ほん | yomiyasui hon
+読みにくい本 | よみにくい ほん | yominikui hon
+このペンは書きやすいです。 | この ペン は かきやすい です。 | kono pen wa kakiyasui desu.
+このペン、書きやすい。 | この ペン、 かきやすい。 | kono pen, kakiyasui.
+先生の説明は分かりやすいですね。 | せんせい の せつめい は わかりやすい です ね。 | sensei no setsumei wa wakariyasui desu ne.
+先生の説明は分かりやすいね。 | せんせい の せつめい は わかりやすい ね。 | sensei no setsumei wa wakariyasui ne.
+この靴は歩きやすい。 | この くつ は あるきやすい。 | kono kutsu wa arukiyasui.
+この靴は歩きやすいです。 | この くつ は あるきやすい です。 | kono kutsu wa arukiyasui desu.
+冬は風邪を引きやすいです。 | ふゆ は かぜ を ひきやすい です。 | fuyu wa kaze o hikiyasui desu.
+冬は風邪を引きやすい。 | ふゆ は かぜ を ひきやすい。 | fuyu wa kaze o hikiyasui.
+東京は住みやすい町ですか？ | とうきょう は すみやすい まち です か？ | toukyou wa sumiyasui machi desu ka?
+東京って住みやすい？ | とうきょう って すみやすい？ | toukyou tte sumiyasui?
+この地図は見にくいです。 | この ちず は みにくい です。 | kono chizu wa minikui desu.
+この地図、見にくい。 | この ちず、 みにくい。 | kono chizu, minikui.
+この魚は骨が多くて、食べにくい。 | この さかな は ほね が おおくて、 たべにくい。 | kono sakana wa hone ga ookute, tabenikui.
+この魚は骨が多くて、食べにくいです。 | この さかな は ほね が おおくて、 たべにくい です。 | kono sakana wa hone ga ookute, tabenikui desu.
+ちょっと言いにくいんですが… | ちょっと いいにくい ん です が… | chotto iinikui n desu ga...
+この車は大きくて運転しにくいです。 | この くるま は おおきくて うんてん しにくい です。 | kono kuruma wa ookikute unten shinikui desu.
+この車、大きくて運転しにくい。 | この くるま、 おおきくて うんてん しにくい。 | kono kuruma, ookikute unten shinikui.
+この本は易しいです。 | この ほん は やさしい です。 | kono hon wa yasashii desu.
+この本は読みやすいです。 | この ほん は よみやすい です。 | kono hon wa yomiyasui desu.
+新しいスマホ、どうですか？ | あたらしい スマホ、 どう です か？ | atarashii sumaho, dou desu ka?
+使いやすいですよ。字が大きくて見やすいんです。 | つかいやすい です よ。 じ が おおきくて みやすい ん です。 | tsukaiyasui desu yo. ji ga ookikute miyasui n desu.
+いいですね。前のは使いにくかったですからね。 | いい です ね。 まえ の は つかいにくかった です から ね。 | ii desu ne. mae no wa tsukainikukatta desu kara ne.
+持ちやすいです | もちやすい です | mochiyasui desu
+切りにくい | きりにくい | kirinikui
+切りにくいね | きりにくい ね | kirinikui ne
+切りにくいな | きりにくい な | kirinikui na
+分かりにくかったです | わかりにくかった です | wakarinikukatta desu
+作りやすい | つくりやすい | tsukuriyasui
+このいすは座りにくいです。 | この いす は すわりにくい です。 | kono isu wa suwarinikui desu.
+
+## n4-seeming/garu
+〜がる | 〜がる | (label: no romaji)
+怖がる | こわがる | kowagaru
+残念がる | ざんねんがる | zannengaru
+欲しい | ほしい | hoshii
+欲しがる | ほしがる | hoshigaru
+行きたがる | いきたがる | ikitagaru
+怖がっている | こわがって いる | kowagatte iru
+妹は犬を怖がっています。 | いもうと は いぬ を こわがって います。 | imouto wa inu o kowagatte imasu.
+妹は犬を怖がっている。 | いもうと は いぬ を こわがって いる。 | imouto wa inu o kowagatte iru.
+子供が嫌がっているから、やめて。 | こども が いやがって いる から、 やめて。 | kodomo ga iyagatte iru kara, yamete.
+子供が嫌がっていますから、やめてください。 | こども が いやがって います から、 やめて ください。 | kodomo ga iyagatte imasu kara, yamete kudasai.
+山田さんは試合に負けて、残念がっていました。 | やまださん は しあい に まけて、 ざんねんがって いました。 | yamada-san wa shiai ni makete, zannengatte imashita.
+山田さんは試合に負けて、残念がっていた。 | やまださん は しあい に まけて、 ざんねんがって いた。 | yamada-san wa shiai ni makete, zannengatte ita.
+息子が新しい靴を欲しがっている。 | むすこ が あたらしい くつ を ほしがって いる。 | musuko ga atarashii kutsu o hoshigatte iru.
+息子が新しい靴を欲しがっています。 | むすこ が あたらしい くつ を ほしがって います。 | musuko ga atarashii kutsu o hoshigatte imasu.
+祖母はすぐ寒がる。 | そぼ は すぐ さむがる。 | sobo wa sugu samugaru.
+祖母はすぐ寒がります。 | そぼ は すぐ さむがります。 | sobo wa sugu samugarimasu.
+私は虫が怖いです。 | わたし は むし が こわい です。 | watashi wa mushi ga kowai desu.
+弟は虫を怖がっています。 | おとうと は むし を こわがって います。 | otouto wa mushi o kowagatte imasu.
+姉の子供が、うちの猫を怖がっているんだ。 | あね の こども が、 うち の ねこ を こわがって いる ん だ。 | ane no kodomo ga, uchi no neko o kowagatte iru n da.
+小さい子供はよく猫や犬を怖がるよね。 | ちいさい こども は よく ねこ や いぬ を こわがる よ ね。 | chiisai kodomo wa yoku neko ya inu o kowagaru yo ne.
+でも、猫のほうも嫌がっているみたい。 | でも、 ねこ の ほう も いやがって いる みたい。 | demo, neko no hou mo iyagatte iru mitai.
+怖がっています | こわがって います | kowagatte imasu
+怖がります | こわがります | kowagarimasu
+欲しがっている | ほしがって いる | hoshigatte iru
+欲しがっているよ | ほしがって いる よ | hoshigatte iru yo
+嫌がる | いやがる | iyagaru
+嫌がるよ | いやがる よ | iyagaru yo
+嫌がるよね | いやがる よ ね | iyagaru yo ne
+恥ずかしがっていました | はずかしがって いました | hazukashigatte imashita
+恥ずかしがりました | はずかしがりました | hazukashigarimashita
+弟は海を怖がっています。 | おとうと は うみ を こわがって います。 | otouto wa umi o kowagatte imasu.
+
+## n4-seeming/ga-suru
+がする | がする | (label: no romaji)
+音がする | おと が する | oto ga suru
+いい匂いがする | いい におい が する | ii nioi ga suru
+甘い味がする | あまい あじ が する | amai aji ga suru
+雨が降る気がする | あめ が ふる き が する | ame ga furu ki ga suru
+隣の部屋から変な音がする。 | となり の へや から へん な おと が する。 | tonari no heya kara hen na oto ga suru.
+隣の部屋から変な音がします。 | となり の へや から へん な おと が します。 | tonari no heya kara hen na oto ga shimasu.
+台所からいい匂いがします。 | だいどころ から いい におい が します。 | daidokoro kara ii nioi ga shimasu.
+台所からいい匂いがする。 | だいどころ から いい におい が する。 | daidokoro kara ii nioi ga suru.
+このジュース、ちょっと甘い味がするね。 | この ジュース、 ちょっと あまい あじ が する ね。 | kono juusu, chotto amai aji ga suru ne.
+このジュース、ちょっと甘い味がしますね。 | この ジュース、 ちょっと あまい あじ が します ね。 | kono juusu, chotto amai aji ga shimasu ne.
+外で子供の声がします。 | そと で こども の こえ が します。 | soto de kodomo no koe ga shimasu.
+外で子供の声がする。 | そと で こども の こえ が する。 | soto de kodomo no koe ga suru.
+誰かに見られている気がする。 | だれか に みられて いる き が する。 | dareka ni mirarete iru ki ga suru.
+誰かに見られている気がします。 | だれか に みられて いる き が します。 | dareka ni mirarete iru ki ga shimasu.
+今日はいいことがある気がします。 | きょう は いい こと が ある き が します。 | kyou wa ii koto ga aru ki ga shimasu.
+今日はいいことがある気がする。 | きょう は いい こと が ある き が する。 | kyou wa ii koto ga aru ki ga suru.
+この歌、どこかで聞いた気がする。 | この うた、 どこか で きいた き が する。 | kono uta, dokoka de kiita ki ga suru.
+この歌、どこかで聞いた気がします。 | この うた、 どこか で きいた き が します。 | kono uta, dokoka de kiita ki ga shimasu.
+彼は来ない気がします。 | かれ は こない き が します。 | kare wa konai ki ga shimasu.
+彼は来ない気がする。 | かれ は こない き が する。 | kare wa konai ki ga suru.
+明日は晴れると思います。 | あした は はれる と おもいます。 | ashita wa hareru to omoimasu.
+明日は晴れる気がします。 | あした は はれる き が します。 | ashita wa hareru ki ga shimasu.
+何か変な音がしませんか？ | なにか へん な おと が しません か？ | nanika hen na oto ga shimasen ka?
+あ、本当ですね。窓の外からですね。 | あ、 ほんとう です ね。 まど の そと から です ね。 | a, hontou desu ne. mado no soto kara desu ne.
+雨の音がしますね。 | あめ の おと が します ね。 | ame no oto ga shimasu ne.
+がします | が します | ga shimasu
+がする | が する | ga suru
+気がします | き が します | ki ga shimasu
+がする | が する | ga suru
+がするね | が する ね | ga suru ne
+外で大きい音がしました。 | そと で おおきい おと が しました。 | soto de ookii oto ga shimashita.
+
+## n4-seeming/commands
+〜ろ・〜な | 〜ろ・〜な | (label: no romaji)
+行け | いけ | ike
+行くな | いく な | iku na
+行きなさい | いきなさい | ikinasai
+食べろ | たべろ | tabero
+食べるな | たべる な | taberu na
+食べなさい | たべなさい | tabenasai
+する | する | suru
+しろ | しろ | shiro
+するな | する な | suru na
+しなさい | しなさい | shinasai
+来る | くる | kuru
+来い | こい | koi
+来るな | くる な | kuru na
+来なさい | きなさい | kinasai
+止まれ | とまれ | tomare
+頑張れ！ | がんばれ！ | ganbare!
+早く寝ろ。 | はやく ねろ。 | hayaku nero.
+早く寝てください。 | はやく ねて ください。 | hayaku nete kudasai.
+こっちに来い！ | こっち に こい！ | kotchi ni koi!
+こっちに来てください。 | こっち に きて ください。 | kotchi ni kite kudasai.
+正しいものを選べ。 | ただしい もの を えらべ。 | tadashii mono o erabe.
+触るな | さわる な | sawaru na
+危ない！そこに入るな！ | あぶない！ そこ に はいる な！ | abunai! soko ni hairu na!
+危ないですから、そこに入らないでください。 | あぶない です から、 そこ に はいらないで ください。 | abunai desu kara, soko ni hairanaide kudasai.
+泣くなよ。 | なく な よ。 | naku na yo.
+明日の約束、忘れるなよ。 | あした の やくそく、 わすれる な よ。 | ashita no yakusoku, wasureru na yo.
+明日の約束、忘れないでくださいね。 | あした の やくそく、 わすれないで ください ね。 | ashita no yakusoku, wasurenaide kudasai ne.
+もう七時だよ。早く起きなさい！ | もう しちじ だ よ。 はやく おきなさい！ | mou shichiji da yo. hayaku okinasai!
+野菜も食べなさい。 | やさい も たべなさい。 | yasai mo tabenasai.
+宿題をしてから遊びなさい。 | しゅくだい を して から あそびなさい。 | shukudai o shite kara asobinasai.
+次の質問に答えなさい。 | つぎ の しつもん に こたえなさい。 | tsugi no shitsumon ni kotaenasai.
+早く食べろ！ | はやく たべろ！ | hayaku tabero!
+早く食べなさい。 | はやく たべなさい。 | hayaku tabenasai.
+もっと速く走れ！ | もっと はやく はしれ！ | motto hayaku hashire!
+下を見るな！前を見ろ！ | した を みる な！ まえ を みろ！ | shita o miru na! mae o miro!
+健太、頑張れ！ | けんた、 がんばれ！ | kenta, ganbare!
+来い | こい | koi
+開けるな | あける な | akeru na
+洗いなさい | あらいなさい | arainasai
+掃除しろ | そうじ しろ | souji shiro
+もっと食べろ！ | もっと たべろ！ | motto tabero!
 
 ## read/shop-sign
 本日休業 | ほんじつ きゅうぎょう | honjitsu kyuugyou

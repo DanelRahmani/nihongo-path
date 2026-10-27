@@ -37,7 +37,9 @@ describe("More words cards", () => {
     const ranks = cards.filter((c) => !moved.has(written(c.jp))).map((c) => rank.get(c.id) ?? Infinity);
     expect(ranks.every((r, i) => i === 0 || ranks[i - 1] <= r)).toBe(true);
     expect(written(cards[0].jp)).toBe("自分");
-    for (const c of cards.filter((k) => moved.has(written(k.jp)))) expect(rank.get(c.id)! < 1000 ? cards.indexOf(c) : Infinity, c.jp).toBeGreaterThan(800);
+    // They come after every other word ranked under 1000 (a position, not a fixed index: the deck shrinks as lessons take words).
+    const lastEarly = Math.max(...cards.map((c, i) => (!moved.has(written(c.jp)) && rank.get(c.id)! < 1000 ? i : -1)));
+    for (const c of cards.filter((k) => moved.has(written(k.jp)))) expect(cards.indexOf(c), c.jp).toBeGreaterThan(lastEarly);
     expect(cards[0].group).toBe("1");
     expect(cards[50].group).toBe("2");
   });

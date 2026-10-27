@@ -35,6 +35,17 @@ export const KANA_WORDS: [string, string][] = [
   ["ご馳走様", "ごちそうさま"],
   ["御馳走様", "ごちそうさま"],
   ["頂きます", "いただきます"],
+  // Keigo verbs the lessons write in kana (n4-giving-voice): いたす, いただく, おっしゃる.
+  ["致し", "いたし"],
+  ["致さ", "いたさ"],
+  ["頂き", "いただき"],
+  ["頂い", "いただい"],
+  ["頂け", "いただけ"],
+  ["頂か", "いただか"],
+  ["仰っ", "おっしゃっ"],
+  ["仰い", "おっしゃい"],
+  ["仰る", "おっしゃる"],
+  ["仰ら", "おっしゃら"],
 ];
 
 /** Full- and half-width folded (NFKC); spaces and punctuation ignored (はい、[食|た]べました = はい [食|た]べました). */

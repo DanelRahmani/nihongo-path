@@ -12,13 +12,13 @@ export const BATCH_01: Word[] = [
   // moved to the lessons (n4-plans/nagara): 1221520 [気|き]
   // moved to the lessons (n4-plans/hajimeru): 1600900 [話|はなし]
   // moved to the lessons (n5-essentials/temo-ii): 1305990 [使|つか]う
-  x("1577985", "おる", "verb", "to be (humble)", "language", "godan"),
+  // moved to the lessons (n4-giving-voice/kenjougo): 1577985 おる
   x("1012050", "まあ", "adverb", "well, I suppose; more or less", "language"),
   // skipped: 1375260 [性|せい] (suffix (-ness, nature))
   x("1445640", "やつ", "noun", "guy, fellow; thing (casual; rude about people)", "people"),
   // moved to the lessons (n4-plans/noni-purpose): 1487660 [必要|ひつよう]
   x("1202150", "みな", "noun", "everyone, all (a little formal)", "people"),
-  x("1007130", "そんな", "pre-noun", "that kind of, such", "language"),
+  // moved to the lessons (n4-seeming/hazu): 1007130 そんな
   x("1258810", "[県|けん]", "noun", "prefecture", "places"),
   x("1004880", "こんな", "pre-noun", "this kind of, like this", "language"),
   // moved to the lessons (n4-plans/hajimeru): 1451750 [同|おな]じ
@@ -38,7 +38,7 @@ export const BATCH_01: Word[] = [
   x("1538900", "ただ", "noun", "free (of charge); ordinary", "shopping"),
   x("1419990", "[男|おとこ]", "noun", "man, male (blunt when said of a person)", "people"),
   // moved to the lessons (n4-plans/tokoro): 1343100 [所|ところ]
-  x("1535910", "もらう", "verb", "to receive, to get", "everyday", "godan"),
+  // moved to the lessons (n4-giving-voice/ageru-kureru-morau): 1535910 もらう
   x("1009500", "なんか", "adverb", "things like, such as; something like (casual)", "language"),
   x("1344930", "[女|おんな]", "noun", "woman, female (blunt when said of a person)", "people"),
   x("1366770", "[人間|にんげん]", "noun", "human being, person", "people"),
@@ -51,7 +51,7 @@ export const BATCH_01: Word[] = [
   x("1605810", "[世|よ]", "noun", "world, society; lifetime", "everyday"),
   // moved to the lessons (n4-plans/te-aru): 1207610 かける
   // moved to the lessons (n5-essentials/temo-ii): 1409110 だめ
-  x("1577200", "かわいい", "i-adj", "cute, adorable", "feelings"),
+  // moved to the lessons (n4-giving-voice/ageru-kureru-morau): 1577200 かわいい
   // moved to the lessons (n4-conditions/advice): 1012620 もっと
   x("1254690", "[結果|けっか]", "noun", "result, consequence; as a result", "school-work"),
   x("1306200", "[使用|しよう]", "noun", "use (する: to use)", "everyday"),
@@ -82,7 +82,7 @@ export const BATCH_01: Word[] = [
   x("1355850", "[場所|ばしょ]", "noun", "place, location", "places"),
   x("1499290", "[部|ぶ]", "noun", "department, section; club", "school-work"),
   x("1509430", "[別|べつ]", "noun", "different, separate, other", "everyday"),
-  x("1587290", "いただく", "verb", "to receive; to eat, to drink (humble)", "everyday", "godan"),
+  // moved to the lessons (n4-giving-voice/requests): 1587290 いただく
   // moved to the lessons (n5-essentials/kata): 1264540 [言葉|ことば]
   // moved to the lessons (n4-plans/you-ni): 1495770 つける
   x("1510790", "[変|か]わる", "verb", "to change, to become different", "everyday", "godan"),
@@ -129,7 +129,7 @@ export const BATCH_01: Word[] = [
   x("1202710", "[開催|かいさい]", "noun", "holding (an event) (する: to hold)", "everyday"),
   x("1205900", "[確認|かくにん]", "noun", "confirmation (する: to check)", "everyday"),
   x("1321110", "[実際|じっさい]", "noun", "reality, actual state; in fact", "everyday"),
-  x("1005180", "さっき", "noun", "a moment ago, just now", "time"),
+  // moved to the lessons (n4-seeming/to-iu): 1005180 さっき
   x("1289070", "[今回|こんかい]", "noun", "this time, now", "time"),
   // moved to the lessons (n5-essentials/nakute-mo-ii): 1396130 [全部|ぜんぶ]
   // moved to the lessons (n4-plans/made-ni-aida): 1006380 ずっと
@@ -142,8 +142,8 @@ export const BATCH_01: Word[] = [
   // skipped: 1399970 かく (artefact: かく is mostly 書く, 描く or 掻く; the kana form is ambiguous)
   x("1342550", "[初|はじ]めて", "adverb", "for the first time", "time"),
   x("1355790", "[場|ば]", "noun", "place, spot; scene", "places"),
-  x("1357600", "[色|いろ]", "noun", "colour", "everyday"),
-  x("1378860", "[生活|せいかつ]", "noun", "life, living (する: to live)", "everyday"),
+  // moved to the lessons (n4-giving-voice/kenjougo): 1357600 [色|いろ]
+  // moved to the lessons (n4-seeming/to-iu): 1378860 [生活|せいかつ]
   // moved to the lessons (n4-plans/te-iku-kuru): 1535780 もちろん
   x("1244080", "[区|く]", "noun", "ward (of a city), district", "places"),
   x("1590560", "かなり", "adverb", "quite, fairly, considerably", "everyday"),
@@ -165,14 +165,14 @@ export const BATCH_01: Word[] = [
   x("1211510", "[完全|かんぜん]", "na-adj", "perfect, complete", "everyday"),
   x("1225130", "[技術|ぎじゅつ]", "noun", "technology; technique, skill", "school-work"),
   x("1258520", "[研究|けんきゅう]", "noun", "research, study (する: to research)", "school-work"),
-  x("1386460", "[説明|せつめい]", "noun", "explanation (する: to explain)", "school-work"),
+  // moved to the lessons (n4-giving-voice/te-ageru-kureru-morau): 1386460 [説明|せつめい]
   x("1454670", "[特|とく]に", "adverb", "especially, in particular", "everyday"),
-  x("1529410", "[夢|ゆめ]", "noun", "dream; hope", "feelings"),
+  // moved to the lessons (n4-seeming/you-mitai): 1529410 [夢|ゆめ]
   x("1610040", "せい", "noun", "fault, blame (because of)", "everyday"),
-  x("1593480", "[怖|こわ]い", "i-adj", "scary, frightening", "feelings"),
+  // moved to the lessons (n4-seeming/garu): 1593480 [怖|こわ]い
   // skipped: 1319060 [式|しき] (mostly a suffix (-style, ceremony))
   x("1394680", "そういう", "pre-noun", "that kind of, such", "language"),
-  x("1477840", "[発表|はっぴょう]", "noun", "announcement, presentation (する: to announce)", "school-work"),
+  // moved to the lessons (n4-giving-voice/causative-passive): 1477840 [発表|はっぴょう]
   // moved to the lessons (n4-plans/te-iku-kuru): 1602440 [増|ふ]える
   // skipped: 1956960 [無|む] (prefix (un-, nothing))
   x("1021680", "イベント", "noun", "event", "hobbies"),
@@ -184,9 +184,9 @@ export const BATCH_01: Word[] = [
   x("1499490", "[部分|ぶぶん]", "noun", "part, portion", "everyday"),
   x("1596930", "[確|たし]か", "na-adj", "certain, sure; if I remember right", "everyday"),
   x("1544730", "[与|あた]える", "verb", "to give, to grant (formal); to cause (damage)", "everyday", "ichidan"),
-  x("1588730", "[選|えら]ぶ", "verb", "to choose, to pick", "everyday", "godan"),
+  // moved to the lessons (n4-giving-voice/causative): 1588730 [選|えら]ぶ
   x("1007720", "ちゃんと", "adverb", "properly, neatly; diligently", "everyday"),
-  x("1091500", "ニュース", "noun", "news", "everyday"),
+  // moved to the lessons (n4-seeming/sou-hearsay): 1091500 ニュース
   x("1150410", "[愛|あい]", "noun", "love, affection", "feelings"),
   x("1351430", "[紹介|しょうかい]", "noun", "introduction (する: to introduce)", "people"),
   x("1390360", "[戦争|せんそう]", "noun", "war", "everyday"),
@@ -209,9 +209,9 @@ export const BATCH_01: Word[] = [
   x("1202880", "[開発|かいはつ]", "noun", "development (する: to develop)", "school-work"),
   x("1223240", "[記事|きじ]", "noun", "article, news story", "school-work"),
   x("1296300", "[際|さい]", "noun", "occasion, time (when) (formal)", "time"),
-  x("1318720", "[自由|じゆう]", "noun", "freedom; free (to choose)", "everyday"),
+  // moved to the lessons (n4-giving-voice/sonkeigo): 1318720 [自由|じゆう]
   x("1368370", "[人生|じんせい]", "noun", "life (of a person)", "everyday"),
-  x("1382370", "[昔|むかし]", "noun", "long ago, the old days", "time"),
+  // moved to the lessons (n4-seeming/rashii): 1382370 [昔|むかし]
   x("1535560", "[目的|もくてき]", "noun", "purpose, goal", "everyday"),
   x("1522050", "ほとんど", "adverb", "almost, nearly; hardly (with a negative)", "everyday"),
   // skipped: 1505080 [文|ふみ] (rare reading (letter, writing); the common reading is ぶん)

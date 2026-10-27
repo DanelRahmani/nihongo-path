@@ -8,7 +8,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 
 ### Next
 - **Owner's JLPT prompt (2026-10-21):** Phase 0 (progress export) is done and on main (2026-10-21). The owner then chose (2026-10-21) to do Phases 1–3 (N5–N2 grammar wired into the drills, placement to N2) and 4 (an LLM sentence checker, design first) now. **Phase 1's brief: `docs/PLAN-jlpt-phase1.md`** (start there); one phase per commit, then a report and a stop. Keep new tests to an absolute minimum (owner). JLPT phases fill the export's `jlptLevel` and `grammarPointId` (docs/EXPORT_FORMAT.md; bump `BACKUP_VERSION`).
-  - **Phase 1 status (2026-10-22):** units 九 `n5-essentials` (20 lessons), 十 `n4-conditions` (9) and 十一 `n4-plans` (18) are written, reviewed and fixed, and committed as a checkpoint (owner, 2026-10-22: one commit per finished unit, pushed to `features`). Next: unit 十二 `n4-giving-voice`, then 十三 `n4-seeming` (two writers), then Step 4 (trainer forms for passive, causative, causative-passive, honorific, humble and commands; placement level names; counts; browser checks; the final report).
+  - **Phase 1 is done (2026-10-27)** and reported (see Built). Phase 2 (N3) starts only when the owner says so. Its brief is still to be written; carry over: ために and ずに (skipped as N3), the four N3-tagged points already taught in N4 units, the writer spec and its review lessons (side-session notes), and checkpoint commits per unit.
+    - Unit 十二: the conjugation trainer asks the passive, causative, causative-passive, honorific and humble forms. Keigo cloze cards where the plain polite verb fits are excluded (keigo is drilled by the quizzes and the trainer). The checker folds 致し, 頂き and 仰る to kana.
     - How the units are made: one writer agent per batch from a shared spec (`writer-spec.md` in the session's side-session notes, with the review lessons appended), then a fresh reviewer and a fixer. Owner, 2026-10-22: reviewers and fixers on Sonnet from here on, one review per unit, Haiku only for mechanical passes.
     - Step 3's engine is done: `lib/conjugate.ts` builds `causativePassive` (書かせられる, short 書かされる as a variant, not for す-verbs), `honorific` (お〜に なる; special verbs from a table) and `humble` (お〜 する for an allow-list; special verbs from a table), with golden rows. The trainer asks ば (from `n4-conditions/ba`); the other new forms wait for unit 十二's lessons.
     - The quiz checker (`lib/quiz.ts`) now accepts a keyboard's kanji for whole-word grammar nouns (時, 事, 方, 頃…), すぎ → 過ぎ, ほしい → 欲しい and helper verbs after て (見る, 置く, 行く, 来る), and the ている contraction (てる, てた, てます). STYLE §5 records it.
@@ -398,7 +399,23 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - Import offers Merge (`lib/merge.ts`: newer state per card, histories, lessons, words, notebook, daily counts and placement checks joined; settings kept) or Replace.
   - `docs/EXPORT_FORMAT.md` documents every field; `BACKLOG.md` lists the localStorage limit (about 60,000 answers). The first attempt, built on a stale checkout, is kept on the local branch `phase0-stale`.
 
+- **JLPT Phase 1: N5 gaps and N4 grammar (2026-10-21 to 2026-10-27):** brief `docs/PLAN-jlpt-phase1.md`; checkpoints 1df6d1d (units 九–十一), 3f7960e (十二), and this unit 十三 commit.
+  - Step 0: JLPT tags on every grammar, particle and verb lesson and every grammar topic (`content/jlpt.ts`: Bunpro primary, JLPT Sensei cross-check, 45 of 190 topics with a `disputed` note); `needsReview` (none left: each reviewer cleared or fixed its unit's flags); the `/grammar` level filter (All, N5, N4, N3) with a label per topic; the export's `jlptLevel`, `lessonId` and `grammarPointId`.
+  - Five units, 74 lessons, 129 grammar topics, each unit written by Opus writers from one spec, reviewed by a fresh agent (Opus for 九–十一a, Sonnet from 十一b on, owner's choice) and fixed:
+    - 九 `n5-essentials` (21): てもいい/てはいけない, ないでください, must and don't-have-to, まえに/あとで/てから, とき, nominaliser の, comparing, ほうがいい, でしょう/だろう, かた, たり, たことがある, ほしい, もう/まだ, だけ/しか, すぎる, つもり, 誰か/誰も, なる/にする, くらい/ごろ.
+    - 十 `n4-conditions` (9): ば, と, なら, the four compared, ても, のに, けど, し, advice.
+    - 十一 `n4-plans` (18): purpose のに, ように, ようにする/なる, ことにする/なる, ことができる, ようと思う/予定, てしまう, ておく, てある, てみる, ていく/てくる, ところ, たばかり, ながら, までに/間, ないで, ことがある, stem + 始める/終わる/続ける/出す.
+    - 十二 `n4-giving-voice` (11): あげる/くれる/もらう and their て forms, requests, てほしい, the passive and suffering passive, the causative and causative-passive, させてください, 尊敬語, 謙譲語.
+    - 十三 `n4-seeming` (15): そう (looks, heard), よう/みたい, らしい, はず, かもしれない, と思う, と言う/という/ということ, か/かどうか, のだ/んです, かな/かしら, やすい/にくい, がる, がする, commands.
+    - Added beyond the brief from the lists: だけ/しか, すぎる, 誰か/誰も, くなる/にする, くらい/ごろ, advice, ことがある, stem compounds, がする. Skipped: ために and ずに (N3 on both lists), a separate ので lesson (`particles/kara-made` teaches it), だろう as its own lesson (in でしょう).
+  - Step 3: engine forms `causativePassive`, `honorific`, `humble` (golden rows); the trainer asks ば, passive, causative, causative-passive, honorific, humble, the plain command, な and なさい, each from its lesson (24 verb forms).
+  - Step 4: placement has 12 bands, two picks per new unit, and names the level reached ("Start with If, even if, because: around JLPT N4", from the level most of the unit's lessons carry).
+  - Checker (`lib/quiz.ts`): a keyboard's kanji for grammar nouns, すぎ, ほしい, helper verbs after て and keigo verbs (致し, 頂き, 仰る), and the ている contraction. Resolver (`lib/words.ts`): contractions (ちゃ, なきゃ, ちゃう, とく), たり, すぎる, stem compounds, そう, やすい/にくい, がる. `registerOf` gives lines ending in かも, かな, かしら, らしい, みたい the casual register.
+  - 205 expansion words moved into the lessons (`MOVED_TO_LESSONS`); 135 new kanji. Test changes: the More words floor and order checks, the search-split ratio (a third), the word-lessons ceiling (40 KB), the vitest timeout (20 s); no new tests beyond the engine's golden rows.
+
 ### Decisions
+- Owner, 2026-10-22 (JLPT Phase 1): a checkpoint commit per finished unit, pushed to `features` (not one per phase); reviews and fixers on Sonnet, one review per unit, Haiku only for mechanical passes (supersedes Q7 for later phases).
+- JLPT Phase 1 calls I made: keigo cloze cards where the plain polite verb fits are excluded; points Bunpro puts at N3 and JLPT Sensei at N4 are taught and tagged N3 (the filter offers N3); a word taken into the lessons leaves the More words deck.
 - 2026-10-21: the owner asked to push Phase 0 to main. main was fast-forwarded to 36473bb; no merge commit.
 - 2026-10-15: after I1–I10, with the owner's permission given for this round ("push to main only once all ten items are done and green"), `main` was fast-forwarded to `features`; no merge commit, nothing force-pushed. The whole build was checked once more first: 889 tests, typecheck, lint, a clean build and the full accessibility sweep.
 - Owner, 2026-10-15 (I10, one round of questions; 象は鼻が長い stays, credited to Mikami Akira in STYLE §2): add 出来事 and 流行る in kanji; keep けが, くい, 決して and 引っ張る held back; keep 是非 in kana, めがね in hiragana and 殺す left out, and add the era names; keep the menu marks 丁寧 and 読む, 象は鼻が長い and the refused ゆく/いらっしゃれる forms; leave the external items (Waller's lists, the KANJIDIC2 licence, the special marks, the 2242 list, pitch audio, the keyboard checks) listed.
@@ -444,7 +461,8 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - The 箸/橋 pair became 紙/髪, because 箸 and 橋 differ in pitch. Pairs never claim two words sound the same; they "share a kana spelling".
 
 ### Numbers
-- 9 units, 62 lessons, 208 kana cards.
+- After JLPT Phase 1 (2026-10-27): 14 units, 136 lessons (74 new: 20 tagged N5, 50 N4, 4 N3); 190 grammar topics (129 new: 35 N5, 88 N4, 6 N3 across all); 980 tests in 46 files; cloze 1,388 cards; polite ↔ casual 503 per direction; Type it 1,665 lines; placement 12 bands, 24 questions; trainer 24 verb forms; 539 kanji; 205 words moved from the expansion. Per-lesson counts: `phase1-counts.txt` in the session notes.
+- Before Phase 1: 9 units, 62 lessons, 208 kana cards.
 - 1,192 Japanese lines (not counting labels), including quiz answers: 552 example, pair, dialogue and alt sentences, of which 436 have a highlight.
 - 2,592 ruby tokens and 384 distinct kanji, prose included. These are counted differently from the A1 figures (536 lines, 897 tokens, 244 kanji), so the two sets don't compare.
 - Tests: 896 in 46 files. Fonts: 1,582 characters, 363 of 729 `@font-face` rules kept. Accessibility sweep (2026-10-15, after I1–I10): 84 pages × 2 schemes, 11,086 focus stops, 12 interactive states, 11 Lighthouse pages at 100, no findings.
@@ -805,6 +823,12 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
 - Phase 0 in the browser at 375 px, light and dark: quiz and kana answers recorded with answer and time; lesson open and done times; the export lists them with prompt and answer text, the daily row and settings; the CSV starts EF BB BF; after clearing storage, Replace restored every store byte for byte; Merge of the same file changed nothing; another app's JSON is refused; no horizontal scroll.
 
 ### Waiting on the owner
+- JLPT Phase 1:
+  - No native speaker has read the 74 new lessons; the reviewers were AI. Most worth a native check: the keigo lessons, the conditionals compared, the suffering passive, and quiz answer lists that accept contractions in polite answers (なきゃいけません, 起きたらよかったです).
+  - 45 disputed JLPT levels (Bunpro vs JLPT Sensei), listed in `phase1-disputes.txt` in the session notes and on each topic.
+  - Keigo has no cloze cards (the plain polite verb fits every gap); it is drilled by its quizzes and the trainer's honorific and humble forms.
+  - On Windows, `npm run build`'s font trim deletes every font (BACKLOG.md); Vercel builds on Linux.
+  - Not done: the full accessibility sweep (`npm run a11y`) on the new pages, and an export downloaded in the browser (the export's JLPT fields were checked with a script).
 - I2 keyboard steps not checked on real devices (written from general knowledge; the page says to search settings where names differ):
   - iOS 17–18: Settings → General → Keyboard → Keyboards → Add New Keyboard → Japanese → Romaji/Kana; whether kanji appear as you type by default; whether x/l small kana work on the Romaji layout; the ー key.
   - Gboard: the gear in its toolbar; Languages → Add keyboard → 日本語 → QWERTY or 12 keys; the globe key; x/l small kana.

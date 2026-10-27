@@ -26,7 +26,7 @@ export const BATCH_04: Word[] = [
   x("1433030", "[通|とお]る", "verb", "to pass, to go through", "travel", "godan"),
   x("1592270", "[首|くび]", "noun", "neck", "body"),
   x("1593830", "[様々|さまざま]", "na-adj", "various, diverse", "everyday"),
-  x("1497980", "[負|ま]ける", "verb", "to lose, to be defeated", "hobbies", "ichidan"),
+  // moved to the lessons (n4-seeming/hazu): 1497980 [負|ま]ける
   x("1566210", "いずれ", "adverb", "sooner or later, eventually; which, either (formal)", "language"), // pos: was pronoun
   x("1502480", "[物語|ものがたり]", "noun", "story, tale", "language"),
   // moved to the lessons (n5-essentials/no-nominaliser): 1013050 ゆっくり
@@ -70,7 +70,7 @@ export const BATCH_04: Word[] = [
   x("1605280", "もともと", "adverb", "originally, from the start", "time"),
   x("1469870", "[悩|なや]む", "verb", "to worry, to be troubled", "feelings", "godan"),
   // skipped: 1583630 [付|つ]き (a suffix: "attached to, with")
-  x("1006780", "そちら", "pronoun", "that way, there; you (polite)", "language"),
+  // moved to the lessons (n4-giving-voice/kenjougo): 1006780 そちら
   x("1365860", "つらい", "i-adj", "painful, hard to bear", "feelings"),
   x("1132680", "メイン", "noun", "main; main dish", "everyday"),
   x("1220810", "[機械|きかい]", "noun", "machine", "everyday"),
@@ -234,7 +234,7 @@ export const BATCH_04: Word[] = [
   x("1509480", "[別|べつ]に", "adverb", "(not) particularly; separately", "language"),
   x("1546550", "[葉|は]", "noun", "leaf", "nature"),
   x("1578700", "[工場|こうじょう]", "noun", "factory", "places"),
-  x("1600160", "[値段|ねだん]", "noun", "price", "shopping"),
+  // moved to the lessons (n4-seeming/to-iu): 1600160 [値段|ねだん]
   x("1191680", "[嫁|よめ]", "noun", "bride; daughter-in-law; (casual) my wife", "people"),
   x("1369900", "ごみ", "noun", "trash, garbage", "home"),
   x("1324520", "[弱|よわ]い", "i-adj", "weak", "everyday"),

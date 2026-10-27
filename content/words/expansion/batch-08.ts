@@ -66,7 +66,7 @@ export const BATCH_08: Word[] = [
   x("1534930", "[黙|だま]る", "verb", "to be silent, to say nothing", "everyday", "godan"),
   x("1176780", "[演|えん]じる", "verb", "to play (a role), to act", "hobbies", "ichidan"),
   x("1481920", "うるさい", "i-adj", "noisy, annoying; fussy", "everyday"),
-  x("1599390", "[直|なお]す", "verb", "to fix, to repair; to correct", "everyday", "godan"),
+  // moved to the lessons (n4-giving-voice/te-ageru-kureru-morau): 1599390 [直|なお]す
   x("1586420", "[暖|あたた]かい", "i-adj", "warm, mild (weather, a room)", "nature"),
   x("1394600", "ようやく", "adverb", "finally, at last; barely", "everyday"),
   // moved to the lessons (n4-plans/te-shimau): 1208000 [割|わ]る
@@ -139,13 +139,13 @@ export const BATCH_08: Word[] = [
   x("1601890", "[必死|ひっし]", "na-adj", "desperate, frantic, all-out", "feelings"),
   x("1592380", "[蔵|くら]", "noun", "storehouse, warehouse", "home"),
   x("1317340", "[自|みずか]ら", "adverb", "personally, in person, of one's own accord (formal)", "everyday"), // pos: was noun (mostly adverbial: 自ら選ぶ; 自らの is the noun use)
-  x("1365850", "[辛|から]い", "i-adj", "spicy, hot; salty", "food"),
+  // moved to the lessons (n4-seeming/sou-looks): 1365850 [辛|から]い
   x("1335520", "[汁|しる]", "noun", "soup, broth; juice", "food"),
   x("1571320", "なめる", "verb", "to lick; to taste; to make light of", "body", "ichidan"),
   // moved to the lessons (n4-plans/noni-purpose): 1215260 [間|ま]に[合|あ]う
   // skipped: 1537250 [野|の] (literary on its own; counted from compounds and names such as 上野)
   // skipped: 1465410 [入|い]り (mostly the suffix 〜入り (containing; start of a season))
-  x("1592500", "[具合|ぐあい]", "noun", "condition, state (of health or things)", "everyday"),
+  // moved to the lessons (n4-giving-voice/sasete-kudasai): 1592500 [具合|ぐあい]
   // skipped: 1139550 ラブ (low-value katakana, mostly in compounds; 愛 and 恋 cover it)
   x("1326920", "[取|と]り[柄|え]", "noun", "good point, merit", "people"),
   x("1015170", "アクション", "noun", "action", "hobbies"),
@@ -230,11 +230,11 @@ export const BATCH_08: Word[] = [
   x("2005890", "やる[気|き]", "noun", "motivation, drive", "feelings"),
   x("2164680", "[仙台|せんだい]", "noun", "Sendai (a city in northern Japan)", "places"),
   // skipped: 1315120 [字|あざ] (homograph; rare "village section")
-  x("1315130", "[字|じ]", "noun", "character, letter (written)", "language"),
+  // moved to the lessons (n4-seeming/yasui-nikui): 1315130 [字|じ]
   // skipped: 1409810 [対|つい] (homograph; rare "pair" reading)
   x("1211150", "[巻|ま]き[込|こ]む", "verb", "to involve, to drag into", "everyday", "godan"),
   // moved to the lessons (n4-conditions/to-natural): 1529390 [眠|ねむ]る
-  x("1403040", "[騒|さわ]ぐ", "verb", "to make noise, to make a fuss", "everyday", "godan"),
+  // moved to the lessons (n4-giving-voice): 1403040 [騒|さわ]ぐ
   x("1217070", "おもちゃ", "noun", "toy", "hobbies"),
   x("1594180", "[仕組|しく]み", "noun", "mechanism, structure, system", "everyday"),
   x("1361330", "[振|ふ]る", "verb", "to wave, to shake; to turn down (a person)", "everyday", "godan"),

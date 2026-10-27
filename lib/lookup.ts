@@ -91,10 +91,14 @@ const FORM_LABELS: Record<string, string> = {
   chau: "ちゃう (casual てしまう)",
   toku: "とく (casual ておく)",
   sugiru: "すぎる (too much)",
+  sou: "そう (looks …)",
   hajimeru: "stem + はじめる (start …ing)",
   owaru: "stem + おわる (finish …ing)",
   tsuzukeru: "stem + つづける (keep on …ing)",
   dasu: "stem + だす (suddenly start)",
+  yasui: "stem + やすい (easy to …)",
+  nikui: "stem + にくい (hard to …)",
+  garu: "がる (someone else shows a feeling)",
 };
 
 type Indexes = { lesson: ReturnType<typeof buildIndex>; all: ReturnType<typeof buildIndex> };

@@ -40,6 +40,8 @@ function registerOf(jp: Jp, ix: ReturnType<typeof buildIndex>): ClozeCard["regis
   if (reg === "polite") return "polite";
   if (reg === "plain") return "casual";
   const words = unbraced(jp).replace(/[。、？！…]+$/, "").split(/\s+/).filter((w) => !/^(か|よ|ね|よね|の|な)$/.test(w));
+  // かも (casual かもしれない), かな, かしら (I wonder), らしい and みたい are grammar words, but only casual speech ends a line with them.
+  if (["かも", "かな", "かしら", "らしい", "みたい"].includes(words.at(-1) ?? "")) return "casual";
   const r = resolveWord(words.at(-1) ?? "", ix);
   const predicate = r && "word" in r && ["verb", "i-adj", "na-adj"].includes(r.word.pos) && !(r.how === "form" && r.form === "sa");
   return predicate ? "casual" : undefined;

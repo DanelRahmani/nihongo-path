@@ -60,6 +60,7 @@ export const DESCRIBING: Word[] = [
   w("adverb", "まだ", "still; not yet", "time"),
   w("adverb", "また", "again", "time"),
   w("adverb", "すぐ", "soon, right away", "time"),
+  w("adverb", "もうすぐ", "very soon, any minute now", "time"),
   w("adverb", "いつも", "always", "time"),
   w("adverb", "よく", "often; well", "everyday"),
   w("adverb", "そろそろ", "soon, it's about time", "time"),
@@ -71,7 +72,7 @@ export const DESCRIBING: Word[] = [
   w("adverb", "どうぞ", "please, go ahead", "greetings"),
   w("adverb", "どうも", "thanks; very", "greetings"),
   w("adverb", "こう", "like this, this way", "language"),
-  w("adverb", "そう", "like that, so", "language"),
+  w("adverb", "そう", "like that, so; (after a stem: 〜そう) looks …; (after a plain form: 〜そうだ) I hear", "language"),
   w("adverb", "ああ", "like that (something distant, or that you both know)", "language"),
   // The reading view (content/reading.ts)
   iAdj("うれしい", "happy, glad", "feelings"),
@@ -100,4 +101,18 @@ export const DESCRIBING: Word[] = [
   naAdj("[急|きゅう]", "sudden (急に: suddenly)", "everyday"),
   w("adverb", "ずっと", "all the time, the whole time; much (more)", "time"),
   w("adverb", "もちろん", "of course", "language"),
+// Giving, voice and polite speech (unit 十二)
+  iAdj("かわいい", "cute", "feelings"),
+  iAdj("[悪|わる]い", "bad", "everyday"),
+  naAdj("[嫌|いや]", "unpleasant; not wanting to", "feelings"),
+  w("adverb", "[全然|ぜんぜん]", "(not) at all", "language"),
+  // Seeming, hearsay and thinking (unit 十三)
+  iAdj("[辛|から]い", "spicy, hot; salty", "food"),
+  w("adverb", "そんなに", "that much, so (much)", "language"),
+  iAdj("おかしい", "strange, funny; wrong", "feelings"),
+  iAdj("[正|ただ]しい", "correct, right", "everyday"),
+  iAdj("[怖|こわ]い", "scary, frightening", "feelings"),
+  naAdj("[変|へん]", "strange, odd", "feelings"),
+  iAdj("[恥|は]ずかしい", "embarrassed, shy; embarrassing", "feelings"),
+  iAdj("[易|やさ]しい", "easy, simple (to understand or do)", "everyday"),
 ];

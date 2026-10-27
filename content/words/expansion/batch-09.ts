@@ -42,7 +42,7 @@ export const BATCH_09: Word[] = [
   x("1231650", "[去|さ]る", "verb", "to leave, to go away; to pass (of time)", "everyday", "godan"),
   x("1370760", "[吹|ふ]く", "verb", "to blow (wind, breath); to play (a wind instrument)", "nature", "godan"),
   x("1123990", "ボディー", "noun", "body (of a person or vehicle)", "body"),
-  x("1603550", "[褒|ほ]める", "verb", "to praise, to compliment", "feelings", "ichidan"),
+  // moved to the lessons (n4-giving-voice/passive): 1603550 [褒|ほ]める
   x("1979920", "あんた", "pronoun", "you (casual, can sound rude)", "language"),
   // skipped: 1340570 できごと (reading check; added in batch 10 at the owner's choice)
   // skipped: 1295250 [祭|まつ]る (rare "to enshrine"; 祭り covers the everyday word)
@@ -152,7 +152,7 @@ export const BATCH_09: Word[] = [
   x("1100810", "パート", "noun", "part-time work, part-timer; part (in music)", "school-work"),
   x("1109000", "フィギュア", "noun", "figurine; figure (skating)", "hobbies"),
   x("1127870", "マスク", "noun", "face mask", "everyday"),
-  x("1133790", "メニュー", "noun", "menu", "food"),
+  // moved to the lessons (n4-giving-voice/kenjougo): 1133790 メニュー
   // skipped: 1139940 ラン (low-value katakana; artefact of ランチ, ランド and 走る)
   // skipped: 1140190 ランド (low-value katakana, mostly in compounds like ディズニーランド)
   x("1158960", "[違法|いほう]", "na-adj", "illegal", "everyday"),

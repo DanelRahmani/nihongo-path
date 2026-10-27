@@ -414,6 +414,7 @@ Content rules: `content/STYLE.md`. Before changing the reading engine (`lib/roma
   - 205 expansion words moved into the lessons (`MOVED_TO_LESSONS`); 135 new kanji. Test changes: the More words floor and order checks, the search-split ratio (a third), the word-lessons ceiling (40 KB), the vitest timeout (20 s); no new tests beyond the engine's golden rows.
 
 ### Decisions
+- 2026-10-27: the owner asked to push JLPT Phase 1 to main. main held GitHub pull request #2's merge commit (e37c33f, tree equal to 1df6d1d), so main got a merge commit (eec9d9b, tree equal to `features` at 3cb01c2) and `features` was fast-forwarded to it. Nothing force-pushed.
 - Owner, 2026-10-22 (JLPT Phase 1): a checkpoint commit per finished unit, pushed to `features` (not one per phase); reviews and fixers on Sonnet, one review per unit, Haiku only for mechanical passes (supersedes Q7 for later phases).
 - JLPT Phase 1 calls I made: keigo cloze cards where the plain polite verb fits are excluded; points Bunpro puts at N3 and JLPT Sensei at N4 are taught and tagged N3 (the filter offers N3); a word taken into the lessons leaves the More words deck.
 - 2026-10-21: the owner asked to push Phase 0 to main. main was fast-forwarded to 36473bb; no merge commit.

@@ -581,4 +581,13 @@ export const KANJI: Kanji[] = [
   k("秘", ["secret"], 10, ["[秘密|ひみつ]"]),
   k("密", ["secret","dense"], 11, ["[秘密|ひみつ]"]),
   k("式", ["ceremony","style"], 6, ["[結婚式|けっこんしき]"]),
-];
+  // Time and change (unit 十五)
+  k("若", ["young"], 8, ["[若|わか]い"]),
+  k("鳴", ["ring","sound","chirp"], 14, ["[鳴|な]る"]),
+  k("関", ["connection","barrier"], 14, ["[関係|かんけい]"]),
+  k("係", ["connection","person in charge"], 9, ["[関係|かんけい]"]),
+  k("慣", ["get used to","accustomed"], 14, ["[慣|な]れる"]),
+  k("実", ["reality","truth","fruit"], 8, ["[実際|じっさい]"]),
+  k("際", ["occasion","edge"], 14, ["[実際|じっさい]"]),
+  k("守", ["protect","keep"], 6, ["[守|まも]る"]),
+  k("律", ["law","rule"], 9, ["[法律|ほうりつ]"]),];

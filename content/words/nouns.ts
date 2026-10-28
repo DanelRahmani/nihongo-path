@@ -40,7 +40,7 @@ export const NOUNS: Word[] = [
   noun("おばあさん", "grandmother; an old woman", "people"),
   noun("[客|きゃく]", "guest, customer", "shopping"),
   noun("[名前|なまえ]", "name", "people"),
-  noun("うち", "home; my family, our side", "home"),
+  noun("うち", "home; my family, our side; (〜うちに) while, before … ends", "home"),
 
   // Food and drink
   noun("[食|た]べ[物|もの]", "food", "food"),
@@ -366,7 +366,7 @@ export const NOUNS: Word[] = [
   noun("ドア", "door", "home"),
   noun("[土曜日|どようび]", "Saturday", "time"),
   noun("[後|あと]", "after, later", "time"),
-  noun("[上|うえ]", "above, on top", "places"),
+  noun("[上|うえ]", "above, on top; (〜た上で) after, on that basis; (〜する上で) in doing", "places"),
   noun("[日|ひ]", "day; sun", "time"),
   noun("[時|とき]", "time; when (〜とき: when …, written in kana in this use)", "time"),
   noun("[方|ほう]", "side, direction; (〜のほうが: … is more, … rather)", "everyday"),
@@ -521,4 +521,18 @@ export const NOUNS: Word[] = [
   noun("[雲|くも]", "cloud", "nature"),
   noun("[秘密|ひみつ]", "secret", "everyday"),
   noun("[結婚式|けっこんしき]", "wedding", "everyday"),
-];
+  // Time and change (unit 十五)
+  noun("[最中|さいちゅう]", "the middle (of an activity) (〜最中に: right in the middle of)", "time"),
+  noun("とたん", "the very moment (〜たとたん: the moment …, just as …)", "time"),
+  noun("たび", "time, occasion (〜たびに: every time)", "time"),
+  noun("[気分|きぶん]", "mood; how you feel (physically)", "feelings"),
+  noun("[一方|いっぽう]", "one way, one direction (〜一方だ: more and more); on the other hand", "language"),
+  noun("[関係|かんけい]", "relationship, connection (する: to be involved)", "people"),
+  noun("[年|とし]", "year; age (年を取る: to get older)", "time"),
+  noun("[変化|へんか]", "change (that happens) (する: to change)", "everyday"),
+  noun("[大人|おとな]", "adult", "people"),
+  noun("[親|おや]", "parent, parents", "people"),
+  noun("[実際|じっさい]", "reality, the actual state (実際に: actually, in practice)", "everyday"),
+  noun("[返事|へんじ]", "reply, answer (する: to reply)", "language"),
+  noun("[席|せき]", "seat", "everyday"),
+  noun("[法律|ほうりつ]", "law", "everyday"),];

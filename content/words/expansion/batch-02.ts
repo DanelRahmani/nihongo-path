@@ -39,7 +39,7 @@ export const BATCH_02: Word[] = [
   x("1412560", "[台|だい]", "noun", "stand, base; (counter for vehicles and machines)", "everyday"),
   x("1432460", "[追加|ついか]", "noun", "addition (する: to add)", "everyday"),
   x("1490010", "[評価|ひょうか]", "noun", "evaluation (する: to evaluate)", "school-work"),
-  x("1468060", "[年|とし]", "noun", "year; age", "time"),
+  // moved to the lessons (n3-time/ni-tsurete): 1468060 [年|とし]
   x("1055000", "サービス", "noun", "service (する: to give a discount or extra)", "shopping"),
   x("1219910", "[希望|きぼう]", "noun", "hope, wish (する: to hope for)", "feelings"),
   x("1236950", "[教育|きょういく]", "noun", "education (する: to educate)", "school-work"),
@@ -156,7 +156,7 @@ export const BATCH_02: Word[] = [
   x("1006900", "その[他|ほか]", "noun", "the rest, others; besides", "language"),
   x("1012500", "もし", "adverb", "if", "language"),
   x("1156640", "[意識|いしき]", "noun", "consciousness, awareness (する: to be aware of)", "feelings"),
-  x("1166510", "[一方|いっぽう]", "noun", "on the other hand; one side", "language"),
+  // moved to the lessons (n3-time/ippou-da): 1166510 [一方|いっぽう]
   x("1189600", "[価値|かち]", "noun", "value, worth", "everyday"),
   // skipped: 1258080 [権|けん] (権, a suffix-like "right, authority" that mostly appears in compounds)
   x("1287410", "[黒|くろ]", "noun", "black", "everyday"),
@@ -166,9 +166,9 @@ export const BATCH_02: Word[] = [
   x("1599420", "なかなか", "adverb", "quite; (not) easily", "language"),
   // moved to the lessons (n4-seeming/you-mitai): 1350040 [消|き]える
   // skipped: 1303400 まく (artefact: kana count mixes several verbs)
-  x("1327120", "[守|まも]る", "verb", "to protect; to keep (a rule or promise)", "everyday", "godan"),
+  // moved to the lessons (n3-time/ue-de): 1327120 [守|まも]る
   x("1004320", "こういう", "pre-noun", "this kind of, like this", "language"),
-  x("1222590", "[気分|きぶん]", "noun", "mood; how you feel (physically)", "feelings"),
+  // moved to the lessons (n3-time/saichuu-ni): 1222590 [気分|きぶん]
   x("1283500", "[高校|こうこう]", "noun", "high school", "school-work"),
   x("1316040", "[時期|じき]", "noun", "time, season, period", "time"),
   x("1320140", "[失敗|しっぱい]", "noun", "failure, mistake (する: to fail)", "everyday"),
@@ -196,7 +196,7 @@ export const BATCH_02: Word[] = [
   x("1261190", "[原因|げんいん]", "noun", "cause", "everyday"),
   x("1271750", "[交換|こうかん]", "noun", "exchange (する: to exchange)", "shopping"),
   x("1310720", "[死|し]", "noun", "death", "everyday"),
-  x("1414170", "[大人|おとな]", "noun", "adult", "people"),
+  // moved to the lessons (n3-time/te-hajimete): 1414170 [大人|おとな]
   x("1424550", "[中心|ちゅうしん]", "noun", "centre, middle", "places"),
   x("1447180", "[投稿|とうこう]", "noun", "posting (online) (する: to post)", "everyday"),
   x("1489510", "[表現|ひょうげん]", "noun", "expression (する: to express)", "language"),
@@ -220,7 +220,7 @@ export const BATCH_02: Word[] = [
   x("1270990", "[語|かた]る", "verb", "to talk about, tell", "language", "godan"),
   // skipped: 1009900 ねた (ねた is slang (a reversal of たね))
   x("1448810", "[当|あ]たる", "verb", "to hit; to correspond to; to be right on target", "everyday", "godan"),
-  x("1309260", "[思|おも]い[出|だ]す", "verb", "to remember, recall", "everyday", "godan"),
+  // moved to the lessons (n3-time/tabi-ni): 1309260 [思|おも]い[出|だ]す
   // skipped: 2083720 っぽい (っぽい is a suffix (-ish))
   x("1003430", "きっと", "adverb", "surely, certainly", "language"),
   x("1047300", "グループ", "noun", "group", "people"),
@@ -240,7 +240,7 @@ export const BATCH_02: Word[] = [
   x("1589880", "[関|かか]わる", "verb", "to be involved in, concerned with", "everyday", "godan"),
   // moved to the lessons (n4-seeming/ka-dou-ka): 1254180 [決|き]める
   x("1223680", "[起|お]こる", "verb", "to happen, occur", "everyday", "godan"),
-  x("1365040", "[親|おや]", "noun", "parent, parents", "people"),
+  // moved to the lessons (n3-time/te-hajimete): 1365040 [親|おや]
   x("1397300", "[素晴|すば]らしい", "i-adj", "wonderful, splendid", "feelings"),
   x("1446760", "[島|しま]", "noun", "island", "nature"),
   x("1182580", "[沖縄|おきなわ]", "noun", "Okinawa", "places"),

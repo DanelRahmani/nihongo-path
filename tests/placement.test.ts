@@ -9,7 +9,7 @@ const BANDS = placementBands();
 describe("the bands", () => {
   it("are the units after the kana, in path order, two lesson-quiz questions each, typed in Japanese", () => {
     expect(BANDS.map((b) => b.unit)).toEqual(UNITS.map((u) => u.slug).filter((s) => s !== "hiragana" && s !== "katakana"));
-    expect(BANDS).toHaveLength(13);
+    expect(BANDS).toHaveLength(14);
     for (const b of BANDS) {
       expect(b.questions, b.unit).toHaveLength(PER_BAND);
       expect(new Set(b.questions.map((q) => q.prompt)).size, b.unit).toBe(PER_BAND);
@@ -50,6 +50,8 @@ describe("the bands", () => {
         "n4-seeming/to-omou: Casual, with と[思|おも]う: “I think he's Japanese”: [彼|かれ]は[日本人|にほんじん]＿。",
         "n3-reasons/you-ni-iu: Casual, with ように and the passive of [言|い]う: “My dad told me not to come home late” (use [帰|かえ]る): [父|ちち]に[夜|よる][遅|おそ]く＿。",
         "n3-reasons/wake-da: Polite, with わけ (use [得意|とくい]): “She practises every day? No wonder she's good at it”: [毎日|まいにち][練習|れんしゅう]しているんですか？＿ですね。",
+        "n3-time/uchi-ni: With ないうちに (use [始|はじ]まる): “Let's buy drinks before the film starts”: [映画|えいが]が＿、[飲|の]み[物|もの]を[買|か]いましょう。",
+        "n3-time/ippou-da: Polite, with [一方|いっぽう] (use [増|ふ]える): “The number of foreigners working in Japan just keeps growing”: [日本|にほん]で[働|はたら]く[外国人|がいこくじん]は＿。",
       ]
     `);
   });

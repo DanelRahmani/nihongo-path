@@ -329,6 +329,85 @@ export const CLOZE_EXCLUSIONS: Record<string, string> = {
   "n3-reasons/wake-dewa-nai#180fwuj": "はずがない also fits “there's no way”, as the lesson says.",
   // [熱|ねつ] が ある けど、 [今日|きょう] は ＿＿。 ([休|やす]めない)
   "n3-reasons/wake-ni-wa-ikanai#tyzcn2": "休むわけにはいかない, the pair's other side, also fits.",
+  // Time and change (unit 十五)
+  // [学生|がくせい] の ＿＿、 たくさん [本|ほん] を [読|よ]んで おいた ほう が いい よ。 (うち に)
+  "n3-time/uchi-ni#1jth6k0": "[間|あいだ]に also fits “while you're still a student” (学生の間に).",
+  // [学生|がくせい] の ＿＿、 たくさん [本|ほん] を [読|よ]んで おいた ほう が いい です よ。 (うち に)
+  "n3-time/uchi-ni#a1yfmc": "[間|あいだ]に also fits “while you're still a student” (学生の間に).",
+  // そう なん だ。 じゃあ、 [東京|とうきょう] に いる ＿＿、 [一緒|いっしょ] に [飲|の]み に [行|い]こう よ。 (うち に)
+  "n3-time/uchi-ni#1fwoala": "[間|あいだ]に also fits “while you're still in Tokyo” (東京にいる間に).",
+  // The "while still …" cards where 間に is just as natural are out. The ない-form "before …" cards stay: the English says
+  // "before", which 間に ("while") doesn't translate, and 温かいうちに is the idiomatic way to say it.
+  // [覚|おぼ]えて いる ＿＿、 メモ して おこう。 (うち に)
+  "n3-time/uchi-ni#x9ludm": "[間|あいだ]に also fits “while I still remember it” (覚えている間に).",
+  // [覚|おぼ]えて いる ＿＿、 メモ して おきます。 (うち に)
+  "n3-time/uchi-ni#1pmo7d5": "[間|あいだ]に also fits “while I still remember it” (覚えている間に).",
+  // [若|わか]い ＿＿、 たくさん の [国|くに] へ [行|い]って みたい。 (うち に)
+  "n3-time/uchi-ni#x63tl7": "[間|あいだ]に also fits “while I'm still young” (若い間に).",
+  // [若|わか]い ＿＿、 たくさん の [国|くに] へ [行|い]って みたい です。 (うち に)
+  "n3-time/uchi-ni#upgvi1": "[間|あいだ]に also fits “while I'm still young” (若い間に).",
+  // [両親|りょうしん] が [元気|げんき] な ＿＿、 [一緒|いっしょ] に [旅行|りょこう] したい です。 (うち に)
+  "n3-time/uchi-ni#yzipit": "[間|あいだ]に also fits “while they're in good health” (元気な間に).",
+  // [両親|りょうしん] が [元気|げんき] な ＿＿、 [一緒|いっしょ] に [旅行|りょこう] したい。 (うち に)
+  "n3-time/uchi-ni#17qq0s7": "[間|あいだ]に also fits “while they're in good health” (元気な間に).",
+  // [知|し]らない ＿＿、 [冬|ふゆ] に なって いた。 (うち に)
+  "n3-time/uchi-ni#14ia20r": "[間|あいだ]に also fits “before I knew it” (知らない間に).",
+  // [知|し]らない ＿＿、 [冬|ふゆ] に なって いました。 (うち に)
+  "n3-time/uchi-ni#1vykipo": "[間|あいだ]に also fits “before I knew it” (知らない間に).",
+  // [気|き]づかない ＿＿、 [財布|さいふ] が なく なって いた。 (うち に)
+  "n3-time/uchi-ni#j0t21v": "[間|あいだ]に also fits “without my noticing” (気づかない間に).",
+  // [気|き]づかない ＿＿、 [財布|さいふ] が なく なって いました。 (うち に)
+  "n3-time/uchi-ni#7bkd78": "[間|あいだ]に also fits “without my noticing” (気づかない間に).",
+  // [話|はな]して いる ＿＿、 [夜|よる] に なって いた。 (うち に)
+  "n3-time/uchi-ni#1wgklpe": "[間|あいだ]に also fits “while we were talking” (話している間に).",
+  // [話|はな]して いる ＿＿、 [夜|よる] に なって いました。 (うち に)
+  "n3-time/uchi-ni#kqwg19": "[間|あいだ]に also fits “while we were talking” (話している間に).",
+  // (間に also fits most 最中に lines, but the English "right in the middle of" carries 最中, so those cards stay.)
+  // [料理|りょうり] を [作|つく]って いる ＿＿、 [友達|ともだち] が [来|き]ました。 ([最中|さいちゅう] に)
+  "n3-time/saichuu-ni#1us7m76": "ているところに also fits a friend turning up mid-cooking (作っているところに).",
+  // [料理|りょうり] を [作|つく]って いる ＿＿、 [友達|ともだち] が [来|き]た。 ([最中|さいちゅう] に)
+  "n3-time/saichuu-ni#sa5x9d": "ているところに also fits a friend turning up mid-cooking (作っているところに).",
+  // すみません、 [今|いま] [資料|しりょう] を [作|つく]って いる ＿＿ なん です。 [後|あと] で も いい です か？ ([最中|さいちゅう])
+  "n3-time/saichuu-ni#1058fuh": "ているところなんです also fits “I'm in the middle of …”.",
+  // [町|まち] の [小|ちい]さい [店|みせ] が [減|へ]って ＿＿。 (きました)
+  "n3-time/ippou-da#dv2iy7": "減っています also fits “have been getting fewer”.",
+  // よく [考|かんが]えた ＿＿、 [決|き]めます。 ([上|うえ] で)
+  "n3-time/ue-de#5snsy9": "[後|あと]で also fits “once I've thought it over”.",
+  // よく [考|かんが]えた ＿＿、 [決|き]める よ。 ([上|うえ] で)
+  "n3-time/ue-de#47y7ix": "[後|あと]で also fits “once I've thought it over”.",
+  // [説明|せつめい] を よく [読|よ]んだ ＿＿、 [名前|なまえ] を [書|か]いて ください。 ([上|うえ] で)
+  "n3-time/ue-de#1dw0urt": "[後|あと]で also fits “after reading”.",
+  // [家族|かぞく] と [相談|そうだん] の ＿＿、 [返事|へんじ] します。 ([上|うえ] で)
+  "n3-time/ue-de#v1xu4r": "[後|あと]で also fits “after talking it over” (相談の後で).",
+  // [家族|かぞく] と [相談|そうだん] の ＿＿、 [返事|へんじ] する ね。 ([上|うえ] で)
+  "n3-time/ue-de#oozpe4": "[後|あと]で also fits “after talking it over” (相談の後で).",
+  // [両親|りょうしん] に [話|はな]した ＿＿、 [留学|りゅうがく] する こと に した。 ([上|うえ] で)
+  "n3-time/ue-de#spo8r1": "[後|あと]で also fits “after discussing it”.",
+  // [両親|りょうしん] に [話|はな]した ＿＿、 [留学|りゅうがく] する こと に しました。 ([上|うえ] で)
+  "n3-time/ue-de#1vqf4n2": "[後|あと]で also fits “after discussing it”.",
+  // ありがとう ございます。 [一度|いちど] [中|なか] を よく [見|み]た ＿＿、 [決|き]めて ください。 ([上|うえ] で)
+  "n3-time/ue-de#romlg8": "[後|あと]で also fits “have a good look round first, and then decide”.",
+  // The topic ta-ue-de is left with no cloze card of its own: 上で and あとで overlap by nature, and a gap on 上 only
+  // gives 後. The "in doing" cards (ue-de-doing) stay.
+  // [先生|せんせい] に [相談|そうだん] した ＿＿、 [決|き]めました。 ([上|うえ] で)
+  "n3-time/ue-de#zon339": "[後|あと]で also fits “after talking it over” (相談した後で).",
+  // たび on verb lines: と also fits (見るたびに = 見ると), as the lesson says. The noun lines (の＋たび) stay: と can't follow a noun.
+  // この [歌|うた] を [聞|き]く ＿＿、 [昔|むかし] の こと を [思|おも]い[出|だ]す。 (たび に)
+  "n3-time/tabi-ni#1vwjldy": "と also fits a habit (聞くと), as the lesson says.",
+  // この [歌|うた] を [聞|き]く ＿＿、 [昔|むかし] の こと を [思|おも]い[出|だ]します。 (たび に)
+  "n3-time/tabi-ni#19weu2v": "と also fits a habit (聞くと), as the lesson says.",
+  // [祖母|そぼ] の [家|いえ] に [行|い]く ＿＿、 [料理|りょうり] を [教|おし]えて もらいました。 (たび に)
+  "n3-time/tabi-ni#d5tzmy": "と also fits a habit (行くと), as the lesson says.",
+  // [祖母|そぼ] の [家|いえ] に [行|い]く ＿＿、 [料理|りょうり] を [教|おし]えて もらった。 (たび に)
+  "n3-time/tabi-ni#qoasfs": "と also fits a habit (行くと), as the lesson says.",
+  // [彼|かれ] は [会|あ]う ＿＿ [違|ちが]う [車|くるま] に [乗|の]って いる。 (たび に)
+  "n3-time/tabi-ni#11nwye4": "と also fits a habit (会うと), as the lesson says.",
+  // [地震|じしん] の ニュース を [見|み]る ＿＿、 [家族|かぞく] の こと が [心配|しんぱい] に なります。 (たび に)
+  "n3-time/tabi-ni#83j9yh": "と also fits a habit (見ると), as the lesson says.",
+  // [地震|じしん] の ニュース を [見|み]る ＿＿、 [家族|かぞく] の こと が [心配|しんぱい] に なる。 (たび に)
+  "n3-time/tabi-ni#1w3i47f": "と also fits a habit (見ると), as the lesson says.",
+  // うん。 [東京|とうきょう] に [行|い]く ＿＿、 [何|なに] か [買|か]っちゃう ん だ。 (たび に)
+  "n3-time/tabi-ni#ejlegs": "と also fits a habit (行くと), as the lesson says.",
 };
 
 /**
@@ -815,4 +894,70 @@ export const CLOZE_ALSO: Record<string, string[]> = {
   "n3-reasons/wake-ni-wa-ikanai#14xickf": ["わけ に"],
   "n3-reasons/wake-ni-wa-ikanai#ddje75": ["わけ に"],
   "n3-reasons/wake-ni-wa-ikanai#13bh4xx": ["わけ に"],
+  // Time and change (unit 十五)
+  // n3-time/ta-totan: the lesson says the に is often dropped, and it may be added.
+  "n3-time/ta-totan#1vzxeje": ["とたん"],
+  "n3-time/ta-totan#1aun8tx": ["とたん"],
+  "n3-time/ta-totan#nkzd0x": ["とたん に"],
+  "n3-time/ta-totan#u0wcx7": ["とたん に"],
+  "n3-time/ta-totan#17zc8kd": ["とたん に"],
+  "n3-time/ta-totan#1s7olou": ["とたん に"],
+  "n3-time/ta-totan#u77sbb": ["とたん に"],
+  "n3-time/ta-totan#drwxak": ["とたん に"],
+  "n3-time/ta-totan#161work": ["とたん"],
+  "n3-time/ta-totan#1j5wpff": ["とたん"],
+  "n3-time/ta-totan#169nfsy": ["とたん"],
+  "n3-time/ta-totan#17y1sp": ["とたん"],
+  // n3-time/tabi-ni: the lesson says the に may drop.
+  "n3-time/tabi-ni#16dizx1": ["たび"],
+  "n3-time/tabi-ni#nzfbhg": ["たび"],
+  "n3-time/tabi-ni#1i2dj7l": ["たび"],
+  "n3-time/tabi-ni#1nvxexl": ["たび"],
+  "n3-time/tabi-ni#1hxdr0w": ["たび"],
+  "n3-time/tabi-ni#8aco30": ["たび"],
+  "n3-time/tabi-ni#8vdg7s": ["たび"],
+  "n3-time/tabi-ni#s0axsu": ["たび"],
+  "n3-time/tabi-ni#16ofea3": ["たび"],
+  // n3-time/goto-oki-ni: with minutes and hours, the lesson says ごとに and おきに mean the same.
+  "n3-time/goto-oki-ni#1obf4sq": ["おき に"],
+  "n3-time/goto-oki-ni#mwpo1m": ["おき に"],
+  "n3-time/goto-oki-ni#d55421": ["おき に"],
+  "n3-time/goto-oki-ni#xhuhc2": ["おき に"],
+  "n3-time/goto-oki-ni#a8sen2": ["おき に"],
+  // n3-time/goto-oki-ni: and the other way round.
+  "n3-time/goto-oki-ni#1scbg4f": ["ごと に"],
+  "n3-time/goto-oki-ni#1d58d9": ["ごと に"],
+  // n3-time/ippou-da: ばかりだ fits a trend for the worse (all of these are), and [一方|いっぽう]だ any one-way trend; the lesson teaches both.
+  "n3-time/ippou-da#x4gfq2": ["ばかり だ"],
+  "n3-time/ippou-da#fyvs8c": ["ばかり です"],
+  "n3-time/ippou-da#m96vpk": ["ばかり です"],
+  "n3-time/ippou-da#eurbiu": ["ばかり だ"],
+  "n3-time/ippou-da#127cf4b": ["ばかり です"],
+  "n3-time/ippou-da#5stolb": ["ばかり だ"],
+  "n3-time/ippou-da#1be8fkl": ["ばかり だった"],
+  "n3-time/ippou-da#1uug7e0": ["ばかり でした"],
+  "n3-time/ippou-da#1wkkirp": ["[一方|いっぽう] だ"],
+  "n3-time/ippou-da#1a89vsp": ["[一方|いっぽう] です"],
+  "n3-time/ippou-da#1y4iui4": ["[一方|いっぽう] です"],
+  "n3-time/ippou-da#9ssd0a": ["[一方|いっぽう] だ"],
+  "n3-time/ippou-da#bttn7r": ["[一方|いっぽう] だ"],
+  "n3-time/ippou-da#5ag52r": ["[一方|いっぽう] です"],
+  "n3-time/ippou-da#183jdkf": ["[一方|いっぽう] でした"],
+  "n3-time/ippou-da#ix7mmu": ["[一方|いっぽう] だった"],
+  "n3-time/ippou-da#kc1mst": ["ばかり です"],
+  "n3-time/ippou-da#1pjbzp5": ["ばかり です"],
+  "n3-time/ippou-da#1rg3ez": ["[一方|いっぽう] です"],
+  // n3-time/ni-tsurete: the lesson says writing drops the て. (とともに and と also fit most of these lines; the cards stay,
+  // because とともに isn't taught in this unit and the lesson only names it.)
+  "n3-time/ni-tsurete#p6pxp6": ["につれ"],
+  "n3-time/ni-tsurete#lglzta": ["につれ"],
+  "n3-time/ni-tsurete#16qp48d": ["につれ"],
+  "n3-time/ni-tsurete#mmyzqa": ["につれ"],
+  "n3-time/ni-tsurete#32mpfk": ["につれ"],
+  "n3-time/ni-tsurete#1b3w57f": ["につれ"],
+  "n3-time/ni-tsurete#1ud18d8": ["につれ"],
+  "n3-time/ni-tsurete#oskrfd": ["につれ"],
+  "n3-time/ni-tsurete#110k6j4": ["につれ"],
+  "n3-time/ni-tsurete#1ctmep9": ["につれ"],
+  "n3-time/ni-tsurete#1t9b65y": ["につれ"],
 };

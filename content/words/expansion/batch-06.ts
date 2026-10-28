@@ -120,7 +120,7 @@ export const BATCH_06: Word[] = [
   x("1240750", "わずか", "na-adj", "a little, only, barely", "everyday"),
   // moved to the lessons (n4-seeming/sou-hearsay): 1310620 [止|と]まる
   // skipped: 1225940 あり (artefact: あり is the ant noun but also counted from the verb ある)
-  x("1541560", "ありがたい", "i-adj", "grateful, welcome", "feelings"),
+  // moved to the lessons (n3-time/te-hajimete): 1541560 ありがたい
   x("1591290", "きっかけ", "noun", "chance, trigger, opportunity", "everyday"),
   x("1229060", "[救|すく]う", "verb", "to save, to rescue", "everyday", "godan"),
   x("1602360", "[広|ひろ]がる", "verb", "to spread, to extend", "everyday", "godan"),

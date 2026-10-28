@@ -29,9 +29,9 @@ export const BATCH_03: Word[] = [
   // moved to the lessons (n4-giving-voice/passive): 1223660 [起|お]こす
   x("1075040", "センター", "noun", "centre (a facility); centre (position)", "places"),
   // skipped: 2772730 にくい (the 〜にくい ending, not a word)
-  x("1324300", "[若|わか]い", "i-adj", "young", "people"),
+  // moved to the lessons (n3-time/uchi-ni): 1324300 [若|わか]い
   x("1302280", "[参考|さんこう]", "noun", "reference, consultation", "school-work"),
-  // skipped: 1524640 ごと (suffix; also こと in compounds)
+  // moved to the lessons (n3-time/goto-oki-ni): 1524640 ごと
   x("1279370", "[更新|こうしん]", "noun", "renewal, update (する: to renew, to update)", "everyday"),
   x("1282440", "[購入|こうにゅう]", "noun", "purchase (formal) (する: to buy)", "shopping"),
   // skipped: 1321140 [実施|じっし] (formal, official-notice vocabulary)
@@ -172,7 +172,7 @@ export const BATCH_03: Word[] = [
   x("1433330", "[通信|つうしん]", "noun", "communication (する: to communicate)", "everyday"),
   x("1455210", "[特定|とくてい]", "noun", "specific, particular (する: to identify)", "everyday"),
   x("1459870", "[南|みなみ]", "noun", "south", "places"),
-  x("1510890", "[変化|へんか]", "noun", "change (that happens) (する: to change)", "everyday"),
+  // moved to the lessons (n3-time/ni-tsurete): 1510890 [変化|へんか]
   x("1531940", "[命|いのち]", "noun", "life", "body"),
   x("1543130", "[予想|よそう]", "noun", "expectation, prediction (する: to expect)", "everyday"),
   // skipped: 1420730 [地|ち] (bare reading is rare; mostly in compounds like 地図)
@@ -208,7 +208,7 @@ export const BATCH_03: Word[] = [
   x("1316890", "[治療|ちりょう]", "noun", "medical treatment (する: to treat)", "body"),
   x("1328890", "[種類|しゅるい]", "noun", "kind, type, variety", "everyday"),
   x("1471250", "[破壊|はかい]", "noun", "destruction (する: to destroy)", "everyday"),
-  x("1517480", "[法律|ほうりつ]", "noun", "law", "everyday"),
+  // moved to the lessons (n3-time/goto-oki-ni): 1517480 [法律|ほうりつ]
   x("1919590", "[級|きゅう]", "noun", "grade, class, level", "school-work"),
   // skipped: 1429740 [長|ちょう] (mostly a suffix: 社長)
   x("1551530", "[立|た]てる", "verb", "to stand (something) up; to make (a plan)", "everyday", "ichidan"),

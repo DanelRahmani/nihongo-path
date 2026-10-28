@@ -57,7 +57,6 @@ export const EXTRA_WORDS: Word[] = [
   w("question", "[何歳|なんさい]", "how old", "numbers"),
   noun("[数|かず]", "number", "numbers"),
   iAdj("[太|ふと]い", "thick, wide (a line, a rope, legs)", "everyday"),
-  noun("[席|せき]", "seat", "everyday"),
   noun("[会社員|かいしゃいん]", "office worker", "school-work"),
   noun("[挨拶|あいさつ]", "greeting", "greetings"),
   naAdj("[苦手|にがて]", "not good at; disliked", "feelings"),

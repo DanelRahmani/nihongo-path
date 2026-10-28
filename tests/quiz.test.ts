@@ -19,6 +19,12 @@ describe("normalizeAnswer", () => {
     expect(checkAnswer(["[休|やす]む わけ に は いきません"], "休むわけには行きません").correct).toBe(true);
     expect(checkAnswer(["[休|やす]む わけ に いかない"], "休むわけに行かない").correct).toBe(true);
     expect(checkAnswer(["[休|やす]む いかない"], "休む行かない").correct).toBe(false);
+    // ごと / おき as suffixes (a number or noun before, or the blank right after the noun), never elsewhere.
+    expect(checkAnswer(["[一時間|いちじかん]ごと に"], "一時間毎に").correct).toBe(true);
+    expect(checkAnswer(["[一日|いちにち]おき に"], "一日置きに").correct).toBe(true);
+    expect(checkAnswer(["ごと に"], "毎に").correct).toBe(true);
+    expect(checkAnswer(["[行|い]く ごと に"], "行く毎に").correct).toBe(false);
+    expect(checkAnswer(["なくして [初|はじ]めて"], "無くして初めて").correct).toBe(true);
   });
 
   it("ignores punctuation inside the answer too", () => {

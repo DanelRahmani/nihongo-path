@@ -4,7 +4,7 @@ import { x } from "@/content/words/expansion/make";
 /** Expansion batch 08: candidates 1751–2000. Meanings are ours; forms from JMdict (© EDRDG, CC BY-SA 4.0). */
 export const BATCH_08: Word[] = [
   x("1588500", "[売|う]り[上|あ]げ", "noun", "sales, amount sold", "shopping"),
-  x("1212670", "[慣|な]れる", "verb", "to get used to, to become accustomed to", "everyday", "ichidan"),
+  // moved to the lessons (n3-time/ni-tsurete): 1212670 [慣|な]れる
   x("1590250", "[箇所|かしょ]", "noun", "place, point, spot (in a text or thing)", "everyday"),
   x("1599730", "なんとなく", "adverb", "somehow, for some reason, vaguely", "everyday"),
   // skipped: 2427550 あるじ (reading check)

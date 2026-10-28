@@ -79,7 +79,7 @@ Where they leave a choice, follow modern everyday usage (newspapers, NHK, curren
 - **Quoted texts keep their own kanji.** The reading view's haiku (`content/reading.ts`) are written as the edition named in their `source` prints them, with readings for every kanji, even where a kanji or reading is outside the table (蛙 かわず, 閑 しず). The corpus marks them `quoted`, and the 常用, kanji-data and dictionary tests skip them. Original reading texts follow every rule here.
 - **No rare kanji in beginner content.** If everyday writing puts a word in kana, so do we.
 - **Always in kana:**
-  - formal nouns: こと, とき ("when…"), ところ (abstract), もの (abstract), わけ, はず, よう, ほか, とおり;
+  - formal nouns: こと, とき ("when…"), ところ (abstract), もの (abstract), わけ, はず, よう, ほか, とおり, うち (うちに), たび (たびに), とたん, and the suffixes ごと and おき after a number or noun (the quiz checker accepts a keyboard's 毎 and 置き for them there);
   - ある and いる (existence), できる ("can"), なる ("become"), ない;
   - helper verbs after the て form (the quiz checker also accepts the kanji a keyboard offers for these and for the formal nouns above, as whole words): 〜て いる, 〜て ある, 〜て いく, 〜て くる, 〜て みる, 〜て おく, 〜て しまう, 〜て あげる, 〜て くれる, 〜て もらう, 〜て いただく, 〜て ください. On their own these verbs keep their kanji: `[行|い]く`, `[来|く]る`, `[見|み]る`;
   - いく in わけにはいかない (わけ に は いかない / いきません), as the lessons write it: 行かない is "not going", and the idiom is a different word. The quiz checker accepts the keyboard's 行 for it only right after わけ に (は);

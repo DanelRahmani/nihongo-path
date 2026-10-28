@@ -126,4 +126,7 @@ export const DESCRIBING: Word[] = [
   w("adverb", "たまたま", "by chance, as it happens", "everyday"),
   iAdj("まずい", "bad-tasting; bad, awkward (of a situation)", "food"),
   naAdj("[大事|だいじ]", "important; precious", "everyday"),
+  // Time and change (unit 十五)
+  iAdj("[若|わか]い", "young", "people"),
+  iAdj("ありがたい", "grateful; welcome (ありがたさ: how much something means to you)", "feelings"),
 ];

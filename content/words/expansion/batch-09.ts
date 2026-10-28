@@ -72,7 +72,7 @@ export const BATCH_09: Word[] = [
   x("1443220", "[電源|でんげん]", "noun", "power supply, power switch", "home"),
   x("1483490", "[披露|ひろう]", "noun", "showing, presentation (する: to show, to perform)", "everyday"),
   x("1499540", "[部門|ぶもん]", "noun", "department, division, category", "school-work"),
-  x("1512220", "[返事|へんじ]", "noun", "reply, answer (する: to reply)", "language"),
+  // moved to the lessons (n3-time/ue-de): 1512220 [返事|へんじ]
   // skipped: 1528790 [民主|みんしゅ] (mostly a party name or part of 民主主義)
   x("1530380", "[無線|むせん]", "noun", "wireless, radio communication", "everyday"),
   x("1538590", "[油|あぶら]", "noun", "oil (cooking, machine)", "food"),

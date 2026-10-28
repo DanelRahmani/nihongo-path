@@ -198,4 +198,12 @@ export const VERBS: Word[] = [
   verb("[違|ちが]う", "godan", "to be different; to be wrong", "everyday"),
   verb("[話|はな]し[合|あ]う", "godan", "to talk over, to discuss", "language"),
   verb("[解|と]く", "godan", "to solve (a problem); to untie", "school-work"),
+  // Time and change (unit 十五)
+  verb("[冷|さ]める", "ichidan", "to get cold, to cool down (food, drinks)", "food"),
+  verb("[鳴|な]る", "godan", "to ring, to sound", "everyday"),
+  verb("[思|おも]い[出|だ]す", "godan", "to remember, to recall", "everyday"),
+  verb("[近|ちか]づく", "godan", "to approach, to get close", "everyday"),
+  verb("[慣|な]れる", "ichidan", "to get used to", "everyday"),
+  verb("[気|き]づく", "godan", "to notice, to realise", "feelings"),
+  verb("[守|まも]る", "godan", "to protect; to keep (a rule or promise)", "everyday"),
 ];

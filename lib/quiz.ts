@@ -28,6 +28,8 @@ export const KANA_WORDS: [string, string][] = [
   // できる and いい: a keyboard offers 出来る and 良い (良かった, 良くない).
   ["出来", "でき"],
   ["良", "よ"],
+  // なくして, なくなる: a keyboard offers 無くして. (Not 亡く: 亡くなる "to die" is another word.)
+  ["無く", "なく"],
   // Set phrases (culture/set-phrases), written in kana by the lessons.
   ["行ってきます", "いってきます"],
   ["行ってらっしゃい", "いってらっしゃい"],
@@ -66,7 +68,7 @@ const toHiragana = (s: string) =>
  * 時 of [七時|しちじ] never stands for とき.
  */
 const FORMAL_NOUNS: Record<string, string> = {
-  とき: "時", こと: "事", ところ: "所", ほう: "方", もの: "物", ごろ: "頃", ため: "為", わけ: "訳", はず: "筈", とおり: "通り", うち: "内",
+  とき: "時", こと: "事", ところ: "所", ほう: "方", もの: "物", ごろ: "頃", ため: "為", わけ: "訳", はず: "筈", とおり: "通り", うち: "内", たび: "度", とたん: "途端",
 };
 
 /** Helper verbs after a て form, by the kana their forms start with: [食|た]べて みる may be typed 食べて見る. */
@@ -79,8 +81,11 @@ const TE_HELPERS: [RegExp, string][] = [
 ];
 
 /** A kana word's keyboard kanji spellings, as well as the word itself. */
-function kanaOptions(text: string, whole: boolean, afterTe: boolean, afterWake: boolean): string[] {
+function kanaOptions(text: string, whole: boolean, afterTe: boolean, afterWake: boolean, suffix: boolean): string[] {
   const out = [text];
+  // ごと / おき after a number or noun (一時間ごとに, 一日おきに): a keyboard offers 毎 and 置き.
+  if (suffix && text === "ごと") out.push("毎");
+  if (suffix && text === "おき") out.push("置き");
   const [, core, punct] = /^(.*?)([。、？！…」]*)$/u.exec(text)!;
   if (whole && FORMAL_NOUNS[core]) out.push(FORMAL_NOUNS[core] + punct);
   // すぎる after a stem ([食|た]べすぎた → 食べ過ぎた), and ほしい (欲しい) in any form.
@@ -113,7 +118,9 @@ export function acceptedForms(answer: string): string[] {
     const before = tokens[i - 1];
     const after = tokens[i + 1];
     const whole = (!before || before.kind === "space") && (!after || after.kind === "space");
-    const options = t.kind === "ruby" ? [t.base, t.reading] : kanaOptions(t.text, whole, /[てで]$/.test(prevWord), WAKE_NI.test(done.slice(-3).join(",")));
+    // A suffix such as ごと / おき stands at the start of an answer (the blank follows the noun) or right after a kanji word.
+    const suffix = (!before || before.kind === "ruby") && (!after || after.kind === "space");
+    const options = t.kind === "ruby" ? [t.base, t.reading] : kanaOptions(t.text, whole, /[てで]$/.test(prevWord), WAKE_NI.test(done.slice(-3).join(",")), suffix);
     word += t.kind === "ruby" ? t.reading : t.text;
     forms = forms.flatMap((f) => options.map((o) => f + o));
   });

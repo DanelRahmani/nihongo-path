@@ -51,7 +51,9 @@ Same order as the exemplar:
 - Lines ending in `…。` (it prints as "...." in the romaji): end with … alone.
 - Vocabulary above the level (N2 words in N3 points) unless the point needs it.
 - A grammar verb written in kana (いく in わけにはいかない) that a keyboard turns into kanji: fold it narrowly in `lib/quiz.ts` (only right after the idiom's own words), or the right answer is marked wrong in the quiz, the cloze and the polite ↔ casual drills alike.
-- Cloze cards another pattern fits (けど for のに, から for し, と for ば, ばかり for ところ, the plain polite verb for keigo): exclude the card in `content/cloze-exclusions.ts` with the reason, rather than accepting the other pattern in `CLOZE_ALSO`, so the card still tests the point. `CLOZE_ALSO` is for true variants the lesson teaches (よう/みたい, かも/かもしれない).
+- Cloze cards another pattern fits (けど for のに, から for し, と for ば, ばかり for ところ, the plain polite verb for keigo): exclude the card in `content/cloze-exclusions.ts` with the reason, rather than accepting the other pattern in `CLOZE_ALSO`, so the card still tests the point. `CLOZE_ALSO` is for true variants the lesson teaches (よう/みたい, かも/かもしれない). Check every card against the look-alikes of its pattern, not only the obvious one: 間に for うちに ("while still …" cards), と for たびに (verb lines), あとで for た上で, ごとに for たびに on noun lines, 一方だ for ばかりだ.
+- A suffix a keyboard writes in kanji (ごとに → 毎に, おきに → 置きに) is folded in `lib/quiz.ts` as a suffix after a number or noun, not as a whole word.
+- A hard "only" rule ("ばかりだ is only for bad news") where the references say "mostly": write "usually" and don't mark the opposite as ✗.
 
 ## Japanese rules (STYLE.md has the full text)
 

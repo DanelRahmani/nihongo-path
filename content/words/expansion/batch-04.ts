@@ -227,7 +227,7 @@ export const BATCH_04: Word[] = [
   x("1143250", "リリース", "noun", "release (する: to release)", "everyday"),
   x("1196970", "[我慢|がまん]", "noun", "patience, endurance (する: to put up with)", "feelings"),
   x("1255060", "[血|ち]", "noun", "blood", "body"),
-  x("1333450", "[週|しゅう]", "noun", "week", "time"),
+  // moved to the lessons (n3-time/goto-oki-ni): 1333450 [週|しゅう]
   x("1335590", "[獣|けもの]", "noun", "beast, wild animal", "nature"),
   x("1419950", "[段階|だんかい]", "noun", "stage, step, level", "everyday"),
   x("1457040", "[突然|とつぜん]", "adverb", "suddenly; sudden", "time"), // pos: was noun

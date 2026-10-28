@@ -14,6 +14,7 @@
 敬語 | けいご | (label: no romaji)
 推量 | すいりょう | (label: no romaji)
 理由 | りゆう | (label: no romaji)
+時間 | じかん | (label: no romaji)
 
 ## kinds
 基本 | きほん | (label: no romaji)
@@ -4445,6 +4446,314 @@
 出ないわけにいきません | でない わけ に いきません | denai wake ni ikimasen
 足が痛くて、走れない。 | あし が いたくて、 はしれない。 | ashi ga itakute, hashirenai.
 足が痛くて、走ることができない。 | あし が いたくて、 はしる こと が できない。 | ashi ga itakute, hashiru koto ga dekinai.
+
+## n3-time/uchi-ni
+うちに | うちに | (label: no romaji)
+日本にいるうちに | にほん に いる うち に | nihon ni iru uchi ni
+覚えているうちに | おぼえて いる うち に | oboete iru uchi ni
+若いうちに | わかい うち に | wakai uchi ni
+元気なうちに | げんき な うち に | genki na uchi ni
+学生のうちに | がくせい の うち に | gakusei no uchi ni
+暗くならないうちに | くらく ならない うち に | kuraku naranai uchi ni
+温かいうちに食べてください。 | あたたかい うち に たべて ください。 | atatakai uchi ni tabete kudasai.
+温かいうちに食べて。 | あたたかい うち に たべて。 | atatakai uchi ni tabete.
+若いうちに、たくさんの国へ行ってみたい。 | わかい うち に、 たくさん の くに へ いって みたい。 | wakai uchi ni, takusan no kuni e itte mitai.
+若いうちに、たくさんの国へ行ってみたいです。 | わかい うち に、 たくさん の くに へ いって みたい です。 | wakai uchi ni, takusan no kuni e itte mitai desu.
+両親が元気なうちに、一緒に旅行したいです。 | りょうしん が げんき な うち に、 いっしょ に りょこう したい です。 | ryoushin ga genki na uchi ni, issho ni ryokou shitai desu.
+両親が元気なうちに、一緒に旅行したい。 | りょうしん が げんき な うち に、 いっしょ に りょこう したい。 | ryoushin ga genki na uchi ni, issho ni ryokou shitai.
+学生のうちに、たくさん本を読んでおいたほうがいいよ。 | がくせい の うち に、 たくさん ほん を よんで おいた ほう が いい よ。 | gakusei no uchi ni, takusan hon o yonde oita hou ga ii yo.
+学生のうちに、たくさん本を読んでおいたほうがいいですよ。 | がくせい の うち に、 たくさん ほん を よんで おいた ほう が いい です よ。 | gakusei no uchi ni, takusan hon o yonde oita hou ga ii desu yo.
+覚えているうちに、メモしておこう。 | おぼえて いる うち に、 メモ して おこう。 | oboete iru uchi ni, memo shite okou.
+覚えているうちに、メモしておきます。 | おぼえて いる うち に、 メモ して おきます。 | oboete iru uchi ni, memo shite okimasu.
+雨が降らないうちに、帰りましょう。 | あめ が ふらない うち に、 かえりましょう。 | ame ga furanai uchi ni, kaerimashou.
+雨が降らないうちに、帰ろう。 | あめ が ふらない うち に、 かえろう。 | ame ga furanai uchi ni, kaerou.
+冷めないうちに、どうぞ。 | さめない うち に、 どうぞ。 | samenai uchi ni, douzo.
+忘れないうちに、今払っておきます。 | わすれない うち に、 いま はらって おきます。 | wasurenai uchi ni, ima haratte okimasu.
+忘れないうちに、今払っておくね。 | わすれない うち に、 いま はらって おく ね。 | wasurenai uchi ni, ima haratte oku ne.
+暗くならないうちに、洗濯物を入れよう。 | くらく ならない うち に、 せんたくもの を いれよう。 | kuraku naranai uchi ni, sentakumono o ireyou.
+暗くならないうちに、洗濯物を入れましょう。 | くらく ならない うち に、 せんたくもの を いれましょう。 | kuraku naranai uchi ni, sentakumono o iremashou.
+子供たちが起きないうちに、プレゼントを置いておきました。 | こどもたち が おきない うち に、 プレゼント を おいて おきました。 | kodomotachi ga okinai uchi ni, purezento o oite okimashita.
+子供たちが起きないうちに、プレゼントを置いておいた。 | こどもたち が おきない うち に、 プレゼント を おいて おいた。 | kodomotachi ga okinai uchi ni, purezento o oite oita.
+知らないうちに、冬になっていた。 | しらない うち に、 ふゆ に なって いた。 | shiranai uchi ni, fuyu ni natte ita.
+知らないうちに、冬になっていました。 | しらない うち に、 ふゆ に なって いました。 | shiranai uchi ni, fuyu ni natte imashita.
+気づかないうちに、財布がなくなっていた。 | きづかない うち に、 さいふ が なく なって いた。 | kizukanai uchi ni, saifu ga naku natte ita.
+気づかないうちに、財布がなくなっていました。 | きづかない うち に、 さいふ が なく なって いました。 | kizukanai uchi ni, saifu ga naku natte imashita.
+話しているうちに、夜になっていた。 | はなして いる うち に、 よる に なって いた。 | hanashite iru uchi ni, yoru ni natte ita.
+話しているうちに、夜になっていました。 | はなして いる うち に、 よる に なって いました。 | hanashite iru uchi ni, yoru ni natte imashita.
+子供が寝ている間に、掃除をしました。 | こども が ねて いる あいだ に、 そうじ を しました。 | kodomo ga nete iru aida ni, souji o shimashita.
+子供が寝ているうちに、掃除をしました。 | こども が ねて いる うち に、 そうじ を しました。 | kodomo ga nete iru uchi ni, souji o shimashita.
+来月から大阪で働くんだ。 | らいげつ から おおさか で はたらく ん だ。 | raigetsu kara oosaka de hataraku n da.
+そうなんだ。じゃあ、東京にいるうちに、一緒に飲みに行こうよ。 | そう なん だ。 じゃあ、 とうきょう に いる うち に、 いっしょ に のみ に いこう よ。 | sou nan da. jaa, toukyou ni iru uchi ni, issho ni nomi ni ikou yo.
+いいね。忙しくならないうちに、来週はどう？ | いい ね。 いそがしく ならない うち に、 らいしゅう は どう？ | ii ne. isogashiku naranai uchi ni, raishuu wa dou?
+冷たいうちに | つめたい うち に | tsumetai uchi ni
+始まらないうちに | はじまらない うち に | hajimaranai uchi ni
+のうちに | の うち に | no uchi ni
+静かなうちに | しずか な うち に | shizuka na uchi ni
+店が閉まらないうちに、買いに行こう。 | みせ が しまらない うち に、 かい に いこう。 | mise ga shimaranai uchi ni, kai ni ikou.
+店が閉まっていないうちに、買いに行こう。 | みせ が しまって いない うち に、 かい に いこう。 | mise ga shimatte inai uchi ni, kai ni ikou.
+店が開いているうちに、買いに行こう。 | みせ が あいて いる うち に、 かい に いこう。 | mise ga aite iru uchi ni, kai ni ikou.
+店がやっているうちに、買いに行こう。 | みせ が やって いる うち に、 かい に いこう。 | mise ga yatte iru uchi ni, kai ni ikou.
+
+## n3-time/ta-totan
+たとたん | たとたん | (label: no romaji)
+家を出たとたんに | いえ を でた とたん に | ie o deta totan ni
+窓を開けたとたん | まど を あけた とたん | mado o aketa totan
+家を出たとたんに、雨が降り出した。 | いえ を でた とたん に、 あめ が ふりだした。 | ie o deta totan ni, ame ga furidashita.
+家を出たとたんに、雨が降り出しました。 | いえ を でた とたん に、 あめ が ふりだしました。 | ie o deta totan ni, ame ga furidashimashita.
+ベッドに入ったとたん、寝てしまった。 | ベッド に はいった とたん、 ねて しまった。 | beddo ni haitta totan, nete shimatta.
+ベッドに入ったとたん、寝てしまいました。 | ベッド に はいった とたん、 ねて しまいました。 | beddo ni haitta totan, nete shimaimashita.
+試験が終わったとたん、おなかがすいてきた。 | しけん が おわった とたん、 おなか が すいて きた。 | shiken ga owatta totan, onaka ga suite kita.
+試験が終わったとたん、おなかがすいてきました。 | しけん が おわった とたん、 おなか が すいて きました。 | shiken ga owatta totan, onaka ga suite kimashita.
+窓を開けたとたん、強い風が入ってきました。 | まど を あけた とたん、 つよい かぜ が はいって きました。 | mado o aketa totan, tsuyoi kaze ga haitte kimashita.
+窓を開けたとたん、強い風が入ってきた。 | まど を あけた とたん、 つよい かぜ が はいって きた。 | mado o aketa totan, tsuyoi kaze ga haitte kita.
+彼は私の顔を見たとたんに、笑い出した。 | かれ は わたし の かお を みた とたん に、 わらいだした。 | kare wa watashi no kao o mita totan ni, waraidashita.
+彼は私の顔を見たとたんに、笑い出しました。 | かれ は わたし の かお を みた とたん に、 わらいだしました。 | kare wa watashi no kao o mita totan ni, waraidashimashita.
+家に帰ったとたんに、電話が鳴った。 | いえ に かえった とたん に、 でんわ が なった。 | ie ni kaetta totan ni, denwa ga natta.
+家に帰ってすぐ、電話が鳴った。 | いえ に かえって すぐ、 でんわ が なった。 | ie ni kaette sugu, denwa ga natta.
+昨日の試合、見た？ | きのう の しあい、 みた？ | kinou no shiai, mita?
+見たかったんだけど、テレビをつけたとたんに終わっちゃった。 | みたかった ん だ けど、 テレビ を つけた とたん に おわっちゃった。 | mitakatta n da kedo, terebi o tsuketa totan ni owatchatta.
+え、本当に？残念だったね。 | え、 ほんとう に？ ざんねん だった ね。 | e, hontou ni? zannen datta ne.
+座ったとたんに | すわった とたん に | suwatta totan ni
+座ったとたん | すわった とたん | suwatta totan
+聞いたとたんに | きいた とたん に | kiita totan ni
+聞いたとたん | きいた とたん | kiita totan
+開いたとたんに | あいた とたん に | aita totan ni
+開いたとたん | あいた とたん | aita totan
+着いたら、メールします。 | ついたら、 メール します。 | tsuitara, meeru shimasu.
+着いたらすぐ、メールします。 | ついたら すぐ、 メール します。 | tsuitara sugu, meeru shimasu.
+着いたらすぐにメールします。 | ついたら すぐ に メール します。 | tsuitara sugu ni meeru shimasu.
+着いてすぐ、メールします。 | ついて すぐ、 メール します。 | tsuite sugu, meeru shimasu.
+着いてすぐにメールします。 | ついて すぐ に メール します。 | tsuite sugu ni meeru shimasu.
+
+## n3-time/saichuu-ni
+最中 | さいちゅう | (label: no romaji)
+料理を作っている最中に | りょうり を つくって いる さいちゅう に | ryouri o tsukutte iru saichuu ni
+会議の最中に | かいぎ の さいちゅう に | kaigi no saichuu ni
+準備の最中だ | じゅんび の さいちゅう だ | junbi no saichuu da
+会議の最中に、電話が鳴ってしまった。 | かいぎ の さいちゅう に、 でんわ が なって しまった。 | kaigi no saichuu ni, denwa ga natte shimatta.
+会議の最中に、電話が鳴ってしまいました。 | かいぎ の さいちゅう に、 でんわ が なって しまいました。 | kaigi no saichuu ni, denwa ga natte shimaimashita.
+料理を作っている最中に、友達が来ました。 | りょうり を つくって いる さいちゅう に、 ともだち が きました。 | ryouri o tsukutte iru saichuu ni, tomodachi ga kimashita.
+料理を作っている最中に、友達が来た。 | りょうり を つくって いる さいちゅう に、 ともだち が きた。 | ryouri o tsukutte iru saichuu ni, tomodachi ga kita.
+試験の最中に、気分が悪くなった。 | しけん の さいちゅう に、 きぶん が わるく なった。 | shiken no saichuu ni, kibun ga waruku natta.
+試験の最中に、気分が悪くなりました。 | しけん の さいちゅう に、 きぶん が わるく なりました。 | shiken no saichuu ni, kibun ga waruku narimashita.
+試合の最中に、雨が降り出しました。 | しあい の さいちゅう に、 あめ が ふりだしました。 | shiai no saichuu ni, ame ga furidashimashita.
+試合の最中に、雨が降り出した。 | しあい の さいちゅう に、 あめ が ふりだした。 | shiai no saichuu ni, ame ga furidashita.
+今、会議の準備の最中です。 | いま、 かいぎ の じゅんび の さいちゅう です。 | ima, kaigi no junbi no saichuu desu.
+今、会議の準備の最中なんだ。 | いま、 かいぎ の じゅんび の さいちゅう なん だ。 | ima, kaigi no junbi no saichuu nan da.
+今話し合いの最中だから、静かにして。 | いま はなしあい の さいちゅう だ から、 しずか に して。 | ima hanashiai no saichuu da kara, shizuka ni shite.
+今話し合いの最中ですから、静かにしてください。 | いま はなしあい の さいちゅう です から、 しずか に して ください。 | ima hanashiai no saichuu desu kara, shizuka ni shite kudasai.
+父は今、食事の最中です。 | ちち は いま、 しょくじ の さいちゅう です。 | chichi wa ima, shokuji no saichuu desu.
+電話をしている間に、誰かが来た。 | でんわ を して いる あいだ に、 だれか が きた。 | denwa o shite iru aida ni, dareka ga kita.
+電話をしている最中に、誰かが来た。 | でんわ を して いる さいちゅう に、 だれか が きた。 | denwa o shite iru saichuu ni, dareka ga kita.
+森さん、ちょっといいですか？ | もりさん、 ちょっと いい です か？ | mori-san, chotto ii desu ka?
+すみません、今資料を作っている最中なんです。後でもいいですか？ | すみません、 いま しりょう を つくって いる さいちゅう なん です。 あと で も いい です か？ | sumimasen, ima shiryou o tsukutte iru saichuu nan desu. ato de mo ii desu ka?
+もちろんです。終わったら声をかけてください。 | もちろん です。 おわったら こえ を かけて ください。 | mochiron desu. owattara koe o kakete kudasai.
+の最中に | の さいちゅう に | no saichuu ni
+寝ている最中に | ねて いる さいちゅう に | nete iru saichuu ni
+掃除している最中です | そうじ して いる さいちゅう です | souji shite iru saichuu desu
+掃除している最中なんです | そうじ して いる さいちゅう なん です | souji shite iru saichuu nan desu
+映画の最中に、電話が鳴った。 | えいが の さいちゅう に、 でんわ が なった。 | eiga no saichuu ni, denwa ga natta.
+映画を見ている最中に、電話が鳴った。 | えいが を みて いる さいちゅう に、 でんわ が なった。 | eiga o mite iru saichuu ni, denwa ga natta.
+
+## n3-time/tabi-ni
+たびに | たびに | (label: no romaji)
+会うたびに | あう たび に | au tabi ni
+旅行のたびに | りょこう の たび に | ryokou no tabi ni
+この歌を聞くたびに、昔のことを思い出す。 | この うた を きく たび に、 むかし の こと を おもいだす。 | kono uta o kiku tabi ni, mukashi no koto o omoidasu.
+この歌を聞くたびに、昔のことを思い出します。 | この うた を きく たび に、 むかし の こと を おもいだします。 | kono uta o kiku tabi ni, mukashi no koto o omoidashimasu.
+祖母の家に行くたびに、料理を教えてもらいました。 | そぼ の いえ に いく たび に、 りょうり を おしえて もらいました。 | sobo no ie ni iku tabi ni, ryouri o oshiete moraimashita.
+祖母の家に行くたびに、料理を教えてもらった。 | そぼ の いえ に いく たび に、 りょうり を おしえて もらった。 | sobo no ie ni iku tabi ni, ryouri o oshiete moratta.
+旅行のたびに、写真を何百枚も撮ってしまう。 | りょこう の たび に、 しゃしん を なんびゃくまい も とって しまう。 | ryokou no tabi ni, shashin o nanbyakumai mo totte shimau.
+旅行のたびに、写真を何百枚も撮ってしまいます。 | りょこう の たび に、 しゃしん を なんびゃくまい も とって しまいます。 | ryokou no tabi ni, shashin o nanbyakumai mo totte shimaimasu.
+彼は会うたびに違う車に乗っている。 | かれ は あう たび に ちがう くるま に のって いる。 | kare wa au tabi ni chigau kuruma ni notte iru.
+地震のニュースを見るたびに、家族のことが心配になります。 | じしん の ニュース を みる たび に、 かぞく の こと が しんぱい に なります。 | jishin no nyuusu o miru tabi ni, kazoku no koto ga shinpai ni narimasu.
+地震のニュースを見るたびに、家族のことが心配になる。 | じしん の ニュース を みる たび に、 かぞく の こと が しんぱい に なる。 | jishin no nyuusu o miru tabi ni, kazoku no koto ga shinpai ni naru.
+試合のたびに、家族が来てくれる。 | しあい の たび に、 かぞく が きて くれる。 | shiai no tabi ni, kazoku ga kite kureru.
+試合のたびに、家族が来てくれます。 | しあい の たび に、 かぞく が きて くれます。 | shiai no tabi ni, kazoku ga kite kuremasu.
+会議のたびに、資料を作るのが大変です。 | かいぎ の たび に、 しりょう を つくる の が たいへん です。 | kaigi no tabi ni, shiryou o tsukuru no ga taihen desu.
+会議のたびに、資料を作るのが大変だ。 | かいぎ の たび に、 しりょう を つくる の が たいへん だ。 | kaigi no tabi ni, shiryou o tsukuru no ga taihen da.
+授業のたびに、新しい言葉を覚える。 | じゅぎょう の たび に、 あたらしい ことば を おぼえる。 | jugyou no tabi ni, atarashii kotoba o oboeru.
+授業のたびに、新しい言葉を覚えます。 | じゅぎょう の たび に、 あたらしい ことば を おぼえます。 | jugyou no tabi ni, atarashii kotoba o oboemasu.
+この写真を見ると、笑ってしまう。 | この しゃしん を みる と、 わらって しまう。 | kono shashin o miru to, waratte shimau.
+この写真を見るたびに、笑ってしまう。 | この しゃしん を みる たび に、 わらって しまう。 | kono shashin o miru tabi ni, waratte shimau.
+また新しいかばん？ | また あたらしい かばん？ | mata atarashii kaban?
+うん。東京に行くたびに、何か買っちゃうんだ。 | うん。 とうきょう に いく たび に、 なに か かっちゃう ん だ。 | un. toukyou ni iku tabi ni, nani ka katchau n da.
+私も。買い物のたびに、財布が軽くなるよ。 | わたし も。 かいもの の たび に、 さいふ が かるく なる よ。 | watashi mo. kaimono no tabi ni, saifu ga karuku naru yo.
+見るたびに | みる たび に | miru tabi ni
+見るたび | みる たび | miru tabi
+のたびに | の たび に | no tabi ni
+のたび | の たび | no tabi
+来るたびに | くる たび に | kuru tabi ni
+来るたび | くる たび | kuru tabi
+休みのたびに、海へ行きます。 | やすみ の たび に、 うみ へ いきます。 | yasumi no tabi ni, umi e ikimasu.
+休みのたび、海へ行きます。 | やすみ の たび、 うみ へ いきます。 | yasumi no tabi, umi e ikimasu.
+休みになるたびに、海へ行きます。 | やすみ に なる たび に、 うみ へ いきます。 | yasumi ni naru tabi ni, umi e ikimasu.
+休みになるたび、海へ行きます。 | やすみ に なる たび、 うみ へ いきます。 | yasumi ni naru tabi, umi e ikimasu.
+
+## n3-time/goto-oki-ni
+ごと・おき | ごと・おき | (label: no romaji)
+一時間ごとに | いちじかんごと に | ichijikangoto ni
+駅ごとに | えきごと に | ekigoto ni
+一日おきに | いちにちおき に | ichinichioki ni
+このバスは十五分ごとに来ます。 | この バス は じゅうごふんごと に きます。 | kono basu wa juugofungoto ni kimasu.
+このバスは十五分ごとに来るよ。 | この バス は じゅうごふんごと に くる よ。 | kono basu wa juugofungoto ni kuru yo.
+一時間ごとに休みを取りましょう。 | いちじかんごと に やすみ を とりましょう。 | ichijikangoto ni yasumi o torimashou.
+一時間ごとに休みを取ろう。 | いちじかんごと に やすみ を とろう。 | ichijikangoto ni yasumi o torou.
+この薬は六時間ごとに飲んでください。 | この くすり は ろくじかんごと に のんで ください。 | kono kusuri wa rokujikangoto ni nonde kudasai.
+駅ごとに乗る人が増えていった。 | えきごと に のる ひと が ふえて いった。 | ekigoto ni noru hito ga fuete itta.
+駅ごとに乗る人が増えていきました。 | えきごと に のる ひと が ふえて いきました。 | ekigoto ni noru hito ga fuete ikimashita.
+あの店のメニューは季節ごとに変わります。 | あの みせ の メニュー は きせつごと に かわります。 | ano mise no menyuu wa kisetsugoto ni kawarimasu.
+あの店のメニューは季節ごとに変わる。 | あの みせ の メニュー は きせつごと に かわる。 | ano mise no menyuu wa kisetsugoto ni kawaru.
+国ごとに法律が違います。 | くにごと に ほうりつ が ちがいます。 | kunigoto ni houritsu ga chigaimasu.
+国ごとに法律が違う。 | くにごと に ほうりつ が ちがう。 | kunigoto ni houritsu ga chigau.
+一日おきにプールに通っています。 | いちにちおき に プール に かよって います。 | ichinichioki ni puuru ni kayotte imasu.
+一日おきにプールに通っている。 | いちにちおき に プール に かよって いる。 | ichinichioki ni puuru ni kayotte iru.
+母には一週間おきに電話しています。 | はは に は いっしゅうかんおき に でんわ して います。 | haha ni wa isshuukan'oki ni denwa shite imasu.
+母には一週間おきに電話している。 | はは に は いっしゅうかんおき に でんわ して いる。 | haha ni wa isshuukan'oki ni denwa shite iru.
+一年おきに国へ帰ります。 | いちねんおき に くに へ かえります。 | ichinen'oki ni kuni e kaerimasu.
+一年おきに国へ帰る。 | いちねんおき に くに へ かえる。 | ichinen'oki ni kuni e kaeru.
+席は一つおきに座ってください。 | せき は ひとつおき に すわって ください。 | seki wa hitotsuoki ni suwatte kudasai.
+席は一つおきに座ってね。 | せき は ひとつおき に すわって ね。 | seki wa hitotsuoki ni suwatte ne.
+五分おきに電車が来ます。 | ごふんおき に でんしゃ が きます。 | gofun'oki ni densha ga kimasu.
+五分おきに電車が来る。 | ごふんおき に でんしゃ が くる。 | gofun'oki ni densha ga kuru.
+二日ごとに走っています。 | ふつかごと に はしって います。 | futsukagoto ni hashitte imasu.
+二日おきに走っています。 | ふつかおき に はしって います。 | futsukaoki ni hashitte imasu.
+この花、水は毎日やったほうがいいですか？ | この はな、 みず は まいにち やった ほう が いい です か？ | kono hana, mizu wa mainichi yatta hou ga ii desu ka?
+いいえ、二日おきぐらいで大丈夫ですよ。 | いいえ、 ふつかおき ぐらい で だいじょうぶ です よ。 | iie, futsukaoki gurai de daijoubu desu yo.
+わかりました。ありがとうございます。 | わかりました。 ありがとう ございます。 | wakarimashita. arigatou gozaimasu.
+四年ごとに | よねんごと に | yonengoto ni
+4年ごとに | 4ねんごと に | 4nengoto ni
+一日おきに | いちにちおき に | ichinichioki ni
+1日おきに | 1にちおき に | 1nichioki ni
+ごとに | ごと に | goto ni
+一週間おきに | いっしゅうかんおき に | isshuukan'oki ni
+1週間おきに | 1しゅうかんおき に | 1shuukan'oki ni
+一週おきに | いっしゅうおき に | isshuuoki ni
+1週おきに | 1しゅうおき に | 1shuuoki ni
+毎日日記を書いています。 | まいにち にっき を かいて います。 | mainichi nikki o kaite imasu.
+一日ごとに日記を書いています。 | いちにちごと に にっき を かいて います。 | ichinichigoto ni nikki o kaite imasu.
+1日ごとに日記を書いています。 | 1にちごと に にっき を かいて います。 | 1nichigoto ni nikki o kaite imasu.
+
+## n3-time/ippou-da
+一方だ | いっぽうだ | (label: no romaji)
+増える一方だ | ふえる いっぽう だ | fueru ippou da
+悪くなるばかりだ | わるく なる ばかり だ | waruku naru bakari da
+最近、物の値段が上がる一方だ。 | さいきん、 もの の ねだん が あがる いっぽう だ。 | saikin, mono no nedan ga agaru ippou da.
+最近、物の値段が上がる一方です。 | さいきん、 もの の ねだん が あがる いっぽう です。 | saikin, mono no nedan ga agaru ippou desu.
+この町の人口は減る一方です。 | この まち の じんこう は へる いっぽう です。 | kono machi no jinkou wa heru ippou desu.
+この町の人口は減る一方だ。 | この まち の じんこう は へる いっぽう だ。 | kono machi no jinkou wa heru ippou da.
+仕事は忙しくなる一方です。 | しごと は いそがしく なる いっぽう です。 | shigoto wa isogashiku naru ippou desu.
+仕事は忙しくなる一方だ。 | しごと は いそがしく なる いっぽう だ。 | shigoto wa isogashiku naru ippou da.
+彼の病気は悪くなる一方だった。 | かれ の びょうき は わるく なる いっぽう だった。 | kare no byouki wa waruku naru ippou datta.
+彼の病気は悪くなる一方でした。 | かれ の びょうき は わるく なる いっぽう でした。 | kare no byouki wa waruku naru ippou deshita.
+あの店の人気は上がる一方です。 | あの みせ の にんき は あがる いっぽう です。 | ano mise no ninki wa agaru ippou desu.
+薬を飲んでも、熱は上がるばかりだ。 | くすり を のんで も、 ねつ は あがる ばかり だ。 | kusuri o nonde mo, netsu wa agaru bakari da.
+薬を飲んでも、熱は上がるばかりです。 | くすり を のんで も、 ねつ は あがる ばかり です。 | kusuri o nonde mo, netsu wa agaru bakari desu.
+練習しないから、ピアノが下手になるばかりです。 | れんしゅう しない から、 ピアノ が へた に なる ばかり です。 | renshuu shinai kara, piano ga heta ni naru bakari desu.
+練習しないから、ピアノが下手になるばかりだ。 | れんしゅう しない から、 ピアノ が へた に なる ばかり だ。 | renshuu shinai kara, piano ga heta ni naru bakari da.
+雨は強くなるばかりで、困っています。 | あめ は つよく なる ばかり で、 こまって います。 | ame wa tsuyoku naru bakari de, komatte imasu.
+雨は強くなるばかりで、困っている。 | あめ は つよく なる ばかり で、 こまって いる。 | ame wa tsuyoku naru bakari de, komatte iru.
+問題は大きくなるばかりだ。 | もんだい は おおきく なる ばかり だ。 | mondai wa ookiku naru bakari da.
+問題は大きくなるばかりです。 | もんだい は おおきく なる ばかり です。 | mondai wa ookiku naru bakari desu.
+二人の関係は悪くなるばかりでした。 | ふたり の かんけい は わるく なる ばかり でした。 | futari no kankei wa waruku naru bakari deshita.
+二人の関係は悪くなるばかりだった。 | ふたり の かんけい は わるく なる ばかり だった。 | futari no kankei wa waruku naru bakari datta.
+町の小さい店が減ってきました。 | まち の ちいさい みせ が へって きました。 | machi no chiisai mise ga hette kimashita.
+町の小さい店が減る一方です。 | まち の ちいさい みせ が へる いっぽう です。 | machi no chiisai mise ga heru ippou desu.
+最近、毎晩遅くまで働いていますね。 | さいきん、 まいばん おそく まで はたらいて います ね。 | saikin, maiban osoku made hataraite imasu ne.
+ええ。人は減ったのに、仕事は増える一方です。 | ええ。 ひと は へった のに、 しごと は ふえる いっぽう です。 | ee. hito wa hetta noni, shigoto wa fueru ippou desu.
+このままだと、みんなの仕事は大変になるばかりですよね。 | この まま だ と、 みんな の しごと は たいへん に なる ばかり です よね。 | kono mama da to, minna no shigoto wa taihen ni naru bakari desu yone.
+減る一方です | へる いっぽう です | heru ippou desu
+悪くなるばかりだ | わるく なる ばかり だ | waruku naru bakari da
+悪くなるばかり | わるく なる ばかり | waruku naru bakari
+増える一方です | ふえる いっぽう です | fueru ippou desu
+寒くなる一方です。 | さむく なる いっぽう です。 | samuku naru ippou desu.
+
+## n3-time/ni-tsurete
+につれて | につれて | (label: no romaji)
+年を取るにつれて | とし を とる につれて | toshi o toru nitsurete
+季節の変化につれて | きせつ の へんか につれて | kisetsu no henka nitsurete
+年を取るにつれて、朝早く起きるようになった。 | とし を とる につれて、 あさ はやく おきる よう に なった。 | toshi o toru nitsurete, asa hayaku okiru you ni natta.
+年を取るにつれて、朝早く起きるようになりました。 | とし を とる につれて、 あさ はやく おきる よう に なりました。 | toshi o toru nitsurete, asa hayaku okiru you ni narimashita.
+日本語が上手になるにつれて、日本の生活が楽しくなってきました。 | にほんご が じょうず に なる につれて、 にほん の せいかつ が たのしく なって きました。 | nihongo ga jouzu ni naru nitsurete, nihon no seikatsu ga tanoshiku natte kimashita.
+日本語が上手になるにつれて、日本の生活が楽しくなってきた。 | にほんご が じょうず に なる につれて、 にほん の せいかつ が たのしく なって きた。 | nihongo ga jouzu ni naru nitsurete, nihon no seikatsu ga tanoshiku natte kita.
+台風が近づくにつれて、風が強くなってきた。 | たいふう が ちかづく につれて、 かぜ が つよく なって きた。 | taifuu ga chikazuku nitsurete, kaze ga tsuyoku natte kita.
+台風が近づくにつれて、風が強くなってきました。 | たいふう が ちかづく につれて、 かぜ が つよく なって きました。 | taifuu ga chikazuku nitsurete, kaze ga tsuyoku natte kimashita.
+町が大きくなるにつれて、緑が減っていきました。 | まち が おおきく なる につれて、 みどり が へって いきました。 | machi ga ookiku naru nitsurete, midori ga hette ikimashita.
+町が大きくなるにつれて、緑が減っていった。 | まち が おおきく なる につれて、 みどり が へって いった。 | machi ga ookiku naru nitsurete, midori ga hette itta.
+季節の変化につれて、山の色も変わっていく。 | きせつ の へんか につれて、 やま の いろ も かわって いく。 | kisetsu no henka nitsurete, yama no iro mo kawatte iku.
+季節の変化につれて、山の色も変わっていきます。 | きせつ の へんか につれて、 やま の いろ も かわって いきます。 | kisetsu no henka nitsurete, yama no iro mo kawatte ikimasu.
+山を登るにつれて、寒くなる。 | やま を のぼる につれて、 さむく なる。 | yama o noboru nitsurete, samuku naru.
+山を登ると、寒くなる。 | やま を のぼる と、 さむく なる。 | yama o noboru to, samuku naru.
+最近、暗くなるのが早くなったね。 | さいきん、 くらく なる の が はやく なった ね。 | saikin, kuraku naru no ga hayaku natta ne.
+うん。寒くなるにつれて、朝起きるのが大変になるよ。 | うん。 さむく なる につれて、 あさ おきる の が たいへん に なる よ。 | un. samuku naru nitsurete, asa okiru no ga taihen ni naru yo.
+わかる。毎朝、ベッドから出たくない。 | わかる。 まいあさ、 ベッド から でたくない。 | wakaru. maiasa, beddo kara detakunai.
+増えるにつれて | ふえる につれて | fueru nitsurete
+増えるにつれ | ふえる につれ | fueru nitsure
+慣れるにつれて | なれる につれて | nareru nitsurete
+慣れるにつれ | なれる につれ | nareru nitsure
+慣れてくるにつれて | なれて くる につれて | narete kuru nitsurete
+につれて | につれて | nitsurete
+につれ | につれ | nitsure
+難しくなるにつれて | むずかしく なる につれて | muzukashiku naru nitsurete
+難しくなるにつれ | むずかしく なる につれ | muzukashiku naru nitsure
+難しくなってくるにつれて | むずかしく なって くる につれて | muzukashiku natte kuru nitsurete
+難しくなってくるにつれ | むずかしく なって くる につれ | muzukashiku natte kuru nitsure
+
+## n3-time/te-hajimete
+て初めて | てはじめて | (label: no romaji)
+言われて初めて | いわれて はじめて | iwarete hajimete
+大人になって初めて | おとな に なって はじめて | otona ni natte hajimete
+病気になって初めて、健康の大切さが分かった。 | びょうき に なって はじめて、 けんこう の たいせつさ が わかった。 | byouki ni natte hajimete, kenkou no taisetsusa ga wakatta.
+病気になって初めて、健康の大切さが分かりました。 | びょうき に なって はじめて、 けんこう の たいせつさ が わかりました。 | byouki ni natte hajimete, kenkou no taisetsusa ga wakarimashita.
+一人で生活して初めて、親のありがたさが分かりました。 | ひとり で せいかつ して はじめて、 おや の ありがたさ が わかりました。 | hitori de seikatsu shite hajimete, oya no arigatasa ga wakarimashita.
+一人で生活して初めて、親のありがたさが分かった。 | ひとり で せいかつ して はじめて、 おや の ありがたさ が わかった。 | hitori de seikatsu shite hajimete, oya no arigatasa ga wakatta.
+日本に来て初めて、国のことをあまり知らないと気づいた。 | にほん に きて はじめて、 くに の こと を あまり しらない と きづいた。 | nihon ni kite hajimete, kuni no koto o amari shiranai to kizuita.
+日本に来て初めて、国のことをあまり知らないと気づきました。 | にほん に きて はじめて、 くに の こと を あまり しらない と きづきました。 | nihon ni kite hajimete, kuni no koto o amari shiranai to kizukimashita.
+実際にやってみて初めて、その難しさが分かる。 | じっさい に やって みて はじめて、 その むずかしさ が わかる。 | jissai ni yatte mite hajimete, sono muzukashisa ga wakaru.
+実際にやってみて初めて、その難しさが分かります。 | じっさい に やって みて はじめて、 その むずかしさ が わかります。 | jissai ni yatte mite hajimete, sono muzukashisa ga wakarimasu.
+言われて初めて、約束を忘れていたことに気づきました。 | いわれて はじめて、 やくそく を わすれて いた こと に きづきました。 | iwarete hajimete, yakusoku o wasurete ita koto ni kizukimashita.
+言われて初めて、約束を忘れていたことに気づいた。 | いわれて はじめて、 やくそく を わすれて いた こと に きづいた。 | iwarete hajimete, yakusoku o wasurete ita koto ni kizuita.
+会社に入ってから、仕事の大変さが分かった。 | かいしゃ に はいって から、 しごと の たいへんさ が わかった。 | kaisha ni haitte kara, shigoto no taihensa ga wakatta.
+会社に入って初めて、仕事の大変さが分かった。 | かいしゃ に はいって はじめて、 しごと の たいへんさ が わかった。 | kaisha ni haitte hajimete, shigoto no taihensa ga wakatta.
+最近、毎日料理しているんだ。 | さいきん、 まいにち りょうり して いる ん だ。 | saikin, mainichi ryouri shite iru n da.
+へえ、大変じゃない？ | へえ、 たいへん じゃ ない？ | hee, taihen ja nai?
+うん。毎日作って初めて、母の料理のすごさが分かったよ。 | うん。 まいにち つくって はじめて、 はは の りょうり の すごさ が わかった よ。 | un. mainichi tsukutte hajimete, haha no ryouri no sugosa ga wakatta yo.
+なくして初めて | なくして はじめて | nakushite hajimete
+聞いて初めて | きいて はじめて | kiite hajimete
+初めて | はじめて | hajimete
+住んで初めて | すんで はじめて | sunde hajimete
+住んでみて初めて | すんで みて はじめて | sunde mite hajimete
+
+## n3-time/ue-de
+上で | うえで | (label: no romaji)
+よく考えた上で | よく かんがえた うえ で | yoku kangaeta ue de
+相談の上で | そうだん の うえ で | soudan no ue de
+生活する上で | せいかつ する うえ で | seikatsu suru ue de
+よく考えた上で、決めます。 | よく かんがえた うえ で、 きめます。 | yoku kangaeta ue de, kimemasu.
+よく考えた上で、決めるよ。 | よく かんがえた うえ で、 きめる よ。 | yoku kangaeta ue de, kimeru yo.
+説明をよく読んだ上で、名前を書いてください。 | せつめい を よく よんだ うえ で、 なまえ を かいて ください。 | setsumei o yoku yonda ue de, namae o kaite kudasai.
+家族と相談の上で、返事します。 | かぞく と そうだん の うえ で、 へんじ します。 | kazoku to soudan no ue de, henji shimasu.
+家族と相談の上で、返事するね。 | かぞく と そうだん の うえ で、 へんじ する ね。 | kazoku to soudan no ue de, henji suru ne.
+両親に話した上で、留学することにした。 | りょうしん に はなした うえ で、 りゅうがく する こと に した。 | ryoushin ni hanashita ue de, ryuugaku suru koto ni shita.
+両親に話した上で、留学することにしました。 | りょうしん に はなした うえ で、 りゅうがく する こと に しました。 | ryoushin ni hanashita ue de, ryuugaku suru koto ni shimashita.
+日本で生活する上で、一番大切なのは言葉です。 | にほん で せいかつ する うえ で、 いちばん たいせつ な の は ことば です。 | nihon de seikatsu suru ue de, ichiban taisetsu na no wa kotoba desu.
+日本で生活する上で、一番大切なのは言葉だ。 | にほん で せいかつ する うえ で、 いちばん たいせつ な の は ことば だ。 | nihon de seikatsu suru ue de, ichiban taisetsu na no wa kotoba da.
+日本語を勉強する上で、毎日続けることが大事です。 | にほんご を べんきょう する うえ で、 まいにち つづける こと が だいじ です。 | nihongo o benkyou suru ue de, mainichi tsuzukeru koto ga daiji desu.
+日本語を勉強する上で、毎日続けることが大事だ。 | にほんご を べんきょう する うえ で、 まいにち つづける こと が だいじ だ。 | nihongo o benkyou suru ue de, mainichi tsuzukeru koto ga daiji da.
+仕事をする上で、大切なのは時間を守ることだ。 | しごと を する うえ で、 たいせつ な の は じかん を まもる こと だ。 | shigoto o suru ue de, taisetsu na no wa jikan o mamoru koto da.
+仕事をする上で、大切なのは時間を守ることです。 | しごと を する うえ で、 たいせつ な の は じかん を まもる こと です。 | shigoto o suru ue de, taisetsu na no wa jikan o mamoru koto desu.
+部屋を探す上で、駅に近いかどうかは大事です。 | へや を さがす うえ で、 えき に ちかい か どう か は だいじ です。 | heya o sagasu ue de, eki ni chikai ka dou ka wa daiji desu.
+部屋を探す上で、駅に近いかどうかは大事だよ。 | へや を さがす うえ で、 えき に ちかい か どう か は だいじ だ よ。 | heya o sagasu ue de, eki ni chikai ka dou ka wa daiji da yo.
+先生に相談してから、決めました。 | せんせい に そうだん して から、 きめました。 | sensei ni soudan shite kara, kimemashita.
+先生に相談した上で、決めました。 | せんせい に そうだん した うえ で、 きめました。 | sensei ni soudan shita ue de, kimemashita.
+この部屋、広くていいですね。すぐ決めたいです。 | この へや、 ひろくて いい です ね。 すぐ きめたい です。 | kono heya, hirokute ii desu ne. sugu kimetai desu.
+ありがとうございます。一度中をよく見た上で、決めてください。 | ありがとう ございます。 いちど なか を よく みた うえ で、 きめて ください。 | arigatou gozaimasu. ichido naka o yoku mita ue de, kimete kudasai.
+そうですね。台所も見せてください。 | そう です ね。 だいどころ も みせて ください。 | sou desu ne. daidokoro mo misete kudasai.
+調べた上で | しらべた うえ で | shirabeta ue de
+の上で | の うえ で | no ue de
+働く上で | はたらく うえ で | hataraku ue de
+値段を聞いた上で、決めます。 | ねだん を きいた うえ で、 きめます。 | nedan o kiita ue de, kimemasu.
+値段を聞いてから、決めます。 | ねだん を きいて から、 きめます。 | nedan o kiite kara, kimemasu.
 
 ## read/shop-sign
 本日休業 | ほんじつ きゅうぎょう | honjitsu kyuugyou

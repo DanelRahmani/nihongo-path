@@ -136,4 +136,10 @@ export const OTHER: Word[] = [
   // Purpose, cause and reasons (unit 十四)
   w("pre-noun", "こんな", "this kind of, like this", "language"),
   w("counter", "[週間|しゅうかん]", "week(s): [一週間|いっしゅうかん]", "numbers"),
+  // Time and change (unit 十五)
+  w("suffix", "ごと", "every, each: [一時間|いちじかん]ごと (every hour), [駅|えき]ごと (at every station)", "time"),
+  w("counter", "[週|しゅう]", "week(s): [一週|いっしゅう]おき (every other week)", "numbers"),
+  w("suffix", "おき", "at intervals of, every other: [一日|いちにち]おき (every other day)", "time"),
+  w("counter", "[日|か]", "day(s), 2 to 10: [二日|ふつか], [三日|みっか]", "numbers"),
+  w("adverb", "[初|はじ]めて", "for the first time (〜て初めて: only after)", "time"),
 ];

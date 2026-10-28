@@ -18,6 +18,8 @@ export const FUNCTION_WORDS = new Set([
   ..."かも しれない しれません によると".split(" "),
   // によれば (according to), によって and による (by, because of, depending on).
   ..."によれば によって による".split(" "),
+  // につれて (as … changes), and につれ in writing.
+  ..."につれて につれ".split(" "),
   // かな and かしら (I wonder), sentence-final like ね.
   ..."かな かしら".split(" "),
 ]);

@@ -2249,6 +2249,155 @@ export const GRAMMAR: GrammarGroup[] = [
       },
     ],
   },
+  {
+    slug: "n3-time",
+    title: "Time and change",
+    topics: [
+      {
+        slug: "uchi-ni",
+        pattern: "Verb (a state) · い-adjective · な-adjective + な · Noun + の + うちに",
+        meaning: "While …, while it's still …: do it before the state ends.",
+        lesson: "n3-time/uchi-ni",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[若|わか]い {うち に}、 たくさん の [国|くに] へ [行|い]って みたい。", en: "I want to see lots of countries while I'm still young.", register: "Casual" },
+          { jp: "[若|わか]い {うち に}、 たくさん の [国|くに] へ [行|い]って みたい です。", en: "I want to see lots of countries while I'm still young.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "nai-uchi-ni",
+        pattern: "Verb ない form + うちに",
+        meaning: "Before … happens: while it hasn't happened yet.",
+        lesson: "n3-time/uchi-ni",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[雨|あめ] が [降|ふ]らない {うち に}、 [帰|かえ]りましょう。", en: "Let's head home before it starts to rain.", register: "Polite" },
+          { jp: "[雨|あめ] が [降|ふ]らない {うち に}、 [帰|かえ]ろう。", en: "Let's head home before it starts to rain.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "ta-totan",
+        pattern: "Verb た form + とたん(に)",
+        meaning: "The moment …, just as …: something sudden happens at once.",
+        lesson: "n3-time/ta-totan",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[家|いえ] を [出|で]た {とたん に}、 [雨|あめ] が [降|ふ]り[出|だ]した。", en: "The moment I stepped out of the house, it started to rain.", register: "Casual" },
+          { jp: "[家|いえ] を [出|で]た {とたん に}、 [雨|あめ] が [降|ふ]り[出|だ]しました。", en: "The moment I stepped out of the house, it started to rain.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "saichuu-ni",
+        pattern: "Verb ている form · Noun + の + [最中|さいちゅう]に · [最中|さいちゅう]だ",
+        meaning: "Right in the middle of …: usually something breaks in.",
+        lesson: "n3-time/saichuu-ni",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[会議|かいぎ] の {[最中|さいちゅう] に}、 [電話|でんわ] が [鳴|な]って しまった。", en: "My phone went off right in the middle of the meeting.", register: "Casual" },
+          { jp: "[会議|かいぎ] の {[最中|さいちゅう] に}、 [電話|でんわ] が [鳴|な]って しまいました。", en: "My phone went off right in the middle of the meeting.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "tabi-ni",
+        pattern: "Plain non-past verb · Noun + の + たび(に)",
+        meaning: "Every time …, whenever …: each time it comes round.",
+        lesson: "n3-time/tabi-ni",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "この [歌|うた] を [聞|き]く {たび に}、 [昔|むかし] の こと を [思|おも]い[出|だ]す。", en: "Every time I hear this song, I think of the old days.", register: "Casual" },
+          { jp: "この [歌|うた] を [聞|き]く {たび に}、 [昔|むかし] の こと を [思|おも]い[出|だ]します。", en: "Every time I hear this song, I think of the old days.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "goto-ni",
+        pattern: "Number + counter · Noun + ごとに",
+        meaning: "Every …, each …: how often something comes round, or each one in turn.",
+        lesson: "n3-time/goto-oki-ni",
+        jlpt: jlpt("N4", "JLPT Sensei lists ごとに at N3."),
+        examples: [
+          { jp: "この バス は [十五分|じゅうごふん]{ごと に} [来|き]ます。", en: "This bus comes every fifteen minutes.", register: "Polite" },
+          { jp: "この バス は [十五分|じゅうごふん]{ごと に} [来|く]る よ。", en: "This bus comes every fifteen minutes.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "oki-ni",
+        pattern: "Number + counter + おきに",
+        meaning: "Every other …, at intervals of …: counting the units skipped in between.",
+        lesson: "n3-time/goto-oki-ni",
+        jlpt: jlpt("N3", "Not on JLPT Sensei's N3 list."),
+        examples: [
+          { jp: "[一日|いちにち]{おき に} プール に [通|かよ]って います。", en: "I go to the pool every other day.", register: "Polite" },
+          { jp: "[一日|いちにち]{おき に} プール に [通|かよ]って いる。", en: "I go to the pool every other day.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "ippou-da",
+        pattern: "Plain non-past verb (a change) + [一方|いっぽう]だ",
+        meaning: "Keeps …ing, more and more: a trend that won't turn back, often for the worse.",
+        lesson: "n3-time/ippou-da",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[最近|さいきん]、 [物|もの] の [値段|ねだん] が [上|あ]がる {[一方|いっぽう] だ}。", en: "Prices just keep going up these days.", register: "Casual" },
+          { jp: "[最近|さいきん]、 [物|もの] の [値段|ねだん] が [上|あ]がる {[一方|いっぽう] です}。", en: "Prices just keep going up these days.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "bakari-da",
+        pattern: "Plain non-past verb (a change) + ばかりだ",
+        meaning: "Keeps getting worse (mostly unwelcome changes).",
+        lesson: "n3-time/ippou-da",
+        jlpt: jlpt("N3", "JLPT Sensei's N3 list has no ばかりだ (its ばかりで is “does nothing but”)."),
+        examples: [
+          { jp: "[問題|もんだい] は [大|おお]きく なる {ばかり だ}。", en: "The problem only keeps getting bigger.", register: "Casual" },
+          { jp: "[問題|もんだい] は [大|おお]きく なる {ばかり です}。", en: "The problem only keeps getting bigger.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "ni-tsurete",
+        pattern: "Plain non-past verb · Noun + につれて",
+        meaning: "As … changes, … changes along with it.",
+        lesson: "n3-time/ni-tsurete",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[台風|たいふう] が [近|ちか]づく {につれて}、 [風|かぜ] が [強|つよ]く なって きた。", en: "As the typhoon drew nearer, the wind grew stronger.", register: "Casual" },
+          { jp: "[台風|たいふう] が [近|ちか]づく {につれて}、 [風|かぜ] が [強|つよ]く なって きました。", en: "As the typhoon drew nearer, the wind grew stronger.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "te-hajimete",
+        pattern: "Verb て form + [初|はじ]めて",
+        meaning: "Only after …, not until …: often a realisation that came late.",
+        lesson: "n3-time/te-hajimete",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[病気|びょうき] に なって {[初|はじ]めて}、 [健康|けんこう] の [大切|たいせつ]さ が [分|わ]かった。", en: "It was only when I fell ill that I realised how precious good health is.", register: "Casual" },
+          { jp: "[病気|びょうき] に なって {[初|はじ]めて}、 [健康|けんこう] の [大切|たいせつ]さ が [分|わ]かりました。", en: "It was only when I fell ill that I realised how precious good health is.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "ta-ue-de",
+        pattern: "Verb た form · Noun + の + [上|うえ]で",
+        meaning: "After …, and on that basis: a first step the next one rests on (formal).",
+        lesson: "n3-time/ue-de",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "よく [考|かんが]えた {[上|うえ] で}、 [決|き]めます。", en: "I'll decide once I've thought it over carefully.", register: "Polite" },
+          { jp: "よく [考|かんが]えた {[上|うえ] で}、 [決|き]める よ。", en: "I'll decide once I've thought it over carefully.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "ue-de-doing",
+        pattern: "Plain non-past verb + [上|うえ]で",
+        meaning: "In doing …, for …: what matters when you do something.",
+        lesson: "n3-time/ue-de",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[日本|にほん] で [生活|せいかつ] する {[上|うえ] で}、 [一番|いちばん] [大切|たいせつ] な の は [言葉|ことば] です。", en: "In living in Japan, the most important thing is the language.", register: "Polite" },
+          { jp: "[日本|にほん] で [生活|せいかつ] する {[上|うえ] で}、 [一番|いちばん] [大切|たいせつ] な の は [言葉|ことば] だ。", en: "In living in Japan, the most important thing is the language.", register: "Casual" },
+        ],
+      },
+    ],
+  },
 ];
 
 export const GRAMMAR_TOPICS: GrammarTopic[] = GRAMMAR.flatMap((g) => g.topics);

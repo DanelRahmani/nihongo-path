@@ -11,7 +11,7 @@ export const BATCH_07: Word[] = [
   x("1457320", "トン", "noun", "tonne (1,000 kg)", "numbers"),
   x("1590970", "[完璧|かんぺき]", "na-adj", "perfect, flawless", "everyday"),
   // moved to the lessons (n5-essentials/hou-ga-ii): 1423000 [着|き]る
-  x("1242170", "[近|ちか]づく", "verb", "to approach, to get close", "everyday", "godan"),
+  // moved to the lessons (n3-time/ni-tsurete): 1242170 [近|ちか]づく
   x("1055840", "サイド", "noun", "side", "everyday"),
   x("1139960", "ランク", "noun", "rank, ranking (する: to rank)", "everyday"),
   x("1195820", "[課題|かだい]", "noun", "assignment, homework; issue, task", "school-work"),

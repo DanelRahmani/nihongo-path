@@ -2,6 +2,7 @@ import { basics } from "@/content/lessons/basics";
 import { hiragana } from "@/content/lessons/hiragana";
 import { katakana } from "@/content/lessons/katakana";
 import { n3Reasons } from "@/content/lessons/n3-reasons";
+import { n3Time } from "@/content/lessons/n3-time";
 import { n4Conditions } from "@/content/lessons/n4-conditions";
 import { n4GivingVoice } from "@/content/lessons/n4-giving-voice";
 import { n4Plans } from "@/content/lessons/n4-plans";
@@ -136,6 +137,14 @@ export const UNITS: Unit[] = [
     titleJp: "[理由|りゆう]",
     description: "In order to and because of, thanks to and the fault of, by and depending on, and what わけ explains, denies and rules out.",
     lessons: n3Reasons,
+  },
+  {
+    slug: "n3-time",
+    kind: "grammar",
+    title: "Time and change",
+    titleJp: "[時間|じかん]",
+    description: "While you still can, the moment that, right in the middle of, every time and every other, more and more, as things change, only after, and after doing.",
+    lessons: n3Time,
   },
 ];
 

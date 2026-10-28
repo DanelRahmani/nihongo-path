@@ -28,7 +28,7 @@ export const BATCH_01: Word[] = [
   x("1006730", "そして", "conjunction", "and, and then", "language"),
   x("1356370", "[情報|じょうほう]", "noun", "information", "school-work"),
   // moved to the lessons (n5-essentials/tsumori): 1592250 [国|くに]
-  x("1215810", "[関係|かんけい]", "noun", "relationship, connection (する: to be involved)", "people"),
+  // moved to the lessons (n3-time/ippou-da): 1215810 [関係|かんけい]
   x("1198170", "[会|かい]", "noun", "meeting, party; society", "school-work"),
   x("1212260", "[感|かん]じる", "verb", "to feel, to sense", "feelings", "ichidan"),
   x("1505990", "しかし", "conjunction", "however, but", "language"),
@@ -128,7 +128,7 @@ export const BATCH_01: Word[] = [
   // skipped: 2861111 なす (formal verb (to do, to commit))
   x("1202710", "[開催|かいさい]", "noun", "holding (an event) (する: to hold)", "everyday"),
   x("1205900", "[確認|かくにん]", "noun", "confirmation (する: to check)", "everyday"),
-  x("1321110", "[実際|じっさい]", "noun", "reality, actual state; in fact", "everyday"),
+  // moved to the lessons (n3-time/te-hajimete): 1321110 [実際|じっさい]
   // moved to the lessons (n4-seeming/to-iu): 1005180 さっき
   x("1289070", "[今回|こんかい]", "noun", "this time, now", "time"),
   // moved to the lessons (n5-essentials/nakute-mo-ii): 1396130 [全部|ぜんぶ]
@@ -140,7 +140,7 @@ export const BATCH_01: Word[] = [
   // moved to the lessons (n5-essentials/nakereba): 1404975 [早|はや]い
   x("1329590", "[受|う]ける", "verb", "to receive; to take (a test); to catch", "school-work", "ichidan"),
   // skipped: 1399970 かく (artefact: かく is mostly 書く, 描く or 掻く; the kana form is ambiguous)
-  x("1342550", "[初|はじ]めて", "adverb", "for the first time", "time"),
+  // moved to the lessons (n3-time/te-hajimete): 1342550 [初|はじ]めて
   x("1355790", "[場|ば]", "noun", "place, spot; scene", "places"),
   // moved to the lessons (n4-giving-voice/kenjougo): 1357600 [色|いろ]
   // moved to the lessons (n4-seeming/to-iu): 1378860 [生活|せいかつ]
@@ -232,7 +232,7 @@ export const BATCH_01: Word[] = [
   x("1420800", "[地域|ちいき]", "noun", "area, region", "places"),
   // moved to the lessons (n3-reasons/you-ni-iu): 1426530 [注意|ちゅうい]
   // skipped: 1551200 [率|りつ] (suffix (rate))
-  x("1591330", "[気|き]づく", "verb", "to notice, to realise", "feelings", "godan"),
+  // moved to the lessons (n3-time/te-hajimete): 1591330 [気|き]づく
   x("1229350", "[求|もと]める", "verb", "to seek, to request, to want", "everyday", "ichidan"),
   x("1445270", "[土|つち]", "noun", "earth, soil, ground", "nature"),
   x("1138270", "ライブ", "noun", "live show, concert", "hobbies"),

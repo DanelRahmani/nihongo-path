@@ -4182,6 +4182,7 @@
 昨日は大雨でした。そのため、多くの電車が遅れました。 | きのう は おおあめ でした。 その ため、 おおく の でんしゃ が おくれました。 | kinou wa ooame deshita. sono tame, ooku no densha ga okuremashita.
 兄は先生になりたいんです。そのために、毎晩遅くまで勉強しています。 | あに は せんせい に なりたい ん です。 その ため に、 まいばん おそく まで べんきょう して います。 | ani wa sensei ni naritai n desu. sono tame ni, maiban osoku made benkyou shite imasu.
 この町は駅から遠いです。そのため、車がないと不便です。 | この まち は えき から とおい です。 その ため、 くるま が ない と ふべん です。 | kono machi wa eki kara tooi desu. sono tame, kuruma ga nai to fuben desu.
+私は日本で働きたいです。そのために、日本語を勉強しています。 | わたし は にほん で はたらきたい です。 その ため に、 にほんご を べんきょう して います。 | watashi wa nihon de hatarakitai desu. sono tame ni, nihongo o benkyou shite imasu.
 早く着くために、タクシーに乗りました。 | はやく つく ため に、 タクシー に のりました。 | hayaku tsuku tame ni, takushii ni norimashita.
 早く着いたために、一時間待ちました。 | はやく ついた ため に、 いちじかん まちました。 | hayaku tsuita tame ni, ichijikan machimashita.
 最近、週末もアルバイトしてるね。 | さいきん、 しゅうまつ も アルバイト してる ね。 | saikin, shuumatsu mo arubaito shiteru ne.
@@ -4270,17 +4271,20 @@
 私のせいで、試合に負けてしまいました。 | わたし の せい で、 しあい に まけて しまいました。 | watashi no sei de, shiai ni makete shimaimashita.
 遅れたのは私のせいです。すみません。 | おくれた の は わたし の せい です。 すみません。 | okureta no wa watashi no sei desu. sumimasen.
 遅れたのは私のせいだ。ごめん。 | おくれた の は わたし の せい だ。 ごめん。 | okureta no wa watashi no sei da. gomen.
-田中さんのおかげで、仕事が増えました。 | たなかさん の おかげ で、 しごと が ふえました。 | tanaka-san no okage de, shigoto ga fuemashita.
-田中さんのせいで、仕事が増えました。 | たなかさん の せい で、 しごと が ふえました。 | tanaka-san no sei de, shigoto ga fuemashita.
+弟が来たおかげで、家がにぎやかになりました。 | おとうと が きた おかげ で、 いえ が にぎやか に なりました。 | otouto ga kita okage de, ie ga nigiyaka ni narimashita.
+弟が来たせいで、家がにぎやかになりました。 | おとうと が きた せい で、 いえ が にぎやか に なりました。 | otouto ga kita sei de, ie ga nigiyaka ni narimashita.
 試験、どうだった？ | しけん、 どう だった？ | shiken, dou datta?
 合格したよ！ノートを貸してくれたおかげだよ。ありがとう。 | ごうかく した よ！ ノート を かして くれた おかげ だ よ。 ありがとう。 | goukaku shita yo! nooto o kashite kureta okage da yo. arigatou.
 よかった！私は前の日に寝なかったせいで、全然だめだった… | よかった！ わたし は まえ の ひ に ねなかった せい で、 ぜんぜん だめ だった… | yokatta! watashi wa mae no hi ni nenakatta sei de, zenzen dame datta...
 のおかげで | の おかげ で | no okage de
 のせいで | の せい で | no sei de
 せいです | せい です | sei desu
+せいでした | せい でした | sei deshita
+せいなんです | せい なん です | sei nan desu
 くれたおかげで | くれた おかげ で | kureta okage de
 もらったおかげで | もらった おかげ で | moratta okage de
 いただいたおかげで | いただいた おかげ で | itadaita okage de
+くださったおかげで | くださった おかげ で | kudasatta okage de
 雪のせいで、電車が遅れて大変でした。 | ゆき の せい で、 でんしゃ が おくれて たいへん でした。 | yuki no sei de, densha ga okurete taihen deshita.
 
 ## n3-reasons/ni-yotte
@@ -4297,7 +4301,7 @@
 地震によって、多くの建物が壊れました。 | じしん によって、 おおく の たてもの が こわれました。 | jishin niyotte, ooku no tatemono ga kowaremashita.
 雪による電車の遅れが出ています。 | ゆき による でんしゃ の おくれ が でて います。 | yuki niyoru densha no okure ga dete imasu.
 試験の結果はメールによって知らせます。 | しけん の けっか は メール によって しらせます。 | shiken no kekka wa meeru niyotte shirasemasu.
-話し合いによって決めましょう。 | はなしあい によって きめましょう。 | hanashiai niyotte kimemashou.
+この問題は話し合いによって決まりました。 | この もんだい は はなしあい によって きまりました。 | kono mondai wa hanashiai niyotte kimarimashita.
 インターネットによる買い物が増えています。 | インターネット による かいもの が ふえて います。 | intaanetto niyoru kaimono ga fuete imasu.
 人によって考え方が違います。 | ひと によって かんがえかた が ちがいます。 | hito niyotte kangaekata ga chigaimasu.
 人によって考え方が違う。 | ひと によって かんがえかた が ちがう。 | hito niyotte kangaekata ga chigau.
@@ -4333,7 +4337,8 @@
 毎晩三時までゲームをしているんですか？眠いわけですよ。 | まいばん さんじ まで ゲーム を して いる ん です か？ ねむい わけ です よ。 | maiban sanji made geemu o shite iru n desu ka? nemui wake desu yo.
 駅の前に大きい会社ができた。だから朝の電車が混んでいるわけだ。 | えき の まえ に おおきい かいしゃ が できた。 だから あさ の でんしゃ が こんで いる わけ だ。 | eki no mae ni ookii kaisha ga dekita. dakara asa no densha ga konde iru wake da.
 駅の前に大きい会社ができました。だから朝の電車が混んでいるわけです。 | えき の まえ に おおきい かいしゃ が できました。 だから あさ の でんしゃ が こんで いる わけ です。 | eki no mae ni ookii kaisha ga dekimashita. dakara asa no densha ga konde iru wake desu.
-この店は有名なシェフの店なんですか？おいしいわけです。 | この みせ は ゆうめい な シェフ の みせ なん です か？ おいしい わけ です。 | kono mise wa yuumei na shefu no mise nan desu ka? oishii wake desu.
+昨日は三時間しか寝ていなかったの？眠そうだったわけだね。 | きのう は さんじかん しか ねて いなかった の？ ねむそう だった わけ だ ね。 | kinou wa sanjikan shika nete inakatta no? nemusou datta wake da ne.
+昨日は三時間しか寝ていなかったんですか？眠そうだったわけですね。 | きのう は さんじかん しか ねて いなかった ん です か？ ねむそう だった わけ です ね。 | kinou wa sanjikan shika nete inakatta n desu ka? nemusou datta wake desu ne.
 つまり、明日の会議はないというわけですか？ | つまり、 あした の かいぎ は ない と いう わけ です か？ | tsumari, ashita no kaigi wa nai to iu wake desu ka?
 つまり、明日の会議はないってわけ？ | つまり、 あした の かいぎ は ない って わけ？ | tsumari, ashita no kaigi wa nai tte wake?
 一日二時間なら、一週間で十四時間というわけだ。 | いちにち にじかん なら、 いっしゅうかん で じゅうよじかん と いう わけ だ。 | ichinichi nijikan nara, isshuukan de juuyojikan to iu wake da.
@@ -4341,11 +4346,12 @@
 部長は来月から大阪ですか？今週が最後というわけですね。 | ぶちょう は らいげつ から おおさか です か？ こんしゅう が さいご と いう わけ です ね。 | buchou wa raigetsu kara oosaka desu ka? konshuu ga saigo to iu wake desu ne.
 じゃあ、今日は誰も来ないわけ？ | じゃあ、 きょう は だれ も こない わけ？ | jaa, kyou wa dare mo konai wake?
 じゃあ、今日は誰も来ないわけですか？ | じゃあ、 きょう は だれ も こない わけ です か？ | jaa, kyou wa dare mo konai wake desu ka?
-山田さんは今日休みです。だから会議に来ないわけです。 | やまださん は きょう やすみ です。 だから かいぎ に こない わけ です。 | yamada-san wa kyou yasumi desu. dakara kaigi ni konai wake desu.
+会議に山田さんがいませんね。今日は休みなわけです。 | かいぎ に やまださん が いません ね。 きょう は やすみ な わけ です。 | kaigi ni yamada-san ga imasen ne. kyou wa yasumi na wake desu.
 山田さんは今日休みです。だから会議に来ないはずです。 | やまださん は きょう やすみ です。 だから かいぎ に こない はず です。 | yamada-san wa kyou yasumi desu. dakara kaigi ni konai hazu desu.
 田中さん、来月結婚するそうだよ。 | たなかさん、 らいげつ けっこん する そう だ よ。 | tanaka-san, raigetsu kekkon suru sou da yo.
-え、そうなんだ！最近うれしそうなわけだね。 | え、 そう なん だ！ さいきん うれしそう な わけ だ ね。 | e, sou nan da! saikin ureshisou na wake da ne.
-うん。だから毎日早く帰っていたわけだ。 | うん。 だから まいにち はやく かえって いた わけ だ。 | un. dakara mainichi hayaku kaette ita wake da.
+え、そうなんだ！ | え、 そう なん だ！ | e, sou nan da!
+うん。毎日早く帰っていたのも、準備があるからだって。 | うん。 まいにち はやく かえって いた の も、 じゅんび が ある から だ って。 | un. mainichi hayaku kaette ita no mo, junbi ga aru kara da tte.
+なるほど。最近うれしそうだったわけだ。 | なるほど。 さいきん うれしそう だった わけ だ。 | naruhodo. saikin ureshisou datta wake da.
 わけだ | わけ だ | wake da
 わけだよ | わけ だ よ | wake da yo
 わけだね | わけ だ ね | wake da ne
@@ -4378,7 +4384,9 @@
 こんな難しい問題、私に解けるわけがありません。 | こんな むずかしい もんだい、 わたし に とける わけ が ありません。 | konna muzukashii mondai, watashi ni tokeru wake ga arimasen.
 一週間で英語が話せるようになるわけがない。 | いっしゅうかん で えいご が はなせる よう に なる わけ が ない。 | isshuukan de eigo ga hanaseru you ni naru wake ga nai.
 一週間で英語が話せるようになるわけがありません。 | いっしゅうかん で えいご が はなせる よう に なる わけ が ありません。 | isshuukan de eigo ga hanaseru you ni naru wake ga arimasen.
-あの店のラーメンがまずいわけがない。いつも行列ができているんだから。 | あの みせ の ラーメン が まずい わけ が ない。 いつも ぎょうれつ が できて いる ん だ から。 | ano mise no raamen ga mazui wake ga nai. itsumo gyouretsu ga dekite iru n da kara.
+あの店のラーメンがまずいわけがない。いつもたくさんの人が並んでいるんだから。 | あの みせ の ラーメン が まずい わけ が ない。 いつも たくさん の ひと が ならんで いる ん だ から。 | ano mise no raamen ga mazui wake ga nai. itsumo takusan no hito ga narande iru n da kara.
+約束を忘れるわけがないよ。 | やくそく を わすれる わけ が ない よ。 | yakusoku o wasureru wake ga nai yo.
+約束を忘れるわけがありませんよ。 | やくそく を わすれる わけ が ありません よ。 | yakusoku o wasureru wake ga arimasen yo.
 そんな高い車、買えるわけないよ。 | そんな たかい くるま、 かえる わけ ない よ。 | sonna takai kuruma, kaeru wake nai yo.
 そんな高い車、買えるわけがありませんよ。 | そんな たかい くるま、 かえる わけ が ありません よ。 | sonna takai kuruma, kaeru wake ga arimasen yo.
 彼のことが嫌いなわけじゃない。 | かれ の こと が きらい な わけ じゃ ない。 | kare no koto ga kirai na wake ja nai.

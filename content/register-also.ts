@@ -365,4 +365,15 @@ export const REGISTER_ALSO: Record<string, string[]> = {
   "n4-giving-voice/causative-passive#1xxlxds": ["子供のとき、毎日牛乳を飲ませられました。"],
   "n4-giving-voice/causative-passive#12qwk33": ["先輩に重い荷物を運ばせられました。"],
   "n4-giving-voice/causative-passive#10bjkk8": ["駅で一時間も待たせられました。"],
+  // Purpose, cause and reasons (unit 十四)
+  // [日本|にほん] の [大学|だいがく] に [入|はい]る ため に、 … [勉強|べんきょう] して います。 → … してる。 (している, not contracted)
+  "n3-reasons/tame-ni#1sx903q": ["日本の大学に入るために、毎日勉強している。"],
+  // [新|あたら]しい [車|くるま] を [買|か]う ため に、 [貯金|ちょきん] して います。 → … してる。
+  "n3-reasons/tame-ni#ve7dfm": ["新しい車を買うために、貯金している。"],
+  // [田中|たなか]-さん に [電話|でんわ] を くれる よう に [伝|つた]えて ください。 → … [電話|でんわ] くれる … [伝|つた]えて。 (casual keeps or drops を)
+  "n3-reasons/you-ni-iu#3663ls": ["田中さんに電話をくれるように伝えて。"],
+  // Into polite: [田中|たなか]-さん に [電話|でんわ] くれる よう に [伝|つた]えて。 → … [電話|でんわ] を くれる … [伝|つた]えて ください。
+  "n3-reasons/you-ni-iu#127z5ak": ["田中さんに電話くれるように伝えてください。"],
+  // [彼|かれ] は [十年|じゅうねん] も … [住|す]んで いた ん です か？ … → … [住|す]んで いた の？ … (住んでた)
+  "n3-reasons/wake-da#17g8yln": ["彼は十年も日本に住んでたの？日本語が上手なわけだね。"],
 };

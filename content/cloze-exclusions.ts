@@ -248,6 +248,87 @@ export const CLOZE_EXCLUSIONS: Record<string, string> = {
   "n4-giving-voice/kenjougo#mhwduq": "the plain polite verb fits too; keigo is drilled by the quiz and the conjugation trainer's honorific and humble forms.",
   // どう ＿＿。 [最近|さいきん] [忙|いそが]しい みたい だ よ。 (かな)
   "n4-seeming/kana#ssz5c8": "どうだろう fits “Hard to say” as well.",
+  // Purpose, cause and reasons (unit 十四)
+  // [事故|じこ] が あった ＿＿、 [道|みち] が [混|こ]んで います。 (ため に)
+  "n3-reasons/tame-ni#sk9jt2": "ので and から also fit the cause after a verb; only the formality differs.",
+  // [町|まち] の [人口|じんこう] が [増|ふ]えた ＿＿、 [新|あたら]しい [学校|がっこう] が できました。 (ため に)
+  "n3-reasons/tame-ni#1tuxfva": "ので and から also fit the cause after a verb; only the formality differs.",
+  // [早|はや]く [着|つ]いた ＿＿、 [一時間|いちじかん] [待|ま]ちました。 (ため に)
+  "n3-reasons/tame-ni#1lv78rn": "ので and から also fit the cause after a verb; only the formality differs.",
+  // [早|はや]く [着|つ]く ＿＿、 タクシー に [乗|の]りました。 (ため に)
+  "n3-reasons/tame-ni#446e9o": "ように also fits “so as to get there early” (早く着くように).",
+  // [昨日|きのう] は [大雨|おおあめ] でした。 ＿＿、 [多|おお]く の [電車|でんしゃ] が [遅|おく]れました。 (その ため)
+  "n3-reasons/tame-ni#19xbatl": "だから and それで also fit “because of that” between two sentences.",
+  // この [町|まち] は [駅|えき] から [遠|とお]い です。 ＿＿、 [車|くるま] が ない と [不便|ふべん] です。 (その ため)
+  "n3-reasons/tame-ni#104ikub": "だから and それで also fit “because of that” between two sentences.",
+  // [友達|ともだち] が [手伝|てつだ]って くれた ＿＿、 [掃除|そうじ] が [早|はや]く [終|お]わった。 (おかげ で)
+  "n3-reasons/okage-sei#zzmr01": "から and ので also fit the cause after a verb or adjective; only the credit differs.",
+  // [友達|ともだち] が [手伝|てつだ]って くれた ＿＿、 [掃除|そうじ] が [早|はや]く [終|お]わりました。 (おかげ で)
+  "n3-reasons/okage-sei#14imqp5": "から and ので also fit the cause after a verb or adjective; only the credit differs.",
+  // [駅|えき] が [近|ちか]い ＿＿、 [通勤|つうきん] が [楽|らく] です。 (おかげ で)
+  "n3-reasons/okage-sei#ngnx8k": "から and ので also fit the cause after a verb or adjective; only the credit differs.",
+  // [合格|ごうかく] した よ！ ノート を [貸|か]して くれた ＿＿ よ。 ありがとう。 (おかげ だ)
+  "n3-reasons/okage-sei#wk0anl": "から and ので also fit the cause after a verb or adjective; only the credit differs.",
+  // [寝坊|ねぼう] した ＿＿、 [会議|かいぎ] に [遅|おく]れました。 (せい で)
+  "n3-reasons/okage-sei#1qd01l4": "ので and から also fit the cause after a verb or adjective; only the blame differs.",
+  // [寝坊|ねぼう] した ＿＿、 [会議|かいぎ] に [遅|おく]れた。 (せい で)
+  "n3-reasons/okage-sei#58hgmf": "ので and から also fit the cause after a verb or adjective; only the blame differs.",
+  // [部屋|へや] が [狭|せま]い ＿＿、 [机|つくえ] が [置|お]けない。 (せい で)
+  "n3-reasons/okage-sei#1c0prpv": "ので and から also fit the cause after a verb or adjective; only the blame differs.",
+  // [部屋|へや] が [狭|せま]い ＿＿、 [机|つくえ] が [置|お]けません。 (せい で)
+  "n3-reasons/okage-sei#1we2w2f": "ので and から also fit the cause after a verb or adjective; only the blame differs.",
+  // よかった！ [私|わたし] は [前|まえ] の [日|ひ] に [寝|ね]なかった ＿＿、 [全然|ぜんぜん] だめ だった… (せい で)
+  "n3-reasons/okage-sei#k8dz6e": "ので and から also fit the cause after a verb or adjective; only the blame differs.",
+  // [地震|じしん] ＿＿、 [多|おお]く の [建物|たてもの] が [壊|こわ]れました。 (によって)
+  "n3-reasons/ni-yotte#1sk4zle": "で also fits the cause or means, as the lesson's pair says.",
+  // [雪|ゆき] ＿＿ [電車|でんしゃ] の [遅|おく]れ が [出|で]て います。 (による)
+  "n3-reasons/ni-yotte#r12czh": "で also fits the cause or means, as the lesson's pair says.",
+  // [試験|しけん] の [結果|けっか] は メール ＿＿ [知|し]らせます。 (によって)
+  "n3-reasons/ni-yotte#lkwnu0": "で also fits the cause or means, as the lesson's pair says.",
+  // この [問題|もんだい] は [話|はな]し[合|あ]い ＿＿ [決|き]まりました。 (によって)
+  "n3-reasons/ni-yotte#1r2hyy5": "で also fits the cause or means, as the lesson's pair says.",
+  // インターネット ＿＿ [買|か]い[物|もの] が [増|ふ]えて います。 (による)
+  "n3-reasons/ni-yotte#1d9d7o7": "での also fits (インターネットでの買い物).",
+  // [窓|まど] が [開|あ]いて いる。 [寒|さむ]い ＿＿。 (わけ だ)
+  "n3-reasons/wake-da#8i6ui": "はずだ can also say “no wonder”.",
+  // [窓|まど] が [開|あ]いて います。 [寒|さむ]い ＿＿。 (わけ です)
+  "n3-reasons/wake-da#1yg0dy8": "はずだ can also say “no wonder”.",
+  // [彼|かれ] は [十年|じゅうねん] も [日本|にほん] に [住|す]んで いた ん です か？ [日本語|にほんご] が [上手|じょうず] な ＿＿ ね。 (わけ です)
+  "n3-reasons/wake-da#1awzdd5": "はずだ can also say “no wonder”.",
+  // [彼|かれ] は [十年|じゅうねん] も [日本|にほん] に [住|す]んで いた の？ [日本語|にほんご] が [上手|じょうず] な ＿＿ ね。 (わけ だ)
+  "n3-reasons/wake-da#1coaqax": "はずだ can also say “no wonder”.",
+  // [毎晩|まいばん] [三時|さんじ] まで ゲーム を して いる の？ [眠|ねむ]い ＿＿ よ。 (わけ だ)
+  "n3-reasons/wake-da#ecrj2x": "はずだ can also say “no wonder”.",
+  // [毎晩|まいばん] [三時|さんじ] まで ゲーム を して いる ん です か？ [眠|ねむ]い ＿＿ よ。 (わけ です)
+  "n3-reasons/wake-da#w0rc7": "はずだ can also say “no wonder”.",
+  // [駅|えき] の [前|まえ] に [大|おお]きい [会社|かいしゃ] が できた。 だから [朝|あさ] の [電車|でんしゃ] が [混|こ]んで いる ＿＿。 (わけ だ)
+  "n3-reasons/wake-da#9bm4yd": "はずだ can also say “no wonder”.",
+  // [駅|えき] の [前|まえ] に [大|おお]きい [会社|かいしゃ] が できました。 だから [朝|あさ] の [電車|でんしゃ] が [混|こ]んで いる ＿＿。 (わけ です)
+  "n3-reasons/wake-da#pqzlww": "はずだ can also say “no wonder”.",
+  // [会議|かいぎ] に [山田|やまだ]-さん が いません ね。 [今日|きょう] は [休|やす]み な ＿＿。 (わけ です)
+  "n3-reasons/wake-da#16zzy8n": "はずです also fits: “he must be off today” reads as a conclusion too.",
+  // [山田|やまだ]-さん は [今日|きょう] [休|やす]み です。 だから [会議|かいぎ] に [来|こ]ない ＿＿。 (はず です)
+  "n3-reasons/wake-da#ps97m1": "わけです also fits, as the lesson's pair says.",
+  // [一日|いちにち] [二時間|にじかん] なら、 [一週間|いっしゅうかん] で [十四時間|じゅうよじかん] ＿＿。 (と いう わけ だ)
+  "n3-reasons/wake-da#14egdv7": "だ (です) alone also fits “makes fourteen hours a week”.",
+  // [一日|いちにち] [二時間|にじかん] なら、 [一週間|いっしゅうかん] で [十四時間|じゅうよじかん] ＿＿。 (と いう わけ です)
+  "n3-reasons/wake-da#13l0lvj": "だ (です) alone also fits “makes fourteen hours a week”.",
+  // こんな [難|むずか]しい [問題|もんだい]、 [私|わたし] に [解|と]ける ＿＿。 (わけ が ない)
+  "n3-reasons/wake-dewa-nai#1bf2zph": "はずがない also fits “there's no way”, as the lesson says.",
+  // こんな [難|むずか]しい [問題|もんだい]、 [私|わたし] に [解|と]ける ＿＿。 (わけ が ありません)
+  "n3-reasons/wake-dewa-nai#1oqqsif": "はずがない also fits “there's no way”, as the lesson says.",
+  // [一週間|いっしゅうかん] で [英語|えいご] が [話|はな]せる よう に なる ＿＿。 (わけ が ない)
+  "n3-reasons/wake-dewa-nai#14afro": "はずがない also fits “there's no way”, as the lesson says.",
+  // [一週間|いっしゅうかん] で [英語|えいご] が [話|はな]せる よう に なる ＿＿。 (わけ が ありません)
+  "n3-reasons/wake-dewa-nai#1levbrs": "はずがない also fits “there's no way”, as the lesson says.",
+  // あの [店|みせ] の ラーメン が まずい ＿＿。 いつも たくさん の [人|ひと] が [並|なら]んで いる ん だ から。 (わけ が ない)
+  "n3-reasons/wake-dewa-nai#123d6e2": "はずがない also fits “there's no way”, as the lesson says.",
+  // そんな [高|たか]い [車|くるま]、 [買|か]える ＿＿ よ。 (わけ ない)
+  "n3-reasons/wake-dewa-nai#31t0ul": "はずがない also fits “there's no way”, as the lesson says.",
+  // そんな [高|たか]い [車|くるま]、 [買|か]える ＿＿ よ。 (わけ が ありません)
+  "n3-reasons/wake-dewa-nai#180fwuj": "はずがない also fits “there's no way”, as the lesson says.",
+  // [熱|ねつ] が ある けど、 [今日|きょう] は ＿＿。 ([休|やす]めない)
+  "n3-reasons/wake-ni-wa-ikanai#tyzcn2": "休むわけにはいかない, the pair's other side, also fits.",
 };
 
 /**
@@ -686,4 +767,52 @@ export const CLOZE_ALSO: Record<string, string[]> = {
   "n4-seeming/ga-suru#1wfud0h": ["よう な [気|き] が する"],
   "n4-seeming/ga-suru#1068fok": ["が [聞|き]こえません"],
   "n4-seeming/ga-suru#nenfgk": ["が [聞|き]こえます"],
+  // Purpose, cause and reasons (unit 十四)
+  // n3-reasons/tame-ni: the lesson says the に is often dropped.
+  "n3-reasons/tame-ni#1p8sagk": ["ため"],
+  "n3-reasons/tame-ni#zddgae": ["ため"],
+  "n3-reasons/tame-ni#fbxzac": ["ため"],
+  "n3-reasons/tame-ni#ib43nq": ["ため"],
+  "n3-reasons/tame-ni#1mxu11j": ["ため"],
+  "n3-reasons/tame-ni#1kwa7mo": ["ため"],
+  "n3-reasons/tame-ni#i3wbgr": ["ため"],
+  "n3-reasons/tame-ni#1m13ycz": ["ため"],
+  "n3-reasons/tame-ni#1a3exdo": ["ため"],
+  "n3-reasons/tame-ni#6yt3tu": ["ため"],
+  // n3-reasons/tame-ni: and the other way round.
+  "n3-reasons/tame-ni#1aszshg": ["ため に"],
+  // n3-reasons/tame-ni: そのため and そのために, as the lesson shows.
+  "n3-reasons/tame-ni#14iptdb": ["その ため"],
+  // n3-reasons/wake-dewa-nai: the lesson teaches casual わけじゃない.
+  "n3-reasons/wake-dewa-nai#1x1idz8": ["わけ じゃ ない"],
+  "n3-reasons/wake-dewa-nai#8t4mbw": ["わけ じゃ ない"],
+  // n3-reasons/wake-dewa-nai: and its polite forms.
+  "n3-reasons/wake-dewa-nai#orbl6u": ["わけ じゃ ありません", "わけ で は ない です", "わけ じゃ ない です"],
+  "n3-reasons/wake-dewa-nai#puz24c": ["わけ じゃ ありません", "わけ で は ない です", "わけ じゃ ない です"],
+  "n3-reasons/wake-dewa-nai#186ni8": ["わけ じゃ ありません", "わけ で は ない です", "わけ じゃ ない です"],
+  // n3-reasons/wake-ni-wa-ikanai: the lesson says casual speech sometimes drops the は.
+  "n3-reasons/wake-ni-wa-ikanai#x9o40p": ["わけ に いかない"],
+  "n3-reasons/wake-ni-wa-ikanai#1ykqa5g": ["わけ に いかない"],
+  "n3-reasons/wake-ni-wa-ikanai#1u5xs4w": ["わけ に いかない"],
+  "n3-reasons/wake-ni-wa-ikanai#1jpsbwx": ["わけ に いかない"],
+  "n3-reasons/wake-ni-wa-ikanai#foq5to": ["わけ に いかない"],
+  "n3-reasons/wake-ni-wa-ikanai#14mgwaz": ["わけ に いかない"],
+  // n3-reasons/wake-ni-wa-ikanai: and politely.
+  "n3-reasons/wake-ni-wa-ikanai#13z90y5": ["わけ に いきません", "わけ に は いかない です"],
+  "n3-reasons/wake-ni-wa-ikanai#e85wh": ["わけ に いきません", "わけ に は いかない です"],
+  "n3-reasons/wake-ni-wa-ikanai#13n7lvm": ["わけ に いきません", "わけ に は いかない です"],
+  "n3-reasons/wake-ni-wa-ikanai#ip62j3": ["わけ に いきません", "わけ に は いかない です"],
+  "n3-reasons/wake-ni-wa-ikanai#1gwqmpx": ["わけ に いきません", "わけ に は いかない です"],
+  // n3-reasons/tame-ni: the second そのために line, with the に dropped too.
+  "n3-reasons/tame-ni#w29bxg": ["その ため"],
+  // n3-reasons/wake-dewa-nai: the lesson says casual speech drops the が, and the dialogue line (怒る わけ ない) takes it.
+  "n3-reasons/wake-dewa-nai#1p1n2ko": ["わけ ない"],
+  "n3-reasons/wake-dewa-nai#wscaba": ["わけ ない"],
+  // n3-reasons/wake-ni-wa-ikanai: ないわけにはいかない lines (the gap is わけ に は); the は can drop here too.
+  "n3-reasons/wake-ni-wa-ikanai#iwqw64": ["わけ に"],
+  "n3-reasons/wake-ni-wa-ikanai#1lf0pb4": ["わけ に"],
+  "n3-reasons/wake-ni-wa-ikanai#12eah23": ["わけ に"],
+  "n3-reasons/wake-ni-wa-ikanai#14xickf": ["わけ に"],
+  "n3-reasons/wake-ni-wa-ikanai#ddje75": ["わけ に"],
+  "n3-reasons/wake-ni-wa-ikanai#13bh4xx": ["わけ に"],
 };

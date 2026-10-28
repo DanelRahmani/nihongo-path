@@ -22,7 +22,7 @@ export const BATCH_07: Word[] = [
   x("1258950", "[肩|かた]", "noun", "shoulder", "body"),
   x("1269510", "[後悔|こうかい]", "noun", "regret (する: to regret)", "feelings"),
   x("1295100", "[災害|さいがい]", "noun", "disaster", "nature"),
-  x("1297510", "[作家|さっか]", "noun", "author, writer", "people"),
+  // moved to the lessons (n3-reasons/ni-yotte): 1297510 [作家|さっか]
   x("1327020", "[取材|しゅざい]", "noun", "gathering material, covering a story (する: to cover)", "school-work"),
   x("1351510", "[衝撃|しょうげき]", "noun", "shock, impact", "feelings"),
   x("1352590", "[上位|じょうい]", "noun", "top rank, higher rank", "school-work"),
@@ -178,7 +178,7 @@ export const BATCH_07: Word[] = [
   x("1183880", "[音声|おんせい]", "noun", "voice, audio", "language"),
   x("1206080", "[覚悟|かくご]", "noun", "preparedness, resolve (する: to be prepared, to be resolved)", "feelings"),
   x("1235240", "[共有|きょうゆう]", "noun", "sharing, joint ownership (する: to share)", "everyday"),
-  x("1254810", "[結婚式|けっこんしき]", "noun", "wedding", "everyday"),
+  // moved to the lessons (n3-reasons/wake-ni-wa-ikanai): 1254810 [結婚式|けっこんしき]
   x("1255120", "[血液|けつえき]", "noun", "blood", "body"),
   x("1263750", "[現象|げんしょう]", "noun", "phenomenon", "nature"),
   x("1275210", "[効率|こうりつ]", "noun", "efficiency", "school-work"),

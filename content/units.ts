@@ -1,6 +1,7 @@
 import { basics } from "@/content/lessons/basics";
 import { hiragana } from "@/content/lessons/hiragana";
 import { katakana } from "@/content/lessons/katakana";
+import { n3Reasons } from "@/content/lessons/n3-reasons";
 import { n4Conditions } from "@/content/lessons/n4-conditions";
 import { n4GivingVoice } from "@/content/lessons/n4-giving-voice";
 import { n4Plans } from "@/content/lessons/n4-plans";
@@ -127,6 +128,14 @@ export const UNITS: Unit[] = [
     titleJp: "[推量|すいりょう]",
     description: "Looks like, I hear, seems and apparently; should be and might be; what you think and what was said.",
     lessons: n4Seeming,
+  },
+  {
+    slug: "n3-reasons",
+    kind: "grammar",
+    title: "Purpose, cause and reasons",
+    titleJp: "[理由|りゆう]",
+    description: "In order to and because of, thanks to and the fault of, by and depending on, and what わけ explains, denies and rules out.",
+    lessons: n3Reasons,
   },
 ];
 

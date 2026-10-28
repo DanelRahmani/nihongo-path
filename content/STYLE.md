@@ -82,6 +82,7 @@ Where they leave a choice, follow modern everyday usage (newspapers, NHK, curren
   - formal nouns: こと, とき ("when…"), ところ (abstract), もの (abstract), わけ, はず, よう, ほか, とおり;
   - ある and いる (existence), できる ("can"), なる ("become"), ない;
   - helper verbs after the て form (the quiz checker also accepts the kanji a keyboard offers for these and for the formal nouns above, as whole words): 〜て いる, 〜て ある, 〜て いく, 〜て くる, 〜て みる, 〜て おく, 〜て しまう, 〜て あげる, 〜て くれる, 〜て もらう, 〜て いただく, 〜て ください. On their own these verbs keep their kanji: `[行|い]く`, `[来|く]る`, `[見|み]る`;
+  - いく in わけにはいかない (わけ に は いかない / いきません), as the lessons write it: 行かない is "not going", and the idiom is a different word. The quiz checker accepts the keyboard's 行 for it only right after わけ に (は);
   - ください, in every use (a house choice);
   - ほしい after the て form (〜て ほしい), while the adjective on its own keeps its kanji (`[欲|ほ]しい`), as newspapers and NHK write them;
   - いい and よい with all their forms (よくない, よかった), a house choice: 良い is 常用, but beginner text writes these in kana;

@@ -136,7 +136,7 @@ export const BATCH_09: Word[] = [
   x("1164650", "いったん", "adverb", "once, for now; temporarily", "everyday"),
   x("1383680", "[跡|あと]", "noun", "trace, mark, remains", "everyday"),
   x("1600290", "[伸|の]ばす", "verb", "to stretch, to let grow (hair); to extend", "everyday", "godan"),
-  x("1495000", "まずい", "i-adj", "bad-tasting; bad, awkward (of a situation)", "food"),
+  // moved to the lessons (n3-reasons/wake-dewa-nai): 1495000 まずい
   x("1597780", "[捕|つか]まえる", "verb", "to catch, to capture, to arrest", "everyday", "ichidan"),
   x("1597200", "[頼|たよ]る", "verb", "to rely on, to depend on", "feelings", "godan"),
   x("1443970", "うさぎ", "noun", "rabbit", "nature"),
@@ -198,7 +198,7 @@ export const BATCH_09: Word[] = [
   x("1594720", "[収集|しゅうしゅう]", "noun", "collecting (する: to collect)", "hobbies"),
   x("1379620", "しょうが", "noun", "ginger", "food"),
   // moved to the lessons (n5-essentials/tari): 1390980 [洗濯|せんたく]
-  x("1237680", "[狭|せま]い", "i-adj", "narrow, small (of space); limited", "home"),
+  // moved to the lessons (n3-reasons/okage-sei): 1237680 [狭|せま]い
   x("1168060", "[印|しるし]", "noun", "mark, sign, symbol", "everyday"),
   x("1049870", "コイン", "noun", "coin", "shopping"),
   x("1051540", "コレクション", "noun", "collection (する: to collect)", "hobbies"),

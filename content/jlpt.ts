@@ -11,5 +11,5 @@ export function jlpt(level: JlptLevel, disputed?: string): JlptTag {
   return disputed ? { level, source: JLPT_SOURCE, disputed } : { level, source: JLPT_SOURCE };
 }
 
-/** The levels the /grammar filter offers (N3: points Bunpro places there that an N4 unit teaches). */
-export const JLPT_FILTER_LEVELS: JlptLevel[] = ["N5", "N4", "N3"];
+/** The levels the /grammar filter offers (N2: points Bunpro places there that an N3 lesson teaches, such as ないわけにはいかない). */
+export const JLPT_FILTER_LEVELS: JlptLevel[] = ["N5", "N4", "N3", "N2"];

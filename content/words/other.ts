@@ -133,4 +133,7 @@ export const OTHER: Word[] = [
   w("expression", "おいで", "(respectful) coming, going, being: おいでになる", "language"),
   // Seeming, hearsay and thinking (unit 十三)
   w("pre-noun", "そんな", "that kind of, such", "language"),
+  // Purpose, cause and reasons (unit 十四)
+  w("pre-noun", "こんな", "this kind of, like this", "language"),
+  w("counter", "[週間|しゅうかん]", "week(s): [一週間|いっしゅうかん]", "numbers"),
 ];

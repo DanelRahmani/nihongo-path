@@ -16,6 +16,8 @@ export const FUNCTION_WORDS = new Set([
   ..."だ です でした だった じゃ だったら なら でしょう でしょ だろう ん なん なの ので のに".split(" "),
   // かもしれない (written in kana, かも alone in casual speech) and によると (according to), one grammar word each.
   ..."かも しれない しれません によると".split(" "),
+  // によれば (according to), によって and による (by, because of, depending on).
+  ..."によれば によって による".split(" "),
   // かな and かしら (I wonder), sentence-final like ね.
   ..."かな かしら".split(" "),
 ]);
@@ -310,6 +312,8 @@ export const KANA_CHOICES: Record<string, Jp> = {
   きます: "[来|く]る",
   きました: "[来|く]る",
   かぜ: "[風|かぜ]",
+  // とき is also the stem of [解|と]く.
+  とき: "[時|とき]",
 };
 
 /** Suffixes that follow a verb's ます stem: [読|よ]み[方|かた] (how to read). */

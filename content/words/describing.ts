@@ -36,6 +36,7 @@ export const DESCRIBING: Word[] = [
 
   // な-adjectives
   naAdj("[静|しず]か", "quiet", "everyday"),
+  naAdj("にぎやか", "lively, bustling", "everyday"),
   naAdj("きれい", "pretty; clean", "everyday"),
   naAdj("[好|す]き", "liked (〜が好き: to like)", "feelings"),
   naAdj("[嫌|きら]い", "disliked (〜が嫌い: to dislike)", "feelings"),
@@ -115,4 +116,14 @@ export const DESCRIBING: Word[] = [
   naAdj("[変|へん]", "strange, odd", "feelings"),
   iAdj("[恥|は]ずかしい", "embarrassed, shy; embarrassing", "feelings"),
   iAdj("[易|やさ]しい", "easy, simple (to understand or do)", "everyday"),
+  // Purpose, cause and reasons (unit 十四)
+  naAdj("[不便|ふべん]", "inconvenient", "everyday"),
+  naAdj("[楽|らく]", "easy, comfortable; ease", "feelings"),
+  iAdj("[狭|せま]い", "narrow, small (of space); limited", "home"),
+  naAdj("[得意|とくい]", "good at, strong point", "feelings"),
+  w("adverb", "つまり", "in other words, that is; so", "language"),
+  w("adverb", "あまり", "(not) very, (not) much", "everyday"),
+  w("adverb", "たまたま", "by chance, as it happens", "everyday"),
+  iAdj("まずい", "bad-tasting; bad, awkward (of a situation)", "food"),
+  naAdj("[大事|だいじ]", "important; precious", "everyday"),
 ];

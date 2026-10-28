@@ -59,10 +59,10 @@ export const BATCH_05: Word[] = [
   x("1533820", "[毛|け]", "noun", "hair (on the body), fur; wool", "body"),
   x("1559700", "[連中|れんちゅう]", "noun", "bunch of people, those guys (casual, often disparaging)", "people"),
   // skipped: 2153730 [業|ぎょう] (mostly a suffix: -industry, -business)
-  x("1508380", "[並|なら]ぶ", "verb", "to line up, to be side by side", "everyday", "godan"),
+  // moved to the lessons (n3-reasons/wake-dewa-nai): 1508380 [並|なら]ぶ
   x("1577490", "かっこいい", "i-adj", "cool, good-looking", "feelings"),
   x("1263510", "[現|あらわ]れる", "verb", "to appear, to come into view", "everyday", "ichidan"),
-  x("1184160", "[下|さ]がる", "verb", "to go down, to drop; to hang", "everyday", "godan"),
+  // moved to the lessons (n3-reasons/okage-sei): 1184160 [下|さ]がる
   // moved to the lessons (n5-essentials/toki): 1483740 [疲|つか]れる
   x("1270760", "ごらん", "interjection", "look; try and see (said kindly to children or juniors)", "language"),
   x("1221740", "[気|き]に[入|い]る", "verb", "to like, to be pleased with", "feelings", "godan"),
@@ -92,7 +92,7 @@ export const BATCH_05: Word[] = [
   x("1558920", "[恋人|こいびと]", "noun", "boyfriend, girlfriend, sweetheart", "people"),
   x("1607520", "[演奏|えんそう]", "noun", "musical performance (する: to perform)", "hobbies"),
   // skipped: 1956560 [選|せん] (suffix-like, selection in compounds)
-  x("1532710", "[迷|まよ]う", "verb", "to get lost; to hesitate", "everyday", "godan"),
+  // moved to the lessons (n3-reasons/okage-sei): 1532710 [迷|まよ]う
   x("1597790", "[付|つ]き[合|あ]う", "verb", "to go out with; to keep company", "people", "godan"),
   x("1041030", "キス", "noun", "kiss (する: to kiss)", "feelings"),
   x("1227370", "[久|ひさ]しぶり", "noun", "first time in a long while; long time no see (casual)", "time"),
@@ -103,7 +103,7 @@ export const BATCH_05: Word[] = [
   // moved to the lessons (n5-essentials/kata): 1123880 ボタン
   x("1006950", "そもそも", "adverb", "in the first place, to begin with", "language"),
   x("1000590", "あんな", "pre-noun", "that kind of, like that", "language"),
-  x("1022880", "インターネット", "noun", "the Internet", "hobbies"),
+  // moved to the lessons (n3-reasons/ni-yotte): 1022880 インターネット
   x("1077140", "ダム", "noun", "dam", "nature"),
   x("1130650", "ミス", "noun", "mistake (する: to make a mistake)", "school-work"),
   x("1172610", "[運|うん]", "noun", "luck, fortune", "feelings"),
@@ -122,7 +122,7 @@ export const BATCH_05: Word[] = [
   x("1416260", "[達成|たっせい]", "noun", "achievement (する: to achieve)", "school-work"),
   x("1442100", "[伝説|でんせつ]", "noun", "legend", "everyday"),
   x("1454290", "[道路|どうろ]", "noun", "road, street", "places"),
-  x("1467710", "[熱|ねつ]", "noun", "fever; heat", "body"),
+  // moved to the lessons (n3-reasons/okage-sei): 1467710 [熱|ねつ]
   x("1469050", "[年度|ねんど]", "noun", "fiscal or school year (starts in April)", "time"),
   x("1481890", "[範囲|はんい]", "noun", "range, scope", "school-work"),
   x("1503870", "[分析|ぶんせき]", "noun", "analysis (する: to analyse)", "school-work"),
@@ -151,7 +151,7 @@ export const BATCH_05: Word[] = [
   x("1252140", "[計算|けいさん]", "noun", "calculation (する: to calculate)", "school-work"),
   x("1253410", "[劇場|げきじょう]", "noun", "theatre", "hobbies"),
   x("1294220", "[最低|さいてい]", "noun", "the worst; the minimum", "everyday"),
-  x("1312820", "[資料|しりょう]", "noun", "materials, data, handout", "school-work"),
+  // moved to the lessons (n3-reasons/you-ni-iu): 1312820 [資料|しりょう]
   x("1314050", "[事前|じぜん]", "noun", "beforehand, in advance", "time"),
   x("1329300", "[首相|しゅしょう]", "noun", "prime minister", "people"),
   x("1330790", "[収入|しゅうにゅう]", "noun", "income", "school-work"),

@@ -8,7 +8,7 @@ export const BATCH_03: Word[] = [
   // moved to the lessons (n4-plans/hajimeru): 1445690 [怒|おこ]る
   x("1403830", "そば", "noun", "beside, near; right after", "places"),
   // moved to the lessons (n4-seeming/ka-dou-ka): 1376600 [正|ただ]しい
-  x("1591420", "[決|き]まる", "verb", "to be decided, to be settled", "everyday", "godan"),
+  // moved to the lessons (n3-reasons/ni-yotte): 1591420 [決|き]まる
   x("1587310", "[位置|いち]", "noun", "position, location (する: to be located)", "places"),
   x("1016610", "アップ", "noun", "increase; upload (する: to raise, to upload)", "everyday"),
   x("1088830", "ドラマ", "noun", "TV drama, drama series", "hobbies"),
@@ -48,10 +48,10 @@ export const BATCH_03: Word[] = [
   x("1232870", "[許|ゆる]す", "verb", "to allow, to permit; to forgive", "everyday", "godan"),
   x("1486360", "[美|うつく]しい", "i-adj", "beautiful", "feelings"),
   // skipped: 1581630 [値|あたい] (rare reading; the lessons' everyday word for price is ね)
-  x("1580290", "[少女|しょうじょ]", "noun", "girl, young girl", "people"),
+  // moved to the lessons (n3-reasons/ni-yotte): 1580290 [少女|しょうじょ]
   x("1059720", "シーン", "noun", "scene (of a film, play or event)", "hobbies"),
   x("1171300", "[宇宙|うちゅう]", "noun", "universe, outer space", "nature"),
-  x("1202170", "[皆|みな]さん", "noun", "everyone (polite)", "people"),
+  // moved to the lessons (n3-reasons/okage-sei): 1202170 [皆|みな]さん
   x("1250680", "[携帯|けいたい]", "noun", "mobile phone; carrying (する: to carry)", "everyday"),
   x("1287070", "[国民|こくみん]", "noun", "the people of a country, citizens", "people"),
   x("1316340", "[時点|じてん]", "noun", "point in time, moment", "time"),
@@ -70,7 +70,7 @@ export const BATCH_03: Word[] = [
   x("1155110", "[以降|いこう]", "noun", "from … on, after (a time)", "time"),
   x("1189500", "[価格|かかく]", "noun", "price (formal)", "shopping"),
   x("1193610", "[火|ひ]", "noun", "fire, flame", "nature"),
-  x("1207230", "[楽|らく]", "na-adj", "easy, comfortable; ease", "feelings"), // pos: was noun
+  // moved to the lessons (n3-reasons/okage-sei): 1207230 [楽|らく]
   x("1213720", "[監督|かんとく]", "noun", "director, coach; supervision (する: to supervise)", "hobbies"),
   x("1251130", "[経営|けいえい]", "noun", "management of a business (する: to run a business)", "school-work"),
   x("1291070", "[差|さ]", "noun", "difference, gap", "numbers"),
@@ -127,7 +127,7 @@ export const BATCH_03: Word[] = [
   x("1218880", "[器|うつわ]", "noun", "bowl, vessel, container", "home"),
   // moved to the lessons (n5-essentials/toki): 1290800 [左|ひだり]
   x("1346190", "[勝手|かって]", "na-adj", "selfish, as one pleases", "feelings"), // pos: was noun
-  x("1358490", "[食事|しょくじ]", "noun", "meal (する: to have a meal)", "food"),
+  // moved to the lessons (n3-reasons/ni-yotte): 1358490 [食事|しょくじ]
   x("1392290", "[選択|せんたく]", "noun", "choice, selection (する: to choose)", "everyday"),
   x("1415190", "[大量|たいりょう]", "na-adj", "a large quantity, massive", "numbers"),
   x("1449190", "[当然|とうぜん]", "noun", "of course, naturally; natural", "everyday"),
@@ -177,7 +177,7 @@ export const BATCH_03: Word[] = [
   x("1543130", "[予想|よそう]", "noun", "expectation, prediction (する: to expect)", "everyday"),
   // skipped: 1420730 [地|ち] (bare reading is rare; mostly in compounds like 地図)
   x("1352320", "[上|あ]げる", "verb", "to raise, to lift; to put up (a price, a hand)", "everyday", "ichidan"),
-  x("1548370", "[頼|たの]む", "verb", "to ask, to request; to order", "everyday", "godan"),
+  // moved to the lessons (n3-reasons/you-ni-iu): 1548370 [頼|たの]む
   // moved to the lessons (n4-conditions/temo): 1604550 [見|み]つかる
   x("1216890", "[含|ふく]める", "verb", "to include", "everyday", "ichidan"),
   // moved to the lessons (n5-essentials/hou-ga-ii): 1421970 [遅|おそ]い
@@ -219,7 +219,7 @@ export const BATCH_03: Word[] = [
   x("1220800", "[機会|きかい]", "noun", "chance, opportunity", "everyday"),
   x("1239560", "[局|きょく]", "noun", "bureau; station (TV, post office)", "places"),
   x("1314400", "[事務所|じむしょ]", "noun", "office", "school-work"),
-  x("1348430", "[小説|しょうせつ]", "noun", "novel, fiction", "hobbies"),
+  // moved to the lessons (n3-reasons/ni-yotte): 1348430 [小説|しょうせつ]
   x("1406060", "それでも", "conjunction", "even so, still", "language"),
   x("1447320", "[投票|とうひょう]", "noun", "vote (する: to vote)", "everyday"),
   x("1491150", "[不安|ふあん]", "na-adj", "anxious; anxiety", "feelings"), // pos: was noun
@@ -243,10 +243,10 @@ export const BATCH_03: Word[] = [
   x("1278510", "[広告|こうこく]", "noun", "advertisement", "shopping"),
   x("1346240", "[勝利|しょうり]", "noun", "victory (する: to win)", "hobbies"),
   x("1402360", "[装置|そうち]", "noun", "device, equipment", "everyday"),
-  x("1421210", "[地震|じしん]", "noun", "earthquake", "nature"),
+  // moved to the lessons (n3-reasons/ni-yotte): 1421210 [地震|じしん]
   x("1444990", "[都市|とし]", "noun", "city", "places"),
   x("1459690", "[謎|なぞ]", "noun", "riddle, mystery", "everyday"),
-  x("1484150", "[秘密|ひみつ]", "noun", "secret", "everyday"),
+  // moved to the lessons (n3-reasons/wake-ni-wa-ikanai): 1484150 [秘密|ひみつ]
   x("1498460", "[武器|ぶき]", "noun", "weapon", "everyday"),
   x("1501400", "[複数|ふくすう]", "noun", "plural, more than one", "numbers"),
   x("1559610", "[連続|れんぞく]", "noun", "in a row, series (する: to continue)", "time"),

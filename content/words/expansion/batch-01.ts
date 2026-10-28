@@ -20,7 +20,7 @@ export const BATCH_01: Word[] = [
   x("1202150", "みな", "noun", "everyone, all (a little formal)", "people"),
   // moved to the lessons (n4-seeming/hazu): 1007130 そんな
   x("1258810", "[県|けん]", "noun", "prefecture", "places"),
-  x("1004880", "こんな", "pre-noun", "this kind of, like this", "language"),
+  // moved to the lessons (n3-reasons/wake-dewa-nai): 1004880 こんな
   // moved to the lessons (n4-plans/hajimeru): 1451750 [同|おな]じ
   // moved to the lessons (n5-essentials/sugiru): 1536010 [問題|もんだい]
   // skipped: 1251000 [系|けい] (suffix (system, group))
@@ -53,7 +53,7 @@ export const BATCH_01: Word[] = [
   // moved to the lessons (n5-essentials/temo-ii): 1409110 だめ
   // moved to the lessons (n4-giving-voice/ageru-kureru-morau): 1577200 かわいい
   // moved to the lessons (n4-conditions/advice): 1012620 もっと
-  x("1254690", "[結果|けっか]", "noun", "result, consequence; as a result", "school-work"),
+  // moved to the lessons (n3-reasons/ni-yotte): 1254690 [結果|けっか]
   x("1306200", "[使用|しよう]", "noun", "use (する: to use)", "everyday"),
   x("1378450", "[生|なま]", "noun", "raw; live (performance); draft (beer)", "food"),
   // moved to the lessons (n5-essentials/hou-ga-ii): 1217730 [顔|かお]
@@ -78,14 +78,14 @@ export const BATCH_01: Word[] = [
   // moved to the lessons (n5-essentials/sugiru): 1409140 [体|からだ]
   // moved to the lessons (n4-plans/hajimeru): 1405800 [続|つづ]ける
   // moved to the lessons (n4-plans/you-ni): 1259140 [見|み]える
-  x("1293810", "[最後|さいご]", "noun", "the end, the last, final", "time"),
+  // moved to the lessons (n3-reasons/wake-da): 1293810 [最後|さいご]
   x("1355850", "[場所|ばしょ]", "noun", "place, location", "places"),
   x("1499290", "[部|ぶ]", "noun", "department, section; club", "school-work"),
   x("1509430", "[別|べつ]", "noun", "different, separate, other", "everyday"),
   // moved to the lessons (n4-giving-voice/requests): 1587290 いただく
   // moved to the lessons (n5-essentials/kata): 1264540 [言葉|ことば]
   // moved to the lessons (n4-plans/you-ni): 1495770 つける
-  x("1510790", "[変|か]わる", "verb", "to change, to become different", "everyday", "godan"),
+  // moved to the lessons (n3-reasons/ni-yotte): 1510790 [変|か]わる
   // moved to the lessons (n4-conditions/temo): 1593670 [探|さが]す
   // skipped: 1567610 もむ (rare verb (to rub, massage))
   x("1589060", "[行|おこな]う", "verb", "to do, to carry out, to hold (an event)", "everyday", "godan"),
@@ -159,7 +159,7 @@ export const BATCH_01: Word[] = [
   x("1459400", "[内容|ないよう]", "noun", "contents, substance", "everyday"),
   x("1481800", "[販売|はんばい]", "noun", "sales, selling (する: to sell)", "shopping"),
   x("1516750", "[放送|ほうそう]", "noun", "broadcast (する: to broadcast)", "hobbies"),
-  x("1584930", "あまり", "noun", "(not) very, (not) much; remainder", "everyday"),
+  // moved to the lessons (n3-reasons/wake-dewa-nai): 1584930 あまり
   // skipped: 2021030 とる (artefact: とる kana form is 取る, 撮る, 採る and more)
   x("1093020", "ネット", "noun", "the Internet, the net; network", "hobbies"),
   x("1211510", "[完全|かんぜん]", "na-adj", "perfect, complete", "everyday"),
@@ -168,7 +168,7 @@ export const BATCH_01: Word[] = [
   // moved to the lessons (n4-giving-voice/te-ageru-kureru-morau): 1386460 [説明|せつめい]
   x("1454670", "[特|とく]に", "adverb", "especially, in particular", "everyday"),
   // moved to the lessons (n4-seeming/you-mitai): 1529410 [夢|ゆめ]
-  x("1610040", "せい", "noun", "fault, blame (because of)", "everyday"),
+  // moved to the lessons (n3-reasons/okage-sei): 1610040 せい
   // moved to the lessons (n4-seeming/garu): 1593480 [怖|こわ]い
   // skipped: 1319060 [式|しき] (mostly a suffix (-style, ceremony))
   x("1394680", "そういう", "pre-noun", "that kind of, such", "language"),
@@ -230,7 +230,7 @@ export const BATCH_01: Word[] = [
   x("1220550", "[期間|きかん]", "noun", "period, term", "time"),
   x("1307710", "[姿|すがた]", "noun", "figure, appearance, form", "body"),
   x("1420800", "[地域|ちいき]", "noun", "area, region", "places"),
-  x("1426530", "[注意|ちゅうい]", "noun", "attention, care (する: to be careful; to warn)", "everyday"),
+  // moved to the lessons (n3-reasons/you-ni-iu): 1426530 [注意|ちゅうい]
   // skipped: 1551200 [率|りつ] (suffix (rate))
   x("1591330", "[気|き]づく", "verb", "to notice, to realise", "feelings", "godan"),
   x("1229350", "[求|もと]める", "verb", "to seek, to request, to want", "everyday", "ichidan"),

@@ -2086,6 +2086,169 @@ export const GRAMMAR: GrammarGroup[] = [
       },
     ],
   },
+  {
+    slug: "n3-reasons",
+    title: "Purpose, cause and reasons",
+    topics: [
+      {
+        slug: "tame-ni-purpose",
+        pattern: "Plain non-past verb · Noun + の + ために",
+        meaning: "In order to …, for (the sake of) …: an aim you choose to act towards.",
+        lesson: "n3-reasons/tame-ni",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[日本|にほん] の [大学|だいがく] に [入|はい]る {ため に}、 [毎日|まいにち] [勉強|べんきょう] して います。", en: "I study every day to get into a Japanese university.", register: "Polite" },
+          { jp: "[日本|にほん] の [大学|だいがく] に [入|はい]る {ため に}、 [毎日|まいにち] [勉強|べんきょう] してる。", en: "I study every day to get into a Japanese university.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "tame-ni-cause",
+        pattern: "Plain past · adjective · Noun + の + ために; そのため(に)",
+        meaning: "Because of …, due to …: a cause, in the formal style of the news and notices.",
+        lesson: "n3-reasons/tame-ni",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[大雪|おおゆき] の {ため に}、 [電車|でんしゃ] が [止|と]まって います。", en: "Due to the heavy snow, trains are not running." },
+          {
+            jp: "[昨日|きのう] は [大雨|おおあめ] でした。 {その ため}、 [多|おお]く の [電車|でんしゃ] が [遅|おく]れました。",
+            en: "There was heavy rain yesterday. Because of that, many trains ran late.",
+          },
+        ],
+      },
+      {
+        slug: "you-ni-iu",
+        pattern: "Plain non-past verb · ない form + ように + [言|い]う · [頼|たの]む · [注意|ちゅうい]する · [伝|つた]える",
+        meaning: "Tell, ask or warn someone to do (or not to do) something; ように[言|い]われる: be told to.",
+        lesson: "n3-reasons/you-ni-iu",
+        jlpt: jlpt("N4", "JLPT Sensei lists ように at N3, this “tell someone to” use included; Bunpro has ようにいう at N4."),
+        examples: [
+          { jp: "[医者|いしゃ] に お[酒|さけ] を [飲|の]まない {よう に} [言|い]われました。", en: "The doctor told me not to drink alcohol.", register: "Polite" },
+          { jp: "[医者|いしゃ] に お[酒|さけ] を [飲|の]まない {よう に} [言|い]われた。", en: "The doctor told me not to drink alcohol.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "okage-de",
+        pattern: "Plain form · な-adjective な · Noun の + おかげで",
+        meaning: "Thanks to …: credit for a good result. おかげだ ends a sentence.",
+        lesson: "n3-reasons/okage-sei",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[先生|せんせい] の {おかげ で}、 [試験|しけん] に [合格|ごうかく] できました。", en: "Thanks to my teacher, I passed the exam.", register: "Polite" },
+          { jp: "[先生|せんせい] の {おかげ で}、 [試験|しけん] に [合格|ごうかく] できた。", en: "Thanks to my teacher, I passed the exam.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "sei-de",
+        pattern: "Plain form · な-adjective な · Noun の + せいで",
+        meaning: "Because of …, it's … fault: blame for a bad result. せいだ ends a sentence.",
+        lesson: "n3-reasons/okage-sei",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[寝坊|ねぼう] した {せい で}、 [会議|かいぎ] に [遅|おく]れました。", en: "I overslept, and that made me late for the meeting." },
+          { jp: "[遅|おく]れた の は [私|わたし] の {せい です}。 すみません。", en: "It's my fault we're late. I'm sorry." },
+        ],
+      },
+      {
+        slug: "ni-yotte-agent",
+        pattern: "Noun + によって + passive verb",
+        meaning: "By …: who made, wrote, built or found something.",
+        lesson: "n3-reasons/ni-yotte",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "この [小説|しょうせつ] は [十五歳|じゅうごさい] の [少女|しょうじょ] {によって} [書|か]かれた。", en: "This novel was written by a fifteen-year-old girl.", register: "Casual" },
+          { jp: "この [小説|しょうせつ] は [十五歳|じゅうごさい] の [少女|しょうじょ] {によって} [書|か]かれました。", en: "This novel was written by a fifteen-year-old girl.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "ni-yotte-cause",
+        pattern: "Noun + によって; Noun + による + Noun",
+        meaning: "Because of …, by means of …: the formal で of the news and writing. Before a noun, による.",
+        lesson: "n3-reasons/ni-yotte",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[地震|じしん] {によって}、 [多|おお]く の [建物|たてもの] が [壊|こわ]れました。", en: "Many buildings were destroyed in the earthquake." },
+          { jp: "[雪|ゆき] {による} [電車|でんしゃ] の [遅|おく]れ が [出|で]て います。", en: "Trains are running late because of the snow." },
+        ],
+      },
+      {
+        slug: "ni-yotte-depends",
+        pattern: "Noun + によって[違|ちが]う · [変|か]わる; question + かは Noun + によって[違|ちが]う",
+        meaning: "Depending on …, it varies with ….",
+        lesson: "n3-reasons/ni-yotte",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[人|ひと] {によって} [考|かんが]え[方|かた] が [違|ちが]います。", en: "The way people think differs from person to person.", register: "Polite" },
+          { jp: "[人|ひと] {によって} [考|かんが]え[方|かた] が [違|ちが]う。", en: "The way people think differs from person to person.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "wake-da",
+        pattern: "Plain form · な-adjective な · Noun な + わけだ",
+        meaning: "No wonder …, that's why …: a fact you've just learnt explains something.",
+        lesson: "n3-reasons/wake-da",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[窓|まど] が [開|あ]いて いる。 [寒|さむ]い {わけ だ}。", en: "The window's open. No wonder it's cold.", register: "Casual" },
+          { jp: "[窓|まど] が [開|あ]いて います。 [寒|さむ]い {わけ です}。", en: "The window's open. No wonder it's cold.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "to-iu-wake-da",
+        pattern: "Plain form · Noun + というわけだ",
+        meaning: "So you mean …, which means …: restating or summing up. Casually ってわけ.",
+        lesson: "n3-reasons/wake-da",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "つまり、 [明日|あした] の [会議|かいぎ] は ない {と いう わけ です} か？", en: "So you mean there's no meeting tomorrow?", register: "Polite" },
+          { jp: "つまり、 [明日|あした] の [会議|かいぎ] は ない {って わけ}？", en: "So you mean there's no meeting tomorrow?", register: "Casual" },
+        ],
+      },
+      {
+        slug: "wake-dewa-nai",
+        pattern: "Plain form · な-adjective な · Noun な + わけではない",
+        meaning: "It's not that …, not necessarily: denies part of an idea. Casually わけじゃない.",
+        lesson: "n3-reasons/wake-dewa-nai",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[肉|にく] が [嫌|きら]い な {わけ で は ない} けど、 あまり [食|た]べない。", en: "It's not that I dislike meat; I just don't eat much of it.", register: "Casual" },
+          { jp: "[肉|にく] が [嫌|きら]い な {わけ で は ありません} けど、 あまり [食|た]べません。", en: "It's not that I dislike meat; I just don't eat much of it.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "wake-ga-nai",
+        pattern: "Plain form · な-adjective な · Noun な + わけがない",
+        meaning: "There's no way …: a flat denial. Casually わけない.",
+        lesson: "n3-reasons/wake-dewa-nai",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "こんな [難|むずか]しい [問題|もんだい]、 [私|わたし] に [解|と]ける {わけ が ない}。", en: "There's no way I can solve a problem this hard.", register: "Casual" },
+          { jp: "こんな [難|むずか]しい [問題|もんだい]、 [私|わたし] に [解|と]ける {わけ が ありません}。", en: "There's no way I can solve a problem this hard.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "wake-ni-wa-ikanai",
+        pattern: "Plain non-past verb + わけにはいかない",
+        meaning: "Can't very well …: you could, but it wouldn't be right.",
+        lesson: "n3-reasons/wake-ni-wa-ikanai",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[明日|あした] は [大事|だいじ] な [会議|かいぎ] が ある から、 [休|やす]む {わけ に は いかない}。", en: "There's an important meeting tomorrow, so I can't very well take the day off.", register: "Casual" },
+          { jp: "[明日|あした] は [大事|だいじ] な [会議|かいぎ] が ある から、 [休|やす]む {わけ に は いきません}。", en: "There's an important meeting tomorrow, so I can't very well take the day off.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "nai-wake-ni-wa-ikanai",
+        pattern: "Verb ない form + わけにはいかない",
+        meaning: "Can hardly not …, have to: a duty to people you can't get out of.",
+        lesson: "n3-reasons/wake-ni-wa-ikanai",
+        jlpt: jlpt("N2", "JLPT Sensei's N3 わけにはいかない includes this “must, have no choice but to” use; Bunpro lists ないわけにはいかない separately at N2."),
+        examples: [
+          { jp: "[部長|ぶちょう] に [誘|さそ]われた から、 [行|い]かない {わけ に は} いかない。", en: "My manager invited me, so I can hardly not go.", register: "Casual" },
+          { jp: "[部長|ぶちょう] に [誘|さそ]われた から、 [行|い]かない {わけ に は} いきません。", en: "My manager invited me, so I can hardly not go.", register: "Polite" },
+        ],
+      },
+    ],
+  },
 ];
 
 export const GRAMMAR_TOPICS: GrammarTopic[] = GRAMMAR.flatMap((g) => g.topics);

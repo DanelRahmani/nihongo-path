@@ -29,7 +29,7 @@ export const BATCH_08: Word[] = [
   x("1199470", "[回収|かいしゅう]", "noun", "collection, recovery (する: to collect, to take back)", "everyday"),
   x("1199680", "[回答|かいとう]", "noun", "answer (to a question or survey) (する: to answer)", "language"),
   x("1200740", "[改|あらた]めて", "adverb", "once again, anew; formally", "everyday"),
-  x("1222840", "[季節|きせつ]", "noun", "season, time of year", "time"),
+  // moved to the lessons (n3-reasons/ni-yotte): 1222840 [季節|きせつ]
   x("1223021", "[規則|きそく]", "noun", "rule, regulation", "school-work"),
   x("1223060", "[規定|きてい]", "noun", "rule, provision (する: to stipulate)", "school-work"),
   x("1223880", "[起動|きどう]", "noun", "startup (する: to start up, to boot)", "everyday"),
@@ -124,7 +124,7 @@ export const BATCH_08: Word[] = [
   x("1156610", "[意思|いし]", "noun", "intention, will, wish", "feelings"),
   // skipped: 1215770 [関|せき] (barrier gate; mostly a place or surname)
   x("1230360", "[給料|きゅうりょう]", "noun", "salary, wages, pay", "school-work"),
-  x("1284600", "[合格|ごうかく]", "noun", "passing (an exam) (する: to pass)", "school-work"),
+  // moved to the lessons (n3-reasons/okage-sei): 1284600 [合格|ごうかく]
   x("1298120", "[削除|さくじょ]", "noun", "deletion (する: to delete)", "everyday"),
   x("1302410", "[参照|さんしょう]", "noun", "reference (する: to refer to)", "school-work"),
   x("1343310", "[所属|しょぞく]", "noun", "belonging to a group (する: to belong to)", "school-work"),

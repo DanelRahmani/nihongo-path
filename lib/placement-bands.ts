@@ -22,6 +22,7 @@ export const PICKS: Record<string, string[]> = {
   "n4-plans": ["you-ni-suru-naru#1", "te-shimau#1"],
   "n4-giving-voice": ["ageru-kureru-morau#0", "passive#0"],
   "n4-seeming": ["sou-hearsay#4", "to-omou#1"],
+  "n3-reasons": ["you-ni-iu#1", "wake-da#1"],
 };
 
 /** The JLPT level most of a unit's lessons carry, or undefined when none is tagged. */

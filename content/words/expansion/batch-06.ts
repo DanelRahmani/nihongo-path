@@ -13,7 +13,7 @@ export const BATCH_06: Word[] = [
   x("1272580", "[交流|こうりゅう]", "noun", "exchange, interaction (する: to interact)", "people"),
   x("1314010", "[事情|じじょう]", "noun", "circumstances, situation, reasons", "everyday"),
   x("1347880", "[小学生|しょうがくせい]", "noun", "primary school pupil", "school-work"),
-  x("1367300", "[人口|じんこう]", "noun", "population", "places"),
+  // moved to the lessons (n3-reasons/tame-ni): 1367300 [人口|じんこう]
   x("1376760", "[正確|せいかく]", "na-adj", "accurate, precise", "everyday"),
   x("1389730", "[宣伝|せんでん]", "noun", "advertising, publicity (する: to advertise)", "shopping"),
   x("1414160", "[大臣|だいじん]", "noun", "cabinet minister", "school-work"),
@@ -73,7 +73,7 @@ export const BATCH_06: Word[] = [
   x("1402870", "[送料|そうりょう]", "noun", "postage, shipping fee", "shopping"),
   x("1405050", "[速度|そくど]", "noun", "speed", "everyday"),
   x("1408370", "[太陽|たいよう]", "noun", "the sun", "nature"),
-  x("1424410", "[中止|ちゅうし]", "noun", "cancellation, suspension (する: to cancel, to call off)", "everyday"),
+  // moved to the lessons (n3-reasons/tame-ni): 1424410 [中止|ちゅうし]
   x("1477720", "[発展|はってん]", "noun", "development, growth (する: to develop, to grow)", "everyday"),
   x("1523400", "[翻訳|ほんやく]", "noun", "translation (する: to translate)", "language"),
   x("1539230", "[優秀|ゆうしゅう]", "na-adj", "excellent, outstanding", "school-work"),
@@ -157,7 +157,7 @@ export const BATCH_06: Word[] = [
   x("1225510", "[疑|うたが]う", "verb", "to doubt, to suspect", "feelings", "godan"),
   x("1077960", "チャネル", "noun", "channel (for sales or communication)", "school-work"),
   x("1076240", "タグ", "noun", "tag, label", "everyday"),
-  x("1596780", "[台風|たいふう]", "noun", "typhoon", "nature"),
+  // moved to the lessons (n3-reasons/tame-ni): 1596780 [台風|たいふう]
   x("1002770", "おしゃれ", "na-adj", "stylish, fashionable; dressing up", "shopping"),
   x("1411070", "[袋|ふくろ]", "noun", "bag, sack", "shopping"),
   x("1199640", "[回転|かいてん]", "noun", "rotation, turning (する: to rotate, to turn)", "everyday"),
@@ -169,7 +169,7 @@ export const BATCH_06: Word[] = [
   x("1234700", "[共通|きょうつう]", "noun", "common, shared (する: to have in common)", "everyday"),
   x("1236350", "[強制|きょうせい]", "noun", "compulsion (する: to force)", "everyday"),
   x("1237030", "[教会|きょうかい]", "noun", "church", "places"),
-  x("1237410", "[橋|はし]", "noun", "bridge", "places"),
+  // moved to the lessons (n3-reasons/ni-yotte): 1237410 [橋|はし]
   // skipped: 1245020 [具体|ぐたい] (counted from 具体的; rare as a bare word)
   x("1257590", "[憲法|けんぽう]", "noun", "constitution (of a country)", "school-work"),
   x("1263860", "[現地|げんち]", "noun", "the local place, on the spot", "places"),

@@ -178,7 +178,7 @@ export const BATCH_04: Word[] = [
   x("1212210", "[患者|かんじゃ]", "noun", "patient", "people"),
   x("1223090", "[規模|きぼ]", "noun", "scale, size (of an event, business)", "everyday"),
   // moved to the lessons (n4-plans/hajimeru): 1228560 [急|きゅう]
-  x("1257540", "[建物|たてもの]", "noun", "building", "places"),
+  // moved to the lessons (n3-reasons/ni-yotte): 1257540 [建物|たてもの]
   x("1310270", "[支配|しはい]", "noun", "rule, control (する: to rule)", "everyday"),
   x("1320970", "[実験|じっけん]", "noun", "experiment (する: to experiment)", "school-work"),
   x("1325680", "[主人公|しゅじんこう]", "noun", "main character, hero", "hobbies"),

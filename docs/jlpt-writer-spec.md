@@ -50,6 +50,7 @@ Same order as the exemplar:
 - Unnatural or textbook-only lines (帰ったとき for a future promise, 分からなければ declared impossible): if unsure, flag it.
 - Lines ending in `…。` (it prints as "...." in the romaji): end with … alone.
 - Vocabulary above the level (N2 words in N3 points) unless the point needs it.
+- A grammar verb written in kana (いく in わけにはいかない) that a keyboard turns into kanji: fold it narrowly in `lib/quiz.ts` (only right after the idiom's own words), or the right answer is marked wrong in the quiz, the cloze and the polite ↔ casual drills alike.
 - Cloze cards another pattern fits (けど for のに, から for し, と for ば, ばかり for ところ, the plain polite verb for keigo): exclude the card in `content/cloze-exclusions.ts` with the reason, rather than accepting the other pattern in `CLOZE_ALSO`, so the card still tests the point. `CLOZE_ALSO` is for true variants the lesson teaches (よう/みたい, かも/かもしれない).
 
 ## Japanese rules (STYLE.md has the full text)

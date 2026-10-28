@@ -15,6 +15,10 @@ describe("normalizeAnswer", () => {
     expect(checkAnswer(["いってきます"], "行ってきます").correct).toBe(true);
     expect(checkAnswer(["おかえりなさい"], "お帰りなさい").correct).toBe(true);
     expect(checkAnswer(["ごちそうさま でした"], "ご馳走様でした").correct).toBe(true);
+    // いく in わけにはいかない, only right after わけ に は / わけ に.
+    expect(checkAnswer(["[休|やす]む わけ に は いきません"], "休むわけには行きません").correct).toBe(true);
+    expect(checkAnswer(["[休|やす]む わけ に いかない"], "休むわけに行かない").correct).toBe(true);
+    expect(checkAnswer(["[休|やす]む いかない"], "休む行かない").correct).toBe(false);
   });
 
   it("ignores punctuation inside the answer too", () => {

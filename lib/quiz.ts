@@ -79,7 +79,7 @@ const TE_HELPERS: [RegExp, string][] = [
 ];
 
 /** A kana word's keyboard kanji spellings, as well as the word itself. */
-function kanaOptions(text: string, whole: boolean, afterTe: boolean): string[] {
+function kanaOptions(text: string, whole: boolean, afterTe: boolean, afterWake: boolean): string[] {
   const out = [text];
   const [, core, punct] = /^(.*?)([。、？！…」]*)$/u.exec(text)!;
   if (whole && FORMAL_NOUNS[core]) out.push(FORMAL_NOUNS[core] + punct);
@@ -87,8 +87,13 @@ function kanaOptions(text: string, whole: boolean, afterTe: boolean): string[] {
   if (text.includes("すぎ")) out.push(text.replace("すぎ", "過ぎ"));
   if (whole && text.startsWith("ほし")) out.push(text.replace("ほし", "欲し"));
   if (whole && afterTe) for (const [re, kanji] of TE_HELPERS) if (re.test(text)) out.push(text.replace(re, kanji));
+  // いく in わけ に は いかない / いきません (and わけ に も): a keyboard offers 行かない. Only right after those words.
+  if (whole && afterWake && /^い[かきくけこっ]/.test(text)) out.push(text.replace(/^い/, "行"));
   return out;
 }
+
+/** わけ に / わけ に は / わけ に も: the words before the いく of わけにはいかない. */
+const WAKE_NI = /(?:^|,)わけ,に(?:,[はも])?$/;
 
 /** Every way to write an answer: each kanji word in kanji or in kana (学生だ, がくせいだ, 学生 + だ…). */
 export function acceptedForms(answer: string): string[] {
@@ -96,15 +101,19 @@ export function acceptedForms(answer: string): string[] {
   const tokens = parse(answer, true);
   let prevWord = "";
   let word = "";
+  const done: string[] = [];
   tokens.forEach((t, i) => {
     if (t.kind === "space" || t.kind === "join") {
-      if (t.kind === "space") [prevWord, word] = [word, ""];
+      if (t.kind === "space") {
+        if (word) done.push(word);
+        [prevWord, word] = [word, ""];
+      }
       return;
     }
     const before = tokens[i - 1];
     const after = tokens[i + 1];
     const whole = (!before || before.kind === "space") && (!after || after.kind === "space");
-    const options = t.kind === "ruby" ? [t.base, t.reading] : kanaOptions(t.text, whole, /[てで]$/.test(prevWord));
+    const options = t.kind === "ruby" ? [t.base, t.reading] : kanaOptions(t.text, whole, /[てで]$/.test(prevWord), WAKE_NI.test(done.slice(-3).join(",")));
     word += t.kind === "ruby" ? t.reading : t.text;
     forms = forms.flatMap((f) => options.map((o) => f + o));
   });

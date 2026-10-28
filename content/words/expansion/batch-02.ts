@@ -6,7 +6,7 @@ export const BATCH_02: Word[] = [
   x("1273820", "[公式|こうしき]", "noun", "official; formula (maths)", "everyday"),
   x("1333040", "[終了|しゅうりょう]", "noun", "end, finish (する: to end)", "everyday"),
   x("1412890", "[大|おお]きな", "pre-noun", "big, large (before a noun)", "everyday"),
-  x("1413940", "[大事|だいじ]", "na-adj", "important; precious", "everyday"),
+  // moved to the lessons (n3-reasons/wake-ni-wa-ikanai): 1413940 [大事|だいじ]
   x("1348910", "[少|すく]ない", "i-adj", "few, little", "everyday"),
   x("1583470", "[品|しな]", "noun", "goods, item, article", "shopping"),
   x("1604570", "[見|み]つける", "verb", "to find, discover", "everyday", "ichidan"),
@@ -44,7 +44,7 @@ export const BATCH_02: Word[] = [
   x("1219910", "[希望|きぼう]", "noun", "hope, wish (する: to hope for)", "feelings"),
   x("1236950", "[教育|きょういく]", "noun", "education (する: to educate)", "school-work"),
   x("1272780", "[光|ひかり]", "noun", "light", "nature"),
-  // skipped: 1333500 [週間|しゅうかん] (a counter suffix: 一週間, 三年間)
+  // moved to the lessons (n3-reasons/wake-da): 1333500 [週間|しゅうかん]
   x("1394800", "[全|まった]く", "adverb", "(not) at all; completely, really", "language"),
   x("1455280", "[特別|とくべつ]", "na-adj", "special", "everyday"),
   x("1482340", "[番組|ばんぐみ]", "noun", "(TV or radio) programme", "hobbies"),
@@ -60,7 +60,7 @@ export const BATCH_02: Word[] = [
   x("1226020", "[議員|ぎいん]", "noun", "member of a parliament or council", "people"),
   x("1251320", "[経済|けいざい]", "noun", "economy; finances", "school-work"),
   x("1313670", "[事業|じぎょう]", "noun", "business, enterprise; project", "school-work"),
-  x("1313850", "[事故|じこ]", "noun", "accident", "everyday"),
+  // moved to the lessons (n3-reasons/tame-ni): 1313850 [事故|じこ]
   // moved to the lessons (n4-giving-voice/suffering-passive): 1395620 [全然|ぜんぜん]
   x("1405790", "[続|つづ]く", "verb", "to continue, go on", "everyday", "godan"),
   x("1387240", "まず", "adverb", "first of all; probably", "language"),
@@ -68,7 +68,7 @@ export const BATCH_02: Word[] = [
   x("1081190", "データ", "noun", "data", "school-work"),
   x("1378520", "[生|い]きる", "verb", "to live; to be alive", "everyday", "ichidan"),
   // moved to the lessons (n4-giving-voice/suffering-passive): 1587610 [嫌|いや]
-  x("1610430", "つまり", "adverb", "in other words, that is", "language"),
+  // moved to the lessons (n3-reasons/wake-da): 1610430 つまり
   x("1216880", "[含|ふく]む", "verb", "to include, contain", "everyday", "godan"),
   x("1389880", "[専門|せんもん]", "noun", "speciality, field of study", "school-work"),
   x("1108540", "ファン", "noun", "fan; electric fan", "hobbies"),
@@ -76,7 +76,7 @@ export const BATCH_02: Word[] = [
   x("1173800", "[映像|えいぞう]", "noun", "image, picture, video", "hobbies"),
   x("1257900", "[検索|けんさく]", "noun", "search (する: to search)", "everyday"),
   x("1375690", "[成功|せいこう]", "noun", "success (する: to succeed)", "everyday"),
-  x("1477310", "[発見|はっけん]", "noun", "discovery (する: to discover)", "everyday"),
+  // moved to the lessons (n3-reasons/ni-yotte): 1477310 [発見|はっけん]
   x("1596960", "[戦|たたか]う", "verb", "to fight, battle", "everyday", "godan"),
   x("1324940", "[主|おも]", "na-adj", "main, chief", "everyday"),
   // moved to the lessons (n4-plans/you-ni): 1169250 [引|ひ]く
@@ -100,7 +100,7 @@ export const BATCH_02: Word[] = [
   x("1238410", "[興味|きょうみ]", "noun", "interest, curiosity", "feelings"),
   x("1250190", "[契約|けいやく]", "noun", "contract (する: to make a contract)", "school-work"),
   x("1251270", "[経験|けいけん]", "noun", "experience (する: to experience)", "school-work"),
-  x("1360930", "[心配|しんぱい]", "noun", "worry (する: to worry)", "feelings"),
+  // moved to the lessons (n3-reasons/you-ni-iu): 1360930 [心配|しんぱい]
   x("1383180", "[責任|せきにん]", "noun", "responsibility", "school-work"),
   // moved to the lessons (n5-essentials/deshou): 1407980 [多分|たぶん]
   x("1412170", "[代表|だいひょう]", "noun", "representative (する: to represent)", "people"),
@@ -135,7 +135,7 @@ export const BATCH_02: Word[] = [
   x("1075940", "タイプ", "noun", "type, kind", "everyday"),
   x("1158400", "[移動|いどう]", "noun", "movement (する: to move, travel)", "travel"),
   x("1223440", "[記録|きろく]", "noun", "record (する: to record)", "school-work"),
-  x("1376310", "[星|ほし]", "noun", "star", "nature"),
+  // moved to the lessons (n3-reasons/ni-yotte): 1376310 [星|ほし]
   x("1515670", "[報告|ほうこく]", "noun", "report (する: to report)", "school-work"),
   x("1311125", "あたし", "pronoun", "I, me (casual, used mostly by women)", "people"),
   x("1293700", "[最|もっと]も", "adverb", "the most (formal)", "language"),

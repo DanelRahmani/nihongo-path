@@ -20,6 +20,10 @@ export const FUNCTION_WORDS = new Set([
   ..."によれば によって による".split(" "),
   // につれて (as … changes), and につれ in writing.
   ..."につれて につれ".split(" "),
+  // について, にとって, として, をはじめ (written in kana), and だって (casual hearsay: [医者|いしゃ] だって, ん だって).
+  // These are function words (no dictionary card). The kanji-written ones (に関して, に対して, に関する, に対する) are
+  // expression entries in content/words/other.ts, which have cards. STYLE §7: a fixed compound particle is one word.
+  ..."について にとって として をはじめ だって".split(" "),
   // かな and かしら (I wonder), sentence-final like ね.
   ..."かな かしら".split(" "),
 ]);

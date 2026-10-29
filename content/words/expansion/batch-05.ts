@@ -19,9 +19,9 @@ export const BATCH_05: Word[] = [
   x("1115010", "ブロック", "noun", "block; city block", "everyday"),
   x("1155710", "[依頼|いらい]", "noun", "request (する: to request, to commission)", "school-work"),
   x("1211630", "[完了|かんりょう]", "noun", "completion (する: to finish)", "school-work"),
-  x("1245470", "[空気|くうき]", "noun", "air; atmosphere, mood", "nature"),
+  // moved to the lessons (n3-relations/tte): 1245470 [空気|くうき]
   x("1249660", "[刑事|けいじ]", "noun", "police detective", "people"),
-  x("1258000", "[検討|けんとう]", "noun", "consideration (する: to consider)", "school-work"),
+  // moved to the lessons (n3-relations/to-iu-no-wa): 1258000 [検討|けんとう]
   x("1279730", "[構成|こうせい]", "noun", "structure, makeup (する: to make up)", "everyday"),
   x("1291690", "[詐欺|さぎ]", "noun", "fraud, scam", "everyday"),
   x("1310950", "[死亡|しぼう]", "noun", "death (する: to die) (formal)", "everyday"),
@@ -41,7 +41,7 @@ export const BATCH_05: Word[] = [
   x("1604280", "まれ", "na-adj", "rare, uncommon", "everyday"),
   x("1225090", "[技|わざ]", "noun", "technique, skill (in sports, martial arts)", "hobbies"),
   x("1501110", "[腹|はら]", "noun", "belly, stomach (blunt, mostly men's); anger, true feelings", "body"),
-  x("1347710", "[将来|しょうらい]", "noun", "future (of a person or society)", "time"),
+  // moved to the lessons (n3-relations/ni-tsuite): 1347710 [将来|しょうらい]
   x("1030950", "エンジン", "noun", "engine", "travel"),
   x("1083630", "デビュー", "noun", "debut (する: to make one's debut)", "hobbies"),
   x("1205920", "[確保|かくほ]", "noun", "securing (する: to secure, to ensure)", "school-work"),
@@ -99,7 +99,7 @@ export const BATCH_05: Word[] = [
   // moved to the lessons (n4-giving-voice/te-ageru-kureru-morau): 1253190 [迎|むか]える
   x("1160570", "[育|そだ]てる", "verb", "to raise, to bring up", "people", "ichidan"),
   x("1401910", "[草|くさ]", "noun", "grass, weed", "nature"),
-  x("1604870", "むしろ", "adverb", "rather, if anything", "language"),
+  // moved to the lessons (n3-relations/to-iu-yori): 1604870 むしろ
   // moved to the lessons (n5-essentials/kata): 1123880 ボタン
   x("1006950", "そもそも", "adverb", "in the first place, to begin with", "language"),
   x("1000590", "あんな", "pre-noun", "that kind of, like that", "language"),
@@ -153,7 +153,7 @@ export const BATCH_05: Word[] = [
   x("1294220", "[最低|さいてい]", "noun", "the worst; the minimum", "everyday"),
   // moved to the lessons (n3-reasons/you-ni-iu): 1312820 [資料|しりょう]
   x("1314050", "[事前|じぜん]", "noun", "beforehand, in advance", "time"),
-  x("1329300", "[首相|しゅしょう]", "noun", "prime minister", "people"),
+  // moved to the lessons (n3-relations/wo-hajime): 1329300 [首相|しゅしょう]
   x("1330790", "[収入|しゅうにゅう]", "noun", "income", "school-work"),
   x("1339260", "[出身|しゅっしん]", "noun", "(one's) home town, country or school of origin", "people"),
   x("1392680", "[前回|ぜんかい]", "noun", "last time, previous time", "time"),
@@ -191,9 +191,9 @@ export const BATCH_05: Word[] = [
   // moved to the lessons (n5-essentials/temo-ii): 1291800 [座|すわ]る
   x("1167860", "[稲妻|いなずま]", "noun", "lightning", "nature"),
   x("1427510", "しゃべる", "verb", "to talk, to chat (casual)", "language", "godan"),
-  x("1418620", "[短|みじか]い", "i-adj", "short; brief", "everyday"),
+  // moved to the lessons (n3-relations/toshite): 1418620 [短|みじか]い
   x("1444270", "[塗|ぬ]る", "verb", "to paint, to spread on", "home", "godan"),
-  x("1483540", "[比|くら]べる", "verb", "to compare", "everyday", "ichidan"),
+  // moved to the lessons (n3-relations/ni-kurabete): 1483540 [比|くら]べる
   x("1476450", "[肌|はだ]", "noun", "skin", "body"),
   x("1340820", "[述|の]べる", "verb", "to state, to say (formal)", "language", "ichidan"),
   x("1247030", "[繰|く]り[返|かえ]す", "verb", "to repeat, to do again", "everyday", "godan"),
@@ -245,7 +245,7 @@ export const BATCH_05: Word[] = [
   x("1504330", "[分野|ぶんや]", "noun", "field, area (of study or work)", "school-work"),
   x("1539390", "[優先|ゆうせん]", "noun", "priority (する: to give priority to)", "everyday"),
   // moved to the lessons (n4-giving-voice/kenjougo): 1203020 [階|かい]
-  x("1589340", "[思|おも]い[出|で]", "noun", "memory, recollection", "feelings"),
+  // moved to the lessons (n3-relations/ni-totte): 1589340 [思|おも]い[出|で]
   x("1599430", "[中身|なかみ]", "noun", "contents, what is inside", "everyday"),
   x("1384860", "[切|き]れる", "verb", "to be cut, to snap; to run out", "everyday", "ichidan"),
   x("1203270", "[外|はず]す", "verb", "to take off, to remove; to miss", "everyday", "godan"),

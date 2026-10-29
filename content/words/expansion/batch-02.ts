@@ -5,9 +5,9 @@ import { x } from "@/content/words/expansion/make";
 export const BATCH_02: Word[] = [
   x("1273820", "[公式|こうしき]", "noun", "official; formula (maths)", "everyday"),
   x("1333040", "[終了|しゅうりょう]", "noun", "end, finish (する: to end)", "everyday"),
-  x("1412890", "[大|おお]きな", "pre-noun", "big, large (before a noun)", "everyday"),
+  // moved to the lessons (n3-relations/ni-totte): 1412890 [大|おお]きな
   // moved to the lessons (n3-reasons/wake-ni-wa-ikanai): 1413940 [大事|だいじ]
-  x("1348910", "[少|すく]ない", "i-adj", "few, little", "everyday"),
+  // moved to the lessons (n3-relations/kawari-ni): 1348910 [少|すく]ない
   x("1583470", "[品|しな]", "noun", "goods, item, article", "shopping"),
   x("1604570", "[見|み]つける", "verb", "to find, discover", "everyday", "ichidan"),
   // moved to the lessons (n4-giving-voice/sasete-kudasai): 1259210 [見|み]せる
@@ -24,11 +24,11 @@ export const BATCH_02: Word[] = [
   // skipped: 1595125 [心|しん] (homograph; しん (core) is not what the bare word means)
   x("1220310", "すでに", "adverb", "already", "time"),
   // skipped: 2839304 [黄金|こがね] (homograph; こがね is a rare, literary reading of 黄金)
-  x("1558050", "[歴史|れきし]", "noun", "history", "school-work"),
+  // moved to the lessons (n3-relations/ni-tsuite): 1558050 [歴史|れきし]
   x("1391780", "[線|せん]", "noun", "line", "everyday"),
   x("1471120", "[派|は]", "noun", "group, faction; school (of thought)", "people"),
   // moved to the lessons (n4-plans/you-to-omou): 1473950 [売|う]る
-  x("1021750", "イメージ", "noun", "image, impression (する: to picture)", "everyday"),
+  // moved to the lessons (n3-relations/to-ieba): 1021750 イメージ
   x("1145910", "レベル", "noun", "level, standard", "everyday"),
   x("1201260", "[海外|かいがい]", "noun", "overseas, abroad", "travel"),
   x("1216060", "[関連|かんれん]", "noun", "connection, relation (する: to be related)", "everyday"),
@@ -45,7 +45,7 @@ export const BATCH_02: Word[] = [
   x("1236950", "[教育|きょういく]", "noun", "education (する: to educate)", "school-work"),
   x("1272780", "[光|ひかり]", "noun", "light", "nature"),
   // moved to the lessons (n3-reasons/wake-da): 1333500 [週間|しゅうかん]
-  x("1394800", "[全|まった]く", "adverb", "(not) at all; completely, really", "language"),
+  // moved to the lessons (n3-relations/ni-taishite): 1394800 [全|まった]く
   x("1455280", "[特別|とくべつ]", "na-adj", "special", "everyday"),
   x("1482340", "[番組|ばんぐみ]", "noun", "(TV or radio) programme", "hobbies"),
   x("1581180", "[全国|ぜんこく]", "noun", "the whole country", "places"),
@@ -56,7 +56,7 @@ export const BATCH_02: Word[] = [
   x("1242600", "[金|きん]", "noun", "gold", "nature"),
   x("1495740", "[付|つ]く", "verb", "to be attached, to stick; to come with", "everyday", "godan"),
   x("1082900", "デザイン", "noun", "design (する: to design)", "hobbies"),
-  x("1213280", "[環境|かんきょう]", "noun", "environment, surroundings", "nature"),
+  // moved to the lessons (n3-relations/ni-tsuite): 1213280 [環境|かんきょう]
   x("1226020", "[議員|ぎいん]", "noun", "member of a parliament or council", "people"),
   x("1251320", "[経済|けいざい]", "noun", "economy; finances", "school-work"),
   x("1313670", "[事業|じぎょう]", "noun", "business, enterprise; project", "school-work"),
@@ -88,7 +88,7 @@ export const BATCH_02: Word[] = [
   x("1325260", "[主義|しゅぎ]", "noun", "-ism, principle", "school-work"),
   x("1338290", "[出演|しゅつえん]", "noun", "appearance on stage or screen (する: to appear)", "hobbies"),
   x("1436540", "[程度|ていど]", "noun", "degree, extent", "everyday"),
-  x("1554640", "[量|りょう]", "noun", "quantity, amount", "everyday"),
+  // moved to the lessons (n3-relations/ni-shite-wa): 1554640 [量|りょう]
   x("1591720", "[協力|きょうりょく]", "noun", "cooperation (する: to cooperate)", "school-work"),
   x("1551940", "ほぼ", "adverb", "almost, nearly", "everyday"),
   x("1588760", "[得|え]る", "verb", "to get, obtain (formal)", "everyday", "ichidan"),
@@ -99,18 +99,18 @@ export const BATCH_02: Word[] = [
   x("1117030", "プロ", "noun", "professional, pro", "people"),
   x("1238410", "[興味|きょうみ]", "noun", "interest, curiosity", "feelings"),
   x("1250190", "[契約|けいやく]", "noun", "contract (する: to make a contract)", "school-work"),
-  x("1251270", "[経験|けいけん]", "noun", "experience (する: to experience)", "school-work"),
+  // moved to the lessons (n3-relations/ni-totte): 1251270 [経験|けいけん]
   // moved to the lessons (n3-reasons/you-ni-iu): 1360930 [心配|しんぱい]
   x("1383180", "[責任|せきにん]", "noun", "responsibility", "school-work"),
   // moved to the lessons (n5-essentials/deshou): 1407980 [多分|たぶん]
-  x("1412170", "[代表|だいひょう]", "noun", "representative (する: to represent)", "people"),
+  // moved to the lessons (n3-relations/toshite): 1412170 [代表|だいひょう]
   x("1477620", "[発生|はっせい]", "noun", "occurrence (する: to occur)", "everyday"),
   x("1511040", "[変更|へんこう]", "noun", "change, alteration (する: to alter)", "everyday"),
   x("1562400", "[話題|わだい]", "noun", "topic of conversation", "language"),
   x("1582000", "[敵|てき]", "noun", "enemy, opponent", "people"),
   x("1359040", "[信|しん]じる", "verb", "to believe, trust", "feelings", "ichidan"),
   x("1535880", "[戻|もど]る", "verb", "to return, go back", "everyday", "godan"),
-  x("1597040", "[立|た]つ", "verb", "to stand up; to be built; to rise", "everyday", "godan"),
+  // moved to the lessons (n3-relations/toshite): 1597040 [立|た]つ
   x("1483090", "[彼|かれ]ら", "pronoun", "they, them (of people)", "people"),
   // skipped: 1355930 [嬢|じょう] (嬢, a suffix (Miss) rather than a word on its own)
   x("1124860", "ポイント", "noun", "point, key point; points (loyalty card)", "everyday"),
@@ -141,7 +141,7 @@ export const BATCH_02: Word[] = [
   x("1293700", "[最|もっと]も", "adverb", "the most (formal)", "language"),
   // moved to the lessons (n4-seeming/ga-suru): 1510640 [変|へん]
   // moved to the lessons (n5-essentials/comparing): 1073210 スポーツ
-  x("1172910", "[運動|うんどう]", "noun", "exercise; campaign (する: to exercise)", "hobbies"),
+  // moved to the lessons (n3-relations/to-iu-yori): 1172910 [運動|うんどう]
   x("1310410", "[施設|しせつ]", "noun", "facility, institution", "places"),
   x("1395660", "[全体|ぜんたい]", "noun", "whole, entirety", "everyday"),
   x("1419080", "[誕生|たんじょう]", "noun", "birth (する: to be born)", "time"),
@@ -206,7 +206,7 @@ export const BATCH_02: Word[] = [
   // moved to the lessons (n4-plans/te-oku): 1120410 ページ
   // moved to the lessons (n4-giving-voice/causative): 1404390 [息子|むすこ]
   // moved to the lessons (n5-essentials/toki): 1171010 [右|みぎ]
-  x("1212380", "[感謝|かんしゃ]", "noun", "thanks (する: to thank)", "greetings"),
+  // moved to the lessons (n3-relations/wo-hajime): 1212380 [感謝|かんしゃ]
   x("1218560", "[危険|きけん]", "noun", "danger", "everyday"),
   x("1318090", "[自然|しぜん]", "noun", "nature; natural", "nature"),
   x("1449090", "[当時|とうじ]", "noun", "at that time", "time"),
@@ -234,7 +234,7 @@ export const BATCH_02: Word[] = [
   x("1399610", "[想像|そうぞう]", "noun", "imagination (する: to imagine)", "feelings"),
   x("1413180", "[大会|たいかい]", "noun", "tournament, competition; convention", "hobbies"),
   x("1413660", "[大好|だいす]き", "na-adj", "loved, liked very much", "feelings"),
-  x("1451470", "[動物|どうぶつ]", "noun", "animal", "nature"),
+  // moved to the lessons (n3-relations/ni-taishite): 1451470 [動物|どうぶつ]
   x("1478620", "[判断|はんだん]", "noun", "judgement (する: to judge)", "school-work"),
   x("1217110", "がん", "noun", "cancer", "body"),
   x("1589880", "[関|かか]わる", "verb", "to be involved in, concerned with", "everyday", "godan"),

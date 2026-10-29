@@ -47,7 +47,7 @@ export const BATCH_08: Word[] = [
   x("1386070", "[設備|せつび]", "noun", "equipment, facilities", "school-work"),
   x("1390240", "[戦士|せんし]", "noun", "warrior, fighter, soldier", "people"),
   x("1392330", "[選択肢|せんたくし]", "noun", "choices, options", "everyday"),
-  x("1410780", "[態度|たいど]", "noun", "attitude, manner", "feelings"),
+  // moved to the lessons (n3-relations/ni-taishite): 1410780 [態度|たいど]
   x("1420010", "[男|おとこ]の[子|こ]", "noun", "boy", "people"),
   x("1423640", "[中学|ちゅうがく]", "noun", "junior high school", "school-work"),
   x("1430930", "[直後|ちょくご]", "noun", "right after, immediately following", "time"),
@@ -65,7 +65,7 @@ export const BATCH_08: Word[] = [
   x("1192850", "[果|は]たす", "verb", "to accomplish, to carry out, to fulfil", "everyday", "godan"),
   x("1534930", "[黙|だま]る", "verb", "to be silent, to say nothing", "everyday", "godan"),
   x("1176780", "[演|えん]じる", "verb", "to play (a role), to act", "hobbies", "ichidan"),
-  x("1481920", "うるさい", "i-adj", "noisy, annoying; fussy", "everyday"),
+  // moved to the lessons (n3-relations/to-iu-no-wa): 1481920 うるさい
   // moved to the lessons (n4-giving-voice/te-ageru-kureru-morau): 1599390 [直|なお]す
   x("1586420", "[暖|あたた]かい", "i-adj", "warm, mild (weather, a room)", "nature"),
   x("1394600", "ようやく", "adverb", "finally, at last; barely", "everyday"),
@@ -92,7 +92,7 @@ export const BATCH_08: Word[] = [
   x("1396390", "[全力|ぜんりょく]", "noun", "all one's strength, full effort", "feelings"),
   x("1414010", "[大手|おおて]", "noun", "large company, major firm", "school-work"),
   x("1429820", "[長官|ちょうかん]", "noun", "head of an agency, chief", "everyday"),
-  x("1453580", "[同僚|どうりょう]", "noun", "coworker, colleague", "people"),
+  // moved to the lessons (n3-relations/to-iu-yori): 1453580 [同僚|どうりょう]
   x("1455500", "[毒|どく]", "noun", "poison", "everyday"),
   x("1457910", "[内閣|ないかく]", "noun", "cabinet (of a government)", "everyday"),
   x("1481630", "[犯人|はんにん]", "noun", "criminal, culprit", "people"),
@@ -123,7 +123,7 @@ export const BATCH_08: Word[] = [
   x("1137220", "ユニット", "noun", "unit; small group (e.g. in music)", "everyday"),
   x("1156610", "[意思|いし]", "noun", "intention, will, wish", "feelings"),
   // skipped: 1215770 [関|せき] (barrier gate; mostly a place or surname)
-  x("1230360", "[給料|きゅうりょう]", "noun", "salary, wages, pay", "school-work"),
+  // moved to the lessons (n3-relations/kawari-ni): 1230360 [給料|きゅうりょう]
   // moved to the lessons (n3-reasons/okage-sei): 1284600 [合格|ごうかく]
   x("1298120", "[削除|さくじょ]", "noun", "deletion (する: to delete)", "everyday"),
   x("1302410", "[参照|さんしょう]", "noun", "reference (する: to refer to)", "school-work"),
@@ -180,7 +180,7 @@ export const BATCH_08: Word[] = [
   x("1533000", "めちゃくちゃ", "na-adj", "extremely (casual); absurd, messy", "everyday"),
   x("1291500", "[砂|すな]", "noun", "sand", "nature"),
   x("1358870", "[伸|の]びる", "verb", "to stretch, to grow longer, to improve", "everyday", "ichidan"),
-  x("1511790", "[片付|かたづ]ける", "verb", "to tidy up, to put away; to finish", "home", "ichidan"),
+  // moved to the lessons (n3-relations/kawari-ni): 1511790 [片付|かたづ]ける
   x("1254670", "[結|むす]ぶ", "verb", "to tie, to link; to bear (fruit)", "everyday", "godan"),
   x("1420450", "[知|し]り[合|あ]う", "verb", "to get to know each other", "people", "godan"),
   x("1469810", "ないし", "conjunction", "or; from ... to (formal, written)", "language"),

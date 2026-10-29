@@ -142,4 +142,12 @@ export const OTHER: Word[] = [
   w("suffix", "おき", "at intervals of, every other: [一日|いちにち]おき (every other day)", "time"),
   w("counter", "[日|か]", "day(s), 2 to 10: [二日|ふつか], [三日|みっか]", "numbers"),
   w("adverb", "[初|はじ]めて", "for the first time (〜て初めて: only after)", "time"),
+  // Relations, viewpoint and what's said (unit 十六)
+  w("pre-noun", "どんな", "what kind of", "language"),
+  w("pre-noun", "どういう", "what kind of, what sort of", "language"),
+  w("pre-noun", "[大|おお]きな", "big, large (before a noun)", "everyday"),
+  w("expression", "に[関|かん]して", "about, regarding (formal)", "language"),
+  w("expression", "に[関|かん]する", "about, regarding (formal; before a noun)", "language"),
+  w("expression", "に[対|たい]して", "towards, to; whereas (のに対して)", "language"),
+  w("expression", "に[対|たい]する", "towards, to (before a noun)", "language"),
 ];

@@ -9,7 +9,7 @@ const BANDS = placementBands();
 describe("the bands", () => {
   it("are the units after the kana, in path order, two lesson-quiz questions each, typed in Japanese", () => {
     expect(BANDS.map((b) => b.unit)).toEqual(UNITS.map((u) => u.slug).filter((s) => s !== "hiragana" && s !== "katakana"));
-    expect(BANDS).toHaveLength(14);
+    expect(BANDS).toHaveLength(15);
     for (const b of BANDS) {
       expect(b.questions, b.unit).toHaveLength(PER_BAND);
       expect(new Set(b.questions.map((q) => q.prompt)).size, b.unit).toBe(PER_BAND);
@@ -52,6 +52,8 @@ describe("the bands", () => {
         "n3-reasons/wake-da: Polite, with わけ (use [得意|とくい]): “She practises every day? No wonder she's good at it”: [毎日|まいにち][練習|れんしゅう]しているんですか？＿ですね。",
         "n3-time/uchi-ni: With ないうちに (use [始|はじ]まる): “Let's buy drinks before the film starts”: [映画|えいが]が＿、[飲|の]み[物|もの]を[買|か]いましょう。",
         "n3-time/ippou-da: Polite, with [一方|いっぽう] (use [増|ふ]える): “The number of foreigners working in Japan just keeps growing”: [日本|にほん]で[働|はたら]く[外国人|がいこくじん]は＿。",
+        "n3-relations/ni-taishite: Whereas, with に[対|たい]して (use [多|おお]い): “The north gets a lot of snow, whereas the south gets hardly any”: [北|きた]は[雪|ゆき]が＿、[南|みなみ]はほとんど[降|ふ]らない。",
+        "n3-relations/n-datte: Casual, with んだって (use [引|ひ]っ[越|こ]す): “Apparently Mori-san is moving next month”: [森|もり]さん、[来月|らいげつ]＿。",
       ]
     `);
   });

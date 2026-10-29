@@ -2,6 +2,7 @@ import { basics } from "@/content/lessons/basics";
 import { hiragana } from "@/content/lessons/hiragana";
 import { katakana } from "@/content/lessons/katakana";
 import { n3Reasons } from "@/content/lessons/n3-reasons";
+import { n3Relations } from "@/content/lessons/n3-relations";
 import { n3Time } from "@/content/lessons/n3-time";
 import { n4Conditions } from "@/content/lessons/n4-conditions";
 import { n4GivingVoice } from "@/content/lessons/n4-giving-voice";
@@ -145,6 +146,14 @@ export const UNITS: Unit[] = [
     titleJp: "[時間|じかん]",
     description: "While you still can, the moment that, right in the middle of, every time and every other, more and more, as things change, only after, and after doing.",
     lessons: n3Time,
+  },
+  {
+    slug: "n3-relations",
+    kind: "grammar",
+    title: "Relations, viewpoint and what's said",
+    titleJp: "[関係|かんけい]",
+    description: "About and towards, for and as, compared with and considering, instead of, casual って and what you heard, what a word means, speaking of, and rather than.",
+    lessons: n3Relations,
   },
 ];
 

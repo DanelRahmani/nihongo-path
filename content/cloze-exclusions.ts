@@ -408,6 +408,124 @@ export const CLOZE_EXCLUSIONS: Record<string, string> = {
   "n3-time/tabi-ni#1w3i47f": "と also fits a habit (見ると), as the lesson says.",
   // うん。 [東京|とうきょう] に [行|い]く ＿＿、 [何|なに] か [買|か]っちゃう ん だ。 (たび に)
   "n3-time/tabi-ni#ejlegs": "と also fits a habit (行くと), as the lesson says.",
+  // Relations, viewpoint and what's said (unit 十六)
+  // [明日|あした] の [会議|かいぎ] で、 [新|あたら]しい [計画|けいかく] ＿＿ [話|はな]します。 (について)
+  "n3-relations/ni-tsuite#1ps150v": "を also fits “talk about the plan” (計画を話す).",
+  // [明日|あした] の [会議|かいぎ] で、 [新|あたら]しい [計画|けいかく] ＿＿ [話|はな]す よ。 (について)
+  "n3-relations/ni-tsuite#fgjavq": "を also fits “talk about the plan” (計画を話す).",
+  // [日本|にほん] の [歴史|れきし] ＿＿ [調|しら]べて います。 (について)
+  "n3-relations/ni-tsuite#6c16dz": "を also fits “look into history” (歴史を調べる).",
+  // [日本|にほん] の [歴史|れきし] ＿＿ [調|しら]べて いる。 (について)
+  "n3-relations/ni-tsuite#3gztqr": "を also fits “look into history” (歴史を調べる).",
+  // その [問題|もんだい] ＿＿、 どう [思|おも]う？ (について)
+  "n3-relations/ni-tsuite#m12bxl": "を also fits “what do you think of that problem” (その問題をどう思う？).",
+  // その [問題|もんだい] ＿＿、 どう [思|おも]います か？ (について)
+  "n3-relations/ni-tsuite#2b32wf": "を also fits “what do you think of that problem” (その問題をどう思う？).",
+  // [先生|せんせい]、 [来週|らいしゅう] の [発表|はっぴょう] は [何|なに] ＿＿ [話|はな]せば いい です か？ (について)
+  "n3-relations/ni-tsuite#h6j357": "を also fits “what should I talk about” (何を話せば).",
+  // [国|くに] の [文化|ぶんか] ＿＿ [話|はな]して ください。 (について)
+  "n3-relations/ni-tsuite#c14wt1": "を also fits “talk about the culture” (文化を話す).",
+  // [東京|とうきょう] は [人口|じんこう] が [増|ふ]えて いる ＿＿、 [田舎|いなか] は [減|へ]って いる。 (の に[対|たい]して)
+  "n3-relations/ni-taishite#ldx8ry": "けど also fits after a plain verb (増えているけど), and the lesson's pair teaches it.",
+  // [東京|とうきょう] は [人口|じんこう] が [増|ふ]えて いる ＿＿、 [田舎|いなか] は [減|へ]って います。 (の に[対|たい]して)
+  "n3-relations/ni-taishite#r1y76w": "けど also fits after a plain verb (増えているけど), and the lesson's pair teaches it.",
+  // [去年|きょねん] は [雨|あめ] が [多|おお]かった ＿＿、 [今年|ことし] は ほとんど [降|ふ]って いない。 (の に[対|たい]して)
+  "n3-relations/ni-taishite#wys3jo": "けど also fits after a past adjective (多かったけど), and the lesson's pair teaches it.",
+  // [去年|きょねん] は [雨|あめ] が [多|おお]かった ＿＿、 [今年|ことし] は ほとんど [降|ふ]って いません。 (の に[対|たい]して)
+  "n3-relations/ni-taishite#5un7ti": "けど also fits after a past adjective (多かったけど), and the lesson's pair teaches it.",
+  // [新|あたら]しい ルール ＿＿、 [何|なに]か [意見|いけん] は あります か？ (に[対|たい]して)
+  "n3-relations/ni-taishite#1k6r1j5": "について also fits “views on the new rules” (ルールについて).",
+  // はい。 [若|わか]い [人|ひと] は いい と [言|い]って いる ＿＿、 [年|とし] が [上|うえ] の [人|ひと] は [反対|はんたい] して います。 (の に[対|たい]して)
+  "n3-relations/ni-taishite#1ao1g90": "けど also fits after a plain verb (言っているけど), and the lesson's pair teaches it.",
+  // [兄|あに] は [通訳|つうやく] ＿＿ [働|はたら]いて います。 (として)
+  "n3-relations/toshite#pnlocb": "で also fits a role in speech (通訳で働く), as the lesson says.",
+  // [兄|あに] は [通訳|つうやく] ＿＿ [働|はたら]いて いる。 (として)
+  "n3-relations/toshite#1mmgcmv": "で also fits a role in speech (通訳で働く), as the lesson says.",
+  // [田中|たなか]-さん は チーム の [代表|だいひょう] ＿＿ [会議|かいぎ] に [出|で]ます。 (として)
+  "n3-relations/toshite#17443jg": "で also fits a role in speech (通訳で働く), as the lesson says.",
+  // [田中|たなか]-さん は チーム の [代表|だいひょう] ＿＿ [会議|かいぎ] に [出|で]る よ。 (として)
+  "n3-relations/toshite#ci8xey": "で also fits a role in speech (通訳で働く), as the lesson says.",
+  // これ は お[土産|みやげ] ＿＿ [人気|にんき] が ある お[菓子|かし] です。 (として)
+  "n3-relations/toshite#1pfyf5t": "で also fits a role in speech (通訳で働く), as the lesson says.",
+  // これ は お[土産|みやげ] ＿＿ [人気|にんき] が ある お[菓子|かし] だ よ。 (として)
+  "n3-relations/toshite#1ekujaj": "で also fits a role in speech (通訳で働く), as the lesson says.",
+  // [私|わたし] ＿＿、 [来週|らいしゅう] の ほう が いい です。 (として は)
+  "n3-relations/toshite#10jbkk4": "は also fits (私は、来週のほうがいい).",
+  // [私|わたし] ＿＿、 [来週|らいしゅう] の ほう が いい。 (として は)
+  "n3-relations/toshite#f7verk": "は also fits (私は、来週のほうがいい).",
+  // [親|おや] ＿＿、 [子供|こども] の [将来|しょうらい] が [心配|しんぱい] です。 (として も)
+  "n3-relations/toshite#de7a3l": "も also fits (親も、子供の将来が心配です).",
+  // [親|おや] ＿＿、 [子供|こども] の [将来|しょうらい] が [心配|しんぱい] だ。 (として も)
+  "n3-relations/toshite#pu5bzv": "も also fits (親も、子供の将来が心配です).",
+  // [医者|いしゃ] ＿＿ [経験|けいけん] は まだ [短|みじか]い です。 (として の)
+  "n3-relations/toshite#ge95c8": "の alone also fits (医者の経験, 先生の経験).",
+  // [留学生|りゅうがくせい] ＿＿ [日本|にほん] に [来|き]ました。 (として)
+  "n3-relations/toshite#18cxa4w": "で also fits a role in speech (通訳で働く), as the lesson says.",
+  // [学校|がっこう] の [先生|せんせい] ＿＿、 [五年|ごねん] [働|はたら]いて いました。 (として)
+  "n3-relations/toshite#duesky": "で also fits a role in speech (通訳で働く), as the lesson says.",
+  // そう です か。 [先生|せんせい] ＿＿ [経験|けいけん] は、 この [仕事|しごと] に も [役|やく] に [立|た]ちそう です ね。 (として の)
+  "n3-relations/toshite#rpwc0h": "の alone also fits (医者の経験, 先生の経験).",
+  // [東京|とうきょう] は [大阪|おおさか] ＿＿ [人|ひと] が [多|おお]い。 (より)
+  "n3-relations/ni-kurabete#196n7ia": "に比べて also fits (大阪に比べて人が多い).",
+  // [初|はじ]めて [作|つく]った ＿＿、 よく できて います ね。 (に して は)
+  "n3-relations/ni-shite-wa#1ymxdn0": "の割に also fits after a verb (作った割に).",
+  // [初|はじ]めて [作|つく]った ＿＿、 よく できてる ね。 (に して は)
+  "n3-relations/ni-shite-wa#1dfwuog": "の割に also fits after a verb (作った割に).",
+  // この [映画|えいが] は [有名|ゆうめい] な ＿＿、 あまり [面白|おもしろ]くなかった。 ([割|わり] に)
+  "n3-relations/ni-shite-wa#1ovdwvj": "のに also fits (有名なのに, よく食べるのに, 安いのに).",
+  // この [映画|えいが] は [有名|ゆうめい] な ＿＿、 あまり [面白|おもしろ]くなかった です。 ([割|わり] に)
+  "n3-relations/ni-shite-wa#1xflw0d": "のに also fits (有名なのに, よく食べるのに, 安いのに).",
+  // [弟|おとうと] は よく [食|た]べる ＿＿ [太|ふと]らない。 ([割|わり] に)
+  "n3-relations/ni-shite-wa#6jqbq4": "のに also fits (有名なのに, よく食べるのに, 安いのに).",
+  // [弟|おとうと] は よく [食|た]べる ＿＿ [太|ふと]りません。 ([割|わり] に)
+  "n3-relations/ni-shite-wa#1q3jw1v": "のに also fits (有名なのに, よく食べるのに, 安いのに).",
+  // この かばん は [安|やす]い ＿＿ [便利|べんり] だ よ。 ([割|わり] に)
+  "n3-relations/ni-shite-wa#1v4locx": "のに also fits (有名なのに, よく食べるのに, 安いのに).",
+  // この かばん は [安|やす]い ＿＿ [便利|べんり] です よ。 ([割|わり] に)
+  "n3-relations/ni-shite-wa#1i2xpx3": "のに also fits (有名なのに, よく食べるのに, 安いのに).",
+  // [日本|にほん] ＿＿ [韓国|かんこく] で [人気|にんき] が あります。 (や)
+  "n3-relations/wo-hajime#7x4l2h": "と also fits (日本と韓国で).",
+  // n3-relations/tte: は fits every topic gap by definition (that is what the lesson says), so narrowing can't help; the quote cards carry the lesson.
+  // [日本|にほん] の [夏|なつ] ＿＿、 [本当|ほんとう] に [暑|あつ]い ね。 (って)
+  "n3-relations/tte#5a5wmi": "は also fits a topic gap (日本の夏は、…).",
+  // [田中|たなか]-さん ＿＿、 どんな [人|ひと]？ (って)
+  "n3-relations/tte#1peneeo": "は also fits a topic gap (日本の夏は、…).",
+  // 「[空気|くうき] を [読|よ]む」 ＿＿、 どういう [意味|いみ]？ (って)
+  "n3-relations/tte#15zuugl": "は also fits a topic gap (日本の夏は、…).",
+  // [一人|ひとり] で [旅行|りょこう] する の ＿＿、 [楽|たの]しい よ。 (って)
+  "n3-relations/tte#unasky": "は also fits a topic gap (日本の夏は、…).",
+  // [彼|かれ] ＿＿、 いつも [遅|おく]れて くる よね。 (って)
+  "n3-relations/tte#wlngqt": "は also fits a topic gap (日本の夏は、…).",
+  // 「ありがとう」 ＿＿ [伝|つた]えて ね。 (って)
+  "n3-relations/tte#13v97uw": "と also fits (「ありがとう」と伝えて).",
+  // [週末|しゅうまつ] の キャンプ ＿＿、 [何時|なんじ] に [出発|しゅっぱつ]？ (って)
+  "n3-relations/tte#1k6wnq5": "は also fits a topic gap (日本の夏は、…).",
+  // n3-relations/n-datte: no card. Narrowing the gap to ん / なん would test nothing about hearsay, and narrowing ということだ to と いう
+  // leaves a gap that とのことです also fits; そうだ and らしい fit the whole-pattern gaps.
+  // [山田|やまだ]-さん、 [来月|らいげつ] [会社|かいしゃ] を [辞|や]める ＿＿。 (ん だって)
+  "n3-relations/n-datte#1ya5j4t": "そうだ and らしい (the hearsay lessons) also fit every hearsay gap.",
+  // あの [映画|えいが]、 すごく [怖|こわ]い ＿＿。 (ん だって)
+  "n3-relations/n-datte#oqjgk3": "そうだ and らしい (the hearsay lessons) also fit every hearsay gap.",
+  // [明日|あした] は [雪|ゆき] ＿＿。 (なん だって)
+  "n3-relations/n-datte#1qx21ao": "そうだ and らしい (the hearsay lessons) also fit every hearsay gap.",
+  // [駅前|えきまえ] の パン[屋|や]、 [先週|せんしゅう] [閉|し]まった ＿＿。 (ん だって)
+  "n3-relations/n-datte#mue8mv": "そうだ and らしい (the hearsay lessons) also fit every hearsay gap.",
+  // [佐藤|さとう]-さん の お[兄|にい]さん、 [医者|いしゃ] ＿＿。 (だって)
+  "n3-relations/n-datte#1drum5k": "そうだ and らしい (the hearsay lessons) also fit every hearsay gap.",
+  // [天気予報|てんきよほう] によると、 [明日|あした] は [晴|は]れる ＿＿。 (と いう こと です)
+  "n3-relations/n-datte#hzjdkr": "そうです and らしいです (the hearsay lessons) also fit every hearsay gap; とのことです fits the same ＿＿ こと です.",
+  // [部長|ぶちょう] は [今日|きょう] [休|やす]み だ ＿＿。 (と いう こと です)
+  "n3-relations/n-datte#16m3il4": "そうです and らしいです (the hearsay lessons) also fit every hearsay gap; とのことです fits the same ＿＿ こと です.",
+  // [事故|じこ] の ため、 [電車|でんしゃ] が [遅|おく]れて いる ＿＿。 (と いう こと です)
+  "n3-relations/n-datte#526wyw": "そうです and らしいです (the hearsay lessons) also fit every hearsay gap; とのことです fits the same ＿＿ こと です.",
+  // [田中|たなか]-さん から [電話|でんわ] が あって、 [少|すこ]し [遅|おく]れる ＿＿。 (と いう こと でした)
+  "n3-relations/n-datte#1w2fm3h": "そうです and らしいです (the hearsay lessons) also fit every hearsay gap; とのことです fits the same ＿＿ こと です.",
+  // ニュース によると、 [今年|ことし] の [冬|ふゆ] は [寒|さむ]く なる ＿＿。 (と いう こと だ)
+  "n3-relations/n-datte#1dvkguj": "そうだ and らしい (the hearsay lessons) also fit every hearsay gap.",
+  // ねえ、 [聞|き]いた？ [来週|らいしゅう] の テスト、 [中止|ちゅうし] に なった ＿＿。 (ん だって)
+  "n3-relations/n-datte#1aby2hw": "そうだ and らしい (the hearsay lessons) also fit every hearsay gap.",
+  // [森|もり]-さん。 [先生|せんせい] が [病気|びょうき] ＿＿。 (なん だって)
+  "n3-relations/n-datte#9cqbnz": "そうだ and らしい (the hearsay lessons) also fit every hearsay gap.",
 };
 
 /**
@@ -415,6 +533,24 @@ export const CLOZE_EXCLUSIONS: Record<string, string> = {
  * offers for a number (as the lesson quizzes list them). Written as typed.
  */
 export const CLOZE_ALSO: Record<string, string[]> = {
+  // [日曜日|にちようび] ＿＿、 [道|みち] が [混|こ]んで います ね。 (に して は; の割に is taught beside it)
+  "n3-relations/ni-shite-wa#1qs86dj": ["の [割|わり] に"],
+  // [日曜日|にちようび] ＿＿、 [道|みち] が [混|こ]んでる ね。 (に して は; の割に is taught beside it)
+  "n3-relations/ni-shite-wa#pux2ol": ["の [割|わり] に"],
+  // [十月|じゅうがつ] ＿＿、 [今日|きょう] は [暑|あつ]い です ね。 (に して は; の割に is taught beside it)
+  "n3-relations/ni-shite-wa#1h3ltoh": ["の [割|わり] に"],
+  // [十月|じゅうがつ] ＿＿、 [今日|きょう] は [暑|あつ]い ね。 (に して は; の割に is taught beside it)
+  "n3-relations/ni-shite-wa#19xz32t": ["の [割|わり] に"],
+  // [小学生|しょうがくせい] ＿＿、 [難|むずか]しい [言葉|ことば] を よく [知|し]って いる。 (に して は; の割に is taught beside it)
+  "n3-relations/ni-shite-wa#ce1xrj": ["の [割|わり] に"],
+  // [小学生|しょうがくせい] ＿＿、 [難|むずか]しい [言葉|ことば] を よく [知|し]って います。 (に して は; の割に is taught beside it)
+  "n3-relations/ni-shite-wa#1and3hv": ["の [割|わり] に"],
+  // [日本|にほん] に [来|き]て [一年|いちねん] ＿＿、 [日本語|にほんご] が [上手|じょうず] です ね。 (に して は; の割に is taught beside it)
+  "n3-relations/ni-shite-wa#e1hp04": ["の [割|わり] に"],
+  // [日本|にほん] に [来|き]て [一年|いちねん] ＿＿、 [日本語|にほんご] が [上手|じょうず] だ ね。 (に して は; の割に is taught beside it)
+  "n3-relations/ni-shite-wa#1ukemuu": ["の [割|わり] に"],
+  // [初|はじ]めて ＿＿、 すごく おいしい よ！ (に して は; の割に is taught beside it)
+  "n3-relations/ni-shite-wa#yyga0e": ["の [割|わり] に"],
   // [学校|がっこう] ＿＿ [行|い]く。 (に)
   "particles/ni-target#dfhvgm": ["へ"],
   // はい、 [京都|きょうと] ＿＿ [行|い]きました。 (に)
@@ -960,4 +1096,105 @@ export const CLOZE_ALSO: Record<string, string[]> = {
   "n3-time/ni-tsurete#110k6j4": ["につれ"],
   "n3-time/ni-tsurete#1ctmep9": ["につれ"],
   "n3-time/ni-tsurete#1t9b65y": ["につれ"],
+  // Relations, viewpoint and what's said (unit 十六)
+  // n3-relations: cards narrowed to one word (に {比べて}, と {いえば}, {と いう の} は) accept the other form the lesson teaches.
+  "n3-relations/ni-tsuite#qnt466": ["に[関|かん]して"],
+  "n3-relations/ni-tsuite#146mct": ["に[関|かん]して"],
+  "n3-relations/ni-tsuite#1ta4ce5": ["に[関|かん]する","に[関|かん]して の"],
+  "n3-relations/ni-tsuite#1x11wxh": ["に[関|かん]する","に[関|かん]して の"],
+  "n3-relations/ni-tsuite#1jprh2g": ["について"],
+  "n3-relations/ni-tsuite#13pj4g0": ["について"],
+  "n3-relations/ni-tsuite#fnkp0y": ["について の"],
+  "n3-relations/ni-tsuite#19nih8": ["について の"],
+  "n3-relations/ni-tsuite#jazaj4": ["について の"],
+  "n3-relations/ni-tsuite#1ejjhqx": ["について の"],
+  "n3-relations/ni-tsuite#xo5y1q": ["に[関|かん]して","に[関|かん]して は"],
+  "n3-relations/ni-taishite#136qd54": ["に"],
+  "n3-relations/ni-taishite#2e16y4": ["に"],
+  "n3-relations/ni-taishite#1667vn1": ["に"],
+  "n3-relations/ni-taishite#oi8mjv": ["に"],
+  "n3-relations/ni-taishite#1en2jne": ["に"],
+  "n3-relations/ni-taishite#legjh6": ["に"],
+  "n3-relations/ni-totte#9c47t7": ["に は","にとって は"],
+  "n3-relations/ni-totte#1gaf75h": ["に は","にとって は"],
+  "n3-relations/ni-totte#1lhujsz": ["に は","にとって は"],
+  "n3-relations/ni-totte#5nvoij": ["に は","にとって は"],
+  "n3-relations/ni-totte#148g0y0": ["に は","にとって は"],
+  "n3-relations/ni-totte#57917y": ["に は","にとって は"],
+  "n3-relations/ni-totte#86g6vf": ["に は","にとって は"],
+  "n3-relations/ni-totte#z5ralt": ["に は","にとって は"],
+  "n3-relations/ni-totte#9c95md": ["に は","にとって は"],
+  "n3-relations/ni-totte#1ptp6be": ["に は","にとって は"],
+  "n3-relations/ni-totte#116q6u2": ["に"],
+  "n3-relations/ni-kurabete#1905ttj": ["[比|くら]べる と","[比|くら]べ"],
+  "n3-relations/ni-kurabete#1vrj6vn": ["[比|くら]べる と","[比|くら]べ"],
+  "n3-relations/ni-kurabete#1dkx0vo": ["[比|くら]べて","[比|くら]べ"],
+  "n3-relations/ni-kurabete#1yffkzs": ["[比|くら]べて","[比|くら]べ"],
+  "n3-relations/ni-kurabete#1ifde6g": ["[比|くら]べる と","[比|くら]べ"],
+  "n3-relations/ni-kurabete#pzy4e8": ["[比|くら]べる と","[比|くら]べ"],
+  "n3-relations/ni-kurabete#5z63p1": ["[比|くら]べる と","[比|くら]べ"],
+  "n3-relations/ni-kurabete#193t2j3": ["[比|くら]べる と","[比|くら]べ"],
+  "n3-relations/ni-kurabete#1um0uka": ["[比|くら]べて","[比|くら]べ"],
+  "n3-relations/ni-kurabete#g0p9g6": ["[比|くら]べて","[比|くら]べ"],
+  "n3-relations/ni-kurabete#1b9ic8x": ["[比|くら]べる と","[比|くら]べ"],
+  "n3-relations/ni-kurabete#19cixy4": ["[比|くら]べて","[比|くら]べ"],
+  "n3-relations/wo-hajime#pfobwm": ["をはじめ として"],
+  "n3-relations/wo-hajime#e05j39": ["をはじめ として"],
+  "n3-relations/wo-hajime#825drr": ["をはじめ として"],
+  "n3-relations/wo-hajime#19xqdct": ["をはじめ として"],
+  "n3-relations/wo-hajime#gm3jo4": ["をはじめ"],
+  "n3-relations/wo-hajime#1y2mya2": ["をはじめ"],
+  "n3-relations/wo-hajime#yzqo3m": ["をはじめ として"],
+  "n3-relations/wo-hajime#1pob4f4": ["をはじめ として"],
+  "n3-relations/wo-hajime#kkfzw8": ["をはじめ として"],
+  "n3-relations/wo-hajime#9vmxg5": ["をはじめ として"],
+  "n3-relations/kawari-ni#moqs6h": ["[代|か]わり に"],
+  "n3-relations/kawari-ni#79e2zb": ["[代|か]わり に"],
+  "n3-relations/kawari-ni#gudfso": ["の [代|か]わり に"],
+  "n3-relations/kawari-ni#1yvucpn": ["の [代|か]わり に"],
+  "n3-relations/kawari-ni#amd49j": ["の [代|か]わり に"],
+  "n3-relations/kawari-ni#ghi0r7": ["の [代|か]わり に"],
+  "n3-relations/kawari-ni#19vodk1": ["の [代|か]わり に"],
+  "n3-relations/kawari-ni#ro3soi": ["の [代|か]わり に"],
+  "n3-relations/kawari-ni#1gtxe03": ["[代|か]わり に"],
+  "n3-relations/tte#14vlutg": ["って [言|い]って いた","と [言|い]って いた","って","って [言|い]った","と [言|い]った"],
+  "n3-relations/tte#8r8ac0": ["って [言|い]って いた","と [言|い]って いた","って","って [言|い]った","と [言|い]った"],
+  "n3-relations/to-iu-no-wa#1rp7cxm": ["って いう の"],
+  "n3-relations/to-iu-no-wa#20176t": ["と いう の"],
+  "n3-relations/to-iu-no-wa#1pjp230": ["って いう の"],
+  "n3-relations/to-iu-no-wa#zryii1": ["と いう の"],
+  "n3-relations/to-iu-no-wa#11tilro": ["って いう の"],
+  "n3-relations/to-iu-no-wa#1v8wmmf": ["と いう の"],
+  "n3-relations/to-iu-no-wa#1g1o3q9": ["って いう の"],
+  "n3-relations/to-iu-no-wa#rjjn09": ["と いう の も","なぜなら"],
+  "n3-relations/to-iu-no-wa#1eov13n": ["と いう の も","なぜなら"],
+  "n3-relations/to-iu-no-wa#4v7hf1": ["と いう の も","なぜなら"],
+  "n3-relations/to-iu-no-wa#1wt7q6d": ["と いう の も","なぜなら"],
+  "n3-relations/to-iu-no-wa#1t11yi2": ["と いう こと"],
+  "n3-relations/to-iu-no-wa#84odau": ["って いう の"],
+  "n3-relations/to-ieba#1yde880": ["いう と"],
+  "n3-relations/to-ieba#jz6rri": ["いう と"],
+  "n3-relations/to-ieba#106v55b": ["いう と"],
+  "n3-relations/to-ieba#7cdu4l": ["いう と"],
+  "n3-relations/to-ieba#sa625e": ["いう と"],
+  "n3-relations/to-ieba#1faiaps": ["いう と"],
+  "n3-relations/to-ieba#16f9e6j": ["いう と"],
+  "n3-relations/to-ieba#1exd8pa": ["いう と"],
+  "n3-relations/to-ieba#2csz8e": ["いえば"],
+  "n3-relations/to-ieba#gylols": ["いえば"],
+  "n3-relations/to-ieba#erkdj1": ["いえば"],
+  "n3-relations/to-ieba#xuav5t": ["いえば"],
+  "n3-relations/to-ieba#dyntlr": ["いう と"],
+  "n3-relations/to-ieba#lxdypv": ["いう と"],
+  "n3-relations/to-iu-yori#6d6p3u": ["と いう より も"],
+  "n3-relations/to-iu-yori#12hmfum": ["と いう より も"],
+  "n3-relations/to-iu-yori#1q85tw": ["と いう より も"],
+  "n3-relations/to-iu-yori#rytspu": ["と いう より も"],
+  "n3-relations/to-iu-yori#1fr5i4x": ["と いう より も"],
+  "n3-relations/to-iu-yori#4vytaq": ["と いう より も"],
+  "n3-relations/to-iu-yori#bme8mw": ["と いう より も"],
+  "n3-relations/to-iu-yori#j4lto4": ["と いう より も"],
+  "n3-relations/to-iu-yori#8y6516": ["と いう より も"],
+  "n3-relations/to-iu-yori#18061p3": ["と いう より も"],
+  "n3-relations/to-iu-yori#5disky": ["と いう より も"],
 };

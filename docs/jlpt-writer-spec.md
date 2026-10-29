@@ -54,6 +54,12 @@ Same order as the exemplar:
 - Cloze cards another pattern fits (けど for のに, から for し, と for ば, ばかり for ところ, the plain polite verb for keigo): exclude the card in `content/cloze-exclusions.ts` with the reason, rather than accepting the other pattern in `CLOZE_ALSO`, so the card still tests the point. `CLOZE_ALSO` is for true variants the lesson teaches (よう/みたい, かも/かもしれない). Check every card against the look-alikes of its pattern, not only the obvious one: 間に for うちに ("while still …" cards), と for たびに (verb lines), あとで for た上で, ごとに for たびに on noun lines, 一方だ for ばかりだ.
 - A suffix a keyboard writes in kanji (ごとに → 毎に, おきに → 置きに) is folded in `lib/quiz.ts` as a suffix after a number or noun, not as a whole word.
 - A hard "only" rule ("ばかりだ is only for bad news") where the references say "mostly": write "usually" and don't mark the opposite as ✗.
+- A ✗ in a mistake callout that is acceptable Japanese (私にとって、それはいいと思います, 会社の代表に話しました, ご飯に代わって…): make the ✗ a real error (友達にとって、料理を作りました), or say in brackets what it means instead ("says something else", "odd for a swap of things").
+- An example whose logic doesn't show the pattern: にしては needs a result that clashes with the standard (busy roads on a Sunday, not quiet ones); check that the English "for a …" would surprise a speaker, and that a table row's pattern (verb + にしては) has an example line.
+- A line that two readings fit when the English picks one (料理を作る代わりに: "instead of cooking" or "in return for cooking"): write the line so only the taught reading is possible.
+- Quiz answers missing the optional extra particle (より も, 割に は, というより も) or the polite email forms (でしょう か, に なります か).
+- A cloze gap that is all of a pattern where only one word teaches it: narrow the highlight to that word (に {比べて}, と {いえば}), keep the shared word outside, and add the true variants (比べる と, いう と) to `CLOZE_ALSO`. Don't narrow a gap until it tests nothing about the point (a bare ん in んだって).
+- Pairs that change two things at once: say so in the `diff` ("a different sentence on purpose, to show the two jobs"), or change one thing.
 
 ## Japanese rules (STYLE.md has the full text)
 

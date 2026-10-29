@@ -13,7 +13,7 @@ export const BATCH_09: Word[] = [
   x("1309530", "[思考|しこう]", "noun", "thinking, thought (する: to think)", "everyday"),
   x("1321240", "[実績|じっせき]", "noun", "track record, results achieved", "school-work"),
   x("1329740", "[受験|じゅけん]", "noun", "taking an entrance exam (する: to sit an exam)", "school-work"),
-  x("1340000", "[出発|しゅっぱつ]", "noun", "departure (する: to leave, to set off)", "travel"),
+  // moved to the lessons (n3-relations/tte): 1340000 [出発|しゅっぱつ]
   x("1344200", "[書類|しょるい]", "noun", "documents, papers", "school-work"),
   x("1372370", "[睡眠|すいみん]", "noun", "sleep", "body"),
   x("1374940", "[制服|せいふく]", "noun", "uniform", "school-work"),
@@ -35,7 +35,7 @@ export const BATCH_09: Word[] = [
   x("1167610", "あふれる", "verb", "to overflow, to brim over", "everyday", "ichidan"),
   x("1475720", "[迫|せま]る", "verb", "to approach, to draw near; to press", "everyday", "godan"),
   x("1328710", "[狩|か]り", "noun", "hunting; picking (e.g. mushrooms)", "hobbies"),
-  x("1372800", "ずいぶん", "adverb", "very, quite, surprisingly", "everyday"),
+  // moved to the lessons (n3-relations/ni-kurabete): 1372800 ずいぶん
   x("1283240", "[高|たか]める", "verb", "to raise, to boost, to heighten", "everyday", "ichidan"),
   // skipped: 1465580 [入|い]る (rare reading; the lessons teach はいる for entering)
   x("1379690", "[盛|も]り[上|あ]がる", "verb", "to liven up, to get excited; to swell", "feelings", "godan"),
@@ -180,7 +180,7 @@ export const BATCH_09: Word[] = [
   x("1454470", "[匿名|とくめい]", "noun", "anonymity", "everyday"),
   x("1483600", "[比較的|ひかくてき]", "adverb", "relatively, comparatively", "everyday"),
   x("1489320", "[票|ひょう]", "noun", "vote, ballot", "everyday"),
-  x("1512080", "[辺|あた]り", "noun", "vicinity, around", "places"),
+  // moved to the lessons (n3-relations/to-iu-no-wa): 1512080 [辺|あた]り
   x("1519750", "[棒|ぼう]", "noun", "stick, pole, rod", "everyday"),
   x("1519830", "[冒険|ぼうけん]", "noun", "adventure (する: to take a risk)", "hobbies"),
   // moved to the lessons (n4-plans/you-ni): 1524690 [毎週|まいしゅう]
@@ -231,7 +231,7 @@ export const BATCH_09: Word[] = [
   x("1414870", "[大幅|おおはば]", "na-adj", "large, drastic (of a change)", "everyday"),
   x("1421180", "[地上|ちじょう]", "noun", "above ground, on the ground", "places"),
   x("1431330", "[直前|ちょくぜん]", "noun", "just before", "time"),
-  x("1442750", "[田舎|いなか]", "noun", "countryside, hometown", "places"),
+  // moved to the lessons (n3-relations/ni-taishite): 1442750 [田舎|いなか]
   x("1451350", "[動作|どうさ]", "noun", "movement, action, motion", "body"),
   x("1471970", "[俳優|はいゆう]", "noun", "actor, actress", "people"),
   x("1472100", "[廃止|はいし]", "noun", "abolition, discontinuation (する: to abolish)", "everyday"),

@@ -82,11 +82,12 @@ Where they leave a choice, follow modern everyday usage (newspapers, NHK, curren
   - formal nouns: こと, とき ("when…"), ところ (abstract), もの (abstract), わけ, はず, よう, ほか, とおり, うち (うちに), たび (たびに), とたん, and the suffixes ごと and おき after a number or noun (the quiz checker accepts a keyboard's 毎 and 置き for them there);
   - ある and いる (existence), できる ("can"), なる ("become"), ない;
   - helper verbs after the て form (the quiz checker also accepts the kanji a keyboard offers for these and for the formal nouns above, as whole words): 〜て いる, 〜て ある, 〜て いく, 〜て くる, 〜て みる, 〜て おく, 〜て しまう, 〜て あげる, 〜て くれる, 〜て もらう, 〜て いただく, 〜て ください. On their own these verbs keep their kanji: `[行|い]く`, `[来|く]る`, `[見|み]る`;
+  - いう and いえば in という and its grammar uses (というのは, というと, というより, といえば), as with という “called”: the quiz checker accepts the keyboard's 言 for them only right after quoting と or って;
   - いく in わけにはいかない (わけ に は いかない / いきません), as the lessons write it: 行かない is "not going", and the idiom is a different word. The quiz checker accepts the keyboard's 行 for it only right after わけ に (は);
   - ください, in every use (a house choice);
   - ほしい after the て form (〜て ほしい), while the adjective on its own keeps its kanji (`[欲|ほ]しい`), as newspapers and NHK write them;
   - いい and よい with all their forms (よくない, よかった), a house choice: 良い is 常用, but beginner text writes these in kana;
-  - grammar words: 〜かもしれない, 〜について, など, ぐらい/くらい, ごろ (around a time), ばかり (たばかり "only just", and "nothing but"), ほう in のほうが and ほうがいい, and 〜すぎる after a stem or adjective (`[食|た]べすぎる`, `[高|たか]すぎる`);
+  - grammar words: 〜かもしれない, 〜について, 〜にとって, 〜として, 〜をはじめ, など, ぐらい/くらい, ごろ (around a time), ばかり (たばかり "only just", and "nothing but"), ほう in のほうが and ほうがいい, and 〜すぎる after a stem or adjective (`[食|た]べすぎる`, `[高|たか]すぎる`);
   - set phrases and common adverbs as people write them: ありがとう, おはよう, すみません, よろしく, どうぞ, ちょっと.
 - **Content nouns keep their kanji; formal nouns don't:** `[時間|じかん]`, `[七時|しちじ]`, `[食|た]べ[物|もの]`, but とき, ところ, もの in their grammatical use. The set compounds `[申|もう]し[訳|わけ]` and `[言|い]い[訳|わけ]` keep 訳.
 - **Okurigana follow the main rule:** `[行|い]く` / `[行|おこな]う`, `[少|すこ]し`, `[新|あたら]しい`, `[終|お]わる`, `[分|わ]かる`, `[生|う]まれる`, `[話|はな]す` (verb) / `[話|はなし]` (noun). Nouns that custom writes without okurigana stay that way (`[切手|きって]`).
@@ -125,6 +126,7 @@ The romaji follows the word spaces, so they are written consistently:
 - **Particles are their own word**, sentence-final ones included: `[私|わたし] は`, `[一緒|いっしょ] に`, `よ`, `ね`, `か`, `の`. Stacked particles too: `に は`, `で は`, `に も`. The combined ending よね stays together, and では is one word only as the conjunction at the start of a sentence (`では、…`). Tested.
 - **です, だ and their forms are their own word**, so is な after a na-adjective (a form of だ): `[学生|がくせい] です`, `[学生|がくせい] じゃ ない`, `[暇|ひま] だったら`, `[静|しず]か な [町|まち]`. The past of a polite negative splits the same way: `[行|い]きません でした`, `じゃ ありません でした`.
 - **The explanatory ん is its own word:** `[行|い]った ん です`, `[見|み]て きた ん だ けど`. After a noun or na-adjective it fuses with な into one word: `そう なん だ`, `[学生|がくせい] なん です`.
+- **Fixed compound particles are one word; a particle followed by an ordinary verb is two.** A case particle plus a verb form that has become a grammar word of its own is written as one word, and listed as a function word or an expression: について, にとって, として, をはじめ, に[関|かん]して, に[対|たい]して, によって, につれて. When the verb keeps its own meaning (比べる, 代わる, する, 言う), the particle and the verb stay two words, so the word card can show the verb and the romaji follows the particle rule: に [比|くら]べて, に [代|か]わって, に して は, と する, と いう. The casual hearsay だって is one word too (`[医者|いしゃ] だって`, `ん だって`).
 - **Verb and i-adjective endings stay attached:** `[食|た]べます`, `[食|た]べなかった`, `[高|たか]くない`, `よくない`, `したくない`.
 - **A helper verb after the て form is its own word:** `[食|た]べて いる`, `[書|か]いて ください`, `[見|み]て きた`.
 - **する verbs: the noun and する are separate:** `[勉強|べんきょう] する`, `[結婚|けっこん] して います`.

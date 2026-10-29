@@ -52,7 +52,7 @@ export const BATCH_03: Word[] = [
   x("1059720", "シーン", "noun", "scene (of a film, play or event)", "hobbies"),
   x("1171300", "[宇宙|うちゅう]", "noun", "universe, outer space", "nature"),
   // moved to the lessons (n3-reasons/okage-sei): 1202170 [皆|みな]さん
-  x("1250680", "[携帯|けいたい]", "noun", "mobile phone; carrying (する: to carry)", "everyday"),
+  // moved to the lessons (n3-relations/tte): 1250680 [携帯|けいたい]
   x("1287070", "[国民|こくみん]", "noun", "the people of a country, citizens", "people"),
   x("1316340", "[時点|じてん]", "noun", "point in time, moment", "time"),
   x("1377590", "[正直|しょうじき]", "na-adj", "honest; honestly", "feelings"),
@@ -62,7 +62,7 @@ export const BATCH_03: Word[] = [
   x("1414650", "[大統領|だいとうりょう]", "noun", "president (of a country)", "people"),
   // skipped: 1444950 [都|みやこ] (literary; bare 都 is mostly read と)
   x("1295070", "[済|す]む", "verb", "to be finished, to be done; to get by", "everyday", "godan"),
-  x("1322320", "[捨|す]てる", "verb", "to throw away", "home", "ichidan"),
+  // moved to the lessons (n3-relations/ni-totte): 1322320 [捨|す]てる
   x("1352060", "[障害|しょうがい]", "noun", "obstacle; disability", "everyday"),
   x("1457730", "[内|うち]", "noun", "inside; among; while (doing)", "everyday"),
   x("1051230", "コメント", "noun", "comment (する: to comment)", "language"),
@@ -95,7 +95,7 @@ export const BATCH_03: Word[] = [
   x("1407860", "[多数|たすう]", "noun", "a large number; majority", "numbers"),
   x("1470380", "[脳|のう]", "noun", "brain", "body"),
   // skipped: 1484710 [非|ひ] (prefix 'non-, un-'; the noun senses are rare)
-  x("1537970", "[役|やく]", "noun", "role, part; duty", "school-work"),
+  // moved to the lessons (n3-relations/toshite): 1537970 [役|やく]
   x("1582200", "[途中|とちゅう]", "noun", "on the way, partway", "travel"),
   x("1206530", "[学|まな]ぶ", "verb", "to learn, to study (a little formal)", "school-work", "godan"),
   // moved to the lessons (n4-giving-voice/causative): 1218760 [喜|よろこ]ぶ
@@ -118,7 +118,7 @@ export const BATCH_03: Word[] = [
   x("1594110", "[仕方|しかた]", "noun", "way of doing, method", "everyday"),
   // moved to the lessons (n4-plans/noni-purpose): 1206050 [覚|おぼ]える
   x("1319750", "[失|うしな]う", "verb", "to lose (a little formal)", "everyday", "godan"),
-  x("1434180", "[低|ひく]い", "i-adj", "low", "everyday"),
+  // moved to the lessons (n3-relations/ni-taishite): 1434180 [低|ひく]い
   x("1136600", "ユーザー", "noun", "user", "everyday"),
   x("1558670", "[恋|こい]", "noun", "romantic love", "feelings"),
   x("1089090", "ドル", "noun", "dollar", "shopping"),
@@ -133,7 +133,7 @@ export const BATCH_03: Word[] = [
   x("1449190", "[当然|とうぜん]", "noun", "of course, naturally; natural", "everyday"),
   x("1455170", "[特徴|とくちょう]", "noun", "feature, characteristic", "everyday"),
   x("1478750", "[半|はん]", "noun", "half; half past", "numbers"),
-  x("1520810", "[北海道|ほっかいどう]", "noun", "Hokkaido (northern island of Japan)", "places"),
+  // moved to the lessons (n3-relations/to-ieba): 1520810 [北海道|ほっかいどう]
   x("1524230", "[魔法|まほう]", "noun", "magic, sorcery", "hobbies"),
   x("1537300", "[野球|やきゅう]", "noun", "baseball", "hobbies"),
   x("1553120", "[旅|たび]", "noun", "trip, journey", "travel"),
@@ -144,7 +144,7 @@ export const BATCH_03: Word[] = [
   x("1530510", "[無駄|むだ]", "na-adj", "wasteful, useless; waste", "everyday"), // pos: was noun
   // moved to the lessons (n4-seeming/sou-hearsay): 1346150 [勝|か]つ
   x("1004830", "これら", "pronoun", "these", "language"),
-  x("1008920", "どういう", "pre-noun", "what kind of", "language"),
+  // moved to the lessons (n3-relations/tte): 1008920 どういう
   x("1075500", "ソフト", "noun", "software; soft", "everyday"), // pos: was na-adj
   // moved to the lessons (n4-giving-voice/passive): 1156530 [意見|いけん]
   x("1220870", "[機関|きかん]", "noun", "organization, agency; engine", "everyday"),
@@ -155,7 +155,7 @@ export const BATCH_03: Word[] = [
   x("1375790", "[成長|せいちょう]", "noun", "growth (する: to grow up)", "people"),
   // skipped: 1380580 [製|せい] (suffix '-made')
   x("1411470", "[逮捕|たいほ]", "noun", "arrest (する: to arrest)", "everyday"),
-  x("1480670", "[反対|はんたい]", "noun", "opposite; opposition (する: to oppose)", "everyday"),
+  // moved to the lessons (n3-relations/ni-taishite): 1480670 [反対|はんたい]
   x("1512850", "[弁護士|べんごし]", "noun", "lawyer", "school-work"),
   x("1596240", "[専用|せんよう]", "noun", "for the exclusive use (of)", "everyday"),
   x("2164620", "[名古屋|なごや]", "noun", "Nagoya (city in central Japan)", "places"),
@@ -171,12 +171,12 @@ export const BATCH_03: Word[] = [
   x("1420070", "[男子|だんし]", "noun", "boy, male (as in school sports)", "people"),
   x("1433330", "[通信|つうしん]", "noun", "communication (する: to communicate)", "everyday"),
   x("1455210", "[特定|とくてい]", "noun", "specific, particular (する: to identify)", "everyday"),
-  x("1459870", "[南|みなみ]", "noun", "south", "places"),
+  // moved to the lessons (n3-relations/ni-taishite): 1459870 [南|みなみ]
   // moved to the lessons (n3-time/ni-tsurete): 1510890 [変化|へんか]
   x("1531940", "[命|いのち]", "noun", "life", "body"),
   x("1543130", "[予想|よそう]", "noun", "expectation, prediction (する: to expect)", "everyday"),
   // skipped: 1420730 [地|ち] (bare reading is rare; mostly in compounds like 地図)
-  x("1352320", "[上|あ]げる", "verb", "to raise, to lift; to put up (a price, a hand)", "everyday", "ichidan"),
+  // moved to the lessons (n3-relations/ni-tsuite): 1352320 [上|あ]げる
   // moved to the lessons (n3-reasons/you-ni-iu): 1548370 [頼|たの]む
   // moved to the lessons (n4-conditions/temo): 1604550 [見|み]つかる
   x("1216890", "[含|ふく]める", "verb", "to include", "everyday", "ichidan"),
@@ -204,7 +204,7 @@ export const BATCH_03: Word[] = [
   x("1562610", "[枠|わく]", "noun", "frame, border; limits", "everyday"),
   x("1049010", "コード", "noun", "code; cord", "everyday"),
   x("1139950", "ランキング", "noun", "ranking", "everyday"),
-  x("1179840", "[応援|おうえん]", "noun", "cheering, support (する: to cheer on)", "hobbies"),
+  // moved to the lessons (n3-relations/wo-hajime): 1179840 [応援|おうえん]
   x("1316890", "[治療|ちりょう]", "noun", "medical treatment (する: to treat)", "body"),
   x("1328890", "[種類|しゅるい]", "noun", "kind, type, variety", "everyday"),
   x("1471250", "[破壊|はかい]", "noun", "destruction (する: to destroy)", "everyday"),

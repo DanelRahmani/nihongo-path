@@ -411,4 +411,41 @@ export const REGISTER_ALSO: Record<string, string[]> = {
   "n3-time/ue-de#1ansziw": ["部屋を探す上で、駅に近いかどうかは大事だ。"],
   // Into polite: … [大事|だいじ] だ よ。 → … [大事|だいじ] です。 (よ kept)
   "n3-time/ue-de#fpcmbg": ["部屋を探す上で、駅に近いかどうかは大事ですよ。"],
+  // Relations, viewpoint and what's said (unit 十六)
+  // … [計画|けいかく] について [話|はな]します。 → … [話|はな]す よ。 (よ is optional)
+  "n3-relations/ni-tsuite#1fj0a1l": ["明日の会議で、新しい計画について話す。"],
+  // Into polite: … [話|はな]す よ。 → … [話|はな]します。 (よ kept)
+  "n3-relations/ni-tsuite#1hc1wyg": ["明日の会議で、新しい計画について話しますよ。"],
+  // [事故|じこ] に[関|かん]する ニュース を [見|み]ました か？ → … ニュース、 [見|み]た？ (を kept)
+  "n3-relations/ni-tsuite#12ye8pc": ["事故に関するニュースを見た？"],
+  // Into polite: … ニュース、 [見|み]た？ → … を [見|み]ました か？ (を dropped)
+  "n3-relations/ni-tsuite#13ybuhl": ["事故に関するニュース、見ましたか？"],
+  // … いつも [丁寧|ていねい] です。 → … [丁寧|ていねい] だ よ。 (or だ, or bare)
+  "n3-relations/ni-taishite#1p7rerw": ["田中さんはお客様に対していつも丁寧だ。", "田中さんはお客様に対していつも丁寧。"],
+  // … [会議|かいぎ] に [出|で]ます。 → … [出|で]る よ。 (よ is optional)
+  "n3-relations/toshite#zp8ysw": ["田中さんはチームの代表として会議に出る。"],
+  // … お[菓子|かし] です。 → … お[菓子|かし] だ よ。 (or だ, or bare)
+  "n3-relations/toshite#fgptnx": ["これはお土産として人気があるお菓子だ。", "これはお土産として人気があるお菓子。"],
+  // … [安|やす]い [割|わり] に [便利|べんり] です よ。 → … [便利|べんり] だ よ。 (or だ, or bare)
+  "n3-relations/ni-shite-wa#191p0z7": ["このかばんは安い割に便利だ。", "このかばんは安い割に便利。"],
+  // 「[花見|はなみ]」 と いう の は … です。 → って いう の は … だ よ。 (という kept, or よ dropped)
+  "n3-relations/to-iu-no-wa#1gk7hym": ["「花見」というのは、桜を見ながら食べたり飲んだりすることだよ。", "「花見」っていうのは、桜を見ながら食べたり飲んだりすることだ。"],
+  // Into polite: って いう の は … だ よ。 → と いう の は … です。 (っていう kept, or よ kept)
+  "n3-relations/to-iu-no-wa#kqcivx": ["「花見」っていうのは、桜を見ながら食べたり飲んだりすることです。", "「花見」というのは、桜を見ながら食べたり飲んだりすることですよ。"],
+  // … と いう の は、 … [意味|いみ] です よ。 → って いう の は … だ よ。 (という kept)
+  "n3-relations/to-iu-no-wa#12ghhk4": ["部長の「検討します」というのは、たぶん「だめ」という意味だよ。"],
+  // Into polite: (っていう kept)
+  "n3-relations/to-iu-no-wa#12kmacl": ["部長の「検討します」っていうのは、たぶん「だめ」という意味ですよ。"],
+  // [友達|ともだち] と いう の は … [思|おも]います。 → って いう の は … [思|おも]う。 (という kept)
+  "n3-relations/to-iu-no-wa#1ullxcl": ["友達というのは、困ったときに助けてくれる人のことだと思う。"],
+  // Into polite: (っていう kept)
+  "n3-relations/to-iu-no-wa#qen2jb": ["友達っていうのは、困ったときに助けてくれる人のことだと思います。"],
+  // 「[田中|たなか]-さん」 と いう と … です か？ → って いう と … ？ (という kept)
+  "n3-relations/to-ieba#1e5n0w9": ["「田中さん」というと、営業の田中さん？"],
+  // Into polite: (っていう kept)
+  "n3-relations/to-ieba#qt0ol1": ["「田中さん」っていうと、営業の田中さんですか？"],
+  // … [趣味|しゅみ] です。 → … [趣味|しゅみ] だ ね。 (or だ, or bare)
+  "n3-relations/to-iu-yori#1ozlc1s": ["今の仕事は、仕事というより趣味だ。", "今の仕事は、仕事というより趣味。"],
+  // … むしろ [好|す]き です。 → … むしろ [好|す]き だ よ。 (or だ, or bare)
+  "n3-relations/to-iu-yori#1nt8v8m": ["雨の日は嫌いじゃない。むしろ好きだ。", "雨の日は嫌いじゃない。むしろ好き。"],
 };

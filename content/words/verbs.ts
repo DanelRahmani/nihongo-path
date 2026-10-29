@@ -206,4 +206,15 @@ export const VERBS: Word[] = [
   verb("[慣|な]れる", "ichidan", "to get used to", "everyday"),
   verb("[気|き]づく", "godan", "to notice, to realise", "feelings"),
   verb("[守|まも]る", "godan", "to protect; to keep (a rule or promise)", "everyday"),
+  // Relations, viewpoint and what's said (unit 十六)
+  verb("[立|た]つ", "godan", "to stand up; to be built; to rise", "everyday"),
+  verb("[捨|す]てる", "ichidan", "to throw away", "home"),
+  verb("[上|あ]げる", "ichidan", "to raise, to lift; to put up (a price, a hand)", "everyday"),
+  verb("[比|くら]べる", "ichidan", "to compare", "everyday"),
+  verb("[助|たす]ける", "ichidan", "to help; to save, to rescue", "everyday"),
+  verb("[片付|かたづ]ける", "ichidan", "to tidy up, to put away; to finish", "home"),
+  verb("[引|ひ]っ[越|こ]す", "godan", "to move (house)", "home"),
+  verb("[太|ふと]る", "godan", "to put on weight", "body"),
+  verb("[代|か]わる", "godan", "to take the place of (〜に代わって: on behalf of)", "everyday"),
+  verb("おごる", "godan", "to treat (someone to a meal or drink)", "food"),
 ];

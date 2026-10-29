@@ -2398,6 +2398,253 @@ export const GRAMMAR: GrammarGroup[] = [
       },
     ],
   },
+  {
+    slug: "n3-relations",
+    title: "Relations, viewpoint and what's said",
+    topics: [
+      {
+        slug: "ni-tsuite",
+        pattern: "Noun + について · Noun + についての + Noun",
+        meaning: "About, on: what you talk, think, write or ask about.",
+        lesson: "n3-relations/ni-tsuite",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[明日|あした] の [会議|かいぎ] で、 [新|あたら]しい [計画|けいかく] {について} [話|はな]します。", en: "At tomorrow's meeting, I'll talk about the new plan.", register: "Polite" },
+          { jp: "[明日|あした] の [会議|かいぎ] で、 [新|あたら]しい [計画|けいかく] {について} [話|はな]す よ。", en: "At tomorrow's meeting, I'll talk about the new plan.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "ni-kanshite",
+        pattern: "Noun + に[関|かん]して · Noun + に[関|かん]する + Noun",
+        meaning: "Regarding, concerning: について in a formal, written style.",
+        lesson: "n3-relations/ni-tsuite",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[日本|にほん] の [文化|ぶんか] {に[関|かん]する} [本|ほん] を [探|さが]して います。", en: "I'm looking for books on Japanese culture.", register: "Polite" },
+          { jp: "[日本|にほん] の [文化|ぶんか] {に[関|かん]する} [本|ほん] を [探|さが]して いる。", en: "I'm looking for books on Japanese culture.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "ni-taishite",
+        pattern: "Noun + に[対|たい]して · Noun + に[対|たい]する + Noun",
+        meaning: "Towards, to, against: who or what an attitude or action is aimed at.",
+        lesson: "n3-relations/ni-taishite",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[田中|たなか]-さん は お[客|きゃく][様|さま] {に[対|たい]して} いつも [丁寧|ていねい] です。", en: "Tanaka-san is always polite to customers.", register: "Polite" },
+          { jp: "[田中|たなか]-さん は お[客|きゃく][様|さま] {に[対|たい]して} いつも [丁寧|ていねい] だ よ。", en: "Tanaka-san is always polite to customers.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "no-ni-taishite",
+        pattern: "Plain form + のに[対|たい]して (な-adjective, noun + なのに[対|たい]して)",
+        meaning: "Whereas: two facts set side by side (careful, written).",
+        lesson: "n3-relations/ni-taishite",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[姉|あね] は [料理|りょうり] が [上手|じょうず] な {の に[対|たい]して}、 [私|わたし] は まったく できません。", en: "My sister is good at cooking, whereas I can't cook at all.", register: "Polite" },
+          { jp: "[姉|あね] は [料理|りょうり] が [上手|じょうず] な {の に[対|たい]して}、 [私|わたし] は まったく できない。", en: "My sister is good at cooking, whereas I can't cook at all.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "ni-totte",
+        pattern: "Noun + にとって",
+        meaning: "For X, from X's point of view: with a judgement (important, hard, a problem).",
+        lesson: "n3-relations/ni-totte",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[私|わたし] {にとって}、 [家族|かぞく] が [一番|いちばん] [大切|たいせつ] です。", en: "For me, family matters most.", register: "Polite" },
+          { jp: "[私|わたし] {にとって}、 [家族|かぞく] が [一番|いちばん] [大切|たいせつ] だ。", en: "For me, family matters most.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "toshite",
+        pattern: "Noun + として · としては · としても · としての + Noun",
+        meaning: "As, in the role of; [私|わたし]としては: personally.",
+        lesson: "n3-relations/toshite",
+        jlpt: jlpt("N3", "Bunpro puts として at N3 but としては and としても at N2; JLPT Sensei lists として at N3."),
+        examples: [
+          { jp: "[兄|あに] は [通訳|つうやく] {として} [働|はたら]いて います。", en: "My brother works as an interpreter.", register: "Polite" },
+          { jp: "[兄|あに] は [通訳|つうやく] {として} [働|はたら]いて いる。", en: "My brother works as an interpreter.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "ni-kurabete",
+        pattern: "Noun + に[比|くら]べて · に[比|くら]べると",
+        meaning: "Compared with: the first noun is the yardstick.",
+        lesson: "n3-relations/ni-kurabete",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[今年|ことし] の [夏|なつ] は [去年|きょねん] に {[比|くら]べて} [涼|すず]しい です ね。", en: "This summer's cooler than last year, isn't it?", register: "Polite" },
+          { jp: "[今年|ことし] の [夏|なつ] は [去年|きょねん] に {[比|くら]べて} [涼|すず]しい ね。", en: "This summer's cooler than last year, isn't it?", register: "Casual" },
+        ],
+      },
+      {
+        slug: "ni-shite-wa",
+        pattern: "Noun · plain verb + にしては",
+        meaning: "For a …: the result goes against the standard X sets.",
+        lesson: "n3-relations/ni-shite-wa",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[十月|じゅうがつ] {に して は}、 [今日|きょう] は [暑|あつ]い です ね。", en: "It's hot today for October.", register: "Polite" },
+          { jp: "[十月|じゅうがつ] {に して は}、 [今日|きょう] は [暑|あつ]い ね。", en: "It's hot today for October.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "wari-ni",
+        pattern: "Noun + の · adjective · plain verb + [割|わり]に",
+        meaning: "Considering …: more or less than you'd expect from it.",
+        lesson: "n3-relations/ni-shite-wa",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[祖母|そぼ] は [年|とし] の {[割|わり] に} [若|わか]く [見|み]えます。", en: "My grandmother looks young for her age.", register: "Polite" },
+          { jp: "[祖母|そぼ] は [年|とし] の {[割|わり] に} [若|わか]く [見|み]える。", en: "My grandmother looks young for her age.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "wo-hajime",
+        pattern: "Noun + をはじめ(として) · をはじめとする + Noun",
+        meaning: "Starting with, not least: the leading example of a group (formal).",
+        lesson: "n3-relations/wo-hajime",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[京都|きょうと] {をはじめ}、 [日本|にほん] に は [古|ふる]い [町|まち] が たくさん あります。", en: "Japan has many old towns, Kyoto first among them.", register: "Polite" },
+          { jp: "[京都|きょうと] {をはじめ}、 [日本|にほん] に は [古|ふる]い [町|まち] が たくさん ある。", en: "Japan has many old towns, Kyoto first among them.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "kawari-ni",
+        pattern: "Noun + の · plain verb + [代|か]わりに · その[代|か]わり",
+        meaning: "Instead of; in return for.",
+        lesson: "n3-relations/kawari-ni",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[今日|きょう] は ご[飯|はん] の {[代|か]わり に} パン を [食|た]べた。", en: "Today I had bread instead of rice.", register: "Casual" },
+          { jp: "[今日|きょう] は ご[飯|はん] の {[代|か]わり に} パン を [食|た]べました。", en: "Today I had bread instead of rice.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "ni-kawatte",
+        pattern: "Noun (a person) + に[代|か]わって",
+        meaning: "On behalf of, in place of (formal).",
+        lesson: "n3-relations/kawari-ni",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[病気|びょうき] の [母|はは] {に [代|か]わって}、 [姉|あね] が [料理|りょうり] を して います。", en: "My sister is doing the cooking in place of our mother, who's ill.", register: "Polite" },
+          { jp: "[病気|びょうき] の [母|はは] {に [代|か]わって}、 [姉|あね] が [料理|りょうり] を して いる。", en: "My sister is doing the cooking in place of our mother, who's ill.", register: "Casual" },
+        ],
+      },
+      {
+        slug: "tte-topic",
+        pattern: "Noun + って · Noun + って[何|なに]？",
+        meaning: "Casual topic: “X, you know …”, “what's X?”.",
+        lesson: "n3-relations/tte",
+        jlpt: jlpt("N3", "Bunpro's casual って; not on JLPT Sensei's N3 list."),
+        examples: [
+          { jp: "[田中|たなか]-さん {って}、 どんな [人|ひと]？", en: "What's Tanaka-san like?" },
+          { jp: "「[空気|くうき] を [読|よ]む」 {って}、 どういう [意味|いみ]？", en: "What does “reading the air” mean?" },
+        ],
+      },
+      {
+        slug: "tte-quote",
+        pattern: "Plain form + って([言|い]う)",
+        meaning: "Casual quote: “says that …”, with [言|い]う often left out.",
+        lesson: "n3-relations/tte",
+        jlpt: jlpt("N3", "Bunpro's casual って; not on JLPT Sensei's N3 list."),
+        examples: [
+          { jp: "[山田|やまだ]-さん、 [今日|きょう] は [来|こ]られない {って}。", en: "Yamada-san says she can't make it today." },
+          { jp: "[店|みせ] の [人|ひと] に [聞|き]いたら、 もう ない {って}。", en: "I asked the shop staff, and they said there are none left." },
+        ],
+      },
+      {
+        slug: "n-datte",
+        pattern: "Plain form + んだって · Noun + (なん)だって",
+        meaning: "Apparently, I heard (casual).",
+        lesson: "n3-relations/n-datte",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "あの [映画|えいが]、 すごく [怖|こわ]い {ん だって}。", en: "I heard that film is really scary." },
+          { jp: "[明日|あした] は [雪|ゆき] {なん だって}。", en: "Apparently it's going to snow tomorrow." },
+        ],
+      },
+      {
+        slug: "to-iu-koto-da",
+        pattern: "Plain form + ということだ",
+        meaning: "I'm told, it's said that (formal hearsay).",
+        lesson: "n3-relations/n-datte",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[天気予報|てんきよほう] によると、 [明日|あした] は [晴|は]れる {と いう こと です}。", en: "According to the forecast, it's going to be fine tomorrow." },
+          { jp: "ニュース によると、 [今年|ことし] の [冬|ふゆ] は [寒|さむ]く なる {と いう こと だ}。", en: "According to the news, this winter is going to be cold." },
+        ],
+      },
+      {
+        slug: "to-iu-no-wa",
+        pattern: "X + というのは … のことだ · … という[意味|いみ]だ",
+        meaning: "X means …: explaining a word or idea.",
+        lesson: "n3-relations/to-iu-no-wa",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[友達|ともだち] {って いう の} は、 [困|こま]った とき に [助|たす]けて くれる [人|ひと] の こと だ と [思|おも]う。", en: "A friend, I think, is someone who helps you when you're in trouble.", register: "Casual" },
+          { jp: "[友達|ともだち] {と いう の} は、 [困|こま]った とき に [助|たす]けて くれる [人|ひと] の こと だ と [思|おも]います。", en: "A friend, I think, is someone who helps you when you're in trouble.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "to-iu-no-wa-reason",
+        pattern: "…。というのは、… からだ",
+        meaning: "That's because …: the reason for what was just said.",
+        lesson: "n3-relations/to-iu-no-wa",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "この [店|みせ] は いつも [混|こ]んで います。 {と いう の は}、 [安|やす]くて おいしい から です。", en: "This place is always packed. That's because it's cheap and good." },
+        ],
+      },
+      {
+        slug: "to-ieba",
+        pattern: "Noun + といえば",
+        meaning: "Speaking of X; when you think of X, it's …",
+        lesson: "n3-relations/to-ieba",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[日本|にほん] の [夏|なつ] と {いえば}、 [花火|はなび] です よね。", en: "Summer in Japan means fireworks, doesn't it?", register: "Polite" },
+          { jp: "[日本|にほん] の [夏|なつ] と {いえば}、 [花火|はなび] だ よね。", en: "Summer in Japan means fireworks, doesn't it?", register: "Casual" },
+        ],
+      },
+      {
+        slug: "to-iu-to",
+        pattern: "Noun + というと",
+        meaning: "When you say X, do you mean …?; X brings … to mind.",
+        lesson: "n3-relations/to-ieba",
+        jlpt: jlpt("N3", "Bunpro has no separate というと point; JLPT Sensei lists it at N3."),
+        examples: [
+          { jp: "「[田中|たなか]-さん」 と {いう と}、 [営業|えいぎょう] の [田中|たなか]-さん です か？", en: "When you say “Tanaka-san”, do you mean Tanaka-san in sales?", register: "Polite" },
+          { jp: "「[田中|たなか]-さん」 って {いう と}、 [営業|えいぎょう] の [田中|たなか]-さん？", en: "When you say “Tanaka-san”, do you mean Tanaka-san in sales?", register: "Casual" },
+        ],
+      },
+      {
+        slug: "to-iu-yori",
+        pattern: "A + というより B",
+        meaning: "Not so much A as B: B is the truer word.",
+        lesson: "n3-relations/to-iu-yori",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[今日|きょう] は [涼|すず]しい {と いう より}、 [寒|さむ]い ね。", en: "It's not so much cool today as cold.", register: "Casual" },
+          { jp: "[今日|きょう] は [涼|すず]しい {と いう より}、 [寒|さむ]い です ね。", en: "It's not so much cool today as cold.", register: "Polite" },
+        ],
+      },
+      {
+        slug: "mushiro",
+        pattern: "むしろ · A よりむしろ B",
+        meaning: "Rather, if anything: the truer or better side, against expectation.",
+        lesson: "n3-relations/to-iu-yori",
+        jlpt: jlpt("N3"),
+        examples: [
+          { jp: "[雨|あめ] の [日|ひ] は [嫌|きら]い じゃ ありません。 {むしろ} [好|す]き です。", en: "I don't mind rainy days. If anything, I like them.", register: "Polite" },
+          { jp: "[雨|あめ] の [日|ひ] は [嫌|きら]い じゃ ない。 {むしろ} [好|す]き だ よ。", en: "I don't mind rainy days. If anything, I like them.", register: "Casual" },
+        ],
+      },
+    ],
+  },
 ];
 
 export const GRAMMAR_TOPICS: GrammarTopic[] = GRAMMAR.flatMap((g) => g.topics);

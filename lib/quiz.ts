@@ -81,7 +81,7 @@ const TE_HELPERS: [RegExp, string][] = [
 ];
 
 /** A kana word's keyboard kanji spellings, as well as the word itself. */
-function kanaOptions(text: string, whole: boolean, afterTe: boolean, afterWake: boolean, suffix: boolean): string[] {
+function kanaOptions(text: string, whole: boolean, afterTe: boolean, afterWake: boolean, suffix: boolean, afterQuote: boolean): string[] {
   const out = [text];
   // ごと / おき after a number or noun (一時間ごとに, 一日おきに): a keyboard offers 毎 and 置き.
   if (suffix && text === "ごと") out.push("毎");
@@ -94,6 +94,8 @@ function kanaOptions(text: string, whole: boolean, afterTe: boolean, afterWake: 
   if (whole && afterTe) for (const [re, kanji] of TE_HELPERS) if (re.test(text)) out.push(text.replace(re, kanji));
   // いく in わけ に は いかない / いきません (and わけ に も): a keyboard offers 行かない. Only right after those words.
   if (whole && afterWake && /^い[かきくけこっ]/.test(text)) out.push(text.replace(/^い/, "行"));
+  // いう and いえば after quoting と or って (という, というより, といえば): a keyboard offers 言う, 言えば. Only there.
+  if (whole && afterQuote && /^い[うえ]/.test(text)) out.push(text.replace(/^い/, "言"));
   return out;
 }
 
@@ -120,7 +122,7 @@ export function acceptedForms(answer: string): string[] {
     const whole = (!before || before.kind === "space") && (!after || after.kind === "space");
     // A suffix such as ごと / おき stands at the start of an answer (the blank follows the noun) or right after a kanji word.
     const suffix = (!before || before.kind === "ruby") && (!after || after.kind === "space");
-    const options = t.kind === "ruby" ? [t.base, t.reading] : kanaOptions(t.text, whole, /[てで]$/.test(prevWord), WAKE_NI.test(done.slice(-3).join(",")), suffix);
+    const options = t.kind === "ruby" ? [t.base, t.reading] : kanaOptions(t.text, whole, /[てで]$/.test(prevWord), WAKE_NI.test(done.slice(-3).join(",")), suffix, prevWord === "と" || prevWord === "って");
     word += t.kind === "ruby" ? t.reading : t.text;
     forms = forms.flatMap((f) => options.map((o) => f + o));
   });

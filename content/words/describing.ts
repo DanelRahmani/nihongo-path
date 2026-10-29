@@ -129,4 +129,17 @@ export const DESCRIBING: Word[] = [
   // Time and change (unit 十五)
   iAdj("[若|わか]い", "young", "people"),
   iAdj("ありがたい", "grateful; welcome (ありがたさ: how much something means to you)", "feelings"),
+  // Relations, viewpoint and what's said (unit 十六)
+  w("adverb", "ほとんど", "almost, nearly; hardly (with a negative)", "everyday"),
+  w("adverb", "やっぱり", "as expected, after all (casual)", "language"),
+  iAdj("[少|すく]ない", "few, little", "everyday"),
+  w("adverb", "まったく", "(not) at all; completely, really", "language"),
+  iAdj("[低|ひく]い", "low", "everyday"),
+  iAdj("[厳|きび]しい", "strict, severe", "everyday"),
+  w("adverb", "むしろ", "rather, if anything", "language"),
+  iAdj("[短|みじか]い", "short; brief", "everyday"),
+  iAdj("うるさい", "noisy, annoying; fussy", "everyday"),
+  w("adverb", "ずいぶん", "very, quite, surprisingly", "everyday"),
+  naAdj("[丁寧|ていねい]", "polite, careful", "language"),
+  iAdj("[涼|すず]しい", "cool (pleasantly)", "nature"),
 ];

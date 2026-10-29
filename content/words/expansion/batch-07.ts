@@ -184,7 +184,7 @@ export const BATCH_07: Word[] = [
   x("1275210", "[効率|こうりつ]", "noun", "efficiency", "school-work"),
   x("1277250", "[向上|こうじょう]", "noun", "improvement, progress (する: to improve)", "school-work"),
   x("1291410", "[差別|さべつ]", "noun", "discrimination, distinction (する: to discriminate)", "everyday"),
-  x("1342860", "[初心者|しょしんしゃ]", "noun", "beginner", "people"),
+  // moved to the lessons (n3-relations/ni-totte): 1342860 [初心者|しょしんしゃ]
   x("1359240", "[信号|しんごう]", "noun", "traffic light; signal", "travel"),
   x("1364670", "[神社|じんじゃ]", "noun", "Shinto shrine", "places"),
   x("1371830", "[水着|みずぎ]", "noun", "swimsuit", "shopping"),

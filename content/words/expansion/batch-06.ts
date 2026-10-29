@@ -12,7 +12,7 @@ export const BATCH_06: Word[] = [
   x("1257420", "[建設|けんせつ]", "noun", "construction (する: to build)", "school-work"),
   x("1272580", "[交流|こうりゅう]", "noun", "exchange, interaction (する: to interact)", "people"),
   x("1314010", "[事情|じじょう]", "noun", "circumstances, situation, reasons", "everyday"),
-  x("1347880", "[小学生|しょうがくせい]", "noun", "primary school pupil", "school-work"),
+  // moved to the lessons (n3-relations/ni-shite-wa): 1347880 [小学生|しょうがくせい]
   // moved to the lessons (n3-reasons/tame-ni): 1367300 [人口|じんこう]
   x("1376760", "[正確|せいかく]", "na-adj", "accurate, precise", "everyday"),
   x("1389730", "[宣伝|せんでん]", "noun", "advertising, publicity (する: to advertise)", "shopping"),
@@ -87,7 +87,7 @@ export const BATCH_06: Word[] = [
   // skipped: 1584690 [面|つら] (homograph; rude word for face; bare 面 is read めん)
   x("1310670", "[止|と]める", "verb", "to stop (something), to park", "everyday", "ichidan"),
   // skipped: 1598820 とどめる (reading check)
-  x("1015840", "アジア", "noun", "Asia", "places"),
+  // moved to the lessons (n3-relations/wo-hajime): 1015840 アジア
   x("1590145", "[影|かげ]", "noun", "shadow", "nature"),
   x("1397590", "[組|く]む", "verb", "to put together, to cross (legs, arms)", "everyday", "godan"),
   x("1413530", "[大型|おおがた]", "noun", "large-sized, large-scale", "everyday"),
@@ -150,7 +150,7 @@ export const BATCH_06: Word[] = [
   // moved to the lessons (n5-essentials/hou-ga-ii): 1227560 [休|やす]む
   // moved to the lessons (n4-giving-voice/passive): 1257330 [建|た]てる
   x("1555930", "[涙|なみだ]", "noun", "tear, tears", "body"),
-  x("1344410", "[助|たす]ける", "verb", "to help; to save, to rescue", "everyday", "ichidan"),
+  // moved to the lessons (n3-relations/wo-hajime): 1344410 [助|たす]ける
   // skipped: 1404750 [足|た]る (formal/archaic sense (to suffice); rare in modern use)
   x("1589820", "[香|かお]り", "noun", "scent, fragrance", "nature"),
   x("1234260", "ともに", "adverb", "together, along with; at the same time", "language"),

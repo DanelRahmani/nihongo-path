@@ -15,6 +15,7 @@
 推量 | すいりょう | (label: no romaji)
 理由 | りゆう | (label: no romaji)
 時間 | じかん | (label: no romaji)
+関係 | かんけい | (label: no romaji)
 
 ## kinds
 基本 | きほん | (label: no romaji)
@@ -4754,6 +4755,430 @@
 働く上で | はたらく うえ で | hataraku ue de
 値段を聞いた上で、決めます。 | ねだん を きいた うえ で、 きめます。 | nedan o kiita ue de, kimemasu.
 値段を聞いてから、決めます。 | ねだん を きいて から、 きめます。 | nedan o kiite kara, kimemasu.
+
+## n3-relations/ni-tsuite
+について | について | (label: no romaji)
+日本の歴史について話す | にほん の れきし について はなす | nihon no rekishi nitsuite hanasu
+環境についての本 | かんきょう について の ほん | kankyou nitsuite no hon
+試験に関して説明する | しけん にかんして せつめい する | shiken nikanshite setsumei suru
+試験に関する質問 | しけん にかんする しつもん | shiken nikansuru shitsumon
+明日の会議で、新しい計画について話します。 | あした の かいぎ で、 あたらしい けいかく について はなします。 | ashita no kaigi de, atarashii keikaku nitsuite hanashimasu.
+明日の会議で、新しい計画について話すよ。 | あした の かいぎ で、 あたらしい けいかく について はなす よ。 | ashita no kaigi de, atarashii keikaku nitsuite hanasu yo.
+日本の歴史について調べています。 | にほん の れきし について しらべて います。 | nihon no rekishi nitsuite shirabete imasu.
+日本の歴史について調べている。 | にほん の れきし について しらべて いる。 | nihon no rekishi nitsuite shirabete iru.
+その問題について、どう思う？ | その もんだい について、 どう おもう？ | sono mondai nitsuite, dou omou?
+その問題について、どう思いますか？ | その もんだい について、 どう おもいます か？ | sono mondai nitsuite, dou omoimasu ka?
+母に将来について聞かれました。 | はは に しょうらい について きかれました。 | haha ni shourai nitsuite kikaremashita.
+母に将来について聞かれた。 | はは に しょうらい について きかれた。 | haha ni shourai nitsuite kikareta.
+環境についての本を読んでいます。 | かんきょう について の ほん を よんで います。 | kankyou nitsuite no hon o yonde imasu.
+環境についての本を読んでいる。 | かんきょう について の ほん を よんで いる。 | kankyou nitsuite no hon o yonde iru.
+試験に関して質問がある人は、手を上げてください。 | しけん にかんして しつもん が ある ひと は、 て を あげて ください。 | shiken nikanshite shitsumon ga aru hito wa, te o agete kudasai.
+来週の旅行に関して、メールで連絡します。 | らいしゅう の りょこう にかんして、 メール で れんらく します。 | raishuu no ryokou nikanshite, meeru de renraku shimasu.
+日本の文化に関する本を探しています。 | にほん の ぶんか にかんする ほん を さがして います。 | nihon no bunka nikansuru hon o sagashite imasu.
+日本の文化に関する本を探している。 | にほん の ぶんか にかんする ほん を さがして いる。 | nihon no bunka nikansuru hon o sagashite iru.
+事故に関するニュースを見ましたか？ | じこ にかんする ニュース を みました か？ | jiko nikansuru nyuusu o mimashita ka?
+事故に関するニュース、見た？ | じこ にかんする ニュース、 みた？ | jiko nikansuru nyuusu, mita?
+日本の本を買いました。 | にほん の ほん を かいました。 | nihon no hon o kaimashita.
+日本についての本を買いました。 | にほん について の ほん を かいました。 | nihon nitsuite no hon o kaimashita.
+先生、来週の発表は何について話せばいいですか？ | せんせい、 らいしゅう の はっぴょう は なに について はなせば いい です か？ | sensei, raishuu no happyou wa nani nitsuite hanaseba ii desu ka?
+国の文化について話してください。 | くに の ぶんか について はなして ください。 | kuni no bunka nitsuite hanashite kudasai.
+わかりました。食べ物についてはどうですか？ | わかりました。 たべもの について は どう です か？ | wakarimashita. tabemono nitsuite wa dou desu ka?
+もちろんいいですよ。 | もちろん いい です よ。 | mochiron ii desu yo.
+について話しましょう | について はなしましょう | nitsuite hanashimashou
+についての | について の | nitsuite no
+に関する | にかんする | nikansuru
+に関して | にかんして | nikanshite
+に関しては | にかんして は | nikanshite wa
+について | について | nitsuite
+については | について は | nitsuite wa
+星についての本を読みたい。 | ほし について の ほん を よみたい。 | hoshi nitsuite no hon o yomitai.
+星に関する本を読みたい。 | ほし にかんする ほん を よみたい。 | hoshi nikansuru hon o yomitai.
+星に関しての本を読みたい。 | ほし にかんして の ほん を よみたい。 | hoshi nikanshite no hon o yomitai.
+
+## n3-relations/ni-taishite
+に対して | にたいして | (label: no romaji)
+お客様に対して | おきゃくさま にたいして | okyakusama nitaishite
+学生に対する態度 | がくせい にたいする たいど | gakusei nitaisuru taido
+兄は背が高いのに対して | あに は せ が たかい の にたいして | ani wa se ga takai no nitaishite
+姉は料理が上手なのに対して | あね は りょうり が じょうず な の にたいして | ane wa ryouri ga jouzu na no nitaishite
+田中さんはお客様に対していつも丁寧です。 | たなかさん は おきゃくさま にたいして いつも ていねい です。 | tanaka-san wa okyakusama nitaishite itsumo teinei desu.
+田中さんはお客様に対していつも丁寧だよ。 | たなかさん は おきゃくさま にたいして いつも ていねい だ よ。 | tanaka-san wa okyakusama nitaishite itsumo teinei da yo.
+子供に対して、そんな言い方はよくないよ。 | こども にたいして、 そんな いいかた は よくない よ。 | kodomo nitaishite, sonna iikata wa yokunai yo.
+子供に対して、そんな言い方はよくないですよ。 | こども にたいして、 そんな いいかた は よくない です よ。 | kodomo nitaishite, sonna iikata wa yokunai desu yo.
+部長の意見に対して、反対する人はいませんでした。 | ぶちょう の いけん にたいして、 はんたい する ひと は いません でした。 | buchou no iken nitaishite, hantai suru hito wa imasen deshita.
+部長の意見に対して、反対する人はいなかった。 | ぶちょう の いけん にたいして、 はんたい する ひと は いなかった。 | buchou no iken nitaishite, hantai suru hito wa inakatta.
+学生に対する先生の態度が厳しすぎると思います。 | がくせい にたいする せんせい の たいど が きびしすぎる と おもいます。 | gakusei nitaisuru sensei no taido ga kibishisugiru to omoimasu.
+学生に対する先生の態度が厳しすぎると思う。 | がくせい にたいする せんせい の たいど が きびしすぎる と おもう。 | gakusei nitaisuru sensei no taido ga kibishisugiru to omou.
+兄はスポーツが好きなのに対して、弟は本ばかり読んでいます。 | あに は スポーツ が すき な の にたいして、 おとうと は ほん ばかり よんで います。 | ani wa supootsu ga suki na no nitaishite, otouto wa hon bakari yonde imasu.
+兄はスポーツが好きなのに対して、弟は本ばかり読んでいる。 | あに は スポーツ が すき な の にたいして、 おとうと は ほん ばかり よんで いる。 | ani wa supootsu ga suki na no nitaishite, otouto wa hon bakari yonde iru.
+東京は人口が増えているのに対して、田舎は減っている。 | とうきょう は じんこう が ふえて いる の にたいして、 いなか は へって いる。 | toukyou wa jinkou ga fuete iru no nitaishite, inaka wa hette iru.
+東京は人口が増えているのに対して、田舎は減っています。 | とうきょう は じんこう が ふえて いる の にたいして、 いなか は へって います。 | toukyou wa jinkou ga fuete iru no nitaishite, inaka wa hette imasu.
+去年は雨が多かったのに対して、今年はほとんど降っていない。 | きょねん は あめ が おおかった の にたいして、 ことし は ほとんど ふって いない。 | kyonen wa ame ga ookatta no nitaishite, kotoshi wa hotondo futte inai.
+去年は雨が多かったのに対して、今年はほとんど降っていません。 | きょねん は あめ が おおかった の にたいして、 ことし は ほとんど ふって いません。 | kyonen wa ame ga ookatta no nitaishite, kotoshi wa hotondo futte imasen.
+姉は料理が上手なのに対して、私はまったくできません。 | あね は りょうり が じょうず な の にたいして、 わたし は まったく できません。 | ane wa ryouri ga jouzu na no nitaishite, watashi wa mattaku dekimasen.
+姉は料理が上手なのに対して、私はまったくできない。 | あね は りょうり が じょうず な の にたいして、 わたし は まったく できない。 | ane wa ryouri ga jouzu na no nitaishite, watashi wa mattaku dekinai.
+兄は背が高いのに対して、弟は低い。 | あに は せ が たかい の にたいして、 おとうと は ひくい。 | ani wa se ga takai no nitaishite, otouto wa hikui.
+兄は背が高いけど、弟は低い。 | あに は せ が たかい けど、 おとうと は ひくい。 | ani wa se ga takai kedo, otouto wa hikui.
+新しいルールに対して、何か意見はありますか？ | あたらしい ルール にたいして、 なにか いけん は あります か？ | atarashii ruuru nitaishite, nanika iken wa arimasu ka?
+はい。若い人はいいと言っているのに対して、年が上の人は反対しています。 | はい。 わかい ひと は いい と いって いる の にたいして、 とし が うえ の ひと は はんたい して います。 | hai. wakai hito wa ii to itte iru no nitaishite, toshi ga ue no hito wa hantai shite imasu.
+そうですか。じゃあ、もう一度話し合いましょう。 | そう です か。 じゃあ、 もう いちど はなしあいましょう。 | sou desu ka. jaa, mou ichido hanashiaimashou.
+に対して | にたいして | nitaishite
+に対しては | にたいして は | nitaishite wa
+に対する | にたいする | nitaisuru
+に対しての | にたいして の | nitaishite no
+多いのに対して | おおい の にたいして | ooi no nitaishite
+静かなのに対して | しずか な の にたいして | shizuka na no nitaishite
+父は早く起きるのに対して、母は遅く起きる。 | ちち は はやく おきる の にたいして、 はは は おそく おきる。 | chichi wa hayaku okiru no nitaishite, haha wa osoku okiru.
+
+## n3-relations/ni-totte
+にとって | にとって | (label: no romaji)
+私にとって | わたし にとって | watashi nitotte
+子供にとっては | こども にとって は | kodomo nitotte wa
+学生にとっての問題 | がくせい にとって の もんだい | gakusei nitotte no mondai
+私にとって、家族が一番大切です。 | わたし にとって、 かぞく が いちばん たいせつ です。 | watashi nitotte, kazoku ga ichiban taisetsu desu.
+私にとって、家族が一番大切だ。 | わたし にとって、 かぞく が いちばん たいせつ だ。 | watashi nitotte, kazoku ga ichiban taisetsu da.
+この仕事は私にとっていい経験になりました。 | この しごと は わたし にとって いい けいけん に なりました。 | kono shigoto wa watashi nitotte ii keiken ni narimashita.
+この仕事は私にとっていい経験になった。 | この しごと は わたし にとって いい けいけん に なった。 | kono shigoto wa watashi nitotte ii keiken ni natta.
+外国人にとって、敬語は難しいですよね。 | がいこくじん にとって、 けいご は むずかしい です よね。 | gaikokujin nitotte, keigo wa muzukashii desu yone.
+外国人にとって、敬語は難しいよね。 | がいこくじん にとって、 けいご は むずかしい よね。 | gaikokujin nitotte, keigo wa muzukashii yone.
+田舎に住む人にとって、車は必要なものだ。 | いなか に すむ ひと にとって、 くるま は ひつよう な もの だ。 | inaka ni sumu hito nitotte, kuruma wa hitsuyou na mono da.
+田舎に住む人にとって、車は必要なものです。 | いなか に すむ ひと にとって、 くるま は ひつよう な もの です。 | inaka ni sumu hito nitotte, kuruma wa hitsuyou na mono desu.
+学生にとって、本の値段は大きな問題です。 | がくせい にとって、 ほん の ねだん は おおきな もんだい です。 | gakusei nitotte, hon no nedan wa ookina mondai desu.
+母にとって、この町は便利です。 | はは にとって、 この まち は べんり です。 | haha nitotte, kono machi wa benri desu.
+母のために、この町に引っ越しました。 | はは の ため に、 この まち に ひっこしました。 | haha no tame ni, kono machi ni hikkoshimashita.
+この写真、古いね。捨てないの？ | この しゃしん、 ふるい ね。 すてない の？ | kono shashin, furui ne. sutenai no?
+だめ。私にとっては大切な思い出なんだ。 | だめ。 わたし にとって は たいせつ な おもいで なん だ。 | dame. watashi nitotte wa taisetsu na omoide nan da.
+そうなんだ。ごめんね。 | そう なん だ。 ごめん ね。 | sou nan da. gomen ne.
+にとって | にとって | nitotte
+にとっては | にとって は | nitotte wa
+にとっての | にとって の | nitotte no
+のために | の ため に | no tame ni
+彼女にとって、この仕事は簡単すぎる。 | かのじょ にとって、 この しごと は かんたんすぎる。 | kanojo nitotte, kono shigoto wa kantansugiru.
+彼女にとっては、この仕事は簡単すぎる。 | かのじょ にとって は、 この しごと は かんたんすぎる。 | kanojo nitotte wa, kono shigoto wa kantansugiru.
+彼女には、この仕事は簡単すぎる。 | かのじょ に は、 この しごと は かんたんすぎる。 | kanojo ni wa, kono shigoto wa kantansugiru.
+
+## n3-relations/toshite
+として | として | (label: no romaji)
+通訳として働く | つうやく として はたらく | tsuuyaku toshite hataraku
+私としては | わたし として は | watashi toshite wa
+親としても | おや として も | oya toshite mo
+医者としての経験 | いしゃ として の けいけん | isha toshite no keiken
+兄は通訳として働いています。 | あに は つうやく として はたらいて います。 | ani wa tsuuyaku toshite hataraite imasu.
+兄は通訳として働いている。 | あに は つうやく として はたらいて いる。 | ani wa tsuuyaku toshite hataraite iru.
+田中さんはチームの代表として会議に出ます。 | たなかさん は チーム の だいひょう として かいぎ に でます。 | tanaka-san wa chiimu no daihyou toshite kaigi ni demasu.
+田中さんはチームの代表として会議に出るよ。 | たなかさん は チーム の だいひょう として かいぎ に でる よ。 | tanaka-san wa chiimu no daihyou toshite kaigi ni deru yo.
+これはお土産として人気があるお菓子です。 | これ は おみやげ として にんき が ある おかし です。 | kore wa omiyage toshite ninki ga aru okashi desu.
+これはお土産として人気があるお菓子だよ。 | これ は おみやげ として にんき が ある おかし だ よ。 | kore wa omiyage toshite ninki ga aru okashi da yo.
+彼女は歌手として有名になった。 | かのじょ は かしゅ として ゆうめい に なった。 | kanojo wa kashu toshite yuumei ni natta.
+彼女は歌手として有名になりました。 | かのじょ は かしゅ として ゆうめい に なりました。 | kanojo wa kashu toshite yuumei ni narimashita.
+私としては、来週のほうがいいです。 | わたし として は、 らいしゅう の ほう が いい です。 | watashi toshite wa, raishuu no hou ga ii desu.
+私としては、来週のほうがいい。 | わたし として は、 らいしゅう の ほう が いい。 | watashi toshite wa, raishuu no hou ga ii.
+親としても、子供の将来が心配です。 | おや として も、 こども の しょうらい が しんぱい です。 | oya toshite mo, kodomo no shourai ga shinpai desu.
+親としても、子供の将来が心配だ。 | おや として も、 こども の しょうらい が しんぱい だ。 | oya toshite mo, kodomo no shourai ga shinpai da.
+医者としての経験はまだ短いです。 | いしゃ として の けいけん は まだ みじかい です。 | isha toshite no keiken wa mada mijikai desu.
+仕事で日本に来ました。 | しごと で にほん に きました。 | shigoto de nihon ni kimashita.
+留学生として日本に来ました。 | りゅうがくせい として にほん に きました。 | ryuugakusei toshite nihon ni kimashita.
+前の仕事では、どんなことをしていましたか？ | まえ の しごと で は、 どんな こと を して いました か？ | mae no shigoto de wa, donna koto o shite imashita ka?
+学校の先生として、五年働いていました。 | がっこう の せんせい として、 ごねん はたらいて いました。 | gakkou no sensei toshite, gonen hataraite imashita.
+そうですか。先生としての経験は、この仕事にも役に立ちそうですね。 | そう です か。 せんせい として の けいけん は、 この しごと に も やく に たちそう です ね。 | sou desu ka. sensei toshite no keiken wa, kono shigoto ni mo yaku ni tachisou desu ne.
+として | として | toshite
+としての | として の | toshite no
+私としては | わたし として は | watashi toshite wa
+姉は医者として働いています。 | あね は いしゃ として はたらいて います。 | ane wa isha toshite hataraite imasu.
+
+## n3-relations/ni-kurabete
+に比べて | にくらべて | (label: no romaji)
+去年に比べて | きょねん に くらべて | kyonen ni kurabete
+東京に比べると | とうきょう に くらべる と | toukyou ni kuraberu to
+電車で行くのに比べて | でんしゃ で いく の に くらべて | densha de iku no ni kurabete
+今年の夏は去年に比べて涼しいですね。 | ことし の なつ は きょねん に くらべて すずしい です ね。 | kotoshi no natsu wa kyonen ni kurabete suzushii desu ne.
+今年の夏は去年に比べて涼しいね。 | ことし の なつ は きょねん に くらべて すずしい ね。 | kotoshi no natsu wa kyonen ni kurabete suzushii ne.
+東京に比べると、この町は家賃が安い。 | とうきょう に くらべる と、 この まち は やちん が やすい。 | toukyou ni kuraberu to, kono machi wa yachin ga yasui.
+東京に比べると、この町は家賃が安いです。 | とうきょう に くらべる と、 この まち は やちん が やすい です。 | toukyou ni kuraberu to, kono machi wa yachin ga yasui desu.
+前に比べて、日本語がずいぶん上手になりましたね。 | まえ に くらべて、 にほんご が ずいぶん じょうず に なりました ね。 | mae ni kurabete, nihongo ga zuibun jouzu ni narimashita ne.
+前に比べて、日本語がずいぶん上手になったね。 | まえ に くらべて、 にほんご が ずいぶん じょうず に なった ね。 | mae ni kurabete, nihongo ga zuibun jouzu ni natta ne.
+電車で行くのに比べて、車だと時間がかかる。 | でんしゃ で いく の に くらべて、 くるま だ と じかん が かかる。 | densha de iku no ni kurabete, kuruma da to jikan ga kakaru.
+電車で行くのに比べて、車だと時間がかかります。 | でんしゃ で いく の に くらべて、 くるま だ と じかん が かかります。 | densha de iku no ni kurabete, kuruma da to jikan ga kakarimasu.
+昔に比べると、子供の数が減りました。 | むかし に くらべる と、 こども の かず が へりました。 | mukashi ni kuraberu to, kodomo no kazu ga herimashita.
+昔に比べると、子供の数が減った。 | むかし に くらべる と、 こども の かず が へった。 | mukashi ni kuraberu to, kodomo no kazu ga hetta.
+東京は大阪より人が多い。 | とうきょう は おおさか より ひと が おおい。 | toukyou wa oosaka yori hito ga ooi.
+大阪に比べて、東京は人が多い。 | おおさか に くらべて、 とうきょう は ひと が おおい。 | oosaka ni kurabete, toukyou wa hito ga ooi.
+大阪の生活はどう？ | おおさか の せいかつ は どう？ | oosaka no seikatsu wa dou?
+東京に比べると、食べ物が安くておいしいよ。 | とうきょう に くらべる と、 たべもの が やすくて おいしい よ。 | toukyou ni kuraberu to, tabemono ga yasukute oishii yo.
+いいね。今度遊びに行くね。 | いい ね。 こんど あそび に いく ね。 | ii ne. kondo asobi ni iku ne.
+に比べて | に くらべて | ni kurabete
+に比べ | に くらべ | ni kurabe
+住むのに比べると | すむ の に くらべる と | sumu no ni kuraberu to
+より軽い | より かるい | yori karui
+よりも軽い | より も かるい | yori mo karui
+兄に比べて、弟はよく食べる。 | あに に くらべて、 おとうと は よく たべる。 | ani ni kurabete, otouto wa yoku taberu.
+兄に比べると、弟はよく食べる。 | あに に くらべる と、 おとうと は よく たべる。 | ani ni kuraberu to, otouto wa yoku taberu.
+兄に比べ、弟はよく食べる。 | あに に くらべ、 おとうと は よく たべる。 | ani ni kurabe, otouto wa yoku taberu.
+兄と比べて、弟はよく食べる。 | あに と くらべて、 おとうと は よく たべる。 | ani to kurabete, otouto wa yoku taberu.
+兄と比べると、弟はよく食べる。 | あに と くらべる と、 おとうと は よく たべる。 | ani to kuraberu to, otouto wa yoku taberu.
+
+## n3-relations/ni-shite-wa
+にしては | にしては | (label: no romaji)
+初心者にしては | しょしんしゃ に して は | shoshinsha ni shite wa
+初めて作ったにしては | はじめて つくった に して は | hajimete tsukutta ni shite wa
+値段の割に | ねだん の わり に | nedan no wari ni
+安い割に | やすい わり に | yasui wari ni
+有名な割に | ゆうめい な わり に | yuumei na wari ni
+よく食べる割に | よく たべる わり に | yoku taberu wari ni
+日曜日にしては、道が混んでいますね。 | にちようび に して は、 みち が こんで います ね。 | nichiyoubi ni shite wa, michi ga konde imasu ne.
+日曜日にしては、道が混んでるね。 | にちようび に して は、 みち が こんでる ね。 | nichiyoubi ni shite wa, michi ga konderu ne.
+十月にしては、今日は暑いですね。 | じゅうがつ に して は、 きょう は あつい です ね。 | juugatsu ni shite wa, kyou wa atsui desu ne.
+十月にしては、今日は暑いね。 | じゅうがつ に して は、 きょう は あつい ね。 | juugatsu ni shite wa, kyou wa atsui ne.
+小学生にしては、難しい言葉をよく知っている。 | しょうがくせい に して は、 むずかしい ことば を よく しって いる。 | shougakusei ni shite wa, muzukashii kotoba o yoku shitte iru.
+小学生にしては、難しい言葉をよく知っています。 | しょうがくせい に して は、 むずかしい ことば を よく しって います。 | shougakusei ni shite wa, muzukashii kotoba o yoku shitte imasu.
+日本に来て一年にしては、日本語が上手ですね。 | にほん に きて いちねん に して は、 にほんご が じょうず です ね。 | nihon ni kite ichinen ni shite wa, nihongo ga jouzu desu ne.
+日本に来て一年にしては、日本語が上手だね。 | にほん に きて いちねん に して は、 にほんご が じょうず だ ね。 | nihon ni kite ichinen ni shite wa, nihongo ga jouzu da ne.
+初めて作ったにしては、よくできていますね。 | はじめて つくった に して は、 よく できて います ね。 | hajimete tsukutta ni shite wa, yoku dekite imasu ne.
+初めて作ったにしては、よくできてるね。 | はじめて つくった に して は、 よく できてる ね。 | hajimete tsukutta ni shite wa, yoku dekiteru ne.
+この店は値段の割に量が多い。 | この みせ は ねだん の わり に りょう が おおい。 | kono mise wa nedan no wari ni ryou ga ooi.
+この店は値段の割に量が多いです。 | この みせ は ねだん の わり に りょう が おおい です。 | kono mise wa nedan no wari ni ryou ga ooi desu.
+この映画は有名な割に、あまり面白くなかった。 | この えいが は ゆうめい な わり に、 あまり おもしろくなかった。 | kono eiga wa yuumei na wari ni, amari omoshirokunakatta.
+この映画は有名な割に、あまり面白くなかったです。 | この えいが は ゆうめい な わり に、 あまり おもしろくなかった です。 | kono eiga wa yuumei na wari ni, amari omoshirokunakatta desu.
+弟はよく食べる割に太らない。 | おとうと は よく たべる わり に ふとらない。 | otouto wa yoku taberu wari ni futoranai.
+弟はよく食べる割に太りません。 | おとうと は よく たべる わり に ふとりません。 | otouto wa yoku taberu wari ni futorimasen.
+祖母は年の割に若く見えます。 | そぼ は とし の わり に わかく みえます。 | sobo wa toshi no wari ni wakaku miemasu.
+祖母は年の割に若く見える。 | そぼ は とし の わり に わかく みえる。 | sobo wa toshi no wari ni wakaku mieru.
+このかばんは安い割に便利だよ。 | この かばん は やすい わり に べんり だ よ。 | kono kaban wa yasui wari ni benri da yo.
+このかばんは安い割に便利ですよ。 | この かばん は やすい わり に べんり です よ。 | kono kaban wa yasui wari ni benri desu yo.
+初心者にしては、上手ですね。 | しょしんしゃ に して は、 じょうず です ね。 | shoshinsha ni shite wa, jouzu desu ne.
+初心者の割に、上手ですね。 | しょしんしゃ の わり に、 じょうず です ね。 | shoshinsha no wari ni, jouzu desu ne.
+このケーキ、作ったの？ | この ケーキ、 つくった の？ | kono keeki, tsukutta no?
+うん。初めて作ったんだ。 | うん。 はじめて つくった ん だ。 | un. hajimete tsukutta n da.
+初めてにしては、すごくおいしいよ！ | はじめて に して は、 すごく おいしい よ！ | hajimete ni shite wa, sugoku oishii yo!
+にしては | に して は | ni shite wa
+新しい割に | あたらしい わり に | atarashii wari ni
+新しい割には | あたらしい わり に は | atarashii wari ni wa
+簡単な割に | かんたん な わり に | kantan na wari ni
+簡単な割には | かんたん な わり に は | kantan na wari ni wa
+この部屋は広い割に、安い。 | この へや は ひろい わり に、 やすい。 | kono heya wa hiroi wari ni, yasui.
+この部屋は広い割には、安い。 | この へや は ひろい わり に は、 やすい。 | kono heya wa hiroi wari ni wa, yasui.
+
+## n3-relations/wo-hajime
+をはじめ | をはじめ | (label: no romaji)
+京都をはじめ | きょうと をはじめ | kyouto ohajime
+すしをはじめとして | すし をはじめ として | sushi ohajime toshite
+東京をはじめとする大きな町 | とうきょう をはじめ と する おおきな まち | toukyou ohajime to suru ookina machi
+先生をはじめ、クラスのみんなが応援してくれました。 | せんせい をはじめ、 クラス の みんな が おうえん して くれました。 | sensei ohajime, kurasu no minna ga ouen shite kuremashita.
+先生をはじめ、クラスのみんなが応援してくれた。 | せんせい をはじめ、 クラス の みんな が おうえん して くれた。 | sensei ohajime, kurasu no minna ga ouen shite kureta.
+京都をはじめ、日本には古い町がたくさんあります。 | きょうと をはじめ、 にほん に は ふるい まち が たくさん あります。 | kyouto ohajime, nihon ni wa furui machi ga takusan arimasu.
+京都をはじめ、日本には古い町がたくさんある。 | きょうと をはじめ、 にほん に は ふるい まち が たくさん ある。 | kyouto ohajime, nihon ni wa furui machi ga takusan aru.
+すしをはじめとして、日本の料理は世界で人気があります。 | すし をはじめ として、 にほん の りょうり は せかい で にんき が あります。 | sushi ohajime toshite, nihon no ryouri wa sekai de ninki ga arimasu.
+すしをはじめとして、日本の料理は世界で人気がある。 | すし をはじめ として、 にほん の りょうり は せかい で にんき が ある。 | sushi ohajime toshite, nihon no ryouri wa sekai de ninki ga aru.
+両親をはじめ、たくさんの人に助けてもらいました。 | りょうしん をはじめ、 たくさん の ひと に たすけて もらいました。 | ryoushin ohajime, takusan no hito ni tasukete moraimashita.
+両親をはじめ、たくさんの人に助けてもらった。 | りょうしん をはじめ、 たくさん の ひと に たすけて もらった。 | ryoushin ohajime, takusan no hito ni tasukete moratta.
+東京をはじめとする大きな町では、家賃が高い。 | とうきょう をはじめ と する おおきな まち で は、 やちん が たかい。 | toukyou ohajime to suru ookina machi de wa, yachin ga takai.
+東京をはじめとする大きな町では、家賃が高いです。 | とうきょう をはじめ と する おおきな まち で は、 やちん が たかい です。 | toukyou ohajime to suru ookina machi de wa, yachin ga takai desu.
+日本や韓国で人気があります。 | にほん や かんこく で にんき が あります。 | nihon ya kankoku de ninki ga arimasu.
+日本をはじめ、アジアの多くの国で人気があります。 | にほん をはじめ、 アジア の おおく の くに で にんき が あります。 | nihon ohajime, ajia no ooku no kuni de ninki ga arimasu.
+昨日のパーティーはどうでしたか？ | きのう の パーティー は どう でした か？ | kinou no paatii wa dou deshita ka?
+社長をはじめ、会社の人が五十人ぐらい来ましたよ。 | しゃちょう をはじめ、 かいしゃ の ひと が ごじゅうにん ぐらい きました よ。 | shachou ohajime, kaisha no hito ga gojuunin gurai kimashita yo.
+それはにぎやかでしたね。 | それ は にぎやか でした ね。 | sore wa nigiyaka deshita ne.
+をはじめ | をはじめ | ohajime
+をはじめとして | をはじめ として | ohajime toshite
+をはじめ | をはじめ | ohajime
+をはじめとして | をはじめ として | ohajime toshite
+首相をはじめ、有名な人がたくさん来ました。 | しゅしょう を はじめ、 ゆうめい な ひと が たくさん きました。 | shushou o hajime, yuumei na hito ga takusan kimashita.
+首相をはじめとして、有名な人がたくさん来ました。 | しゅしょう を はじめ として、 ゆうめい な ひと が たくさん きました。 | shushou o hajime toshite, yuumei na hito ga takusan kimashita.
+をはじめとする | をはじめ と する | ohajime to suru
+
+## n3-relations/kawari-ni
+代わりに | かわりに | (label: no romaji)
+父の代わりに | ちち の かわり に | chichi no kawari ni
+車を使う代わりに | くるま を つかう かわり に | kuruma o tsukau kawari ni
+その代わり | その かわり | sono kawari
+社長に代わって | しゃちょう に かわって | shachou ni kawatte
+今日はご飯の代わりにパンを食べた。 | きょう は ごはん の かわり に パン を たべた。 | kyou wa gohan no kawari ni pan o tabeta.
+今日はご飯の代わりにパンを食べました。 | きょう は ごはん の かわり に パン を たべました。 | kyou wa gohan no kawari ni pan o tabemashita.
+車を使う代わりに、自転車で通うことにしました。 | くるま を つかう かわり に、 じてんしゃ で かよう こと に しました。 | kuruma o tsukau kawari ni, jitensha de kayou koto ni shimashita.
+車を使う代わりに、自転車で通うことにした。 | くるま を つかう かわり に、 じてんしゃ で かよう こと に した。 | kuruma o tsukau kawari ni, jitensha de kayou koto ni shita.
+料理は私が作る代わりに、片付けをしてくれない？ | りょうり は わたし が つくる かわり に、 かたづけ を して くれない？ | ryouri wa watashi ga tsukuru kawari ni, katazuke o shite kurenai?
+料理は私が作る代わりに、片付けをしてくれませんか？ | りょうり は わたし が つくる かわり に、 かたづけ を して くれません か？ | ryouri wa watashi ga tsukuru kawari ni, katazuke o shite kuremasen ka?
+英語を教える代わりに、日本語を教えてもらっています。 | えいご を おしえる かわり に、 にほんご を おしえて もらって います。 | eigo o oshieru kawari ni, nihongo o oshiete moratte imasu.
+英語を教える代わりに、日本語を教えてもらっている。 | えいご を おしえる かわり に、 にほんご を おしえて もらって いる。 | eigo o oshieru kawari ni, nihongo o oshiete moratte iru.
+給料はいいです。その代わり、休みが少ないです。 | きゅうりょう は いい です。 その かわり、 やすみ が すくない です。 | kyuuryou wa ii desu. sono kawari, yasumi ga sukunai desu.
+給料はいい。その代わり、休みが少ない。 | きゅうりょう は いい。 その かわり、 やすみ が すくない。 | kyuuryou wa ii. sono kawari, yasumi ga sukunai.
+部長に代わって、私が説明します。 | ぶちょう に かわって、 わたし が せつめい します。 | buchou ni kawatte, watashi ga setsumei shimasu.
+病気の母に代わって、姉が料理をしています。 | びょうき の はは に かわって、 あね が りょうり を して います。 | byouki no haha ni kawatte, ane ga ryouri o shite imasu.
+病気の母に代わって、姉が料理をしている。 | びょうき の はは に かわって、 あね が りょうり を して いる。 | byouki no haha ni kawatte, ane ga ryouri o shite iru.
+最近は、手紙に代わってメールで連絡する人が多い。 | さいきん は、 てがみ に かわって メール で れんらく する ひと が おおい。 | saikin wa, tegami ni kawatte meeru de renraku suru hito ga ooi.
+最近は、手紙に代わってメールで連絡する人が多いです。 | さいきん は、 てがみ に かわって メール で れんらく する ひと が おおい です。 | saikin wa, tegami ni kawatte meeru de renraku suru hito ga ooi desu.
+今日は山田先生に代わって、私が授業をします。 | きょう は やまだせんせい に かわって、 わたし が じゅぎょう を します。 | kyou wa yamada-sensei ni kawatte, watashi ga jugyou o shimasu.
+父の代わりに、私が挨拶をしました。 | ちち の かわり に、 わたし が あいさつ を しました。 | chichi no kawari ni, watashi ga aisatsu o shimashita.
+父に代わって、私が挨拶をしました。 | ちち に かわって、 わたし が あいさつ を しました。 | chichi ni kawatte, watashi ga aisatsu o shimashita.
+明日の授業、休むんだ。ノート、見せてくれる？ | あした の じゅぎょう、 やすむ ん だ。 ノート、 みせて くれる？ | ashita no jugyou, yasumu n da. nooto, misete kureru?
+いいよ。その代わり、今度昼ご飯おごってね。 | いい よ。 その かわり、 こんど ひるごはん おごって ね。 | ii yo. sono kawari, kondo hirugohan ogotte ne.
+わかった。約束する。 | わかった。 やくそく する。 | wakatta. yakusoku suru.
+の代わりに | の かわり に | no kawari ni
+行く代わりに | いく かわり に | iku kawari ni
+に代わって | に かわって | ni kawatte
+ペンの代わりに、鉛筆で書いた。 | ペン の かわり に、 えんぴつ で かいた。 | pen no kawari ni, enpitsu de kaita.
+
+## n3-relations/tte
+って | って | (label: no romaji)
+日本の夏って | にほん の なつ って | nihon no natsu tte
+一人で旅行するのって | ひとり で りょこう する の って | hitori de ryokou suru no tte
+これって何 | これ って なに | kore tte nani
+来ないって言ってた | こない って いってた | konai tte itteta
+来ないって | こない って | konai tte
+日本の夏って、本当に暑いね。 | にほん の なつ って、 ほんとう に あつい ね。 | nihon no natsu tte, hontou ni atsui ne.
+田中さんって、どんな人？ | たなかさん って、 どんな ひと？ | tanaka-san tte, donna hito?
+「空気を読む」って、どういう意味？ | 「くうき を よむ」 って、 どういう いみ？ | "kuuki o yomu" tte, douiu imi?
+一人で旅行するのって、楽しいよ。 | ひとり で りょこう する の って、 たのしい よ。 | hitori de ryokou suru no tte, tanoshii yo.
+彼って、いつも遅れてくるよね。 | かれ って、 いつも おくれて くる よね。 | kare tte, itsumo okurete kuru yone.
+山田さん、今日は来られないって。 | やまださん、 きょう は こられない って。 | yamada-san, kyou wa korarenai tte.
+母が早く帰りなさいって言ってた。 | はは が はやく かえりなさい って いってた。 | haha ga hayaku kaerinasai tte itteta.
+店の人に聞いたら、もうないって。 | みせ の ひと に きいたら、 もう ない って。 | mise no hito ni kiitara, mou nai tte.
+「ありがとう」って伝えてね。 | 「ありがとう」 って つたえて ね。 | "arigatou" tte tsutaete ne.
+東京は、家賃が高い。 | とうきょう は、 やちん が たかい。 | toukyou wa, yachin ga takai.
+東京って、家賃が高い。 | とうきょう って、 やちん が たかい。 | toukyou tte, yachin ga takai.
+週末のキャンプって、何時に出発？ | しゅうまつ の キャンプ って、 なんじ に しゅっぱつ？ | shuumatsu no kyanpu tte, nanji ni shuppatsu?
+森さんが七時って言ってたよ。 | もりさん が しちじ って いってた よ。 | mori-san ga shichiji tte itteta yo.
+早いね。雨でも行くの？ | はやい ね。 あめ でも いく の？ | hayai ne. ame demo iku no?
+少しなら大丈夫だって。 | すこし なら だいじょうぶ だ って。 | sukoshi nara daijoubu da tte.
+って何 | って なに | tte nani
+って何なの | って なん な の | tte nan na no
+来るって | くる って | kuru tte
+って | って | tte
+って | って | tte
+って言っていた | って いって いた | tte itte ita
+って言った | って いった | tte itta
+明日のテストは何時からですか？ | あした の テスト は なんじ から です か？ | ashita no tesuto wa nanji kara desu ka?
+明日のテストは何時からでしょうか？ | あした の テスト は なんじ から でしょう か？ | ashita no tesuto wa nanji kara deshou ka?
+明日のテストは何時からになりますか？ | あした の テスト は なんじ から に なります か？ | ashita no tesuto wa nanji kara ni narimasu ka?
+
+## n3-relations/n-datte
+んだって | んだって | (label: no romaji)
+来るんだって | くる ん だって | kuru n datte
+雪なんだって | ゆき なん だって | yuki nan datte
+医者だって | いしゃ だって | isha datte
+休みだということだ | やすみ だ と いう こと だ | yasumi da to iu koto da
+山田さん、来月会社を辞めるんだって。 | やまださん、 らいげつ かいしゃ を やめる ん だって。 | yamada-san, raigetsu kaisha o yameru n datte.
+あの映画、すごく怖いんだって。 | あの えいが、 すごく こわい ん だって。 | ano eiga, sugoku kowai n datte.
+明日は雪なんだって。 | あした は ゆき なん だって。 | ashita wa yuki nan datte.
+駅前のパン屋、先週閉まったんだって。 | えきまえ の パンや、 せんしゅう しまった ん だって。 | ekimae no pan'ya, senshuu shimatta n datte.
+佐藤さんのお兄さん、医者だって。 | さとうさん の おにいさん、 いしゃ だって。 | satou-san no oniisan, isha datte.
+天気予報によると、明日は晴れるということです。 | てんきよほう によると、 あした は はれる と いう こと です。 | tenkiyohou niyoruto, ashita wa hareru to iu koto desu.
+部長は今日休みだということです。 | ぶちょう は きょう やすみ だ と いう こと です。 | buchou wa kyou yasumi da to iu koto desu.
+事故のため、電車が遅れているということです。 | じこ の ため、 でんしゃ が おくれて いる と いう こと です。 | jiko no tame, densha ga okurete iru to iu koto desu.
+田中さんから電話があって、少し遅れるということでした。 | たなかさん から でんわ が あって、 すこし おくれる と いう こと でした。 | tanaka-san kara denwa ga atte, sukoshi okureru to iu koto deshita.
+ニュースによると、今年の冬は寒くなるということだ。 | ニュース によると、 ことし の ふゆ は さむく なる と いう こと だ。 | nyuusu niyoruto, kotoshi no fuyu wa samuku naru to iu koto da.
+明日は休みなんだって。 | あした は やすみ なん だって。 | ashita wa yasumi nan datte.
+明日は休みだということです。 | あした は やすみ だ と いう こと です。 | ashita wa yasumi da to iu koto desu.
+ねえ、聞いた？来週のテスト、中止になったんだって。 | ねえ、 きいた？ らいしゅう の テスト、 ちゅうし に なった ん だって。 | nee, kiita? raishuu no tesuto, chuushi ni natta n datte.
+え、ほんと？誰から聞いたの？ | え、 ほんと？ だれ から きいた の？ | e, honto? dare kara kiita no?
+森さん。先生が病気なんだって。 | もりさん。 せんせい が びょうき なん だって。 | mori-san. sensei ga byouki nan datte.
+引っ越すんだって | ひっこす ん だって | hikkosu n datte
+なんだって | なん だって | nan datte
+だって | だって | datte
+ということです | と いう こと です | to iu koto desu
+ということでした | と いう こと でした | to iu koto deshita
+あそこは静かなんだって。 | あそこ は しずか なん だって。 | asoko wa shizuka nan datte.
+あそこは静かだって。 | あそこ は しずか だって。 | asoko wa shizuka datte.
+
+## n3-relations/to-iu-no-wa
+というのは | というのは | (label: no romaji)
+花見というのは…のことだ | はなみ と いう の は … の こと だ | hanami to iu no wa... no koto da
+禁煙というのは…という意味だ | きんえん と いう の は … と いう いみ だ | kin'en to iu no wa... to iu imi da
+友達っていうのは | ともだち って いう の は | tomodachi tte iu no wa
+というのは、雨が降ったからだ | と いう の は、 あめ が ふった から だ | to iu no wa, ame ga futta kara da
+「花見」というのは、桜を見ながら食べたり飲んだりすることです。 | 「はなみ」 と いう の は、 さくら を み ながら たべたり のんだり する こと です。 | "hanami" to iu no wa, sakura o mi nagara tabetari nondari suru koto desu.
+「花見」っていうのは、桜を見ながら食べたり飲んだりすることだよ。 | 「はなみ」 って いう の は、 さくら を み ながら たべたり のんだり する こと だ よ。 | "hanami" tte iu no wa, sakura o mi nagara tabetari nondari suru koto da yo.
+「禁煙」というのは、たばこを吸ってはいけないという意味です。 | 「きんえん」 と いう の は、 たばこ を すって は いけない と いう いみ です。 | "kin'en" to iu no wa, tabako o sutte wa ikenai to iu imi desu.
+部長の「検討します」っていうのは、たぶん「だめ」という意味だよ。 | ぶちょう の 「けんとう します」 って いう の は、 たぶん 「だめ」 と いう いみ だ よ。 | buchou no "kentou shimasu" tte iu no wa, tabun "dame" to iu imi da yo.
+部長の「検討します」というのは、たぶん「だめ」という意味ですよ。 | ぶちょう の 「けんとう します」 と いう の は、 たぶん 「だめ」 と いう いみ です よ。 | buchou no "kentou shimasu" to iu no wa, tabun "dame" to iu imi desu yo.
+友達っていうのは、困ったときに助けてくれる人のことだと思う。 | ともだち って いう の は、 こまった とき に たすけて くれる ひと の こと だ と おもう。 | tomodachi tte iu no wa, komatta toki ni tasukete kureru hito no koto da to omou.
+友達というのは、困ったときに助けてくれる人のことだと思います。 | ともだち と いう の は、 こまった とき に たすけて くれる ひと の こと だ と おもいます。 | tomodachi to iu no wa, komatta toki ni tasukete kureru hito no koto da to omoimasu.
+明日は行けません。というのは、母が入院するからです。 | あした は いけません。 と いう の は、 はは が にゅういん する から です。 | ashita wa ikemasen. to iu no wa, haha ga nyuuin suru kara desu.
+この店はいつも混んでいます。というのは、安くておいしいからです。 | この みせ は いつも こんで います。 と いう の は、 やすくて おいしい から です。 | kono mise wa itsumo konde imasu. to iu no wa, yasukute oishii kara desu.
+彼は最近元気がない。というのは、試験に落ちたからだ。 | かれ は さいきん げんき が ない。 と いう の は、 しけん に おちた から だ。 | kare wa saikin genki ga nai. to iu no wa, shiken ni ochita kara da.
+今日は早く帰ります。というのは、友達が来るからです。 | きょう は はやく かえります。 と いう の は、 ともだち が くる から です。 | kyou wa hayaku kaerimasu. to iu no wa, tomodachi ga kuru kara desu.
+「本日休業」というのは、今日は休みという意味です。 | 「ほんじつ きゅうぎょう」 と いう の は、 きょう は やすみ と いう いみ です。 | "honjitsu kyuugyou" to iu no wa, kyou wa yasumi to iu imi desu.
+「駅前」というのは、駅の前の辺りのことです。 | 「えきまえ」 と いう の は、 えき の まえ の あたり の こと です。 | "ekimae" to iu no wa, eki no mae no atari no koto desu.
+すみません、「飲み会」というのは何ですか？ | すみません、 「のみかい」 と いう の は なん です か？ | sumimasen, "nomikai" to iu no wa nan desu ka?
+会社の人とお酒を飲みに行くことですよ。 | かいしゃ の ひと と おさけ を のみ に いく こと です よ。 | kaisha no hito to osake o nomi ni iku koto desu yo.
+あ、そうなんですか。 | あ、 そう なん です か。 | a, sou nan desu ka.
+というのは | と いう の は | to iu no wa
+のことです | の こと です | no koto desu
+という意味です | と いう いみ です | to iu imi desu
+というのは | と いう の は | to iu no wa
+
+## n3-relations/to-ieba
+といえば | といえば | (label: no romaji)
+夏といえば | なつ と いえば | natsu to ieba
+京都というと | きょうと と いう と | kyouto to iu to
+「田中さん」というと | 「たなかさん」 と いう と | "tanaka-san" to iu to
+日本の夏といえば、花火ですよね。 | にほん の なつ と いえば、 はなび です よね。 | nihon no natsu to ieba, hanabi desu yone.
+日本の夏といえば、花火だよね。 | にほん の なつ と いえば、 はなび だ よね。 | nihon no natsu to ieba, hanabi da yone.
+北海道といえば、やっぱり雪とラーメンだ。 | ほっかいどう と いえば、 やっぱり ゆき と ラーメン だ。 | hokkaidou to ieba, yappari yuki to raamen da.
+北海道といえば、やっぱり雪とラーメンです。 | ほっかいどう と いえば、 やっぱり ゆき と ラーメン です。 | hokkaidou to ieba, yappari yuki to raamen desu.
+旅行といえば、来月の連休はどこか行く？ | りょこう と いえば、 らいげつ の れんきゅう は どこ か いく？ | ryokou to ieba, raigetsu no renkyuu wa doko ka iku?
+旅行といえば、来月の連休はどこか行きますか？ | りょこう と いえば、 らいげつ の れんきゅう は どこ か いきます か？ | ryokou to ieba, raigetsu no renkyuu wa doko ka ikimasu ka?
+猫といえば、田中さんの家の猫、元気ですか？ | ねこ と いえば、 たなかさん の いえ の ねこ、 げんき です か？ | neko to ieba, tanaka-san no ie no neko, genki desu ka?
+猫といえば、田中さんの家の猫、元気？ | ねこ と いえば、 たなかさん の いえ の ねこ、 げんき？ | neko to ieba, tanaka-san no ie no neko, genki?
+京都というと、古いお寺のイメージがあります。 | きょうと と いう と、 ふるい おてら の イメージ が あります。 | kyouto to iu to, furui otera no imeeji ga arimasu.
+京都というと、古いお寺のイメージがある。 | きょうと と いう と、 ふるい おてら の イメージ が ある。 | kyouto to iu to, furui otera no imeeji ga aru.
+「田中さん」というと、営業の田中さんですか？ | 「たなかさん」 と いう と、 えいぎょう の たなかさん です か？ | "tanaka-san" to iu to, eigyou no tanaka-san desu ka?
+「田中さん」っていうと、営業の田中さん？ | 「たなかさん」 って いう と、 えいぎょう の たなかさん？ | "tanaka-san" tte iu to, eigyou no tanaka-san?
+来週の金曜日というと、十日ですね。 | らいしゅう の きんようび と いう と、 とおか です ね。 | raishuu no kin'youbi to iu to, tooka desu ne.
+来週の金曜日というと、十日だね。 | らいしゅう の きんようび と いう と、 とおか だ ね。 | raishuu no kin'youbi to iu to, tooka da ne.
+春というと、やっぱり桜ですね。 | はる と いう と、 やっぱり さくら です ね。 | haru to iu to, yappari sakura desu ne.
+春というと、やっぱり桜だね。 | はる と いう と、 やっぱり さくら だ ね。 | haru to iu to, yappari sakura da ne.
+山田さんといえば、最近見ませんね。 | やまださん と いえば、 さいきん みません ね。 | yamada-san to ieba, saikin mimasen ne.
+山田さんというと、隣の部屋の山田さんですか？ | やまださん と いう と、 となり の へや の やまださん です か？ | yamada-san to iu to, tonari no heya no yamada-san desu ka?
+来週、大阪に出張なんだ。 | らいしゅう、 おおさか に しゅっちょう なん だ。 | raishuu, oosaka ni shutchou nan da.
+大阪といえば、食べ物がおいしいよね。お土産、よろしく！ | おおさか と いえば、 たべもの が おいしい よね。 おみやげ、 よろしく！ | oosaka to ieba, tabemono ga oishii yone. omiyage, yoroshiku!
+仕事だよ…でも、時間があったら買ってくるよ。 | しごと だ よ… でも、 じかん が あったら かって くる よ。 | shigoto da yo... demo, jikan ga attara katte kuru yo.
+といえば | と いえば | to ieba
+というと | と いう と | to iu to
+といえば | と いえば | to ieba
+というと | と いう と | to iu to
+冬といえば、スキーだよね。 | ふゆ と いえば、 スキー だ よね。 | fuyu to ieba, sukii da yone.
+冬というと、スキーだよね。 | ふゆ と いう と、 スキー だ よね。 | fuyu to iu to, sukii da yone.
+
+## n3-relations/to-iu-yori
+というより | というより | (label: no romaji)
+先生というより | せんせい と いう より | sensei to iu yori
+涼しいというより | すずしい と いう より | suzushii to iu yori
+丁寧というより | ていねい と いう より | teinei to iu yori
+寝たというより | ねた と いう より | neta to iu yori
+疲れるよりむしろ | つかれる より むしろ | tsukareru yori mushiro
+彼は先生というより、友達みたいな人です。 | かれ は せんせい と いう より、 ともだち みたい な ひと です。 | kare wa sensei to iu yori, tomodachi mitai na hito desu.
+彼は先生というより、友達みたいな人だ。 | かれ は せんせい と いう より、 ともだち みたい な ひと だ。 | kare wa sensei to iu yori, tomodachi mitai na hito da.
+今日は涼しいというより、寒いね。 | きょう は すずしい と いう より、 さむい ね。 | kyou wa suzushii to iu yori, samui ne.
+今日は涼しいというより、寒いですね。 | きょう は すずしい と いう より、 さむい です ね。 | kyou wa suzushii to iu yori, samui desu ne.
+彼女の話し方は丁寧というより、冷たい感じがした。 | かのじょ の はなしかた は ていねい と いう より、 つめたい かんじ が した。 | kanojo no hanashikata wa teinei to iu yori, tsumetai kanji ga shita.
+彼女の話し方は丁寧というより、冷たい感じがしました。 | かのじょ の はなしかた は ていねい と いう より、 つめたい かんじ が しました。 | kanojo no hanashikata wa teinei to iu yori, tsumetai kanji ga shimashita.
+姉は料理が好きというより、食べるのが好きなんです。 | あね は りょうり が すき と いう より、 たべる の が すき なん です。 | ane wa ryouri ga suki to iu yori, taberu no ga suki nan desu.
+姉は料理が好きというより、食べるのが好きなんだ。 | あね は りょうり が すき と いう より、 たべる の が すき なん だ。 | ane wa ryouri ga suki to iu yori, taberu no ga suki nan da.
+今の仕事は、仕事というより趣味です。 | いま の しごと は、 しごと と いう より しゅみ です。 | ima no shigoto wa, shigoto to iu yori shumi desu.
+今の仕事は、仕事というより趣味だね。 | いま の しごと は、 しごと と いう より しゅみ だ ね。 | ima no shigoto wa, shigoto to iu yori shumi da ne.
+雨の日は嫌いじゃありません。むしろ好きです。 | あめ の ひ は きらい じゃ ありません。 むしろ すき です。 | ame no hi wa kirai ja arimasen. mushiro suki desu.
+雨の日は嫌いじゃない。むしろ好きだよ。 | あめ の ひ は きらい じゃ ない。 むしろ すき だ よ。 | ame no hi wa kirai ja nai. mushiro suki da yo.
+運動した後は、疲れるよりむしろ元気になります。 | うんどう した あと は、 つかれる より むしろ げんき に なります。 | undou shita ato wa, tsukareru yori mushiro genki ni narimasu.
+運動した後は、疲れるよりむしろ元気になる。 | うんどう した あと は、 つかれる より むしろ げんき に なる。 | undou shita ato wa, tsukareru yori mushiro genki ni naru.
+この映画は子供よりむしろ大人に見てほしい。 | この えいが は こども より むしろ おとな に みて ほしい。 | kono eiga wa kodomo yori mushiro otona ni mite hoshii.
+この映画は子供よりむしろ大人に見てほしいです。 | この えいが は こども より むしろ おとな に みて ほしい です。 | kono eiga wa kodomo yori mushiro otona ni mite hoshii desu.
+電車が遅れるなら、むしろ歩いたほうが早い。 | でんしゃ が おくれる なら、 むしろ あるいた ほう が はやい。 | densha ga okureru nara, mushiro aruita hou ga hayai.
+電車が遅れるなら、むしろ歩いたほうが早いです。 | でんしゃ が おくれる なら、 むしろ あるいた ほう が はやい です。 | densha ga okureru nara, mushiro aruita hou ga hayai desu.
+静かというより、寂しい町だ。 | しずか と いう より、 さびしい まち だ。 | shizuka to iu yori, sabishii machi da.
+静かだけど、寂しい町だ。 | しずか だ けど、 さびしい まち だ。 | shizuka da kedo, sabishii machi da.
+森さんは料理が上手ですね。 | もりさん は りょうり が じょうず です ね。 | mori-san wa ryouri ga jouzu desu ne.
+上手というより、好きなだけですよ。 | じょうず と いう より、 すき な だけ です よ。 | jouzu to iu yori, suki na dake desu yo.
+好きなら、それが一番ですよ。 | すき なら、 それ が いちばん です よ。 | suki nara, sore ga ichiban desu yo.
+というより | と いう より | to iu yori
+というよりも | と いう より も | to iu yori mo
+面白いというより | おもしろい と いう より | omoshiroi to iu yori
+面白いというよりも | おもしろい と いう より も | omoshiroi to iu yori mo
+面白かったというより | おもしろかった と いう より | omoshirokatta to iu yori
+面白かったというよりも | おもしろかった と いう より も | omoshirokatta to iu yori mo
+むしろ | むしろ | mushiro
+寝たというより | ねた と いう より | neta to iu yori
+寝たというよりも | ねた と いう より も | neta to iu yori mo
 
 ## read/shop-sign
 本日休業 | ほんじつ きゅうぎょう | honjitsu kyuugyou

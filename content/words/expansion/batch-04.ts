@@ -34,7 +34,7 @@ export const BATCH_04: Word[] = [
   x("1132420", "メーカー", "noun", "manufacturer, maker", "shopping"),
   x("1133570", "メッセージ", "noun", "message", "language"),
   x("1133620", "メディア", "noun", "media", "everyday"),
-  x("1180570", "[横|よこ]", "noun", "side, beside, next to; horizontal, width", "everyday"),
+  // moved to the lessons (n3-relations/to-iu-yori): 1180570 [横|よこ]
   x("1198660", "[会場|かいじょう]", "noun", "venue, hall", "places"),
   x("1198880", "[会話|かいわ]", "noun", "conversation (する: to talk)", "language"),
   x("1296680", "[罪|つみ]", "noun", "crime, sin", "everyday"),
@@ -90,7 +90,7 @@ export const BATCH_04: Word[] = [
   x("1508070", "[平和|へいわ]", "noun", "peace", "everyday"),
   x("2164670", "[広島|ひろしま]", "noun", "Hiroshima", "places"),
   // moved to the lessons (n4-plans/you-ni): 1591150 [聞|き]こえる
-  x("1593710", "[桜|さくら]", "noun", "cherry blossom, cherry tree", "nature"),
+  // moved to the lessons (n3-relations/to-ieba): 1593710 [桜|さくら]
   x("1583260", "[避|さ]ける", "verb", "to avoid", "everyday", "ichidan"),
   // moved to the lessons (n4-plans/hajimeru): 1229840 [泣|な]く
   x("1478190", "[抜|ぬ]く", "verb", "to pull out; to leave out", "everyday", "godan"),
@@ -168,7 +168,7 @@ export const BATCH_04: Word[] = [
   x("1119210", "ベース", "noun", "base, basis; bass guitar", "everyday"),
   x("1400530", "こぐ", "verb", "to row; to pedal", "hobbies", "godan"),
   x("1202260", "[皆様|みなさま]", "noun", "everyone (very polite); ladies and gentlemen", "people"),
-  x("1262530", "[厳|きび]しい", "i-adj", "strict, severe", "everyday"),
+  // moved to the lessons (n3-relations/ni-taishite): 1262530 [厳|きび]しい
   x("1019450", "アルバム", "noun", "album", "hobbies"),
   x("1040680", "キー", "noun", "key (keyboard, lock)", "everyday"),
   x("1041920", "キャラクター", "noun", "character (in a story); personality", "hobbies"),
@@ -202,7 +202,7 @@ export const BATCH_04: Word[] = [
   x("1585460", "さて", "conjunction", "well, now then", "language"),
   x("1078040", "チャンス", "noun", "chance, opportunity", "everyday"),
   x("1140990", "リアル", "na-adj", "real, realistic", "everyday"),
-  x("1143920", "ルール", "noun", "rule", "everyday"),
+  // moved to the lessons (n3-relations/ni-taishite): 1143920 ルール
   x("1272280", "[交通|こうつう]", "noun", "traffic, transportation", "travel"),
   x("1289400", "こんにちは", "interjection", "hello, good afternoon", "greetings"),
   x("1292960", "[再生|さいせい]", "noun", "playback; revival (する: to play back)", "hobbies"),
@@ -216,7 +216,7 @@ export const BATCH_04: Word[] = [
   x("1556040", "[類|るい]", "noun", "kind, sort", "everyday"),
   x("1558800", "[恋愛|れんあい]", "noun", "romantic love, romance (する: to be in a relationship)", "feelings"),
   x("1581400", "[他人|たにん]", "noun", "other people; stranger", "people"),
-  x("1212250", "[感|かん]じ", "noun", "feeling, impression", "feelings"),
+  // moved to the lessons (n3-relations/to-iu-yori): 1212250 [感|かん]じ
   // moved to the lessons (n5-essentials/comparing): 1252560 [軽|かる]い
   x("1012800", "やっと", "adverb", "at last, finally; barely", "time"),
   x("1047880", "ケース", "noun", "case (container); case (instance)", "everyday"),

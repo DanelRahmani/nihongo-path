@@ -65,7 +65,7 @@ export const BATCH_04: Word[] = [
   x("1497180", "[普段|ふだん]", "noun", "usual, ordinary; usually", "everyday"),
   x("1515730", "[報道|ほうどう]", "noun", "news report (する: to report)", "everyday"),
   // skipped: 1956260 [合|ごう] (traditional unit of volume; rare)
-  x("2136180", "[小|ちい]さな", "pre-noun", "small, little", "everyday"),
+  // moved to the lessons (n3-degree/tatoe-temo): 2136180 [小|ちい]さな
   x("2164610", "[横浜|よこはま]", "noun", "Yokohama", "places"),
   x("1605280", "もともと", "adverb", "originally, from the start", "time"),
   x("1469870", "[悩|なや]む", "verb", "to worry, to be troubled", "feelings", "godan"),
@@ -231,7 +231,7 @@ export const BATCH_04: Word[] = [
   x("1335590", "[獣|けもの]", "noun", "beast, wild animal", "nature"),
   x("1419950", "[段階|だんかい]", "noun", "stage, step, level", "everyday"),
   x("1457040", "[突然|とつぜん]", "adverb", "suddenly; sudden", "time"), // pos: was noun
-  x("1509480", "[別|べつ]に", "adverb", "(not) particularly; separately", "language"),
+  // moved to the lessons (n3-degree/negative-adverbs): 1509480 [別|べつ]に
   x("1546550", "[葉|は]", "noun", "leaf", "nature"),
   x("1578700", "[工場|こうじょう]", "noun", "factory", "places"),
   // moved to the lessons (n4-seeming/to-iu): 1600160 [値段|ねだん]
@@ -240,7 +240,7 @@ export const BATCH_04: Word[] = [
   x("1324520", "[弱|よわ]い", "i-adj", "weak", "everyday"),
   x("1324320", "もしくは", "conjunction", "or (formal, written)", "language"),
   x("1070830", "ストーリー", "noun", "story, plot", "hobbies"),
-  x("1483190", "[悲|かな]しい", "i-adj", "sad", "feelings"),
+  // moved to the lessons (n3-degree/hodo): 1483190 [悲|かな]しい
   x("1007070", "それら", "pronoun", "those, they (things)", "language"),
   x("1021940", "イラスト", "noun", "illustration", "hobbies"),
   x("1077250", "ダンス", "noun", "dance (する: to dance)", "hobbies"),

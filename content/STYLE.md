@@ -87,8 +87,8 @@ Where they leave a choice, follow modern everyday usage (newspapers, NHK, curren
   - ください, in every use (a house choice);
   - ほしい after the て form (〜て ほしい), while the adjective on its own keeps its kanji (`[欲|ほ]しい`), as newspapers and NHK write them;
   - いい and よい with all their forms (よくない, よかった), a house choice: 良い is 常用, but beginner text writes these in kana;
-  - grammar words: 〜かもしれない, 〜について, 〜にとって, 〜として, 〜をはじめ, など, ぐらい/くらい, ごろ (around a time), ばかり (たばかり "only just", and "nothing but"), ほう in のほうが and ほうがいい, and 〜すぎる after a stem or adjective (`[食|た]べすぎる`, `[高|たか]すぎる`);
-  - set phrases and common adverbs as people write them: ありがとう, おはよう, すみません, よろしく, どうぞ, ちょっと.
+  - grammar words: 〜かもしれない, 〜について, 〜にとって, 〜として, 〜をはじめ, など, ぐらい/くらい, ほど (to the extent, ば〜ほど, not as … as), さえ, こそ, なんか/なんて, ごろ (around a time), ばかり (たばかり "only just", and "nothing but"), ほう in のほうが and ほうがいい, and 〜すぎる after a stem or adjective (`[食|た]べすぎる`, `[高|たか]すぎる`);
+  - set phrases and common adverbs as people write them: ありがとう, おはよう, すみません, よろしく, どうぞ, ちょっと; and the adverbs that set up a negative or ても: まったく, なかなか, めったに, あまり(に), たとえ, いくら, どんなに, とても, もちろん (勿 is not 常用), and けっして (newspapers write 決して, but the table gives 決 no けっ reading, so `lib/joyo.ts` refuses it there, as it did for the expansion); 別に keeps its kanji. The quiz checker accepts a keyboard's 決して, 全く, 滅多に, 中々, 余り, 例え, 何て, 勿論 and 幾ら for them, and 程 and 位 for ほど and くらい as whole words.
 - **Content nouns keep their kanji; formal nouns don't:** `[時間|じかん]`, `[七時|しちじ]`, `[食|た]べ[物|もの]`, but とき, ところ, もの in their grammatical use. The set compounds `[申|もう]し[訳|わけ]` and `[言|い]い[訳|わけ]` keep 訳.
 - **Okurigana follow the main rule:** `[行|い]く` / `[行|おこな]う`, `[少|すこ]し`, `[新|あたら]しい`, `[終|お]わる`, `[分|わ]かる`, `[生|う]まれる`, `[話|はな]す` (verb) / `[話|はなし]` (noun). Nouns that custom writes without okurigana stay that way (`[切手|きって]`).
 - **Katakana** for loanwords (コーヒー, パン), foreign names (スミス), and sound effects or emphasis only where a lesson teaches them.

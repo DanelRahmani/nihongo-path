@@ -1,6 +1,7 @@
 import { basics } from "@/content/lessons/basics";
 import { hiragana } from "@/content/lessons/hiragana";
 import { katakana } from "@/content/lessons/katakana";
+import { n3Degree } from "@/content/lessons/n3-degree";
 import { n3Reasons } from "@/content/lessons/n3-reasons";
 import { n3Relations } from "@/content/lessons/n3-relations";
 import { n3Time } from "@/content/lessons/n3-time";
@@ -154,6 +155,14 @@ export const UNITS: Unit[] = [
     titleJp: "[関係|かんけい]",
     description: "About and towards, for and as, compared with and considering, instead of, casual って and what you heard, what a word means, speaking of, and rather than.",
     lessons: n3Relations,
+  },
+  {
+    slug: "n3-degree",
+    kind: "grammar",
+    title: "Degree, limits and emphasis",
+    titleJp: "[程度|ていど]",
+    description: "Even and as long as, this one and no other, so much that and not as … as, the more the more, at least, not only but also, nothing but, the likes of, no choice but, never and rarely, and no matter how.",
+    lessons: n3Degree,
   },
 ];
 

@@ -526,6 +526,141 @@ export const CLOZE_EXCLUSIONS: Record<string, string> = {
   "n3-relations/n-datte#1aby2hw": "そうだ and らしい (the hearsay lessons) also fit every hearsay gap.",
   // [森|もり]-さん。 [先生|せんせい] が [病気|びょうき] ＿＿。 (なん だって)
   "n3-relations/n-datte#9cqbnz": "そうだ and らしい (the hearsay lessons) also fit every hearsay gap.",
+  // Degree, limits and emphasis (unit 十七)
+  // [忙|いそが]しくて、 [昼|ひる]ご[飯|はん] を [食|た]べる [時間|じかん] ＿＿ ありません でした。 (さえ)
+  "n3-degree/sae#mctwf5": "も (でも after a noun) also fits “even” in a negative line, as the lesson's pair says.",
+  // [忙|いそが]しくて、 [昼|ひる]ご[飯|はん] を [食|た]べる [時間|じかん] ＿＿ なかった。 (さえ)
+  "n3-degree/sae#i9qjnj": "も (でも after a noun) also fits “even” in a negative line, as the lesson's pair says.",
+  // [隣|となり] に [住|す]んで いる [人|ひと] の [名前|なまえ] ＿＿ [知|し]らない。 (さえ)
+  "n3-degree/sae#1js7xug": "も (でも after a noun) also fits “even” in a negative line, as the lesson's pair says.",
+  // [隣|となり] に [住|す]んで いる [人|ひと] の [名前|なまえ] ＿＿ [知|し]りません。 (さえ)
+  "n3-degree/sae#16mt6xj": "も (でも after a noun) also fits “even” in a negative line, as the lesson's pair says.",
+  // この [問題|もんだい] は [先生|せんせい] ＿＿ [分|わ]からなかった。 (で さえ)
+  "n3-degree/sae#1vp7zfr": "も (でも after a noun) also fits “even” in a negative line, as the lesson's pair says.",
+  // この [問題|もんだい] は [先生|せんせい] ＿＿ [分|わ]かりません でした。 (で さえ)
+  "n3-degree/sae#14p6evg": "も (でも after a noun) also fits “even” in a negative line, as the lesson's pair says.",
+  // [疲|つか]れて いて、 [立|た]つ こと ＿＿ できなかった。 (さえ)
+  "n3-degree/sae#jlbjrw": "も (でも after a noun) also fits “even” in a negative line, as the lesson's pair says.",
+  // [疲|つか]れて いて、 [立|た]つ こと ＿＿ できません でした。 (さえ)
+  "n3-degree/sae#1idupqw": "も (でも after a noun) also fits “even” in a negative line, as the lesson's pair says.",
+  // この こと は [家族|かぞく] に ＿＿ [話|はな]して いません。 (さえ)
+  "n3-degree/sae#h7oo4m": "も (でも after a noun) also fits “even” in a negative line, as the lesson's pair says.",
+  // この こと は [家族|かぞく] に ＿＿ [話|はな]して いない。 (さえ)
+  "n3-degree/sae#1gn23gk": "も (でも after a noun) also fits “even” in a negative line, as the lesson's pair says.",
+  // [難|むずか]しい よ。 まだ [子供|こども] の [本|ほん] ＿＿ [読|よ]めない ん だ。 (さえ)
+  "n3-degree/sae#1n5qhn": "も (でも after a noun) also fits “even” in a negative line, as the lesson's pair says.",
+  // [健康|けんこう] ＿＿ [一番|いちばん] [大切|たいせつ] な もの だ と [思|おも]う。 (こそ)
+  "n3-degree/koso#ysad1": "は and が also fit (健康が一番大切).",
+  // [健康|けんこう] ＿＿ [一番|いちばん] [大切|たいせつ] な もの だ と [思|おも]います。 (こそ)
+  "n3-degree/koso#11q8pfo": "は and が also fit (健康が一番大切).",
+  // [難|むずか]しかった ＿＿、 やめた。 (から)
+  "n3-degree/koso#1lx6hqe": "ので also fits “so I gave up”.",
+  // [日本語|にほんご] は [思|おも]った ＿＿ [難|むずか]しくなかった です。 (ほど)
+  "n3-degree/hodo#fz2r2w": "より also fits (思ったより難しくなかった, 前よりおいしくない).",
+  // [日本語|にほんご] は [思|おも]った ＿＿ [難|むずか]しくなかった。 (ほど)
+  "n3-degree/hodo#11v0ves": "より also fits (思ったより難しくなかった, 前よりおいしくない).",
+  // この [店|みせ] の ラーメン は、 [前|まえ] ＿＿ おいしく ありません。 (ほど)
+  "n3-degree/hodo#16ro0n": "より also fits (思ったより難しくなかった, 前よりおいしくない).",
+  // この [店|みせ] の ラーメン は、 [前|まえ] ＿＿ おいしくない。 (ほど)
+  "n3-degree/hodo#u9adap": "より also fits (思ったより難しくなかった, 前よりおいしくない).",
+  // [返事|へんじ] は [早|はや]い ＿＿ いい です。 (ほど)
+  "n3-degree/ba-hodo#uwhr9e": "ほうが also fits (早いほうがいい).",
+  // [返事|へんじ] は [早|はや]い ＿＿ いい よ。 (ほど)
+  "n3-degree/ba-hodo#qv2nji": "ほうが also fits (早いほうがいい).",
+  // [練習|れんしゅう] する ＿＿、 [上手|じょうず] に なって きた。 (につれて)
+  "n3-degree/ba-hodo#101xeu0": "うちに also fits (練習するうちに).",
+  // [遅|おく]れる なら、 [電話|でんわ] ＿＿ して よ。 (くらい)
+  "n3-degree/kurai-extent#1he9p5o": "でも also fits (電話でもして).",
+  // [遅|おく]れる なら、 [電話|でんわ] ＿＿ して ください。 (くらい)
+  "n3-degree/kurai-extent#1upq082": "でも also fits (電話でもして).",
+  // [忙|いそが]しくて も、 [朝|あさ]ご[飯|はん] ＿＿ [食|た]べた ほう が いい です よ。 (くらい)
+  "n3-degree/kurai-extent#8v4iyk": "Contrastive は also fits (朝ご飯は食べたほうがいい, ひらがなは読めます).",
+  // [忙|いそが]しくて も、 [朝|あさ]ご[飯|はん] ＿＿ [食|た]べた ほう が いい よ。 (くらい)
+  "n3-degree/kurai-extent#jwn9js": "Contrastive は also fits (朝ご飯は食べたほうがいい, ひらがなは読めます).",
+  // ひらがな ＿＿ [読|よ]めます よ。 (ぐらい)
+  "n3-degree/kurai-extent#gcrrh4": "Contrastive は also fits (朝ご飯は食べたほうがいい, ひらがなは読めます).",
+  // ひらがな ＿＿ [読|よ]める よ。 (ぐらい)
+  "n3-degree/kurai-extent#1g43x72": "Contrastive は also fits (朝ご飯は食べたほうがいい, ひらがなは読めます).",
+  // ひらがな ＿＿ [読|よ]めます。 (くらい)
+  "n3-degree/kurai-extent#176xnqr": "Contrastive は also fits (朝ご飯は食べたほうがいい, ひらがなは読めます).",
+  // [部屋|へや] ＿＿ [片付|かたづ]けなさい。 (くらい)
+  "n3-degree/kurai-extent#pa2jg8": "を also fits (部屋を片付けなさい).",
+  // この [問題|もんだい] は ＿＿ [難|むずか]しくて、 [誰|だれ] も [答|こた]えられなかった。 (あまりに)
+  "n3-degree/amari#4ygotr": "とても also fits “so … that” (とても難しくて…).",
+  // この [問題|もんだい] は ＿＿ [難|むずか]しくて、 [誰|だれ] も [答|こた]えられません でした。 (あまりに)
+  "n3-degree/amari#1vi3xf9": "とても also fits “so … that” (とても難しくて…).",
+  // [値段|ねだん] が ＿＿ [高|たか]い ので、 [買|か]う の を やめました。 (あまりに も)
+  "n3-degree/amari#ina2jw": "とても also fits “so … that” (とても難しくて…).",
+  // [値段|ねだん] が ＿＿ [高|たか]い ので、 [買|か]う の を やめた。 (あまりに も)
+  "n3-degree/amari#1e4o9gr": "とても also fits “so … that” (とても難しくて…).",
+  // [景色|けしき] が ＿＿ きれい で、 [言葉|ことば] が [出|で]なかった。 (あまりに)
+  "n3-degree/amari#1oub1rb": "とても also fits “so … that” (とても難しくて…).",
+  // [景色|けしき] が ＿＿ きれい で、 [言葉|ことば] が [出|で]ません でした。 (あまりに)
+  "n3-degree/amari#1l9bzvh": "とても also fits “so … that” (とても難しくて…).",
+  // [話|はなし] が ＿＿ [長|なが]くて、 [途中|とちゅう] で [眠|ねむ]く なりました。 (あまりに も)
+  "n3-degree/amari#tffebm": "とても also fits “so … that” (とても難しくて…).",
+  // [話|はなし] が ＿＿ [長|なが]くて、 [途中|とちゅう] で [眠|ねむ]く なった。 (あまりに も)
+  "n3-degree/amari#1c5nim6": "とても also fits “so … that” (とても難しくて…).",
+  // [昨日|きのう] の [夜|よる] は ＿＿ [暑|あつ]くて、 [眠|ねむ]れなかった。 (あまり)
+  "n3-degree/amari#1qr5thy": "とても also fits “so … that” (とても難しくて…).",
+  // [昨日|きのう] の [夜|よる] は ＿＿ [暑|あつ]くて、 [眠|ねむ]れません でした。 (あまり)
+  "n3-degree/amari#11cqsjq": "とても also fits “so … that” (とても難しくて…).",
+  // ＿＿ [素晴|すば]らしくて、 [途中|とちゅう] で [泣|な]いちゃった。 (あまりに も)
+  "n3-degree/amari#rue9ou": "とても also fits “so … that” (とても難しくて…).",
+  // ＿＿ [寒|さむ]い ので、 [家|いえ] に いた。 (あまり)
+  "n3-degree/amari#1us8mrs": "とても also fits “so … that” (とても難しくて…).",
+  // ＿＿ [寒|さむ]くない ので、 [外|そと] で [遊|あそ]んだ。 (あまり)
+  "n3-degree/amari#1237197": "それほど and そんなに also fit “not very”.",
+  // うち の [子供|こども] は [甘|あま]い もの ＿＿ [食|た]べて います。 (ばかり)
+  "n3-degree/bakari#1mt95r": "だけ also fits (甘いものだけ, 男の子だけ).",
+  // うち の [子供|こども] は [甘|あま]い もの ＿＿ [食|た]べて いる。 (ばかり)
+  "n3-degree/bakari#1yaywfv": "だけ also fits (甘いものだけ, 男の子だけ).",
+  // この クラス は [男|おとこ]の[子|こ] ＿＿ だ。 (ばかり)
+  "n3-degree/bakari#140xapa": "だけ also fits (甘いものだけ, 男の子だけ).",
+  // この クラス は [男|おとこ]の[子|こ] ＿＿ です。 (ばかり)
+  "n3-degree/bakari#unsh3e": "だけ also fits (甘いものだけ, 男の子だけ).",
+  // [彼|かれ] は いつも [文句|もんく] ＿＿ [言|い]って いる。 (ばかり)
+  "n3-degree/bakari#1h0ejyi": "を also fits (いつも文句を言っている).",
+  // [彼|かれ] は いつも [文句|もんく] ＿＿ [言|い]って います。 (ばかり)
+  "n3-degree/bakari#cn9azo": "を also fits (いつも文句を言っている).",
+  // [今|いま]、 [食|た]べた ＿＿ です。 (ばかり)
+  "n3-degree/bakari#1gpe4t": "ところ also fits (食べたところ).",
+  // [飲|の]み[物|もの] は、 お[茶|ちゃ] ＿＿ どう？ (なんか)
+  "n3-degree/nanka-nante#4n77sd": "でも also fits (お茶でもどう？).",
+  // [飲|の]み[物|もの] は、 お[茶|ちゃ] ＿＿ どう です か？ (なんか)
+  "n3-degree/nanka-nante#1mft8ou": "でも also fits (お茶でもどう？).",
+  // [勉強|べんきょう] ＿＿、 [嫌|きら]い だ。 (なんて)
+  "n3-degree/nanka-nante#crmo11": "は also fits (勉強は嫌いだ, 彼の言うことは信じないほうがいい).",
+  // [彼|かれ] の [言|い]う こと ＿＿、 [信|しん]じない ほう が いい よ。 (なんか)
+  "n3-degree/nanka-nante#93bdfi": "は also fits (勉強は嫌いだ, 彼の言うことは信じないほうがいい).",
+  // [彼|かれ] の [言|い]う こと ＿＿、 [信|しん]じない ほう が いい です よ。 (なんか)
+  "n3-degree/nanka-nante#8c1le2": "は also fits (勉強は嫌いだ, 彼の言うことは信じないほうがいい).",
+  // こんな ところ で [会|あ]う ＿＿、 [思|おも]わなかった。 (なんて)
+  "n3-degree/nanka-nante#1c66i4t": "とは (and と) also fit (会うとは思わなかった).",
+  // こんな ところ で [会|あ]う ＿＿、 [思|おも]いません でした。 (なんて)
+  "n3-degree/nanka-nante#1vulh2a": "とは (and と) also fit (会うとは思わなかった).",
+  // [約束|やくそく] を [忘|わす]れる ＿＿、 ひどい よ。 (なんて)
+  "n3-degree/nanka-nante#doydn7": "のは also fits (約束を忘れるのはひどい).",
+  // [約束|やくそく] を [忘|わす]れる ＿＿、 ひどい です よ。 (なんて)
+  "n3-degree/nanka-nante#1362g35": "のは also fits (約束を忘れるのはひどい).",
+  // [昨日|きのう] の [試験|しけん] は ＿＿ [分|わ]からなかった。 (まったく)
+  "n3-degree/negative-adverbs#fcrqvr": "[全然|ぜんぜん] also fits “not at all”, as the lesson says.",
+  // [昨日|きのう] の [試験|しけん] は ＿＿ [分|わ]かりません でした。 (まったく)
+  "n3-degree/negative-adverbs#1w1xt3w": "[全然|ぜんぜん] also fits “not at all”, as the lesson says.",
+  // この [町|まち] は [昔|むかし] と ＿＿ [変|か]わって いません。 (まったく)
+  "n3-degree/negative-adverbs#1tulsmn": "[全然|ぜんぜん] also fits “not at all”, as the lesson says.",
+  // この [町|まち] は [昔|むかし] と ＿＿ [変|か]わって いない。 (まったく)
+  "n3-degree/negative-adverbs#3i1eaz": "[全然|ぜんぜん] also fits “not at all”, as the lesson says.",
+  // この [映画|えいが] は ＿＿ [面白|おもしろ]くなかった。 ([別|べつ]に)
+  "n3-degree/negative-adverbs#co709u": "あまり also fits (あまり面白くなかった, あまり行きたくない).",
+  // この [映画|えいが] は ＿＿ [面白|おもしろ]くなかった です。 ([別|べつ]に)
+  "n3-degree/negative-adverbs#4hovj2": "あまり also fits (あまり面白くなかった, あまり行きたくない).",
+  // ＿＿ [行|い]きたくない けど、 [誘|さそ]われた から [行|い]く。 ([別|べつ]に)
+  "n3-degree/negative-adverbs#ma8arf": "あまり also fits (あまり面白くなかった, あまり行きたくない).",
+  // ＿＿ [行|い]きたくない けど、 [誘|さそ]われた から [行|い]きます。 ([別|べつ]に)
+  "n3-degree/negative-adverbs#1k9432y": "あまり also fits (あまり面白くなかった, あまり行きたくない).",
+  // この [料理|りょうり] は ＿＿ おいしい。 (とても)
+  "n3-degree/negative-adverbs#teebe2": "すごく and 本当に also fit “very”.",
 };
 
 /**
@@ -1197,4 +1332,129 @@ export const CLOZE_ALSO: Record<string, string[]> = {
   "n3-relations/to-iu-yori#8y6516": ["と いう より も"],
   "n3-relations/to-iu-yori#18061p3": ["と いう より も"],
   "n3-relations/to-iu-yori#5disky": ["と いう より も"],
+  // Degree, limits and emphasis (unit 十七)
+  // n3-degree/hodo: for a degree, the lesson teaches くらい (ぐらい) as the everyday ほど.
+  // [泣|な]きたい ＿＿ [悲|かな]しかった。 (ほど)
+  "n3-degree/hodo#13qpdol": ["くらい","ぐらい"],
+  // [泣|な]きたい ＿＿ [悲|かな]しかった です。 (ほど)
+  "n3-degree/hodo#z9a8er": ["くらい","ぐらい"],
+  // [足|あし] が [痛|いた]くて、 [歩|ある]けない ＿＿ でした。 (ほど)
+  "n3-degree/hodo#1121zy3": ["くらい","ぐらい"],
+  // [足|あし] が [痛|いた]くて、 [歩|ある]けない ＿＿ だった。 (ほど)
+  "n3-degree/hodo#bxlfvk": ["くらい","ぐらい"],
+  // [今日|きょう] は [死|し]ぬ ＿＿ [疲|つか]れた。 (ほど)
+  "n3-degree/hodo#149i1dl": ["くらい","ぐらい"],
+  // [信|しん]じられない ＿＿ [安|やす]い です ね。 (ほど)
+  "n3-degree/hodo#1br786s": ["くらい","ぐらい"],
+  // [信|しん]じられない ＿＿ [安|やす]い ね。 (ほど)
+  "n3-degree/hodo#p9ukym": ["くらい","ぐらい"],
+  // すごかった。 [前|まえ] が [見|み]えない ＿＿ [降|ふ]った [日|ひ] も あった よ。 (ほど)
+  "n3-degree/hodo#184kos3": ["くらい","ぐらい"],
+  // n3-degree/kurai-extent: and the other way round; くらい and ぐらい are one word.
+  // [今日|きょう] は [外|そと] に [出|で]たくない ＿＿ [寒|さむ]い。 (くらい)
+  "n3-degree/kurai-extent#zqgpgt": ["ぐらい","ほど"],
+  // [今日|きょう] は [外|そと] に [出|で]たくない ＿＿ [寒|さむ]い です。 (くらい)
+  "n3-degree/kurai-extent#sqxemz": ["ぐらい","ほど"],
+  // [涙|なみだ] が [出|で]る ＿＿ [笑|わら]った。 (くらい)
+  "n3-degree/kurai-extent#d2wphe": ["ぐらい","ほど"],
+  // [涙|なみだ] が [出|で]る ＿＿ [笑|わら]いました。 (くらい)
+  "n3-degree/kurai-extent#1rhxxyo": ["ぐらい","ほど"],
+  // その ニュース を [聞|き]いて、 [声|こえ] も [出|で]ない ＿＿ [驚|おどろ]いた。 (くらい)
+  "n3-degree/kurai-extent#jfdp3y": ["ぐらい","ほど"],
+  // その ニュース を [聞|き]いて、 [声|こえ] も [出|で]ない ＿＿ [驚|おどろ]きました。 (くらい)
+  "n3-degree/kurai-extent#1p35goy": ["ぐらい","ほど"],
+  // [見|み]た！ [声|こえ] が [出|で]なく なる ＿＿ [応援|おうえん] した よ。 (くらい)
+  "n3-degree/kurai-extent#mzvqa6": ["ぐらい","ほど"],
+  // n3-degree/kurai-extent: くらい and ぐらい are one word.
+  // [彼女|かのじょ] は プロ と [同|おな]じ ＿＿ [歌|うた] が [上手|じょうず] です。 (くらい)
+  "n3-degree/kurai-extent#7cmehe": ["ぐらい"],
+  // [彼女|かのじょ] は プロ と [同|おな]じ ＿＿ [歌|うた] が [上手|じょうず] だ よ。 (くらい)
+  "n3-degree/kurai-extent#m9y73y": ["ぐらい"],
+  // こんな [時間|じかん] に [電話|でんわ] して くる の は [母|はは] ＿＿ です。 (くらい)
+  "n3-degree/kurai-extent#1jur5wj": ["ぐらい"],
+  // こんな [時間|じかん] に [電話|でんわ] して くる の は [母|はは] ＿＿ だ。 (くらい)
+  "n3-degree/kurai-extent#1fdx3ql": ["ぐらい"],
+  // この [町|まち] で [遅|おそ]く まで [開|あ]いて いる の は コンビニ ＿＿ だ。 (くらい)
+  "n3-degree/kurai-extent#apswtd": ["ぐらい"],
+  // この [町|まち] で [遅|おそ]く まで [開|あ]いて いる の は コンビニ ＿＿ です。 (くらい)
+  "n3-degree/kurai-extent#1eh20qf": ["ぐらい"],
+  // クラス で その [漢字|かんじ] が [読|よ]めた の は [私|わたし] ＿＿ だった。 (くらい)
+  "n3-degree/kurai-extent#vx47p": ["ぐらい"],
+  // クラス で その [漢字|かんじ] が [読|よ]めた の は [私|わたし] ＿＿ でした。 (くらい)
+  "n3-degree/kurai-extent#m6xczy": ["ぐらい"],
+  // [冷蔵庫|れいぞうこ] に ある の は [卵|たまご] ＿＿ です。 (くらい)
+  "n3-degree/kurai-extent#11jmvkq": ["ぐらい"],
+  // [冷蔵庫|れいぞうこ] に ある の は [卵|たまご] ＿＿ だ よ。 (くらい)
+  "n3-degree/kurai-extent#1nc7lcm": ["ぐらい"],
+  // n3-degree/dake-de-naku: だけでなく, its spoken forms and the written ばかりでなく say the same.
+  // [田中|たなか]-さん は [英語|えいご] ＿＿、 [中国語|ちゅうごくご] も [話|はな]せます。 (だけ で なく)
+  "n3-degree/dake-de-naku#5evt20": ["だけ で なくて","だけ じゃ なくて","だけ じゃ なく","ばかり で なく"],
+  // この [店|みせ] は [安|やす]い ＿＿、 [味|あじ] も いい。 (だけ で なく)
+  "n3-degree/dake-de-naku#10piiov": ["だけ で なくて","だけ じゃ なくて","だけ じゃ なく","ばかり で なく"],
+  // この [店|みせ] は [安|やす]い ＿＿、 [味|あじ] も いい です。 (だけ で なく)
+  "n3-degree/dake-de-naku#15nu41p": ["だけ で なくて","だけ じゃ なくて","だけ じゃ なく","ばかり で なく"],
+  // [雨|あめ] ＿＿、 [風|かぜ] も [強|つよ]く なって きました。 (だけ で なく)
+  "n3-degree/dake-de-naku#17ww5hd": ["だけ で なくて","だけ じゃ なくて","だけ じゃ なく","ばかり で なく"],
+  // [子供|こども] ＿＿、 [大人|おとな] も [楽|たの]しめる [映画|えいが] です。 (だけ で なく)
+  "n3-degree/dake-de-naku#1g32njx": ["だけ で なくて","だけ じゃ なくて","だけ じゃ なく","ばかり で なく"],
+  // [話|はな]す こと ＿＿、 [読|よ]む こと に も [慣|な]れて きました。 (だけ で なく)
+  "n3-degree/dake-de-naku#1kqg0oq": ["だけ で なくて","だけ じゃ なくて","だけ じゃ なく","ばかり で なく"],
+  // [田中|たなか]-さん は [英語|えいご] ＿＿、 [中国語|ちゅうごくご] も [話|はな]せる よ。 (だけ じゃ なくて)
+  "n3-degree/dake-de-naku#siuoi4": ["だけ で なく","だけ で なくて","だけ じゃ なく","ばかり で なく"],
+  // [雨|あめ] ＿＿、 [風|かぜ] も [強|つよ]く なって きた。 (だけ じゃ なくて)
+  "n3-degree/dake-de-naku#1a2aud8": ["だけ で なく","だけ で なくて","だけ じゃ なく","ばかり で なく"],
+  // [彼|かれ] は [勉強|べんきょう] ＿＿、 スポーツ も [得意|とくい] だ よ。 (だけ じゃ なくて)
+  "n3-degree/dake-de-naku#2z0h24": ["だけ で なく","だけ で なくて","だけ じゃ なく","ばかり で なく"],
+  // [彼|かれ] は [勉強|べんきょう] ＿＿、 スポーツ も [得意|とくい] です よ。 (だけ じゃ なくて)
+  "n3-degree/dake-de-naku#fmg0xs": ["だけ で なく","だけ で なくて","だけ じゃ なく","ばかり で なく"],
+  // [子供|こども] ＿＿、 [大人|おとな] も [楽|たの]しめる [映画|えいが] だ よ。 (だけ じゃ なくて)
+  "n3-degree/dake-de-naku#10dje4d": ["だけ で なく","だけ で なくて","だけ じゃ なく","ばかり で なく"],
+  // この [町|まち] は [旅行|りょこう] で [来|く]る [人|ひと] ＿＿、 [住|す]む [人|ひと] に も [人気|にんき] が あります。 (ばかり で なく)
+  "n3-degree/dake-de-naku#x19fuf": ["だけ で なく","だけ で なくて","だけ じゃ なくて","だけ じゃ なく"],
+  // [彼女|かのじょ] は [歌|うた] が [上手|じょうず] な ＿＿、 [曲|きょく] も [作|つく]れる。 (ばかり で なく)
+  "n3-degree/dake-de-naku#1w7qx27": ["だけ で なく","だけ で なくて","だけ じゃ なくて","だけ じゃ なく"],
+  // [彼女|かのじょ] は [歌|うた] が [上手|じょうず] な ＿＿、 [曲|きょく] も [作|つく]れます。 (ばかり で なく)
+  "n3-degree/dake-de-naku#7txr5v": ["だけ で なく","だけ で なくて","だけ じゃ なくて","だけ じゃ なく"],
+  // [運動|うんどう] は [体|からだ] ＿＿、 [心|こころ] に も いい そう です。 (ばかり で なく)
+  "n3-degree/dake-de-naku#k5y219": ["だけ で なく","だけ で なくて","だけ じゃ なくて","だけ じゃ なく"],
+  // [運動|うんどう] は [体|からだ] ＿＿、 [心|こころ] に も いい そう だ。 (ばかり で なく)
+  "n3-degree/dake-de-naku#1g1ozxz": ["だけ で なく","だけ で なくて","だけ じゃ なくて","だけ じゃ なく"],
+  // [台風|たいふう] で、 [電車|でんしゃ] ＿＿ [飛行機|ひこうき] も [止|と]まった。 (ばかり で なく)
+  "n3-degree/dake-de-naku#12pjom1": ["だけ で なく","だけ で なくて","だけ じゃ なくて","だけ じゃ なく"],
+  // [台風|たいふう] で、 [電車|でんしゃ] ＿＿ [飛行機|ひこうき] も [止|と]まりました。 (ばかり で なく)
+  "n3-degree/dake-de-naku#sditrl": ["だけ で なく","だけ で なくて","だけ じゃ なくて","だけ じゃ なく"],
+  // n3-degree/nanka-nante: after a noun, なんか and なんて are taught as one (など where it's neutral).
+  // [私|わたし] ＿＿、 まだ まだ です。 (なんか)
+  "n3-degree/nanka-nante#18p6m5o": ["なんて"],
+  // [私|わたし] ＿＿、 まだ まだ だ よ。 (なんか)
+  "n3-degree/nanka-nante#m0l968": ["なんて"],
+  // [私|わたし] ＿＿、 まだ [彼氏|かれし] も いない のに。 (なんか)
+  "n3-degree/nanka-nante#170et1g": ["なんて"],
+  // [忙|いそが]しくて、 テレビ ＿＿ [見|み]る [時間|じかん] が ない。 (なんか)
+  "n3-degree/nanka-nante#1v943gv": ["なんて","など"],
+  // [忙|いそが]しくて、 テレビ ＿＿ [見|み]る [時間|じかん] が ありません。 (なんか)
+  "n3-degree/nanka-nante#13h712b": ["なんて","など"],
+  // n3-degree/tatoe-temo: どんなに and いくら are taught as one (no matter how).
+  // ＿＿ [忙|いそが]しくて も、 [家族|かぞく] と の [時間|じかん] は [大切|たいせつ] に したい。 (どんなに)
+  "n3-degree/tatoe-temo#4n93ej": ["いくら"],
+  // ＿＿ [忙|いそが]しくて も、 [家族|かぞく] と の [時間|じかん] は [大切|たいせつ] に したい です。 (どんなに)
+  "n3-degree/tatoe-temo#1qmcfmx": ["いくら"],
+  // ＿＿ [頑張|がんば]って も、 [彼|かれ] に は [勝|か]てなかった。 (どんなに)
+  "n3-degree/tatoe-temo#1bbxcyb": ["いくら"],
+  // ＿＿ [頑張|がんば]って も、 [彼|かれ] に は [勝|か]てません でした。 (どんなに)
+  "n3-degree/tatoe-temo#xrhya1": ["いくら"],
+  // ＿＿ [高|たか]くて も、 この [絵|え] が [欲|ほ]しい。 (どんなに)
+  "n3-degree/tatoe-temo#2ss0t8": ["いくら"],
+  // ＿＿ [高|たか]くて も、 この [絵|え] が [欲|ほ]しい です。 (どんなに)
+  "n3-degree/tatoe-temo#1942ic0": ["いくら"],
+  // はい。 ＿＿ [疲|つか]れて も、 [走|はし]り[続|つづ]けます。 (どんなに)
+  "n3-degree/tatoe-temo#1t4h4ny": ["いくら"],
+  // ＿＿ [食|た]べて も [太|ふと]らない [人|ひと] が [羨|うらや]ましい。 (いくら)
+  "n3-degree/tatoe-temo#1a08o0m": ["どんなに"],
+  // ＿＿ [食|た]べて も [太|ふと]らない [人|ひと] が [羨|うらや]ましい です。 (いくら)
+  "n3-degree/tatoe-temo#1nn9zrm": ["どんなに"],
+  // ＿＿ [電話|でんわ] して も、 [彼女|かのじょ] は [出|で]ません でした。 (いくら)
+  "n3-degree/tatoe-temo#1m403fy": ["どんなに"],
+  // ＿＿ [電話|でんわ] して も、 [彼女|かのじょ] は [出|で]なかった。 (いくら)
+  "n3-degree/tatoe-temo#3v6gi6": ["どんなに"],
 };

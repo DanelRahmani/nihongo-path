@@ -142,4 +142,15 @@ export const DESCRIBING: Word[] = [
   w("adverb", "ずいぶん", "very, quite, surprisingly", "everyday"),
   naAdj("[丁寧|ていねい]", "polite, careful", "language"),
   iAdj("[涼|すず]しい", "cool (pleasantly)", "nature"),
+  // Degree, limits and emphasis (unit 十七)
+  w("adverb", "けっして", "(not) ever, by no means (with a negative)", "language"),
+  w("adverb", "めったに", "rarely, hardly ever (with a negative)", "language"),
+  w("adverb", "たとえ", "even if (with ても)", "language"),
+  w("adverb", "どんなに", "however (much), no matter how (with ても)", "language"),
+  w("adverb", "なかなか", "quite, pretty; (not) easily (with a negative)", "language"),
+  iAdj("ひどい", "terrible, cruel, awful", "feelings"),
+  iAdj("[素晴|すば]らしい", "wonderful, splendid", "feelings"),
+  w("adverb", "[別|べつ]に", "(not) particularly (with a negative); separately", "language"),
+  iAdj("[悲|かな]しい", "sad", "feelings"),
+  w("adverb", "あまりに", "too (much), excessively", "language"),
 ];

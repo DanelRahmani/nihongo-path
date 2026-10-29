@@ -149,7 +149,7 @@ export const BATCH_06: Word[] = [
   x("1441900", "[伝|つた]わる", "verb", "to be conveyed, to spread (news)", "language", "godan"),
   // moved to the lessons (n5-essentials/hou-ga-ii): 1227560 [休|やす]む
   // moved to the lessons (n4-giving-voice/passive): 1257330 [建|た]てる
-  x("1555930", "[涙|なみだ]", "noun", "tear, tears", "body"),
+  // moved to the lessons (n3-degree/kurai-extent): 1555930 [涙|なみだ]
   // moved to the lessons (n3-relations/wo-hajime): 1344410 [助|たす]ける
   // skipped: 1404750 [足|た]る (formal/archaic sense (to suffice); rare in modern use)
   x("1589820", "[香|かお]り", "noun", "scent, fragrance", "nature"),
@@ -201,7 +201,7 @@ export const BATCH_06: Word[] = [
   x("1034660", "オフィス", "noun", "office", "school-work"),
   // skipped: 1036170 カー (suffix-like; counted from compounds such as レンタカー)
   x("1037630", "カット", "noun", "cut (する: to cut, to omit)", "everyday"),
-  x("1038050", "カフェ", "noun", "cafe", "food"),
+  // moved to the lessons (n3-degree/shika-nai): 1038050 カフェ
   x("1044830", "クリスマス", "noun", "Christmas", "time"),
   x("1046170", "グッズ", "noun", "goods, merchandise", "shopping"),
   x("1158950", "[違反|いはん]", "noun", "violation, breaking a rule (する: to violate)", "everyday"),

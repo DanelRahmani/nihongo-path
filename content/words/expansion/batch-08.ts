@@ -48,17 +48,17 @@ export const BATCH_08: Word[] = [
   x("1390240", "[戦士|せんし]", "noun", "warrior, fighter, soldier", "people"),
   x("1392330", "[選択肢|せんたくし]", "noun", "choices, options", "everyday"),
   // moved to the lessons (n3-relations/ni-taishite): 1410780 [態度|たいど]
-  x("1420010", "[男|おとこ]の[子|こ]", "noun", "boy", "people"),
+  // moved to the lessons (n3-degree/bakari): 1420010 [男|おとこ]の[子|こ]
   x("1423640", "[中学|ちゅうがく]", "noun", "junior high school", "school-work"),
   x("1430930", "[直後|ちょくご]", "noun", "right after, immediately following", "time"),
   x("1437500", "[適用|てきよう]", "noun", "application of a rule (する: to apply)", "school-work"),
   x("1437960", "[鉄道|てつどう]", "noun", "railway", "travel"),
   x("1486670", "[美容|びよう]", "noun", "beauty care, beauty treatment", "everyday"),
-  x("1507720", "[平日|へいじつ]", "noun", "weekday", "time"), // pos: was adverb
+  // moved to the lessons (n3-degree/dake-de-naku): 1507720 [平日|へいじつ]
   x("1510950", "[変換|へんかん]", "noun", "conversion (する: to convert)", "everyday"),
   x("1515700", "[報酬|ほうしゅう]", "noun", "pay, reward, remuneration", "school-work"),
   // skipped: 1615490 [純|じゅん] (mostly a prefix or name element, "pure")
-  x("1207270", "[楽|たの]しむ", "verb", "to enjoy, to have a good time", "feelings", "godan"),
+  // moved to the lessons (n3-degree/dake-de-naku): 1207270 [楽|たの]しむ
   x("1332570", "[拾|ひろ]う", "verb", "to pick up, to find (on the ground)", "everyday", "godan"),
   x("1352570", "[上|のぼ]る", "verb", "to go up (stairs, a slope), to climb; to rise", "everyday", "godan"),
   x("1573190", "もたらす", "verb", "to bring about, to cause", "everyday", "godan"),
@@ -98,7 +98,7 @@ export const BATCH_08: Word[] = [
   x("1481630", "[犯人|はんにん]", "noun", "criminal, culprit", "people"),
   x("1497110", "[普及|ふきゅう]", "noun", "spread, popularization (する: to spread)", "everyday"),
   x("1501060", "[福祉|ふくし]", "noun", "welfare, social welfare", "everyday"),
-  x("1505260", "[文句|もんく]", "noun", "complaint; wording", "everyday"),
+  // moved to the lessons (n3-degree/bakari): 1505260 [文句|もんく]
   x("1533130", "[免許|めんきょ]", "noun", "licence, permit (e.g. driving)", "everyday"),
   x("1550880", "[離婚|りこん]", "noun", "divorce (する: to divorce)", "people"),
   x("1583640", "[夫婦|ふうふ]", "noun", "married couple, husband and wife", "people"),
@@ -189,7 +189,7 @@ export const BATCH_08: Word[] = [
   // skipped: 1612920 ひく (kana form here is an artefact of the common verb 引く; this sense is "to run over")
   x("1432710", "[痛|いた]む", "verb", "to hurt, to ache; to be damaged", "body", "godan"),
   x("1548520", "[絡|から]む", "verb", "to get tangled; to be involved with", "everyday", "godan"),
-  x("1599400", "[治|なお]る", "verb", "to get better, to recover (from illness)", "body", "godan"),
+  // moved to the lessons (n3-degree/sae): 1599400 [治|なお]る
   x("1010900", "ぴったり", "adverb", "exactly, perfectly; tightly (する: to fit perfectly)", "everyday"),
   x("1598680", "[時々|ときどき]", "adverb", "sometimes, occasionally", "time"),
   x("1409800", "[対|たい]", "noun", "versus; (score) to", "numbers"),

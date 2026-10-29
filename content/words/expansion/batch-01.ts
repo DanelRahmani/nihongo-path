@@ -88,14 +88,14 @@ export const BATCH_01: Word[] = [
   // moved to the lessons (n3-reasons/ni-yotte): 1510790 [変|か]わる
   // moved to the lessons (n4-conditions/temo): 1593670 [探|さが]す
   // skipped: 1567610 もむ (rare verb (to rub, massage))
-  x("1589060", "[行|おこな]う", "verb", "to do, to carry out, to hold (an event)", "everyday", "godan"),
+  // moved to the lessons (n3-degree/tatoe-temo): 1589060 [行|おこな]う
   // moved to the lessons (n4-plans/te-shimau): 1326980 [取|と]る
   x("1441390", "[点|てん]", "noun", "point, dot; score", "school-work"),
   x("1310460", "うまい", "i-adj", "good at; delicious (casual)", "food"),
   x("1322700", "[社会|しゃかい]", "noun", "society, community; the world of work", "school-work"),
   // skipped: 1308080 [市|いち] (rare reading (market, fair); the common word is し)
   x("1308090", "[市|し]", "noun", "city", "places"),
-  x("1401000", "[相手|あいて]", "noun", "the other person, partner", "people"),
+  // moved to the lessons (n3-degree/tatoe-temo): 1401000 [相手|あいて]
   x("1517090", "[方法|ほうほう]", "noun", "method, way", "everyday"),
   x("1550140", "[理由|りゆう]", "noun", "reason", "everyday"),
   x("1279310", "さらに", "adverb", "furthermore, even more, again", "language"),
@@ -104,7 +104,7 @@ export const BATCH_01: Word[] = [
   x("1297910", "[作品|さくひん]", "noun", "work (book, film, art)", "hobbies"),
   x("1451290", "[動画|どうが]", "noun", "video, video clip", "hobbies"),
   x("1218190", "[企業|きぎょう]", "noun", "company, business, enterprise", "school-work"),
-  x("1239700", "[曲|きょく]", "noun", "piece of music, tune, song", "hobbies"),
+  // moved to the lessons (n3-degree/dake-de-naku): 1239700 [曲|きょく]
   x("1263650", "[現在|げんざい]", "noun", "the present, now, as of now", "time"),
   x("1406150", "[存在|そんざい]", "noun", "existence, presence (する: to exist)", "everyday"),
   x("1526920", "[漫画|まんが]", "noun", "manga, comic", "hobbies"),

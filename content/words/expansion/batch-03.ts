@@ -96,10 +96,10 @@ export const BATCH_03: Word[] = [
   x("1470380", "[脳|のう]", "noun", "brain", "body"),
   // skipped: 1484710 [非|ひ] (prefix 'non-, un-'; the noun senses are rare)
   // moved to the lessons (n3-relations/toshite): 1537970 [役|やく]
-  x("1582200", "[途中|とちゅう]", "noun", "on the way, partway", "travel"),
+  // moved to the lessons (n3-degree/amari): 1582200 [途中|とちゅう]
   x("1206530", "[学|まな]ぶ", "verb", "to learn, to study (a little formal)", "school-work", "godan"),
   // moved to the lessons (n4-giving-voice/causative): 1218760 [喜|よろこ]ぶ
-  x("1238680", "[驚|おどろ]く", "verb", "to be surprised", "feelings", "godan"),
+  // moved to the lessons (n3-degree/kurai-extent): 1238680 [驚|おどろ]く
   x("1429700", "[飛|と]ぶ", "verb", "to fly; to jump", "everyday", "godan"),
   x("1219960", "いくつ", "question", "how many; how old", "numbers"), // pos: was adverb
   // skipped: 1590440 [傍|かたわ]ら (literary; the lessons use そば for 'beside')

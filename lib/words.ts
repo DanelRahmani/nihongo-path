@@ -26,6 +26,8 @@ export const FUNCTION_WORDS = new Set([
   ..."について にとって として をはじめ だって".split(" "),
   // かな and かしら (I wonder), sentence-final like ね.
   ..."かな かしら".split(" "),
+  // さえ (even), こそ (emphasis), ほど (extent), and なんか / なんて after a noun or clause (casual など).
+  ..."さえ こそ ほど なんか なんて".split(" "),
 ]);
 
 /**

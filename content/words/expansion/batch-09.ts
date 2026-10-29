@@ -147,7 +147,7 @@ export const BATCH_09: Word[] = [
   x("1606590", "[別|わか]れる", "verb", "to part, to separate; to split up", "people", "ichidan"),
   x("1553310", "[了解|りょうかい]", "noun", "understood, OK (する: to understand, to agree)", "language"),
   x("1041370", "キャスト", "noun", "cast (of a film or play)", "hobbies"),
-  x("1051970", "コンサート", "noun", "concert", "hobbies"),
+  // moved to the lessons (n3-degree/amari): 1051970 コンサート
   x("1054230", "ゴール", "noun", "goal (sport); finish line (する: to score)", "hobbies"),
   x("1100810", "パート", "noun", "part-time work, part-timer; part (in music)", "school-work"),
   x("1109000", "フィギュア", "noun", "figurine; figure (skating)", "hobbies"),
@@ -170,7 +170,7 @@ export const BATCH_09: Word[] = [
   x("1334340", "[充実|じゅうじつ]", "noun", "fullness, being fulfilling (する: to be full, to be rich)", "feelings"),
   x("1335400", "[従来|じゅうらい]", "noun", "up to now, traditional", "time"),
   x("1339220", "[出場|しゅつじょう]", "noun", "taking part in a match (する: to take part)", "hobbies"),
-  x("1355540", "[冗談|じょうだん]", "noun", "joke", "language"),
+  // moved to the lessons (n3-degree/tatoe-temo): 1355540 [冗談|じょうだん]
   x("1376850", "[正規|せいき]", "noun", "regular, formal, official", "school-work"),
   x("1387640", "[先行|せんこう]", "noun", "going ahead, advance (する: to go ahead)", "everyday"),
   x("1393680", "[前提|ぜんてい]", "noun", "premise, prerequisite", "everyday"),

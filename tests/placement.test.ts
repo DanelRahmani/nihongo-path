@@ -9,7 +9,7 @@ const BANDS = placementBands();
 describe("the bands", () => {
   it("are the units after the kana, in path order, two lesson-quiz questions each, typed in Japanese", () => {
     expect(BANDS.map((b) => b.unit)).toEqual(UNITS.map((u) => u.slug).filter((s) => s !== "hiragana" && s !== "katakana"));
-    expect(BANDS).toHaveLength(15);
+    expect(BANDS).toHaveLength(16);
     for (const b of BANDS) {
       expect(b.questions, b.unit).toHaveLength(PER_BAND);
       expect(new Set(b.questions.map((q) => q.prompt)).size, b.unit).toBe(PER_BAND);
@@ -54,6 +54,8 @@ describe("the bands", () => {
         "n3-time/ippou-da: Polite, with [一方|いっぽう] (use [増|ふ]える): “The number of foreigners working in Japan just keeps growing”: [日本|にほん]で[働|はたら]く[外国人|がいこくじん]は＿。",
         "n3-relations/ni-taishite: Whereas, with に[対|たい]して (use [多|おお]い): “The north gets a lot of snow, whereas the south gets hardly any”: [北|きた]は[雪|ゆき]が＿、[南|みなみ]はほとんど[降|ふ]らない。",
         "n3-relations/n-datte: Casual, with んだって (use [引|ひ]っ[越|こ]す): “Apparently Mori-san is moving next month”: [森|もり]さん、[来月|らいげつ]＿。",
+        "n3-degree/sae: Polite, with さえ (use ある): “As long as there's rice, I'm fine”: ご[飯|はん]＿、[大丈夫|だいじょうぶ]です。",
+        "n3-degree/ba-hodo: With ば〜ほど (use [聞|き]く): “The more I listen to this song, the more I like it”: この[歌|うた]は＿、[好|す]きになる。",
       ]
     `);
   });

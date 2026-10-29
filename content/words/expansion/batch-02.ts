@@ -20,7 +20,7 @@ export const BATCH_02: Word[] = [
   x("1275130", "[効果|こうか]", "noun", "effect", "everyday"),
   x("1282100", "[行動|こうどう]", "noun", "action, behaviour (する: to act)", "everyday"),
   x("1375970", "[政治|せいじ]", "noun", "politics", "school-work"),
-  x("1360480", "[心|こころ]", "noun", "heart, mind, spirit", "feelings"),
+  // moved to the lessons (n3-degree/dake-de-naku): 1360480 [心|こころ]
   // skipped: 1595125 [心|しん] (homograph; しん (core) is not what the bare word means)
   x("1220310", "すでに", "adverb", "already", "time"),
   // skipped: 2839304 [黄金|こがね] (homograph; こがね is a rare, literary reading of 黄金)
@@ -87,7 +87,7 @@ export const BATCH_02: Word[] = [
   x("1294180", "[最大|さいだい]", "noun", "biggest, greatest", "everyday"),
   x("1325260", "[主義|しゅぎ]", "noun", "-ism, principle", "school-work"),
   x("1338290", "[出演|しゅつえん]", "noun", "appearance on stage or screen (する: to appear)", "hobbies"),
-  x("1436540", "[程度|ていど]", "noun", "degree, extent", "everyday"),
+  // moved to the lessons (n3-degree/hodo): 1436540 [程度|ていど]
   // moved to the lessons (n3-relations/ni-shite-wa): 1554640 [量|りょう]
   x("1591720", "[協力|きょうりょく]", "noun", "cooperation (する: to cooperate)", "school-work"),
   x("1551940", "ほぼ", "adverb", "almost, nearly", "everyday"),
@@ -96,7 +96,7 @@ export const BATCH_02: Word[] = [
   x("1397450", "[組|くみ]", "noun", "class (at school); group, team", "school-work"),
   x("1134370", "メンバー", "noun", "member (of a group)", "people"),
   x("1284430", "[合|あ]う", "verb", "to fit, to suit, to match; to agree", "everyday", "godan"),
-  x("1117030", "プロ", "noun", "professional, pro", "people"),
+  // moved to the lessons (n3-degree/kurai-extent): 1117030 プロ
   x("1238410", "[興味|きょうみ]", "noun", "interest, curiosity", "feelings"),
   x("1250190", "[契約|けいやく]", "noun", "contract (する: to make a contract)", "school-work"),
   // moved to the lessons (n3-relations/ni-totte): 1251270 [経験|けいけん]
@@ -108,7 +108,7 @@ export const BATCH_02: Word[] = [
   x("1511040", "[変更|へんこう]", "noun", "change, alteration (する: to alter)", "everyday"),
   x("1562400", "[話題|わだい]", "noun", "topic of conversation", "language"),
   x("1582000", "[敵|てき]", "noun", "enemy, opponent", "people"),
-  x("1359040", "[信|しん]じる", "verb", "to believe, trust", "feelings", "ichidan"),
+  // moved to the lessons (n3-degree/koso): 1359040 [信|しん]じる
   x("1535880", "[戻|もど]る", "verb", "to return, go back", "everyday", "godan"),
   // moved to the lessons (n3-relations/toshite): 1597040 [立|た]つ
   x("1483090", "[彼|かれ]ら", "pronoun", "they, them (of people)", "people"),
@@ -136,7 +136,7 @@ export const BATCH_02: Word[] = [
   x("1158400", "[移動|いどう]", "noun", "movement (する: to move, travel)", "travel"),
   x("1223440", "[記録|きろく]", "noun", "record (する: to record)", "school-work"),
   // moved to the lessons (n3-reasons/ni-yotte): 1376310 [星|ほし]
-  x("1515670", "[報告|ほうこく]", "noun", "report (する: to report)", "school-work"),
+  // moved to the lessons (n3-degree/tatoe-temo): 1515670 [報告|ほうこく]
   x("1311125", "あたし", "pronoun", "I, me (casual, used mostly by women)", "people"),
   x("1293700", "[最|もっと]も", "adverb", "the most (formal)", "language"),
   // moved to the lessons (n4-seeming/ga-suru): 1510640 [変|へん]
@@ -163,7 +163,7 @@ export const BATCH_02: Word[] = [
   x("1351760", "[詳細|しょうさい]", "noun", "details", "everyday"),
   x("1473230", "[倍|ばい]", "noun", "double, times (as much)", "numbers"),
   x("1513530", "[保護|ほご]", "noun", "protection (する: to protect)", "everyday"),
-  x("1599420", "なかなか", "adverb", "quite; (not) easily", "language"),
+  // moved to the lessons (n3-degree/negative-adverbs): 1599420 なかなか
   // moved to the lessons (n4-seeming/you-mitai): 1350040 [消|き]える
   // skipped: 1303400 まく (artefact: kana count mixes several verbs)
   // moved to the lessons (n3-time/ue-de): 1327120 [守|まも]る
@@ -171,7 +171,7 @@ export const BATCH_02: Word[] = [
   // moved to the lessons (n3-time/saichuu-ni): 1222590 [気分|きぶん]
   x("1283500", "[高校|こうこう]", "noun", "high school", "school-work"),
   x("1316040", "[時期|じき]", "noun", "time, season, period", "time"),
-  x("1320140", "[失敗|しっぱい]", "noun", "failure, mistake (する: to fail)", "everyday"),
+  // moved to the lessons (n3-degree/koso): 1320140 [失敗|しっぱい]
   x("1379950", "[精神|せいしん]", "noun", "mind, spirit", "feelings"),
   x("1397630", "[組織|そしき]", "noun", "organization", "school-work"),
   x("1418160", "[担当|たんとう]", "noun", "being in charge (する: to take charge)", "school-work"),
@@ -180,7 +180,7 @@ export const BATCH_02: Word[] = [
   // moved to the lessons (n4-seeming/ga-suru): 1526960 [味|あじ]
   // moved to the lessons (n4-seeming/hazu): 1190860 おかしい
   // skipped: 1257800 まくる (まくる is mainly a suffix (to keep doing); kana form is an artefact)
-  x("1602060", "ひどい", "i-adj", "terrible, cruel, awful", "feelings"),
+  // moved to the lessons (n3-degree/nanka-nante): 1602060 ひどい
   x("1216250", "[丸|まる]", "noun", "circle; whole", "everyday"),
   // skipped: 1606800 [割|わ]り (割り is an artefact of compounds (割り算, 割り箸); 割 is a ratio)
   x("1365980", "[進|すす]む", "verb", "to advance, go forward", "everyday", "godan"),
@@ -241,7 +241,7 @@ export const BATCH_02: Word[] = [
   // moved to the lessons (n4-seeming/ka-dou-ka): 1254180 [決|き]める
   x("1223680", "[起|お]こる", "verb", "to happen, occur", "everyday", "godan"),
   // moved to the lessons (n3-time/te-hajimete): 1365040 [親|おや]
-  x("1397300", "[素晴|すば]らしい", "i-adj", "wonderful, splendid", "feelings"),
+  // moved to the lessons (n3-degree/amari): 1397300 [素晴|すば]らしい
   x("1446760", "[島|しま]", "noun", "island", "nature"),
   x("1182580", "[沖縄|おきなわ]", "noun", "Okinawa", "places"),
   x("1192700", "[科学|かがく]", "noun", "science", "school-work"),

@@ -16,6 +16,7 @@
 理由 | りゆう | (label: no romaji)
 時間 | じかん | (label: no romaji)
 関係 | かんけい | (label: no romaji)
+程度 | ていど | (label: no romaji)
 
 ## kinds
 基本 | きほん | (label: no romaji)
@@ -5179,6 +5180,474 @@
 むしろ | むしろ | mushiro
 寝たというより | ねた と いう より | neta to iu yori
 寝たというよりも | ねた と いう より も | neta to iu yori mo
+
+## n3-degree/sae
+さえ | さえ | (label: no romaji)
+名前さえ知らない | なまえ さえ しらない | namae sae shiranai
+先生でさえ分からない | せんせい で さえ わからない | sensei de sae wakaranai
+家族にさえ話していない | かぞく に さえ はなして いない | kazoku ni sae hanashite inai
+時間さえあれば | じかん さえ あれば | jikan sae areba
+謝りさえすれば | あやまり さえ すれば | ayamari sae sureba
+忙しくて、昼ご飯を食べる時間さえありませんでした。 | いそがしくて、 ひるごはん を たべる じかん さえ ありません でした。 | isogashikute, hirugohan o taberu jikan sae arimasen deshita.
+忙しくて、昼ご飯を食べる時間さえなかった。 | いそがしくて、 ひるごはん を たべる じかん さえ なかった。 | isogashikute, hirugohan o taberu jikan sae nakatta.
+隣に住んでいる人の名前さえ知らない。 | となり に すんで いる ひと の なまえ さえ しらない。 | tonari ni sunde iru hito no namae sae shiranai.
+隣に住んでいる人の名前さえ知りません。 | となり に すんで いる ひと の なまえ さえ しりません。 | tonari ni sunde iru hito no namae sae shirimasen.
+この問題は先生でさえ分からなかった。 | この もんだい は せんせい で さえ わからなかった。 | kono mondai wa sensei de sae wakaranakatta.
+この問題は先生でさえ分かりませんでした。 | この もんだい は せんせい で さえ わかりません でした。 | kono mondai wa sensei de sae wakarimasen deshita.
+疲れていて、立つことさえできなかった。 | つかれて いて、 たつ こと さえ できなかった。 | tsukarete ite, tatsu koto sae dekinakatta.
+疲れていて、立つことさえできませんでした。 | つかれて いて、 たつ こと さえ できません でした。 | tsukarete ite, tatsu koto sae dekimasen deshita.
+このことは家族にさえ話していません。 | この こと は かぞく に さえ はなして いません。 | kono koto wa kazoku ni sae hanashite imasen.
+このことは家族にさえ話していない。 | この こと は かぞく に さえ はなして いない。 | kono koto wa kazoku ni sae hanashite inai.
+時間さえあれば、もっと本を読みたいです。 | じかん さえ あれば、 もっと ほん を よみたい です。 | jikan sae areba, motto hon o yomitai desu.
+時間さえあれば、もっと本を読みたい。 | じかん さえ あれば、 もっと ほん を よみたい。 | jikan sae areba, motto hon o yomitai.
+この薬さえ飲めば、すぐよくなりますよ。 | この くすり さえ のめば、 すぐ よく なります よ。 | kono kusuri sae nomeba, sugu yoku narimasu yo.
+この薬さえ飲めば、すぐよくなるよ。 | この くすり さえ のめば、 すぐ よく なる よ。 | kono kusuri sae nomeba, sugu yoku naru yo.
+天気さえよければ、明日は山に登るつもりだ。 | てんき さえ よければ、 あした は やま に のぼる つもり だ。 | tenki sae yokereba, ashita wa yama ni noboru tsumori da.
+天気さえよければ、明日は山に登るつもりです。 | てんき さえ よければ、 あした は やま に のぼる つもり です。 | tenki sae yokereba, ashita wa yama ni noboru tsumori desu.
+住所さえ分かれば、地図で探せます。 | じゅうしょ さえ わかれば、 ちず で さがせます。 | juusho sae wakareba, chizu de sagasemasu.
+住所さえ分かれば、地図で探せる。 | じゅうしょ さえ わかれば、 ちず で さがせる。 | juusho sae wakareba, chizu de sagaseru.
+謝りさえすれば、彼女は許してくれると思う。 | あやまり さえ すれば、 かのじょ は ゆるして くれる と おもう。 | ayamari sae sureba, kanojo wa yurushite kureru to omou.
+謝りさえすれば、彼女は許してくれると思います。 | あやまり さえ すれば、 かのじょ は ゆるして くれる と おもいます。 | ayamari sae sureba, kanojo wa yurushite kureru to omoimasu.
+弟はひらがなも読めない。 | おとうと は ひらがな も よめない。 | otouto wa hiragana mo yomenai.
+弟はひらがなさえ読めない。 | おとうと は ひらがな さえ よめない。 | otouto wa hiragana sae yomenai.
+日本語の勉強、どう？ | にほんご の べんきょう、 どう？ | nihongo no benkyou, dou?
+難しいよ。まだ子供の本さえ読めないんだ。 | むずかしい よ。 まだ こども の ほん さえ よめない ん だ。 | muzukashii yo. mada kodomo no hon sae yomenai n da.
+大丈夫。毎日続けさえすれば、読めるようになるよ。 | だいじょうぶ。 まいにち つづけ さえ すれば、 よめる よう に なる よ。 | daijoubu. mainichi tsuzuke sae sureba, yomeru you ni naru yo.
+さえしない | さえ しない | sae shinai
+にさえ | に さえ | ni sae
+さえあれば | さえ あれば | sae areba
+押しさえすれば | おし さえ すれば | oshi sae sureba
+休みさえすれば治りますよ。 | やすみ さえ すれば なおります よ。 | yasumi sae sureba naorimasu yo.
+
+## n3-degree/koso
+こそ | こそ | (label: no romaji)
+今度こそ | こんど こそ | kondo koso
+こちらこそ | こちら こそ | kochira koso
+難しいからこそ | むずかしい から こそ | muzukashii kara koso
+家族だからこそ | かぞく だ から こそ | kazoku da kara koso
+今度こそ試験に合格したい。 | こんど こそ しけん に ごうかく したい。 | kondo koso shiken ni goukaku shitai.
+今度こそ試験に合格したいです。 | こんど こそ しけん に ごうかく したい です。 | kondo koso shiken ni goukaku shitai desu.
+今年こそたばこをやめます。 | ことし こそ たばこ を やめます。 | kotoshi koso tabako o yamemasu.
+今年こそたばこをやめる。 | ことし こそ たばこ を やめる。 | kotoshi koso tabako o yameru.
+いいえ、こちらこそありがとうございました。 | いいえ、 こちら こそ ありがとう ございました。 | iie, kochira koso arigatou gozaimashita.
+これこそ私が探していた本です。 | これ こそ わたし が さがして いた ほん です。 | kore koso watashi ga sagashite ita hon desu.
+これこそ私が探していた本だ。 | これ こそ わたし が さがして いた ほん だ。 | kore koso watashi ga sagashite ita hon da.
+健康こそ一番大切なものだと思う。 | けんこう こそ いちばん たいせつ な もの だ と おもう。 | kenkou koso ichiban taisetsu na mono da to omou.
+健康こそ一番大切なものだと思います。 | けんこう こそ いちばん たいせつ な もの だ と おもいます。 | kenkou koso ichiban taisetsu na mono da to omoimasu.
+好きだからこそ、厳しいことを言うんです。 | すき だ から こそ、 きびしい こと を いう ん です。 | suki da kara koso, kibishii koto o iu n desu.
+好きだからこそ、厳しいことを言うんだよ。 | すき だ から こそ、 きびしい こと を いう ん だ よ。 | suki da kara koso, kibishii koto o iu n da yo.
+難しいからこそ、やってみたい。 | むずかしい から こそ、 やって みたい。 | muzukashii kara koso, yatte mitai.
+難しいからこそ、やってみたいです。 | むずかしい から こそ、 やって みたい です。 | muzukashii kara koso, yatte mitai desu.
+家族だからこそ、言えないこともある。 | かぞく だ から こそ、 いえない こと も ある。 | kazoku da kara koso, ienai koto mo aru.
+家族だからこそ、言えないこともあります。 | かぞく だ から こそ、 いえない こと も あります。 | kazoku da kara koso, ienai koto mo arimasu.
+毎日練習したからこそ、試合に勝てたんです。 | まいにち れんしゅう した から こそ、 しあい に かてた ん です。 | mainichi renshuu shita kara koso, shiai ni kateta n desu.
+毎日練習したからこそ、試合に勝てたんだ。 | まいにち れんしゅう した から こそ、 しあい に かてた ん だ。 | mainichi renshuu shita kara koso, shiai ni kateta n da.
+失敗したからこそ、分かることがあります。 | しっぱい した から こそ、 わかる こと が あります。 | shippai shita kara koso, wakaru koto ga arimasu.
+失敗したからこそ、分かることがある。 | しっぱい した から こそ、 わかる こと が ある。 | shippai shita kara koso, wakaru koto ga aru.
+難しかったから、やめた。 | むずかしかった から、 やめた。 | muzukashikatta kara, yameta.
+難しかったからこそ、続けた。 | むずかしかった から こそ、 つづけた。 | muzukashikatta kara koso, tsuzuketa.
+この間はありがとうございました。 | この あいだ は ありがとう ございました。 | kono aida wa arigatou gozaimashita.
+いえ、こちらこそ。本当に助かりました。 | いえ、 こちら こそ。 ほんとう に たすかりました。 | ie, kochira koso. hontou ni tasukarimashita.
+また一緒に仕事をしましょう。 | また いっしょ に しごと を しましょう。 | mata issho ni shigoto o shimashou.
+こそ | こそ | koso
+こそは | こそ は | koso wa
+こちらこそ | こちら こそ | kochira koso
+私こそ | わたし こそ | watashi koso
+大切だからこそ | たいせつ だ から こそ | taisetsu da kara koso
+大切なものだからこそ | たいせつ な もの だ から こそ | taisetsu na mono da kara koso
+信じているからこそ | しんじて いる から こそ | shinjite iru kara koso
+好きだからこそ、毎日続けられる。 | すき だ から こそ、 まいにち つづけられる。 | suki da kara koso, mainichi tsuzukerareru.
+
+## n3-degree/hodo
+ほど | ほど | (label: no romaji)
+泣きたいほど | なきたい ほど | nakitai hodo
+歩けないほど | あるけない ほど | arukenai hodo
+山ほど | やま ほど | yama hodo
+今年は去年ほど暑くない | ことし は きょねん ほど あつくない | kotoshi wa kyonen hodo atsukunai
+泣きたいほど悲しかった。 | なきたい ほど かなしかった。 | nakitai hodo kanashikatta.
+泣きたいほど悲しかったです。 | なきたい ほど かなしかった です。 | nakitai hodo kanashikatta desu.
+足が痛くて、歩けないほどでした。 | あし が いたくて、 あるけない ほど でした。 | ashi ga itakute, arukenai hodo deshita.
+足が痛くて、歩けないほどだった。 | あし が いたくて、 あるけない ほど だった。 | ashi ga itakute, arukenai hodo datta.
+今日は死ぬほど疲れた。 | きょう は しぬ ほど つかれた。 | kyou wa shinu hodo tsukareta.
+宿題が山ほどあります。 | しゅくだい が やま ほど あります。 | shukudai ga yama hodo arimasu.
+宿題が山ほどある。 | しゅくだい が やま ほど ある。 | shukudai ga yama hodo aru.
+信じられないほど安いですね。 | しんじられない ほど やすい です ね。 | shinjirarenai hodo yasui desu ne.
+信じられないほど安いね。 | しんじられない ほど やすい ね。 | shinjirarenai hodo yasui ne.
+今年の夏は去年ほど暑くない。 | ことし の なつ は きょねん ほど あつくない。 | kotoshi no natsu wa kyonen hodo atsukunai.
+今年の夏は去年ほど暑くないです。 | ことし の なつ は きょねん ほど あつくない です。 | kotoshi no natsu wa kyonen hodo atsukunai desu.
+日本語は思ったほど難しくなかったです。 | にほんご は おもった ほど むずかしくなかった です。 | nihongo wa omotta hodo muzukashikunakatta desu.
+日本語は思ったほど難しくなかった。 | にほんご は おもった ほど むずかしくなかった。 | nihongo wa omotta hodo muzukashikunakatta.
+私は兄ほど背が高くない。 | わたし は あに ほど せ が たかくない。 | watashi wa ani hodo se ga takakunai.
+私は兄ほど背が高くないです。 | わたし は あに ほど せ が たかくない です。 | watashi wa ani hodo se ga takakunai desu.
+この店のラーメンは、前ほどおいしくありません。 | この みせ の ラーメン は、 まえ ほど おいしく ありません。 | kono mise no raamen wa, mae hodo oishiku arimasen.
+この店のラーメンは、前ほどおいしくない。 | この みせ の ラーメン は、 まえ ほど おいしくない。 | kono mise no raamen wa, mae hodo oishikunai.
+今日は昨日より寒くない。 | きょう は きのう より さむくない。 | kyou wa kinou yori samukunai.
+今日は昨日ほど寒くない。 | きょう は きのう ほど さむくない。 | kyou wa kinou hodo samukunai.
+北海道の冬はどうだった？ | ほっかいどう の ふゆ は どう だった？ | hokkaidou no fuyu wa dou datta?
+寒かったけど、思ったほどじゃなかったよ。 | さむかった けど、 おもった ほど じゃ なかった よ。 | samukatta kedo, omotta hodo ja nakatta yo.
+雪は？ | ゆき は？ | yuki wa?
+すごかった。前が見えないほど降った日もあったよ。 | すごかった。 まえ が みえない ほど ふった ひ も あった よ。 | sugokatta. mae ga mienai hodo futta hi mo atta yo.
+眠れないほど | ねむれない ほど | nemurenai hodo
+ほど | ほど | hodo
+高くなかったです | たかくなかった です | takakunakatta desu
+高くありませんでした | たかく ありません でした | takaku arimasen deshita
+バスは電車ほど速くないです。 | バス は でんしゃ ほど はやくない です。 | basu wa densha hodo hayakunai desu.
+バスは電車ほど速くありません。 | バス は でんしゃ ほど はやく ありません。 | basu wa densha hodo hayaku arimasen.
+
+## n3-degree/ba-hodo
+ば・ほど | ば・ほど | (label: no romaji)
+食べれば食べるほど | たべれば たべる ほど | tabereba taberu hodo
+安ければ安いほど | やすければ やすい ほど | yasukereba yasui hodo
+静かなら静かなほど | しずか なら しずか な ほど | shizuka nara shizuka na hodo
+早いほどいい | はやい ほど いい | hayai hodo ii
+考えれば考えるほど、分からなくなる。 | かんがえれば かんがえる ほど、 わからなく なる。 | kangaereba kangaeru hodo, wakaranaku naru.
+考えれば考えるほど、分からなくなります。 | かんがえれば かんがえる ほど、 わからなく なります。 | kangaereba kangaeru hodo, wakaranaku narimasu.
+日本語は勉強すればするほど面白くなります。 | にほんご は べんきょう すれば する ほど おもしろく なります。 | nihongo wa benkyou sureba suru hodo omoshiroku narimasu.
+日本語は勉強すればするほど面白くなるよ。 | にほんご は べんきょう すれば する ほど おもしろく なる よ。 | nihongo wa benkyou sureba suru hodo omoshiroku naru yo.
+野菜は新しければ新しいほどおいしい。 | やさい は あたらしければ あたらしい ほど おいしい。 | yasai wa atarashikereba atarashii hodo oishii.
+野菜は新しければ新しいほどおいしいです。 | やさい は あたらしければ あたらしい ほど おいしい です。 | yasai wa atarashikereba atarashii hodo oishii desu.
+部屋は広ければ広いほど、家賃が高くなる。 | へや は ひろければ ひろい ほど、 やちん が たかく なる。 | heya wa hirokereba hiroi hodo, yachin ga takaku naru.
+部屋は広ければ広いほど、家賃が高くなります。 | へや は ひろければ ひろい ほど、 やちん が たかく なります。 | heya wa hirokereba hiroi hodo, yachin ga takaku narimasu.
+町は便利なら便利なほど、住みたい人が増えます。 | まち は べんり なら べんり な ほど、 すみたい ひと が ふえます。 | machi wa benri nara benri na hodo, sumitai hito ga fuemasu.
+町は便利なら便利なほど、住みたい人が増える。 | まち は べんり なら べんり な ほど、 すみたい ひと が ふえる。 | machi wa benri nara benri na hodo, sumitai hito ga fueru.
+返事は早いほどいいです。 | へんじ は はやい ほど いい です。 | henji wa hayai hodo ii desu.
+返事は早いほどいいよ。 | へんじ は はやい ほど いい よ。 | henji wa hayai hodo ii yo.
+練習するにつれて、上手になってきた。 | れんしゅう する につれて、 じょうず に なって きた。 | renshuu suru nitsurete, jouzu ni natte kita.
+練習すればするほど、上手になる。 | れんしゅう すれば する ほど、 じょうず に なる。 | renshuu sureba suru hodo, jouzu ni naru.
+日本語の本は、読めば読むほど速く読めるようになるね。 | にほんご の ほん は、 よめば よむ ほど はやく よめる よう に なる ね。 | nihongo no hon wa, yomeba yomu hodo hayaku yomeru you ni naru ne.
+うん。でも難しい本は、読めば読むほど眠くなるよ。 | うん。 でも むずかしい ほん は、 よめば よむ ほど ねむく なる よ。 | un. demo muzukashii hon wa, yomeba yomu hodo nemuku naru yo.
+聞けば聞くほど | きけば きく ほど | kikeba kiku hodo
+軽ければ軽いほど | かるければ かるい ほど | karukereba karui hodo
+軽いほど | かるい ほど | karui hodo
+簡単なら簡単なほど | かんたん なら かんたん な ほど | kantan nara kantan na hodo
+簡単なほど | かんたん な ほど | kantan na hodo
+話せば話すほど | はなせば はなす ほど | hanaseba hanasu hodo
+高ければ高いほど、よく売れる。 | たかければ たかい ほど、 よく うれる。 | takakereba takai hodo, yoku ureru.
+
+## n3-degree/kurai-extent
+くらい | くらい | (label: no romaji)
+涙が出るくらい | なみだ が でる くらい | namida ga deru kurai
+電話くらいして | でんわ くらい して | denwa kurai shite
+直せるのは森さんくらいだ | なおせる の は もりさん くらい だ | naoseru no wa mori-san kurai da
+今日は外に出たくないくらい寒い。 | きょう は そと に でたくない くらい さむい。 | kyou wa soto ni detakunai kurai samui.
+今日は外に出たくないくらい寒いです。 | きょう は そと に でたくない くらい さむい です。 | kyou wa soto ni detakunai kurai samui desu.
+涙が出るくらい笑った。 | なみだ が でる くらい わらった。 | namida ga deru kurai waratta.
+涙が出るくらい笑いました。 | なみだ が でる くらい わらいました。 | namida ga deru kurai waraimashita.
+彼女はプロと同じくらい歌が上手です。 | かのじょ は プロ と おなじ くらい うた が じょうず です。 | kanojo wa puro to onaji kurai uta ga jouzu desu.
+彼女はプロと同じくらい歌が上手だよ。 | かのじょ は プロ と おなじ くらい うた が じょうず だ よ。 | kanojo wa puro to onaji kurai uta ga jouzu da yo.
+そのニュースを聞いて、声も出ないくらい驚いた。 | その ニュース を きいて、 こえ も でない くらい おどろいた。 | sono nyuusu o kiite, koe mo denai kurai odoroita.
+そのニュースを聞いて、声も出ないくらい驚きました。 | その ニュース を きいて、 こえ も でない くらい おどろきました。 | sono nyuusu o kiite, koe mo denai kurai odorokimashita.
+遅れるなら、電話くらいしてよ。 | おくれる なら、 でんわ くらい して よ。 | okureru nara, denwa kurai shite yo.
+遅れるなら、電話くらいしてください。 | おくれる なら、 でんわ くらい して ください。 | okureru nara, denwa kurai shite kudasai.
+忙しくても、朝ご飯くらい食べたほうがいいですよ。 | いそがしくて も、 あさごはん くらい たべた ほう が いい です よ。 | isogashikute mo, asagohan kurai tabeta hou ga ii desu yo.
+忙しくても、朝ご飯くらい食べたほうがいいよ。 | いそがしくて も、 あさごはん くらい たべた ほう が いい よ。 | isogashikute mo, asagohan kurai tabeta hou ga ii yo.
+ひらがなぐらい読めますよ。 | ひらがな ぐらい よめます よ。 | hiragana gurai yomemasu yo.
+ひらがなぐらい読めるよ。 | ひらがな ぐらい よめる よ。 | hiragana gurai yomeru yo.
+部屋くらい片付けなさい。 | へや くらい かたづけなさい。 | heya kurai katazukenasai.
+こんな時間に電話してくるのは母くらいです。 | こんな じかん に でんわ して くる の は はは くらい です。 | konna jikan ni denwa shite kuru no wa haha kurai desu.
+こんな時間に電話してくるのは母くらいだ。 | こんな じかん に でんわ して くる の は はは くらい だ。 | konna jikan ni denwa shite kuru no wa haha kurai da.
+この町で遅くまで開いているのはコンビニくらいだ。 | この まち で おそく まで あいて いる の は コンビニ くらい だ。 | kono machi de osoku made aite iru no wa konbini kurai da.
+この町で遅くまで開いているのはコンビニくらいです。 | この まち で おそく まで あいて いる の は コンビニ くらい です。 | kono machi de osoku made aite iru no wa konbini kurai desu.
+クラスでその漢字が読めたのは私くらいだった。 | クラス で その かんじ が よめた の は わたし くらい だった。 | kurasu de sono kanji ga yometa no wa watashi kurai datta.
+クラスでその漢字が読めたのは私くらいでした。 | クラス で その かんじ が よめた の は わたし くらい でした。 | kurasu de sono kanji ga yometa no wa watashi kurai deshita.
+冷蔵庫にあるのは卵くらいです。 | れいぞうこ に ある の は たまご くらい です。 | reizouko ni aru no wa tamago kurai desu.
+冷蔵庫にあるのは卵くらいだよ。 | れいぞうこ に ある の は たまご くらい だ よ。 | reizouko ni aru no wa tamago kurai da yo.
+ひらがなしか読めません。 | ひらがな しか よめません。 | hiragana shika yomemasen.
+ひらがなくらい読めます。 | ひらがな くらい よめます。 | hiragana kurai yomemasu.
+昨日の試合、見た？ | きのう の しあい、 みた？ | kinou no shiai, mita?
+見た！声が出なくなるくらい応援したよ。 | みた！ こえ が でなく なる くらい おうえん した よ。 | mita! koe ga denaku naru kurai ouen shita yo.
+私も。次の試合は一緒に見ようよ。 | わたし も。 つぎ の しあい は いっしょ に みよう よ。 | watashi mo. tsugi no shiai wa issho ni miyou yo.
+歩けないくらい | あるけない くらい | arukenai kurai
+歩けないぐらい | あるけない ぐらい | arukenai gurai
+くらい言って | くらい いって | kurai itte
+ぐらい言って | ぐらい いって | gurai itte
+くらいです | くらい です | kurai desu
+ぐらいです | ぐらい です | gurai desu
+くらい作れる | くらい つくれる | kurai tsukureru
+ぐらい作れる | ぐらい つくれる | gurai tsukureru
+くらい作れるよ | くらい つくれる よ | kurai tsukureru yo
+ぐらい作れるよ | ぐらい つくれる よ | gurai tsukureru yo
+踊りたいくらいうれしかった。 | おどりたい くらい うれしかった。 | odoritai kurai ureshikatta.
+踊りたいぐらいうれしかった。 | おどりたい ぐらい うれしかった。 | odoritai gurai ureshikatta.
+踊りたいほどうれしかった。 | おどりたい ほど うれしかった。 | odoritai hodo ureshikatta.
+
+## n3-degree/amari
+あまり | あまり | (label: no romaji)
+あまりに難しくて | あまりに むずかしくて | amarini muzukashikute
+あまり暑くて | あまり あつくて | amari atsukute
+あまりの暑さに | あまり の あつさ に | amari no atsusa ni
+心配のあまり | しんぱい の あまり | shinpai no amari
+急ぐあまり | いそぐ あまり | isogu amari
+この問題はあまりに難しくて、誰も答えられなかった。 | この もんだい は あまりに むずかしくて、 だれ も こたえられなかった。 | kono mondai wa amarini muzukashikute, dare mo kotaerarenakatta.
+この問題はあまりに難しくて、誰も答えられませんでした。 | この もんだい は あまりに むずかしくて、 だれ も こたえられません でした。 | kono mondai wa amarini muzukashikute, dare mo kotaeraremasen deshita.
+値段があまりにも高いので、買うのをやめました。 | ねだん が あまりに も たかい ので、 かう の を やめました。 | nedan ga amarini mo takai node, kau no o yamemashita.
+値段があまりにも高いので、買うのをやめた。 | ねだん が あまりに も たかい ので、 かう の を やめた。 | nedan ga amarini mo takai node, kau no o yameta.
+景色があまりにきれいで、言葉が出なかった。 | けしき が あまりに きれい で、 ことば が でなかった。 | keshiki ga amarini kirei de, kotoba ga denakatta.
+景色があまりにきれいで、言葉が出ませんでした。 | けしき が あまりに きれい で、 ことば が でません でした。 | keshiki ga amarini kirei de, kotoba ga demasen deshita.
+話があまりにも長くて、途中で眠くなりました。 | はなし が あまりに も ながくて、 とちゅう で ねむく なりました。 | hanashi ga amarini mo nagakute, tochuu de nemuku narimashita.
+話があまりにも長くて、途中で眠くなった。 | はなし が あまりに も ながくて、 とちゅう で ねむく なった。 | hanashi ga amarini mo nagakute, tochuu de nemuku natta.
+昨日の夜はあまり暑くて、眠れなかった。 | きのう の よる は あまり あつくて、 ねむれなかった。 | kinou no yoru wa amari atsukute, nemurenakatta.
+昨日の夜はあまり暑くて、眠れませんでした。 | きのう の よる は あまり あつくて、 ねむれません でした。 | kinou no yoru wa amari atsukute, nemuremasen deshita.
+あまりの暑さに、倒れる人もいました。 | あまり の あつさ に、 たおれる ひと も いました。 | amari no atsusa ni, taoreru hito mo imashita.
+あまりの暑さに、倒れる人もいた。 | あまり の あつさ に、 たおれる ひと も いた。 | amari no atsusa ni, taoreru hito mo ita.
+あまりの痛さに、大きな声を出してしまった。 | あまり の いたさ に、 おおきな こえ を だして しまった。 | amari no itasa ni, ookina koe o dashite shimatta.
+あまりの痛さに、大きな声を出してしまいました。 | あまり の いたさ に、 おおきな こえ を だして しまいました。 | amari no itasa ni, ookina koe o dashite shimaimashita.
+うれしさのあまり、泣いてしまいました。 | うれしさ の あまり、 ないて しまいました。 | ureshisa no amari, naite shimaimashita.
+うれしさのあまり、泣いてしまった。 | うれしさ の あまり、 ないて しまった。 | ureshisa no amari, naite shimatta.
+母は心配のあまり、夜も眠れなかった。 | はは は しんぱい の あまり、 よる も ねむれなかった。 | haha wa shinpai no amari, yoru mo nemurenakatta.
+母は心配のあまり、夜も眠れませんでした。 | はは は しんぱい の あまり、 よる も ねむれません でした。 | haha wa shinpai no amari, yoru mo nemuremasen deshita.
+急ぐあまり、財布を忘れて出かけた。 | いそぐ あまり、 さいふ を わすれて でかけた。 | isogu amari, saifu o wasurete dekaketa.
+急ぐあまり、財布を忘れて出かけました。 | いそぐ あまり、 さいふ を わすれて でかけました。 | isogu amari, saifu o wasurete dekakemashita.
+あまり寒くないので、外で遊んだ。 | あまり さむくない ので、 そと で あそんだ。 | amari samukunai node, soto de asonda.
+あまり寒いので、家にいた。 | あまり さむい ので、 いえ に いた。 | amari samui node, ie ni ita.
+昨日のコンサート、どうだった？ | きのう の コンサート、 どう だった？ | kinou no konsaato, dou datta?
+あまりにも素晴らしくて、途中で泣いちゃった。 | あまりに も すばらしくて、 とちゅう で ないちゃった。 | amarini mo subarashikute, tochuu de naichatta.
+そんなに？私も行けばよかった。 | そんな に？ わたし も いけば よかった。 | sonna ni? watashi mo ikeba yokatta.
+あまりの寒さ | あまり の さむさ | amari no samusa
+驚きのあまり | おどろき の あまり | odoroki no amari
+あまりに速く | あまりに はやく | amarini hayaku
+あまりにも速く | あまりに も はやく | amarini mo hayaku
+悲しさのあまり、何も食べられなかった。 | かなしさ の あまり、 なに も たべられなかった。 | kanashisa no amari, nani mo taberarenakatta.
+あまりの悲しさに、何も食べられなかった。 | あまり の かなしさ に、 なに も たべられなかった。 | amari no kanashisa ni, nani mo taberarenakatta.
+
+## n3-degree/dake-de-naku
+だけでなく | だけでなく | (label: no romaji)
+英語だけでなく | えいご だけ で なく | eigo dake de naku
+安いだけでなく | やすい だけ で なく | yasui dake de naku
+便利なだけでなく | べんり な だけ で なく | benri na dake de naku
+体ばかりでなく | からだ ばかり で なく | karada bakari de naku
+週末はもちろん | しゅうまつ は もちろん | shuumatsu wa mochiron
+田中さんは英語だけでなく、中国語も話せます。 | たなかさん は えいご だけ で なく、 ちゅうごくご も はなせます。 | tanaka-san wa eigo dake de naku, chuugokugo mo hanasemasu.
+田中さんは英語だけじゃなくて、中国語も話せるよ。 | たなかさん は えいご だけ じゃ なくて、 ちゅうごくご も はなせる よ。 | tanaka-san wa eigo dake ja nakute, chuugokugo mo hanaseru yo.
+この店は安いだけでなく、味もいい。 | この みせ は やすい だけ で なく、 あじ も いい。 | kono mise wa yasui dake de naku, aji mo ii.
+この店は安いだけでなく、味もいいです。 | この みせ は やすい だけ で なく、 あじ も いい です。 | kono mise wa yasui dake de naku, aji mo ii desu.
+雨だけでなく、風も強くなってきました。 | あめ だけ で なく、 かぜ も つよく なって きました。 | ame dake de naku, kaze mo tsuyoku natte kimashita.
+雨だけじゃなくて、風も強くなってきた。 | あめ だけ じゃ なくて、 かぜ も つよく なって きた。 | ame dake ja nakute, kaze mo tsuyoku natte kita.
+彼は勉強だけじゃなくて、スポーツも得意だよ。 | かれ は べんきょう だけ じゃ なくて、 スポーツ も とくい だ よ。 | kare wa benkyou dake ja nakute, supootsu mo tokui da yo.
+彼は勉強だけじゃなくて、スポーツも得意ですよ。 | かれ は べんきょう だけ じゃ なくて、 スポーツ も とくい です よ。 | kare wa benkyou dake ja nakute, supootsu mo tokui desu yo.
+子供だけでなく、大人も楽しめる映画です。 | こども だけ で なく、 おとな も たのしめる えいが です。 | kodomo dake de naku, otona mo tanoshimeru eiga desu.
+子供だけじゃなくて、大人も楽しめる映画だよ。 | こども だけ じゃ なくて、 おとな も たのしめる えいが だ よ。 | kodomo dake ja nakute, otona mo tanoshimeru eiga da yo.
+この町は旅行で来る人ばかりでなく、住む人にも人気があります。 | この まち は りょこう で くる ひと ばかり で なく、 すむ ひと に も にんき が あります。 | kono machi wa ryokou de kuru hito bakari de naku, sumu hito ni mo ninki ga arimasu.
+彼女は歌が上手なばかりでなく、曲も作れる。 | かのじょ は うた が じょうず な ばかり で なく、 きょく も つくれる。 | kanojo wa uta ga jouzu na bakari de naku, kyoku mo tsukureru.
+彼女は歌が上手なばかりでなく、曲も作れます。 | かのじょ は うた が じょうず な ばかり で なく、 きょく も つくれます。 | kanojo wa uta ga jouzu na bakari de naku, kyoku mo tsukuremasu.
+運動は体ばかりでなく、心にもいいそうです。 | うんどう は からだ ばかり で なく、 こころ に も いい そう です。 | undou wa karada bakari de naku, kokoro ni mo ii sou desu.
+運動は体ばかりでなく、心にもいいそうだ。 | うんどう は からだ ばかり で なく、 こころ に も いい そう だ。 | undou wa karada bakari de naku, kokoro ni mo ii sou da.
+台風で、電車ばかりでなく飛行機も止まった。 | たいふう で、 でんしゃ ばかり で なく ひこうき も とまった。 | taifuu de, densha bakari de naku hikouki mo tomatta.
+台風で、電車ばかりでなく飛行機も止まりました。 | たいふう で、 でんしゃ ばかり で なく ひこうき も とまりました。 | taifuu de, densha bakari de naku hikouki mo tomarimashita.
+この店は週末はもちろん、平日も混んでいます。 | この みせ は しゅうまつ は もちろん、 へいじつ も こんで います。 | kono mise wa shuumatsu wa mochiron, heijitsu mo konde imasu.
+この店は週末はもちろん、平日も混んでいる。 | この みせ は しゅうまつ は もちろん、 へいじつ も こんで いる。 | kono mise wa shuumatsu wa mochiron, heijitsu mo konde iru.
+漢字はもちろん、ひらがなもまだ難しいです。 | かんじ は もちろん、 ひらがな も まだ むずかしい です。 | kanji wa mochiron, hiragana mo mada muzukashii desu.
+漢字はもちろん、ひらがなもまだ難しい。 | かんじ は もちろん、 ひらがな も まだ むずかしい。 | kanji wa mochiron, hiragana mo mada muzukashii.
+兄は料理はもちろん、掃除も得意です。 | あに は りょうり は もちろん、 そうじ も とくい です。 | ani wa ryouri wa mochiron, souji mo tokui desu.
+兄は料理はもちろん、掃除も得意だ。 | あに は りょうり は もちろん、 そうじ も とくい だ。 | ani wa ryouri wa mochiron, souji mo tokui da.
+試験の日は、鉛筆はもちろん、消しゴムも忘れないでください。 | しけん の ひ は、 えんぴつ は もちろん、 けしゴム も わすれないで ください。 | shiken no hi wa, enpitsu wa mochiron, keshigomu mo wasurenaide kudasai.
+試験の日は、鉛筆はもちろん、消しゴムも忘れないでね。 | しけん の ひ は、 えんぴつ は もちろん、 けしゴム も わすれないで ね。 | shiken no hi wa, enpitsu wa mochiron, keshigomu mo wasurenaide ne.
+この公園は春だけでなく、秋もきれいです。 | この こうえん は はる だけ で なく、 あき も きれい です。 | kono kouen wa haru dake de naku, aki mo kirei desu.
+この公園は春はもちろん、秋もきれいです。 | この こうえん は はる は もちろん、 あき も きれい です。 | kono kouen wa haru wa mochiron, aki mo kirei desu.
+日本のどこが好きですか？ | にほん の どこ が すき です か？ | nihon no doko ga suki desu ka?
+食べ物はもちろん、町がきれいなところも好きです。 | たべもの は もちろん、 まち が きれい な ところ も すき です。 | tabemono wa mochiron, machi ga kirei na tokoro mo suki desu.
+日本語はどうですか？ | にほんご は どう です か？ | nihongo wa dou desu ka?
+話すことだけでなく、読むことにも慣れてきました。 | はなす こと だけ で なく、 よむ こと に も なれて きました。 | hanasu koto dake de naku, yomu koto ni mo narete kimashita.
+だけでなく | だけ で なく | dake de naku
+だけでなくて | だけ で なくて | dake de nakute
+だけじゃなくて | だけ じゃ なくて | dake ja nakute
+だけじゃなく | だけ じゃ なく | dake ja naku
+有名なだけじゃなくて | ゆうめい な だけ じゃ なくて | yuumei na dake ja nakute
+有名なだけじゃなく | ゆうめい な だけ じゃ なく | yuumei na dake ja naku
+有名なだけでなく | ゆうめい な だけ で なく | yuumei na dake de naku
+有名なだけでなくて | ゆうめい な だけ で なくて | yuumei na dake de nakute
+はもちろん | は もちろん | wa mochiron
+ばかりでなく | ばかり で なく | bakari de naku
+
+## n3-degree/bakari
+ばかり | ばかり | (label: no romaji)
+雨ばかり | あめ ばかり | ame bakari
+甘いものばかり食べる | あまい もの ばかり たべる | amai mono bakari taberu
+寝てばかりいる | ねて ばかり いる | nete bakari iru
+うちの子供は甘いものばかり食べています。 | うち の こども は あまい もの ばかり たべて います。 | uchi no kodomo wa amai mono bakari tabete imasu.
+うちの子供は甘いものばかり食べている。 | うち の こども は あまい もの ばかり たべて いる。 | uchi no kodomo wa amai mono bakari tabete iru.
+このクラスは男の子ばかりだ。 | この クラス は おとこのこ ばかり だ。 | kono kurasu wa otokonoko bakari da.
+このクラスは男の子ばかりです。 | この クラス は おとこのこ ばかり です。 | kono kurasu wa otokonoko bakari desu.
+最近、雨ばかりですね。 | さいきん、 あめ ばかり です ね。 | saikin, ame bakari desu ne.
+最近、雨ばかりだね。 | さいきん、 あめ ばかり だ ね。 | saikin, ame bakari da ne.
+彼はいつも文句ばかり言っている。 | かれ は いつも もんく ばかり いって いる。 | kare wa itsumo monku bakari itte iru.
+彼はいつも文句ばかり言っています。 | かれ は いつも もんく ばかり いって います。 | kare wa itsumo monku bakari itte imasu.
+弟は毎日ゲームをしてばかりいる。 | おとうと は まいにち ゲーム を して ばかり いる。 | otouto wa mainichi geemu o shite bakari iru.
+弟は毎日ゲームをしてばかりいます。 | おとうと は まいにち ゲーム を して ばかり います。 | otouto wa mainichi geemu o shite bakari imasu.
+寝てばかりいないで、少しは手伝ってよ。 | ねて ばかり いないで、 すこし は てつだって よ。 | nete bakari inaide, sukoshi wa tetsudatte yo.
+寝てばかりいないで、少しは手伝ってください。 | ねて ばかり いないで、 すこし は てつだって ください。 | nete bakari inaide, sukoshi wa tetsudatte kudasai.
+休みの日は食べてばかりいました。 | やすみ の ひ は たべて ばかり いました。 | yasumi no hi wa tabete bakari imashita.
+休みの日は食べてばかりいた。 | やすみ の ひ は たべて ばかり いた。 | yasumi no hi wa tabete bakari ita.
+彼女は昨日から泣いてばかりいる。 | かのじょ は きのう から ないて ばかり いる。 | kanojo wa kinou kara naite bakari iru.
+彼女は昨日から泣いてばかりいます。 | かのじょ は きのう から ないて ばかり います。 | kanojo wa kinou kara naite bakari imasu.
+遊んでばかりいると、試験に落ちますよ。 | あそんで ばかり いる と、 しけん に おちます よ。 | asonde bakari iru to, shiken ni ochimasu yo.
+遊んでばかりいると、試験に落ちるよ。 | あそんで ばかり いる と、 しけん に おちる よ。 | asonde bakari iru to, shiken ni ochiru yo.
+今、食べたばかりです。 | いま、 たべた ばかり です。 | ima, tabeta bakari desu.
+最近、食べてばかりいます。 | さいきん、 たべて ばかり います。 | saikin, tabete bakari imasu.
+健太、またスマホを見てばかりいるね。 | けんた、 また スマホ を みて ばかり いる ね。 | kenta, mata sumaho o mite bakari iru ne.
+宿題はもう終わったよ。 | しゅくだい は もう おわった よ。 | shukudai wa mou owatta yo.
+それでも、目によくないから、外で遊びなさい。 | それ でも、 め に よくない から、 そと で あそびなさい。 | sore demo, me ni yokunai kara, soto de asobinasai.
+ばかり | ばかり | bakari
+笑ってばかりいます | わらって ばかり います | waratte bakari imasu
+働いてばかりいる | はたらいて ばかり いる | hataraite bakari iru
+テレビを見てばかりいないで。 | テレビ を みて ばかり いないで。 | terebi o mite bakari inaide.
+テレビばかり見ていないで。 | テレビ ばかり みて いないで。 | terebi bakari mite inaide.
+
+## n3-degree/nanka-nante
+なんか・なんて | なんか・なんて | (label: no romaji)
+お茶なんかどう | おちゃ なんか どう | ocha nanka dou
+私なんか | わたし なんか | watashi nanka
+勉強なんて | べんきょう なんて | benkyou nante
+彼が辞めるなんて | かれ が やめる なんて | kare ga yameru nante
+飲み物は、お茶なんかどう？ | のみもの は、 おちゃ なんか どう？ | nomimono wa, ocha nanka dou?
+飲み物は、お茶なんかどうですか？ | のみもの は、 おちゃ なんか どう です か？ | nomimono wa, ocha nanka dou desu ka?
+私なんか、まだまだです。 | わたし なんか、 まだ まだ です。 | watashi nanka, mada mada desu.
+私なんか、まだまだだよ。 | わたし なんか、 まだ まだ だ よ。 | watashi nanka, mada mada da yo.
+勉強なんて、嫌いだ。 | べんきょう なんて、 きらい だ。 | benkyou nante, kirai da.
+彼の言うことなんか、信じないほうがいいよ。 | かれ の いう こと なんか、 しんじない ほう が いい よ。 | kare no iu koto nanka, shinjinai hou ga ii yo.
+彼の言うことなんか、信じないほうがいいですよ。 | かれ の いう こと なんか、 しんじない ほう が いい です よ。 | kare no iu koto nanka, shinjinai hou ga ii desu yo.
+忙しくて、テレビなんか見る時間がない。 | いそがしくて、 テレビ なんか みる じかん が ない。 | isogashikute, terebi nanka miru jikan ga nai.
+忙しくて、テレビなんか見る時間がありません。 | いそがしくて、 テレビ なんか みる じかん が ありません。 | isogashikute, terebi nanka miru jikan ga arimasen.
+田中さんが会社を辞めるなんて、信じられない。 | たなかさん が かいしゃ を やめる なんて、 しんじられない。 | tanaka-san ga kaisha o yameru nante, shinjirarenai.
+田中さんが会社を辞めるなんて、信じられません。 | たなかさん が かいしゃ を やめる なんて、 しんじられません。 | tanaka-san ga kaisha o yameru nante, shinjiraremasen.
+一人で山に登ったなんて、すごいね。 | ひとり で やま に のぼった なんて、 すごい ね。 | hitori de yama ni nobotta nante, sugoi ne.
+一人で山に登ったなんて、すごいですね。 | ひとり で やま に のぼった なんて、 すごい です ね。 | hitori de yama ni nobotta nante, sugoi desu ne.
+こんなところで会うなんて、思わなかった。 | こんな ところ で あう なんて、 おもわなかった。 | konna tokoro de au nante, omowanakatta.
+こんなところで会うなんて、思いませんでした。 | こんな ところ で あう なんて、 おもいません でした。 | konna tokoro de au nante, omoimasen deshita.
+約束を忘れるなんて、ひどいよ。 | やくそく を わすれる なんて、 ひどい よ。 | yakusoku o wasureru nante, hidoi yo.
+約束を忘れるなんて、ひどいですよ。 | やくそく を わすれる なんて、 ひどい です よ。 | yakusoku o wasureru nante, hidoi desu yo.
+果物はりんごなどが好きです。 | くだもの は りんご など が すき です。 | kudamono wa ringo nado ga suki desu.
+果物はりんごなんかが好きです。 | くだもの は りんご なんか が すき です。 | kudamono wa ringo nanka ga suki desu.
+聞いた？佐藤さん、来月結婚するんだって。 | きいた？ さとうさん、 らいげつ けっこん する ん だって。 | kiita? satou-san, raigetsu kekkon suru n datte.
+え、佐藤さんが結婚するなんて！全然知らなかった。 | え、 さとうさん が けっこん する なんて！ ぜんぜん しらなかった。 | e, satou-san ga kekkon suru nante! zenzen shiranakatta.
+私なんか、まだ彼氏もいないのに。 | わたし なんか、 まだ かれし も いない のに。 | watashi nanka, mada kareshi mo inai noni.
+負けるなんて | まける なんて | makeru nante
+負けたなんて | まけた なんて | maketa nante
+なんか | なんか | nanka
+なんて | なんて | nante
+なんか | なんか | nanka
+なんて | なんて | nante
+なんか | なんか | nanka
+
+## n3-degree/shika-nai
+しかない | しかない | (label: no romaji)
+待つしかない | まつ しか ない | matsu shika nai
+待つしかありません | まつ しか ありません | matsu shika arimasen
+少ししかない | すこし しか ない | sukoshi shika nai
+もう電車がないから、タクシーで帰るしかない。 | もう でんしゃ が ない から、 タクシー で かえる しか ない。 | mou densha ga nai kara, takushii de kaeru shika nai.
+もう電車がないから、タクシーで帰るしかありません。 | もう でんしゃ が ない から、 タクシー で かえる しか ありません。 | mou densha ga nai kara, takushii de kaeru shika arimasen.
+誰も手伝ってくれないなら、一人でやるしかない。 | だれ も てつだって くれない なら、 ひとり で やる しか ない。 | dare mo tetsudatte kurenai nara, hitori de yaru shika nai.
+誰も手伝ってくれないなら、一人でやるしかありません。 | だれ も てつだって くれない なら、 ひとり で やる しか ありません。 | dare mo tetsudatte kurenai nara, hitori de yaru shika arimasen.
+壊れてしまったから、新しいのを買うしかありません。 | こわれて しまった から、 あたらしい の を かう しか ありません。 | kowarete shimatta kara, atarashii no o kau shika arimasen.
+壊れてしまったから、新しいのを買うしかない。 | こわれて しまった から、 あたらしい の を かう しか ない。 | kowarete shimatta kara, atarashii no o kau shika nai.
+もう決まったことだから、やるしかないよ。 | もう きまった こと だ から、 やる しか ない よ。 | mou kimatta koto da kara, yaru shika nai yo.
+もう決まったことですから、やるしかありませんよ。 | もう きまった こと です から、 やる しか ありません よ。 | mou kimatta koto desu kara, yaru shika arimasen yo.
+道が分からないから、誰かに聞くしかないね。 | みち が わからない から、 だれか に きく しか ない ね。 | michi ga wakaranai kara, dareka ni kiku shika nai ne.
+道が分からないので、誰かに聞くしかありませんね。 | みち が わからない ので、 だれか に きく しか ありません ね。 | michi ga wakaranai node, dareka ni kiku shika arimasen ne.
+歩いて行くしかない。 | あるいて いく しか ない。 | aruite iku shika nai.
+歩いてしか行けない。 | あるいて しか いけない。 | aruite shika ikenai.
+雨、やまないね。傘持ってきた？ | あめ、 やまない ね。 かさ もって きた？ | ame, yamanai ne. kasa motte kita?
+ううん。やむまで待つしかないね。 | ううん。 やむ まで まつ しか ない ね。 | uun. yamu made matsu shika nai ne.
+じゃあ、あそこのカフェでお茶でも飲もう。 | じゃあ、 あそこ の カフェ で おちゃ でも のもう。 | jaa, asoko no kafe de ocha demo nomou.
+謝るしかない | あやまる しか ない | ayamaru shika nai
+諦めるしかありません | あきらめる しか ありません | akirameru shika arimasen
+諦めるしかないです | あきらめる しか ない です | akirameru shika nai desu
+しかない | しか ない | shika nai
+バスがないから、歩くしかない。 | バス が ない から、 あるく しか ない。 | basu ga nai kara, aruku shika nai.
+
+## n3-degree/negative-adverbs
+けっして | けっして | (label: no romaji)
+けっして…ない | けっして … ない | kesshite... nai
+けっして忘れない | けっして わすれない | kesshite wasurenai
+まったく…ない | まったく … ない | mattaku... nai
+まったく分からない | まったく わからない | mattaku wakaranai
+なかなか…ない | なかなか … ない | nakanaka... nai
+なかなか来ない | なかなか こない | nakanaka konai
+めったに…ない | めったに … ない | mettani... nai
+めったに怒らない | めったに おこらない | mettani okoranai
+別に…ない | べつに … ない | betsuni... nai
+別に好きじゃない | べつに すき じゃ ない | betsuni suki ja nai
+とても食べられない | とても たべられない | totemo taberarenai
+今日のことはけっして忘れません。 | きょう の こと は けっして わすれません。 | kyou no koto wa kesshite wasuremasen.
+今日のことはけっして忘れないよ。 | きょう の こと は けっして わすれない よ。 | kyou no koto wa kesshite wasurenai yo.
+危ないから、けっして一人で海に入らないでください。 | あぶない から、 けっして ひとり で うみ に はいらないで ください。 | abunai kara, kesshite hitori de umi ni hairanaide kudasai.
+危ないから、けっして一人で海に入らないでね。 | あぶない から、 けっして ひとり で うみ に はいらないで ね。 | abunai kara, kesshite hitori de umi ni hairanaide ne.
+彼はけっして悪い人じゃない。 | かれ は けっして わるい ひと じゃ ない。 | kare wa kesshite warui hito ja nai.
+彼はけっして悪い人じゃありません。 | かれ は けっして わるい ひと じゃ ありません。 | kare wa kesshite warui hito ja arimasen.
+昨日の試験はまったく分からなかった。 | きのう の しけん は まったく わからなかった。 | kinou no shiken wa mattaku wakaranakatta.
+昨日の試験はまったく分かりませんでした。 | きのう の しけん は まったく わかりません でした。 | kinou no shiken wa mattaku wakarimasen deshita.
+この町は昔とまったく変わっていません。 | この まち は むかし と まったく かわって いません。 | kono machi wa mukashi to mattaku kawatte imasen.
+この町は昔とまったく変わっていない。 | この まち は むかし と まったく かわって いない。 | kono machi wa mukashi to mattaku kawatte inai.
+バスがなかなか来ない。 | バス が なかなか こない。 | basu ga nakanaka konai.
+バスがなかなか来ません。 | バス が なかなか きません。 | basu ga nakanaka kimasen.
+新しい言葉がなかなか覚えられません。 | あたらしい ことば が なかなか おぼえられません。 | atarashii kotoba ga nakanaka oboeraremasen.
+新しい言葉がなかなか覚えられない。 | あたらしい ことば が なかなか おぼえられない。 | atarashii kotoba ga nakanaka oboerarenai.
+父は忙しくて、家にめったにいません。 | ちち は いそがしくて、 いえ に めったに いません。 | chichi wa isogashikute, ie ni mettani imasen.
+父は忙しくて、家にめったにいない。 | ちち は いそがしくて、 いえ に めったに いない。 | chichi wa isogashikute, ie ni mettani inai.
+この辺では、雪はめったに降らない。 | この へん で は、 ゆき は めったに ふらない。 | kono hen de wa, yuki wa mettani furanai.
+この辺では、雪はめったに降りません。 | この へん で は、 ゆき は めったに ふりません。 | kono hen de wa, yuki wa mettani furimasen.
+兄はめったに怒らないけど、怒ると怖い。 | あに は めったに おこらない けど、 おこる と こわい。 | ani wa mettani okoranai kedo, okoru to kowai.
+兄はめったに怒らないけど、怒ると怖いです。 | あに は めったに おこらない けど、 おこる と こわい です。 | ani wa mettani okoranai kedo, okoru to kowai desu.
+別に怒ってないよ。 | べつに おこって ない よ。 | betsuni okotte nai yo.
+別に怒っていませんよ。 | べつに おこって いません よ。 | betsuni okotte imasen yo.
+この映画は別に面白くなかった。 | この えいが は べつに おもしろくなかった。 | kono eiga wa betsuni omoshirokunakatta.
+この映画は別に面白くなかったです。 | この えいが は べつに おもしろくなかった です。 | kono eiga wa betsuni omoshirokunakatta desu.
+別に行きたくないけど、誘われたから行く。 | べつに いきたくない けど、 さそわれた から いく。 | betsuni ikitakunai kedo, sasowareta kara iku.
+別に行きたくないけど、誘われたから行きます。 | べつに いきたくない けど、 さそわれた から いきます。 | betsuni ikitakunai kedo, sasowareta kara ikimasu.
+こんなにたくさん、一日ではとても終わらない。 | こんな に たくさん、 いちにち で は とても おわらない。 | konna ni takusan, ichinichi de wa totemo owaranai.
+こんなにたくさん、一日ではとても終わりません。 | こんな に たくさん、 いちにち で は とても おわりません。 | konna ni takusan, ichinichi de wa totemo owarimasen.
+あんな難しい曲、私にはとても弾けないよ。 | あんな むずかしい きょく、 わたし に は とても ひけない よ。 | anna muzukashii kyoku, watashi ni wa totemo hikenai yo.
+あんな難しい曲、私にはとても弾けませんよ。 | あんな むずかしい きょく、 わたし に は とても ひけません よ。 | anna muzukashii kyoku, watashi ni wa totemo hikemasen yo.
+この料理はとてもおいしい。 | この りょうり は とても おいしい。 | kono ryouri wa totemo oishii.
+この料理はとても食べられない。 | この りょうり は とても たべられない。 | kono ryouri wa totemo taberarenai.
+最近、山田さんに会った？ | さいきん、 やまださん に あった？ | saikin, yamada-san ni atta?
+ううん。仕事が忙しいみたいで、めったに会わないんだ。 | ううん。 しごと が いそがしい みたい で、 めったに あわない ん だ。 | uun. shigoto ga isogashii mitai de, mettani awanai n da.
+そうなんだ。連絡してもなかなか返事が来ないしね。 | そう なん だ。 れんらく して も なかなか へんじ が こない し ね。 | sou nan da. renraku shite mo nakanaka henji ga konai shi ne.
+けっして言いません | けっして いいません | kesshite iimasen
+けっして言わないです | けっして いわない です | kesshite iwanai desu
+なかなか眠れない | なかなか ねむれない | nakanaka nemurenai
+めったに飲みません | めったに のみません | mettani nomimasen
+めったに飲まないです | めったに のまない です | mettani nomanai desu
+別に好きじゃない | べつに すき じゃ ない | betsuni suki ja nai
+別に好きではない | べつに すき で は ない | betsuni suki de wa nai
+こんなにたくさん、とても食べられない。 | こんな に たくさん、 とても たべられない。 | konna ni takusan, totemo taberarenai.
+
+## n3-degree/tatoe-temo
+たとえ | たとえ | (label: no romaji)
+たとえ雨が降っても | たとえ あめ が ふって も | tatoe ame ga futte mo
+たとえ冗談でも | たとえ じょうだん で も | tatoe joudan de mo
+どんなに忙しくても | どんなに いそがしくて も | donnani isogashikute mo
+いくら食べても | いくら たべて も | ikura tabete mo
+たとえ雨が降っても、試合は行われます。 | たとえ あめ が ふって も、 しあい は おこなわれます。 | tatoe ame ga futte mo, shiai wa okonawaremasu.
+たとえ雨が降っても、試合は行われるよ。 | たとえ あめ が ふって も、 しあい は おこなわれる よ。 | tatoe ame ga futte mo, shiai wa okonawareru yo.
+たとえ親に反対されても、彼と結婚する。 | たとえ おや に はんたい されて も、 かれ と けっこん する。 | tatoe oya ni hantai sarete mo, kare to kekkon suru.
+たとえ親に反対されても、彼と結婚します。 | たとえ おや に はんたい されて も、 かれ と けっこん します。 | tatoe oya ni hantai sarete mo, kare to kekkon shimasu.
+たとえ冗談でも、そんなことを言ってはいけないよ。 | たとえ じょうだん で も、 そんな こと を いって は いけない よ。 | tatoe joudan de mo, sonna koto o itte wa ikenai yo.
+たとえ冗談でも、そんなことを言ってはいけませんよ。 | たとえ じょうだん で も、 そんな こと を いって は いけません よ。 | tatoe joudan de mo, sonna koto o itte wa ikemasen yo.
+たとえ小さなミスでも、報告してください。 | たとえ ちいさな ミス で も、 ほうこく して ください。 | tatoe chiisana misu de mo, houkoku shite kudasai.
+たとえ小さなミスでも、報告してね。 | たとえ ちいさな ミス で も、 ほうこく して ね。 | tatoe chiisana misu de mo, houkoku shite ne.
+たとえ一日五分でも、毎日続けることが大切です。 | たとえ いちにち ごふん で も、 まいにち つづける こと が たいせつ です。 | tatoe ichinichi gofun de mo, mainichi tsuzukeru koto ga taisetsu desu.
+たとえ一日五分でも、毎日続けることが大切だよ。 | たとえ いちにち ごふん で も、 まいにち つづける こと が たいせつ だ よ。 | tatoe ichinichi gofun de mo, mainichi tsuzukeru koto ga taisetsu da yo.
+どんなに忙しくても、家族との時間は大切にしたい。 | どんなに いそがしくて も、 かぞく と の じかん は たいせつ に したい。 | donnani isogashikute mo, kazoku to no jikan wa taisetsu ni shitai.
+どんなに忙しくても、家族との時間は大切にしたいです。 | どんなに いそがしくて も、 かぞく と の じかん は たいせつ に したい です。 | donnani isogashikute mo, kazoku to no jikan wa taisetsu ni shitai desu.
+どんなに頑張っても、彼には勝てなかった。 | どんなに がんばって も、 かれ に は かてなかった。 | donnani ganbatte mo, kare ni wa katenakatta.
+どんなに頑張っても、彼には勝てませんでした。 | どんなに がんばって も、 かれ に は かてません でした。 | donnani ganbatte mo, kare ni wa katemasen deshita.
+どんなに高くても、この絵が欲しい。 | どんなに たかくて も、 この え が ほしい。 | donnani takakute mo, kono e ga hoshii.
+どんなに高くても、この絵が欲しいです。 | どんなに たかくて も、 この え が ほしい です。 | donnani takakute mo, kono e ga hoshii desu.
+いくら食べても太らない人が羨ましい。 | いくら たべて も ふとらない ひと が うらやましい。 | ikura tabete mo futoranai hito ga urayamashii.
+いくら食べても太らない人が羨ましいです。 | いくら たべて も ふとらない ひと が うらやましい です。 | ikura tabete mo futoranai hito ga urayamashii desu.
+いくら電話しても、彼女は出ませんでした。 | いくら でんわ して も、 かのじょ は でません でした。 | ikura denwa shite mo, kanojo wa demasen deshita.
+いくら電話しても、彼女は出なかった。 | いくら でんわ して も、 かのじょ は でなかった。 | ikura denwa shite mo, kanojo wa denakatta.
+失敗しても、気にしない。 | しっぱい して も、 き に しない。 | shippai shite mo, ki ni shinai.
+たとえ失敗しても、気にしない。 | たとえ しっぱい して も、 き に しない。 | tatoe shippai shite mo, ki ni shinai.
+明日の相手は強いですね。 | あした の あいて は つよい です ね。 | ashita no aite wa tsuyoi desu ne.
+そうだね。でも、たとえ負けても、最後まで頑張ろう。 | そう だ ね。 でも、 たとえ まけて も、 さいご まで がんばろう。 | sou da ne. demo, tatoe makete mo, saigo made ganbarou.
+はい。どんなに疲れても、走り続けます。 | はい。 どんなに つかれて も、 はしりつづけます。 | hai. donnani tsukarete mo, hashiritsuzukemasu.
+寒くても | さむくて も | samukute mo
+でも | で も | de mo
+どんなに急いでも | どんなに いそいで も | donnani isoide mo
+いくら待っても | いくら まって も | ikura matte mo
+たとえ高くても、買います。 | たとえ たかくて も、 かいます。 | tatoe takakute mo, kaimasu.
 
 ## read/shop-sign
 本日休業 | ほんじつ きゅうぎょう | honjitsu kyuugyou

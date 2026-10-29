@@ -30,6 +30,16 @@ export const KANA_WORDS: [string, string][] = [
   ["良", "よ"],
   // なくして, なくなる: a keyboard offers 無くして. (Not 亡く: 亡くなる "to die" is another word.)
   ["無く", "なく"],
+  // Adverbs the lessons write in kana (n3-degree): a keyboard offers 決して, 全く, 滅多に, 中々, 余り(に), 例え (たとえ〜ても), 何て, 勿論 and 幾ら.
+  ["決して", "けっして"],
+  ["全く", "まったく"],
+  ["滅多に", "めったに"],
+  ["中々", "なかなか"],
+  ["余り", "あまり"],
+  ["例え", "たとえ"],
+  ["何て", "なんて"],
+  ["勿論", "もちろん"],
+  ["幾ら", "いくら"],
   // Set phrases (culture/set-phrases), written in kana by the lessons.
   ["行ってきます", "いってきます"],
   ["行ってらっしゃい", "いってらっしゃい"],
@@ -69,6 +79,8 @@ const toHiragana = (s: string) =>
  */
 const FORMAL_NOUNS: Record<string, string> = {
   とき: "時", こと: "事", ところ: "所", ほう: "方", もの: "物", ごろ: "頃", ため: "為", わけ: "訳", はず: "筈", とおり: "通り", うち: "内", たび: "度", とたん: "途端",
+  // ほど and くらい (to the extent, about): a keyboard offers 程 and 位.
+  ほど: "程", くらい: "位",
 };
 
 /** Helper verbs after a て form, by the kana their forms start with: [食|た]べて みる may be typed 食べて見る. */

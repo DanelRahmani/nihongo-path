@@ -448,4 +448,71 @@ export const REGISTER_ALSO: Record<string, string[]> = {
   "n3-relations/to-iu-yori#1ozlc1s": ["今の仕事は、仕事というより趣味だ。", "今の仕事は、仕事というより趣味。"],
   // … むしろ [好|す]き です。 → … むしろ [好|す]き だ よ。 (or だ, or bare)
   "n3-relations/to-iu-yori#1nt8v8m": ["雨の日は嫌いじゃない。むしろ好きだ。", "雨の日は嫌いじゃない。むしろ好き。"],
+  // Degree, limits and emphasis (unit 十七)
+  // … [山|やま] に [登|のぼ]る つもり です。 → … つもり だ。 (or bare)
+  "n3-degree/sae#1cej32i": ["天気さえよければ、明日は山に登るつもり。"],
+  // … [探|さが]して いた [本|ほん] です。 → … [本|ほん] だ。 (or bare)
+  "n3-degree/koso#k28o03": ["これこそ私が探していた本。"],
+  // … [言|い]う ん です。 → … [言|い]う ん だ よ。 (よ is optional)
+  "n3-degree/koso#1e85re7": ["好きだからこそ、厳しいことを言うんだ。"],
+  // Into polite: … ん だ よ。 → … ん です。 (よ kept)
+  "n3-degree/koso#ptnno9": ["好きだからこそ、厳しいことを言うんですよ。"],
+  // … [勝|か]てた ん です。 → … ん だ。 (よ added)
+  "n3-degree/koso#bi9h90": ["毎日練習したからこそ、試合に勝てたんだよ。"],
+  // … [面白|おもしろ]く なります。 → … なる よ。 (よ is optional)
+  "n3-degree/ba-hodo#3il9xc": ["日本語は勉強すればするほど面白くなる。"],
+  // Into polite: (よ kept)
+  "n3-degree/ba-hodo#aerdk6": ["日本語は勉強すればするほど面白くなりますよ。"],
+  // … いい です。 → … いい よ。 (よ is optional)
+  "n3-degree/ba-hodo#12m94s2": ["返事は早いほどいい。"],
+  // Into polite: (よ kept)
+  "n3-degree/ba-hodo#1iubyla": ["返事は早いほどいいですよ。"],
+  // … [上手|じょうず] です。 → … [上手|じょうず] だ よ。 (or だ, or bare)
+  "n3-degree/kurai-extent#zhxwts": ["彼女はプロと同じくらい歌が上手だ。","彼女はプロと同じくらい歌が上手。"],
+  // Into polite: (よ kept)
+  "n3-degree/kurai-extent#meqzus": ["彼女はプロと同じくらい歌が上手ですよ。"],
+  // … して ください。 → … して よ。 (よ is optional)
+  "n3-degree/kurai-extent#16qjy5w": ["遅れるなら、電話くらいして。"],
+  // Into polite: (よ kept)
+  "n3-degree/kurai-extent#1pmrw5y": ["遅れるなら、電話くらいしてくださいよ。"],
+  // … [母|はは] くらい です。 → … くらい だ。 (or bare, or よ)
+  "n3-degree/kurai-extent#1msxw6x": ["こんな時間に電話してくるのは母くらい。","こんな時間に電話してくるのは母くらいだよ。"],
+  // … コンビニ くらい です。 → … くらい だ。 (or bare)
+  "n3-degree/kurai-extent#15k00at": ["この町で遅くまで開いているのはコンビニくらい。"],
+  // … [卵|たまご] くらい です。 → … くらい だ よ。 (or だ, or bare)
+  "n3-degree/kurai-extent#149rhs0": ["冷蔵庫にあるのは卵くらいだ。","冷蔵庫にあるのは卵くらい。"],
+  // Into polite: (よ kept)
+  "n3-degree/kurai-extent#z7b4no": ["冷蔵庫にあるのは卵くらいですよ。"],
+  // … だけ で なく … [話|はな]せます。 → だけ じゃ なくて … [話|はな]せる よ。 (either form, よ optional)
+  "n3-degree/dake-de-naku#1hfid78": ["田中さんは英語だけでなく、中国語も話せる。","田中さんは英語だけでなく、中国語も話せるよ。","田中さんは英語だけじゃなくて、中国語も話せる。"],
+  // Into polite: (either form, よ kept)
+  "n3-degree/dake-de-naku#vhwuwk": ["田中さんは英語だけじゃなくて、中国語も話せます。","田中さんは英語だけでなく、中国語も話せますよ。","田中さんは英語だけじゃなくて、中国語も話せますよ。"],
+  // … だけ で なく … [映画|えいが] です。 → だけ じゃ なくて … [映画|えいが] だ よ。 (either form, だ or bare)
+  "n3-degree/dake-de-naku#1ykg7nx": ["子供だけでなく、大人も楽しめる映画だよ。","子供だけでなく、大人も楽しめる映画だ。","子供だけじゃなくて、大人も楽しめる映画だ。","子供だけじゃなくて、大人も楽しめる映画。"],
+  // Into polite: (either form, よ kept)
+  "n3-degree/dake-de-naku#1fezt39": ["子供だけじゃなくて、大人も楽しめる映画です。","子供だけでなく、大人も楽しめる映画ですよ。","子供だけじゃなくて、大人も楽しめる映画ですよ。"],
+  // … [得意|とくい] です。 → … [得意|とくい] だ。 (or bare)
+  "n3-degree/dake-de-naku#reztn1": ["兄は料理はもちろん、掃除も得意。"],
+  // … [男|おとこ]の[子|こ] ばかり です。 → … ばかり だ。 (or bare)
+  "n3-degree/bakari#1yd6yhm": ["このクラスは男の子ばかり。"],
+  // … [手伝|てつだ]って ください。 → … [手伝|てつだ]って よ。 (よ is optional)
+  "n3-degree/bakari#avhjsa": ["寝てばかりいないで、少しは手伝って。"],
+  // Into polite: (よ kept)
+  "n3-degree/bakari#1rtabn8": ["寝てばかりいないで、少しは手伝ってくださいよ。"],
+  // … まだ まだ です。 → … まだ まだ だ よ。 (or だ, or bare)
+  "n3-degree/nanka-nante#1cmdtue": ["私なんか、まだまだだ。","私なんか、まだまだ。"],
+  // Into polite: (よ kept)
+  "n3-degree/nanka-nante#1akmrc2": ["私なんか、まだまだですよ。"],
+  // … けっして [忘|わす]れません。 → … [忘|わす]れない よ。 (よ is optional)
+  "n3-degree/negative-adverbs#1gtdq03": ["今日のことはけっして忘れない。"],
+  // Into polite: (よ kept)
+  "n3-degree/negative-adverbs#1faa8zr": ["今日のことはけっして忘れませんよ。"],
+  // … [行|おこな]われます。 → … [行|おこな]われる よ。 (よ is optional)
+  "n3-degree/tatoe-temo#1epjhw0": ["たとえ雨が降っても、試合は行われる。"],
+  // Into polite: (よ kept)
+  "n3-degree/tatoe-temo#269cji": ["たとえ雨が降っても、試合は行われますよ。"],
+  // … [大切|たいせつ] です。 → … [大切|たいせつ] だ よ。 (or だ, or bare)
+  "n3-degree/tatoe-temo#1k9bpmj": ["たとえ一日五分でも、毎日続けることが大切だ。","たとえ一日五分でも、毎日続けることが大切。"],
+  // Into polite: (よ kept)
+  "n3-degree/tatoe-temo#p7enkl": ["たとえ一日五分でも、毎日続けることが大切ですよ。"],
 };

@@ -217,4 +217,14 @@ export const VERBS: Word[] = [
   verb("[太|ふと]る", "godan", "to put on weight", "body"),
   verb("[代|か]わる", "godan", "to take the place of (〜に代わって: on behalf of)", "everyday"),
   verb("おごる", "godan", "to treat (someone to a meal or drink)", "food"),
+  // Degree, limits and emphasis (unit 十七)
+  verb("[謝|あやま]る", "godan", "to apologise", "everyday"),
+  verb("[倒|たお]れる", "ichidan", "to fall over, to collapse", "everyday"),
+  verb("やむ", "godan", "to stop (rain, wind, noise)", "nature"),
+  verb("[行|おこな]う", "godan", "to do, to carry out, to hold (an event)", "everyday"),
+  verb("[信|しん]じる", "ichidan", "to believe, trust", "feelings"),
+  verb("[驚|おどろ]く", "godan", "to be surprised", "feelings"),
+  verb("[諦|あきら]める", "ichidan", "to give up", "feelings"),
+  verb("[楽|たの]しむ", "godan", "to enjoy, to have a good time", "feelings"),
+  verb("[治|なお]る", "godan", "to get better, to recover (from illness)", "body"),
 ];

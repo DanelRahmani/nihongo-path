@@ -36,11 +36,11 @@ describe("the cloze builder", () => {
     }
     expect({ cards: CARDS.length, ...reasons }).toMatchInlineSnapshot(`
       {
-        "by hand": 282,
-        "cards": 1751,
-        "highlight covers most of the line": 51,
+        "by hand": 349,
+        "cards": 1949,
+        "highlight covers most of the line": 52,
         "kana lesson": 58,
-        "pair line: the other side fits the same gap": 140,
+        "pair line: the other side fits the same gap": 148,
         "several highlights": 24,
       }
     `);

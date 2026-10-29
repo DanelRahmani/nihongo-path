@@ -9,7 +9,7 @@ export const OTHER: Word[] = [
   w("question", "[誰|だれ]", "who", "language"),
   w("question", "どこ", "where", "language"),
   w("question", "いつ", "when", "language"),
-  w("question", "いくら", "how much (price)", "shopping"),
+  w("question", "いくら", "how much (price); however much (with ても)", "shopping"),
   w("question", "どう", "how", "language"),
   w("question", "いかが", "how (polite どう)", "language"),
   w("question", "どうして", "why", "language"),
@@ -150,4 +150,7 @@ export const OTHER: Word[] = [
   w("expression", "に[関|かん]する", "about, regarding (formal; before a noun)", "language"),
   w("expression", "に[対|たい]して", "towards, to; whereas (のに対して)", "language"),
   w("expression", "に[対|たい]する", "towards, to (before a noun)", "language"),
+  // Degree, limits and emphasis (unit 十七)
+  w("pre-noun", "[小|ちい]さな", "small, little", "everyday"),
+  w("pre-noun", "あんな", "that kind of, like that", "language"),
 ];

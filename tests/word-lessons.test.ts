@@ -79,7 +79,7 @@ describe("the word card's lesson links", () => {
     expect(lessonsOf(word("[食|た]べる", "verb"), { ...data, lessons: undefined })).toEqual([]);
   });
 
-  it("is small: under 52 KB of JSON", () => {
-    expect(Buffer.byteLength(JSON.stringify(links))).toBeLessThan(52_000);
+  it("is small: under 60 KB of JSON", () => {
+    expect(Buffer.byteLength(JSON.stringify(links))).toBeLessThan(60_000);
   });
 });

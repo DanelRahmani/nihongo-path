@@ -46,7 +46,6 @@ export const EXTRA_WORDS: Word[] = [
   noun("[用事|ようじ]", "errand, something to do", "everyday"),
   noun("[力|ちから]", "strength, power", "everyday"),
   noun("[主人|しゅじん]", "owner; (my) husband", "people"),
-  noun("[目|め]", "eye", "body"),
   noun("[省略|しょうりゃく]", "abbreviation, omission", "language"),
   noun("[修理|しゅうり]", "repair (する: to repair)", "everyday"),
   w("question", "[何歳|なんさい]", "how old", "numbers"),

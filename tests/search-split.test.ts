@@ -25,7 +25,8 @@ describe("the search index split (I9)", async () => {
   });
 
   it("makes the file much smaller", () => {
-    // A third: lessons, topics and kanji grow with each JLPT phase, while the words left out stay about the same.
-    expect(Buffer.byteLength(JSON.stringify(route))).toBeLessThan(Buffer.byteLength(JSON.stringify(full)) / 3);
+    // Two fifths: lessons, topics and kanji grow with each JLPT phase, while the words left out stay about the same
+    // (a third until JLPT Phase 2's unit 十七).
+    expect(Buffer.byteLength(JSON.stringify(route))).toBeLessThan((Buffer.byteLength(JSON.stringify(full)) * 2) / 5);
   });
 });

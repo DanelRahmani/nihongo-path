@@ -37,7 +37,7 @@ export const BATCH_05: Word[] = [
   x("1562850", "[腕|うで]", "noun", "arm; skill", "body"),
   // skipped: 1420490 [知|し]れる (artefact of かもしれない)
   x("1450330", "[逃|に]げる", "verb", "to run away, to escape", "everyday", "ichidan"),
-  x("1436730", "[諦|あきら]める", "verb", "to give up", "feelings", "ichidan"),
+  // moved to the lessons (n3-degree/shika-nai): 1436730 [諦|あきら]める
   x("1604280", "まれ", "na-adj", "rare, uncommon", "everyday"),
   x("1225090", "[技|わざ]", "noun", "technique, skill (in sports, martial arts)", "hobbies"),
   x("1501110", "[腹|はら]", "noun", "belly, stomach (blunt, mostly men's); anger, true feelings", "body"),
@@ -102,10 +102,10 @@ export const BATCH_05: Word[] = [
   // moved to the lessons (n3-relations/to-iu-yori): 1604870 むしろ
   // moved to the lessons (n5-essentials/kata): 1123880 ボタン
   x("1006950", "そもそも", "adverb", "in the first place, to begin with", "language"),
-  x("1000590", "あんな", "pre-noun", "that kind of, like that", "language"),
+  // moved to the lessons (n3-degree/negative-adverbs): 1000590 あんな
   // moved to the lessons (n3-reasons/ni-yotte): 1022880 インターネット
   x("1077140", "ダム", "noun", "dam", "nature"),
-  x("1130650", "ミス", "noun", "mistake (する: to make a mistake)", "school-work"),
+  // moved to the lessons (n3-degree/tatoe-temo): 1130650 ミス
   x("1172610", "[運|うん]", "noun", "luck, fortune", "feelings"),
   x("1183450", "[温泉|おんせん]", "noun", "hot spring, onsen", "travel"),
   x("1212470", "[感染|かんせん]", "noun", "infection (する: to get infected)", "body"),
@@ -224,7 +224,7 @@ export const BATCH_05: Word[] = [
   x("1533720", "[模様|もよう]", "noun", "pattern, design; state of things", "everyday"),
   x("1550190", "[裏|うら]", "noun", "back, reverse side", "everyday"),
   x("1335210", "[従|したが]う", "verb", "to obey, to follow", "everyday", "godan"),
-  x("1543890", "あまりに", "adverb", "too (much), excessively", "language"),
+  // moved to the lessons (n3-degree/amari): 1543890 あまりに
   x("1600720", "[激|はげ]しい", "i-adj", "intense, violent, fierce", "everyday"),
   x("1605270", "[基|もと]づく", "verb", "to be based on", "everyday", "godan"),
   x("1370320", "[図|ず]", "noun", "diagram, picture", "school-work"),

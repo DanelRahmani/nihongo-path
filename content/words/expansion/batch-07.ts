@@ -61,7 +61,7 @@ export const BATCH_07: Word[] = [
   x("1439090", "[天才|てんさい]", "noun", "genius", "people"),
   x("1451850", "[同意|どうい]", "noun", "agreement, consent (する: to agree)", "everyday"),
   x("1455060", "[特集|とくしゅう]", "noun", "special feature, special edition (する: to feature)", "everyday"),
-  x("1483140", "[彼氏|かれし]", "noun", "boyfriend", "people"),
+  // moved to the lessons (n3-degree/nanka-nante): 1483140 [彼氏|かれし]
   x("1488710", "[標準|ひょうじゅん]", "noun", "standard, norm", "everyday"),
   x("1541290", "[有効|ゆうこう]", "na-adj", "valid, effective", "everyday"),
   x("1586780", "あらゆる", "pre-noun", "all, every (before a noun)", "language"),
@@ -191,7 +191,7 @@ export const BATCH_07: Word[] = [
   x("1444510", "[徒歩|とほ]", "noun", "on foot, walking", "travel"),
   x("1466850", "[入力|にゅうりょく]", "noun", "input, typing (する: to type in, to enter)", "everyday"),
   x("1505470", "[文章|ぶんしょう]", "noun", "writing, text, passage", "language"),
-  x("1512070", "[辺|へん]", "noun", "area, vicinity", "places"),
+  // moved to the lessons (n3-degree/negative-adverbs): 1512070 [辺|へん]
   x("1523170", "[本部|ほんぶ]", "noun", "headquarters, head office", "school-work"),
   x("1531870", "[名誉|めいよ]", "noun", "honour", "everyday"),
   x("1532410", "[明確|めいかく]", "na-adj", "clear, definite", "everyday"),
